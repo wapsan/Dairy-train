@@ -115,14 +115,15 @@ class TestProfileVC: MainTabBarItemVC {
         return stackView
     }()
     
-//    lazy var blureEffect: UIBlurEffect = {
-//        let blurEffect = UIBlurEffect(style: .)
-//        return 
-//    }()
+    lazy var visualEffectView: UIVisualEffectView = {
+        let blurEffectView = UIBlurEffect(style: .light)
+        let visualEffectView = UIVisualEffectView(effect: blurEffectView)
+        visualEffectView.frame = self.view.safeAreaLayoutGuide.layoutFrame
+        return visualEffectView
+    }()
 //
     //MARK: - Private properties
     private var isAllertShown: Bool = false
-    
     
     var infoViewAllert: DTTestCustomAllert!
     
@@ -136,6 +137,7 @@ class TestProfileVC: MainTabBarItemVC {
         self.view.backgroundColor = .black
         self.setUpGuiElements()
         self.setInfoViewAction()
+        self.setUpVisualEffectView()
     }
     
     //MARK: - Private methods
@@ -143,6 +145,7 @@ class TestProfileVC: MainTabBarItemVC {
         for infoView in self.infoViews {
             infoView.tapped = { (infoViewType) in
                 self.showInfoViewAllert(with: infoViewType)
+                self.animateInAlert()
             }
         }
     }
@@ -150,19 +153,51 @@ class TestProfileVC: MainTabBarItemVC {
     private func showInfoViewAllert(with type: TESTDTInfoView.InfoViewType) {
         guard !self.isAllertShown else { return }
         self.infoViewAllert = .init(type: type)
-        self.view.addSubview(infoViewAllert)
+        self.view.addSubview(self.infoViewAllert)
         self.infoViewAllert.translatesAutoresizingMaskIntoConstraints = false
         self.infoViewAllert.delegate = self
         self.isAllertShown = true
         self.activateAllertConstraint()
     }
     
+    private func animateInAlert() {
+        self.infoViewAllert.transform = .init(scaleX: 1.3, y: 1.3)
+        self.infoViewAllert.alpha = 0
+        UIView.animate(withDuration: 0.4, animations: {
+            self.visualEffectView.alpha = 1
+            self.infoViewAllert.alpha = 1
+            self.infoViewAllert.transform = CGAffineTransform.identity
+        })
+    }
+    
+    private func animateOutAlert() {
+        UIView.animate(withDuration: 0.4,
+                       animations: {
+                        self.visualEffectView.alpha = 0
+                        self.infoViewAllert.alpha = 0
+                        self.infoViewAllert.transform = .init(scaleX: 1.3, y: 1.3)
+        }) { (_) in
+            self.infoViewAllert.removeFromSuperview()
+        }
+    }
     
     private func setAllertState() {
         guard self.isAllertShown else { return }
         self.isAllertShown = false
     }
     
+    private func setUpVisualEffectView() {
+        self.view.addSubview(self.visualEffectView)
+        
+        let safeArea = self.view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            self.visualEffectView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.visualEffectView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+            self.visualEffectView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
+            self.visualEffectView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+        ])
+        self.visualEffectView.alpha = 0
+    }
     
 //    private func setCostumerInfo() -> CostumerInfo? {
 //        guard let age = self.ageInfoView.valueLabel.text,
@@ -273,13 +308,15 @@ extension TestProfileVC: DTTestCustomAllerDelegate {
                 infoView.valueLabel.text = writtenInfo
             }
         }
-        self.infoViewAllert.removeFromSuperview()
+      //  self.infoViewAllert.removeFromSuperview()
+        self.animateOutAlert()
         self.deactivateAllertConstraint()
         self.setAllertState()
     }
     
     func cancelTapped() {
-        self.infoViewAllert.removeFromSuperview()
+      //  self.infoViewAllert.removeFromSuperview()
+        self.animateOutAlert()
         self.deactivateAllertConstraint()
         self.setAllertState()
     }

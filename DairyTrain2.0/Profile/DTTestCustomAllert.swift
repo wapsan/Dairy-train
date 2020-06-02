@@ -133,7 +133,9 @@ class DTTestCustomAllert: UIView {
     init(type: TESTDTInfoView.InfoViewType) {
         super.init(frame: .zero)
         self.allertType = type
+        self.setTextField()
         self.setSelfLayer()
+        self.showKeyboard()
         switch type {
         case .trainCount:
             break
@@ -213,6 +215,18 @@ class DTTestCustomAllert: UIView {
             button.layer.backgroundColor = UIColor.clear.cgColor
         }
     }
+    
+    private func setTextField() {
+        self.valueTextField.keyboardType = .decimalPad
+    }
+    
+    private func hideKeyboard() {
+        self.valueTextField.resignFirstResponder()
+    }
+    
+    private func showKeyboard() {
+        self.valueTextField.becomeFirstResponder()
+    }
 
     //MARK: - Constraints
     private func setMetricTypeConstraints() {
@@ -281,12 +295,14 @@ class DTTestCustomAllert: UIView {
     @objc private func cancelPressed() {
         self.delegate?.cancelTapped()
         self.valueTextField.text = nil
+        self.hideKeyboard()
     }
 
     @objc private func okPressed() {
         guard let type = self.allertType else { return }
         self.writeInfo()
         self.delegate?.okPressed(with: type, and: self.writenValue)
+        self.hideKeyboard()
         self.valueTextField.text = nil
     }
     
