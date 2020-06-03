@@ -5,6 +5,7 @@ class SettingsSectionVC: UITableViewController {
     //MARK: - Private properties
     private var settingModel = [SettingSection(type: .metrics),
                                 SettingSection(type: .style)]
+   private var navigationTittle = "Setting"
     
     //MARK: - Lifecycle
     override func viewDidLoad() {

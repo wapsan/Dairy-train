@@ -16,7 +16,7 @@ class MainTabBarItemVC: UIViewController {
         self.navigationController?.navigationBar.barTintColor = .viewFlipsideBckgoundColor
         self.navigationController?.navigationBar.titleTextAttributes = textAttributes
         self.navigationItem.backBarButtonItem = backBarButtonItem
-        
+        self.navigationController?.navigationBar.barStyle = .black
         switch self.tabBarItem.tag {
         case 0:
             self.navigationItem.title = "Activities"

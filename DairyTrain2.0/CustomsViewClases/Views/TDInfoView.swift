@@ -1,36 +1,43 @@
 import UIKit
     
-class TESTDTInfoView: UIView {
+class TDInfoiView: UIView {
     
     //MARK: - GUI Elemnts
     lazy var tittleLabe: UILabel = {
         let label = UILabel()
-        label.textColor = .white
-        label.numberOfLines = 1
+        label.font = .boldSystemFont(ofSize: 25)
+        label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
+        label.numberOfLines = 0
+        label.lineBreakMode = .byClipping
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 25)
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     lazy var valueLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        label.minimumScaleFactor = 0.5
         label.font = .systemFont(ofSize: 25)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        label.numberOfLines = 0
+        label.lineBreakMode = .byClipping
+        label.textAlignment = .center
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
-        label.textAlignment = .center
-        label.numberOfLines = 1
+        label.font = .systemFont(ofSize: 20)
+        label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
+        label.numberOfLines = 0
+        label.lineBreakMode = .byClipping
+        label.textAlignment = .center
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -46,8 +53,20 @@ class TESTDTInfoView: UIView {
     }
     
     //MARK: - Properties
-    var tapped: ((TESTDTInfoView.InfoViewType)-> Void)?
+    var tapped: ((TDInfoiView.InfoViewType)-> Void)?
     var type: InfoViewType?
+    var isValueSeted: Bool {
+        switch self.valueLabel.text {
+        case "0","_":
+            return false
+        default:
+            return true
+        }
+    }
+    
+    
+   
+    
     //MARK: - Initialization
     init(type: InfoViewType) {
         super.init(frame: .zero)
@@ -93,6 +112,7 @@ class TESTDTInfoView: UIView {
         self.setTapRecognizer()
         self.setAppearance()
         self.setConstraints()
+        self.addObserverForMeteringSetting()
     }
     
     required init?(coder: NSCoder) {
@@ -127,11 +147,48 @@ class TESTDTInfoView: UIView {
         self.addGestureRecognizer(tap)
     }
     
+    
+    private func addObserverForMeteringSetting() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.heightSettingWasChanged),
+                                               name: .heightMetricChanged,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.weightSettingChanged),
+                                               name: .weightMetricChanged,
+                                               object: nil)
+        
+    }
+    
+    
+    
     //MARK: - Actions
     @objc private func tapSelector() {
         guard let type = self.type else { return }
         self.tapped?(type)
     }
+    
+    
+    //MARK: TODO Вывод один символ после запятой на инфо вью
+    @objc private func heightSettingWasChanged() {
+     guard let type = self.type else { return }
+        if type == .height {
+            guard let number = Double(self.valueLabel.text!) else { return }
+            self.valueLabel.text = String(number * MeteringSetting.shared.heightMultiplier)
+            self.descriptionLabel.text = MeteringSetting.shared.heightDescription
+        }
+    }
+    
+    @objc private func weightSettingChanged() {
+        guard let type = self.type else { return }
+        if type == .weight {
+            guard let number = Double(self.valueLabel.text!) else { return }
+            self.valueLabel.text = String(number * MeteringSetting.shared.weightMultiplier)
+            self.descriptionLabel.text = MeteringSetting.shared.weightDescription
+        }
+        
+    }
+    
     //MARK: - Constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
@@ -144,8 +201,8 @@ class TESTDTInfoView: UIView {
         NSLayoutConstraint.activate([
             self.valueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
             self.valueLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
-            self.valueLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
-            self.valueLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4)
+            self.valueLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            self.valueLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.35)
         ])
     }
     

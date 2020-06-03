@@ -41,10 +41,11 @@ extension SettingVC {
         }
         if (self.settingInfo?.isChekedOn(indexPath.row))! {
             cell.markImage?.image = UIImage(named: "checkMark")
-           
+            cell.isUserInteractionEnabled = false
         } else {
-         
+            self.tableView.deselectRow(at: indexPath, animated: true)
             cell.markImage?.image = nil
+            cell.isUserInteractionEnabled = true
         }
         cell.selectionStyle = .none
         return cell
@@ -56,7 +57,14 @@ extension SettingVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentValue = self.settingInfo?.possibleSetting[indexPath.row]
+//        switch MeteringSetting.shared.heightMode {
+//        case .cm:
+//            MeteringSetting.shared.heightMode = .ft
+//        case .ft:
+//            MeteringSetting.shared.heightMode = .cm
+//        }
         self.settingInfo?.curenttValue = currentValue
+     //   NotificationCenter.default.post(name: .heightMetricChanged, object: nil)
         self.tableView.reloadData()
     }
     

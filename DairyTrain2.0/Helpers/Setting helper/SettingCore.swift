@@ -40,7 +40,8 @@ class Setting {
     var tittle: String
     var possibleList: [String]
     var possibleSetting: [String]
-   
+    
+    
     var curenttValue: String? {
         didSet {
             guard let settingType = self.type else { return }

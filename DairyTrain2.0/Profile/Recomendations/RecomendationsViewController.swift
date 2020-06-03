@@ -26,6 +26,11 @@ class RecomendationsViewController: UIViewController {
         super.viewDidLoad()
         self.setUpSupplyModel()
         self.setUpTable()
+        
+    }
+    
+    func setCustomerInfo(_ info: CostumerInfo) {
+        CaloriesCalculator.shared.setParametersBy(data: info)
     }
         
     //MARK: - Private Methods
@@ -47,7 +52,7 @@ class RecomendationsViewController: UIViewController {
     }
     
     //MARK: - Constraints
-    func setUpTableConstraints() {
+    private func setUpTableConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),

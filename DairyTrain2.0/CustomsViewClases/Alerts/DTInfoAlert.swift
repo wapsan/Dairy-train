@@ -1,13 +1,13 @@
 import UIKit
 
 
-protocol DTTestCustomAllerDelegate: class {
+protocol DTInfoAllerDelegate: class {
     func cancelTapped()
-    func okPressed(with alertType: TESTDTInfoView.InfoViewType, and writtenInfo: String)
+    func okPressed(with alertType: TDInfoiView.InfoViewType, and writtenInfo: String)
     
 }
 
-class DTTestCustomAllert: UIView {
+class DTInfoAlert: UIView {
     
     //MARK: - GUI Properties
     lazy var titleLabel: UILabel = {
@@ -21,6 +21,10 @@ class DTTestCustomAllert: UIView {
     
     lazy var valueTextField: DTTextField = {
         let textField = DTTextField(placeholder: "")
+        textField.font = .boldSystemFont(ofSize: 25)
+        textField.adjustsFontSizeToFitWidth = true
+        textField.textAlignment = .center
+        textField.textColor = .white
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -32,21 +36,15 @@ class DTTestCustomAllert: UIView {
         return view
     }()
     
-    lazy var okButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Ok", for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = .clear
+    lazy var okButton: DTInfoAlertButton = {
+        let button = DTInfoAlertButton(title: "Ok")
         button.addTarget(self, action: #selector(self.okPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    lazy var cancelButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Cancel", for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = .clear
+    lazy var cancelButton: DTInfoAlertButton = {
+        let button = DTInfoAlertButton(title: "Cancel")
         button.addTarget(self, action: #selector(self.cancelPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -115,28 +113,39 @@ class DTTestCustomAllert: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 16
-        stackView.distribution = .fill
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
         stackView.addArrangedSubview(self.okButton)
         stackView.addArrangedSubview(self.cancelButton)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
+    lazy var containerView: UIView = {
+       let view = UIView()
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = 20
+        view.layer.masksToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     //MARK: - Private properties
     private var writenValue: String = ""
     
     //MARK: - Piblic properties
-    weak var delegate: DTTestCustomAllerDelegate?
-    var allertType: TESTDTInfoView.InfoViewType?
+    weak var delegate: DTInfoAllerDelegate?
+    var allertType: TDInfoiView.InfoViewType?
 
     //MARK: - Initialization
-    init(type: TESTDTInfoView.InfoViewType) {
+    init(with infoView: TDInfoiView) {
         super.init(frame: .zero)
-        self.allertType = type
+        self.allertType = infoView.type
         self.setTextField()
         self.setSelfLayer()
         self.showKeyboard()
-        switch type {
+        self.setContainerView()
+        switch infoView.type {
         case .trainCount:
             break
         case .gender:
@@ -152,6 +161,21 @@ class DTTestCustomAllert: UIView {
         case .weight:
             self.titleLabel.text = "Set weight"
             self.initMetricType()
+        case .none:
+            break
+        }
+        if infoView.isValueSeted {
+            if self.pickButtonStakView.arrangedSubviews.isEmpty {
+                self.valueTextField.text = infoView.valueLabel.text
+            } else {
+                for view in self.pickButtonStakView.arrangedSubviews {
+                    guard let button = view as? UIButton else { return }
+                    if button.currentTitle == infoView.valueLabel.text {
+                        button.isSelected = true
+                    }
+                    self.setButtonState(button)
+                }
+            }
         }
     }
     
@@ -159,11 +183,24 @@ class DTTestCustomAllert: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    private func setContainerView() {
+        self.addSubview(self.containerView)
+        NSLayoutConstraint.activate([
+            self.containerView.topAnchor.constraint(equalTo: self.topAnchor),
+            self.containerView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            self.containerView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+        ])
+    }
+    
     //MARK: - Private methods
     private func setSelfLayer() {
         self.backgroundColor = .viewFlipsideBckgoundColor
-        self.layer.masksToBounds = true
         self.layer.cornerRadius = 20
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = .init(width: 0, height: 5)
+        self.layer.shadowOpacity = 5
     }
     
     private func initMetricType() {
@@ -177,8 +214,8 @@ class DTTestCustomAllert: UIView {
     private func initGenderType() {
         self.pickButtonStakView.addArrangedSubview(self.maleButton)
         self.pickButtonStakView.addArrangedSubview(self.femaleButton)
-        self.addSubview(self.buttonStackView)
-        self.addSubview(self.pickButtonStakView)
+        self.containerView.addSubview(self.buttonStackView)
+        self.containerView.addSubview(self.pickButtonStakView)
         self.setPickerTypeConstraints()
     }
     
@@ -186,8 +223,8 @@ class DTTestCustomAllert: UIView {
         self.pickButtonStakView.addArrangedSubview(self.lowActivivtyButton)
         self.pickButtonStakView.addArrangedSubview(self.midActivivtyButton)
         self.pickButtonStakView.addArrangedSubview(self.highActivivtyButton)
-        self.addSubview(self.buttonStackView)
-        self.addSubview(self.pickButtonStakView)
+        self.containerView.addSubview(self.buttonStackView)
+        self.containerView.addSubview(self.pickButtonStakView)
         self.setPickerTypeConstraints()
     }
     
@@ -196,8 +233,11 @@ class DTTestCustomAllert: UIView {
             guard let info = self.valueTextField.text else { return }
             if let _ = Double(info) {
                 self.writenValue = info
+            } else {
+                self.writenValue = "0"
             }
         } else {
+            self.writenValue = "_"
             for view in self.pickButtonStakView.arrangedSubviews {
                 guard let button = view as? UIButton else { return }
                 if button.isSelected {
@@ -263,16 +303,16 @@ class DTTestCustomAllert: UIView {
     private func setPickerTypeConstraints() {
         let heightMultiplier: CGFloat =  CGFloat(self.pickButtonStakView.arrangedSubviews.count + 1)
         NSLayoutConstraint.activate([
-            self.buttonStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            self.buttonStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            self.buttonStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            self.buttonStackView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1 / heightMultiplier)
+            self.buttonStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 16),
+            self.buttonStackView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -16),
+            self.buttonStackView.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: 0),
+            self.buttonStackView.heightAnchor.constraint(equalTo: self.containerView.heightAnchor, multiplier: 1 / heightMultiplier)
         ])
         
         NSLayoutConstraint.activate([
-            self.pickButtonStakView.topAnchor.constraint(equalTo: self.topAnchor, constant: -1),
-            self.pickButtonStakView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: -1),
-            self.pickButtonStakView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 1),
+            self.pickButtonStakView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: -1),
+            self.pickButtonStakView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: -1),
+            self.pickButtonStakView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: 1),
             self.pickButtonStakView.bottomAnchor.constraint(equalTo: self.buttonStackView.topAnchor)
         ])
     }
@@ -288,7 +328,6 @@ class DTTestCustomAllert: UIView {
                 pickedButton.isSelected = true
                 self.setButtonState(pickedButton)
             }
-            
         }
     }
     

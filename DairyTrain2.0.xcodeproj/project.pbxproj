@@ -30,15 +30,13 @@
 		1379800924733AEB00BAD87C /* SettingsSectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379800824733AEB00BAD87C /* SettingsSectionVC.swift */; };
 		1380D933247AC55300212CB4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1380D932247AC55300212CB4 /* UserModel.swift */; };
 		1386AA20246C15500016A757 /* ReadWriteFirebasedata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386AA1F246C15500016A757 /* ReadWriteFirebasedata.swift */; };
-		138BDB76248663960033F378 /* DTTestCustomAllert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BDB75248663960033F378 /* DTTestCustomAllert.swift */; };
+		138BDB76248663960033F378 /* DTInfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BDB75248663960033F378 /* DTInfoAlert.swift */; };
 		138BDB78248665330033F378 /* DTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BDB77248665330033F378 /* DTTextField.swift */; };
-		138E551B246A9B3B0039BE10 /* DTGenderAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 138E551A246A9B3B0039BE10 /* DTGenderAlert.xib */; };
-		138E551D246A9D580039BE10 /* DTGenderAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E551C246A9D580039BE10 /* DTGenderAlert.swift */; };
 		138E551F246AB6160039BE10 /* DTViewWithCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E551E246AB6160039BE10 /* DTViewWithCorners.swift */; };
 		1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5F9248392760012A76A /* UIImage+Ex.swift */; };
-		1396F5FC248394C20012A76A /* TestProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FB248394C20012A76A /* TestProfileVC.swift */; };
+		1396F5FC248394C20012A76A /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FB248394C20012A76A /* ProfileVC.swift */; };
 		1396F5FE2483BE480012A76A /* DTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FD2483BE480012A76A /* DTButton.swift */; };
-		1396F6002484175E0012A76A /* TESTdtInfoview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FF2484175E0012A76A /* TESTdtInfoview.swift */; };
+		1396F6002484175E0012A76A /* TDInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FF2484175E0012A76A /* TDInfoView.swift */; };
 		1396F6022484216B0012A76A /* MainLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F6012484216B0012A76A /* MainLoginVC.swift */; };
 		139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D530C2473DF790028AE6A /* AlertHelper.swift */; };
 		139D530F247401E60028AE6A /* DTSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139D530E247401E60028AE6A /* DTSettingCell.xib */; };
@@ -52,13 +50,12 @@
 		139FE9D724783CAA00B22C40 /* DTActivitiesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D624783CAA00B22C40 /* DTActivitiesHeaderView.swift */; };
 		13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */; };
 		13AF79482486D3A100F2F7F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13AF79472486D3A100F2F7F7 /* GoogleService-Info.plist */; };
-		13BA179824619B5A00DF5D7D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13BA179724619B5A00DF5D7D /* Profile.storyboard */; };
-		13BA179E2461A36A00DF5D7D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA179D2461A36A00DF5D7D /* ProfileViewController.swift */; };
 		13BF82BD247C2E54005C5494 /* MainTabBarItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */; };
 		13C89D20247044E2008AEF18 /* DTRecomendationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13C89D1F247044E2008AEF18 /* DTRecomendationHeaderView.xib */; };
 		13C89D22247046D2008AEF18 /* DTRecomendationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D21247046D2008AEF18 /* DTRecomendationFooterView.swift */; };
 		13C89D262470A259008AEF18 /* CustomRecomandationCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13C89D252470A259008AEF18 /* CustomRecomandationCells.xib */; };
 		13C89D282470A3E5008AEF18 /* DTCustomRecomendationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D272470A3E5008AEF18 /* DTCustomRecomendationsCell.swift */; };
+		13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */; };
 		13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */; };
 		13EB98FD247D54B300DE9CD9 /* SubgroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FC247D54B300DE9CD9 /* SubgroupsVC.swift */; };
 		13EB98FF247D8C2400DE9CD9 /* DTTrainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13EB98FE247D8C2400DE9CD9 /* DTTrainCell.xib */; };
@@ -69,13 +66,7 @@
 		13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BA247AB0FC008EE212 /* Exercise.swift */; };
 		13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BC247AB145008EE212 /* MuscleGroupModel.swift */; };
 		13EDD9BF247AB9A4008EE212 /* ExerciseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BE247AB9A4008EE212 /* ExerciseVC.swift */; };
-		13F339832469561E0022A784 /* DTInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F339822469561E0022A784 /* DTInfoView.swift */; };
-		13F33986246957940022A784 /* DTInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F33985246957940022A784 /* DTInfoView.xib */; };
-		13F33988246966BB0022A784 /* DTCustomAllertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F33987246966BB0022A784 /* DTCustomAllertView.xib */; };
-		13F3398A24696A630022A784 /* DTCustomAllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F3398924696A630022A784 /* DTCustomAllerView.swift */; };
 		13FAF17A246FCAA600537408 /* CaloriesCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FAF179246FCAA600537408 /* CaloriesCalculator.swift */; };
-		13FAF17C246FE09800537408 /* DTActivityAllert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13FAF17B246FE09800537408 /* DTActivityAllert.xib */; };
-		13FAF17E246FE7B700537408 /* DTActivityAllert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FAF17D246FE7B700537408 /* DTActivityAllert.swift */; };
 		6632C8B9392FB2776FD08AEA /* Pods_DairyTrain2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 489508DA5FF6CAFD605F1258 /* Pods_DairyTrain2_0.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,15 +96,13 @@
 		1379800824733AEB00BAD87C /* SettingsSectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionVC.swift; sourceTree = "<group>"; };
 		1380D932247AC55300212CB4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		1386AA1F246C15500016A757 /* ReadWriteFirebasedata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWriteFirebasedata.swift; sourceTree = "<group>"; };
-		138BDB75248663960033F378 /* DTTestCustomAllert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTestCustomAllert.swift; sourceTree = "<group>"; };
+		138BDB75248663960033F378 /* DTInfoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoAlert.swift; sourceTree = "<group>"; };
 		138BDB77248665330033F378 /* DTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTextField.swift; sourceTree = "<group>"; };
-		138E551A246A9B3B0039BE10 /* DTGenderAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DTGenderAlert.xib; sourceTree = "<group>"; };
-		138E551C246A9D580039BE10 /* DTGenderAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTGenderAlert.swift; sourceTree = "<group>"; };
 		138E551E246AB6160039BE10 /* DTViewWithCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTViewWithCorners.swift; sourceTree = "<group>"; };
 		1396F5F9248392760012A76A /* UIImage+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ex.swift"; sourceTree = "<group>"; };
-		1396F5FB248394C20012A76A /* TestProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProfileVC.swift; sourceTree = "<group>"; };
+		1396F5FB248394C20012A76A /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1396F5FD2483BE480012A76A /* DTButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTButton.swift; sourceTree = "<group>"; };
-		1396F5FF2484175E0012A76A /* TESTdtInfoview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TESTdtInfoview.swift; sourceTree = "<group>"; };
+		1396F5FF2484175E0012A76A /* TDInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDInfoView.swift; sourceTree = "<group>"; };
 		1396F6012484216B0012A76A /* MainLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoginVC.swift; sourceTree = "<group>"; };
 		139D530C2473DF790028AE6A /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		139D530E247401E60028AE6A /* DTSettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DTSettingCell.xib; sourceTree = "<group>"; };
@@ -127,13 +116,12 @@
 		139FE9D624783CAA00B22C40 /* DTActivitiesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTActivitiesHeaderView.swift; sourceTree = "<group>"; };
 		13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteringSetting.swift; sourceTree = "<group>"; };
 		13AF79472486D3A100F2F7F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		13BA179724619B5A00DF5D7D /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		13BA179D2461A36A00DF5D7D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarItemVC.swift; sourceTree = "<group>"; };
 		13C89D1F247044E2008AEF18 /* DTRecomendationHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DTRecomendationHeaderView.xib; sourceTree = "<group>"; };
 		13C89D21247046D2008AEF18 /* DTRecomendationFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTRecomendationFooterView.swift; sourceTree = "<group>"; };
 		13C89D252470A259008AEF18 /* CustomRecomandationCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomRecomandationCells.xib; sourceTree = "<group>"; };
 		13C89D272470A3E5008AEF18 /* DTCustomRecomendationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTCustomRecomendationsCell.swift; sourceTree = "<group>"; };
+		13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoAlertButton.swift; sourceTree = "<group>"; };
 		13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgroups.swift; sourceTree = "<group>"; };
 		13EB98FC247D54B300DE9CD9 /* SubgroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubgroupsVC.swift; sourceTree = "<group>"; };
 		13EB98FE247D8C2400DE9CD9 /* DTTrainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DTTrainCell.xib; sourceTree = "<group>"; };
@@ -144,13 +132,7 @@
 		13EDD9BA247AB0FC008EE212 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		13EDD9BC247AB145008EE212 /* MuscleGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupModel.swift; sourceTree = "<group>"; };
 		13EDD9BE247AB9A4008EE212 /* ExerciseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseVC.swift; sourceTree = "<group>"; };
-		13F339822469561E0022A784 /* DTInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoView.swift; sourceTree = "<group>"; };
-		13F33985246957940022A784 /* DTInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DTInfoView.xib; sourceTree = "<group>"; };
-		13F33987246966BB0022A784 /* DTCustomAllertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DTCustomAllertView.xib; sourceTree = "<group>"; };
-		13F3398924696A630022A784 /* DTCustomAllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTCustomAllerView.swift; sourceTree = "<group>"; };
 		13FAF179246FCAA600537408 /* CaloriesCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculator.swift; sourceTree = "<group>"; };
-		13FAF17B246FE09800537408 /* DTActivityAllert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DTActivityAllert.xib; sourceTree = "<group>"; };
-		13FAF17D246FE7B700537408 /* DTActivityAllert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTActivityAllert.swift; sourceTree = "<group>"; };
 		15297B168E3C89AD62162EEF /* Pods-DairyTrain2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DairyTrain2.0.release.xcconfig"; path = "Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0.release.xcconfig"; sourceTree = "<group>"; };
 		489508DA5FF6CAFD605F1258 /* Pods_DairyTrain2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DairyTrain2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79E67D4147B0E67A401929BA /* Pods-DairyTrain2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DairyTrain2.0.debug.xcconfig"; path = "Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0.debug.xcconfig"; sourceTree = "<group>"; };
@@ -308,7 +290,6 @@
 		139FE9D9247859A800B22C40 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				13F33985246957940022A784 /* DTInfoView.xib */,
 				139FE9D424783B9000B22C40 /* DTActivitiesHeaderView.xib */,
 				13C89D1F247044E2008AEF18 /* DTRecomendationHeaderView.xib */,
 			);
@@ -326,21 +307,11 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		139FE9DB247859DF00B22C40 /* Allerts */ = {
-			isa = PBXGroup;
-			children = (
-				13F33987246966BB0022A784 /* DTCustomAllertView.xib */,
-				13FAF17B246FE09800537408 /* DTActivityAllert.xib */,
-				138E551A246A9B3B0039BE10 /* DTGenderAlert.xib */,
-			);
-			path = Allerts;
-			sourceTree = "<group>";
-		};
 		139FE9DC247859FD00B22C40 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1396F5FF2484175E0012A76A /* TDInfoView.swift */,
 				138E551E246AB6160039BE10 /* DTViewWithCorners.swift */,
-				13F339822469561E0022A784 /* DTInfoView.swift */,
 				139FE9D624783CAA00B22C40 /* DTActivitiesHeaderView.swift */,
 				13C89D21247046D2008AEF18 /* DTRecomendationFooterView.swift */,
 			);
@@ -350,10 +321,8 @@
 		139FE9DD24785A1B00B22C40 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				13F3398924696A630022A784 /* DTCustomAllerView.swift */,
+				138BDB75248663960033F378 /* DTInfoAlert.swift */,
 				135B88162481810E0032251D /* DTAproachAllert.swift */,
-				13FAF17D246FE7B700537408 /* DTActivityAllert.swift */,
-				138E551C246A9D580039BE10 /* DTGenderAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -362,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				13416FA12485345100EC6590 /* GoogleSignInButton.swift */,
+				13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */,
 				1396F5FD2483BE480012A76A /* DTButton.swift */,
 			);
 			path = Buttons;
@@ -389,11 +359,7 @@
 		13BA179F2461A45200DF5D7D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				13BA179D2461A36A00DF5D7D /* ProfileViewController.swift */,
-				1396F5FF2484175E0012A76A /* TESTdtInfoview.swift */,
-				138BDB75248663960033F378 /* DTTestCustomAllert.swift */,
-				1396F5FB248394C20012A76A /* TestProfileVC.swift */,
-				13BA179724619B5A00DF5D7D /* Profile.storyboard */,
+				1396F5FB248394C20012A76A /* ProfileVC.swift */,
 				134DA009246ECE1F00B2FBDE /* Recomendations */,
 				13151D4B247169D9002C15AA /* Setting */,
 			);
@@ -434,7 +400,6 @@
 			children = (
 				139FE9D9247859A800B22C40 /* Views */,
 				139FE9DA247859CE00B22C40 /* Cells */,
-				139FE9DB247859DF00B22C40 /* Allerts */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -518,19 +483,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				13EB98FF247D8C2400DE9CD9 /* DTTrainCell.xib in Resources */,
-				13BA179824619B5A00DF5D7D /* Profile.storyboard in Resources */,
 				13AF79482486D3A100F2F7F7 /* GoogleService-Info.plist in Resources */,
-				13F33988246966BB0022A784 /* DTCustomAllertView.xib in Resources */,
 				133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */,
 				139D530F247401E60028AE6A /* DTSettingCell.xib in Resources */,
 				13C89D20247044E2008AEF18 /* DTRecomendationHeaderView.xib in Resources */,
 				133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */,
 				13C89D262470A259008AEF18 /* CustomRecomandationCells.xib in Resources */,
-				13FAF17C246FE09800537408 /* DTActivityAllert.xib in Resources */,
-				138E551B246A9B3B0039BE10 /* DTGenderAlert.xib in Resources */,
 				139FE9D524783B9000B22C40 /* DTActivitiesHeaderView.xib in Resources */,
 				139FE9D1247836A900B22C40 /* DTActivitiesCell.xib in Resources */,
-				13F33986246957940022A784 /* DTInfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,9 +560,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				138BDB76248663960033F378 /* DTTestCustomAllert.swift in Sources */,
+				138BDB76248663960033F378 /* DTInfoAlert.swift in Sources */,
 				1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */,
-				13F339832469561E0022A784 /* DTInfoView.swift in Sources */,
 				1396F5FE2483BE480012A76A /* DTButton.swift in Sources */,
 				13479F39247BD82C002FFB4E /* ActivitiesVC.swift in Sources */,
 				13C89D282470A3E5008AEF18 /* DTCustomRecomendationsCell.swift in Sources */,
@@ -610,19 +569,16 @@
 				134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */,
 				13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */,
 				139D531924748BE00028AE6A /* ColorSetting.swift in Sources */,
-				13F3398A24696A630022A784 /* DTCustomAllerView.swift in Sources */,
 				13243A41247E768B00AB7419 /* DateHelper.swift in Sources */,
 				13479F3B247BD84A002FFB4E /* TrainsVC.swift in Sources */,
 				137018612467246A0026A17B /* File.swift in Sources */,
 				13EDD9B7247AAF63008EE212 /* Train.swift in Sources */,
 				1313693A2461B1C200372F26 /* String+Ex.swift in Sources */,
-				138E551D246A9D580039BE10 /* DTGenderAlert.swift in Sources */,
 				139D531B24753D060028AE6A /* SettingCore.swift in Sources */,
 				133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */,
-				13BA179E2461A36A00DF5D7D /* ProfileViewController.swift in Sources */,
 				13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */,
 				1379800924733AEB00BAD87C /* SettingsSectionVC.swift in Sources */,
-				1396F6002484175E0012A76A /* TESTdtInfoview.swift in Sources */,
+				1396F6002484175E0012A76A /* TDInfoView.swift in Sources */,
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
 				139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */,
 				1386AA20246C15500016A757 /* ReadWriteFirebasedata.swift in Sources */,
@@ -631,10 +587,10 @@
 				13416FA22485345100EC6590 /* GoogleSignInButton.swift in Sources */,
 				13FAF17A246FCAA600537408 /* CaloriesCalculator.swift in Sources */,
 				135B88172481810E0032251D /* DTAproachAllert.swift in Sources */,
-				13FAF17E246FE7B700537408 /* DTActivityAllert.swift in Sources */,
 				1335CBB02465AC03009C2E20 /* DTStyledTextField.swift in Sources */,
 				133AA5A8246163E5009EBF8E /* SceneDelegate.swift in Sources */,
 				13786E1D2478271C0084E48C /* NotificationName+Ex.swift in Sources */,
+				13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */,
 				13C89D22247046D2008AEF18 /* DTRecomendationFooterView.swift in Sources */,
 				13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */,
 				13EB98FD247D54B300DE9CD9 /* SubgroupsVC.swift in Sources */,
@@ -651,7 +607,7 @@
 				13EC52552480748900A05BCA /* TrainVC.swift in Sources */,
 				13479F37247BD55D002FFB4E /* MainTabBarVC.swift in Sources */,
 				132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */,
-				1396F5FC248394C20012A76A /* TestProfileVC.swift in Sources */,
+				1396F5FC248394C20012A76A /* ProfileVC.swift in Sources */,
 				139FE9D724783CAA00B22C40 /* DTActivitiesHeaderView.swift in Sources */,
 				13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */,
 				13EC525F24810E4A00A05BCA /* DTExerciceCell.swift in Sources */,

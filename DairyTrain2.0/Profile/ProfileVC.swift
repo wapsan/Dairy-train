@@ -1,41 +1,41 @@
 import UIKit
 import Firebase
 
-class TestProfileVC: MainTabBarItemVC {
+class ProfileVC: MainTabBarItemVC {
     
     //MARK: - GUI Properties
-    lazy var totalTrainInfoView: TESTDTInfoView = {
-        let view = TESTDTInfoView(type: .trainCount)
+    lazy var totalTrainInfoView: TDInfoiView = {
+        let view = TDInfoiView(type: .trainCount)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var genderInfoView: TESTDTInfoView = {
-        let view = TESTDTInfoView(type: .gender)
+    lazy var genderInfoView: TDInfoiView = {
+        let view = TDInfoiView(type: .gender)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var activivtyInfoView: TESTDTInfoView = {
-        let view = TESTDTInfoView(type: .activityLevel)
+    lazy var activivtyInfoView: TDInfoiView = {
+        let view = TDInfoiView(type: .activityLevel)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var ageInfoView: TESTDTInfoView = {
-        let view = TESTDTInfoView(type: .age)
+    lazy var ageInfoView: TDInfoiView = {
+        let view = TDInfoiView(type: .age)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var heightInfoView: TESTDTInfoView = {
-        let view = TESTDTInfoView(type: .height)
+    lazy var heightInfoView: TDInfoiView = {
+        let view = TDInfoiView(type: .height)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var weightInfoView: TESTDTInfoView = {
-        let view = TESTDTInfoView(type: .weight)
+    lazy var weightInfoView: TDInfoiView = {
+        let view = TDInfoiView(type: .weight)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -118,16 +118,27 @@ class TestProfileVC: MainTabBarItemVC {
     lazy var visualEffectView: UIVisualEffectView = {
         let blurEffectView = UIBlurEffect(style: .light)
         let visualEffectView = UIVisualEffectView(effect: blurEffectView)
-        visualEffectView.frame = self.view.safeAreaLayoutGuide.layoutFrame
+        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
         return visualEffectView
     }()
-//
+    
+     private var infoViewAllert: DTInfoAlert!
+
     //MARK: - Private properties
     private var isAllertShown: Bool = false
+    private var isAllInfoWasSeted: Bool {
+        if self.ageInfoView.isValueSeted,
+            self.heightInfoView.isValueSeted,
+            self.weightInfoView.isValueSeted,
+            self.genderInfoView.isValueSeted,
+            self.activivtyInfoView.isValueSeted {
+            return true
+        } else {
+            return false
+        }
+    }
     
-    var infoViewAllert: DTTestCustomAllert!
-    
-    var infoViews: [TESTDTInfoView] {
+    private var infoViews: [TDInfoiView] {
         return [self.activivtyInfoView, self.genderInfoView, self.ageInfoView, self.heightInfoView, self.weightInfoView]
     }
     
@@ -136,34 +147,54 @@ class TestProfileVC: MainTabBarItemVC {
         super.viewDidLoad()
         self.view.backgroundColor = .black
         self.setUpGuiElements()
-        self.setInfoViewAction()
+        self.setUpInfoViewAction()
         self.setUpVisualEffectView()
     }
     
     //MARK: - Private methods
-    private func setInfoViewAction() {
+    private func setUpInfoViewAction() {
         for infoView in self.infoViews {
             infoView.tapped = { (infoViewType) in
-                self.showInfoViewAllert(with: infoViewType)
-                self.animateInAlert()
+                self.showAlertFrom(infoView: infoView)
             }
         }
     }
     
-    private func showInfoViewAllert(with type: TESTDTInfoView.InfoViewType) {
+    private func showAlertFrom(infoView: TDInfoiView) {
         guard !self.isAllertShown else { return }
-        self.infoViewAllert = .init(type: type)
-        self.view.addSubview(self.infoViewAllert)
-        self.infoViewAllert.translatesAutoresizingMaskIntoConstraints = false
+        self.infoViewAllert = .init(with: infoView)
         self.infoViewAllert.delegate = self
         self.isAllertShown = true
+        self.view.addSubview(self.infoViewAllert)
+        self.infoViewAllert.translatesAutoresizingMaskIntoConstraints = false
         self.activateAllertConstraint()
+        self.animateInAlert()
     }
     
+    private func showRecomendationAlert() {
+        AlertHelper.shared.showAllertOn(self,
+                                        tittle: "Error",
+                                        message: "Fill up field to get supply recomendations.",
+                                        cancelTittle: nil,
+                                        okTittle: "Ok",
+                                        style: .alert,
+                                        complition: nil)
+    }
+    
+    private func showSignOutAllert() {
+        AlertHelper.shared.showAllertOn(self,
+                                        tittle: "Sign out?",
+                                        message: "Are you shure",
+                                        cancelTittle: "Cancel",
+                                        okTittle: "Quit",
+                                        style: .actionSheet,
+                                        complition: self.signOut)
+    }
+
     private func animateInAlert() {
         self.infoViewAllert.transform = .init(scaleX: 1.3, y: 1.3)
         self.infoViewAllert.alpha = 0
-        UIView.animate(withDuration: 0.4, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             self.visualEffectView.alpha = 1
             self.infoViewAllert.alpha = 1
             self.infoViewAllert.transform = CGAffineTransform.identity
@@ -171,7 +202,7 @@ class TestProfileVC: MainTabBarItemVC {
     }
     
     private func animateOutAlert() {
-        UIView.animate(withDuration: 0.4,
+        UIView.animate(withDuration: 0.3,
                        animations: {
                         self.visualEffectView.alpha = 0
                         self.infoViewAllert.alpha = 0
@@ -188,7 +219,6 @@ class TestProfileVC: MainTabBarItemVC {
     
     private func setUpVisualEffectView() {
         self.view.addSubview(self.visualEffectView)
-        
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             self.visualEffectView.topAnchor.constraint(equalTo: safeArea.topAnchor),
@@ -199,25 +229,37 @@ class TestProfileVC: MainTabBarItemVC {
         self.visualEffectView.alpha = 0
     }
     
-//    private func setCostumerInfo() -> CostumerInfo? {
-//        guard let age = self.ageInfoView.valueLabel.text,
-//            let height = self.heightInfoView.valueLabel.text,
-//            let weight = self.weightInfoView.valueLabel.text,
-//            let gender = self.genderInfoView.valueLabel.text,
-//            let activityLevel = self.activityLevelInfoView.valueLabel.text else { return nil }
-//        guard self.isInfoViewsSet else { return nil }
-//        let info = CostumerInfo(age: age,
-//                                height: height,
-//                                weight: weight,
-//                                gender: gender,
-//                                activityLevel: activityLevel)
-//        return info
-//    }
+    private func setCostumerInfo() -> CostumerInfo? {
+        guard let age = self.ageInfoView.valueLabel.text,
+            let height = self.heightInfoView.valueLabel.text,
+            let weight = self.weightInfoView.valueLabel.text,
+            let gender = self.genderInfoView.valueLabel.text,
+            let activityLevel = self.activivtyInfoView.valueLabel.text else { return nil }
+        guard self.isAllInfoWasSeted else { return nil }
+        let info = CostumerInfo(age: age,
+                                height: height,
+                                weight: weight,
+                                gender: gender,
+                                activityLevel: activityLevel)
+        return info
+    }
     
     private func setUpGuiElements() {
         self.view.addSubview(self.infoViewsStackView)
         self.view.addSubview(self.buttonStackView)
         self.setUpViewConstraints()
+    }
+    
+    private func pushSettingViewController(with title: String) {
+        let settingSectionVC = SettingsSectionVC(with: title)
+        self.navigationController?.pushViewController(settingSectionVC, animated: true)
+    }
+    
+    private func pushRecomendationViewController() {
+        guard let customerInfo = self.setCostumerInfo() else { self.showRecomendationAlert(); return }
+        let recomendationVC = RecomendationsViewController()
+        recomendationVC.setCustomerInfo(customerInfo)
+        self.navigationController?.pushViewController(recomendationVC, animated: true)
     }
     
     private func signOut() {
@@ -232,18 +274,6 @@ class TestProfileVC: MainTabBarItemVC {
         mainLoginVC.modalPresentationStyle = .overFullScreen
         self.present(mainLoginVC, animated: true, completion: nil)
     }
-    
-    private func showSignOutAllert() {
-        AlertHelper.shared.showAllertOn(self,
-                                        tittle: "Sign out?",
-                                        message: "Are you shure",
-                                        cancelTittle: "Cancel",
-                                        okTittle: "Quit",
-                                        style: .actionSheet,
-                                        complition: self.signOut)
-    }
-    
-    
     
     //MARK: - Constraints
     private func setUpViewConstraints() {
@@ -284,38 +314,34 @@ class TestProfileVC: MainTabBarItemVC {
     //MARK: - Actions
     @objc private func settingButtonpPressed(_ sender: DTButton) {
         guard let buttonTittle = sender.currentTitle else { return }
-        let settingSectionVC = SettingsSectionVC(with: buttonTittle)
-        self.navigationController?.pushViewController(settingSectionVC, animated: true)
+        self.pushSettingViewController(with: buttonTittle)
     }
     
-    @objc private func recomendationButtonPressed(_ sender: DTButton) {
-        let recomendationVC = RecomendationsViewController()
-        self.navigationController?.pushViewController(recomendationVC, animated: true)
+    @objc private func recomendationButtonPressed() {
+        self.pushRecomendationViewController()
     }
     
-    @objc private func signtOutButtonPressed(_ sender: DTButton) {
+    @objc private func signtOutButtonPressed() {
         self.showSignOutAllert()
     }
     
 }
 
 //MARK: - DTTestCustomAllerDelegate
-extension TestProfileVC: DTTestCustomAllerDelegate {
+extension ProfileVC: DTInfoAllerDelegate {
     
-    func okPressed(with alertType: TESTDTInfoView.InfoViewType, and writtenInfo: String) {
+    func okPressed(with alertType: TDInfoiView.InfoViewType, and writtenInfo: String) {
         for infoView in self.infoViews {
             if infoView.type == alertType {
                 infoView.valueLabel.text = writtenInfo
             }
         }
-      //  self.infoViewAllert.removeFromSuperview()
         self.animateOutAlert()
         self.deactivateAllertConstraint()
         self.setAllertState()
     }
     
     func cancelTapped() {
-      //  self.infoViewAllert.removeFromSuperview()
         self.animateOutAlert()
         self.deactivateAllertConstraint()
         self.setAllertState()

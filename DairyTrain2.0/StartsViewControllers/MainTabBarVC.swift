@@ -34,10 +34,8 @@ class MainTabBarVC: UITabBarController {
     }
     
     private func setUpControllers() {
-        let profileStoryBoard = UIStoryboard(name: "Profile", bundle: nil)
-        
-        let profileVC = profileStoryBoard.instantiateViewController(identifier: "profile")
-        let testProfileVC = TestProfileVC()
+      
+        let profileVC = ProfileVC()
         let activitiesVC = ActivitiesVC()
         let trainsVC = TrainsVC()
         
@@ -45,7 +43,7 @@ class MainTabBarVC: UITabBarController {
         trainsVC.tabBarItem = .init(title: nil, image: UIImage(named: "trains"), tag: 1)
         profileVC.tabBarItem = .init(title: nil, image: UIImage(named: "profile"), tag: 2)
         
-        self.viewControllers = [activitiesVC, trainsVC, testProfileVC].map({
+        self.viewControllers = [activitiesVC, trainsVC, profileVC].map({
             UINavigationController(rootViewController: $0)
         })
     }
