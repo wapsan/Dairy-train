@@ -11,20 +11,13 @@ class ColorSetting {
     //MARK: - Properties
     static let shared = ColorSetting()
     
-    var themeColor: ColorTheme {
-        get {
-            if userDefaults.bool(forKey: UserColorThemeKey) == true {
-                return .dark
-            } else {
-                return . light
-            }
-        }
-        set {
+    var themeColor: ColorTheme = .dark {
+        willSet {
             switch newValue {
             case .dark:
-                userDefaults.set(true, forKey: UserColorThemeKey)
+                DTSettingManager.shared.setColor(theme: newValue)
             case .light:
-                userDefaults.set(false, forKey: UserColorThemeKey)
+                 DTSettingManager.shared.setColor(theme: newValue)
             }
         }
     }

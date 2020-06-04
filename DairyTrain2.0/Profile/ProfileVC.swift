@@ -4,73 +4,73 @@ import Firebase
 class ProfileVC: MainTabBarItemVC {
     
     //MARK: - GUI Properties
-    lazy var totalTrainInfoView: TDInfoiView = {
+    private lazy var totalTrainInfoView: TDInfoiView = {
         let view = TDInfoiView(type: .trainCount)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var genderInfoView: TDInfoiView = {
+    private lazy var genderInfoView: TDInfoiView = {
         let view = TDInfoiView(type: .gender)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var activivtyInfoView: TDInfoiView = {
+    private lazy var activivtyInfoView: TDInfoiView = {
         let view = TDInfoiView(type: .activityLevel)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var ageInfoView: TDInfoiView = {
+    private lazy var ageInfoView: TDInfoiView = {
         let view = TDInfoiView(type: .age)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var heightInfoView: TDInfoiView = {
+    private lazy var heightInfoView: TDInfoiView = {
         let view = TDInfoiView(type: .height)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var weightInfoView: TDInfoiView = {
+    private lazy var weightInfoView: TDInfoiView = {
         let view = TDInfoiView(type: .weight)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var recomendationButton: DTButton = {
+    private lazy var recomendationButton: DTButton = {
         let button = DTButton(tittle: "Recomendations")
         button.addTarget(self, action: #selector(self.recomendationButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button 
     }()
     
-    lazy var statisticButton: DTButton = {
+    private lazy var statisticButton: DTButton = {
         let button = DTButton(tittle: "Statistic")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    lazy var settingButton: DTButton = {
+    private lazy var settingButton: DTButton = {
         let button = DTButton(tittle: "Setting")
         button.addTarget(self, action: #selector(self.settingButtonpPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    lazy var signOutButton: DTButton = {
+    private lazy var signOutButton: DTButton = {
         let button = DTButton(tittle: "Sign out")
         button.addTarget(self, action: #selector(self.signtOutButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    lazy var buttonStackView: UIStackView = {
+    private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = self.stackViewSpacing
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(self.recomendationButton)
@@ -80,10 +80,10 @@ class ProfileVC: MainTabBarItemVC {
         return stackView
     }()
     
-    lazy var metricStaclView: UIStackView = {
+    private lazy var metricStaclView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 16
+        stackView.spacing = self.stackViewSpacing
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(self.ageInfoView)
@@ -92,10 +92,10 @@ class ProfileVC: MainTabBarItemVC {
         return stackView
     }()
     
-    lazy var genderAndactivivtyStacView: UIStackView = {
+    private lazy var genderAndactivivtyStacView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 16
+        stackView.spacing = self.stackViewSpacing
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(self.genderInfoView)
@@ -103,10 +103,10 @@ class ProfileVC: MainTabBarItemVC {
         return stackView
     }()
     
-    lazy var infoViewsStackView: UIStackView = {
+    private lazy var infoViewsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = self.stackViewSpacing
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(self.totalTrainInfoView)
@@ -115,17 +115,20 @@ class ProfileVC: MainTabBarItemVC {
         return stackView
     }()
     
-    lazy var visualEffectView: UIVisualEffectView = {
+     private lazy var visualEffectView: UIVisualEffectView = {
         let blurEffectView = UIBlurEffect(style: .light)
         let visualEffectView = UIVisualEffectView(effect: blurEffectView)
         visualEffectView.translatesAutoresizingMaskIntoConstraints = false
         return visualEffectView
     }()
     
-     private var infoViewAllert: DTInfoAlert!
+ 
+    
+    private var infoViewAllert: DTInfoAlert!
 
     //MARK: - Private properties
     private var isAllertShown: Bool = false
+    
     private var isAllInfoWasSeted: Bool {
         if self.ageInfoView.isValueSeted,
             self.heightInfoView.isValueSeted,
@@ -137,11 +140,15 @@ class ProfileVC: MainTabBarItemVC {
             return false
         }
     }
+    //MARK: DOTO системные расстояния
+    private var stackViewSpacing: CGFloat {
+        return 16 // UIScreen.main.bounds.height / 56
+    }
     
     private var infoViews: [TDInfoiView] {
         return [self.activivtyInfoView, self.genderInfoView, self.ageInfoView, self.heightInfoView, self.weightInfoView]
     }
-    
+   
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -330,12 +337,28 @@ class ProfileVC: MainTabBarItemVC {
 //MARK: - DTTestCustomAllerDelegate
 extension ProfileVC: DTInfoAllerDelegate {
     
-    func okPressed(with alertType: TDInfoiView.InfoViewType, and writtenInfo: String) {
+    func okPressed(with alertType: TDInfoiView.InfoViewType) {
         for infoView in self.infoViews {
-            if infoView.type == alertType {
-                infoView.valueLabel.text = writtenInfo
+            guard let infoViewType = infoView.type else { return }
+            if infoViewType == alertType {
+                switch alertType {
+                case .trainCount:
+                    infoView.valueLabel.text = UserModel.shared.displayTrainCount
+                case .gender:
+                    infoView.valueLabel.text = UserModel.shared.displayGender
+                case .activityLevel:
+                    infoView.valueLabel.text = UserModel.shared.displayActivityLevel
+                case .age:
+                    infoView.valueLabel.text = UserModel.shared.displayAge
+                case .height:
+                    infoView.valueLabel.text = UserModel.shared.displayHeight
+                case .weight:
+                    infoView.valueLabel.text = UserModel.shared.displayWeight
+                }
             }
         }
+        
+        
         self.animateOutAlert()
         self.deactivateAllertConstraint()
         self.setAllertState()

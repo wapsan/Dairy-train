@@ -7,4 +7,5 @@ extension Notification.Name {
     static var weightMetricChanged = Notification.Name("weightMetricChanged")
     static var heightMetricChanged = Notification.Name("heightMetrickChanged")
     static var addExercicesToTrain = Notification.Name("addExercicesToTrain")
+    static var addNewTrain = Notification.Name("addNewTrain")
 }

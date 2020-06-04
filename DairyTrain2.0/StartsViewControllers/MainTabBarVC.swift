@@ -13,7 +13,6 @@ class MainTabBarVC: UITabBarController {
         self.setTabBarItems()
         self.setSelectedTabBarItem()
         self.addObserverForAddingExerciceTotrain()
-        print("tab bar didload")
     }
     
     

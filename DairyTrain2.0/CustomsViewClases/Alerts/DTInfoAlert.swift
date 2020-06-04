@@ -3,7 +3,7 @@ import UIKit
 
 protocol DTInfoAllerDelegate: class {
     func cancelTapped()
-    func okPressed(with alertType: TDInfoiView.InfoViewType, and writtenInfo: String)
+    func okPressed(with alertType: TDInfoiView.InfoViewType)
     
 }
 
@@ -231,18 +231,33 @@ class DTInfoAlert: UIView {
     private func writeInfo() {
         if self.pickButtonStakView.arrangedSubviews.isEmpty {
             guard let info = self.valueTextField.text else { return }
-            if let _ = Double(info) {
-                self.writenValue = info
-            } else {
-                self.writenValue = "0"
+            if let doubleInfo = Double(info) {
+                switch self.allertType {
+                case .age:
+                    UserModel.shared.setAge(to: Int(doubleInfo))
+                case .weight:
+                    UserModel.shared.setWeight(to: doubleInfo)
+                case .height:
+                    UserModel.shared.setHeight(to: doubleInfo)
+                default:
+                    break
+                }
             }
         } else {
-            self.writenValue = "_"
             for view in self.pickButtonStakView.arrangedSubviews {
                 guard let button = view as? UIButton else { return }
                 if button.isSelected {
                     guard let buttonTittle = button.titleLabel?.text else { return }
-                    self.writenValue = buttonTittle
+                    switch self.allertType {
+                    case .gender:
+                        guard let setedGender = UserModel.Gender.init(rawValue: buttonTittle) else { return }
+                        UserModel.shared.setGender(to: setedGender )
+                    case .activityLevel:
+                        guard let setedActivityLevel = UserModel.ActivivtyLevel.init(rawValue: buttonTittle) else { return }
+                        UserModel.shared.setActivivtyLevel(to: setedActivityLevel)
+                    default:
+                        break
+                    }
                 }
             }
         }
@@ -340,7 +355,7 @@ class DTInfoAlert: UIView {
     @objc private func okPressed() {
         guard let type = self.allertType else { return }
         self.writeInfo()
-        self.delegate?.okPressed(with: type, and: self.writenValue)
+        self.delegate?.okPressed(with: type)
         self.hideKeyboard()
         self.valueTextField.text = nil
     }

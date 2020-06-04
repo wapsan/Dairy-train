@@ -57,14 +57,7 @@ extension SettingVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentValue = self.settingInfo?.possibleSetting[indexPath.row]
-//        switch MeteringSetting.shared.heightMode {
-//        case .cm:
-//            MeteringSetting.shared.heightMode = .ft
-//        case .ft:
-//            MeteringSetting.shared.heightMode = .cm
-//        }
         self.settingInfo?.curenttValue = currentValue
-     //   NotificationCenter.default.post(name: .heightMetricChanged, object: nil)
         self.tableView.reloadData()
     }
     

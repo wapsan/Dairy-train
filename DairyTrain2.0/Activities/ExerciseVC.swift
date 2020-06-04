@@ -59,6 +59,7 @@ class ExercicesVC: ActivitiesVC {
         NotificationCenter.default.post(name: .addExercicesToTrain,
                                         object: nil,
                                         userInfo: ["Exercices": UserModel.shared.trains])
+        NotificationCenter.default.post(name: .addNewTrain, object: nil)
         self.showAddedAllert()
     }
     

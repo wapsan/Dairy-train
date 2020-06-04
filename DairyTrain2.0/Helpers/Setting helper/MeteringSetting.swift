@@ -6,98 +6,63 @@ class MeteringSetting {
     enum WeightMode {
         case kg
         case lbs
+     
     }
     
-    enum HeightMode {
+    enum HeightMode: String {
         case cm
         case ft
     }
     
-    //MARK: - Properties
+    //MARK: - Singletone properties
     static let shared = MeteringSetting()
     
+    //MARK: - Private properties
+    private var kgMultiplier: Double = 1 / 2.2
+    private var lbsMultiplier: Double = 1 * 2.2
+    private var cmMultiplier: Double = 1 / 0.032
+    private var ftMultiplier: Double = 1 * 0.032
     
-    var weightMode: WeightMode {
-        get {
-            if userDefaults.bool(forKey: UserWeighMetricKey) == true {
-                return .kg
-            } else {
-                return .lbs
-            }
-        }
-        set {
+    private var kgDescription: String = "(kg.)"
+    private var lbsDescription: String = "(lbs.)"
+    private var cmDescription: String = "(cm.)"
+    private var ftDescription: String = "(ft.)"
+    
+    
+    //MARK: - Properties
+    var weightDescription: String = ""
+    var weightMultiplier: Double = 1.0
+    
+    var weightMode: WeightMode = .kg {
+        willSet {
             switch newValue {
             case .kg:
-                userDefaults.set(true, forKey: UserWeighMetricKey)
+                self.weightMultiplier = self.kgMultiplier
+                self.weightDescription = self.kgDescription
             case .lbs:
-                userDefaults.set(false, forKey: UserWeighMetricKey)
+                self.weightMultiplier = self.lbsMultiplier
+                self.weightDescription = self.lbsDescription
             }
+            DTSettingManager.shared.setWeight(mode: newValue)
             NotificationCenter.default.post(name: .weightMetricChanged, object: nil)
         }
     }
     
-    var weightDescription: String {
-        get {
-            switch self.weightMode {
-            case .kg:
-                return "(kg.)"
-            case .lbs:
-                return "(lbs.)"
-            }
-        }
-        set {}
-    }
+    var heightDescription: String = ""
+    var heightMultiplier: Double = 1.0
     
-    var weightMultiplier: Double {
-        get {
-            switch self.weightMode {
-            case .kg:
-                return (1 / 2.2)
-            case .lbs:
-                return (1 * 2.2)
-            }
-        }
-    }
-    
-    var heightMode: HeightMode {
-        get {
-            if userDefaults.bool(forKey: UserHeightMetricKey) == true {
-                return .cm
-            } else {
-                return .ft
-            }
-        }
-        set {
+    var heightMode: HeightMode = .cm {
+        willSet {
             switch newValue {
             case .cm:
-                userDefaults.set(true, forKey: UserHeightMetricKey)
+                self.heightMultiplier = self.cmMultiplier
+                self.heightDescription = self.cmDescription
             case .ft:
-                userDefaults.set(false, forKey: UserHeightMetricKey)
+                self.heightMultiplier = self.ftMultiplier
+                self.heightDescription = self.ftDescription
             }
+            DTSettingManager.shared.setHeight(mode: newValue)
             NotificationCenter.default.post(name: .heightMetricChanged, object: nil)
-        }
-    }
-    
-    var heightDescription: String {
-        get {
-            switch self.heightMode {
-            case .cm:
-                return "(cm.)"
-            case .ft:
-                return "(ft.)"
-            }
-        }
-        set {}
-    }
-    
-    var heightMultiplier: Double {
-        get {
-            switch self.heightMode {
-            case .cm:
-                return (1 / 0.032)
-            case .ft:
-                return (1 * 0.032)
-            }
         }
     }
     

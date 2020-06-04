@@ -28,6 +28,7 @@
 		137018612467246A0026A17B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137018602467246A0026A17B /* File.swift */; };
 		13786E1D2478271C0084E48C /* NotificationName+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13786E1C2478271C0084E48C /* NotificationName+Ex.swift */; };
 		1379800924733AEB00BAD87C /* SettingsSectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379800824733AEB00BAD87C /* SettingsSectionVC.swift */; };
+		137D55B624897B6300EFBAB6 /* DTSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137D55B524897B6300EFBAB6 /* DTSettingManager.swift */; };
 		1380D933247AC55300212CB4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1380D932247AC55300212CB4 /* UserModel.swift */; };
 		1386AA20246C15500016A757 /* ReadWriteFirebasedata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386AA1F246C15500016A757 /* ReadWriteFirebasedata.swift */; };
 		138BDB76248663960033F378 /* DTInfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BDB75248663960033F378 /* DTInfoAlert.swift */; };
@@ -94,6 +95,7 @@
 		137018602467246A0026A17B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		13786E1C2478271C0084E48C /* NotificationName+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Ex.swift"; sourceTree = "<group>"; };
 		1379800824733AEB00BAD87C /* SettingsSectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionVC.swift; sourceTree = "<group>"; };
+		137D55B524897B6300EFBAB6 /* DTSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSettingManager.swift; sourceTree = "<group>"; };
 		1380D932247AC55300212CB4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		1386AA1F246C15500016A757 /* ReadWriteFirebasedata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWriteFirebasedata.swift; sourceTree = "<group>"; };
 		138BDB75248663960033F378 /* DTInfoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoAlert.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 			children = (
 				139D531A24753D060028AE6A /* SettingCore.swift */,
 				139D531824748BE00028AE6A /* ColorSetting.swift */,
+				137D55B524897B6300EFBAB6 /* DTSettingManager.swift */,
 				13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */,
 			);
 			path = "Setting helper";
@@ -598,6 +601,7 @@
 				1380D933247AC55300212CB4 /* UserModel.swift in Sources */,
 				135B8815248132360032251D /* DTAproachCell.swift in Sources */,
 				131107C3246582210023A29A /* UIView+Ex.swift in Sources */,
+				137D55B624897B6300EFBAB6 /* DTSettingManager.swift in Sources */,
 				139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */,
 				13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */,
 				139FE9D3247838EF00B22C40 /* DTActivitiesCell.swift in Sources */,

@@ -15,16 +15,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
-    
-     //   let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-      //  let logInVC = mainStoryboard.instantiateViewController(identifier: "SignInView")
         let userToken: String? = userDefaults.string(forKey: UserTokenKey)
         if userToken != nil {
             window?.rootViewController = MainTabBarVC()
-           // window?.rootViewController = TestLoginVC()
         } else {
             window?.rootViewController = MainLoginVC()
-          //  window?.rootViewController = logInVC
         }
         
         window?.makeKeyAndVisible()

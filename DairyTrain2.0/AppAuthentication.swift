@@ -1,11 +1,3 @@
-//
-//  AppAuthentication.swift
-//  DairyTrain2.0
-//
-//  Created by Вячеслав on 01.06.2020.
-//  Copyright © 2020 Вячеслав. All rights reserved.
-//
-
 import Firebase
 import GoogleSignIn
 
