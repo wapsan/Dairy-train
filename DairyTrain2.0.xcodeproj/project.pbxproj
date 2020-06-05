@@ -52,8 +52,7 @@
 		13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AF91D9248A2B2A006211B7 /* DTAdaptiveLabel.swift */; };
 		13BF82BD247C2E54005C5494 /* MainTabBarItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */; };
 		13C89D22247046D2008AEF18 /* DTRecomendationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D21247046D2008AEF18 /* DTRecomendationHeaderView.swift */; };
-		13C89D262470A259008AEF18 /* CustomRecomandationCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13C89D252470A259008AEF18 /* CustomRecomandationCells.xib */; };
-		13C89D282470A3E5008AEF18 /* DTCustomRecomendationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D272470A3E5008AEF18 /* DTCustomRecomendationsCell.swift */; };
+		13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */; };
 		13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */; };
 		13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */; };
 		13EB98FD247D54B300DE9CD9 /* SubgroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FC247D54B300DE9CD9 /* SubgroupsVC.swift */; };
@@ -117,8 +116,7 @@
 		13AF91D9248A2B2A006211B7 /* DTAdaptiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAdaptiveLabel.swift; sourceTree = "<group>"; };
 		13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarItemVC.swift; sourceTree = "<group>"; };
 		13C89D21247046D2008AEF18 /* DTRecomendationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTRecomendationHeaderView.swift; sourceTree = "<group>"; };
-		13C89D252470A259008AEF18 /* CustomRecomandationCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomRecomandationCells.xib; sourceTree = "<group>"; };
-		13C89D272470A3E5008AEF18 /* DTCustomRecomendationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTCustomRecomendationsCell.swift; sourceTree = "<group>"; };
+		13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDRecomendationCell.swift; sourceTree = "<group>"; };
 		13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoAlertButton.swift; sourceTree = "<group>"; };
 		13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgroups.swift; sourceTree = "<group>"; };
 		13EB98FC247D54B300DE9CD9 /* SubgroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubgroupsVC.swift; sourceTree = "<group>"; };
@@ -281,7 +279,7 @@
 				13243A3D247E4A6300AB7419 /* DTTrainCell.swift */,
 				13EC525E24810E4A00A05BCA /* DTExerciceCell.swift */,
 				139D53102474035C0028AE6A /* DTSettingCell.swift */,
-				13C89D272470A3E5008AEF18 /* DTCustomRecomendationsCell.swift */,
+				13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -291,7 +289,6 @@
 			children = (
 				139D530E247401E60028AE6A /* DTSettingCell.xib */,
 				13EB98FE247D8C2400DE9CD9 /* DTTrainCell.xib */,
-				13C89D252470A259008AEF18 /* CustomRecomandationCells.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -484,7 +481,6 @@
 				133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */,
 				139D530F247401E60028AE6A /* DTSettingCell.xib in Resources */,
 				133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */,
-				13C89D262470A259008AEF18 /* CustomRecomandationCells.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,7 +554,7 @@
 				1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */,
 				1396F5FE2483BE480012A76A /* DTButton.swift in Sources */,
 				13479F39247BD82C002FFB4E /* ActivitiesVC.swift in Sources */,
-				13C89D282470A3E5008AEF18 /* DTCustomRecomendationsCell.swift in Sources */,
+				13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */,
 				139D531324740BCE0028AE6A /* SettingVC.swift in Sources */,
 				134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */,
 				13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */,

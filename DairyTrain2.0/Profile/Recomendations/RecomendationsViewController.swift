@@ -8,8 +8,9 @@ class RecomendationsViewController: UIViewController {
         table.dataSource = self
         table.delegate = self
         table.backgroundColor = .black
-        let nib = UINib(nibName: "CustomRecomandationCells", bundle: nil)
-        table.register(nib, forCellReuseIdentifier: self.cellID)
+        table.register(TDRecomendationCell.self,
+                       forCellReuseIdentifier: TDRecomendationCell.cellID)
+        table.showsVerticalScrollIndicator = false
         table.sectionFooterHeight = 1
         table.sectionHeaderHeight = self.view.frame.height / 15
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +44,7 @@ class RecomendationsViewController: UIViewController {
         self.supplyModel = CaloriesCalculator.shared.getRecomendatinoInfo()
     }
     
-    private func setUp(_ cell: DTCustomRecomendationsCell, in section: Int) {
+    private func setUp(_ cell: TDRecomendationCell, in section: Int) {
         let suply = self.supplyModel[section]
         cell.caloriesLabel.text = suply.caloriesRecomendation
         cell.proteinsLabel.text = suply.proteinRecomendation
@@ -76,8 +77,8 @@ extension RecomendationsViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "RecomendationCell",
-                                                      for: indexPath) as! DTCustomRecomendationsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TDRecomendationCell.cellID,
+                                                 for: indexPath) as! TDRecomendationCell
         self.setUp(cell, in: indexPath.section)
         return cell
     }
@@ -95,10 +96,6 @@ extension RecomendationsViewController: UITableViewDelegate, UITableViewDataSour
     }
   
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-     //   let width = self.tableView.bounds.width
-     //   let height = self.tableView.sectionHeaderHeight
-     //   let headerView = TESTDTRecomendationHeaderView(frame: .init(x: 0, y: 0, width: width, height: height))
-        
         let headerView = DTRecomendationHeaderView()
         headerView.tittle.text = self.supplyModel[section].tittle
         headerView.openInfoButton.tag = section
