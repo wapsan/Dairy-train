@@ -108,20 +108,18 @@ extension ExercicesVC {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: super.activitiesCellId) as! DTActivitiesCell
-        cell.backgroundColor = .black
-        cell.selectionStyle = .none
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
+                                                 for: indexPath) as! DTActivitiesCell
         let exercice = self.exercices[indexPath.row]
-        cell.tittle.text = exercice.name
+        cell.exerciceNameLabel.text = exercice.name
         cell.muscleGroupImage.image = exercice.muscleSubGroupImage
         
         
         if exercice.isSelected {
-            cell.cellView.backgroundColor = .red
+            cell.containerView.backgroundColor = .red
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
         } else {
-            cell.cellView.backgroundColor = .viewFlipsideBckgoundColor
+            cell.containerView.backgroundColor = .viewFlipsideBckgoundColor
             tableView.deselectRow(at: indexPath, animated: true)
         }
    

@@ -1,6 +1,5 @@
 import UIKit
 
-
 class ActivitiesVC: MainTabBarItemVC {
     
     //MARK: - GUI Properties
@@ -8,8 +7,7 @@ class ActivitiesVC: MainTabBarItemVC {
         let table = UITableView()
         table.delegate = self
         table.dataSource = self
-        let nib = UINib(nibName: "DTActivitiesCell", bundle: nil)
-        table.register(nib, forCellReuseIdentifier: self.activitiesCellId)
+        table.register(DTActivitiesCell.self, forCellReuseIdentifier: DTActivitiesCell.cellID)
         table.backgroundColor = .black
         table.separatorStyle = .none
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -27,7 +25,6 @@ class ActivitiesVC: MainTabBarItemVC {
     
     //MARK: - Properties
     var headerTittle = "Select muscle group"
-    var activitiesCellId = DTActivitiesCell.cellID
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -46,7 +43,7 @@ class ActivitiesVC: MainTabBarItemVC {
     func setTableConstraint() {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor),
+            self.tableView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor, constant: 8),
             self.tableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
             self.tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
@@ -69,17 +66,12 @@ extension ActivitiesVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.activitiesCellId, for: indexPath) as! DTActivitiesCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
+                                                 for: indexPath) as! DTActivitiesCell
         let muscleGroup = self.muscleGroups[indexPath.row]
-        cell.tittle.text = muscleGroup.rawValue
+        cell.exerciceNameLabel.text = muscleGroup.rawValue
         cell.muscleGroupImage.image = muscleGroup.image
-        cell.backgroundColor = .black
-        cell.selectionStyle = .none
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -90,7 +82,7 @@ extension ActivitiesVC: UITableViewDataSource, UITableViewDelegate {
         subgroupVC.setNavigationTittle(to: muscleGroup.rawValue)
         self.navigationController?.pushViewController(subgroupVC, animated: true)
     }
-    
+
 }
 
 

@@ -1,28 +1,103 @@
 import UIKit
 
 class DTActivitiesCell: UITableViewCell {
-
     
-    static var cellID: String = "DTActivitiesCell"
+    //MARK: - Static cellID
+    static let cellID: String = "DTActivitiesCell"
     
-    @IBOutlet weak var cellView: DTViewWithCorners!
-    @IBOutlet weak var muscleGroupImage: UIImageView!
-    @IBOutlet weak var tittle: UILabel!
-
+    //MARK: - GUI Properties
+    lazy var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .viewFlipsideBckgoundColor
+        view.layer.shadowColor = UIColor.darkGray.cgColor
+        view.layer.shadowOffset = .init(width: 0, height: 5)
+        view.layer.shadowOpacity = 5
+        view.layer.cornerRadius = 20
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        //self.setImage()
+    lazy var exerciceNameLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .clear
+        label.textColor = .white
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.1
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var muscleGroupImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    //MARK: - Initialization
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: DTActivitiesCell.cellID)
+        self.initCell()
     }
     
-    private func setImage() {
-        self.muscleGroupImage.layer.borderColor = UIColor.white.cgColor
-        self.muscleGroupImage.layer.borderWidth = 1
-        self.muscleGroupImage.layer.cornerRadius = self.muscleGroupImage.bounds.height / 2
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    //MARK: - Private Methods
+    private func initCell() {
+        self.addSubview(self.containerView)
+        self.addSubview(self.muscleGroupImage)
+        self.addSubview(self.exerciceNameLabel)
+        self.setUpConstraints()
+        self.setCell()
     }
-
+    
+    private func setCell() {
+        self.backgroundColor = .clear
+        self.selectionStyle = .none
+    }
+    
+    private func setLayout() {
+        self.containerView.layer.cornerRadius = self.containerView.bounds.height / 2
+    }
+   
+    //MARK: - Publick methods
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.setLayout()
+    }
+    
+    //MARK: - Constraints
+    private func setUpConstraints() {
+       
+        NSLayoutConstraint.activate([
+            self.containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            self.containerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8),
+            self.containerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8),
+            self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            self.containerView.heightAnchor.constraint(lessThanOrEqualTo: self.containerView.widthAnchor, multiplier: 1/4)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.exerciceNameLabel.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 8),
+            self.exerciceNameLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -8),
+            self.exerciceNameLabel.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: -8),
+            self.exerciceNameLabel.leftAnchor.constraint(equalTo: self.muscleGroupImage.rightAnchor, constant: 8),
+            self.exerciceNameLabel.centerYAnchor.constraint(equalTo: self.containerView.centerYAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.muscleGroupImage.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 8),
+            self.muscleGroupImage.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: -8),
+            self.muscleGroupImage.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 8),
+            self.muscleGroupImage.widthAnchor.constraint(equalTo: self.muscleGroupImage.heightAnchor, multiplier: 1),
+            self.muscleGroupImage.centerYAnchor.constraint(equalTo: self.containerView.centerYAnchor),
+        ])
+    }
+    
 }
+
+

@@ -95,14 +95,13 @@ extension RecomendationsViewController: UITableViewDelegate, UITableViewDataSour
     }
   
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let width = self.tableView.bounds.width
-        let height = self.tableView.sectionHeaderHeight
-        let headerView = DTRecomendationHeaderView(frame: .init(x: 0,
-                                                                y: 0,
-                                                                width: width,
-                                                                height: height))
-        headerView.label.text = self.supplyModel[section].tittle
-        headerView.moreInfobutton.tag = section
+     //   let width = self.tableView.bounds.width
+     //   let height = self.tableView.sectionHeaderHeight
+     //   let headerView = TESTDTRecomendationHeaderView(frame: .init(x: 0, y: 0, width: width, height: height))
+        
+        let headerView = DTRecomendationHeaderView()
+        headerView.tittle.text = self.supplyModel[section].tittle
+        headerView.openInfoButton.tag = section
         headerView.delegate = self
         return headerView
     }

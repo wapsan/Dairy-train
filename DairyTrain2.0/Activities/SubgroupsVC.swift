@@ -41,12 +41,10 @@ extension SubgroupsVC {
         return listOfSubgroups.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: super.activitiesCellId) as! DTActivitiesCell
-        cell.backgroundColor = .black
-        cell.selectionStyle = .none
-        cell.tittle.text = self.listOfSubgroups[indexPath.row].rawValue
+        let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
+                                                 for: indexPath) as! DTActivitiesCell
+        cell.exerciceNameLabel.text = self.listOfSubgroups[indexPath.row].rawValue
         cell.muscleGroupImage.image = self.listOfSubgroups[indexPath.row].image
         return cell
     }

@@ -6,12 +6,6 @@ class TDInfoiView: UIView {
     lazy var tittleLabe: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.font = .boldSystemFont(ofSize: 25)
-//        label.adjustsFontSizeToFitWidth = true
-//        label.minimumScaleFactor = 0.5
-//        label.numberOfLines = 0
-//        label.lineBreakMode = .byClipping
-//        label.textAlignment = .center
-//        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -19,12 +13,6 @@ class TDInfoiView: UIView {
     lazy var valueLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.font = .systemFont(ofSize: 25)
-//        label.adjustsFontSizeToFitWidth = true
-//        label.minimumScaleFactor = 0.5
-//        label.numberOfLines = 0
-//        label.lineBreakMode = .byClipping
-//        label.textAlignment = .center
-//        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -32,12 +20,6 @@ class TDInfoiView: UIView {
     lazy var descriptionLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.font = .systemFont(ofSize: 20)
-//        label.adjustsFontSizeToFitWidth = true
-//        label.minimumScaleFactor = 0.5
-//        label.numberOfLines = 0
-//        label.lineBreakMode = .byClipping
-//        label.textAlignment = .center
-//        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -56,7 +38,6 @@ class TDInfoiView: UIView {
     var tapped: ((TDInfoiView.InfoViewType)-> Void)?
     var type: InfoViewType?
     var isValueSeted: Bool {
-       
         switch self.valueLabel.text {
         case "0","_", "0.0":
             return false
@@ -167,7 +148,6 @@ class TDInfoiView: UIView {
         self.tapped?(type)
     }
     
-    //MARK: TODO Вывод один символ после запятой на инфо вью
     @objc private func heightSettingWasChanged() {
      guard let type = self.type else { return }
         if type == .height {
