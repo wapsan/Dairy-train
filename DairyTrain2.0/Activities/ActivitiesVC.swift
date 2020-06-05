@@ -6,16 +6,20 @@ class ActivitiesVC: MainTabBarItemVC {
     //MARK: - GUI Properties
     lazy var tableView: UITableView = {
         let table = UITableView()
-       // self.tableView = .init(frame: self.view.frame)
         table.delegate = self
         table.dataSource = self
         let nib = UINib(nibName: "DTActivitiesCell", bundle: nil)
         table.register(nib, forCellReuseIdentifier: self.activitiesCellId)
         table.backgroundColor = .black
         table.separatorStyle = .none
-        table.sectionHeaderHeight = 50
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
+    }()
+    
+    private lazy var headerView: DTHeaderView = {
+        let view = DTHeaderView(title: self.headerTittle)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view 
     }()
     
     //MARK: - Private properties
@@ -34,6 +38,7 @@ class ActivitiesVC: MainTabBarItemVC {
     //MARK: - Private methods
     private func setUpTableView() {
         self.view.addSubview(self.tableView)
+        self.view.addSubview(self.headerView)
         self.setTableConstraint()
     }
     
@@ -41,10 +46,16 @@ class ActivitiesVC: MainTabBarItemVC {
     func setTableConstraint() {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.tableView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor),
             self.tableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
             self.tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.headerView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+            self.headerView.rightAnchor.constraint(equalTo: safeArea.rightAnchor)
         ])
     }
 
@@ -69,17 +80,6 @@ extension ActivitiesVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let width = self.tableView.bounds.width
-        let height = 100 / 2
-        let headerView = DTActivitiesHeaderView(frame: .init(x: 0,
-                                                             y: 0,
-                                                             width: Int(width),
-                                                             height: height))
-        headerView.tittle.text = self.headerTittle
-        return headerView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

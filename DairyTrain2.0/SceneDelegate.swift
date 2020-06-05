@@ -15,13 +15,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
-        let userToken: String? = userDefaults.string(forKey: UserTokenKey)
-        if userToken != nil {
+        if let userToken = DTSettingManager.shared.getUserToken() {
+            print("User token - \(userToken).")
             window?.rootViewController = MainTabBarVC()
         } else {
+            print("User token - nill.")
             window?.rootViewController = MainLoginVC()
         }
-        
         window?.makeKeyAndVisible()
     }
     

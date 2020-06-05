@@ -3,7 +3,7 @@ import GoogleSignIn
 
 class AppAuthentication: NSObject, GIDSignInDelegate {
    
-    //MARK: - Shared properties
+    //MARK: - Singletone propertie
     static let shared = AppAuthentication()
     
     //MARK: - Publick methods
@@ -28,15 +28,21 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
                                                        accessToken: authentication.accessToken)
         
         Auth.auth().signIn(with: credential) { (result, error) in
-            if result != nil {
-                guard let token = result?.user.refreshToken else { return }
-                userDefaults.set(token, forKey: UserTokenKey)
-                NotificationCenter.default.post(name: .googleSignIn,
-                                                object: nil,
-                                                userInfo: nil)
+            
+            if let token = result?.user.refreshToken {
+                DTSettingManager.shared.setUserToken(to: token)
+                self.postNotificationForGoogleSingIn()
             } else {
                 print("GooglSignInErrro")
             }
         }
     }
+    
+    //MARK: - Private methods
+    private func postNotificationForGoogleSingIn() {
+        NotificationCenter.default.post(name: .googleSignIn,
+                                        object: nil,
+                                        userInfo: nil)
+    }
+    
 }

@@ -47,10 +47,10 @@
 		139D531B24753D060028AE6A /* SettingCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531A24753D060028AE6A /* SettingCore.swift */; };
 		139FE9D1247836A900B22C40 /* DTActivitiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139FE9D0247836A900B22C40 /* DTActivitiesCell.xib */; };
 		139FE9D3247838EF00B22C40 /* DTActivitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */; };
-		139FE9D524783B9000B22C40 /* DTActivitiesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139FE9D424783B9000B22C40 /* DTActivitiesHeaderView.xib */; };
-		139FE9D724783CAA00B22C40 /* DTActivitiesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D624783CAA00B22C40 /* DTActivitiesHeaderView.swift */; };
+		139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D624783CAA00B22C40 /* DTHeaderView.swift */; };
 		13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */; };
 		13AF79482486D3A100F2F7F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13AF79472486D3A100F2F7F7 /* GoogleService-Info.plist */; };
+		13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AF91D9248A2B2A006211B7 /* DTAdaptiveLabel.swift */; };
 		13BF82BD247C2E54005C5494 /* MainTabBarItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */; };
 		13C89D20247044E2008AEF18 /* DTRecomendationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13C89D1F247044E2008AEF18 /* DTRecomendationHeaderView.xib */; };
 		13C89D22247046D2008AEF18 /* DTRecomendationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D21247046D2008AEF18 /* DTRecomendationFooterView.swift */; };
@@ -114,10 +114,10 @@
 		139D531A24753D060028AE6A /* SettingCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCore.swift; sourceTree = "<group>"; };
 		139FE9D0247836A900B22C40 /* DTActivitiesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DTActivitiesCell.xib; sourceTree = "<group>"; };
 		139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTActivitiesCell.swift; sourceTree = "<group>"; };
-		139FE9D424783B9000B22C40 /* DTActivitiesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DTActivitiesHeaderView.xib; sourceTree = "<group>"; };
-		139FE9D624783CAA00B22C40 /* DTActivitiesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTActivitiesHeaderView.swift; sourceTree = "<group>"; };
+		139FE9D624783CAA00B22C40 /* DTHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTHeaderView.swift; sourceTree = "<group>"; };
 		13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteringSetting.swift; sourceTree = "<group>"; };
 		13AF79472486D3A100F2F7F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		13AF91D9248A2B2A006211B7 /* DTAdaptiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAdaptiveLabel.swift; sourceTree = "<group>"; };
 		13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarItemVC.swift; sourceTree = "<group>"; };
 		13C89D1F247044E2008AEF18 /* DTRecomendationHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DTRecomendationHeaderView.xib; sourceTree = "<group>"; };
 		13C89D21247046D2008AEF18 /* DTRecomendationFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTRecomendationFooterView.swift; sourceTree = "<group>"; };
@@ -167,6 +167,7 @@
 		131107C7246582C30023A29A /* CustomsViewClases */ = {
 			isa = PBXGroup;
 			children = (
+				13AF91DD248A2D21006211B7 /* Labels */,
 				139FE9DC247859FD00B22C40 /* Views */,
 				139FE9D82478598800B22C40 /* Cells */,
 				139FE9DD24785A1B00B22C40 /* Alerts */,
@@ -292,7 +293,6 @@
 		139FE9D9247859A800B22C40 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				139FE9D424783B9000B22C40 /* DTActivitiesHeaderView.xib */,
 				13C89D1F247044E2008AEF18 /* DTRecomendationHeaderView.xib */,
 			);
 			path = Views;
@@ -314,7 +314,7 @@
 			children = (
 				1396F5FF2484175E0012A76A /* TDInfoView.swift */,
 				138E551E246AB6160039BE10 /* DTViewWithCorners.swift */,
-				139FE9D624783CAA00B22C40 /* DTActivitiesHeaderView.swift */,
+				139FE9D624783CAA00B22C40 /* DTHeaderView.swift */,
 				13C89D21247046D2008AEF18 /* DTRecomendationFooterView.swift */,
 			);
 			path = Views;
@@ -357,6 +357,14 @@
 				13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */,
 			);
 			path = "Setting helper";
+			sourceTree = "<group>";
+		};
+		13AF91DD248A2D21006211B7 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				13AF91D9248A2B2A006211B7 /* DTAdaptiveLabel.swift */,
+			);
+			path = Labels;
 			sourceTree = "<group>";
 		};
 		13BA179F2461A45200DF5D7D /* Profile */ = {
@@ -492,7 +500,6 @@
 				13C89D20247044E2008AEF18 /* DTRecomendationHeaderView.xib in Resources */,
 				133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */,
 				13C89D262470A259008AEF18 /* CustomRecomandationCells.xib in Resources */,
-				139FE9D524783B9000B22C40 /* DTActivitiesHeaderView.xib in Resources */,
 				139FE9D1247836A900B22C40 /* DTActivitiesCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,6 +584,7 @@
 				137018612467246A0026A17B /* File.swift in Sources */,
 				13EDD9B7247AAF63008EE212 /* Train.swift in Sources */,
 				1313693A2461B1C200372F26 /* String+Ex.swift in Sources */,
+				13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */,
 				139D531B24753D060028AE6A /* SettingCore.swift in Sources */,
 				133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */,
 				13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */,
@@ -612,7 +620,7 @@
 				13479F37247BD55D002FFB4E /* MainTabBarVC.swift in Sources */,
 				132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */,
 				1396F5FC248394C20012A76A /* ProfileVC.swift in Sources */,
-				139FE9D724783CAA00B22C40 /* DTActivitiesHeaderView.swift in Sources */,
+				139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */,
 				13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */,
 				13EC525F24810E4A00A05BCA /* DTExerciceCell.swift in Sources */,
 			);

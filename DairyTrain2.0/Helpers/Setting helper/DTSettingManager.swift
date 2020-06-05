@@ -4,11 +4,19 @@ class DTSettingManager {
     
     static let shared = DTSettingManager()
     
+    struct UserSettingKeys {
+        static let tokenKey = "Token"
+        static let colorThemeKey = "Color"
+        static let weighMetricKey = "Weight metric"
+        static let heightMetricKey = "Height metric"
+    }
+    
+    
     private func setDefaultWeightMode() {
-        if UserDefaults.standard.value(forKey: UserWeighMetricKey) == nil {
+        if UserDefaults.standard.value(forKey: UserSettingKeys.weighMetricKey) == nil {
             MeteringSetting.shared.weightMode = .kg
         }
-        if UserDefaults.standard.bool(forKey: UserWeighMetricKey) == true {
+        if UserDefaults.standard.bool(forKey: UserSettingKeys.weighMetricKey) == true {
             MeteringSetting.shared.weightMode = .kg
         } else {
             MeteringSetting.shared.weightMode = .lbs
@@ -16,10 +24,10 @@ class DTSettingManager {
     }
     
     private func setDefaultHeightMode() {
-        if UserDefaults.standard.value(forKey: UserHeightMetricKey) == nil {
+        if UserDefaults.standard.value(forKey: UserSettingKeys.heightMetricKey) == nil {
             MeteringSetting.shared.heightMode = .cm
         }
-        if UserDefaults.standard.bool(forKey: UserHeightMetricKey) == true {
+        if UserDefaults.standard.bool(forKey: UserSettingKeys.heightMetricKey) == true {
             MeteringSetting.shared.heightMode = .cm
         } else {
             MeteringSetting.shared.heightMode = .ft
@@ -27,10 +35,10 @@ class DTSettingManager {
     }
     
     private func setDefaultColorTheme() {
-        if UserDefaults.standard.value(forKey: UserColorThemeKey) == nil {
+        if UserDefaults.standard.value(forKey: UserSettingKeys.colorThemeKey) == nil {
             ColorSetting.shared.themeColor = .dark
         }
-        if UserDefaults.standard.bool(forKey: UserColorThemeKey) == true {
+        if UserDefaults.standard.bool(forKey: UserSettingKeys.colorThemeKey) == true {
             ColorSetting.shared.themeColor = .dark
         } else {
             ColorSetting.shared.themeColor = .light
@@ -71,6 +79,18 @@ class DTSettingManager {
         case .light:
             userDefaults.set(false, forKey: UserColorThemeKey)
         }
+    }
+    
+    func setUserToken(to token: String) {
+        UserDefaults.standard.set(token, forKey: UserSettingKeys.tokenKey)
+        print("User tokent was set to - \(token)")
+    }
+    
+    func getUserToken() -> String? {
+        guard let userToken = UserDefaults.standard.string(forKey: UserSettingKeys.tokenKey) else {
+            return nil
+        }
+        return userToken
     }
     
 }

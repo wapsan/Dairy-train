@@ -3,41 +3,41 @@ import UIKit
 class TDInfoiView: UIView {
     
     //MARK: - GUI Elemnts
-    lazy var tittleLabe: UILabel = {
-        let label = UILabel()
+    lazy var tittleLabe: DTAdaptiveLabel = {
+        let label = DTAdaptiveLabel()
         label.font = .boldSystemFont(ofSize: 25)
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.5
-        label.numberOfLines = 0
-        label.lineBreakMode = .byClipping
-        label.textAlignment = .center
-        label.textColor = .white
+//        label.adjustsFontSizeToFitWidth = true
+//        label.minimumScaleFactor = 0.5
+//        label.numberOfLines = 0
+//        label.lineBreakMode = .byClipping
+//        label.textAlignment = .center
+//        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    lazy var valueLabel: UILabel = {
-        let label = UILabel()
+    lazy var valueLabel: DTAdaptiveLabel = {
+        let label = DTAdaptiveLabel()
         label.font = .systemFont(ofSize: 25)
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.5
-        label.numberOfLines = 0
-        label.lineBreakMode = .byClipping
-        label.textAlignment = .center
-        label.textColor = .white
+//        label.adjustsFontSizeToFitWidth = true
+//        label.minimumScaleFactor = 0.5
+//        label.numberOfLines = 0
+//        label.lineBreakMode = .byClipping
+//        label.textAlignment = .center
+//        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
+    lazy var descriptionLabel: DTAdaptiveLabel = {
+        let label = DTAdaptiveLabel()
         label.font = .systemFont(ofSize: 20)
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.5
-        label.numberOfLines = 0
-        label.lineBreakMode = .byClipping
-        label.textAlignment = .center
-        label.textColor = .white
+//        label.adjustsFontSizeToFitWidth = true
+//        label.minimumScaleFactor = 0.5
+//        label.numberOfLines = 0
+//        label.lineBreakMode = .byClipping
+//        label.textAlignment = .center
+//        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

@@ -14,10 +14,9 @@ class TrainsVC: MainTabBarItemVC {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    
-    lazy var headerView: DTActivitiesHeaderView = {
-        let view = DTActivitiesHeaderView()
-        view.tittle.text = "Your trains"
+       
+    lazy var codeHeaderView: DTHeaderView = {
+        let view = DTHeaderView(title: "Your trains")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -40,7 +39,7 @@ class TrainsVC: MainTabBarItemVC {
     
     //MARK: - Private methods
     private func setHeaderView() {
-        self.view.addSubview(self.headerView)
+        self.view.addSubview(self.codeHeaderView)
         self.setHeaderViewConstrain()
     }
     
@@ -53,17 +52,17 @@ class TrainsVC: MainTabBarItemVC {
     private func setHeaderViewConstrain() {
         let safeAre = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.headerView.topAnchor.constraint(equalTo: safeAre.topAnchor),
-            self.headerView.leadingAnchor.constraint(equalTo: safeAre.leadingAnchor),
-            self.headerView.trailingAnchor.constraint(equalTo: safeAre.trailingAnchor),
-            self.headerView.heightAnchor.constraint(equalToConstant: self.view.frame.height * 0.05)
+            self.codeHeaderView.topAnchor.constraint(equalTo: safeAre.topAnchor),
+            self.codeHeaderView.leadingAnchor.constraint(equalTo: safeAre.leadingAnchor),
+            self.codeHeaderView.trailingAnchor.constraint(equalTo: safeAre.trailingAnchor)
+//            self.codeHeaderView.heightAnchor.constraint(equalToConstant: self.view.safeAreaLayoutGuide.layoutFrame.height * 0.075)
         ])
     }
     
     private func setCollectionViewConstraint() {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.collectionView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
+            self.collectionView.topAnchor.constraint(equalTo: self.codeHeaderView.bottomAnchor,
                                                      constant: 8),
             self.collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             self.collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor,
