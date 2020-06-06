@@ -32,19 +32,18 @@ extension SettingVC {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DTSettingCell", for: indexPath)
-            as! DTSettingCell
-    
+        let cell = tableView.dequeueReusableCell(withIdentifier: DTSettingCell.cellID,
+                                                 for: indexPath) as! DTSettingCell
         if let possibleVariants = self.settingInfo?.possibleList {
             cell.mainSettingLabel.text = possibleVariants[indexPath.row]
-            cell.currentsSetting.text = nil
+            cell.currentSettingLabel.text = nil
         }
         if (self.settingInfo?.isChekedOn(indexPath.row))! {
-            cell.markImage?.image = UIImage(named: "checkMark")
+            cell.markImage.image = UIImage(named: "checkMark")
             cell.isUserInteractionEnabled = false
         } else {
             self.tableView.deselectRow(at: indexPath, animated: true)
-            cell.markImage?.image = nil
+            cell.markImage.image = nil
             cell.isUserInteractionEnabled = true
         }
         cell.selectionStyle = .none

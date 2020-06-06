@@ -8,6 +8,7 @@ extension UIImage {
     static let textLogo = UIImage(named: "logoText")
     static let checkMark = UIImage(named: "checkMark")
     static let downArrow = UIImage(named: "downarrow")
+    static let rightArrow = UIImage(named: "rightArrow")
     static let tabBarActivities = UIImage(named: "activities")
     static let tabBarProfile = UIImage(named: "profile")
     static let tabBarTrains = UIImage(named: "trains")

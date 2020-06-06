@@ -31,8 +31,7 @@ class SettingsSectionVC: UITableViewController {
     
     //MARK: - Private methods
     private func initialization() {
-        let nib = UINib(nibName: "DTSettingCell", bundle: nil)
-        self.tableView?.register(nib, forCellReuseIdentifier: "DTSettingCell")
+        self.tableView?.register(DTSettingCell.self, forCellReuseIdentifier: DTSettingCell.cellID)
         self.tableView?.backgroundColor = UIColor.black
         self.tableView?.sizeToFit()
         self.tableView?.rowHeight = 50
@@ -66,12 +65,13 @@ class SettingsSectionVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  self.tableView?.dequeueReusableCell(withIdentifier: "DTSettingCell", for: indexPath) as! DTSettingCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: DTSettingCell.cellID,
+                                                 for: indexPath) as! DTSettingCell
         let section = indexPath.section
         let row = indexPath.row
         let setting = self.settingModel[section].settings[row]
         cell.mainSettingLabel.text = setting.tittle
-        cell.currentsSetting.text = setting.curenttValue
+        cell.currentSettingLabel.text = setting.curenttValue
         return cell
     }
 
