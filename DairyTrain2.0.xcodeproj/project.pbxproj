@@ -55,7 +55,6 @@
 		13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */; };
 		13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */; };
 		13EB98FD247D54B300DE9CD9 /* SubgroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FC247D54B300DE9CD9 /* SubgroupsVC.swift */; };
-		13EB98FF247D8C2400DE9CD9 /* DTTrainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13EB98FE247D8C2400DE9CD9 /* DTTrainCell.xib */; };
 		13EC52552480748900A05BCA /* TrainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC52542480748900A05BCA /* TrainVC.swift */; };
 		13EC525F24810E4A00A05BCA /* DTExerciceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC525E24810E4A00A05BCA /* DTExerciceCell.swift */; };
 		13EDD9B7247AAF63008EE212 /* Train.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9B6247AAF63008EE212 /* Train.swift */; };
@@ -118,7 +117,6 @@
 		13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoAlertButton.swift; sourceTree = "<group>"; };
 		13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgroups.swift; sourceTree = "<group>"; };
 		13EB98FC247D54B300DE9CD9 /* SubgroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubgroupsVC.swift; sourceTree = "<group>"; };
-		13EB98FE247D8C2400DE9CD9 /* DTTrainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DTTrainCell.xib; sourceTree = "<group>"; };
 		13EC52542480748900A05BCA /* TrainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainVC.swift; sourceTree = "<group>"; };
 		13EC525E24810E4A00A05BCA /* DTExerciceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTExerciceCell.swift; sourceTree = "<group>"; };
 		13EDD9B6247AAF63008EE212 /* Train.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Train.swift; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 				13BA17A02461A45D00DF5D7D /* Activities */,
 				13BA17A22461A47700DF5D7D /* Calendar */,
 				131107C7246582C30023A29A /* CustomsViewClases */,
-				13F33984246957800022A784 /* XIBs */,
 				1386AA1E246C15260016A757 /* Data */,
 				133AA5AE246163E7009EBF8E /* Assets.xcassets */,
 				131107C1246581FC0023A29A /* Extensions */,
@@ -278,14 +275,6 @@
 				13EC525E24810E4A00A05BCA /* DTExerciceCell.swift */,
 				139D53102474035C0028AE6A /* DTSettingCell.swift */,
 				13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		139FE9DA247859CE00B22C40 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				13EB98FE247D8C2400DE9CD9 /* DTTrainCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -387,14 +376,6 @@
 			path = StartsViewControllers;
 			sourceTree = "<group>";
 		};
-		13F33984246957800022A784 /* XIBs */ = {
-			isa = PBXGroup;
-			children = (
-				139FE9DA247859CE00B22C40 /* Cells */,
-			);
-			path = XIBs;
-			sourceTree = "<group>";
-		};
 		44C9618063996B2C26547A86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,7 +454,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13EB98FF247D8C2400DE9CD9 /* DTTrainCell.xib in Resources */,
 				13AF79482486D3A100F2F7F7 /* GoogleService-Info.plist in Resources */,
 				133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */,
 				133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */,

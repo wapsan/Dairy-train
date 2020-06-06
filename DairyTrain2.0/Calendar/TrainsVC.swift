@@ -9,13 +9,13 @@ class TrainsVC: MainTabBarItemVC {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        let nib = UINib(nibName: "DTTrainCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: DTTrainCell.cellID)
+        collectionView.register(DTTrainCell.self,
+                                forCellWithReuseIdentifier: DTTrainCell.cellID)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
        
-    lazy var codeHeaderView: DTHeaderView = {
+    lazy var headerView: DTHeaderView = {
         let view = DTHeaderView(title: "Your trains")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -39,7 +39,7 @@ class TrainsVC: MainTabBarItemVC {
     
     //MARK: - Private methods
     private func setHeaderView() {
-        self.view.addSubview(self.codeHeaderView)
+        self.view.addSubview(self.headerView)
         self.setHeaderViewConstrain()
     }
     
@@ -52,17 +52,16 @@ class TrainsVC: MainTabBarItemVC {
     private func setHeaderViewConstrain() {
         let safeAre = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.codeHeaderView.topAnchor.constraint(equalTo: safeAre.topAnchor),
-            self.codeHeaderView.leadingAnchor.constraint(equalTo: safeAre.leadingAnchor),
-            self.codeHeaderView.trailingAnchor.constraint(equalTo: safeAre.trailingAnchor)
-//            self.codeHeaderView.heightAnchor.constraint(equalToConstant: self.view.safeAreaLayoutGuide.layoutFrame.height * 0.075)
+            self.headerView.topAnchor.constraint(equalTo: safeAre.topAnchor),
+            self.headerView.leadingAnchor.constraint(equalTo: safeAre.leadingAnchor),
+            self.headerView.trailingAnchor.constraint(equalTo: safeAre.trailingAnchor)
         ])
     }
     
     private func setCollectionViewConstraint() {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.collectionView.topAnchor.constraint(equalTo: self.codeHeaderView.bottomAnchor,
+            self.collectionView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
                                                      constant: 8),
             self.collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             self.collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor,
@@ -82,7 +81,8 @@ extension TrainsVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DTTrainCell.cellID, for: indexPath) as! DTTrainCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DTTrainCell.cellID,
+                                                      for: indexPath) as! DTTrainCell
         let train = userTrainsList[indexPath.row]
         cell.dateLabel.text = train.dateTittle
          cell.setGroupIcons(by: train.groupsInCurrentTrain)
@@ -90,8 +90,7 @@ extension TrainsVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-        
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -103,15 +102,9 @@ extension TrainsVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let train = self.userTrainsList[indexPath.row]
-//        print("_____")
-//        print(train.exercises.count)
-//        for exe in train.exercises {
-//            print(exe.name)
-//        }
         let trainVC = TrainVC()
         trainVC.train = train
         trainVC.headerTittle = train.dateTittle
-       // trainVC.setExerciceList(from: train)
         self.navigationController?.pushViewController(trainVC, animated: true)
     }
     
