@@ -40,7 +40,7 @@ class TrainsVC: MainTabBarItemVC {
     //MARK: - Private methods
     private func setHeaderView() {
         self.view.addSubview(self.headerView)
-        self.setHeaderViewConstrain()
+        self.setUpConstrains()
     }
     
     private func setUpCollectionView() {
@@ -48,8 +48,16 @@ class TrainsVC: MainTabBarItemVC {
         self.setCollectionViewConstraint()
     }
     
+    private func pushTrainViewController(with trainIndex: Int) {
+        let train = self.userTrainsList[trainIndex]
+        let trainVC = TrainVC()
+        trainVC.train = train
+        trainVC.headerTittle = train.dateTittle
+        self.navigationController?.pushViewController(trainVC, animated: true)
+    }
+    
     //MARK: - Constraint
-    private func setHeaderViewConstrain() {
+    private func setUpConstrains() {
         let safeAre = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             self.headerView.topAnchor.constraint(equalTo: safeAre.topAnchor),
@@ -101,11 +109,8 @@ extension TrainsVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let train = self.userTrainsList[indexPath.row]
-        let trainVC = TrainVC()
-        trainVC.train = train
-        trainVC.headerTittle = train.dateTittle
-        self.navigationController?.pushViewController(trainVC, animated: true)
+        let trainIndex = indexPath.row
+        self.pushTrainViewController(with: trainIndex)
     }
     
 }

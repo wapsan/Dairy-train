@@ -8,7 +8,7 @@ class Exercise {
     struct Approach: Hashable {
         var weight: Double
         var reps: Int
-        var numberOfAproach: Int
+    //    var numberOfAproach: Int
         var weightDisplayvalue: String {
             switch MeteringSetting.shared.weightMode {
             case .kg:
@@ -42,9 +42,9 @@ class Exercise {
     }
     
     //MARK: - Publick methods
-    func addAproachWith(_ reps: Int, and weight: Double, and aproachNumber: Int) {
+    func addAproachWith(_ reps: Int, and weight: Double) {
         var aproachesSet = Set<Approach>()
-        let aproach = Approach(weight: weight, reps: reps, numberOfAproach: aproachNumber )
+        let aproach = Approach(weight: weight, reps: reps)
         if aproachesSet.insert(aproach).inserted {
             self.aproaches.append(aproach)
         }

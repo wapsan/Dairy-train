@@ -178,6 +178,12 @@ class ProfileVC: MainTabBarItemVC {
         self.animateInAlert()
     }
     
+    private func hideAllert() {
+        self.animateOutAlert()
+        self.deactivateAllertConstraint()
+        self.setAllertState()
+    }
+    
     private func showRecomendationAlert() {
         AlertHelper.shared.showAllertOn(self,
                                         tittle: "Error",
@@ -357,17 +363,11 @@ extension ProfileVC: DTInfoAllerDelegate {
                 }
             }
         }
-        
-        
-        self.animateOutAlert()
-        self.deactivateAllertConstraint()
-        self.setAllertState()
+        self.hideAllert()
     }
     
     func cancelTapped() {
-        self.animateOutAlert()
-        self.deactivateAllertConstraint()
-        self.setAllertState()
+        self.hideAllert()
     }
     
 }

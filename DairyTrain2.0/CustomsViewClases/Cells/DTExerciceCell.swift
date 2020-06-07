@@ -134,6 +134,12 @@ extension DTExerciceCell: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DTAproachCell.cellID, for: indexPath) as! DTAproachCell
+        if let exercice = self.exercice {
+            let aproach = exercice.aproaches[indexPath.row]
+            cell.aproachNumberLabel.text = "№ " + String(indexPath.row + 1)
+        cell.weightLabel.text = String(aproach.weight) + " kg."
+            cell.repsLabel.text = String(aproach.reps) + " reps."
+        }
         return cell
     }
     
