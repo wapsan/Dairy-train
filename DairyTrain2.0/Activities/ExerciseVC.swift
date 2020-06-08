@@ -64,24 +64,24 @@ class ExercicesVC: ActivitiesVC {
     }
     
     private func showAddExerciceAllert() {
-        AlertHelper.shared.showAllertOn(self,
-                                        tittle: nil,
-                                        message: "Add this exercice to train?",
-                                        cancelTittle: "Cancel",
-                                        okTittle: "Ok",
-                                        style: .alert,
-                                        complition: { self.addExercicesComplition() })
+        AlertHelper.shared.showDefaultAlert(on: self,
+                                            title: nil,
+                                            message: "Add this exercice to train?",
+                                            cancelTitle: "Cancel",
+                                            okTitle: "Ok",
+                                            style: .alert,
+                                            completion: { self.addExercicesComplition() })
     }
     
     private func showAddedAllert() {
-        AlertHelper.shared.showAllertOn(self,
-                                        tittle: nil,
-                                        message: "Exercices added",
-                                        cancelTittle: nil,
-                                        okTittle: "Ok",
-                                        style: .alert,
-                                        complition: { self.deselectAllRows()
-                                                      self.setAddExercicesButton() })
+        AlertHelper.shared.showDefaultAlert(on: self,
+                                            title: nil,
+                                            message: "Exercices added",
+                                            cancelTitle: nil,
+                                            okTitle: "Ok",
+                                            style: .alert,
+                                            completion: { self.deselectAllRows()
+                                                self.setAddExercicesButton() })
     }
     
     //MARK: - Publick methods

@@ -4,15 +4,23 @@ import Firebase
 
 class MainLoginVC: UIViewController {
     
+    //MARK: - Private properties
+    private var isSignInMode: Bool = true
+    
+    //MARK: - Properties
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     //MARK: - GUI Properties
-    lazy var logoImageView: UIImageView = {
+    private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage.mainLogo)
         imageView.backgroundColor = .clear
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    lazy var textLogoImageView: UIImageView = {
+    private lazy var textLogoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage.textLogo
         imageView.contentMode = .scaleAspectFit
@@ -21,21 +29,21 @@ class MainLoginVC: UIViewController {
         return imageView
     }()
     
-    lazy var signInModeButton: DTButton = {
+    private lazy var signInModeButton: DTButton = {
         let button = DTButton(tittle: "Sign In")
         button.addTarget(self, action: #selector(self.signInModeButtonTouched), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    lazy var signUpModeButton: DTButton = {
+    private lazy var signUpModeButton: DTButton = {
         let button = DTButton(tittle: "Sign Up")
         button.addTarget(self, action: #selector(self.signUpModeButtonTouched), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    lazy var emailTextField: DTTextField = {
+    private lazy var emailTextField: DTTextField = {
         let textField = DTTextField(placeholder: "Email")
         textField.tag = 0
         textField.delegate = self
@@ -43,51 +51,37 @@ class MainLoginVC: UIViewController {
         return textField
     }()
     
-    lazy var emailTextFieldWhiteLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    lazy var passwordTextField: DTTextField = {
+    private lazy var passwordTextField: DTTextField = {
         let textField = DTTextField(placeholder: "Password")       
         textField.tag = 1
+        textField.delegate = self
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-    
-    lazy var passwordTextFieldWhiteLine: UIView = {
-           let view = UIView()
-           view.backgroundColor = .white
-           view.translatesAutoresizingMaskIntoConstraints = false
-           return view
-       }()
-    
-    lazy var containerForMainSignInButton: UIView = {
+
+    private lazy var containerForMainSignInButton: UIView = {
         let view = UIView()
-        view.addSubview(self.mainSignButton)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         return view
     }()
     
-    lazy var mainSignButton: DTButton = {
+    private lazy var mainSignButton: DTButton = {
         let button = DTButton(tittle: "Sign In")
         button.addTarget(self, action: #selector(self.mainSignInButtonPressed(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    lazy var googleSignInButton: GoogleSignInButton = {
+    private lazy var googleSignInButton: GoogleSignInButton = {
         let button = GoogleSignInButton()
         button.addTarget(self, action: #selector(self.googleSignInPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    lazy var orLabel: UILabel = {
+    private lazy var orLabel: UILabel = {
         let label = UILabel()
         label.text = "or"
         label.font = .boldSystemFont(ofSize: 30)
@@ -103,24 +97,19 @@ class MainLoginVC: UIViewController {
         return label
     }()
     
-    lazy var leftLine: UIView = {
+    private lazy var leftLine: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var rightLine: UIView = {
+    private lazy var rightLine: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    //MARK: - Private properties
-    private var isSignInMode: Bool = true
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -128,8 +117,6 @@ class MainLoginVC: UIViewController {
         self.setUpGooglePresentingViewController()
         self.setGuiElements()
         self.setUpSignMode()
-        
-        print("Loginvc loaded")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -149,27 +136,38 @@ class MainLoginVC: UIViewController {
       
     private func setGuiElements() {
         self.view.backgroundColor = .black
+        
         self.view.addSubview(self.logoImageView)
         self.view.addSubview(self.textLogoImageView)
         self.view.addSubview(self.signInModeButton)
         self.view.addSubview(self.signUpModeButton)
         self.view.addSubview(self.emailTextField)
-        self.view.addSubview(self.emailTextFieldWhiteLine)
         self.view.addSubview(self.passwordTextField)
-        self.view.addSubview(self.passwordTextFieldWhiteLine)
         self.view.addSubview(self.containerForMainSignInButton)
+        self.containerForMainSignInButton.addSubview(self.mainSignButton)
         self.view.addSubview(self.leftLine)
         self.view.addSubview(self.orLabel)
         self.view.addSubview(self.rightLine)
         self.view.addSubview(self.googleSignInButton)
+        
+//        self.logoImageView.translatesAutoresizingMaskIntoConstraints = false
+//        self.textLogoImageView.translatesAutoresizingMaskIntoConstraints = false
+//        self.signInModeButton.translatesAutoresizingMaskIntoConstraints = false
+//        self.signUpModeButton.translatesAutoresizingMaskIntoConstraints = false
+//        self.emailTextField.translatesAutoresizingMaskIntoConstraints = false
+//        self.passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+//        self.containerForMainSignInButton.translatesAutoresizingMaskIntoConstraints = false
+//        self.leftLine.translatesAutoresizingMaskIntoConstraints = false
+//        self.orLabel.translatesAutoresizingMaskIntoConstraints = false
+//        self.rightLine.translatesAutoresizingMaskIntoConstraints = false
+//        self.googleSignInButton.translatesAutoresizingMaskIntoConstraints = false
         self.setUpConstraints()
     }
     
     private func setUpSignMode() {
-        if self.isSignInMode {
-            self.signInModeButton.pressed()
-            self.signUpModeButton.backgroundColor = .gray
-        }
+        guard self.isSignInMode else { return }
+        self.signInModeButton.pressed()
+        self.signUpModeButton.backgroundColor = .gray
     }
     
     private func flipMainSignInButton() {
@@ -202,48 +200,47 @@ class MainLoginVC: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    private func registration() {
+    private func makeRegistration() {
         guard let email = self.emailTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
         Auth.auth().createUser(withEmail: email, password: password) { (authDataresult, error) in
             if let _ = authDataresult {
-                AlertHelper.shared.showAllertOn(self,
-                                                tittle: "Succes",
-                                                message: "Successful registration",
-                                                cancelTittle: nil,
-                                                okTittle: "Ok",
-                                                style: .alert,
-                                                complition: nil)
+                AlertHelper.shared.showDefaultAlert(on: self,
+                                                    title: "Succes",
+                                                    message: "Successful registration",
+                                                    cancelTitle: nil,
+                                                    okTitle: "Ok",
+                                                    style: .alert,
+                                                    completion: nil)
                 self.resetTextFields()
             } else {
-                AlertHelper.shared.showAllertOn(self,
-                                                tittle: "Error",
-                                                message: error?.localizedDescription ?? "Unexpected error",
-                                                cancelTittle: nil,
-                                                okTittle: "Ok",
-                                                style: .alert,
-                                                complition: nil)
+                AlertHelper.shared.showDefaultAlert(on: self,
+                                                    title: "Error",
+                                                    message: error?.localizedDescription ?? "Unexpected error",
+                                                    cancelTitle: nil,
+                                                    okTitle: "Ok",
+                                                    style: .alert,
+                                                    completion: nil)
             }
         }
     }
     
-    private func signIn() {
+    private func makeSignIn() {
         guard let email = self.emailTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
         Auth.auth().signIn(withEmail: email, password: password) { (authDataresult, error) in
             if let result  = authDataresult {
-               // print("Succes")
                 guard let tokent = result.user.refreshToken else { return }
-                userDefaults.set(tokent, forKey: UserTokenKey)
+                DTSettingManager.shared.setUserToken(to: tokent)
                 self.presentMainTabBarViewController()
             } else {
-                AlertHelper.shared.showAllertOn(self,
-                                                tittle: "Erro",
-                                                message: error?.localizedDescription ?? "Unexpected error",
-                                                cancelTittle: nil,
-                                                okTittle: "Ok",
-                                                style: .alert,
-                                                complition: nil)
+                AlertHelper.shared.showDefaultAlert(on: self,
+                                                    title: "Erro",
+                                                    message: error?.localizedDescription ?? "Unexpected error",
+                                                    cancelTitle: nil,
+                                                    okTitle: "Ok",
+                                                    style: .alert,
+                                                    completion: nil)
             }
         }
     }
@@ -285,32 +282,18 @@ class MainLoginVC: UIViewController {
             self.emailTextField.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
             self.emailTextField.heightAnchor.constraint(equalTo: self.signInModeButton.heightAnchor, multiplier: 1.3)
         ])
-        
+  
         NSLayoutConstraint.activate([
-            self.emailTextFieldWhiteLine.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor),
-            self.emailTextFieldWhiteLine.widthAnchor.constraint(equalTo: self.emailTextField.widthAnchor),
-            self.emailTextFieldWhiteLine.heightAnchor.constraint(equalToConstant: 1),
-            self.emailTextFieldWhiteLine.centerXAnchor.constraint(equalTo: self.emailTextField.centerXAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.passwordTextField.topAnchor.constraint(equalTo: self.emailTextFieldWhiteLine.bottomAnchor, constant: 8),
+            self.passwordTextField.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 8),
             self.passwordTextField.widthAnchor.constraint(equalTo: self.emailTextField.widthAnchor, multiplier: 1),
             self.passwordTextField.heightAnchor.constraint(equalTo: self.emailTextField.heightAnchor, multiplier: 1),
             self.passwordTextField.centerXAnchor.constraint(equalTo: self.emailTextField.centerXAnchor)
         ])
         
-        NSLayoutConstraint.activate([
-            self.passwordTextFieldWhiteLine.topAnchor.constraint(equalTo: self.passwordTextField.bottomAnchor),
-            self.passwordTextFieldWhiteLine.widthAnchor.constraint(equalTo: self.passwordTextField.widthAnchor),
-            self.passwordTextFieldWhiteLine.heightAnchor.constraint(equalToConstant: 1),
-            self.passwordTextFieldWhiteLine.centerXAnchor.constraint(equalTo: self.passwordTextField.centerXAnchor)
-        ])
-        
         let mainSignInButtopTopConstraint = NSLayoutConstraint(item: self.containerForMainSignInButton,
                                    attribute: .top,
                                    relatedBy: .equal,
-                                   toItem: self.passwordTextFieldWhiteLine,
+                                   toItem: self.passwordTextField,
                                    attribute: .bottom,
                                    multiplier: 1,
                                    constant: 64)
@@ -320,14 +303,16 @@ class MainLoginVC: UIViewController {
             mainSignInButtopTopConstraint,
             self.containerForMainSignInButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16),
             self.containerForMainSignInButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
-            self.containerForMainSignInButton.heightAnchor.constraint(equalTo: self.containerForMainSignInButton.widthAnchor, multiplier: 0.2)
+            self.containerForMainSignInButton.heightAnchor.constraint(equalTo: self.containerForMainSignInButton.widthAnchor,
+                                                                      multiplier: 0.2)
         ])
        
         NSLayoutConstraint.activate([
             self.mainSignButton.topAnchor.constraint(equalTo: self.containerForMainSignInButton.topAnchor),
             self.mainSignButton.leftAnchor.constraint(equalTo: self.containerForMainSignInButton.leftAnchor),
             self.mainSignButton.rightAnchor.constraint(equalTo: self.containerForMainSignInButton.rightAnchor),
-            self.mainSignButton.bottomAnchor.constraint(equalTo: self.containerForMainSignInButton.bottomAnchor, constant: -5)
+            self.mainSignButton.bottomAnchor.constraint(equalTo: self.containerForMainSignInButton.bottomAnchor,
+                                                        constant: -5)
         ])
   
         NSLayoutConstraint.activate([
@@ -362,35 +347,29 @@ class MainLoginVC: UIViewController {
     
     //MARK: - Actions
     @objc private func signInModeButtonTouched() {
-        if !self.isSignInMode {
-            self.signInModeButton.backgroundColor = .red
-            self.signInModeButton.pressed()
-            self.signUpModeButton.backgroundColor = .lightGray
-            self.signUpModeButton.unpressed()
-            self.mainSignButton.setTitle("Sign In", for: .normal)
-            self.flipMainSignInButton()
-            self.isSignInMode = true
-        }
+        guard !self.isSignInMode else { return }
+        self.signInModeButton.backgroundColor = .red
+        self.signInModeButton.pressed()
+        self.signUpModeButton.backgroundColor = .lightGray
+        self.signUpModeButton.unpressed()
+        self.mainSignButton.setTitle("Sign In", for: .normal)
+        self.flipMainSignInButton()
+        self.isSignInMode = true
     }
     
     @objc private func signUpModeButtonTouched() {
-        if self.isSignInMode {
-            self.signUpModeButton.backgroundColor = .red
-            self.signUpModeButton.pressed()
-            self.signInModeButton.backgroundColor = .lightGray
-            self.signInModeButton.unpressed()
-            self.mainSignButton.setTitle("Create account", for: .normal)
-            self.flipMainSignInButton()
-            self.isSignInMode = false
-        }
+        guard self.isSignInMode else { return }
+        self.signUpModeButton.backgroundColor = .red
+        self.signUpModeButton.pressed()
+        self.signInModeButton.backgroundColor = .lightGray
+        self.signInModeButton.unpressed()
+        self.mainSignButton.setTitle("Create account", for: .normal)
+        self.flipMainSignInButton()
+        self.isSignInMode = false
     }
     
     @objc private func mainSignInButtonPressed(_ sender: DTButton) {
-        if sender.currentTitle == "Sign In" {
-            self.signIn()
-        } else {
-            self.registration()
-        }
+        sender.currentTitle == "Sign In" ? self.makeSignIn() : self.makeRegistration()
     }
     
     @objc private func googleSignInPressed() {
@@ -399,9 +378,7 @@ class MainLoginVC: UIViewController {
     
     @objc private func googleSignedIn() {
         self.presentMainTabBarViewController()
-        
     }
-    
 }
 
 //MARK: - UITextFieldDelegate
@@ -419,5 +396,4 @@ extension MainLoginVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
     }
-  
 }

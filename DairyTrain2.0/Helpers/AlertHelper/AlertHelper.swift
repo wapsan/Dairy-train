@@ -6,22 +6,22 @@ class AlertHelper {
     static var shared = AlertHelper()
     
     //MARK: - Publick methods
-    func showAllertOn(_ viewController: UIViewController,
-                      tittle: String?,
+    func showDefaultAlert(on viewController: UIViewController,
+                      title: String?,
                       message: String,
-                      cancelTittle: String?,
-                      okTittle: String?,
+                      cancelTitle: String?,
+                      okTitle: String?,
                       style: UIAlertController.Style,
-                      complition: (() -> Void)?) {
+                      completion: (() -> Void)?) {
        
-        let alert = UIAlertController(title: tittle, message: message , preferredStyle: style)
-        let okAction = UIAlertAction(title: okTittle, style: .default, handler: { ( _ ) in
-            guard let complition = complition else { return }
-            complition()
+        let alert = UIAlertController(title: title, message: message , preferredStyle: style)
+        let okAction = UIAlertAction(title: okTitle, style: .default, handler: { ( _ ) in
+            guard let completion = completion else { return }
+            completion()
         })
         alert.addAction(okAction)
-        if let cancelTittle = cancelTittle {
-            let cancelAction = UIAlertAction(title: cancelTittle, style: .default, handler: nil)
+        if let cancelTitle = cancelTitle {
+            let cancelAction = UIAlertAction(title: cancelTitle, style: .default, handler: nil)
             alert.addAction(cancelAction)
         }
         

@@ -129,7 +129,7 @@ class DTExerciceCell: UITableViewCell {
 extension DTExerciceCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (self.exercice?.aproaches.count)!
+        return self.exercice?.aproaches.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -140,6 +140,7 @@ extension DTExerciceCell: UICollectionViewDelegate, UICollectionViewDataSource, 
         cell.weightLabel.text = String(aproach.weight) + " kg."
             cell.repsLabel.text = String(aproach.reps) + " reps."
         }
+      //  cell.backgroundColor = .white
         return cell
     }
     

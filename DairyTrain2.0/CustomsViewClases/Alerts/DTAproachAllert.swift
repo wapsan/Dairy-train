@@ -69,7 +69,7 @@ class DTAproachAlert: UIView {
         stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.distribution = .fillEqually
-        stackView.alignment = .bottom
+        stackView.alignment = .lastBaseline
         stackView.addArrangedSubview(self.weightTextField)
         stackView.addArrangedSubview(self.weightLabel)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +81,7 @@ class DTAproachAlert: UIView {
         stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.distribution = .fillEqually
-        stackView.alignment = .bottom
+        stackView.alignment = .lastBaseline
         stackView.addArrangedSubview(self.repsTextField)
         stackView.addArrangedSubview(self.repsLabel)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -138,13 +138,40 @@ class DTAproachAlert: UIView {
     private func setUpMainView() {
         self.backgroundColor = .viewFlipsideBckgoundColor
         self.alpha = 0
+        self.setUpMainViewLayer()
+        
+    }
+    
+    private func setUpMainViewLayer() {
+        self.backgroundColor = .viewFlipsideBckgoundColor
+        self.layer.cornerRadius = 20
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = .init(width: 0, height: 5)
+        self.layer.shadowOpacity = 5
     }
     
     private func initView() {
         self.addSubview(self.tittle)
         self.addSubview(self.infoBlockStackView)
         self.addSubview(self.buttonStackView)
+        self.tittle.text = "Arpoach № " + String(exercice?.aproaches.count ?? 0 + 1)
         self.setUpConstraints()
+        self.setTextField()
+        self.showKeyboard()
+    }
+    
+    private func setTextField() {
+        self.weightTextField.keyboardType = .decimalPad
+        self.repsTextField.keyboardType = .decimalPad
+    }
+    
+    private func hideKeyboard() {
+        self.weightTextField.resignFirstResponder()
+        self.repsTextField.resignFirstResponder()
+    }
+    
+    private func showKeyboard() {
+        self.weightTextField.becomeFirstResponder()
     }
     
     //MARK: - Constraints
@@ -177,9 +204,11 @@ class DTAproachAlert: UIView {
         guard let weight = Double(self.weightTextField.text ?? "0") else { return }
         self.exercice?.addAproachWith(reps, and: weight)
         self.delegate?.okAlertPressed()
+        self.hideKeyboard()
     }
     
     @objc private func cancelTapped() {
         self.delegate?.cancelAlertPressed()
+        self.hideKeyboard()
     }
 }

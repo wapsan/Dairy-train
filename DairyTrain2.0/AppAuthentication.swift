@@ -28,7 +28,6 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
                                                        accessToken: authentication.accessToken)
         
         Auth.auth().signIn(with: credential) { (result, error) in
-            
             if let token = result?.user.refreshToken {
                 DTSettingManager.shared.setUserToken(to: token)
                 self.postNotificationForGoogleSingIn()
@@ -44,5 +43,4 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
                                         object: nil,
                                         userInfo: nil)
     }
-    
 }

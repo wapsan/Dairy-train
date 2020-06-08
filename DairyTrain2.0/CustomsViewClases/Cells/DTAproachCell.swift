@@ -12,17 +12,17 @@ class DTAproachCell: UICollectionViewCell {
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 17)
+        label.font = .systemFont(ofSize: 15)
         return label
     }()
     
-    lazy var weightLabel: UILabel = {
-        let label = UILabel()
+    lazy var weightLabel: DTAdaptiveLabel = {
+        let label = DTAdaptiveLabel()
         label.text = "80 kg."
         label.textColor = .white
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 17)
+        label.font = .systemFont(ofSize: 15)
         return label
     }()
     
@@ -31,10 +31,11 @@ class DTAproachCell: UICollectionViewCell {
         label.text = "12 reps."
         label.textColor = .white
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 17)
+        label.font = .systemFont(ofSize: 15)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
     
     //MARK: - LayoutSubviews
     override func layoutSubviews() {

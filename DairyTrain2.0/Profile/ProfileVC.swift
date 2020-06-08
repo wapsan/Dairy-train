@@ -185,23 +185,23 @@ class ProfileVC: MainTabBarItemVC {
     }
     
     private func showRecomendationAlert() {
-        AlertHelper.shared.showAllertOn(self,
-                                        tittle: "Error",
-                                        message: "Fill up field to get supply recomendations.",
-                                        cancelTittle: nil,
-                                        okTittle: "Ok",
-                                        style: .alert,
-                                        complition: nil)
+        AlertHelper.shared.showDefaultAlert(on: self,
+                                            title: "Error",
+                                            message: "Fill up field to get supply recomendations.",
+                                            cancelTitle: nil,
+                                            okTitle: "Ok",
+                                            style: .alert,
+                                            completion: nil)
     }
     
     private func showSignOutAllert() {
-        AlertHelper.shared.showAllertOn(self,
-                                        tittle: "Sign out?",
-                                        message: "Are you shure",
-                                        cancelTittle: "Cancel",
-                                        okTittle: "Quit",
-                                        style: .actionSheet,
-                                        complition: self.signOut)
+        AlertHelper.shared.showDefaultAlert(on: self,
+                                            title: "Sign out?",
+                                            message: "Are you shure",
+                                            cancelTitle: "Cancel",
+                                            okTitle: "Quit",
+                                            style: .actionSheet,
+                                            completion: self.signOut)
     }
 
     private func animateInAlert() {

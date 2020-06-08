@@ -112,7 +112,7 @@ extension RecomendationsViewController: DTRecomendationHeaderViewDelegate {
         let section = sender.tag
         
         func indexPathsForSection() -> [IndexPath] {
-             var indexPaths = [IndexPath]()
+            var indexPaths: [IndexPath] = []
              for row in 0..<1 {
                  indexPaths.append(IndexPath(row: row,
                                              section: section))
