@@ -1,15 +1,30 @@
 import UIKit
 
-
 protocol DTInfoAllerDelegate: class {
     func cancelTapped()
-    func okPressed(with alertType: TDInfoiView.InfoViewType)
-    
+    func okPressed(with alertType: TDInfoView.InfoViewValue)
 }
 
 class DTInfoAlert: UIView {
     
+    //MARK: - Enum
+    enum DTCustomAlertStyle {
+        case setAge
+        case setWeight
+        case setHeight
+        case setGender
+        case setActivivtyLevel
+        case setAproach
+    }
+    
     //MARK: - GUI Properties
+    private lazy var visualEffectView: UIVisualEffectView = {
+        let blurEffectView = UIBlurEffect(style: .light)
+        let visualEffectView = UIVisualEffectView(effect: blurEffectView)
+        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
+        return visualEffectView
+    }()
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -27,13 +42,6 @@ class DTInfoAlert: UIView {
         textField.textColor = .white
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
-    }()
-    
-    lazy var textFieldWhiteLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
     
     lazy var okButton: DTInfoAlertButton = {
@@ -135,10 +143,10 @@ class DTInfoAlert: UIView {
     
     //MARK: - Piblic properties
     weak var delegate: DTInfoAllerDelegate?
-    var allertType: TDInfoiView.InfoViewType?
+    var allertType: TDInfoView.InfoViewValue?
 
     //MARK: - Initialization
-    init(with infoView: TDInfoiView) {
+    init(with infoView: TDInfoView) {
         super.init(frame: .zero)
         self.allertType = infoView.type
         self.setTextField()
@@ -183,7 +191,6 @@ class DTInfoAlert: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     private func setContainerView() {
         self.addSubview(self.containerView)
         NSLayoutConstraint.activate([
@@ -206,7 +213,6 @@ class DTInfoAlert: UIView {
     private func initMetricType() {
         self.addSubview(self.titleLabel)
         self.addSubview(self.valueTextField)
-        self.addSubview(self.textFieldWhiteLine)
         self.addSubview(self.buttonStackView)
         self.setMetricTypeConstraints()
     }
@@ -300,14 +306,7 @@ class DTInfoAlert: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            self.textFieldWhiteLine.topAnchor.constraint(equalTo: self.valueTextField.bottomAnchor),
-            self.textFieldWhiteLine.heightAnchor.constraint(equalToConstant: 1),
-            self.textFieldWhiteLine.centerXAnchor.constraint(equalTo: self.valueTextField.centerXAnchor),
-            self.textFieldWhiteLine.widthAnchor.constraint(equalTo: self.valueTextField.widthAnchor, multiplier: 1)
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.buttonStackView.topAnchor.constraint(greaterThanOrEqualTo:     self.textFieldWhiteLine.bottomAnchor, constant: 8),
+            self.buttonStackView.topAnchor.constraint(greaterThanOrEqualTo:     self.valueTextField.bottomAnchor, constant: 8),
             self.buttonStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
             self.buttonStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
             self.buttonStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)

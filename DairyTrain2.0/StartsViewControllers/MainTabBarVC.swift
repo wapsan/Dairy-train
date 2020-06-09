@@ -3,22 +3,20 @@ import UIKit
 class MainTabBarVC: UITabBarController {
     
     //MARK: - Private properties
-    private let profileIndex = 2
+    private let profileViewControllerIndex = 2
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        self.setUpControllers()
-        self.setTabBarItems()
-        self.setSelectedTabBarItem()
-        self.addObserverForAddingExerciceTotrain()
+        self.setUpTabBarViewControllers()
+        self.setUpTabBarItems()
+        self.setUpSelectedTabBarItem()
+        self.addObserverForAddingExerciceToTrain()
     }
     
-    
-    
     //MARK: - Private methods
-    private func addObserverForAddingExerciceTotrain() {
+    private func addObserverForAddingExerciceToTrain() {
         //Добавил обсервер для майн таб бар что бы когда добавил упражнения в тренировку и
        // не заходил в список тренирововк
         NotificationCenter.default.addObserver(self,
@@ -27,30 +25,28 @@ class MainTabBarVC: UITabBarController {
                                                object: nil)
     }
     
-    private func setSelectedTabBarItem() {
-        self.selectedIndex = self.profileIndex
-        
+    private func setUpSelectedTabBarItem() {
+        self.selectedIndex = self.profileViewControllerIndex
     }
     
-    private func setUpControllers() {
+    private func setUpTabBarViewControllers() {
       
         let profileVC = ProfileVC()
         let activitiesVC = ActivitiesVC()
         let trainsVC = TrainsVC()
         
-        activitiesVC.tabBarItem = .init(title: nil, image: UIImage(named: "activities"), tag: 0)
-        trainsVC.tabBarItem = .init(title: nil, image: UIImage(named: "trains"), tag: 1)
-        profileVC.tabBarItem = .init(title: nil, image: UIImage(named: "profile"), tag: 2)
+        activitiesVC.tabBarItem = .init(title: nil, image: UIImage.tabBarActivities, tag: 0)
+        trainsVC.tabBarItem = .init(title: nil, image: UIImage.tabBarTrains, tag: 1)
+        profileVC.tabBarItem = .init(title: nil, image: UIImage.tabBarProfile, tag: 2)
         
         self.viewControllers = [activitiesVC, trainsVC, profileVC].map({
             UINavigationController(rootViewController: $0)
         })
     }
     
-    private func setTabBarItems() {
-        UITabBar.appearance().tintColor = UIColor.white
-        guard let itemViewControllers = self.viewControllers else { return }
+    private func setUpTabBarItems() {
         self.setDefaultTabBar()
+        guard let itemViewControllers = self.viewControllers else { return }
         for itemViewController in itemViewControllers {
             itemViewController.tabBarItem.imageInsets = .init(top: 8,
                                                               left: 8,
@@ -60,34 +56,26 @@ class MainTabBarVC: UITabBarController {
     }
     
     private func setDefaultTabBar() {
-        //TODO: TabbarColor sets
-        tabBar.isTranslucent = false
-        tabBar.tintColor = .white //selected tab bat color
-        tabBar.barTintColor = .viewFlipsideBckgoundColor//baclground tabbar color
-        tabBar.unselectedItemTintColor = .red //unselected tab bar color
+        UITabBar.appearance().tintColor = UIColor.white
+        self.tabBar.isTranslucent = false
+        self.tabBar.tintColor = .white //selected tab bat color
+        self.tabBar.barTintColor = .viewFlipsideBckgoundColor//baclground tabbar color
+        self.tabBar.unselectedItemTintColor = .red //unselected tab bar color
         self.setTabBarSeparationLine()
     }
     
     private func setTabBarSeparationLine() {
         if let items = self.tabBar.items {
-            //Get the height of the tab bar
+            
             let height = self.tabBar.bounds.height
-            //Calculate the size of the items
             let numItems = CGFloat(items.count)
             let itemSize = CGSize(
                 width: tabBar.frame.width / numItems,
                 height: tabBar.frame.height)
             
             for (index, _) in items.enumerated() {
-                //We don't want a separator on the left of the first item.
                 if index > 0 {
-                    //Xposition of the item
                     let xPosition = itemSize.width * CGFloat(index)
-                    /* Create UI view at the Xposition,
-                     with a width of 0.5 and height equal
-                     to the tab bar height, and give the
-                     view a background color
-                     */
                     let separator = UIView(frame: CGRect(
                         x: xPosition, y: 0, width: 1, height: height))
                     separator.backgroundColor = UIColor.black
@@ -104,20 +92,18 @@ class MainTabBarVC: UITabBarController {
         let trainVC = TrainsVC()
         trainVC.userTrainsList = trains
     }
-
 }
 
 //MARK: - Extension UITabBarControllerDelegate
 extension MainTabBarVC: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return TestTabBarTransition(viewControllers: self.viewControllers)
+        return TabBarTransitionAnimation(viewControllers: self.viewControllers)
     }
-    
 }
 
 //MARK: - Transition viewcontrollers in TabBarVC
-class TestTabBarTransition: NSObject, UIViewControllerAnimatedTransitioning {
+class TabBarTransitionAnimation: NSObject, UIViewControllerAnimatedTransitioning {
 
     let viewControllers: [UIViewController]?
     let transitionDuration: Double = 0.25

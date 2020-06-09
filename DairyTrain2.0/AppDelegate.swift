@@ -23,5 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return AppAuthentication.shared.handle(url: url)
     }
     
+    func applicationWillTerminate(_ application: UIApplication) {
+        
+    }
 }
 

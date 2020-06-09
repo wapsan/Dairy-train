@@ -63,6 +63,7 @@
 		13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BC247AB145008EE212 /* MuscleGroupModel.swift */; };
 		13EDD9BF247AB9A4008EE212 /* ExerciseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BE247AB9A4008EE212 /* ExerciseVC.swift */; };
 		13FAF17A246FCAA600537408 /* CaloriesCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FAF179246FCAA600537408 /* CaloriesCalculator.swift */; };
+		13FCA9C3248EF7E00056E659 /* DTCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FCA9C2248EF7E00056E659 /* DTCustomAlert.swift */; };
 		6632C8B9392FB2776FD08AEA /* Pods_DairyTrain2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 489508DA5FF6CAFD605F1258 /* Pods_DairyTrain2_0.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		13EDD9BC247AB145008EE212 /* MuscleGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupModel.swift; sourceTree = "<group>"; };
 		13EDD9BE247AB9A4008EE212 /* ExerciseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseVC.swift; sourceTree = "<group>"; };
 		13FAF179246FCAA600537408 /* CaloriesCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculator.swift; sourceTree = "<group>"; };
+		13FCA9C2248EF7E00056E659 /* DTCustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTCustomAlert.swift; sourceTree = "<group>"; };
 		15297B168E3C89AD62162EEF /* Pods-DairyTrain2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DairyTrain2.0.release.xcconfig"; path = "Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0.release.xcconfig"; sourceTree = "<group>"; };
 		489508DA5FF6CAFD605F1258 /* Pods_DairyTrain2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DairyTrain2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79E67D4147B0E67A401929BA /* Pods-DairyTrain2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DairyTrain2.0.debug.xcconfig"; path = "Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0.debug.xcconfig"; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				138BDB75248663960033F378 /* DTInfoAlert.swift */,
+				13FCA9C2248EF7E00056E659 /* DTCustomAlert.swift */,
 				135B88162481810E0032251D /* DTAproachAllert.swift */,
 			);
 			path = Alerts;
@@ -534,6 +537,7 @@
 				139D531324740BCE0028AE6A /* SettingVC.swift in Sources */,
 				134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */,
 				13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */,
+				13FCA9C3248EF7E00056E659 /* DTCustomAlert.swift in Sources */,
 				139D531924748BE00028AE6A /* ColorSetting.swift in Sources */,
 				13243A41247E768B00AB7419 /* DateHelper.swift in Sources */,
 				13479F3B247BD84A002FFB4E /* TrainsVC.swift in Sources */,

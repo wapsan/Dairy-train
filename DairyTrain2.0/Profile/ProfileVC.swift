@@ -4,38 +4,38 @@ import Firebase
 class ProfileVC: MainTabBarItemVC {
     
     //MARK: - GUI Properties
-    private lazy var totalTrainInfoView: TDInfoiView = {
-        let view = TDInfoiView(type: .trainCount)
+    private lazy var totalTrainInfoView: TDInfoView = {
+        let view = TDInfoView(type: .trainCount)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var genderInfoView: TDInfoiView = {
-        let view = TDInfoiView(type: .gender)
+    private lazy var genderInfoView: TDInfoView = {
+        let view = TDInfoView(type: .gender)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var activivtyInfoView: TDInfoiView = {
-        let view = TDInfoiView(type: .activityLevel)
+    private lazy var activivtyInfoView: TDInfoView = {
+        let view = TDInfoView(type: .activityLevel)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var ageInfoView: TDInfoiView = {
-        let view = TDInfoiView(type: .age)
+    private lazy var ageInfoView: TDInfoView = {
+        let view = TDInfoView(type: .age)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var heightInfoView: TDInfoiView = {
-        let view = TDInfoiView(type: .height)
+    private lazy var heightInfoView: TDInfoView = {
+        let view = TDInfoView(type: .height)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var weightInfoView: TDInfoiView = {
-        let view = TDInfoiView(type: .weight)
+    private lazy var weightInfoView: TDInfoView = {
+        let view = TDInfoView(type: .weight)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -145,7 +145,7 @@ class ProfileVC: MainTabBarItemVC {
         return 16 // UIScreen.main.bounds.height / 56
     }
     
-    private var infoViews: [TDInfoiView] {
+    private var infoViews: [TDInfoView] {
         return [self.activivtyInfoView, self.genderInfoView, self.ageInfoView, self.heightInfoView, self.weightInfoView]
     }
    
@@ -162,15 +162,16 @@ class ProfileVC: MainTabBarItemVC {
     private func setUpInfoViewAction() {
         for infoView in self.infoViews {
             infoView.tapped = { (infoViewType) in
-                self.showAlertFrom(infoView: infoView)
+               // self.showAlertFrom(infoView: infoView)
+                DTCustomAlert.shared.showInfoAlert(on: self, with: infoView)
             }
         }
     }
     
-    private func showAlertFrom(infoView: TDInfoiView) {
+    private func showAlertFrom(infoView: TDInfoView) {
         guard !self.isAllertShown else { return }
         self.infoViewAllert = .init(with: infoView)
-        self.infoViewAllert.delegate = self
+     //   self.infoViewAllert.delegate = self
         self.isAllertShown = true
         self.view.addSubview(self.infoViewAllert)
         self.infoViewAllert.translatesAutoresizingMaskIntoConstraints = false
@@ -340,36 +341,54 @@ class ProfileVC: MainTabBarItemVC {
     
 }
 
+//extension ProfileVC: DTCustomAlert {
+//    
+//}
+
+//extension ProfileVC: DTCustomAlertDelegate {
+//    
+//    func alertOkPressed() {
+//        print("Delagte worked")
+//    }
+//    
+//    func alertCancelPressed() {
+//        print("Cancel pressed")
+//    }
+//    
+//    
+//}
+
 //MARK: - DTTestCustomAllerDelegate
-extension ProfileVC: DTInfoAllerDelegate {
-    
-    func okPressed(with alertType: TDInfoiView.InfoViewType) {
-        for infoView in self.infoViews {
-            guard let infoViewType = infoView.type else { return }
-            if infoViewType == alertType {
-                switch alertType {
-                case .trainCount:
-                    infoView.valueLabel.text = UserModel.shared.displayTrainCount
-                case .gender:
-                    infoView.valueLabel.text = UserModel.shared.displayGender
-                case .activityLevel:
-                    infoView.valueLabel.text = UserModel.shared.displayActivityLevel
-                case .age:
-                    infoView.valueLabel.text = UserModel.shared.displayAge
-                case .height:
-                    infoView.valueLabel.text = UserModel.shared.displayHeight
-                case .weight:
-                    infoView.valueLabel.text = UserModel.shared.displayWeight
-                }
-            }
-        }
-        self.hideAllert()
-    }
-    
-    func cancelTapped() {
-        self.hideAllert()
-    }
-    
-}
+//extension ProfileVC: DTInfoAllerDelegate {
+//
+//
+//    func okPressed(with alertType: TDInfoView.InfoViewValue) {
+//        for infoView in self.infoViews {
+//            guard let infoViewType = infoView.type else { return }
+//            if infoViewType == alertType {
+//                switch alertType {
+//                case .trainCount:
+//                    infoView.valueLabel.text = UserModel.shared.displayTrainCount
+//                case .gender:
+//                    infoView.valueLabel.text = UserModel.shared.displayGender
+//                case .activityLevel:
+//                    infoView.valueLabel.text = UserModel.shared.displayActivityLevel
+//                case .age:
+//                    infoView.valueLabel.text = UserModel.shared.displayAge
+//                case .height:
+//                    infoView.valueLabel.text = UserModel.shared.displayHeight
+//                case .weight:
+//                    infoView.valueLabel.text = UserModel.shared.displayWeight
+//                }
+//            }
+//        }
+//        self.hideAllert()
+//    }
+//
+//    func cancelTapped() {
+//        self.hideAllert()
+//    }
+//
+//}
 
 

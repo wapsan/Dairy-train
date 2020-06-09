@@ -200,9 +200,7 @@ class DTAproachAlert: UIView {
     
     //MARK: - Actions
     @objc private func okTapped() {
-        guard let reps = Int(self.repsTextField.text ?? "0") else { return }
-        guard let weight = Double(self.weightTextField.text ?? "0") else { return }
-        self.exercice?.addAproachWith(reps, and: weight)
+        
         self.delegate?.okAlertPressed()
         self.hideKeyboard()
     }

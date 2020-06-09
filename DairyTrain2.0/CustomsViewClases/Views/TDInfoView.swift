@@ -1,6 +1,6 @@
 import UIKit
     
-class TDInfoiView: UIView {
+class TDInfoView: UIView {
     
     //MARK: - GUI Elemnts
     lazy var tittleLabe: DTAdaptiveLabel = {
@@ -25,7 +25,7 @@ class TDInfoiView: UIView {
     }()
     
     //MARK: - Enums
-    enum InfoViewType {
+    enum InfoViewValue {
         case trainCount
         case gender
         case activityLevel
@@ -35,8 +35,8 @@ class TDInfoiView: UIView {
     }
     
     //MARK: - Properties
-    var tapped: ((TDInfoiView.InfoViewType)-> Void)?
-    var type: InfoViewType?
+    var tapped: ((TDInfoView.InfoViewValue)-> Void)?
+    var type: InfoViewValue?
     var isValueSeted: Bool {
         switch self.valueLabel.text {
         case "0","_", "0.0":
@@ -47,7 +47,7 @@ class TDInfoiView: UIView {
     }
     
     //MARK: - Initialization
-    init(type: InfoViewType) {
+    init(type: InfoViewValue) {
         super.init(frame: .zero)
         self.type = type
         switch type {

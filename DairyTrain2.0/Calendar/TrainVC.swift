@@ -23,13 +23,14 @@ class TrainVC: ActivitiesVC {
         super.viewDidLoad()
         self.setUpVisualEffectView()
         self.tableView.register(DTExerciceCell.self, forCellReuseIdentifier: DTExerciceCell.cellID)
+     //   DTCustomAlert.shared.delegate = self
     }
     
     //MARK: - Private methods
     private func showAproachAlert() {
         self.aproachAlert = .init()
         self.view.addSubview(self.aproachAlert)
-        self.aproachAlert.delegate = self
+     //   self.aproachAlert.delegate = self
         self.aproachAlert.translatesAutoresizingMaskIntoConstraints = false
         self.activateAproachAllertConstraints()
         self.animateInAlert()
@@ -38,7 +39,7 @@ class TrainVC: ActivitiesVC {
     private func showAproachAlert(for exercice: Exercise) {
         self.aproachAlert = .init(for: exercice)
         self.view.addSubview(self.aproachAlert)
-        self.aproachAlert.delegate = self
+      //  self.aproachAlert.delegate = self
         self.aproachAlert.translatesAutoresizingMaskIntoConstraints = false
         self.activateAproachAllertConstraints()
         self.animateInAlert()
@@ -114,8 +115,8 @@ class TrainVC: ActivitiesVC {
         cell.muscleGroupImage.image = exercice.muscleSubGroupImage
         cell.exercice = exercice
         cell.addButtonAction = {
-            self.showAproachAlert(for: exercice)
-           
+           // self.showAproachAlert(for: exercice)
+            DTCustomAlert.shared.showAproachAlert(on: self, with: exercice)
             //self.showAproachAlert()
             print("Add button touched with closure")
         }
@@ -123,6 +124,10 @@ class TrainVC: ActivitiesVC {
         
         cell.backgroundColor = .black
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -136,14 +141,24 @@ class TrainVC: ActivitiesVC {
     
 }
 
-extension TrainVC: DTAproachAlertDelegate {
-    func cancelAlertPressed() {
-        self.hideAllert()
-        
-    }
+//extension TrainVC: DTAproachAlertDelegate {
+//    func cancelAlertPressed() {
+//        self.hideAllert()
+//
+//    }
+//
+//    func okAlertPressed() {
+//        self.hideAllert()
+//        self.tableView.reloadData()
+//    }
+//
+//
+//}
+
+
+extension TrainVC: DTCustomAlertDelegate {
     
-    func okAlertPressed() {
-        self.hideAllert()
+    func alertOkPressed() {
         self.tableView.reloadData()
     }
     

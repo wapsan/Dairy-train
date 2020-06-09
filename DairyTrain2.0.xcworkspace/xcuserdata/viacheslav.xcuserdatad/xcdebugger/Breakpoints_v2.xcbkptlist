@@ -78,8 +78,8 @@
             filePath = "DairyTrain2.0/CustomsViewClases/Alerts/DTAproachAllert.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "okTapped()"
             landmarkType = "7">
          </BreakpointContent>
