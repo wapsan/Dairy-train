@@ -3,6 +3,31 @@ import Firebase
 
 class ProfileVC: MainTabBarItemVC {
     
+    //MARK: - Private properties
+    private var isAllInfoWasSeted: Bool {
+        if self.ageInfoView.isValueSeted,
+            self.heightInfoView.isValueSeted,
+            self.weightInfoView.isValueSeted,
+            self.genderInfoView.isValueSeted,
+            self.activivtyInfoView.isValueSeted {
+            return true
+        } else {
+            return false
+        }
+    }
+    //MARK: DOTO системные расстояния
+    private var stackViewSpacing: CGFloat {
+        return 16 // UIScreen.main.bounds.height / 56
+    }
+    
+    private var infoViews: [TDInfoView] {
+        return [self.activivtyInfoView,
+                self.genderInfoView,
+                self.ageInfoView,
+                self.heightInfoView,
+                self.weightInfoView]
+    }
+    
     //MARK: - GUI Properties
     private lazy var totalTrainInfoView: TDInfoView = {
         let view = TDInfoView(type: .trainCount)
@@ -115,74 +140,20 @@ class ProfileVC: MainTabBarItemVC {
         return stackView
     }()
     
-     private lazy var visualEffectView: UIVisualEffectView = {
-        let blurEffectView = UIBlurEffect(style: .light)
-        let visualEffectView = UIVisualEffectView(effect: blurEffectView)
-        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
-        return visualEffectView
-    }()
-    
- 
-    
-    private var infoViewAllert: DTInfoAlert!
-
-    //MARK: - Private properties
-    private var isAllertShown: Bool = false
-    
-    private var isAllInfoWasSeted: Bool {
-        if self.ageInfoView.isValueSeted,
-            self.heightInfoView.isValueSeted,
-            self.weightInfoView.isValueSeted,
-            self.genderInfoView.isValueSeted,
-            self.activivtyInfoView.isValueSeted {
-            return true
-        } else {
-            return false
-        }
-    }
-    //MARK: DOTO системные расстояния
-    private var stackViewSpacing: CGFloat {
-        return 16 // UIScreen.main.bounds.height / 56
-    }
-    
-    private var infoViews: [TDInfoView] {
-        return [self.activivtyInfoView, self.genderInfoView, self.ageInfoView, self.heightInfoView, self.weightInfoView]
-    }
-   
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .black
         self.setUpGuiElements()
         self.setUpInfoViewAction()
-        self.setUpVisualEffectView()
     }
     
     //MARK: - Private methods
     private func setUpInfoViewAction() {
         for infoView in self.infoViews {
             infoView.tapped = { (infoViewType) in
-               // self.showAlertFrom(infoView: infoView)
                 DTCustomAlert.shared.showInfoAlert(on: self, with: infoView)
             }
         }
-    }
-    
-    private func showAlertFrom(infoView: TDInfoView) {
-        guard !self.isAllertShown else { return }
-        self.infoViewAllert = .init(with: infoView)
-     //   self.infoViewAllert.delegate = self
-        self.isAllertShown = true
-        self.view.addSubview(self.infoViewAllert)
-        self.infoViewAllert.translatesAutoresizingMaskIntoConstraints = false
-        self.activateAllertConstraint()
-        self.animateInAlert()
-    }
-    
-    private func hideAllert() {
-        self.animateOutAlert()
-        self.deactivateAllertConstraint()
-        self.setAllertState()
     }
     
     private func showRecomendationAlert() {
@@ -204,45 +175,7 @@ class ProfileVC: MainTabBarItemVC {
                                             style: .actionSheet,
                                             completion: self.signOut)
     }
-
-    private func animateInAlert() {
-        self.infoViewAllert.transform = .init(scaleX: 1.3, y: 1.3)
-        self.infoViewAllert.alpha = 0
-        UIView.animate(withDuration: 0.3, animations: {
-            self.visualEffectView.alpha = 1
-            self.infoViewAllert.alpha = 1
-            self.infoViewAllert.transform = CGAffineTransform.identity
-        })
-    }
-    
-    private func animateOutAlert() {
-        UIView.animate(withDuration: 0.3,
-                       animations: {
-                        self.visualEffectView.alpha = 0
-                        self.infoViewAllert.alpha = 0
-                        self.infoViewAllert.transform = .init(scaleX: 1.3, y: 1.3)
-        }) { (_) in
-            self.infoViewAllert.removeFromSuperview()
-        }
-    }
-    
-    private func setAllertState() {
-        guard self.isAllertShown else { return }
-        self.isAllertShown = false
-    }
-    
-    private func setUpVisualEffectView() {
-        self.view.addSubview(self.visualEffectView)
-        let safeArea = self.view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-            self.visualEffectView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            self.visualEffectView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
-            self.visualEffectView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
-            self.visualEffectView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-        ])
-        self.visualEffectView.alpha = 0
-    }
-    
+  
     private func setCostumerInfo() -> CostumerInfo? {
         guard let age = self.ageInfoView.valueLabel.text,
             let height = self.heightInfoView.valueLabel.text,
@@ -259,6 +192,7 @@ class ProfileVC: MainTabBarItemVC {
     }
     
     private func setUpGuiElements() {
+        self.view.backgroundColor = .black
         self.view.addSubview(self.infoViewsStackView)
         self.view.addSubview(self.buttonStackView)
         self.setUpViewConstraints()
@@ -306,25 +240,7 @@ class ProfileVC: MainTabBarItemVC {
             self.buttonStackView.heightAnchor.constraint(equalTo: self.infoViewsStackView.heightAnchor, multiplier: 0.8)
         ])
     }
-    
-    private func activateAllertConstraint() {
-        NSLayoutConstraint.activate([
-            self.infoViewAllert.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.infoViewAllert.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -32),
-            self.infoViewAllert.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
-            self.infoViewAllert.heightAnchor.constraint(equalTo: self.infoViewAllert.widthAnchor, multiplier: 0.9)
-        ])
-    }
-    
-    private func deactivateAllertConstraint() {
-        NSLayoutConstraint.deactivate([
-            self.infoViewAllert.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.infoViewAllert.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -32),
-            self.infoViewAllert.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
-            self.infoViewAllert.heightAnchor.constraint(equalTo: self.infoViewAllert.widthAnchor, multiplier: 0.9)
-        ])
-    }
-    
+
     //MARK: - Actions
     @objc private func settingButtonpPressed(_ sender: DTButton) {
         guard let buttonTittle = sender.currentTitle else { return }
@@ -338,57 +254,7 @@ class ProfileVC: MainTabBarItemVC {
     @objc private func signtOutButtonPressed() {
         self.showSignOutAllert()
     }
-    
 }
 
-//extension ProfileVC: DTCustomAlert {
-//    
-//}
-
-//extension ProfileVC: DTCustomAlertDelegate {
-//    
-//    func alertOkPressed() {
-//        print("Delagte worked")
-//    }
-//    
-//    func alertCancelPressed() {
-//        print("Cancel pressed")
-//    }
-//    
-//    
-//}
-
-//MARK: - DTTestCustomAllerDelegate
-//extension ProfileVC: DTInfoAllerDelegate {
-//
-//
-//    func okPressed(with alertType: TDInfoView.InfoViewValue) {
-//        for infoView in self.infoViews {
-//            guard let infoViewType = infoView.type else { return }
-//            if infoViewType == alertType {
-//                switch alertType {
-//                case .trainCount:
-//                    infoView.valueLabel.text = UserModel.shared.displayTrainCount
-//                case .gender:
-//                    infoView.valueLabel.text = UserModel.shared.displayGender
-//                case .activityLevel:
-//                    infoView.valueLabel.text = UserModel.shared.displayActivityLevel
-//                case .age:
-//                    infoView.valueLabel.text = UserModel.shared.displayAge
-//                case .height:
-//                    infoView.valueLabel.text = UserModel.shared.displayHeight
-//                case .weight:
-//                    infoView.valueLabel.text = UserModel.shared.displayWeight
-//                }
-//            }
-//        }
-//        self.hideAllert()
-//    }
-//
-//    func cancelTapped() {
-//        self.hideAllert()
-//    }
-//
-//}
 
 

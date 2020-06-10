@@ -7,17 +7,19 @@ import UIKit
 
 class DTCustomAlert: UIView {
     
-    //MARK: - Singletone properties
+    //MARK: - Singletone propertie
     static let shared = DTCustomAlert()
     
     //MARK: - Enum
     /**
     Type, wich set alert behavor for write data for user model.
      - **setValue** - type which set one of user parametrs like age, weight, gender etc.
-     - **aproachAlert** - special type using for filling in training approaches
+     - **newAproachAlert** - type using for changing in training  approaches
+     - **aproachAlert** -  type using for add new approaches
     */
     enum AlertType {
         case setValue
+        case newAproachAlert
         case aproachAlert
     }
     
@@ -26,6 +28,7 @@ class DTCustomAlert: UIView {
         Property based on tapped view type
     */
     private var alertType: DTCustomAlert.AlertType?
+    private var changingAproachIndex: Int?
     private weak var exercice: Exercise?
     private weak var tappedInfoView: TDInfoView?
     private lazy var setAgeTitle = "Set age"
@@ -260,7 +263,7 @@ class DTCustomAlert: UIView {
             self.setUpActivityLevelAlertType()
         case .age, .height, .weight:
             self.setUpValueAlertType(with: infoViewType)
-            self.setUpStyleTextField(for: self.valueTextField)
+            self.setUpKeyBoardStyle(for: self.valueTextField)
             self.showKeyboard(for: self.valueTextField)
         }
         
@@ -271,23 +274,34 @@ class DTCustomAlert: UIView {
     }
     
     /**
-       Method which show custom alert with **aproachAlert** type
+       Method which show custom alert with **aproachAlert** or **newAproachAlert** type
           - Parameter viewController: UIViewControler which will be shown custom alert.
-          - Parameter exercice: Exercice in wich will add aproach data from alert
+          - Parameter exercice: Exercice in wich will add aproach data from alert.
+          - Parameter aproachNumber: Aproach wich will be changed, if you add new aproach this parameter must be **nill**
     */
-    func showAproachAlert(on viewController: UIViewController, with exercice: Exercise) {
+    func showAproachAlert(on viewController: UIViewController,
+                          with exercice: Exercise,
+                          and aproachNumber: Int?) {
+        if let aproachIndex = aproachNumber {
+            self.titleLabel.text = "Aproach №\(aproachIndex + 1)"
+            self.weightTextField.text = String(exercice.aproaches[aproachIndex].weight)
+            self.repsTextField.text = String(exercice.aproaches[aproachIndex].reps)
+            self.changingAproachIndex = aproachIndex
+            self.alertType = .aproachAlert
+        } else {
+            self.alertType = .newAproachAlert
+            self.titleLabel.text = "Aproach №\(exercice.aproaches.count + 1)"
+            self.setUpDefaultsAproach()
+        }
+        
         viewController.view.addSubview(self)
         self.delegate = viewController as? DTCustomAlertDelegate
         self.exercice = exercice
-        let aproachNumber = String(exercice.aproaches.count + 1)
-        self.titleLabel.text = "Aproach №\(aproachNumber)"
-        self.setUpStyleTextField(for: self.weightTextField)
-        self.setUpStyleTextField(for: self.repsTextField)
+        self.setUpKeyBoardStyle(for: self.weightTextField)
+        self.setUpKeyBoardStyle(for: self.repsTextField)
         self.showKeyboard(for: self.weightTextField)
         self.setUpAproachAlertType()
         self.animateInAlert()
-        self.setUpDefaultsAproach()
-        self.alertType = .aproachAlert
     }
 
     //MARK: - Private methods
@@ -414,7 +428,7 @@ class DTCustomAlert: UIView {
         }
     }
     
-    private func writeOptionListInfo() {
+    private func writeListSelectionInfo() {
         for view in self.selectionButtonsStackView.arrangedSubviews {
             guard let button = view as? UIButton else { return }
             if button.isSelected {
@@ -434,17 +448,23 @@ class DTCustomAlert: UIView {
         }
     }
     
-    private func writeAproachInfo() {
+    private func writeNewAproachInfo() {
         guard let reps = Int(self.repsTextField.text ?? "0") else { return }
         guard let weight = Double(self.weightTextField.text ?? "0") else { return }
         self.exercice?.addAproachWith(reps, and: weight)
+    }
+    
+    private func changeAproachInfo(for index: Int) {
+        guard let reps = Int(self.repsTextField.text ?? "0") else { return }
+        guard let weight = Double(self.weightTextField.text ?? "0") else { return }
+        self.exercice?.changeAproach(index, with: reps, and: weight)
     }
     
     private func setButtonState(_ button: UIButton) {
         button.layer.backgroundColor = button.isSelected ? UIColor.red.cgColor : UIColor.clear.cgColor
     }
     
-    private func setUpStyleTextField(for textField: UITextField) {
+    private func setUpKeyBoardStyle(for textField: UITextField) {
         textField.keyboardType = .decimalPad
     }
     
@@ -583,10 +603,10 @@ class DTCustomAlert: UIView {
             guard let tappedInfoView = self.tappedInfoView else { return }
             switch tappedInfoView.type {
             case .gender:
-                self.writeOptionListInfo()
+                self.writeListSelectionInfo()
                 self.tappedInfoView?.valueLabel.text = UserModel.shared.displayGender
             case .activityLevel:
-                self.writeOptionListInfo()
+                self.writeListSelectionInfo()
                 self.tappedInfoView?.valueLabel.text = UserModel.shared.displayActivityLevel
             case .age:
                 self.writeValueInfo()
@@ -602,8 +622,11 @@ class DTCustomAlert: UIView {
             case .none:
                 break
             }
+        case .newAproachAlert:
+            self.writeNewAproachInfo()
         case .aproachAlert:
-            self.writeAproachInfo()
+            guard let changinAproach = self.changingAproachIndex else { return }
+            self.changeAproachInfo(for: changinAproach)
         }
         self.hideAlert()
         guard let alertOkPressed = self.delegate?.alertOkPressed?() else { return }

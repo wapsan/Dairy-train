@@ -5,17 +5,18 @@ class DTExerciceCell: UITableViewCell {
     //MARK: - Static properties
     static let cellID = "TestExerciceCell"
     
-    var exercice: Exercise?
+    //MARK: - Private properties
+    private  var exercice: Exercise?
     var addButtonAction: (()-> Void)?
     
     //MARK: - GUI Properties
-    let muscleGroupImage: UIImageView = {
+    private let muscleSubGroupImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "chest"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    lazy var exerciceNameLabel: UILabel = {
+    private lazy var exerciceNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Exercice name"
         label.textColor = .white
@@ -26,7 +27,7 @@ class DTExerciceCell: UITableViewCell {
         return label
     }()
     
-    lazy var aproachCollectionList: UICollectionView = {
+    private lazy var aproachCollectionList: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -39,7 +40,7 @@ class DTExerciceCell: UITableViewCell {
         return collectionView
     }()
     
-    lazy var addAproachBurron: UIButton = {
+    private lazy var addAproachBurron: UIButton = {
         let button = UIButton()
         let addImage = UIImage(named: "add")
         button.setImage(addImage, for: .normal)
@@ -56,13 +57,23 @@ class DTExerciceCell: UITableViewCell {
         self.setUpContentView()
         self.setUpGuiElemetns()
         self.selectionStyle = .none
-      
-        
+    }
+    
+    //MARK: - Public methods
+    func setUpFor(_ exercise: Exercise) {
+        self.exercice = exercise
+        self.exerciceNameLabel.text = exercise.name
+        self.muscleSubGroupImage.image = exercise.muscleSubGroupImage
+        self.aproachCollectionList.reloadData()
+    }
+    
+    func reloadAproachList() {
+        self.aproachCollectionList.reloadData()
     }
     
     //MARK: - Private methods
     private func setUpGuiElemetns() {
-        self.addSubview(self.muscleGroupImage)
+        self.addSubview(self.muscleSubGroupImage)
         self.addSubview(self.exerciceNameLabel)
         self.addSubview(self.aproachCollectionList)
         self.addSubview(self.addAproachBurron)
@@ -81,20 +92,20 @@ class DTExerciceCell: UITableViewCell {
     //MARK: - Constraints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            self.muscleGroupImage.leftAnchor.constraint(equalTo: self.contentView.leftAnchor,
-                                                        constant: 8),
-            self.muscleGroupImage.topAnchor.constraint(equalTo: self.contentView.topAnchor,
-                                                       constant: 8),
-            self.muscleGroupImage.bottomAnchor.constraint(equalTo: self.aproachCollectionList.topAnchor,
-                                                          constant: -8),
-            self.muscleGroupImage.widthAnchor.constraint(equalTo: self.muscleGroupImage.heightAnchor),
+            self.muscleSubGroupImage.leftAnchor.constraint(equalTo: self.contentView.leftAnchor,
+                                                           constant: 8),
+            self.muscleSubGroupImage.topAnchor.constraint(equalTo: self.contentView.topAnchor,
+                                                          constant: 8),
+            self.muscleSubGroupImage.bottomAnchor.constraint(equalTo: self.aproachCollectionList.topAnchor,
+                                                             constant: -8),
+            self.muscleSubGroupImage.widthAnchor.constraint(equalTo: self.muscleSubGroupImage.heightAnchor),
         ])
         
         NSLayoutConstraint.activate([
-            self.exerciceNameLabel.leftAnchor.constraint(equalTo: self.muscleGroupImage.rightAnchor,
+            self.exerciceNameLabel.leftAnchor.constraint(equalTo: self.muscleSubGroupImage.rightAnchor,
                                                          constant: 8),
             self.exerciceNameLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8),
-            self.exerciceNameLabel.centerYAnchor.constraint(equalTo: self.muscleGroupImage.centerYAnchor),
+            self.exerciceNameLabel.centerYAnchor.constraint(equalTo: self.muscleSubGroupImage.centerYAnchor),
         ])
         
         NSLayoutConstraint.activate([
@@ -118,12 +129,8 @@ class DTExerciceCell: UITableViewCell {
     
     //MARK: - Actions
     @objc func addButtonTouched() {
-//        self.exercice?.aproaches.append(Exercise.Approach(weight: 10, reps: 12))
-//        self.aproachCollectionList.reloadData()
         self.addButtonAction?()
-        
     }
-    
 }
 
 extension DTExerciceCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -137,10 +144,9 @@ extension DTExerciceCell: UICollectionViewDelegate, UICollectionViewDataSource, 
         if let exercice = self.exercice {
             let aproach = exercice.aproaches[indexPath.row]
             cell.aproachNumberLabel.text = "№ " + String(indexPath.row + 1)
-        cell.weightLabel.text = String(aproach.weight) + " kg."
+            cell.weightLabel.text = String(aproach.weight) + " kg."
             cell.repsLabel.text = String(aproach.reps) + " reps."
         }
-      //  cell.backgroundColor = .white
         return cell
     }
     
@@ -151,9 +157,15 @@ extension DTExerciceCell: UICollectionViewDelegate, UICollectionViewDataSource, 
         return itemSize
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let exercice = self.exercice else { return }
+        guard let parentViewController = self.parentViewController else { return }
+        DTCustomAlert.shared.showAproachAlert(on: parentViewController, with: exercice, and: indexPath.row)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
-    
 }
+
+

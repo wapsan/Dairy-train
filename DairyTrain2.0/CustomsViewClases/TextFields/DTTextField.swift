@@ -5,7 +5,7 @@ class DTTextField: UITextField {
     //MARK: - GUI Properties
     lazy var whiteLineUnderTextField: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

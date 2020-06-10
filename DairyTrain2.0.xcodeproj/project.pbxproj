@@ -10,6 +10,7 @@
 		131107C3246582210023A29A /* UIView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131107C2246582210023A29A /* UIView+Ex.swift */; };
 		1313693A2461B1C200372F26 /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131369392461B1C200372F26 /* String+Ex.swift */; };
 		13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13151D4924715C9D002C15AA /* UIColor+Ex.swift */; };
+		131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131733722490E08600292D84 /* DTExerciseCell+Ex.swift */; };
 		13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A3D247E4A6300AB7419 /* DTTrainCell.swift */; };
 		13243A41247E768B00AB7419 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A40247E768B00AB7419 /* DateHelper.swift */; };
 		132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132D958B2485809B006E5A41 /* AppAuthentication.swift */; };
@@ -71,6 +72,7 @@
 		131107C2246582210023A29A /* UIView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ex.swift"; sourceTree = "<group>"; };
 		131369392461B1C200372F26 /* String+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
 		13151D4924715C9D002C15AA /* UIColor+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ex.swift"; sourceTree = "<group>"; };
+		131733722490E08600292D84 /* DTExerciseCell+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTExerciseCell+Ex.swift"; sourceTree = "<group>"; };
 		13243A3D247E4A6300AB7419 /* DTTrainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainCell.swift; sourceTree = "<group>"; };
 		13243A40247E768B00AB7419 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		132D958B2485809B006E5A41 /* AppAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthentication.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				131107C2246582210023A29A /* UIView+Ex.swift */,
 				13151D4924715C9D002C15AA /* UIColor+Ex.swift */,
+				131733722490E08600292D84 /* DTExerciseCell+Ex.swift */,
 				1396F5F9248392760012A76A /* UIImage+Ex.swift */,
 				13786E1C2478271C0084E48C /* NotificationName+Ex.swift */,
 				131369392461B1C200372F26 /* String+Ex.swift */,
@@ -552,6 +555,7 @@
 				1396F6002484175E0012A76A /* TDInfoView.swift in Sources */,
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
 				139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */,
+				131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */,
 				1386AA20246C15500016A757 /* ReadWriteFirebasedata.swift in Sources */,
 				13BF82BD247C2E54005C5494 /* MainTabBarItemVC.swift in Sources */,
 				13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */,

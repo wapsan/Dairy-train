@@ -50,6 +50,19 @@ class Exercise {
         }
     }
     
+    func changeAproach(_ aproachIndex: Int, with reps: Int, and weight: Double) {
+        if reps == 0 || weight == 0 {
+            self.aproaches.remove(at: aproachIndex)
+        } else {
+            var aproach = self.aproaches[aproachIndex]
+            aproach.weight = weight
+            aproach.reps = reps
+            self.aproaches.remove(at: aproachIndex)
+            self.aproaches.insert(aproach, at: aproachIndex)
+        }
+        
+    }
+    
     func removeAproach() {
         self.aproaches.removeLast()
     }
