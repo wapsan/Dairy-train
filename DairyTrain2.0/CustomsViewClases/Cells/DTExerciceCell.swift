@@ -46,7 +46,7 @@ class DTExerciceCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.register(DTAproachCell.self, forCellWithReuseIdentifier: DTAproachCell.cellID)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()

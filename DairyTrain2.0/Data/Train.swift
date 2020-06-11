@@ -1,26 +1,77 @@
 import UIKit
 
+struct Statistics {
+    var numberOfTrainedSubgroups: Int
+    var totalNumberOfReps: Int
+    var totalNumberOfAproach: Int
+    var averageProjectileWeight: Double {
+        return self.totalWorkoutWeight / Double(self.totalNumberOfAproach)
+    }
+    var totalWorkoutWeight: Double
+    
+    func setToTalNumberOfAproach(in train: Train) -> Int {
+        var aproaches = 0
+        train.exercises.forEach { (exercise) in
+            exercise.aproaches.forEach { (aproach) in
+                aproaches += 1
+            }
+        }
+        return aproaches
+    }
+    
+    init(for train: Train) {
+        self.numberOfTrainedSubgroups = train.subgroupInCurrentTrain.count
+        self.totalNumberOfAproach = {
+            var aproaches = 0
+            train.exercises.forEach { (exercise) in
+                exercise.aproaches.forEach { (aproach) in
+                    aproaches += 1
+                }
+            }
+            return aproaches
+        }()
+        self.totalNumberOfReps = {
+            var reps = 0
+            train.exercises.forEach { (exercise) in
+                exercise.aproaches.forEach { (aproach) in
+                    reps += aproach.reps
+                }
+            }
+            return reps
+        }()
+        self.totalWorkoutWeight = {
+            var totalWeight = 0.0
+            train.exercises.forEach { (exercise) in
+                exercise.aproaches.forEach { (aproach) in
+                    totalWeight += aproach.weight
+                }
+            }
+            return totalWeight
+        }()
+    }
+}
 
 
 class Train {
     
     //MARK: - Statistics structure
-    struct Statistics {
-        var numberOfTrainedSubgroups: Int 
-        var totalNumberOfReps: Int
-        var totalNumberOfAproach: Int
-        var averageProjectileWeight: Double
-        var totalWorkoutWeight: Double
-        
-//        init(for train: Train) {
-//            
-//        }
-    }
+    
     
     //MARK: - Properties
     var exercises: [Exercise] = []
     var exercicesSet = Set<String>()
     var dateTittle: String
+    var subgroupInCurrentTrain: [MuscleSubgroup.Subgroup] {
+        var subgroups: [MuscleSubgroup.Subgroup] = []
+        var subgroupsSet = Set<MuscleSubgroup.Subgroup>()
+        for exercice in self.exercises {
+            let subgroup = exercice.subgroub
+            if subgroupsSet.insert(subgroup).inserted {
+                subgroups.append(subgroup)
+            }
+        }
+        return subgroups
+    }
     var groupsInCurrentTrain: [MuscleGroup.Group] {
         var groups: [MuscleGroup.Group] = []
         var gropSet = Set<MuscleGroup.Group>()
@@ -32,6 +83,8 @@ class Train {
         }
         return groups
     }
+    
+    
     
 
     //MARK: - Publick methods

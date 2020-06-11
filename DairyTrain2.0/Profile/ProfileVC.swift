@@ -74,6 +74,7 @@ class ProfileVC: MainTabBarItemVC {
     
     private lazy var statisticButton: DTButton = {
         let button = DTButton(tittle: "Statistic")
+        button.addTarget(self, action: #selector(self.statisticsButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -245,6 +246,20 @@ class ProfileVC: MainTabBarItemVC {
     @objc private func settingButtonpPressed(_ sender: DTButton) {
         guard let buttonTittle = sender.currentTitle else { return }
         self.pushSettingViewController(with: buttonTittle)
+    }
+    
+    @objc private func statisticsButtonPressed() {
+        let statisctics = Statistics(for: UserModel.shared.trains[0])
+        let numberOfSubgroups = statisctics.numberOfTrainedSubgroups
+        let totalAproach = statisctics.totalNumberOfAproach
+        let totalReps = statisctics.totalNumberOfReps
+        let avarageWeight = statisctics.averageProjectileWeight
+        let totalWeight = statisctics.totalWorkoutWeight
+        print("Number of trained grops - \(numberOfSubgroups)")
+        print("Total aproaches - \(totalAproach)")
+        print("Total reps - \(totalReps)")
+        print("Avarage eight - \(avarageWeight)")
+        print("Total weight - \(totalWeight)")
     }
     
     @objc private func recomendationButtonPressed() {
