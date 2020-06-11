@@ -21,7 +21,7 @@ class MainTabBarVC: UITabBarController {
        // не заходил в список тренирововк
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.exerciceDidAdd),
-                                               name: .addExercicesToTrain,
+                                               name: .addNewTrain,
                                                object: nil)
     }
     
@@ -89,8 +89,8 @@ class MainTabBarVC: UITabBarController {
     @objc private func exerciceDidAdd(_ notification: NSNotification) {
         guard let userInfo = (notification as NSNotification).userInfo else { return }
         guard let trains = userInfo["Exercices"] as? [Train] else { return }
-        let trainVC = TrainsVC()
-        trainVC.userTrainsList = trains
+        let trainsVC = TrainsVC()
+        trainsVC.userTrainsList = trains
     }
 }
 

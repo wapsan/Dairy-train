@@ -18,7 +18,6 @@ class DTInfoAlertButton: UIButton {
         self.setTitle(title, for: .normal)
         self.setBehavor()
         self.setAppearance()
-        
     }
     
     required init?(coder: NSCoder) {

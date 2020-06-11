@@ -55,11 +55,13 @@ class ExercicesVC: ActivitiesVC {
     }
     
     private func addExercicesComplition() {
-        UserModel.shared.createTrain(with: self.selectedExercices)
-        NotificationCenter.default.post(name: .addExercicesToTrain,
-                                        object: nil,
-                                        userInfo: ["Exercices": UserModel.shared.trains])
-        NotificationCenter.default.post(name: .addNewTrain, object: nil)
+        if UserModel.shared.createTrain(with: self.selectedExercices) {
+            NotificationCenter.default.post(name: .addNewTrain, object: nil)
+        } else {
+            NotificationCenter.default.post(name: .trainingWasChanged,
+            object: nil,
+            userInfo: ["Exercices": UserModel.shared.trains])
+        }
         self.showAddedAllert()
     }
     

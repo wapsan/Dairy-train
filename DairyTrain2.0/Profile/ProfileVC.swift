@@ -211,7 +211,7 @@ class ProfileVC: MainTabBarItemVC {
     }
     
     private func signOut() {
-        userDefaults.removeObject(forKey: UserTokenKey)
+        DTSettingManager.shared.deleteUserToken()
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()

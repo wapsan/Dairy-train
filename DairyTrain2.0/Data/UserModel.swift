@@ -130,17 +130,22 @@ class UserModel {
 //        }
 //    }
     
-    func createTrain(with exercices: [Exercise]) {
+    func createTrain(with exercices: [Exercise]) -> Bool {
         let createdTrain = Train(with: exercices)
-        guard !self.trains.isEmpty else { self.addTrain(createdTrain); return}
+        guard !self.trains.isEmpty else { self.addTrain(createdTrain); return true}
         for train in self.trains {
             if createdTrain.dateTittle != train.dateTittle {
                 self.addTrain(createdTrain)
+                self.trainCount = self.trains.count
+                return true
             } else {
                 train.addExercises(exercices)
+                self.trainCount = self.trains.count
+                return false
             }
         }
-        self.trainCount = self.trains.count
+        
+        return false
     }
     
 }

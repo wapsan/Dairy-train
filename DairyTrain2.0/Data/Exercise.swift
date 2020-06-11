@@ -1,23 +1,27 @@
 import UIKit
 
-
-
 class Exercise {
  
     //MARK: - Structures
     struct Approach: Hashable {
         var weight: Double
         var reps: Int
-    //    var numberOfAproach: Int
         var weightDisplayvalue: String {
             switch MeteringSetting.shared.weightMode {
             case .kg:
-                return ""
+                if self.weight.truncatingRemainder(dividingBy: 1) == 0 {
+                    return String(format: "%.0f", self.weight) + " kg."
+                } else {
+                    return String(format: "%.1f", self.weight) + " kg."
+                }
             case .lbs:
-                return ""
+                if self.weight.truncatingRemainder(dividingBy: 1) == 0 {
+                    return String(format: "%.0f", self.weight) + " lbs."
+                } else {
+                    return String(format: "%.1f", self.weight) + " lbs."
+                }
             }
         }
-        
         var repsDisplayValue: String {
             return "\(self.reps) reps"
         }
@@ -31,7 +35,7 @@ class Exercise {
     var isSelected: Bool = false
     
     //MARK: - Compudet properties
-    var numerOfAproach: Int {
+    var numberOfAproach: Int {
         return self.aproaches.count
     }
     var muscleGroupImage: UIImage? {
@@ -60,7 +64,6 @@ class Exercise {
             self.aproaches.remove(at: aproachIndex)
             self.aproaches.insert(aproach, at: aproachIndex)
         }
-        
     }
     
     func removeAproach() {

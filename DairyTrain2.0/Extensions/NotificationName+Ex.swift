@@ -6,6 +6,6 @@ extension Notification.Name {
     static var colorThemeChanged = Notification.Name("colorChanged")
     static var weightMetricChanged = Notification.Name("weightMetricChanged")
     static var heightMetricChanged = Notification.Name("heightMetrickChanged")
-    static var addExercicesToTrain = Notification.Name("addExercicesToTrain")
+    static var trainingWasChanged = Notification.Name("addExercicesToTrain")
     static var addNewTrain = Notification.Name("addNewTrain")
 }

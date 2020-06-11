@@ -2,8 +2,13 @@ import Foundation
 
 class DTSettingManager {
     
+    //MARK: - Singletone propetie
     static let shared = DTSettingManager()
     
+    //MARK: - Private properties
+    private var userDefaults = UserDefaults.standard
+    
+    //MARK: - Enum setting key
     struct UserSettingKeys {
         static let tokenKey = "Token"
         static let colorThemeKey = "Color"
@@ -11,7 +16,7 @@ class DTSettingManager {
         static let heightMetricKey = "Height metric"
     }
     
-    
+    //MARK: - Private methods
     private func setDefaultWeightMode() {
         if UserDefaults.standard.value(forKey: UserSettingKeys.weighMetricKey) == nil {
             MeteringSetting.shared.weightMode = .kg
@@ -45,52 +50,53 @@ class DTSettingManager {
         }
     }
     
+    //MARK: - Public methods
     func activateDefaultSetting() {
         self.setDefaultWeightMode()
         self.setDefaultHeightMode()
         self.setDefaultColorTheme()
     }
     
-    func setWeight(mode: MeteringSetting.WeightMode) {
+    func setWeightMode(to mode: MeteringSetting.WeightMode) {
         print("Weight mode set to \(mode).")
         switch mode {
         case .kg:
-            userDefaults.set(true, forKey: UserWeighMetricKey)
+            self.userDefaults.set(true, forKey: UserSettingKeys.weighMetricKey)
         case .lbs:
-            userDefaults.set(false, forKey: UserWeighMetricKey)
+            self.userDefaults.set(false, forKey: UserSettingKeys.weighMetricKey)
         }
     }
     
-    func setHeight(mode: MeteringSetting.HeightMode) {
+    func setHeightMode(to mode: MeteringSetting.HeightMode) {
         print("Height mode set to \(mode).")
         switch mode {
         case .cm:
-             userDefaults.set(true, forKey: UserHeightMetricKey)
+            self.userDefaults.set(true, forKey: UserSettingKeys.heightMetricKey)
         case .ft:
-             userDefaults.set(false, forKey: UserHeightMetricKey)
+             self.userDefaults.set(false, forKey: UserSettingKeys.heightMetricKey)
         }
     }
     
-    func setColor(theme: ColorSetting.ColorTheme) {
+    func setColorTheme(to theme: ColorSetting.ColorTheme) {
         print("Color theme set to \(theme).")
         switch theme {
         case .dark:
-            userDefaults.set(true, forKey: UserColorThemeKey)
+            self.userDefaults.set(true, forKey: UserSettingKeys.colorThemeKey)
         case .light:
-            userDefaults.set(false, forKey: UserColorThemeKey)
+            self.userDefaults.set(false, forKey: UserSettingKeys.colorThemeKey)
         }
     }
     
     func setUserToken(to token: String) {
-        UserDefaults.standard.set(token, forKey: UserSettingKeys.tokenKey)
+        self.userDefaults.set(token, forKey: UserSettingKeys.tokenKey)
         print("User tokent was set to - \(token)")
     }
     
-    func getUserToken() -> String? {
-        guard let userToken = UserDefaults.standard.string(forKey: UserSettingKeys.tokenKey) else {
-            return nil
-        }
-        return userToken
+    func deleteUserToken() {
+        self.userDefaults.removeObject(forKey: UserSettingKeys.tokenKey)
     }
     
+    func getUserToken() -> String? {
+        return self.userDefaults.string(forKey: UserSettingKeys.tokenKey)
+    }
 }

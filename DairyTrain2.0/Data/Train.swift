@@ -4,6 +4,19 @@ import UIKit
 
 class Train {
     
+    //MARK: - Statistics structure
+    struct Statistics {
+        var numberOfTrainedSubgroups: Int 
+        var totalNumberOfReps: Int
+        var totalNumberOfAproach: Int
+        var averageProjectileWeight: Double
+        var totalWorkoutWeight: Double
+        
+//        init(for train: Train) {
+//            
+//        }
+    }
+    
     //MARK: - Properties
     var exercises: [Exercise] = []
     var exercicesSet = Set<String>()
@@ -19,30 +32,8 @@ class Train {
         }
         return groups
     }
-//    func getGroupsOfCurrentTrain() -> [MuscleGroup.Group] {
-//        var groups: [MuscleGroup.Group] = []
-//        var gropSet = Set<MuscleGroup.Group>()
-//        for exercise in self.exercises {
-//            let group = exercise.group
-//            if gropSet.insert(group).inserted {
-//                groups.append(group)
-//            }
-//        }
-//        return groups
-//    }
-//    var numberOfGroups: Int? {
-//        var gropSet = Set<MuscleGroup.Group>()
-//        var returnedValue = 0
-//        for exercise in self.exercises {
-//            let group = exercise.group
-//            if gropSet.insert(group).inserted {
-//                self.groupsInCurrentTrain.append(group)
-//                returnedValue += 1
-//            }
-//        }
-//        return returnedValue
-//    }
     
+
     //MARK: - Publick methods
     func addExercises(_ exercices: [Exercise]) {
         var newExercices: [Exercise] = []

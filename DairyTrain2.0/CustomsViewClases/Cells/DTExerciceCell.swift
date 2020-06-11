@@ -6,10 +6,21 @@ class DTExerciceCell: UITableViewCell {
     static let cellID = "TestExerciceCell"
     
     //MARK: - Private properties
-    private  var exercice: Exercise?
+    private  var exercise: Exercise?
     var addButtonAction: (()-> Void)?
     
     //MARK: - GUI Properties
+    private var containerView: UIView = {
+       let view = UIView()
+        view.backgroundColor = .viewFlipsideBckgoundColor
+        view.layer.cornerRadius = 20
+        view.layer.shadowColor = UIColor.darkGray.cgColor
+        view.layer.shadowOffset = .init(width: 0, height: 5)
+        view.layer.shadowOpacity = 5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let muscleSubGroupImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "chest"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +46,7 @@ class DTExerciceCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.register(DTAproachCell.self, forCellWithReuseIdentifier: DTAproachCell.cellID)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
@@ -54,47 +65,54 @@ class DTExerciceCell: UITableViewCell {
     //MARK: - Layout subviews
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.setUpContentView()
-        self.setUpGuiElemetns()
-        self.selectionStyle = .none
+    }
+    
+    //MARK: - Initialization
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: DTExerciceCell.cellID)
+        self.initCell()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     //MARK: - Public methods
     func setUpFor(_ exercise: Exercise) {
-        self.exercice = exercise
+        self.exercise = exercise
         self.exerciceNameLabel.text = exercise.name
         self.muscleSubGroupImage.image = exercise.muscleSubGroupImage
         self.aproachCollectionList.reloadData()
     }
     
-    func reloadAproachList() {
-        self.aproachCollectionList.reloadData()
-    }
+//    func reloadAproachList() {
+//        self.aproachCollectionList.reloadData()
+//    }
     
     //MARK: - Private methods
-    private func setUpGuiElemetns() {
-        self.addSubview(self.muscleSubGroupImage)
-        self.addSubview(self.exerciceNameLabel)
-        self.addSubview(self.aproachCollectionList)
-        self.addSubview(self.addAproachBurron)
+    private func initCell() {
+        self.selectionStyle = .none
+        self.contentView.addSubview(self.containerView)
+        self.containerView.addSubview(self.muscleSubGroupImage)
+        self.containerView.addSubview(self.exerciceNameLabel)
+        self.containerView.addSubview(self.aproachCollectionList)
+        self.containerView.addSubview(self.addAproachBurron)
         self.setUpConstraints()
-    }
-    
-    private func setUpContentView() {
-        self.contentView.backgroundColor = .viewFlipsideBckgoundColor
-        self.contentView.layer.cornerRadius = 20
-        self.contentView.layer.shadowColor = UIColor.darkGray.cgColor
-        self.contentView.layer.shadowOffset = .init(width: 0, height: 5)
-        self.contentView.layer.shadowOpacity = 5
-        self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
     }
     
     //MARK: - Constraints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            self.muscleSubGroupImage.leftAnchor.constraint(equalTo: self.contentView.leftAnchor,
+            self.containerView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
+            self.containerView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 8),
+            self.containerView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8),
+            self.containerView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8),
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.muscleSubGroupImage.leftAnchor.constraint(equalTo: self.containerView.leftAnchor,
                                                            constant: 8),
-            self.muscleSubGroupImage.topAnchor.constraint(equalTo: self.contentView.topAnchor,
+            self.muscleSubGroupImage.topAnchor.constraint(equalTo: self.containerView.topAnchor,
                                                           constant: 8),
             self.muscleSubGroupImage.bottomAnchor.constraint(equalTo: self.aproachCollectionList.topAnchor,
                                                              constant: -8),
@@ -104,12 +122,12 @@ class DTExerciceCell: UITableViewCell {
         NSLayoutConstraint.activate([
             self.exerciceNameLabel.leftAnchor.constraint(equalTo: self.muscleSubGroupImage.rightAnchor,
                                                          constant: 8),
-            self.exerciceNameLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8),
+            self.exerciceNameLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -8),
             self.exerciceNameLabel.centerYAnchor.constraint(equalTo: self.muscleSubGroupImage.centerYAnchor),
         ])
         
         NSLayoutConstraint.activate([
-            self.addAproachBurron.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8),
+            self.addAproachBurron.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -8),
             self.addAproachBurron.leftAnchor.constraint(equalTo: self.aproachCollectionList.rightAnchor,
                                                         constant: 8),
             self.addAproachBurron.centerYAnchor.constraint(equalTo: self.aproachCollectionList.centerYAnchor),
@@ -117,12 +135,12 @@ class DTExerciceCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            self.aproachCollectionList.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
+            self.aproachCollectionList.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,
                                                                constant: -8),
-            self.aproachCollectionList.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 8),
-            self.aproachCollectionList.widthAnchor.constraint(equalTo: self.widthAnchor,
+            self.aproachCollectionList.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 8),
+            self.aproachCollectionList.widthAnchor.constraint(equalTo: self.containerView.widthAnchor,
                                                               multiplier: 0.8),
-            self.aproachCollectionList.heightAnchor.constraint(equalTo: self.contentView.heightAnchor,
+            self.aproachCollectionList.heightAnchor.constraint(equalTo: self.containerView.heightAnchor,
                                                                multiplier: 0.5)
         ])
     }
@@ -136,18 +154,22 @@ class DTExerciceCell: UITableViewCell {
 extension DTExerciceCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.exercice?.aproaches.count ?? 0
+        return self.exercise?.aproaches.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DTAproachCell.cellID, for: indexPath) as! DTAproachCell
-        if let exercice = self.exercice {
-            let aproach = exercice.aproaches[indexPath.row]
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DTAproachCell.cellID,
+                                                         for: indexPath) as? DTAproachCell {
+            guard let exercise = self.exercise else { return UICollectionViewCell() }
+            let aproach = exercise.aproaches[indexPath.row]
+            cell.weightLabel.text = aproach.weightDisplayvalue
+            cell.repsLabel.text = aproach.repsDisplayValue
             cell.aproachNumberLabel.text = "№ " + String(indexPath.row + 1)
-            cell.weightLabel.text = String(aproach.weight) + " kg."
-            cell.repsLabel.text = String(aproach.reps) + " reps."
+            
+            return cell
+        } else {
+            return UICollectionViewCell()
         }
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -158,7 +180,7 @@ extension DTExerciceCell: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let exercice = self.exercice else { return }
+        guard let exercice = self.exercise else { return }
         guard let parentViewController = self.parentViewController else { return }
         DTCustomAlert.shared.showAproachAlert(on: parentViewController, with: exercice, and: indexPath.row)
     }

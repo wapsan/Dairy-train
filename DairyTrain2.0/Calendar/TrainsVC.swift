@@ -21,23 +21,42 @@ class TrainsVC: MainTabBarItemVC {
         return view
     }()
     
+    lazy var emptyTainingListLabel: DTAdaptiveLabel = {
+        let label = DTAdaptiveLabel()
+        label.text = "No training yet"
+        label.font = .systemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     //MARK: - Properties
     var userTrainsList: [Train] = []
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setHeaderView()
-        self.setUpCollectionView()
+        self.addObserverForAddTrainToList()
+        self.setUpViewController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        userTrainsList = UserModel.shared.trains
-        self.collectionView.reloadData()
     }
     
     //MARK: - Private methods
+    private func setUpViewController() {
+        self.userTrainsList = UserModel.shared.trains
+        if self.userTrainsList.isEmpty {
+            self.setUpEmptyTrainingList()
+        } else {
+            self.setHeaderView()
+            self.setUpCollectionView()
+            self.deactivateEmtyTrainingListLabelConstraints()
+            self.emptyTainingListLabel.removeFromSuperview()
+            self.collectionView.reloadData()
+        }
+    }
+    
     private func setHeaderView() {
         self.view.addSubview(self.headerView)
         self.setUpConstrains()
@@ -48,12 +67,24 @@ class TrainsVC: MainTabBarItemVC {
         self.setCollectionViewConstraint()
     }
     
+    private func setUpEmptyTrainingList() {
+        self.view.addSubview(self.emptyTainingListLabel)
+        self.setUpEmtyTrainingListLabelConstraints()
+    }
+    
     private func pushTrainViewController(with trainIndex: Int) {
         let train = self.userTrainsList[trainIndex]
         let trainVC = TrainVC()
         trainVC.train = train
         trainVC.headerTittle = train.dateTittle
         self.navigationController?.pushViewController(trainVC, animated: true)
+    }
+    
+    private func addObserverForAddTrainToList() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.trainingWasAdded),
+                                               name: .addNewTrain,
+                                               object: nil)
     }
     
     //MARK: - Constraint
@@ -79,6 +110,24 @@ class TrainsVC: MainTabBarItemVC {
         ])
     }
     
+    private func setUpEmtyTrainingListLabelConstraints() {
+        NSLayoutConstraint.activate([
+            self.emptyTainingListLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.emptyTainingListLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+        ])
+    }
+    
+    private func deactivateEmtyTrainingListLabelConstraints() {
+        NSLayoutConstraint.deactivate([
+            self.emptyTainingListLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.emptyTainingListLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+        ])
+    }
+    
+    //MARK: - Actions
+    @objc private func trainingWasAdded() {
+        self.setUpViewController()
+    }
 }
 
 //MARK: - CollectionView Extension

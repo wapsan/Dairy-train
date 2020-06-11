@@ -43,7 +43,7 @@ class MeteringSetting {
                 self.weightMultiplier = self.lbsMultiplier
                 self.weightDescription = self.lbsDescription
             }
-            DTSettingManager.shared.setWeight(mode: newValue)
+            DTSettingManager.shared.setWeightMode(to: newValue)
             NotificationCenter.default.post(name: .weightMetricChanged, object: nil)
         }
     }
@@ -61,9 +61,8 @@ class MeteringSetting {
                 self.heightMultiplier = self.ftMultiplier
                 self.heightDescription = self.ftDescription
             }
-            DTSettingManager.shared.setHeight(mode: newValue)
+            DTSettingManager.shared.setHeightMode(to: newValue)
             NotificationCenter.default.post(name: .heightMetricChanged, object: nil)
         }
     }
-    
 }

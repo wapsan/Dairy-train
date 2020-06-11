@@ -43,11 +43,19 @@ class DTCustomAlert: UIView {
         let view = UIView()
         view.backgroundColor = .viewFlipsideBckgoundColor
         view.layer.cornerRadius = 20
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = .init(width: 0, height: 5)
-        view.layer.shadowOpacity = 5
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var containerAlertView: UIView = {
+         let view = UIView()
+         view.backgroundColor = .viewFlipsideBckgoundColor
+         view.layer.cornerRadius = 20
+         view.layer.shadowColor = UIColor.black.cgColor
+         view.layer.shadowOffset = .init(width: 0, height: 5)
+         view.layer.shadowOpacity = 5
+         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -77,7 +85,7 @@ class DTCustomAlert: UIView {
         stackView.axis = .horizontal
         stackView.spacing = 16
         stackView.alignment = .center
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillEqually
         stackView.addArrangedSubview(self.okButton)
         stackView.addArrangedSubview(self.cancelButton)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -237,6 +245,7 @@ class DTCustomAlert: UIView {
     //MARK: - Initialization
     init() {
         super.init(frame: .zero)
+       // self.setAlertViewLayer()
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -283,8 +292,13 @@ class DTCustomAlert: UIView {
                           with exercice: Exercise,
                           and aproachNumber: Int?) {
         if let aproachIndex = aproachNumber {
+            let aproach = exercice.aproaches[aproachIndex]
             self.titleLabel.text = "Aproach №\(aproachIndex + 1)"
-            self.weightTextField.text = String(exercice.aproaches[aproachIndex].weight)
+            if aproach.weight.truncatingRemainder(dividingBy: 1) == 0 {
+                self.weightTextField.text = String(format: "%.0f", aproach.weight)
+            } else {
+                self.weightTextField.text = String(format: "%.1f", aproach.weight)
+            }
             self.repsTextField.text = String(exercice.aproaches[aproachIndex].reps)
             self.changingAproachIndex = aproachIndex
             self.alertType = .aproachAlert
@@ -333,12 +347,12 @@ class DTCustomAlert: UIView {
     }
     
     private func animateInAlert() {
-        self.alertView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        self.alertView.alpha = 0
+        self.containerAlertView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        self.containerAlertView.alpha = 0
         UIView.animate(withDuration: 0.3, animations: {
             self.visualEffectView.alpha = 1
-            self.alertView.alpha = 1
-            self.alertView.transform = CGAffineTransform.identity
+            self.containerAlertView.alpha = 1
+            self.containerAlertView.transform = CGAffineTransform.identity
         })
     }
     
@@ -346,8 +360,8 @@ class DTCustomAlert: UIView {
         UIView.animate(withDuration: 0.3,
                        animations: {
                         self.visualEffectView.alpha = 0
-                        self.alertView.alpha = 0
-                        self.alertView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                        self.containerAlertView.alpha = 0
+                        self.containerAlertView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         }) { (_) in
             guard let _ = self.superview else { return }
             self.cleanViews()
@@ -363,7 +377,8 @@ class DTCustomAlert: UIView {
     
     private func setDefaultAlertType() {
         self.addSubview(self.visualEffectView)
-        self.addSubview(self.alertView)
+        self.addSubview(self.containerAlertView)
+        self.containerAlertView.addSubview(self.alertView)
         self.setUpDefaultsConstraints()
     }
     
@@ -459,7 +474,7 @@ class DTCustomAlert: UIView {
         guard let weight = Double(self.weightTextField.text ?? "0") else { return }
         self.exercice?.changeAproach(index, with: reps, and: weight)
     }
-    
+      
     private func setButtonState(_ button: UIButton) {
         button.layer.backgroundColor = button.isSelected ? UIColor.red.cgColor : UIColor.clear.cgColor
     }
@@ -501,6 +516,7 @@ class DTCustomAlert: UIView {
     private func setUpDefaultsConstraints() {
         guard let superView = self.superview else { return }
         let safeArea = superView.safeAreaLayoutGuide
+        
         NSLayoutConstraint.activate([
             self.topAnchor.constraint(equalTo: safeArea.topAnchor),
             self.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
@@ -516,10 +532,17 @@ class DTCustomAlert: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            self.alertView.topAnchor.constraint(equalTo: self.topAnchor, constant: 32),
-            self.alertView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 32),
-            self.alertView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -32),
-            self.alertView.heightAnchor.constraint(equalTo: self.alertView.widthAnchor, multiplier: 1)
+            self.containerAlertView.topAnchor.constraint(equalTo: self.topAnchor, constant: 64),
+            self.containerAlertView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 64),
+            self.containerAlertView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -64),
+            self.containerAlertView.heightAnchor.constraint(equalTo: self.alertView.widthAnchor, multiplier: 1)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.alertView.topAnchor.constraint(equalTo: self.containerAlertView.topAnchor, constant: 0),
+            self.alertView.leftAnchor.constraint(equalTo: self.containerAlertView.leftAnchor, constant: 0),
+            self.alertView.rightAnchor.constraint(equalTo: self.containerAlertView.rightAnchor, constant: 0),
+            self.alertView.bottomAnchor.constraint(equalTo: self.containerAlertView.bottomAnchor, constant: 0)
         ])
     }
     
