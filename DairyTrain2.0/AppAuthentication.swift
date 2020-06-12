@@ -16,7 +16,8 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
     func handle(url: URL) -> Bool {
          return GIDSignIn.sharedInstance().handle(url)
     }
-    
+        
+    //MARK: - APIs methods
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
             print(error.localizedDescription)

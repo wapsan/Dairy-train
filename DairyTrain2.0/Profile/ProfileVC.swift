@@ -20,7 +20,7 @@ class ProfileVC: MainTabBarItemVC {
         return 16 // UIScreen.main.bounds.height / 56
     }
     
-    private var infoViews: [TDInfoView] {
+    private var infoViews: [DTInfoView] {
         return [self.activivtyInfoView,
                 self.genderInfoView,
                 self.ageInfoView,
@@ -29,38 +29,38 @@ class ProfileVC: MainTabBarItemVC {
     }
     
     //MARK: - GUI Properties
-    private lazy var totalTrainInfoView: TDInfoView = {
-        let view = TDInfoView(type: .trainCount)
+    private lazy var totalTrainInfoView: DTInfoView = {
+        let view = DTInfoView(type: .trainCount)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var genderInfoView: TDInfoView = {
-        let view = TDInfoView(type: .gender)
+    private lazy var genderInfoView: DTInfoView = {
+        let view = DTInfoView(type: .gender)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var activivtyInfoView: TDInfoView = {
-        let view = TDInfoView(type: .activityLevel)
+    private lazy var activivtyInfoView: DTInfoView = {
+        let view = DTInfoView(type: .activityLevel)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var ageInfoView: TDInfoView = {
-        let view = TDInfoView(type: .age)
+    private lazy var ageInfoView: DTInfoView = {
+        let view = DTInfoView(type: .age)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var heightInfoView: TDInfoView = {
-        let view = TDInfoView(type: .height)
+    private lazy var heightInfoView: DTInfoView = {
+        let view = DTInfoView(type: .height)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var weightInfoView: TDInfoView = {
-        let view = TDInfoView(type: .weight)
+    private lazy var weightInfoView: DTInfoView = {
+        let view = DTInfoView(type: .weight)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -249,17 +249,20 @@ class ProfileVC: MainTabBarItemVC {
     }
     
     @objc private func statisticsButtonPressed() {
-        let statisctics = Statistics(for: UserModel.shared.trains[0])
-        let numberOfSubgroups = statisctics.numberOfTrainedSubgroups
-        let totalAproach = statisctics.totalNumberOfAproach
-        let totalReps = statisctics.totalNumberOfReps
-        let avarageWeight = statisctics.averageProjectileWeight
-        let totalWeight = statisctics.totalWorkoutWeight
-        print("Number of trained grops - \(numberOfSubgroups)")
-        print("Total aproaches - \(totalAproach)")
-        print("Total reps - \(totalReps)")
-        print("Avarage eight - \(avarageWeight)")
-        print("Total weight - \(totalWeight)")
+//        let statisctics = Statistics(for: UserModel.shared.trains[0])
+//        let numberOfSubgroups = statisctics.numberOfTrainedSubgroups
+//        let totalAproach = statisctics.totalNumberOfAproach
+//        let totalReps = statisctics.totalNumberOfReps
+//        let avarageWeight = statisctics.averageProjectileWeight
+//        let totalWeight = statisctics.totalWorkoutWeight
+//        print("Number of trained grops - \(numberOfSubgroups)")
+//        print("Total aproaches - \(totalAproach)")
+//        print("Total reps - \(totalReps)")
+//        print("Avarage eight - \(avarageWeight)")
+//        print("Total weight - \(totalWeight)")
+        
+        let commonStatisticsVC = CommonStatisticsVC()
+        self.navigationController?.pushViewController(commonStatisticsVC, animated: true)
     }
     
     @objc private func recomendationButtonPressed() {

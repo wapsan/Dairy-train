@@ -1,6 +1,6 @@
 import UIKit
     
-class TDInfoView: UIView {
+class DTInfoView: UIView {
     
     //MARK: - GUI Elemnts
     lazy var tittleLabe: DTAdaptiveLabel = {
@@ -32,10 +32,16 @@ class TDInfoView: UIView {
         case age
         case height
         case weight
+        
+        case totalReps
+        case totalAproach
+        case numberOfSubgroups
+        case avarageProjectileWeight
+        case totalWeight
     }
     
     //MARK: - Properties
-    var tapped: ((TDInfoView.InfoViewValue)-> Void)?
+    var tapped: ((DTInfoView.InfoViewValue)-> Void)?
     var type: InfoViewValue?
     var isValueSeted: Bool {
         switch self.valueLabel.text {
@@ -75,8 +81,8 @@ class TDInfoView: UIView {
             self.tittleLabe.text = "Height"
             self.valueLabel.text = UserModel.shared.displayHeight
             self.descriptionLabel.text = MeteringSetting.shared.heightDescription
-            self.addSubview(self.tittleLabe)
             self.addSubview(self.descriptionLabel)
+            self.addSubview(self.tittleLabe)
             self.addSubview(self.valueLabel)
             self.setConstraintForDescriptionLabel()
         case .weight:
@@ -87,6 +93,26 @@ class TDInfoView: UIView {
             self.addSubview(self.tittleLabe)
             self.addSubview(self.valueLabel)
             self.setConstraintForDescriptionLabel()
+        case .totalReps:
+            self.tittleLabe.text = "Total reps"
+            self.addSubview(self.tittleLabe)
+            self.addSubview(self.valueLabel)
+        case .totalAproach:
+            self.tittleLabe.text = "Total aproach"
+            self.addSubview(self.tittleLabe)
+            self.addSubview(self.valueLabel)
+        case .numberOfSubgroups:
+            self.tittleLabe.text = "Number of muscle subgroups"
+            self.addSubview(self.tittleLabe)
+            self.addSubview(self.valueLabel)
+        case .avarageProjectileWeight:
+            self.tittleLabe.text = "Avarage projectile weight"
+            self.addSubview(self.tittleLabe)
+            self.addSubview(self.valueLabel)
+        case .totalWeight:
+            self.tittleLabe.text = "Total train weight"
+            self.addSubview(self.tittleLabe)
+            self.addSubview(self.valueLabel)
         }
         self.setTapRecognizer()
         self.setAppearance()

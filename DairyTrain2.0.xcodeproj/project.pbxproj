@@ -37,7 +37,7 @@
 		1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5F9248392760012A76A /* UIImage+Ex.swift */; };
 		1396F5FC248394C20012A76A /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FB248394C20012A76A /* ProfileVC.swift */; };
 		1396F5FE2483BE480012A76A /* DTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FD2483BE480012A76A /* DTButton.swift */; };
-		1396F6002484175E0012A76A /* TDInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FF2484175E0012A76A /* TDInfoView.swift */; };
+		1396F6002484175E0012A76A /* DTInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FF2484175E0012A76A /* DTInfoView.swift */; };
 		1396F6022484216B0012A76A /* MainLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F6012484216B0012A76A /* MainLoginVC.swift */; };
 		139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D530C2473DF790028AE6A /* AlertHelper.swift */; };
 		139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D53102474035C0028AE6A /* DTSettingCell.swift */; };
@@ -100,7 +100,7 @@
 		1396F5F9248392760012A76A /* UIImage+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ex.swift"; sourceTree = "<group>"; };
 		1396F5FB248394C20012A76A /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1396F5FD2483BE480012A76A /* DTButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTButton.swift; sourceTree = "<group>"; };
-		1396F5FF2484175E0012A76A /* TDInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDInfoView.swift; sourceTree = "<group>"; };
+		1396F5FF2484175E0012A76A /* DTInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoView.swift; sourceTree = "<group>"; };
 		1396F6012484216B0012A76A /* MainLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoginVC.swift; sourceTree = "<group>"; };
 		139D530C2473DF790028AE6A /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		139D53102474035C0028AE6A /* DTSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSettingCell.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 		139FE9DC247859FD00B22C40 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1396F5FF2484175E0012A76A /* TDInfoView.swift */,
+				1396F5FF2484175E0012A76A /* DTInfoView.swift */,
 				138E551E246AB6160039BE10 /* DTViewWithCorners.swift */,
 				139FE9D624783CAA00B22C40 /* DTHeaderView.swift */,
 				13C89D21247046D2008AEF18 /* DTRecomendationHeaderView.swift */,
@@ -556,7 +556,7 @@
 				133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */,
 				13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */,
 				1379800924733AEB00BAD87C /* SettingsSectionVC.swift in Sources */,
-				1396F6002484175E0012A76A /* TDInfoView.swift in Sources */,
+				1396F6002484175E0012A76A /* DTInfoView.swift in Sources */,
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
 				139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */,
 				131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */,

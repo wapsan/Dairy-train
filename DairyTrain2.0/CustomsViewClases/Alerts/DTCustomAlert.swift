@@ -30,7 +30,7 @@ class DTCustomAlert: UIView {
     private var alertType: DTCustomAlert.AlertType?
     private var changingAproachIndex: Int?
     private weak var exercice: Exercise?
-    private weak var tappedInfoView: TDInfoView?
+    private weak var tappedInfoView: DTInfoView?
     private lazy var setAgeTitle = "Set age"
     private lazy var setWeightTitle = "Set weight"
     private lazy var setHeightTitle = "Set height"
@@ -259,13 +259,11 @@ class DTCustomAlert: UIView {
            - Parameter viewController: UIViewControler which will be shown custom alert.
            - Parameter infoView: TDInfoView by clicking on which alert was called
      */
-    func showInfoAlert(on viewController: UIViewController, with infoView: TDInfoView) {
+    func showInfoAlert(on viewController: UIViewController, with infoView: DTInfoView) {
         viewController.view.addSubview(self)
         self.tappedInfoView = infoView
         guard let infoViewType = infoView.type else { return }
         switch infoViewType {
-        case .trainCount:
-            break
         case .gender:
             self.setUpGenderAlertType()
         case .activityLevel:
@@ -274,6 +272,8 @@ class DTCustomAlert: UIView {
             self.setUpValueAlertType(with: infoViewType)
             self.setUpKeyBoardStyle(for: self.valueTextField)
             self.showKeyboard(for: self.valueTextField)
+        default:
+            break
         }
         
         self.delegate = viewController as? DTCustomAlertDelegate
@@ -319,7 +319,7 @@ class DTCustomAlert: UIView {
     }
 
     //MARK: - Private methods
-    private func setUpDefaultsValue(with infoView: TDInfoView) {
+    private func setUpDefaultsValue(with infoView: DTInfoView) {
         if infoView.isValueSeted {
             guard let infoViewType = infoView.type else { return }
             switch infoViewType {
@@ -382,7 +382,7 @@ class DTCustomAlert: UIView {
         self.setUpDefaultsConstraints()
     }
     
-    private func setUpValueAlertType(with valueToSet: TDInfoView.InfoViewValue) {
+    private func setUpValueAlertType(with valueToSet: DTInfoView.InfoViewValue) {
         self.setDefaultAlertType()
         self.alertView.addSubview(self.titleLabel)
         self.alertView.addSubview(self.valueTextField)
@@ -640,9 +640,7 @@ class DTCustomAlert: UIView {
             case .weight:
                 self.writeValueInfo()
                 self.tappedInfoView?.valueLabel.text = UserModel.shared.displayWeight
-            case .trainCount:
-                break
-            case .none:
+            default:
                 break
             }
         case .newAproachAlert:

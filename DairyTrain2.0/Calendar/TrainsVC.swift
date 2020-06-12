@@ -2,6 +2,9 @@ import UIKit
 
 class TrainsVC: MainTabBarItemVC {
     
+    //MARK: - Properties
+    lazy var headerTitle = "Your trains"
+    
     //MARK: - GUI Properties
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -16,7 +19,7 @@ class TrainsVC: MainTabBarItemVC {
     }()
        
     lazy var headerView: DTHeaderView = {
-        let view = DTHeaderView(title: "Your trains")
+        let view = DTHeaderView(title: self.headerTitle)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

@@ -1,6 +1,7 @@
 import UIKit
 
 struct Statistics {
+    
     var numberOfTrainedSubgroups: Int
     var totalNumberOfReps: Int
     var totalNumberOfAproach: Int
@@ -53,10 +54,7 @@ struct Statistics {
 
 
 class Train {
-    
-    //MARK: - Statistics structure
-    
-    
+
     //MARK: - Properties
     var exercises: [Exercise] = []
     var exercicesSet = Set<String>()
