@@ -1,56 +1,6 @@
 import UIKit
 
-struct Statistics {
-    
-    var numberOfTrainedSubgroups: Int
-    var totalNumberOfReps: Int
-    var totalNumberOfAproach: Int
-    var averageProjectileWeight: Double {
-        return self.totalWorkoutWeight / Double(self.totalNumberOfAproach)
-    }
-    var totalWorkoutWeight: Double
-    
-    func setToTalNumberOfAproach(in train: Train) -> Int {
-        var aproaches = 0
-        train.exercises.forEach { (exercise) in
-            exercise.aproaches.forEach { (aproach) in
-                aproaches += 1
-            }
-        }
-        return aproaches
-    }
-    
-    init(for train: Train) {
-        self.numberOfTrainedSubgroups = train.subgroupInCurrentTrain.count
-        self.totalNumberOfAproach = {
-            var aproaches = 0
-            train.exercises.forEach { (exercise) in
-                exercise.aproaches.forEach { (aproach) in
-                    aproaches += 1
-                }
-            }
-            return aproaches
-        }()
-        self.totalNumberOfReps = {
-            var reps = 0
-            train.exercises.forEach { (exercise) in
-                exercise.aproaches.forEach { (aproach) in
-                    reps += aproach.reps
-                }
-            }
-            return reps
-        }()
-        self.totalWorkoutWeight = {
-            var totalWeight = 0.0
-            train.exercises.forEach { (exercise) in
-                exercise.aproaches.forEach { (aproach) in
-                    totalWeight += aproach.weight
-                }
-            }
-            return totalWeight
-        }()
-    }
-}
+
 
 
 class Train {

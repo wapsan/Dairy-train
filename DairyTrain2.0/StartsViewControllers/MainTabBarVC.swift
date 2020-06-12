@@ -88,9 +88,11 @@ class MainTabBarVC: UITabBarController {
     //MARK: - Actions
     @objc private func exerciceDidAdd(_ notification: NSNotification) {
         guard let userInfo = (notification as NSNotification).userInfo else { return }
-        guard let trains = userInfo["Exercices"] as? [Train] else { return }
+        guard let trains = userInfo["Trains"] as? [Train] else { return }
         let trainsVC = TrainsVC()
         trainsVC.userTrainsList = trains
+      //  let commonStatisticsVC = CommonStatisticsVC()
+       // commonStatisticsVC.userTrainsList =
     }
 }
 

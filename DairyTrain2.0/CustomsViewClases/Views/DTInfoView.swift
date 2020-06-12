@@ -3,7 +3,7 @@ import UIKit
 class DTInfoView: UIView {
     
     //MARK: - GUI Elemnts
-    lazy var tittleLabe: DTAdaptiveLabel = {
+    lazy var titleLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.font = .boldSystemFont(ofSize: 25)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -58,60 +58,60 @@ class DTInfoView: UIView {
         self.type = type
         switch type {
         case .trainCount:
-            self.tittleLabe.text = "Total train"
+            self.titleLabel.text = "Total train"
             self.valueLabel.text = UserModel.shared.displayTrainCount
-            self.addSubview(self.tittleLabe)
+            self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .gender:
-            self.tittleLabe.text = "Gender"
+            self.titleLabel.text = "Gender"
             self.valueLabel.text = UserModel.shared.displayGender
-            self.addSubview(self.tittleLabe)
+            self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .activityLevel:
-            self.tittleLabe.text = "Activity level"
+            self.titleLabel.text = "Activity level"
             self.valueLabel.text = UserModel.shared.displayActivityLevel
-            self.addSubview(self.tittleLabe)
+            self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .age:
-            self.tittleLabe.text = "Age"
+            self.titleLabel.text = "Age"
             self.valueLabel.text = UserModel.shared.displayAge
-            self.addSubview(self.tittleLabe)
+            self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .height:
-            self.tittleLabe.text = "Height"
+            self.titleLabel.text = "Height"
             self.valueLabel.text = UserModel.shared.displayHeight
             self.descriptionLabel.text = MeteringSetting.shared.heightDescription
             self.addSubview(self.descriptionLabel)
-            self.addSubview(self.tittleLabe)
+            self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
             self.setConstraintForDescriptionLabel()
         case .weight:
-            self.tittleLabe.text = "Weight"
+            self.titleLabel.text = "Weight"
             self.valueLabel.text = UserModel.shared.displayWeight
             self.descriptionLabel.text = MeteringSetting.shared.weightDescription
             self.addSubview(self.descriptionLabel)
-            self.addSubview(self.tittleLabe)
+            self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
             self.setConstraintForDescriptionLabel()
         case .totalReps:
-            self.tittleLabe.text = "Total reps"
-            self.addSubview(self.tittleLabe)
+            self.titleLabel.text = "Total reps"
+            self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .totalAproach:
-            self.tittleLabe.text = "Total aproach"
-            self.addSubview(self.tittleLabe)
+            self.titleLabel.text = "Total aproach"
+            self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .numberOfSubgroups:
-            self.tittleLabe.text = "Number of muscle subgroups"
-            self.addSubview(self.tittleLabe)
+            self.titleLabel.text = "Number of muscle subgroups"
+            self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .avarageProjectileWeight:
-            self.tittleLabe.text = "Avarage projectile weight"
-            self.addSubview(self.tittleLabe)
+            self.titleLabel.text = "Avarage projectile weight"
+            self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .totalWeight:
-            self.tittleLabe.text = "Total train weight"
-            self.addSubview(self.tittleLabe)
+            self.titleLabel.text = "Total train weight"
+            self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         }
         self.setTapRecognizer()
@@ -132,7 +132,7 @@ class DTInfoView: UIView {
     //MARK: - Private methods
     private func setAppearance() {
         self.backgroundColor = .viewFlipsideBckgoundColor
-        self.addSubview(self.tittleLabe)
+        self.addSubview(self.titleLabel)
         self.addSubview(self.valueLabel)
         self.setDefaultLayer()
     }
@@ -209,10 +209,10 @@ class DTInfoView: UIView {
     //MARK: - Constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            self.tittleLabe.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            self.tittleLabe.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
-            self.tittleLabe.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
-            self.tittleLabe.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25)
+            self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            self.titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8),
+            self.titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8),
+            self.titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25)
         ])
 
         NSLayoutConstraint.activate([
@@ -225,7 +225,7 @@ class DTInfoView: UIView {
     
     private func setConstraintForDescriptionLabel() {
         NSLayoutConstraint.activate([
-            self.descriptionLabel.topAnchor.constraint(equalTo: self.tittleLabe.bottomAnchor, constant: 0),
+            self.descriptionLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 0),
             self.descriptionLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
             self.descriptionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
             self.descriptionLabel.bottomAnchor.constraint(equalTo: self.valueLabel.topAnchor, constant: 0)

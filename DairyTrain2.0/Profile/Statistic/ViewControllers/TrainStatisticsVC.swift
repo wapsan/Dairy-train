@@ -5,35 +5,36 @@ class TrainStatisticsVC: MainTabBarItemVC {
     //MARK: - Private properties
     private var statistics: Statistics?
     private var trainDate: String?
+    private lazy var edgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: -16, right: -16)
     
     //MARK: - GUI Properties
     lazy var totalWeightView: DTInfoView = {
         let view = DTInfoView(type: .totalWeight)
-        view.valueLabel.text = String(self.statistics?.totalWorkoutWeight ?? 0)
-        return view
-    }()
-    
-    lazy var numberOfTrainedSubgroupsView: DTInfoView = {
-        let view = DTInfoView(type: .numberOfSubgroups)
-        view.valueLabel.text = String(self.statistics?.numberOfTrainedSubgroups ?? 0)
+        view.valueLabel.text = self.statistics?.totalWorkoutWeight ?? "0"
         return view
     }()
     
     lazy var avaragepProgectileWeightView: DTInfoView = {
         let view = DTInfoView(type: .avarageProjectileWeight)
-        view.valueLabel.text = String(format: "%.2f", self.statistics?.averageProjectileWeight ?? 0)
+        view.valueLabel.text = self.statistics?.averageProjectileWeight ?? "0"
         return view
     }()
     
     lazy var totalRepsView: DTInfoView = {
         let view = DTInfoView(type: .totalReps)
-        view.valueLabel.text = String(self.statistics?.totalNumberOfReps ?? 0)
+        
+        view.valueLabel.text = self.statistics?.totalNumberOfReps ?? "0"
         return view
     }()
     
     lazy var totalAproachesView: DTInfoView = {
         let view = DTInfoView(type: .totalAproach)
-        view.valueLabel.text = String(self.statistics?.totalNumberOfAproach ?? 0)
+        view.valueLabel.text = self.statistics?.totalNumberOfAproach ?? "0"
+        return view
+    }()
+    
+    lazy var trainedMusclesView: DTMuscleSubgroupInfoView = {
+        let view = DTMuscleSubgroupInfoView(for: self.statistics?.trainedSubGroupsList)
         return view
     }()
     
@@ -48,25 +49,15 @@ class TrainStatisticsVC: MainTabBarItemVC {
         return stackView
     }()
     
-    lazy var subgroupsAndAvarageWeightStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.spacing = 16
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.addArrangedSubview(self.numberOfTrainedSubgroupsView)
-        stackView.addArrangedSubview(self.avaragepProgectileWeightView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
     lazy var mainContainerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = 16
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.addArrangedSubview(self.totalWeightView)
         stackView.addArrangedSubview(self.repsAndAproachStackView)
-        stackView.addArrangedSubview(self.subgroupsAndAvarageWeightStackView)
+        stackView.addArrangedSubview(self.totalWeightView)
+        stackView.addArrangedSubview(self.avaragepProgectileWeightView)
+        stackView.addArrangedSubview(self.trainedMusclesView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -86,6 +77,14 @@ class TrainStatisticsVC: MainTabBarItemVC {
     private func setUpView() {
         self.view.addSubview(self.mainContainerStackView)
         self.setUpConstraints()
+        self.addObserverForTrainigChanged()
+    }
+    
+    private func addObserverForTrainigChanged() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.trainingWasChanged(_:)),
+                                               name: .trainingWasChanged,
+                                               object: nil)
     }
     
     //MARK: - Public methods
@@ -98,10 +97,21 @@ class TrainStatisticsVC: MainTabBarItemVC {
     private func setUpConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.mainContainerStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 16),
-            self.mainContainerStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16),
-            self.mainContainerStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
-            self.mainContainerStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -16),
+            self.mainContainerStackView.topAnchor.constraint(equalTo: safeArea.topAnchor,
+                                                             constant: self.edgeInsets.top),
+            self.mainContainerStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
+                                                              constant: self.edgeInsets.left),
+            self.mainContainerStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
+                                                               constant: self.edgeInsets.right),
+            self.mainContainerStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor,
+                                                                constant: self.edgeInsets.bottom),
         ])
+    }
+    
+    //MARK: - Actions
+    @objc private func trainingWasChanged(_ notification: Notification) {
+        guard let userInfo = (notification as NSNotification).userInfo else { return }
+        guard let train = userInfo["Train"] as? Train else { return }
+        self.trainedMusclesView.updateSubgroupsImages(for: train.subgroupInCurrentTrain)
     }
 }

@@ -1,4 +1,3 @@
-
 import UIKit
 
 class CommonStatisticsVC: TrainsVC {
@@ -27,7 +26,6 @@ class CommonStatisticsVC: TrainsVC {
         self.navigationController?.pushViewController(trainStatiticsViewController, animated: true)
     }
 }
-
 
 //MARK: - UICollectionview datasourse and delegate
 extension CommonStatisticsVC {
