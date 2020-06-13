@@ -637,6 +637,7 @@ class DTCustomAlert: UIView {
             case .gender:
                 self.writeListSelectionInfo()
                 self.tappedInfoView?.valueLabel.text = profileManager.profileInfo?.gender?.rawValue ?? "_"
+                
                // self.tappedInfoView?.valueLabel.text = UserModel.shared.displayGender
             case .activityLevel:
                 self.writeListSelectionInfo()
@@ -656,6 +657,7 @@ class DTCustomAlert: UIView {
             default:
                 break
             }
+            DTFirebaseFileManager.shared.updateMainUserInfo()
         case .newAproachAlert:
             self.writeNewAproachInfo()
         case .aproachAlert:

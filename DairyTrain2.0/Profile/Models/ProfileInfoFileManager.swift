@@ -16,6 +16,8 @@ class ProfileInfoFileManager {
         return self._profileInfo
     }
     
+    var encodedProfileInfo: Data?
+    
     //MARK: - Initialization
     init() {
         self.directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -27,6 +29,7 @@ class ProfileInfoFileManager {
         if let filePath = localPath, let model = self._profileInfo,
             let encodeData = try? JSONEncoder().encode(model) {
             do {
+                self.encodedProfileInfo = encodeData
                 try encodeData.write(to: filePath)
                 print("Data successfully saved.")
             } catch {
