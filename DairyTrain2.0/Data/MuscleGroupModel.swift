@@ -1,10 +1,8 @@
 import UIKit
 
-
-
-class MuscleGroup {
+class MuscleGroup: NSObject, Codable {
     
-    enum Group: String {
+    enum Group: String, Codable {
         case shoulders = "Shoulders"
         case chest = "Chest"
         case arms = "Arms"
@@ -32,7 +30,7 @@ class MuscleGroup {
     
     var groups: [MuscleGroup.Group] = []
     
-    init() {
+    override init() {
         self.groups = [.shoulders, .arms, .chest, .back, .core, .legs]
     }
     

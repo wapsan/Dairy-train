@@ -24,9 +24,9 @@ class TrainingVC: MuscleGroupsVC {
     }
     
     private func setCurrentTrain() {
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
+       // Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
              self.tableView.reloadData()
-        }
+       // }
     }
     
     private func setUpNavigationBar() {
@@ -55,9 +55,12 @@ class TrainingVC: MuscleGroupsVC {
         }
     }
     
-    @objc private func trainigWasChanged() {
-        print("TrainVC - train was changed")
-        self.setCurrentTrain()
+    @objc private func trainigWasChanged(_ notification: Notification) {
+        guard let userInfo = (notification as NSNotification).userInfo else { return }
+        guard let train = userInfo["Train"] as? Train else { return }
+        self.train = train
+        self.tableView.reloadData()
+        //self.setCurrentTrain()
     }
 }
 

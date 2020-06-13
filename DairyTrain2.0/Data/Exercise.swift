@@ -1,9 +1,9 @@
 import UIKit
 
-class Exercise {
+class Exercise: NSObject, Codable {
  
     //MARK: - Structures
-    struct Approach: Hashable {
+    struct Approach: Hashable, Codable {
         var weight: Double
         var reps: Int
         var weightDisplayvalue: String {

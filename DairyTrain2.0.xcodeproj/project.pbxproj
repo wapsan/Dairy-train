@@ -13,6 +13,10 @@
 		131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131733722490E08600292D84 /* DTExerciseCell+Ex.swift */; };
 		13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A3D247E4A6300AB7419 /* DTTrainCell.swift */; };
 		13243A41247E768B00AB7419 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A40247E768B00AB7419 /* DateHelper.swift */; };
+		1325A0EB2495435600349E47 /* UserTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1325A0EA2495435600349E47 /* UserTrainingModel.swift */; };
+		1325A0ED249546AA00349E47 /* UserTrainingModelFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1325A0EC249546AA00349E47 /* UserTrainingModelFileManager.swift */; };
+		1325A0F024954FBC00349E47 /* CurrentTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1325A0EF24954FBC00349E47 /* CurrentTrainingModel.swift */; };
+		1325A0F22495506700349E47 /* CurrentTrainingFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1325A0F12495506700349E47 /* CurrentTrainingFileManager.swift */; };
 		132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132D958B2485809B006E5A41 /* AppAuthentication.swift */; };
 		1335B2672495026B00D8276F /* ProfileInfoFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335B2662495026B00D8276F /* ProfileInfoFileManager.swift */; };
 		1335B2692495183300D8276F /* DTFirebaseFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335B2682495183300D8276F /* DTFirebaseFileManager.swift */; };
@@ -78,6 +82,10 @@
 		131733722490E08600292D84 /* DTExerciseCell+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTExerciseCell+Ex.swift"; sourceTree = "<group>"; };
 		13243A3D247E4A6300AB7419 /* DTTrainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainCell.swift; sourceTree = "<group>"; };
 		13243A40247E768B00AB7419 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		1325A0EA2495435600349E47 /* UserTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrainingModel.swift; sourceTree = "<group>"; };
+		1325A0EC249546AA00349E47 /* UserTrainingModelFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrainingModelFileManager.swift; sourceTree = "<group>"; };
+		1325A0EF24954FBC00349E47 /* CurrentTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTrainingModel.swift; sourceTree = "<group>"; };
+		1325A0F12495506700349E47 /* CurrentTrainingFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTrainingFileManager.swift; sourceTree = "<group>"; };
 		132D958B2485809B006E5A41 /* AppAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthentication.swift; sourceTree = "<group>"; };
 		1335B2662495026B00D8276F /* ProfileInfoFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoFileManager.swift; sourceTree = "<group>"; };
 		1335B2682495183300D8276F /* DTFirebaseFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTFirebaseFileManager.swift; sourceTree = "<group>"; };
@@ -155,28 +163,30 @@
 		130634442494DE76008C1ECF /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				130634452494DE80008C1ECF /* Choose training */,
-				130634462494DEA9008C1ECF /* Edit current training */,
+				130634452494DE80008C1ECF /* Training list */,
+				130634462494DEA9008C1ECF /* Choosen training */,
 			);
 			path = Features;
 			sourceTree = "<group>";
 		};
-		130634452494DE80008C1ECF /* Choose training */ = {
+		130634452494DE80008C1ECF /* Training list */ = {
 			isa = PBXGroup;
 			children = (
 				130634472494DEE0008C1ECF /* ViewControllers */,
 				130634492494DF8D008C1ECF /* Cells */,
+				1325A0E92495406900349E47 /* Model */,
 			);
-			path = "Choose training";
+			path = "Training list";
 			sourceTree = "<group>";
 		};
-		130634462494DEA9008C1ECF /* Edit current training */ = {
+		130634462494DEA9008C1ECF /* Choosen training */ = {
 			isa = PBXGroup;
 			children = (
 				1306344A2494DFC5008C1ECF /* Cells */,
 				130634482494DEEB008C1ECF /* ViewControllers */,
+				1325A0EE24954F9E00349E47 /* Models */,
 			);
-			path = "Edit current training";
+			path = "Choosen training";
 			sourceTree = "<group>";
 		};
 		130634472494DEE0008C1ECF /* ViewControllers */ = {
@@ -395,6 +405,24 @@
 				13243A40247E768B00AB7419 /* DateHelper.swift */,
 			);
 			path = "Date helper";
+			sourceTree = "<group>";
+		};
+		1325A0E92495406900349E47 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1325A0EA2495435600349E47 /* UserTrainingModel.swift */,
+				1325A0EC249546AA00349E47 /* UserTrainingModelFileManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1325A0EE24954F9E00349E47 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1325A0EF24954FBC00349E47 /* CurrentTrainingModel.swift */,
+				1325A0F12495506700349E47 /* CurrentTrainingFileManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		133AA599246163E5009EBF8E = {
@@ -817,13 +845,16 @@
 				1386AA20246C15500016A757 /* ReadWriteFirebasedata.swift in Sources */,
 				13902AB4249411ED00963A07 /* DTMuscleSubgroupsCell.swift in Sources */,
 				13BF82BD247C2E54005C5494 /* MainTabBarItemVC.swift in Sources */,
+				1325A0F22495506700349E47 /* CurrentTrainingFileManager.swift in Sources */,
 				1335B2692495183300D8276F /* DTFirebaseFileManager.swift in Sources */,
 				13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */,
 				13416FA22485345100EC6590 /* GoogleSignInButton.swift in Sources */,
+				1325A0EB2495435600349E47 /* UserTrainingModel.swift in Sources */,
 				13FAF17A246FCAA600537408 /* CaloriesCalculator.swift in Sources */,
 				1335CBB02465AC03009C2E20 /* DTStyledTextField.swift in Sources */,
 				13786E1D2478271C0084E48C /* NotificationName+Ex.swift in Sources */,
 				13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */,
+				1325A0ED249546AA00349E47 /* UserTrainingModelFileManager.swift in Sources */,
 				13C89D22247046D2008AEF18 /* DTRecomendationHeaderView.swift in Sources */,
 				13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */,
 				13EB98FD247D54B300DE9CD9 /* MuscleSubgroupsVC.swift in Sources */,
@@ -847,6 +878,7 @@
 				139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */,
 				13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */,
 				13EC525F24810E4A00A05BCA /* DTEditingExerciceCell.swift in Sources */,
+				1325A0F024954FBC00349E47 /* CurrentTrainingModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

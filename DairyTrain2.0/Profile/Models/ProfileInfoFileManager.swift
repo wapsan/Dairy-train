@@ -50,6 +50,18 @@ class ProfileInfoFileManager {
         }
     }
     
+    private func removeDataFromDevice() {
+        let localPath = self.directoryURL.appendingPathComponent(self.strinPath) as URL?
+        if let filePath = localPath {
+            do {
+                try FileManager.default.removeItem(at: filePath)
+                print("Data successfully removed from device.")
+            } catch  {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     //MARK: - Public methods
     func writeAge(to age: Int) {
         self._profileInfo?.age = age

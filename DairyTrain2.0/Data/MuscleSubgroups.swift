@@ -1,8 +1,8 @@
 import UIKit
 
-class MuscleSubgroup {
+class MuscleSubgroup: NSObject, Codable {
     
-    enum Subgroup: String {
+    enum Subgroup: String, Codable {
         case frontDelts = "Front delts"
         case middleDelts = "Middle delts"
         case rearDelts = "Rear delts"

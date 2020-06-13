@@ -3,7 +3,7 @@ import UIKit
 
 
 
-class Train {
+class Train: NSObject, Codable {
 
     //MARK: - Properties
     var exercises: [Exercise] = []

@@ -4,6 +4,7 @@ class TrainingListVC: MainTabBarItemVC {
     
     //MARK: - Properties
     lazy var headerTitle = "Your trains"
+    private lazy var isTrainingChenged: Bool = false
     
     //MARK: - GUI Properties
     lazy var collectionView: UICollectionView = {
@@ -40,17 +41,33 @@ class TrainingListVC: MainTabBarItemVC {
         super.viewDidLoad()
         self.addObserverForAddTrainToList()
         self.setUpViewController()
+        let deleteTrainButton = UIBarButtonItem(barButtonSystemItem: .trash,
+                                                target: self,
+                                                action: #selector(self.removeTrain))
+        self.navigationItem.leftBarButtonItem  = deleteTrainButton
+    }
+    @objc private func removeTrain() {
+        UserTrainingModelFileManager.shared.removeTrainingDataFromDevice()
+        self.setUpViewController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if self.isTrainingChenged {
+            self.setUpViewController()
+            self.isTrainingChenged = false
+        }
     }
     
     //MARK: - Private methods
     private func setUpViewController() {
-        self.userTrainsList = UserModel.shared.trains
+       // self.userTrainsList = UserModel.shared.trains
+        self.userTrainsList = UserTrainingModelFileManager.shared.trainingInfo.trainingList
         if self.userTrainsList.isEmpty {
             self.setUpEmptyTrainingList()
+            self.deactivateNotEmptyTrainingListConstraints()
+            self.headerView.removeFromSuperview()
+            self.collectionView.removeFromSuperview()
         } else {
             self.setHeaderView()
             self.setUpCollectionView()
@@ -88,6 +105,10 @@ class TrainingListVC: MainTabBarItemVC {
                                                selector: #selector(self.trainingWasAdded),
                                                name: .addNewTrain,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.trainingWasAdded),
+                                               name: .trainingWasChanged,
+                                               object: nil)
     }
     
     //MARK: - Constraint
@@ -113,6 +134,25 @@ class TrainingListVC: MainTabBarItemVC {
         ])
     }
     
+    private func deactivateNotEmptyTrainingListConstraints() {
+        let safeArea = self.view.safeAreaLayoutGuide
+               NSLayoutConstraint.deactivate([
+                   self.collectionView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
+                                                            constant: 8),
+                   self.collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+                   self.collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor,
+                                                                constant: 16),
+                   self.collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor,
+                                                                 constant: -16)
+               ])
+        
+        NSLayoutConstraint.deactivate([
+                   self.headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+                   self.headerView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+                   self.headerView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
+               ])
+    }
+    
     private func setUpEmtyTrainingListLabelConstraints() {
         NSLayoutConstraint.activate([
             self.emptyTainingListLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -129,7 +169,9 @@ class TrainingListVC: MainTabBarItemVC {
     
     //MARK: - Actions
     @objc private func trainingWasAdded() {
+        print("Ttrain list vc trainig was changed")
         self.setUpViewController()
+        self.isTrainingChenged = true
     }
 }
 
@@ -143,9 +185,10 @@ extension TrainingListVC: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DTTrainCell.cellID,
                                                       for: indexPath) as! DTTrainCell
-        let train = userTrainsList[indexPath.row]
+       // let train = userTrainsList[indexPath.row]
+        let train = UserTrainingModelFileManager.shared.trainingInfo.trainingList[indexPath.row]
         cell.dateLabel.text = train.dateTittle
-         cell.setGroupIcons(by: train.groupsInCurrentTrain)
+        cell.setGroupIcons(by: train.groupsInCurrentTrain)
         return cell
     }
     

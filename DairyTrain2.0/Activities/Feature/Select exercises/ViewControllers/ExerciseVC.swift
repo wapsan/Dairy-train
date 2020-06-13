@@ -55,14 +55,15 @@ class ExercicesVC: MuscleGroupsVC {
     }
     
     private func addExercicesComplition() {
-        if UserModel.shared.createTrain(with: self.selectedExercices) {
+      //  if UserModel.shared.createTrain(with: self.selectedExercices) {
+        if UserTrainingModelFileManager.shared.addExercesToTrain(self.selectedExercices) {
             NotificationCenter.default.post(name: .addNewTrain,
                                             object: nil,
                                             userInfo: ["Trains": UserModel.shared.trains] )
         } else {
             NotificationCenter.default.post(name: .trainingWasChanged,
                                             object: nil,
-                                            userInfo: ["Train": UserModel.shared.trains[0]])
+                                            userInfo: ["Train": UserTrainingModelFileManager.shared.trainingInfo.trainingList[0]])
         }
         self.showAddedAllert()
     }
