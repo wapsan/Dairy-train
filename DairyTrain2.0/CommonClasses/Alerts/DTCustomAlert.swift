@@ -9,7 +9,7 @@ class DTCustomAlert: UIView {
     
     //MARK: - Singletone propertie
     static let shared = DTCustomAlert()
-    
+    private lazy var profileManager = ProfileInfoFileManager.shared
     //MARK: - Enum
     /**
     Type, wich set alert behavor for write data for user model.
@@ -433,11 +433,15 @@ class DTCustomAlert: UIView {
             let tappedInfoViewValue = self.tappedInfoView?.type else { return }
         switch tappedInfoViewValue  {
         case .age:
-            UserModel.shared.setAge(to: Int(infoDouble))
+            //ProfileInfoFileManager.shared.writeAge(to: Int(infoDouble))
+         //   UserModel.shared.setAge(to: Int(infoDouble))
+            self.profileManager.writeAge(to: Int(infoDouble))
         case .weight:
-            UserModel.shared.setWeight(to: infoDouble)
+           // UserModel.shared.setWeight(to: infoDouble)
+            self.profileManager.writeWeight(to: infoDouble)
         case .height:
-            UserModel.shared.setHeight(to: infoDouble)
+          //  UserModel.shared.setHeight(to: infoDouble)
+            self.profileManager.writeHeight(to: infoDouble)
         default:
             break
         }
@@ -451,11 +455,16 @@ class DTCustomAlert: UIView {
                     let tappedInfoViewValue = self.tappedInfoView?.type else { return }
                 switch tappedInfoViewValue {
                 case .gender:
-                    guard let setedGender = UserModel.Gender.init(rawValue: buttonTittle) else { return }
-                    UserModel.shared.setGender(to: setedGender )
+                    
+                    guard let newGenderValue = ProfileInfoModel.Gender.init(rawValue: buttonTittle) else { return }
+                    self.profileManager.writeGender(to: newGenderValue)
+                    //guard let setedGender = UserModel.Gender.init(rawValue: buttonTittle) else { return }
+                    //UserModel.shared.setGender(to: setedGender )
                 case .activityLevel:
-                    guard let setedActivityLevel = UserModel.ActivivtyLevel.init(rawValue: buttonTittle) else { return }
-                    UserModel.shared.setActivivtyLevel(to: setedActivityLevel)
+                    guard let newActivityLevelValue = ProfileInfoModel.ActivityLevel.init(rawValue: buttonTittle) else { return }
+                    self.profileManager.writeActivityLevel(to: newActivityLevelValue )
+//                    guard let setedActivityLevel = UserModel.ActivivtyLevel.init(rawValue: buttonTittle) else { return }
+//                    UserModel.shared.setActivivtyLevel(to: setedActivityLevel)
                 default:
                     break
                 }
@@ -627,19 +636,23 @@ class DTCustomAlert: UIView {
             switch tappedInfoView.type {
             case .gender:
                 self.writeListSelectionInfo()
-                self.tappedInfoView?.valueLabel.text = UserModel.shared.displayGender
+                self.tappedInfoView?.valueLabel.text = profileManager.profileInfo?.gender?.rawValue ?? "_"
+               // self.tappedInfoView?.valueLabel.text = UserModel.shared.displayGender
             case .activityLevel:
                 self.writeListSelectionInfo()
-                self.tappedInfoView?.valueLabel.text = UserModel.shared.displayActivityLevel
+                self.tappedInfoView?.valueLabel.text = profileManager.profileInfo?.activityLevel?.rawValue ?? "_"
+               // self.tappedInfoView?.valueLabel.text = UserModel.shared.displayActivityLevel
             case .age:
                 self.writeValueInfo()
-                self.tappedInfoView?.valueLabel.text = UserModel.shared.displayAge
+                self.tappedInfoView?.valueLabel.text = String(profileManager.profileInfo?.age ?? 0)
             case .height:
                 self.writeValueInfo()
-                self.tappedInfoView?.valueLabel.text = UserModel.shared.displayHeight
+                self.tappedInfoView?.valueLabel.text = String(profileManager.profileInfo?.height ?? 0)
+                //self.tappedInfoView?.valueLabel.text = UserModel.shared.displayHeight
             case .weight:
                 self.writeValueInfo()
-                self.tappedInfoView?.valueLabel.text = UserModel.shared.displayWeight
+                self.tappedInfoView?.valueLabel.text = String(profileManager.profileInfo?.weight ?? 0)
+               // self.tappedInfoView?.valueLabel.text = UserModel.shared.displayWeight
             default:
                 break
             }

@@ -2,6 +2,8 @@ import UIKit
     
 class DTInfoView: UIView {
     
+    private var profileManager = ProfileInfoFileManager.shared
+    
     //MARK: - GUI Elemnts
     lazy var titleLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
@@ -64,22 +66,22 @@ class DTInfoView: UIView {
             self.addSubview(self.valueLabel)
         case .gender:
             self.titleLabel.text = "Gender"
-            self.valueLabel.text = UserModel.shared.displayGender
+            self.valueLabel.text = String(self.profileManager.profileInfo?.gender?.rawValue ?? "_")
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .activityLevel:
             self.titleLabel.text = "Activity level"
-            self.valueLabel.text = UserModel.shared.displayActivityLevel
+            self.valueLabel.text = String(self.profileManager.profileInfo?.activityLevel?.rawValue ?? "_")
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .age:
             self.titleLabel.text = "Age"
-            self.valueLabel.text = UserModel.shared.displayAge
+            self.valueLabel.text = String(self.profileManager.profileInfo?.age ?? 0)
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .height:
             self.titleLabel.text = "Height"
-            self.valueLabel.text = UserModel.shared.displayHeight
+            self.valueLabel.text = String(self.profileManager.profileInfo?.height ?? 0)
             self.descriptionLabel.text = MeteringSetting.shared.heightDescription
             self.addSubview(self.descriptionLabel)
             self.addSubview(self.titleLabel)
@@ -87,7 +89,7 @@ class DTInfoView: UIView {
             self.setConstraintForDescriptionLabel()
         case .weight:
             self.titleLabel.text = "Weight"
-            self.valueLabel.text = UserModel.shared.displayWeight
+            self.valueLabel.text = String(self.profileManager.profileInfo?.weight ?? 0)
             self.descriptionLabel.text = MeteringSetting.shared.weightDescription
             self.addSubview(self.descriptionLabel)
             self.addSubview(self.titleLabel)
