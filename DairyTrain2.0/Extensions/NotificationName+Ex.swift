@@ -1,6 +1,5 @@
 import Foundation
 
-
 extension Notification.Name {
     static var googleSignIn = Notification.Name(rawValue: "googleSifgnIn")
     static var colorThemeChanged = Notification.Name("colorChanged")

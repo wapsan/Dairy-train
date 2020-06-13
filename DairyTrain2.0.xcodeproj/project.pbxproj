@@ -20,26 +20,24 @@
 		133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5B0246163E7009EBF8E /* LaunchScreen.storyboard */; };
 		13416FA22485345100EC6590 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13416FA12485345100EC6590 /* GoogleSignInButton.swift */; };
 		13479F37247BD55D002FFB4E /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F36247BD55D002FFB4E /* MainTabBarVC.swift */; };
-		13479F39247BD82C002FFB4E /* ActivitiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F38247BD82C002FFB4E /* ActivitiesVC.swift */; };
-		13479F3B247BD84A002FFB4E /* TrainsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F3A247BD84A002FFB4E /* TrainsVC.swift */; };
+		13479F39247BD82C002FFB4E /* MuscleGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F38247BD82C002FFB4E /* MuscleGroupsVC.swift */; };
+		13479F3B247BD84A002FFB4E /* TrainingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F3A247BD84A002FFB4E /* TrainingListVC.swift */; };
 		134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */; };
 		135B8815248132360032251D /* DTAproachCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B8814248132360032251D /* DTAproachCell.swift */; };
 		135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F22892494296F00EEE140 /* StatisticsModel.swift */; };
 		136570D12491259C00BF926B /* CommonStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136570D02491259C00BF926B /* CommonStatisticsVC.swift */; };
 		136570D3249125DB00BF926B /* TrainStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136570D2249125DB00BF926B /* TrainStatisticsVC.swift */; };
-		137018612467246A0026A17B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137018602467246A0026A17B /* File.swift */; };
 		13786E1D2478271C0084E48C /* NotificationName+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13786E1C2478271C0084E48C /* NotificationName+Ex.swift */; };
 		1379800924733AEB00BAD87C /* SettingsSectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379800824733AEB00BAD87C /* SettingsSectionVC.swift */; };
 		137D55B624897B6300EFBAB6 /* DTSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137D55B524897B6300EFBAB6 /* DTSettingManager.swift */; };
 		1380D933247AC55300212CB4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1380D932247AC55300212CB4 /* UserModel.swift */; };
 		1386AA20246C15500016A757 /* ReadWriteFirebasedata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386AA1F246C15500016A757 /* ReadWriteFirebasedata.swift */; };
 		138BDB78248665330033F378 /* DTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BDB77248665330033F378 /* DTTextField.swift */; };
-		138E551F246AB6160039BE10 /* DTViewWithCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E551E246AB6160039BE10 /* DTViewWithCorners.swift */; };
 		13902AB12493D45C00963A07 /* DTMuscleSubgroupInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13902AB02493D45C00963A07 /* DTMuscleSubgroupInfoView.swift */; };
 		13902AB4249411ED00963A07 /* DTMuscleSubgroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */; };
 		1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5F9248392760012A76A /* UIImage+Ex.swift */; };
 		1396F5FC248394C20012A76A /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FB248394C20012A76A /* ProfileVC.swift */; };
-		1396F5FE2483BE480012A76A /* DTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FD2483BE480012A76A /* DTButton.swift */; };
+		1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FD2483BE480012A76A /* DTSystemButton.swift */; };
 		1396F6002484175E0012A76A /* DTInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FF2484175E0012A76A /* DTInfoView.swift */; };
 		1396F6022484216B0012A76A /* MainLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F6012484216B0012A76A /* MainLoginVC.swift */; };
 		139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D530C2473DF790028AE6A /* AlertHelper.swift */; };
@@ -49,6 +47,7 @@
 		139D531B24753D060028AE6A /* SettingCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531A24753D060028AE6A /* SettingCore.swift */; };
 		139FE9D3247838EF00B22C40 /* DTActivitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */; };
 		139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D624783CAA00B22C40 /* DTHeaderView.swift */; };
+		13A9E7C22494E22200DEDCBE /* ProfileInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A9E7C12494E22200DEDCBE /* ProfileInfoModel.swift */; };
 		13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */; };
 		13AF79482486D3A100F2F7F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13AF79472486D3A100F2F7F7 /* GoogleService-Info.plist */; };
 		13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AF91D9248A2B2A006211B7 /* DTAdaptiveLabel.swift */; };
@@ -57,9 +56,9 @@
 		13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */; };
 		13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */; };
 		13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */; };
-		13EB98FD247D54B300DE9CD9 /* SubgroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FC247D54B300DE9CD9 /* SubgroupsVC.swift */; };
-		13EC52552480748900A05BCA /* TrainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC52542480748900A05BCA /* TrainVC.swift */; };
-		13EC525F24810E4A00A05BCA /* DTExerciceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC525E24810E4A00A05BCA /* DTExerciceCell.swift */; };
+		13EB98FD247D54B300DE9CD9 /* MuscleSubgroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsVC.swift */; };
+		13EC52552480748900A05BCA /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC52542480748900A05BCA /* TrainingVC.swift */; };
+		13EC525F24810E4A00A05BCA /* DTEditingExerciceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC525E24810E4A00A05BCA /* DTEditingExerciceCell.swift */; };
 		13EDD9B7247AAF63008EE212 /* Train.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9B6247AAF63008EE212 /* Train.swift */; };
 		13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9B8247AB03D008EE212 /* ExerciseModel.swift */; };
 		13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BA247AB0FC008EE212 /* Exercise.swift */; };
@@ -86,26 +85,24 @@
 		133AA5B3246163E7009EBF8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13416FA12485345100EC6590 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		13479F36247BD55D002FFB4E /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
-		13479F38247BD82C002FFB4E /* ActivitiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesVC.swift; sourceTree = "<group>"; };
-		13479F3A247BD84A002FFB4E /* TrainsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainsVC.swift; sourceTree = "<group>"; };
+		13479F38247BD82C002FFB4E /* MuscleGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsVC.swift; sourceTree = "<group>"; };
+		13479F3A247BD84A002FFB4E /* TrainingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListVC.swift; sourceTree = "<group>"; };
 		134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationsViewController.swift; sourceTree = "<group>"; };
 		135B8814248132360032251D /* DTAproachCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAproachCell.swift; sourceTree = "<group>"; };
 		135F22892494296F00EEE140 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
 		136570D02491259C00BF926B /* CommonStatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStatisticsVC.swift; sourceTree = "<group>"; };
 		136570D2249125DB00BF926B /* TrainStatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStatisticsVC.swift; sourceTree = "<group>"; };
-		137018602467246A0026A17B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		13786E1C2478271C0084E48C /* NotificationName+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Ex.swift"; sourceTree = "<group>"; };
 		1379800824733AEB00BAD87C /* SettingsSectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionVC.swift; sourceTree = "<group>"; };
 		137D55B524897B6300EFBAB6 /* DTSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSettingManager.swift; sourceTree = "<group>"; };
 		1380D932247AC55300212CB4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		1386AA1F246C15500016A757 /* ReadWriteFirebasedata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWriteFirebasedata.swift; sourceTree = "<group>"; };
 		138BDB77248665330033F378 /* DTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTextField.swift; sourceTree = "<group>"; };
-		138E551E246AB6160039BE10 /* DTViewWithCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTViewWithCorners.swift; sourceTree = "<group>"; };
 		13902AB02493D45C00963A07 /* DTMuscleSubgroupInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMuscleSubgroupInfoView.swift; sourceTree = "<group>"; };
 		13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMuscleSubgroupsCell.swift; sourceTree = "<group>"; };
 		1396F5F9248392760012A76A /* UIImage+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ex.swift"; sourceTree = "<group>"; };
 		1396F5FB248394C20012A76A /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
-		1396F5FD2483BE480012A76A /* DTButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTButton.swift; sourceTree = "<group>"; };
+		1396F5FD2483BE480012A76A /* DTSystemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSystemButton.swift; sourceTree = "<group>"; };
 		1396F5FF2484175E0012A76A /* DTInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoView.swift; sourceTree = "<group>"; };
 		1396F6012484216B0012A76A /* MainLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoginVC.swift; sourceTree = "<group>"; };
 		139D530C2473DF790028AE6A /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
@@ -115,6 +112,7 @@
 		139D531A24753D060028AE6A /* SettingCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCore.swift; sourceTree = "<group>"; };
 		139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTActivitiesCell.swift; sourceTree = "<group>"; };
 		139FE9D624783CAA00B22C40 /* DTHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTHeaderView.swift; sourceTree = "<group>"; };
+		13A9E7C12494E22200DEDCBE /* ProfileInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoModel.swift; sourceTree = "<group>"; };
 		13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteringSetting.swift; sourceTree = "<group>"; };
 		13AF79472486D3A100F2F7F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13AF91D9248A2B2A006211B7 /* DTAdaptiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAdaptiveLabel.swift; sourceTree = "<group>"; };
@@ -123,9 +121,9 @@
 		13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDRecomendationCell.swift; sourceTree = "<group>"; };
 		13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoAlertButton.swift; sourceTree = "<group>"; };
 		13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgroups.swift; sourceTree = "<group>"; };
-		13EB98FC247D54B300DE9CD9 /* SubgroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubgroupsVC.swift; sourceTree = "<group>"; };
-		13EC52542480748900A05BCA /* TrainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainVC.swift; sourceTree = "<group>"; };
-		13EC525E24810E4A00A05BCA /* DTExerciceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTExerciceCell.swift; sourceTree = "<group>"; };
+		13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgroupsVC.swift; sourceTree = "<group>"; };
+		13EC52542480748900A05BCA /* TrainingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
+		13EC525E24810E4A00A05BCA /* DTEditingExerciceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTEditingExerciceCell.swift; sourceTree = "<group>"; };
 		13EDD9B6247AAF63008EE212 /* Train.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Train.swift; sourceTree = "<group>"; };
 		13EDD9B8247AB03D008EE212 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		13EDD9BA247AB0FC008EE212 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -150,6 +148,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		130634442494DE76008C1ECF /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				130634452494DE80008C1ECF /* Choose training */,
+				130634462494DEA9008C1ECF /* Edit current training */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		130634452494DE80008C1ECF /* Choose training */ = {
+			isa = PBXGroup;
+			children = (
+				130634472494DEE0008C1ECF /* ViewControllers */,
+				130634492494DF8D008C1ECF /* Cells */,
+			);
+			path = "Choose training";
+			sourceTree = "<group>";
+		};
+		130634462494DEA9008C1ECF /* Edit current training */ = {
+			isa = PBXGroup;
+			children = (
+				1306344A2494DFC5008C1ECF /* Cells */,
+				130634482494DEEB008C1ECF /* ViewControllers */,
+			);
+			path = "Edit current training";
+			sourceTree = "<group>";
+		};
+		130634472494DEE0008C1ECF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13479F3A247BD84A002FFB4E /* TrainingListVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		130634482494DEEB008C1ECF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13EC52542480748900A05BCA /* TrainingVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		130634492494DF8D008C1ECF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				13243A3D247E4A6300AB7419 /* DTTrainCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1306344A2494DFC5008C1ECF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				13EC525E24810E4A00A05BCA /* DTEditingExerciceCell.swift */,
+				135B8814248132360032251D /* DTAproachCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		131107C1246581FC0023A29A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,26 +221,168 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		131107C7246582C30023A29A /* CustomsViewClases */ = {
+		131107C7246582C30023A29A /* CommonClasses */ = {
 			isa = PBXGroup;
 			children = (
+				13A9E7BF2494E10900DEDCBE /* ViewControllers */,
 				13AF91DD248A2D21006211B7 /* Labels */,
 				139FE9DC247859FD00B22C40 /* Views */,
-				139FE9D82478598800B22C40 /* Cells */,
 				139FE9DD24785A1B00B22C40 /* Alerts */,
 				139FE9DF24785A5300B22C40 /* TextFields */,
 				139FE9DE24785A3E00B22C40 /* Buttons */,
 			);
-			path = CustomsViewClases;
+			path = CommonClasses;
 			sourceTree = "<group>";
 		};
 		13151D4B247169D9002C15AA /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				13A9E7BE2494E0B400DEDCBE /* Utilities */,
+				132125D42494DAF000FDCDB4 /* Cells */,
+				132125D32494DADB00FDCDB4 /* ViewControllers */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		132125CC2494D9B100FDCDB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1396F5FB248394C20012A76A /* ProfileVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		132125CD2494D9C600FDCDB4 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				134DA009246ECE1F00B2FBDE /* Recomendations */,
+				136570CF2491253E00BF926B /* Statistic */,
+				13151D4B247169D9002C15AA /* Setting */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		132125CE2494DA2D00FDCDB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		132125D02494DA4100FDCDB4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				13FAF179246FCAA600537408 /* CaloriesCalculator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		132125D12494DA6900FDCDB4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		132125D22494DA7800FDCDB4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				13C89D21247046D2008AEF18 /* DTRecomendationHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		132125D32494DADB00FDCDB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
 				1379800824733AEB00BAD87C /* SettingsSectionVC.swift */,
 				139D531224740BCE0028AE6A /* SettingVC.swift */,
 			);
-			path = Setting;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		132125D42494DAF000FDCDB4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				139D53102474035C0028AE6A /* DTSettingCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		132125D52494DBB000FDCDB4 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				132125D62494DBC500FDCDB4 /* Select muscle group */,
+				132125D82494DBE400FDCDB4 /* Select muscle subgroup */,
+				132125DA2494DC0F00FDCDB4 /* Select exercises */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		132125D62494DBC500FDCDB4 /* Select muscle group */ = {
+			isa = PBXGroup;
+			children = (
+				132125D72494DBD600FDCDB4 /* ViewControllers */,
+			);
+			path = "Select muscle group";
+			sourceTree = "<group>";
+		};
+		132125D72494DBD600FDCDB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13479F38247BD82C002FFB4E /* MuscleGroupsVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		132125D82494DBE400FDCDB4 /* Select muscle subgroup */ = {
+			isa = PBXGroup;
+			children = (
+				132125D92494DBF700FDCDB4 /* ViewControllers */,
+			);
+			path = "Select muscle subgroup";
+			sourceTree = "<group>";
+		};
+		132125D92494DBF700FDCDB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		132125DA2494DC0F00FDCDB4 /* Select exercises */ = {
+			isa = PBXGroup;
+			children = (
+				132125DB2494DC3100FDCDB4 /* ViewControllers */,
+			);
+			path = "Select exercises";
+			sourceTree = "<group>";
+		};
+		132125DB2494DC3100FDCDB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13EDD9BE247AB9A4008EE212 /* ExerciseVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		132125DC2494DC4F00FDCDB4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		132125DD2494DC8000FDCDB4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1396F5FF2484175E0012A76A /* DTInfoView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		13243A3F247E765500AB7419 /* Date helper */ = {
@@ -216,16 +416,15 @@
 			children = (
 				133AA5A5246163E5009EBF8E /* AppDelegate.swift */,
 				132D958B2485809B006E5A41 /* AppAuthentication.swift */,
-				137018602467246A0026A17B /* File.swift */,
 				139D530B2473DF560028AE6A /* Helpers */,
-				13BA17A32461A49600DF5D7D /* StartsViewControllers */,
+				13BA17A32461A49600DF5D7D /* StartApp */,
 				13BA179F2461A45200DF5D7D /* Profile */,
 				13BA17A02461A45D00DF5D7D /* Activities */,
-				13BA17A22461A47700DF5D7D /* Calendar */,
-				131107C7246582C30023A29A /* CustomsViewClases */,
+				13BA17A22461A47700DF5D7D /* TrainingList */,
+				131107C7246582C30023A29A /* CommonClasses */,
 				1386AA1E246C15260016A757 /* Data */,
-				133AA5AE246163E7009EBF8E /* Assets.xcassets */,
 				131107C1246581FC0023A29A /* Extensions */,
+				133AA5AE246163E7009EBF8E /* Assets.xcassets */,
 				133AA5B0246163E7009EBF8E /* LaunchScreen.storyboard */,
 				13AF79472486D3A100F2F7F7 /* GoogleService-Info.plist */,
 				133AA5B3246163E7009EBF8E /* Info.plist */,
@@ -236,8 +435,10 @@
 		134DA009246ECE1F00B2FBDE /* Recomendations */ = {
 			isa = PBXGroup;
 			children = (
-				134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */,
-				13FAF179246FCAA600537408 /* CaloriesCalculator.swift */,
+				132125CE2494DA2D00FDCDB4 /* ViewControllers */,
+				132125D22494DA7800FDCDB4 /* Views */,
+				132125D12494DA6900FDCDB4 /* Cells */,
+				132125D02494DA4100FDCDB4 /* Helpers */,
 			);
 			path = Recomendations;
 			sourceTree = "<group>";
@@ -312,32 +513,15 @@
 			isa = PBXGroup;
 			children = (
 				13243A3F247E765500AB7419 /* Date helper */,
-				13AD1AFC2475C51600D5B39F /* Setting helper */,
 				139D530A2473DF3F0028AE6A /* AlertHelper */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		139FE9D82478598800B22C40 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */,
-				135B8814248132360032251D /* DTAproachCell.swift */,
-				13243A3D247E4A6300AB7419 /* DTTrainCell.swift */,
-				13EC525E24810E4A00A05BCA /* DTExerciceCell.swift */,
-				139D53102474035C0028AE6A /* DTSettingCell.swift */,
-				13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		139FE9DC247859FD00B22C40 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1396F5FF2484175E0012A76A /* DTInfoView.swift */,
-				138E551E246AB6160039BE10 /* DTViewWithCorners.swift */,
 				139FE9D624783CAA00B22C40 /* DTHeaderView.swift */,
-				13C89D21247046D2008AEF18 /* DTRecomendationHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -355,7 +539,7 @@
 			children = (
 				13416FA12485345100EC6590 /* GoogleSignInButton.swift */,
 				13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */,
-				1396F5FD2483BE480012A76A /* DTButton.swift */,
+				1396F5FD2483BE480012A76A /* DTSystemButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -367,6 +551,30 @@
 				138BDB77248665330033F378 /* DTTextField.swift */,
 			);
 			path = TextFields;
+			sourceTree = "<group>";
+		};
+		13A9E7BE2494E0B400DEDCBE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				13AD1AFC2475C51600D5B39F /* Setting helper */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		13A9E7BF2494E10900DEDCBE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		13A9E7C02494E1D100DEDCBE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				13A9E7C12494E22200DEDCBE /* ProfileInfoModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		13AD1AFC2475C51600D5B39F /* Setting helper */ = {
@@ -391,10 +599,10 @@
 		13BA179F2461A45200DF5D7D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				1396F5FB248394C20012A76A /* ProfileVC.swift */,
-				134DA009246ECE1F00B2FBDE /* Recomendations */,
-				136570CF2491253E00BF926B /* Statistic */,
-				13151D4B247169D9002C15AA /* Setting */,
+				132125CD2494D9C600FDCDB4 /* Features */,
+				132125CC2494D9B100FDCDB4 /* ViewControllers */,
+				132125DD2494DC8000FDCDB4 /* Views */,
+				13A9E7C02494E1D100DEDCBE /* Models */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -402,30 +610,27 @@
 		13BA17A02461A45D00DF5D7D /* Activities */ = {
 			isa = PBXGroup;
 			children = (
-				13479F38247BD82C002FFB4E /* ActivitiesVC.swift */,
-				13EB98FC247D54B300DE9CD9 /* SubgroupsVC.swift */,
-				13EDD9BE247AB9A4008EE212 /* ExerciseVC.swift */,
+				132125D52494DBB000FDCDB4 /* Feature */,
+				132125DC2494DC4F00FDCDB4 /* Cells */,
 			);
 			path = Activities;
 			sourceTree = "<group>";
 		};
-		13BA17A22461A47700DF5D7D /* Calendar */ = {
+		13BA17A22461A47700DF5D7D /* TrainingList */ = {
 			isa = PBXGroup;
 			children = (
-				13479F3A247BD84A002FFB4E /* TrainsVC.swift */,
-				13EC52542480748900A05BCA /* TrainVC.swift */,
+				130634442494DE76008C1ECF /* Features */,
 			);
-			path = Calendar;
+			path = TrainingList;
 			sourceTree = "<group>";
 		};
-		13BA17A32461A49600DF5D7D /* StartsViewControllers */ = {
+		13BA17A32461A49600DF5D7D /* StartApp */ = {
 			isa = PBXGroup;
 			children = (
 				1396F6012484216B0012A76A /* MainLoginVC.swift */,
 				13479F36247BD55D002FFB4E /* MainTabBarVC.swift */,
-				13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */,
 			);
-			path = StartsViewControllers;
+			path = StartApp;
 			sourceTree = "<group>";
 		};
 		44C9618063996B2C26547A86 /* Frameworks */ = {
@@ -579,8 +784,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */,
-				1396F5FE2483BE480012A76A /* DTButton.swift in Sources */,
-				13479F39247BD82C002FFB4E /* ActivitiesVC.swift in Sources */,
+				1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */,
+				13479F39247BD82C002FFB4E /* MuscleGroupsVC.swift in Sources */,
 				13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */,
 				139D531324740BCE0028AE6A /* SettingVC.swift in Sources */,
 				13902AB12493D45C00963A07 /* DTMuscleSubgroupInfoView.swift in Sources */,
@@ -589,8 +794,7 @@
 				13FCA9C3248EF7E00056E659 /* DTCustomAlert.swift in Sources */,
 				139D531924748BE00028AE6A /* ColorSetting.swift in Sources */,
 				13243A41247E768B00AB7419 /* DateHelper.swift in Sources */,
-				13479F3B247BD84A002FFB4E /* TrainsVC.swift in Sources */,
-				137018612467246A0026A17B /* File.swift in Sources */,
+				13479F3B247BD84A002FFB4E /* TrainingListVC.swift in Sources */,
 				13EDD9B7247AAF63008EE212 /* Train.swift in Sources */,
 				1313693A2461B1C200372F26 /* String+Ex.swift in Sources */,
 				13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */,
@@ -602,6 +806,7 @@
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
 				139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */,
 				131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */,
+				13A9E7C22494E22200DEDCBE /* ProfileInfoModel.swift in Sources */,
 				1386AA20246C15500016A757 /* ReadWriteFirebasedata.swift in Sources */,
 				13902AB4249411ED00963A07 /* DTMuscleSubgroupsCell.swift in Sources */,
 				13BF82BD247C2E54005C5494 /* MainTabBarItemVC.swift in Sources */,
@@ -613,9 +818,8 @@
 				13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */,
 				13C89D22247046D2008AEF18 /* DTRecomendationHeaderView.swift in Sources */,
 				13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */,
-				13EB98FD247D54B300DE9CD9 /* SubgroupsVC.swift in Sources */,
+				13EB98FD247D54B300DE9CD9 /* MuscleSubgroupsVC.swift in Sources */,
 				136570D3249125DB00BF926B /* TrainStatisticsVC.swift in Sources */,
-				138E551F246AB6160039BE10 /* DTViewWithCorners.swift in Sources */,
 				1380D933247AC55300212CB4 /* UserModel.swift in Sources */,
 				135B8815248132360032251D /* DTAproachCell.swift in Sources */,
 				131107C3246582210023A29A /* UIView+Ex.swift in Sources */,
@@ -627,14 +831,14 @@
 				13EDD9BF247AB9A4008EE212 /* ExerciseVC.swift in Sources */,
 				1396F6022484216B0012A76A /* MainLoginVC.swift in Sources */,
 				138BDB78248665330033F378 /* DTTextField.swift in Sources */,
-				13EC52552480748900A05BCA /* TrainVC.swift in Sources */,
+				13EC52552480748900A05BCA /* TrainingVC.swift in Sources */,
 				13479F37247BD55D002FFB4E /* MainTabBarVC.swift in Sources */,
 				132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */,
 				1396F5FC248394C20012A76A /* ProfileVC.swift in Sources */,
 				136570D12491259C00BF926B /* CommonStatisticsVC.swift in Sources */,
 				139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */,
 				13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */,
-				13EC525F24810E4A00A05BCA /* DTExerciceCell.swift in Sources */,
+				13EC525F24810E4A00A05BCA /* DTEditingExerciceCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
