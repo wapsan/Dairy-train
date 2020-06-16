@@ -46,6 +46,7 @@
 		138BDB78248665330033F378 /* DTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BDB77248665330033F378 /* DTTextField.swift */; };
 		13902AB12493D45C00963A07 /* DTMuscleSubgroupInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13902AB02493D45C00963A07 /* DTMuscleSubgroupInfoView.swift */; };
 		13902AB4249411ED00963A07 /* DTMuscleSubgroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */; };
+		1390520B24993F5E0070D0EB /* RecomendationInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390520A24993F5E0070D0EB /* RecomendationInfoModel.swift */; };
 		1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5F9248392760012A76A /* UIImage+Ex.swift */; };
 		1396F5FC248394C20012A76A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FB248394C20012A76A /* ProfileViewController.swift */; };
 		1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FD2483BE480012A76A /* DTSystemButton.swift */; };
@@ -122,6 +123,7 @@
 		138BDB77248665330033F378 /* DTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTextField.swift; sourceTree = "<group>"; };
 		13902AB02493D45C00963A07 /* DTMuscleSubgroupInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMuscleSubgroupInfoView.swift; sourceTree = "<group>"; };
 		13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMuscleSubgroupsCell.swift; sourceTree = "<group>"; };
+		1390520A24993F5E0070D0EB /* RecomendationInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationInfoModel.swift; sourceTree = "<group>"; };
 		1396F5F9248392760012A76A /* UIImage+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ex.swift"; sourceTree = "<group>"; };
 		1396F5FB248394C20012A76A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1396F5FD2483BE480012A76A /* DTSystemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSystemButton.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				132125CE2494DA2D00FDCDB4 /* ViewControllers */,
 				132125D22494DA7800FDCDB4 /* Views */,
 				132125D12494DA6900FDCDB4 /* Cells */,
+				1390520824993F330070D0EB /* Model */,
 				132125D02494DA4100FDCDB4 /* Helpers */,
 			);
 			path = Recomendations;
@@ -627,6 +630,14 @@
 				136570D2249125DB00BF926B /* TrainStatisticsVC.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1390520824993F330070D0EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1390520A24993F5E0070D0EB /* RecomendationInfoModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		139D530A2473DF3F0028AE6A /* AlertHelper */ = {
@@ -932,6 +943,7 @@
 				133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */,
 				13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */,
 				1379800924733AEB00BAD87C /* SettingsSectionVC.swift in Sources */,
+				1390520B24993F5E0070D0EB /* RecomendationInfoModel.swift in Sources */,
 				1396F6002484175E0012A76A /* DTInfoView.swift in Sources */,
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
 				139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */,

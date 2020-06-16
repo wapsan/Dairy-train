@@ -25,7 +25,6 @@ class DTFirebaseFileManager {
     }
     
     func updateMainUserInfoInDevice() {
-       // guard let userUid = self.currentUser?.uid else { return }
         guard let userMainInfo = UserMainInfoModel(from: CoreDataManager.shared.readUserMainInfo()) else { return }
         let localJSONStringModel = userMainInfo.convertToJSONString()
         self.fetchMainUserInfo { (fireBaseJSONString) in

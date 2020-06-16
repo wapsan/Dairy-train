@@ -4,6 +4,8 @@ import Firebase
 class ProfileViewController: MainTabBarItemVC {
     
     //MARK: - Private properties
+    
+    
     private var isAllInfoWasSeted: Bool {
         if self.ageInfoView.isValueSeted,
             self.heightInfoView.isValueSeted,
@@ -186,21 +188,6 @@ class ProfileViewController: MainTabBarItemVC {
         })
     }
   
-    private func setCostumerInfo() -> CostumerInfo? {
-        guard let age = self.ageInfoView.valueLabel.text,
-            let height = self.heightInfoView.valueLabel.text,
-            let weight = self.weightInfoView.valueLabel.text,
-            let gender = self.genderInfoView.valueLabel.text,
-            let activityLevel = self.activivtyInfoView.valueLabel.text else { return nil }
-        guard self.isAllInfoWasSeted else { return nil }
-        let info = CostumerInfo(age: age,
-                                height: height,
-                                weight: weight,
-                                gender: gender,
-                                activityLevel: activityLevel)
-        return info
-    }
-    
     private func setUpGuiElements() {
         self.view.backgroundColor = .black
         self.view.addSubview(self.infoViewsStackView)
@@ -214,11 +201,7 @@ class ProfileViewController: MainTabBarItemVC {
     }
     
     private func pushRecomendationViewController() {
-        guard let customerInfo = self.setCostumerInfo() else {
-            self.showRecomendationAlert()
-            return }
         let recomendationVC = RecomendationsViewController()
-        recomendationVC.setCustomerInfo(customerInfo)
         self.navigationController?.pushViewController(recomendationVC, animated: true)
     }
     

@@ -3,9 +3,9 @@ import UIKit
 class RecomendationsViewController: UIViewController {
     
     //MARK: - Privatr roperties
-    private lazy var cellID = "RecomendationCell"
     private lazy var selectedSections = Set<Int>()
     private lazy var supplyModel: [RecomendationInfo] = []
+    private lazy var mainInfoManagedObject = CoreDataManager.shared.readUserMainInfo()
     
     //MARK: - GUI Properties
     private lazy var tableView: UITableView = {
@@ -25,30 +25,30 @@ class RecomendationsViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpSupplyModel()
+        self.title = LocalizedString.recomendations
+        self.setRecomendationInfoModel()
         self.setUpTable()
     }
-    
-    func setCustomerInfo(_ info: CostumerInfo) {
-        CaloriesCalculator.shared.setParametersBy(data: info)
-    }
-    
+
     //MARK: - Private Methods
     private func setUpTable() {
         self.view.addSubview(self.tableView)
         self.setUpTableConstraints()
     }
     
-    private func setUpSupplyModel() {
+    private func setRecomendationInfoModel() {
+        guard let mainInfoMO = self.mainInfoManagedObject else { return }
+        guard let userMainInfo = UserMainInfoModel(from: mainInfoMO) else { return }
+        CaloriesCalculator.shared.getUserParameters(from: userMainInfo)
         self.supplyModel = CaloriesCalculator.shared.getRecomendatinoInfo()
     }
     
-    private func setUp(_ cell: TDRecomendationCell, in section: Int) {
-        let suply = self.supplyModel[section]
-        cell.caloriesLabel.text = suply.caloriesRecomendation
-        cell.proteinsLabel.text = suply.proteinRecomendation
-        cell.carbohydratesLabel.text = suply.carbohydratesRcomendation
-        cell.fatsLabel.text = suply.fatRecomandation
+    private func indexPaths(for section: Int) -> [IndexPath] {
+        var indexPaths: [IndexPath] = []
+        for row in 0..<1 {
+            indexPaths.append(IndexPath(row: row, section: section))
+        }
+        return indexPaths
     }
     
     //MARK: - Constraints
@@ -67,18 +67,18 @@ class RecomendationsViewController: UIViewController {
 extension RecomendationsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.selectedSections.contains(section) {
-            return 1
-        } else {
-            return 0
-        }
+        return self.selectedSections.contains(section) ? 1 : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TDRecomendationCell.cellID,
-                                                 for: indexPath) as! TDRecomendationCell
-        self.setUp(cell, in: indexPath.section)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: TDRecomendationCell.cellID,
+                                                    for: indexPath) as? TDRecomendationCell {
+            let recomendationInfo = self.supplyModel[indexPath.section]
+            cell.setCell(for: recomendationInfo)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -95,38 +95,27 @@ extension RecomendationsViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = DTRecomendationHeaderView()
-        headerView.tittle.text = self.supplyModel[section].tittle
-        headerView.openInfoButton.tag = section
+        let recomendationInfoTitle = self.supplyModel[section].tittle
+        headerView.setHeaderView(title: recomendationInfoTitle, and: section)
         headerView.delegate = self
         return headerView
     }
-    
 }
 
 //MARK: - DTRecomendationFooterViewDelegate
 extension RecomendationsViewController: DTRecomendationHeaderViewDelegate {
     
-    func tapOpenCellsButton(_ sender: UIButton) {
+    func moreInfoButtonPressed(_ sender: UIButton) {
         let section = sender.tag
-        
-        func indexPathsForSection() -> [IndexPath] {
-            var indexPaths: [IndexPath] = []
-            for row in 0..<1 {
-                indexPaths.append(IndexPath(row: row,
-                                            section: section))
-            }
-            return indexPaths
-        }
-        
         if self.selectedSections.contains(section) {
             self.selectedSections.remove(section)
             self.tableView.beginUpdates()
-            self.tableView.deleteRows(at: indexPathsForSection(), with: .top)
+            self.tableView.deleteRows(at: self.indexPaths(for: section), with: .top)
             self.tableView.endUpdates()
         } else {
             self.selectedSections.insert(section)
             self.tableView.beginUpdates()
-            self.tableView.insertRows(at: indexPathsForSection(), with: .top)
+            self.tableView.insertRows(at: self.indexPaths(for: section), with: .top)
             self.tableView.endUpdates()
         }
     }

@@ -1,31 +1,3 @@
-import Foundation
-
-struct RecomendationInfo {
-    
-    //MARK: - Properties
-    var tittle: String
-    var caloriesRecomendation: String
-    var proteinRecomendation: String
-    var carbohydratesRcomendation: String
-    var fatRecomandation: String
-
-    //MARK: - Initialization
-    init(tittle: String, calories: String, proteins: String, carbohydrates: String, fats: String) {
-        self.tittle = tittle
-        self.caloriesRecomendation = "Calories: \(calories) ccal."
-        self.proteinRecomendation = "Proteins: \(proteins) grams."
-        self.carbohydratesRcomendation = "Carbohydrates: \(carbohydrates) grams."
-        self.fatRecomandation = "Fats: \(fats) grams."
-    }
-}
-
-struct CostumerInfo {
-    var age: String
-    var height: String
-    var weight: String
-    var gender: String
-    var activityLevel: String
-}
 
 class CaloriesCalculator {
     
@@ -36,19 +8,24 @@ class CaloriesCalculator {
         case high = 1.5
     }
     
-    //MARK: - Static var
+    //MARK: - Singletone propertie
     static var shared = CaloriesCalculator()
 
     //MARK: - Private roperties
-    private var weight: Double?
-    private var height: Double?
-    private var age: Double?
+    private var weight: Float?
+    private var height: Float?
+    private var age: Int?
     private var isMale: Bool?
     private var activityCoeficient: LevelOfActivity?
+    private var weightMode: MeteringSetting.WeightMode?
+    private var heightMode: MeteringSetting.HeightMode?
     
-    private var gainWeightCalories: Int = 0
-    private var loseWeightCalories: Int = 0
-    private var neutralCalories: Int = 0
+    private lazy var gainWeightCalories: Int = 0
+    private lazy var loseWeightCalories: Int = 0
+    private lazy var neutralCalories: Int = 0
+    
+    //MARK: - Initialization
+    private init() { }
     
     //MARK: - Publick methods
     func getRecomendatinoInfo() -> [RecomendationInfo] {
@@ -58,24 +35,27 @@ class CaloriesCalculator {
         let gainWeightInfo = self.getWeighGainRecomendations()
         return [loseWeightInfo, balanceInfo, gainWeightInfo]
     }
-   
-    func setParametersBy(data: CostumerInfo) {
-        guard Double(data.age) != nil else { return }
-        guard Double(data.height) != nil else { return }
-        guard Double(data.weight) != nil else { return }
-        switch data.activityLevel {
-        case "Low":
+    
+    func getUserParameters(from userMainInfo: UserMainInfoModel) {
+        guard let gender = userMainInfo.gender,
+            let activityLevel = userMainInfo.activityLevel,
+            let age = userMainInfo.age,
+            let height = userMainInfo.height,
+            let weight = userMainInfo.weight else { return }
+        self.isMale = gender == .male ? true : false
+        self.age = age
+        self.weight = weight
+        self.height = height
+        switch activityLevel {
+        case .low:
             self.activityCoeficient = .low
-        case "High":
-            self.activityCoeficient = .high
-        default:
+        case .mid:
             self.activityCoeficient = .medium
+        case .high:
+            self.activityCoeficient = .high
+        case .notSet:
+            break
         }
-        self.isMale = data.gender == "Male" ? true : false
-        self.age = Double(data.age)
-        self.height = Double(data.height)
-        self.weight = Double(data.weight)
-        print("")
     }
     
     //MARK: - Private methods
@@ -86,15 +66,17 @@ class CaloriesCalculator {
         guard let weight = self.weight else { return }
         guard let activityCoeficient = self.activityCoeficient?.rawValue else { return }
         if isMale {
-            let maleAge = age * 5.7
+            let maleAge = Float(age) * Float(5.7)
             let maleWeight = weight * 13.4
             let maleHeight = height * 4.8
-            self.loseWeightCalories = Int((88.36 + maleWeight + maleHeight - maleAge) * activityCoeficient)
+            let maleMainCalories = 88.36 + maleWeight + maleHeight - maleAge
+            self.loseWeightCalories = Int(maleMainCalories * Float(activityCoeficient))
         } else {
-            let femaleAge = age * 4.3
+            let femaleAge = Float(age) * Float(4.3)
             let femaleWeight = weight * 9.2
             let femaleHeight = height * 3.1
-            self.loseWeightCalories = Int((447.6 + femaleWeight + femaleHeight - femaleAge) * activityCoeficient )
+            let femaleMainCalories = 447.6 + femaleWeight + femaleHeight - femaleAge
+            self.loseWeightCalories = Int(femaleMainCalories * Float(activityCoeficient))
         }
         self.neutralCalories = Int(Double(self.loseWeightCalories) * 1.2)
         self.gainWeightCalories = Int(Double(self.neutralCalories) * 1.2)
@@ -141,7 +123,6 @@ class CaloriesCalculator {
                                                  fats: gainWeightFats)
         return gainWeightSupply
     }
-    
 }
 
 

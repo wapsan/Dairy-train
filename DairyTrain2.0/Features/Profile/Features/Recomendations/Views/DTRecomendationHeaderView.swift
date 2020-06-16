@@ -1,7 +1,7 @@
 import UIKit
 
 protocol DTRecomendationHeaderViewDelegate: class {
-    func tapOpenCellsButton(_ sender: UIButton)
+    func moreInfoButtonPressed(_ sender: UIButton)
 }
 
 class DTRecomendationHeaderView: UIView {
@@ -13,7 +13,7 @@ class DTRecomendationHeaderView: UIView {
     private var moreInfobuttonIsTouched: Bool = false
     
     //MARK: - GUI Properties
-    lazy var tittle: UILabel = {
+    private lazy var tittle: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.backgroundColor = .clear
@@ -22,46 +22,47 @@ class DTRecomendationHeaderView: UIView {
         return label
     }()
     
-    lazy var openInfoButton: UIButton = {
+    private lazy var moreInfoButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage.downArrow, for: .normal)
-        button.addTarget(self, action: #selector(self.openInfoButtonPressed(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.openInfoButtonPressed(_:)),
+                         for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
     
     //MARK: - Initialization
     init() {
         super.init(frame: .zero)
         self.initView()
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.initView()
-    }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Private methods
     private func initView() {
         self.backgroundColor = .black
         self.addSubview(self.tittle)
-        self.addSubview(self.openInfoButton)
+        self.addSubview(self.moreInfoButton)
         self.setUpConstraints()
     }
     
+    //MARK: - Setter
+    func setHeaderView(title: String, and section: Int) {
+        self.tittle.text = title
+        self.moreInfoButton.tag = section
+    }
+    
+    //MARK: - Private methods
     private func rotateMoreInfoButton() {
         if !moreInfobuttonIsTouched {
             UIView.animate(withDuration: 0.4, animations: {
-                self.openInfoButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+                self.moreInfoButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
             })
         } else {
             UIView.animate(withDuration: 0.4, animations: {
-                self.openInfoButton.transform = CGAffineTransform(rotationAngle: CGFloat(-2 * Double.pi))
+                self.moreInfoButton.transform = CGAffineTransform(rotationAngle: CGFloat(-2 * Double.pi))
             })
         }
     }
@@ -69,17 +70,21 @@ class DTRecomendationHeaderView: UIView {
     //MARK: - Constraints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            self.tittle.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            self.tittle.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8),
-            self.tittle.rightAnchor.constraint(greaterThanOrEqualTo: self.openInfoButton.leftAnchor, constant: -8),
-            self.tittle.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            self.tittle.topAnchor.constraint(equalTo: self.topAnchor,
+                                             constant: 8),
+            self.tittle.leftAnchor.constraint(equalTo: self.leftAnchor,
+                                              constant: 8),
+            self.tittle.rightAnchor.constraint(greaterThanOrEqualTo: self.moreInfoButton.leftAnchor,
+                                               constant: -8),
+            self.tittle.bottomAnchor.constraint(equalTo: self.bottomAnchor,
+                                                constant: -8),
         ])
         
         NSLayoutConstraint.activate([
-            self.openInfoButton.centerYAnchor.constraint(equalTo: self.tittle.centerYAnchor),
-            self.openInfoButton.heightAnchor.constraint(equalTo: self.tittle.heightAnchor),
-            self.openInfoButton.widthAnchor.constraint(equalTo: self.openInfoButton.heightAnchor),
-            self.openInfoButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8)
+            self.moreInfoButton.centerYAnchor.constraint(equalTo: self.tittle.centerYAnchor),
+            self.moreInfoButton.heightAnchor.constraint(equalTo: self.tittle.heightAnchor),
+            self.moreInfoButton.widthAnchor.constraint(equalTo: self.moreInfoButton.heightAnchor),
+            self.moreInfoButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8)
         ])
     }
     
@@ -87,13 +92,12 @@ class DTRecomendationHeaderView: UIView {
     @objc private func openInfoButtonPressed(_ sender: UIButton) {
         if !self.moreInfobuttonIsTouched {
             self.rotateMoreInfoButton()
-            self.delegate?.tapOpenCellsButton(sender)
+            self.delegate?.moreInfoButtonPressed(sender)
             self.moreInfobuttonIsTouched = true
         } else {
             self.rotateMoreInfoButton()
-            self.delegate?.tapOpenCellsButton(sender)
+            self.delegate?.moreInfoButtonPressed(sender)
             self.moreInfobuttonIsTouched = false
         }
     }
-    
 }

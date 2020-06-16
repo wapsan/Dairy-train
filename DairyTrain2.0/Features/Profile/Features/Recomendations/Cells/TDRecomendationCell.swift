@@ -3,10 +3,10 @@ import UIKit
 class TDRecomendationCell: UITableViewCell {
     
     //MARK: - Static cellID
-    static let cellID = "TESTTDRecomendationCell"
+    static let cellID = "DTRecomendationCell"
     
     //MARK: - GUI Properties
-    lazy var caloriesLabel: DTAdaptiveLabel = {
+    private lazy var caloriesLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.backgroundColor = .clear
         label.font = .systemFont(ofSize: 17)
@@ -15,7 +15,7 @@ class TDRecomendationCell: UITableViewCell {
         return label
     }()
     
-    lazy var proteinsLabel: DTAdaptiveLabel = {
+    private lazy var proteinsLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.backgroundColor = .clear
         label.font = .systemFont(ofSize: 17)
@@ -24,7 +24,7 @@ class TDRecomendationCell: UITableViewCell {
         return label
     }()
     
-    lazy var carbohydratesLabel: DTAdaptiveLabel = {
+    private lazy var carbohydratesLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.backgroundColor = .clear
         label.font = .systemFont(ofSize: 17)
@@ -33,7 +33,7 @@ class TDRecomendationCell: UITableViewCell {
         return label
     }()
     
-    lazy var fatsLabel: DTAdaptiveLabel = {
+    private lazy var fatsLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.backgroundColor = .clear
         label.font = .systemFont(ofSize: 17)
@@ -42,7 +42,7 @@ class TDRecomendationCell: UITableViewCell {
         return label
     }()
     
-    lazy var labelsStackView: UIStackView = {
+    private lazy var labelsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 8
@@ -66,13 +66,21 @@ class TDRecomendationCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Private methods
     private func initCell() {
         self.addSubview(self.labelsStackView)
         self.setConstraints()
         self.setCell()
     }
     
+    //MARK: - Seter
+    func setCell(for recomendationInfo: RecomendationInfo) {
+        self.caloriesLabel.text = recomendationInfo.caloriesRecomendation
+        self.proteinsLabel.text = recomendationInfo.proteinRecomendation
+        self.carbohydratesLabel.text = recomendationInfo.carbohydratesRcomendation
+        self.fatsLabel.text = recomendationInfo.fatRecomandation
+    }
+    
+    //MARK: - Private methods
     private func setCell() {
         self.backgroundColor = .viewFlipsideBckgoundColor
         self.selectionStyle = .none
@@ -85,8 +93,6 @@ class TDRecomendationCell: UITableViewCell {
             self.labelsStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8),
             self.labelsStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8),
             self.labelsStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            
         ])
     }
-    
 }
