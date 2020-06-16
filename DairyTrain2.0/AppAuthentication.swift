@@ -6,6 +6,11 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
     //MARK: - Singletone propertie
     static let shared = AppAuthentication()
     
+    //MARK: - Initialization
+    private override init() {
+        super.init()
+    }
+    
     //MARK: - Publick methods
     func initAuth() {
         FirebaseApp.configure()

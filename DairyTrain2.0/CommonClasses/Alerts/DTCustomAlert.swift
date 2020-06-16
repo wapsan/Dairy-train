@@ -9,7 +9,7 @@ class DTCustomAlert: UIView {
     
     //MARK: - Singletone propertie
     static let shared = DTCustomAlert()
-    private lazy var profileManager = ProfileInfoFileManager.shared
+   // private lazy var profileManager = ProfileInfoFileManager.shared
     //MARK: - Enum
     /**
     Type, wich set alert behavor for write data for user model.
@@ -429,19 +429,22 @@ class DTCustomAlert: UIView {
     
     private func writeValueInfo() {
         guard let info = self.valueTextField.text,
-            let infoDouble = Double(info),
+            let infoFloat = Float(info),
             let tappedInfoViewValue = self.tappedInfoView?.type else { return }
         switch tappedInfoViewValue  {
         case .age:
+            CoreDataManager.shared.updateAge(to: Int(infoFloat))
             //ProfileInfoFileManager.shared.writeAge(to: Int(infoDouble))
          //   UserModel.shared.setAge(to: Int(infoDouble))
-            self.profileManager.writeAge(to: Int(infoDouble))
+          //  self.profileManager.writeAge(to: Int(infoDouble))
         case .weight:
+            CoreDataManager.shared.updateWeight(to: infoFloat)
            // UserModel.shared.setWeight(to: infoDouble)
-            self.profileManager.writeWeight(to: infoDouble)
+          //  self.profileManager.writeWeight(to: infoDouble)
         case .height:
+            CoreDataManager.shared.updateHeight(to: infoFloat)
           //  UserModel.shared.setHeight(to: infoDouble)
-            self.profileManager.writeHeight(to: infoDouble)
+          //  self.profileManager.writeHeight(to: infoDouble)
         default:
             break
         }
@@ -456,13 +459,15 @@ class DTCustomAlert: UIView {
                 switch tappedInfoViewValue {
                 case .gender:
                     
-                    guard let newGenderValue = ProfileInfoModel.Gender.init(rawValue: buttonTittle) else { return }
-                    self.profileManager.writeGender(to: newGenderValue)
+                    guard let newGenderValue = UserMainInfoModel.Gender.init(rawValue: buttonTittle) else { return }
+                    CoreDataManager.shared.updateGender(to: newGenderValue)
+                   // self.profileManager.writeGender(to: newGenderValue)
                     //guard let setedGender = UserModel.Gender.init(rawValue: buttonTittle) else { return }
                     //UserModel.shared.setGender(to: setedGender )
                 case .activityLevel:
-                    guard let newActivityLevelValue = ProfileInfoModel.ActivityLevel.init(rawValue: buttonTittle) else { return }
-                    self.profileManager.writeActivityLevel(to: newActivityLevelValue )
+                    guard let newActivityLevelValue = UserMainInfoModel.ActivityLevel.init(rawValue: buttonTittle) else { return }
+                    CoreDataManager.shared.updateActivityLevel(to: newActivityLevelValue)
+                   // self.profileManager.writeActivityLevel(to: newActivityLevelValue )
 //                    guard let setedActivityLevel = UserModel.ActivivtyLevel.init(rawValue: buttonTittle) else { return }
 //                    UserModel.shared.setActivivtyLevel(to: setedActivityLevel)
                 default:
@@ -476,6 +481,7 @@ class DTCustomAlert: UIView {
         guard let reps = Int(self.repsTextField.text ?? "0") else { return }
         guard let weight = Double(self.weightTextField.text ?? "0") else { return }
         self.exercice?.addAproachWith(reps, and: weight)
+        UserTrainingModelFileManager.shared.writeData()
     }
     
     private func changeAproachInfo(for index: Int) {
@@ -636,28 +642,32 @@ class DTCustomAlert: UIView {
             switch tappedInfoView.type {
             case .gender:
                 self.writeListSelectionInfo()
-                self.tappedInfoView?.valueLabel.text = profileManager.profileInfo?.gender?.rawValue ?? "_"
-                
+               // self.tappedInfoView?.valueLabel.text = profileManager.profileInfo?.gender?.rawValue ?? "_"
+                self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.gender ?? "_"
                // self.tappedInfoView?.valueLabel.text = UserModel.shared.displayGender
             case .activityLevel:
                 self.writeListSelectionInfo()
-                self.tappedInfoView?.valueLabel.text = profileManager.profileInfo?.activityLevel?.rawValue ?? "_"
+               // self.tappedInfoView?.valueLabel.text = profileManager.profileInfo?.activityLevel?.rawValue ?? "_"
+                 self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.activitylevel ?? "_"
                // self.tappedInfoView?.valueLabel.text = UserModel.shared.displayActivityLevel
             case .age:
                 self.writeValueInfo()
-                self.tappedInfoView?.valueLabel.text = String(profileManager.profileInfo?.age ?? 0)
+                self.tappedInfoView?.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.age ?? 0)
+              //  self.tappedInfoView?.valueLabel.text = String(profileManager.profileInfo?.age ?? 0)
             case .height:
                 self.writeValueInfo()
-                self.tappedInfoView?.valueLabel.text = String(profileManager.profileInfo?.height ?? 0)
+                 self.tappedInfoView?.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.height ?? 0)
+               // self.tappedInfoView?.valueLabel.text = String(profileManager.profileInfo?.height ?? 0)
                 //self.tappedInfoView?.valueLabel.text = UserModel.shared.displayHeight
             case .weight:
                 self.writeValueInfo()
-                self.tappedInfoView?.valueLabel.text = String(profileManager.profileInfo?.weight ?? 0)
+                 self.tappedInfoView?.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.weight ?? 0)
+              //  self.tappedInfoView?.valueLabel.text = String(profileManager.profileInfo?.weight ?? 0)
                // self.tappedInfoView?.valueLabel.text = UserModel.shared.displayWeight
             default:
                 break
             }
-            DTFirebaseFileManager.shared.updateMainUserInfo()
+           // DTFirebaseFileManager.shared.updateMainUserInfoInFirebase()
         case .newAproachAlert:
             self.writeNewAproachInfo()
         case .aproachAlert:

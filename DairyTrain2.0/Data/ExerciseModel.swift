@@ -66,13 +66,43 @@ class ExersiceModel {
                                     Exercise(name: "Concentration Biceps Curl",  subgroup: muscleSubgroup),
                                     Exercise(name: "Overhead Cable Curl", subgroup: muscleSubgroup)]
         case .triceps:
-            break
+            self.listOfExercices = [Exercise(name: "Close-grip Bench Press", subgroup: muscleSubgroup),
+                                    Exercise(name: "Skullcrusher", subgroup: muscleSubgroup),
+                                    Exercise(name: "Tricep Dips", subgroup: muscleSubgroup),
+                                    Exercise(name: "Triceps Dip Machine", subgroup: muscleSubgroup),
+                                    Exercise(name: "Overhead Triceps Extension", subgroup: muscleSubgroup),
+                                    Exercise(name: "Cable Push-Down", subgroup: muscleSubgroup),
+                                    Exercise(name: "Kickbacks", subgroup: muscleSubgroup),
+                                    Exercise(name: "Bar Push-Down", subgroup: muscleSubgroup),
+                                    Exercise(name: "Diamond Push-Ups", subgroup: muscleSubgroup),
+                                    Exercise(name: "Bench Dip", subgroup: muscleSubgroup),
+                                    Exercise(name: "One-Arm Overhead Extension", subgroup: muscleSubgroup)]
         case .frontSideHip:
-            break
+            self.listOfExercices = [Exercise(name: "Barbell Squat", subgroup: muscleSubgroup),
+                                    Exercise(name: "Front Squat", subgroup: muscleSubgroup),
+                                    Exercise(name: "Leg press", subgroup: muscleSubgroup),
+                                    Exercise(name: "Walking Lunge", subgroup: muscleSubgroup),
+                                    Exercise(name: "Hack Squat", subgroup: muscleSubgroup),
+                                    Exercise(name: "Leg Extension", subgroup: muscleSubgroup),
+                                    Exercise(name: "One Leg Extension", subgroup: muscleSubgroup),
+                                    Exercise(name: "Bulgarian Split Squat", subgroup: muscleSubgroup),
+                                    Exercise(name: "Pistol Squat", subgroup: muscleSubgroup)]
         case .backSideHip:
-            break
+            self.listOfExercices = [Exercise(name: "Deadlift", subgroup: muscleSubgroup),
+                                    Exercise(name: "Romanian Deadlift", subgroup: muscleSubgroup),
+                                    Exercise(name: "Single Leg Deadlift", subgroup: muscleSubgroup),
+                                    Exercise(name: "Leg Curl", subgroup: muscleSubgroup),
+                                    Exercise(name: "Single Leg Curl", subgroup: muscleSubgroup),
+                                    Exercise(name: "Hip Thruster", subgroup: muscleSubgroup),
+                                    Exercise(name: "Sumo Squat", subgroup: muscleSubgroup)]
         case .calves:
-            break
+            self.listOfExercices = [Exercise(name: "Machine Standing Calf Raise", subgroup: muscleSubgroup),
+                                    Exercise(name: "Dumbbell Calf Raise", subgroup: muscleSubgroup),
+                                    Exercise(name: "Barbell Calf Raises", subgroup: muscleSubgroup),
+                                    Exercise(name: "Single Leg Calf Raise", subgroup: muscleSubgroup),
+                                    Exercise(name: "Donkey Calf Raises", subgroup: muscleSubgroup),
+                                    Exercise(name: "Seated Calf Raise Machine", subgroup: muscleSubgroup),
+                                    Exercise(name: "Calf Press", subgroup: muscleSubgroup)]
         case .abs:
             break
         case .lowBack:
