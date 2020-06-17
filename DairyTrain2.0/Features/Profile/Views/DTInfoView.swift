@@ -182,11 +182,12 @@ class DTInfoView: UIView {
     @objc private func heightSettingWasChanged() {
      guard let type = self.type else { return }
         if type == .height {
-            guard let height = Double(UserModel.shared.displayHeight) else { return }
+            guard let height = CoreDataManager.shared.readUserMainInfo()?.height else { return }
             let multipliedHeight = height * MeteringSetting.shared.heightMultiplier
-            let roundedHeight = Double(round(10 * multipliedHeight) / 10)
-            UserModel.shared.setHeight(to: roundedHeight)
-            self.valueLabel.text = UserModel.shared.displayHeight
+            let roundedHeight = Float(round(10 * multipliedHeight) / 10)
+            CoreDataManager.shared.updateHeight(to: roundedHeight)
+           // UserModel.shared.setHeight(to: roundedHeight)
+            self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.height ?? 0)
             self.descriptionLabel.text = MeteringSetting.shared.heightDescription
         }
     }
@@ -194,11 +195,12 @@ class DTInfoView: UIView {
     @objc private func weightSettingChanged() {
         guard let type = self.type else { return }
         if type == .weight {
-            guard let weight = Double(UserModel.shared.displayWeight) else { return }
+            guard let weight = CoreDataManager.shared.readUserMainInfo()?.weight else { return }
             let multipliedWeight = weight * MeteringSetting.shared.weightMultiplier
-            let roundedWeight = Double(round(10 * multipliedWeight) / 10)
-            UserModel.shared.setWeight(to: roundedWeight)
-            self.valueLabel.text = UserModel.shared.displayWeight
+            let roundedWeight = Float(round(10 * multipliedWeight) / 10)
+            CoreDataManager.shared.updateWeight(to: roundedWeight)
+           // UserModel.shared.setWeight(to: roundedWeight)
+            self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.weight ?? 0)
             self.descriptionLabel.text = MeteringSetting.shared.weightDescription
         }
     }

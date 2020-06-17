@@ -4,7 +4,7 @@ class Exercise: NSObject, Codable {
  
     //MARK: - Structures
     struct Approach: Hashable, Codable {
-        var weight: Double
+        var weight: Float
         var reps: Int
         var weightDisplayvalue: String {
             switch MeteringSetting.shared.weightMode {
@@ -46,7 +46,7 @@ class Exercise: NSObject, Codable {
     }
     
     //MARK: - Publick methods
-    func addAproachWith(_ reps: Int, and weight: Double) {
+    func addAproachWith(_ reps: Int, and weight: Float) {
         var aproachesSet = Set<Approach>()
         let aproach = Approach(weight: weight, reps: reps)
         if aproachesSet.insert(aproach).inserted {
@@ -54,7 +54,7 @@ class Exercise: NSObject, Codable {
         }
     }
     
-    func changeAproach(_ aproachIndex: Int, with reps: Int, and weight: Double) {
+    func changeAproach(_ aproachIndex: Int, with reps: Int, and weight: Float) {
         if reps == 0 || weight == 0 {
             self.aproaches.remove(at: aproachIndex)
         } else {

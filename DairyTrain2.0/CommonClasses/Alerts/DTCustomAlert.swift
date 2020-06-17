@@ -479,14 +479,14 @@ class DTCustomAlert: UIView {
     
     private func writeNewAproachInfo() {
         guard let reps = Int(self.repsTextField.text ?? "0") else { return }
-        guard let weight = Double(self.weightTextField.text ?? "0") else { return }
+        guard let weight = Float(self.weightTextField.text ?? "0") else { return }
         self.exercice?.addAproachWith(reps, and: weight)
         UserTrainingModelFileManager.shared.writeData()
     }
     
     private func changeAproachInfo(for index: Int) {
         guard let reps = Int(self.repsTextField.text ?? "0") else { return }
-        guard let weight = Double(self.weightTextField.text ?? "0") else { return }
+        guard let weight = Float(self.weightTextField.text ?? "0") else { return }
         self.exercice?.changeAproach(index, with: reps, and: weight)
     }
       

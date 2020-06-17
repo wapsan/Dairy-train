@@ -6,7 +6,6 @@ class MeteringSetting {
     enum WeightMode: String, Codable {
         case kg
         case lbs
-     
     }
     
     enum HeightMode: String, Codable {
@@ -18,10 +17,10 @@ class MeteringSetting {
     static let shared = MeteringSetting()
     
     //MARK: - Private properties
-    private var kgMultiplier: Double = 1 / 2.2
-    private var lbsMultiplier: Double = 1 * 2.2
-    private var cmMultiplier: Double = 1 / 0.032
-    private var ftMultiplier: Double = 1 * 0.032
+    private var kgMultiplier: Float = 1 / 2.2
+    private var lbsMultiplier: Float = 1 * 2.2
+    private var cmMultiplier: Float = 1 / 0.032
+    private var ftMultiplier: Float = 1 * 0.032
     
     private var kgDescription: String = "(kg.)"
     private var lbsDescription: String = "(lbs.)"
@@ -31,7 +30,7 @@ class MeteringSetting {
     
     //MARK: - Properties
     var weightDescription: String = ""
-    var weightMultiplier: Double = 1.0
+    var weightMultiplier: Float = 1.0
     
     var weightMode: WeightMode = .kg {
         willSet {
@@ -43,13 +42,14 @@ class MeteringSetting {
                 self.weightMultiplier = self.lbsMultiplier
                 self.weightDescription = self.lbsDescription
             }
+            CoreDataManager.shared.updateWeightMode(to: newValue)
             DTSettingManager.shared.setWeightMode(to: newValue)
             NotificationCenter.default.post(name: .weightMetricChanged, object: nil)
         }
     }
     
     var heightDescription: String = ""
-    var heightMultiplier: Double = 1.0
+    var heightMultiplier: Float = 1.0
     
     var heightMode: HeightMode = .cm {
         willSet {
@@ -61,6 +61,7 @@ class MeteringSetting {
                 self.heightMultiplier = self.ftMultiplier
                 self.heightDescription = self.ftDescription
             }
+            CoreDataManager.shared.updateHeightMode(to: newValue)
             DTSettingManager.shared.setHeightMode(to: newValue)
             NotificationCenter.default.post(name: .heightMetricChanged, object: nil)
         }

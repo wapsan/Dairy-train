@@ -1,6 +1,6 @@
 import UIKit
 
-class CommonStatisticsVC: TrainingListVC {
+class CommonStatisticsViewController: TrainingListVC {
     
     //MARK: - Private properties
     private lazy var trains = UserModel.shared.trains
@@ -8,7 +8,7 @@ class CommonStatisticsVC: TrainingListVC {
     //MARK: - Properties
     override var headerTitle: String {
         get {
-            return "Training statistics"
+            return LocalizedString.trainingStatistics
         }
         set {}
     }
@@ -16,19 +16,19 @@ class CommonStatisticsVC: TrainingListVC {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Statistics"
+        self.navigationItem.title = LocalizedString.statistics
     }
     
     //MARK: - Private methods
     private func pushStatisticsViewController(for train: Train) {
-        let trainStatiticsViewController = TrainStatisticsVC()
+        let trainStatiticsViewController = TrainStatisticsViewController()
         trainStatiticsViewController.setTrain(to: train)
         self.navigationController?.pushViewController(trainStatiticsViewController, animated: true)
     }
 }
 
-//MARK: - UICollectionview datasourse and delegate
-extension CommonStatisticsVC {
+//MARK: - UICollectionview methods
+extension CommonStatisticsViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let choosenTrain = self.trains[indexPath.row]

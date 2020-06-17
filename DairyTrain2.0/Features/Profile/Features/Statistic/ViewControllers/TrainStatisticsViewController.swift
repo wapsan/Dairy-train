@@ -1,6 +1,6 @@
 import UIKit
 
-class TrainStatisticsVC: MainTabBarItemVC {
+class TrainStatisticsViewController: MainTabBarItemVC {
     
     //MARK: - Private properties
     private var statistics: Statistics?
@@ -22,7 +22,6 @@ class TrainStatisticsVC: MainTabBarItemVC {
     
     private lazy var totalRepsView: DTInfoView = {
         let view = DTInfoView(type: .totalReps)
-        
         view.valueLabel.text = self.statistics?.totalNumberOfReps ?? "0"
         return view
     }()
@@ -33,8 +32,8 @@ class TrainStatisticsVC: MainTabBarItemVC {
         return view
     }()
     
-    private lazy var trainedMusclesView: DTMuscleSubgroupInfoView = {
-        let view = DTMuscleSubgroupInfoView(for: self.statistics?.trainedSubGroupsList)
+    private lazy var trainedMusclesView: DTTrainedMusclesView = {
+        let view = DTTrainedMusclesView(for: self.statistics?.trainedSubGroupsList)
         return view
     }()
     

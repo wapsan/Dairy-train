@@ -41,6 +41,12 @@ class UserMainInfoModel: NSObject, Codable {
         } else {
             self.activityLevel = .none
         }
+        if let weightMode = mainInfoManagedObject.weightMode {
+            self.weightMode = MeteringSetting.WeightMode.init(rawValue: weightMode)
+        }
+        if let heightMode = mainInfoManagedObject.heightMode {
+            self.heightMode = MeteringSetting.HeightMode.init(rawValue: heightMode)
+        }
     }
     
     //MARK: - Public methods

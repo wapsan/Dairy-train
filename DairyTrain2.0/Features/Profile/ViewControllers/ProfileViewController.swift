@@ -77,7 +77,7 @@ class ProfileViewController: MainTabBarItemVC {
     }()
     
     private lazy var statisticButton: DTSystemButton = {
-        let button = DTSystemButton(tittle: LocalizedString.statisctics)
+        let button = DTSystemButton(tittle: LocalizedString.statistics)
         button.addTarget(self, action: #selector(self.statisticsButtonPressed),
                          for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -243,7 +243,7 @@ class ProfileViewController: MainTabBarItemVC {
     }
     
     @objc private func statisticsButtonPressed() {
-        let commonStatisticsVC = CommonStatisticsVC()
+        let commonStatisticsVC = CommonStatisticsViewController()
         self.navigationController?.pushViewController(commonStatisticsVC, animated: true)
     }
     

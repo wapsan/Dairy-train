@@ -29,11 +29,11 @@ class Statistics {
     private var _numberOfTrainedSubgroups: Int
     private var _totalNumberOfReps: Int
     private var _totalNumberOfAproach: Int
-    private var _totalWorkoutWeight: Double
+    private var _totalWorkoutWeight: Float
     
-    private var _averageProjectileWeight: Double {
+    private var _averageProjectileWeight: Float {
         if self._totalWorkoutWeight != 0 && self._totalNumberOfAproach != 0 {
-            return self._totalWorkoutWeight / Double(self._totalNumberOfAproach)
+            return self._totalWorkoutWeight / Float(self._totalNumberOfAproach)
         } else {
             return 0.0
         }
@@ -61,7 +61,7 @@ class Statistics {
             return reps
         }()
         self._totalWorkoutWeight = {
-            var totalWeight = 0.0
+            var totalWeight: Float = 0.0
             train.exercises.forEach { (exercise) in
                 exercise.aproaches.forEach { (aproach) in
                     totalWeight += aproach.weight

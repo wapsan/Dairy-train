@@ -12,7 +12,6 @@ class LocalizedString {
     
     //MARK: - ProfileViewController
     static let recomendations = "Recomendations"
-    static let statisctics = "Statistic"
     static let setting = "Setting"
     static let signOut = "Sign out"
     static let fillInDataErrorMessage = "Fill in data to recive recomendtations."
@@ -24,4 +23,17 @@ class LocalizedString {
     static let cancel = "Cancel"
     static let signOutAlert = "Sign out?"
     static let signOutAlerMessage = "Are you sure?"
+    
+    //MARK: - Calories calculator
+    static let balanceWeightSupply = "Balance weigh supply"
+    static let loseWeightSupply = "Lose weight supply"
+    static let muscleGainSupply = "Muscle gain supply"
+    
+    //MARK: - CommonStatisticsViewController
+    static let trainingStatistics = "Training statistics"
+    static let statistics = "Statistic"
+    
+    //MARK: - DTTrainedMusclesView
+    static let trainedMuscles = "Trained muscles"
+    
 }

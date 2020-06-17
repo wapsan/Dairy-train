@@ -1,6 +1,6 @@
 import UIKit
 
-class DTMuscleSubgroupInfoView: UIView {
+class DTTrainedMusclesView: UIView {
     
     //MARK: - Private properties
     private lazy var subgroupsList: [MuscleSubgroup.Subgroup] = []
@@ -9,7 +9,7 @@ class DTMuscleSubgroupInfoView: UIView {
     //MARK: - GUI Properties
     private lazy var titleLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
-        label.text = "Trained muscles"
+        label.text = LocalizedString.trainedMuscles
         label.font = .boldSystemFont(ofSize: 25.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         return  label
@@ -45,14 +45,6 @@ class DTMuscleSubgroupInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Private methods
-    private func setDefaultLayer() {
-        self.layer.shadowColor = UIColor.darkGray.cgColor
-        self.layer.shadowOffset = .init(width: 0, height: 5)
-        self.layer.shadowOpacity = 5
-        self.layer.cornerRadius = 25
-    }
-    
     private func initView() {
         self.backgroundColor = .viewFlipsideBckgoundColor
         self.addSubview(self.titleLabel)
@@ -61,6 +53,13 @@ class DTMuscleSubgroupInfoView: UIView {
         self.setDefaultLayer()
     }
     
+    private func setDefaultLayer() {
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOffset = .init(width: 0, height: 5)
+        self.layer.shadowOpacity = 5
+        self.layer.cornerRadius = 25
+    }
+
     //MARK: - Public methods
     func updateSubgroupsImages(for subgroups: [MuscleSubgroup.Subgroup]?) {
         guard let subgroupsFromTrain = subgroups else { return }
@@ -93,7 +92,7 @@ class DTMuscleSubgroupInfoView: UIView {
 }
 
 //MARK: - CollectionViewDelegate and datasourse
-extension DTMuscleSubgroupInfoView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension DTTrainedMusclesView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.subgroupsList.count
