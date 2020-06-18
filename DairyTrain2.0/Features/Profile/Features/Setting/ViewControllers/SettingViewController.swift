@@ -1,6 +1,6 @@
 import UIKit
 
-class SettingVC: SettingsSectionVC {
+class SettingViewController: SettingsSectionViewController {
     
     //MARK: - Private properties
     private var settingInfo: Setting?
@@ -8,23 +8,27 @@ class SettingVC: SettingsSectionVC {
     //MARK: - Initialization
     init(with setting: Setting) {
         super.init(with: setting.tittle)
-        self.settingInfo = setting
         self.tableView.allowsMultipleSelection = false
         self.tableView.sectionHeaderHeight = 10
+        self.settingInfo = setting
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Private methods
+    private func settingWasChanged() {
+        NotificationCenter.default.post(name: .settingWasChanged, object: nil)
+    }
 }
 
 //MARK: - Table view methods
-extension SettingVC {
+extension SettingViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let setingVariant = self.settingInfo?.possibleList.count else  { return 0 }
-        return setingVariant
+        guard let settingCount = self.settingInfo?.possibleList.count else { return 0 }
+        return settingCount
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,20 +37,18 @@ extension SettingVC {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTSettingCell.cellID,
-                                                 for: indexPath) as! DTSettingCell
-        if let possibleVariants = self.settingInfo?.possibleList {
-            cell.mainSettingLabel.text = possibleVariants[indexPath.row]
-            cell.currentSettingLabel.text = nil
-        }
-        if (self.settingInfo?.isChekedOn(indexPath.row))! {
-            cell.markImage.image = UIImage(named: "checkMark")
-            cell.isUserInteractionEnabled = false
+                                                 for: indexPath)
+        guard let settingInfo = self.settingInfo,
+            let isCheckedIn = self.settingInfo?.isChekedIn(indexPath.row) else {
+                return UITableViewCell() }
+        
+        (cell as? DTSettingCell)?.setCurrentSettingCell(for: settingInfo, and: indexPath.row)
+        
+        if isCheckedIn {
+            (cell as? DTSettingCell)?.setCheked()
         } else {
-            self.tableView.deselectRow(at: indexPath, animated: true)
-            cell.markImage.image = nil
-            cell.isUserInteractionEnabled = true
+            (cell as? DTSettingCell)?.setUnchekde()
         }
-        cell.selectionStyle = .none
         return cell
     }
     
@@ -55,9 +57,9 @@ extension SettingVC {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentValue = self.settingInfo?.possibleSetting[indexPath.row]
+        guard let currentValue = self.settingInfo?.possibleSetting[indexPath.row] else { return }
         self.settingInfo?.curenttValue = currentValue
+        self.settingWasChanged()
         self.tableView.reloadData()
     }
-    
 }

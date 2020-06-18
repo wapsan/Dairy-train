@@ -13,6 +13,8 @@ class MainTabBarViewController: UITabBarController {
         self.setUpTabBarItems()
         self.setUpSelectedTabBarItem()
         self.addObserverForAddingExerciceToTrain()
+        CoreDataManager.shared.updateHeightMode(to: MeteringSetting.shared.heightMode)
+        CoreDataManager.shared.updateWeightMode(to: MeteringSetting.shared.weightMode)
     }
     
     //MARK: - Private methods

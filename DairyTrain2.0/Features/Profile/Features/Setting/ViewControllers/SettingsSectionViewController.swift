@@ -1,45 +1,56 @@
 import UIKit
 
-class SettingsSectionVC: UITableViewController {
+class SettingsSectionViewController: UITableViewController {
     
     //MARK: - Private properties
     private lazy var settingModel = [SettingSection(type: .metrics),
                                      SettingSection(type: .style)]
-    private lazy var navigationTittle = "Setting"
+    private lazy var navigationTittle = LocalizedString.setting
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tableView.reloadData()
-    }
-    
+
     //MARK: - Initialization
     init(with name: String) {
         super.init(style: .grouped)
-        self.initialization()
+        self.initializationTableView()
+        self.addObserverForSettingChanged()
         self.navigationItem.title = name
-        self.tableView.bounces = false
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Private methods
-    private func initialization() {
+    private func initializationTableView() {
         self.tableView?.register(DTSettingCell.self, forCellReuseIdentifier: DTSettingCell.cellID)
         self.tableView?.backgroundColor = UIColor.black
         self.tableView?.sizeToFit()
         self.tableView?.rowHeight = 50
         self.tableView?.sectionFooterHeight = 0
         self.tableView?.sectionHeaderHeight = 50
+        self.tableView.bounces = false
     }
     
-    //MARK: - Table view delegate, datasourse
+    //MARK: - Private methods
+    private func addObserverForSettingChanged() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.settingWasChanged),
+                                               name: .settingWasChanged,
+                                               object: nil)
+    }
+
+    //MARK: - Actions
+    @objc private func settingWasChanged() {
+        self.tableView.reloadData()
+    }
+}
+
+//MARK: - UITableViewDelegate, UITableViewDatasourse methods
+extension SettingsSectionViewController {
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return self.settingModel.count
     }
@@ -49,9 +60,9 @@ class SettingsSectionVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let setting = settingModel[indexPath.section].settings[indexPath.row]
-        let setVC = SettingVC(with: setting)
-        self.navigationController?.pushViewController(setVC, animated: true)
+        let choosenSetting = settingModel[indexPath.section].settings[indexPath.row]
+        let setingViewController = SettingViewController(with: choosenSetting)
+        self.navigationController?.pushViewController(setingViewController, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -66,13 +77,11 @@ class SettingsSectionVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTSettingCell.cellID,
-                                                 for: indexPath) as! DTSettingCell
+                                                 for: indexPath)
         let section = indexPath.section
         let row = indexPath.row
         let setting = self.settingModel[section].settings[row]
-        cell.mainSettingLabel.text = setting.tittle
-        cell.currentSettingLabel.text = setting.curenttValue
+        (cell as? DTSettingCell)?.setSetingSectionCell(for: setting)
         return cell
     }
 }
-

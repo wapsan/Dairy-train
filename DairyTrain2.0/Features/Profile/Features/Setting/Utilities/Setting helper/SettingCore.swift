@@ -75,7 +75,7 @@ class Setting {
     }
     
     //MARK: - Publick methods
-    func isChekedOn(_ index: Int) -> Bool {
+    func isChekedIn(_ index: Int) -> Bool {
         guard let settingType = self.type else { return false}
         switch settingType {
         case .colorTheme:

@@ -4,7 +4,7 @@ class DTSettingManager {
     
     //MARK: - Singletone propetie
     static let shared = DTSettingManager()
-    
+    private init() { }
     //MARK: - Private properties
     private var userDefaults = UserDefaults.standard
     

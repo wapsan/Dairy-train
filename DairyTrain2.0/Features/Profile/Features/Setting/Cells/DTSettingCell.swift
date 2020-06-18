@@ -1,19 +1,19 @@
 import UIKit
 
 class DTSettingCell: UITableViewCell {
-   
+    
     //MARK: - Static cellID
     static let cellID = "TESTDTSettignCell"
     
     //MARK: - GUI Properties
-    lazy var markImage: UIImageView = {
+    private lazy var markImage: UIImageView = {
         let imageview = UIImageView()
         imageview.image = UIImage.rightArrow
         imageview.translatesAutoresizingMaskIntoConstraints = false
         return imageview
     }()
     
-    lazy var mainSettingLabel: UILabel = {
+    private lazy var mainSettingLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = .systemFont(ofSize: 20)
@@ -22,7 +22,7 @@ class DTSettingCell: UITableViewCell {
         return label
     }()
     
-    lazy var currentSettingLabel: UILabel = {
+    private lazy var currentSettingLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = .systemFont(ofSize: 17)
@@ -30,8 +30,8 @@ class DTSettingCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-    lazy var stackView: UIStackView = {
+    
+    private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 0
@@ -53,18 +53,35 @@ class DTSettingCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Private methods
-    private func setCell() {
-        self.backgroundColor = .viewFlipsideBckgoundColor
-    }
-    
     private func initCell() {
-        self.setCell()
+        self.backgroundColor = .viewFlipsideBckgoundColor
         self.addSubview(self.mainSettingLabel)
         self.addSubview(self.stackView)
         self.setUpConstraints()
     }
-   
+    
+    //MARK: - Setter
+    func setSetingSectionCell(for setting: Setting) {
+        self.mainSettingLabel.text = setting.tittle
+        self.currentSettingLabel.text = setting.curenttValue
+    }
+    
+    func setCurrentSettingCell(for settings: Setting, and index: Int) {
+        self.mainSettingLabel.text = settings.possibleList[index]
+        self.currentSettingLabel.text = nil
+        self.selectionStyle = .none
+    }
+    
+    func setCheked() {
+        self.markImage.image = UIImage.checkMark
+        self.isUserInteractionEnabled = false
+    }
+    
+    func setUnchekde() {
+        self.markImage.image = nil
+        self.isUserInteractionEnabled = true
+    }
+    
     //MARK: - Constraints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
@@ -84,5 +101,4 @@ class DTSettingCell: UITableViewCell {
             self.stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
         ])
     }
-    
 }

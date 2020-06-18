@@ -196,7 +196,7 @@ class ProfileViewController: MainTabBarItemVC {
     }
     
     private func pushSettingViewController(with title: String) {
-        let settingSectionVC = SettingsSectionVC(with: title)
+        let settingSectionVC = SettingsSectionViewController(with: title)
         self.navigationController?.pushViewController(settingSectionVC, animated: true)
     }
     
@@ -206,16 +206,19 @@ class ProfileViewController: MainTabBarItemVC {
     }
     
     private func signOut() {
-        DTSettingManager.shared.deleteUserToken()
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
+            DTSettingManager.shared.deleteUserToken()
+            CoreDataManager.shared.deleteUserMainInfoData(completion: { [weak self] in
+                guard let self = self else { return }
+                let mainLoginVC = LoginViewController()
+                mainLoginVC.modalPresentationStyle = .overFullScreen
+                self.present(mainLoginVC, animated: true, completion: nil)
+            })
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-        let mainLoginVC = LoginViewController()
-        mainLoginVC.modalPresentationStyle = .overFullScreen
-        self.present(mainLoginVC, animated: true, completion: nil)
     }
     
     //MARK: - Constraints

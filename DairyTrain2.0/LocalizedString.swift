@@ -36,4 +36,16 @@ class LocalizedString {
     //MARK: - DTTrainedMusclesView
     static let trainedMuscles = "Trained muscles"
     
+    //MARK: - DTInfoView
+    static let totalTrain = "Total train"
+    static let gender = "Gender"
+    static let activityLevel = "Activity level"
+    static let age = "Age"
+    static let height = "Height"
+    static let weight = "Weight"
+    static let totalReps = "Total reps"
+    static let totalAproach = "Total aproach"
+    static let avarageProjectileWeigt = "Avarage projectile weight"
+    static let totalTrainWeight = "Total train weight"
+    
 }

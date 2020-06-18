@@ -1,5 +1,8 @@
 import Foundation
 
+/**
+Class created to fetch data model from UserMainInfoManagedObject for make encoding to JSON file.
+*/
 class UserMainInfoModel: NSObject, Codable {
         
     //MARK: - Enums

@@ -36,8 +36,10 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
         Auth.auth().signIn(with: credential) { (result, error) in
             if let token = result?.user.refreshToken {
                 DTSettingManager.shared.setUserToken(to: token)
+             //   DTSettingManager.shared.setAutorization(to: true)
                 self.postNotificationForGoogleSingIn()
             } else {
+              //  DTSettingManager.shared.setAutorization(to: false)
                 print("GooglSignInErrro")
             }
         }

@@ -176,9 +176,11 @@ class LoginViewController: UIViewController {
     }
     
     private func presentMainTabBarViewController() {
-        let mainTabBarVC = MainTabBarViewController()
-        mainTabBarVC.modalPresentationStyle = .fullScreen
-        self.present(mainTabBarVC, animated: true, completion: nil)
+        DTFirebaseFileManager.shared.updateNotLogInUserFromFirebase(completion: {
+            let mainTabBarVC = MainTabBarViewController()
+            mainTabBarVC.modalPresentationStyle = .fullScreen
+            self.present(mainTabBarVC, animated: true, completion: nil)
+        })
     }
     
     private func addObserverForGoogleSignedIn() {

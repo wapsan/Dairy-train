@@ -150,6 +150,26 @@ class CoreDataManager {
         self.updateContext()
     }
     
+    func deleteUserMainInfoData(completion: @escaping () -> Void) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "MainInfo")
+        guard let result = try? self.managedContext.fetch(fetchRequest) else { return }
+        for object in result {
+            self.managedContext.delete(object)
+            self.updateContext()
+        }
+        completion()
+    }
+    
+    func isAnyDataSaved() -> Bool {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "MainInfo")
+        guard let result = try? self.managedContext.fetch(fetchRequest) else { return false }
+        if result.isEmpty {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     //MARK: - Initialization
     private init() { }
 }

@@ -35,14 +35,14 @@ class DTInfoView: UIView {
         
         case totalReps
         case totalAproach
-        case numberOfSubgroups
+      //  case numberOfSubgroups
         case avarageProjectileWeight
         case totalWeight
     }
     
     //MARK: - Properties
-    var tapped: ((DTInfoView.InfoViewValue)-> Void)?
-    var type: InfoViewValue?
+    private(set) var type: InfoViewValue?
+    var tapped: ((DTInfoView.InfoViewValue) -> Void)?
     var isValueSeted: Bool {
         switch self.valueLabel.text {
         case "0","_", "0.0":
@@ -58,64 +58,59 @@ class DTInfoView: UIView {
         self.type = type
         switch type {
         case .trainCount:
-            self.titleLabel.text = "Total train"
+            self.titleLabel.text = LocalizedString.totalTrain
             self.valueLabel.text = UserModel.shared.displayTrainCount
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .gender:
-            self.titleLabel.text = "Gender"
+            self.titleLabel.text = LocalizedString.gender
             self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.gender ?? "_"
-                //String(self.profileManager.profileInfo?.gender?.rawValue ?? "_")
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .activityLevel:
-            self.titleLabel.text = "Activity level"
+            self.titleLabel.text = LocalizedString.activityLevel
             self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.activitylevel ?? "_"
-                //String(self.profileManager.profileInfo?.activityLevel?.rawValue ?? "_")
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .age:
-            self.titleLabel.text = "Age"
+            self.titleLabel.text = LocalizedString.age
             self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.age ?? 0)
-                //String(self.profileManager.profileInfo?.age ?? 0)
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .height:
-            self.titleLabel.text = "Height"
+            self.titleLabel.text = LocalizedString.height
             self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.height ?? 0)
-                //String(self.profileManager.profileInfo?.height ?? 0)
             self.descriptionLabel.text = MeteringSetting.shared.heightDescription
             self.addSubview(self.descriptionLabel)
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
             self.setConstraintForDescriptionLabel()
         case .weight:
-            self.titleLabel.text = "Weight"
+            self.titleLabel.text = LocalizedString.weight
             self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.weight ?? 0)
-                //String(self.profileManager.profileInfo?.weight ?? 0)
             self.descriptionLabel.text = MeteringSetting.shared.weightDescription
             self.addSubview(self.descriptionLabel)
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
             self.setConstraintForDescriptionLabel()
         case .totalReps:
-            self.titleLabel.text = "Total reps"
+            self.titleLabel.text = LocalizedString.totalReps
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .totalAproach:
-            self.titleLabel.text = "Total aproach"
+            self.titleLabel.text = LocalizedString.totalAproach
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
-        case .numberOfSubgroups:
-            self.titleLabel.text = "Number of muscle subgroups"
-            self.addSubview(self.titleLabel)
-            self.addSubview(self.valueLabel)
+//        case .numberOfSubgroups:
+//            self.titleLabel.text = "Number of muscle subgroups"
+//            self.addSubview(self.titleLabel)
+//            self.addSubview(self.valueLabel)
         case .avarageProjectileWeight:
-            self.titleLabel.text = "Avarage projectile weight"
+            self.titleLabel.text = LocalizedString.avarageProjectileWeigt
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .totalWeight:
-            self.titleLabel.text = "Total train weight"
+            self.titleLabel.text = LocalizedString.totalTrainWeight
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         }
@@ -184,9 +179,8 @@ class DTInfoView: UIView {
         if type == .height {
             guard let height = CoreDataManager.shared.readUserMainInfo()?.height else { return }
             let multipliedHeight = height * MeteringSetting.shared.heightMultiplier
-            let roundedHeight = Float(round(10 * multipliedHeight) / 10)
-            CoreDataManager.shared.updateHeight(to: roundedHeight)
-           // UserModel.shared.setHeight(to: roundedHeight)
+            let newHeight = Float(round(10 * multipliedHeight) / 10)
+            CoreDataManager.shared.updateHeight(to: newHeight)
             self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.height ?? 0)
             self.descriptionLabel.text = MeteringSetting.shared.heightDescription
         }
@@ -197,9 +191,8 @@ class DTInfoView: UIView {
         if type == .weight {
             guard let weight = CoreDataManager.shared.readUserMainInfo()?.weight else { return }
             let multipliedWeight = weight * MeteringSetting.shared.weightMultiplier
-            let roundedWeight = Float(round(10 * multipliedWeight) / 10)
-            CoreDataManager.shared.updateWeight(to: roundedWeight)
-           // UserModel.shared.setWeight(to: roundedWeight)
+            let newWeight = Float(round(10 * multipliedWeight) / 10)
+            CoreDataManager.shared.updateWeight(to: newWeight)
             self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.weight ?? 0)
             self.descriptionLabel.text = MeteringSetting.shared.weightDescription
         }
@@ -238,5 +231,4 @@ class DTInfoView: UIView {
             self.descriptionLabel.bottomAnchor.constraint(equalTo: self.valueLabel.topAnchor, constant: 0)
         ])
     }
-    
 }
