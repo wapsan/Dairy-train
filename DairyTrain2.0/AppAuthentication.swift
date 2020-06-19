@@ -29,6 +29,10 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
             return
         }
         
+        if let _ = user {
+            NotificationCenter.default.post(name: .startGoogleSignIn, object: nil)
+        }
+        
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
@@ -36,10 +40,8 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
         Auth.auth().signIn(with: credential) { (result, error) in
             if let token = result?.user.refreshToken {
                 DTSettingManager.shared.setUserToken(to: token)
-             //   DTSettingManager.shared.setAutorization(to: true)
                 self.postNotificationForGoogleSingIn()
             } else {
-              //  DTSettingManager.shared.setAutorization(to: false)
                 print("GooglSignInErrro")
             }
         }

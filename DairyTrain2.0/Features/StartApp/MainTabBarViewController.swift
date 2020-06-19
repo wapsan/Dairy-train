@@ -15,6 +15,7 @@ class MainTabBarViewController: UITabBarController {
         self.addObserverForAddingExerciceToTrain()
         CoreDataManager.shared.updateHeightMode(to: MeteringSetting.shared.heightMode)
         CoreDataManager.shared.updateWeightMode(to: MeteringSetting.shared.weightMode)
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     //MARK: - Private methods

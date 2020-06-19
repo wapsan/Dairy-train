@@ -6,16 +6,17 @@ class DTFirebaseFileManager {
     //MARK: - Singletone
     static let shared = DTFirebaseFileManager()
     
-    private init () {    }
-    
     //MARK: - Private properties
     private lazy var firebaseRef = Database.database().reference()
-    private var currentUser: String?
+
+    //MARK: - Initialization
+    private init () { }
     
     //MARK: - Public methods
+    //update usermaininfo data from coredata to firebase
     func updateMainUserInfoInFirebase() {
-        guard let userUid = Auth.auth().currentUser?.uid else { return }
-        guard let userMainInfo = UserMainInfoModel(from: CoreDataManager.shared.readUserMainInfo()) else { return }
+        guard let userUid = Auth.auth().currentUser?.uid,
+            let userMainInfo = UserMainInfoModel(from: CoreDataManager.shared.readUserMainInfo()) else { return }
         let localJSONStringModel = userMainInfo.convertToJSONString()
         self.fetchMainUserInfo { (fireBaseJSONString) in
             guard let fireBaseJsonStringModel = fireBaseJSONString else { return }
@@ -33,20 +34,20 @@ class DTFirebaseFileManager {
             if let userMainInfo = UserMainInfoModel(from: CoreDataManager.shared.readUserMainInfo()) {
                 let localJSONStringModel = userMainInfo.convertToJSONString()?.sorted(by: <)
                 if sortedJSONString != localJSONStringModel {
-                    guard let data = fireBaseJsonStringModel.data(using: .utf8) else { return }
-                    guard let mainInfo = try? JSONDecoder().decode(UserMainInfoModel.self, from: data) else {
-                        completion()
-                        return }
+                    guard let data = fireBaseJsonStringModel.data(using: .utf8),
+                        let mainInfo = try? JSONDecoder().decode(UserMainInfoModel.self, from: data) else {
+                            completion()
+                            return }
                     CoreDataManager.shared.updateUserMainInfo(to: mainInfo)
                     completion()
                 } else {
                     completion()
                 }
             } else {
-                guard let data = fireBaseJsonStringModel.data(using: .utf8) else { return }
-                guard let mainInfo = try? JSONDecoder().decode(UserMainInfoModel.self, from: data) else {
-                    completion()
-                    return }
+                guard let data = fireBaseJsonStringModel.data(using: .utf8),
+                    let mainInfo = try? JSONDecoder().decode(UserMainInfoModel.self, from: data) else {
+                        completion()
+                        return }
                 CoreDataManager.shared.updateUserMainInfo(to: mainInfo)
                 completion()
             }
@@ -57,12 +58,11 @@ class DTFirebaseFileManager {
     func updateNotLogInUserFromFirebase(completion: @escaping () -> Void) {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         self.firebaseRef.child("user").child(userUid).observeSingleEvent(of: .value, with: { (snapshot) in
-           // guard let dictionaryValue = snapshot.value as? NSDictionary else { return }
-            if let dictionaryValu = snapshot.value as? NSDictionary {
+            if let _ = snapshot.value as? NSDictionary {
                 self.fetchMainUserInfo { (fireBaseJSONString) in
-                    guard let fireBaseJsonStringModel = fireBaseJSONString else { return }
-                    guard let data = fireBaseJsonStringModel.data(using: .utf8) else { return }
-                    guard let mainInfo = try? JSONDecoder().decode(UserMainInfoModel.self, from: data) else { return }
+                    guard let fireBaseJsonStringModel = fireBaseJSONString,
+                        let data = fireBaseJsonStringModel.data(using: .utf8),
+                        let mainInfo = try? JSONDecoder().decode(UserMainInfoModel.self, from: data) else { return }
                     CoreDataManager.shared.updateUserMainInfo(to: mainInfo)
                     completion()
                 }
@@ -70,18 +70,16 @@ class DTFirebaseFileManager {
                 self.firebaseRef.child("user").child(userUid).setValue(["userMainInfo": ""])
                 completion()
             }
-            
         }) { (error) in
             print(error.localizedDescription)
         }
-        
     }
   
-    func fetchMainUserInfo(completion: @escaping ((String?) -> Void)) {
+    private func fetchMainUserInfo(completion: @escaping ((String?) -> Void)) {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         self.firebaseRef.child("user").child(userUid).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionaryValue = snapshot.value as? NSDictionary else { return }
-            guard let jsonString = dictionaryValue["userMainInfo"] as? String else { return }
+            guard let dictionaryValue = snapshot.value as? NSDictionary,
+             let jsonString = dictionaryValue["userMainInfo"] as? String else { return }
             completion(jsonString)
         }) { (error) in
             print(error.localizedDescription)

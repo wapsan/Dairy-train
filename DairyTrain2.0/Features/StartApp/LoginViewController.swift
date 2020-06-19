@@ -13,6 +13,12 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: - GUI Properties
+    private lazy var downloadHud: DTDownloadHud = {
+        let downloadHud = DTDownloadHud(frame: .zero)
+        downloadHud.translatesAutoresizingMaskIntoConstraints = false
+        return downloadHud
+    }()
+    
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage.mainLogo)
         imageView.backgroundColor = .clear
@@ -120,6 +126,7 @@ class LoginViewController: UIViewController {
         self.setUpGooglePresentingViewController()
         self.setGuiElements()
         self.setUpSignMode()
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -130,6 +137,11 @@ class LoginViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.removeObserverForGoogleSignedIn()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.downloadHud.remove()
     }
     
     //MARK: - Private methods
@@ -176,7 +188,8 @@ class LoginViewController: UIViewController {
     }
     
     private func presentMainTabBarViewController() {
-        DTFirebaseFileManager.shared.updateNotLogInUserFromFirebase(completion: {
+        DTFirebaseFileManager.shared.updateNotLogInUserFromFirebase(completion: { [weak self] in
+            guard let self = self else { return }
             let mainTabBarVC = MainTabBarViewController()
             mainTabBarVC.modalPresentationStyle = .fullScreen
             self.present(mainTabBarVC, animated: true, completion: nil)
@@ -187,6 +200,11 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.googleSignedIn),
                                                name: .googleSignIn,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.googleStartSigningIn),
+                                               name: .startGoogleSignIn,
                                                object: nil)
     }
     
@@ -226,6 +244,7 @@ class LoginViewController: UIViewController {
             if let result  = authDataresult {
                 guard let tokent = result.user.refreshToken else { return }
                 DTSettingManager.shared.setUserToken(to: tokent)
+                self.downloadHud.showOn(self)
                 self.presentMainTabBarViewController()
             } else {
                 AlertHelper.shared.showDefaultAlert(on: self,
@@ -372,6 +391,10 @@ class LoginViewController: UIViewController {
     
     @objc private func googleSignedIn() {
         self.presentMainTabBarViewController()
+    }
+    
+    @objc private func googleStartSigningIn() {
+        self.downloadHud.showOn(self)
     }
 }
 

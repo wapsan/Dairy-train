@@ -3,7 +3,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    //MARK: - Properties
+    //MARK: - Window propertie
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -16,10 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return AppAuthentication.shared.handle(url: url)
-    }
-    
-    func applicationWillResignActive(_ application: UIApplication) {
-        DTFirebaseFileManager.shared.updateMainUserInfoInFirebase()
     }
 }
 

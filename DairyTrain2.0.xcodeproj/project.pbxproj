@@ -53,6 +53,7 @@
 		1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FD2483BE480012A76A /* DTSystemButton.swift */; };
 		1396F6002484175E0012A76A /* DTInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FF2484175E0012A76A /* DTInfoView.swift */; };
 		1396F6022484216B0012A76A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F6012484216B0012A76A /* LoginViewController.swift */; };
+		139B4ADB249C9D3500409B6E /* DTDownloadHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B4ADA249C9D3500409B6E /* DTDownloadHud.swift */; };
 		139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D530C2473DF790028AE6A /* AlertHelper.swift */; };
 		139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D53102474035C0028AE6A /* DTSettingCell.swift */; };
 		139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531224740BCE0028AE6A /* SettingViewController.swift */; };
@@ -131,6 +132,7 @@
 		1396F5FD2483BE480012A76A /* DTSystemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSystemButton.swift; sourceTree = "<group>"; };
 		1396F5FF2484175E0012A76A /* DTInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoView.swift; sourceTree = "<group>"; };
 		1396F6012484216B0012A76A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		139B4ADA249C9D3500409B6E /* DTDownloadHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTDownloadHud.swift; sourceTree = "<group>"; };
 		139D530C2473DF790028AE6A /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		139D53102474035C0028AE6A /* DTSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSettingCell.swift; sourceTree = "<group>"; };
 		139D531224740BCE0028AE6A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -663,6 +665,7 @@
 			isa = PBXGroup;
 			children = (
 				139FE9D624783CAA00B22C40 /* DTHeaderView.swift */,
+				139B4ADA249C9D3500409B6E /* DTDownloadHud.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -927,6 +930,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */,
+				139B4ADB249C9D3500409B6E /* DTDownloadHud.swift in Sources */,
 				1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */,
 				13479F39247BD82C002FFB4E /* MuscleGroupsVC.swift in Sources */,
 				13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */,
