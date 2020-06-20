@@ -6,7 +6,7 @@ class DTActivitiesCell: UITableViewCell {
     static let cellID: String = "DTActivitiesCell"
     
     //MARK: - GUI Properties
-    lazy var containerView: UIView = {
+    private lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .viewFlipsideBckgoundColor
         view.layer.shadowColor = UIColor.darkGray.cgColor
@@ -17,7 +17,7 @@ class DTActivitiesCell: UITableViewCell {
         return view
     }()
     
-    lazy var exerciceNameLabel: UILabel = {
+    private lazy var exerciceNameLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
         label.textColor = .white
@@ -30,7 +30,7 @@ class DTActivitiesCell: UITableViewCell {
         return label
     }()
     
-    lazy var muscleGroupImage: UIImageView = {
+    private lazy var muscleGroupImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -46,20 +46,35 @@ class DTActivitiesCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Private Methods
     private func initCell() {
+        self.backgroundColor = .clear
+        self.selectionStyle = .none
         self.addSubview(self.containerView)
         self.addSubview(self.muscleGroupImage)
         self.addSubview(self.exerciceNameLabel)
         self.setUpConstraints()
-        self.setCell()
     }
     
-    private func setCell() {
-        self.backgroundColor = .clear
-        self.selectionStyle = .none
+    //MARK: - Setter
+    func setCellFor(_ muscleGroup: MuscleGroup.Group) {
+        self.exerciceNameLabel.text = muscleGroup.rawValue
+        self.muscleGroupImage.image = muscleGroup.image
     }
     
+    func setCellFor(_ muscleSubroup: MuscleSubgroup.Subgroup) {
+        self.exerciceNameLabel.text = muscleSubroup.rawValue
+        self.muscleGroupImage.image = muscleSubroup.image
+    }
+    
+    func setCellFor(_ exercice: Exercise) {
+        self.exerciceNameLabel.text = exercice.name
+        self.muscleGroupImage.image = exercice.muscleSubGroupImage
+    }
+    
+    func setBackroundColorTo(_ color: UIColor) {
+        self.containerView.backgroundColor = color
+    }
+    //MARK: - Private Methods
     private func setLayout() {
         self.containerView.layer.cornerRadius = self.containerView.bounds.height / 2
     }
@@ -97,7 +112,6 @@ class DTActivitiesCell: UITableViewCell {
             self.muscleGroupImage.centerYAnchor.constraint(equalTo: self.containerView.centerYAnchor),
         ])
     }
-    
 }
 
 

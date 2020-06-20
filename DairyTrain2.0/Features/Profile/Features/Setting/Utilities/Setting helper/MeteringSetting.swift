@@ -15,6 +15,7 @@ class MeteringSetting {
     
     //MARK: - Singletone properties
     static let shared = MeteringSetting()
+    private init () { }
     
     //MARK: - Private properties
     private var kgMultiplier: Float = 1 / 2.2

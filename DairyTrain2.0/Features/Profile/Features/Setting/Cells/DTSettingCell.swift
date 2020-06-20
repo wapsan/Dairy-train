@@ -77,7 +77,7 @@ class DTSettingCell: UITableViewCell {
         self.isUserInteractionEnabled = false
     }
     
-    func setUnchekde() {
+    func setUncheked() {
         self.markImage.image = nil
         self.isUserInteractionEnabled = true
     }

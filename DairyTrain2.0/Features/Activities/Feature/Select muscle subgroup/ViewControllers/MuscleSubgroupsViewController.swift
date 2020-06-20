@@ -1,6 +1,6 @@
 import UIKit
 
-class MuscleSubgroupsVC: MuscleGroupsVC {
+class MuscleSubgroupsViewController: MuscleGroupsViewController {
     
     //MARK: - Private properties
     private lazy var listOfSubgroups: [MuscleSubgroup.Subgroup] = []
@@ -9,11 +9,9 @@ class MuscleSubgroupsVC: MuscleGroupsVC {
     //MARK: - Public properties
     override var headerTittle: String {
         get {
-            return "Select muscle subgroup"
+            return LocalizedString.selectMuscularSubgroup
         }
-        set {
-            
-        }
+        set { }
     }
     
     //MARK: - Lifecycle
@@ -22,7 +20,7 @@ class MuscleSubgroupsVC: MuscleGroupsVC {
         self.navigationItem.title = self.navigationTittle
     }
     
-    //MARK: - Publick methods
+    //MARK: - Setters
     func setNavigationTittle(to tittle: String) {
         self.navigationTittle = tittle
     }
@@ -33,7 +31,7 @@ class MuscleSubgroupsVC: MuscleGroupsVC {
 }
 
 //MARK: - Table view delegate and data sourse
-extension MuscleSubgroupsVC {
+extension MuscleSubgroupsViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listOfSubgroups.count
@@ -41,14 +39,14 @@ extension MuscleSubgroupsVC {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
-                                                 for: indexPath) as! DTActivitiesCell
-        cell.exerciceNameLabel.text = self.listOfSubgroups[indexPath.row].rawValue
-        cell.muscleGroupImage.image = self.listOfSubgroups[indexPath.row].image
+                                                 for: indexPath)
+        let choosenMuscularSubgroups = self.listOfSubgroups[indexPath.row]
+        (cell as? DTActivitiesCell)?.setCellFor(choosenMuscularSubgroups)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let exerciceVC = ExercicesVC()
+        let exerciceVC = ExercicesViewController()
         let subGroup = self.listOfSubgroups[indexPath.row]
         let exercicesList = ExersiceModel.init(for: subGroup).listOfExercices
         exerciceVC.setExercicesList(to: exercicesList)

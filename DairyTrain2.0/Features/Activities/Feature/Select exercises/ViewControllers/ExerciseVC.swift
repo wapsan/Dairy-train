@@ -1,6 +1,6 @@
 import UIKit
 
-class ExercicesVC: MuscleGroupsVC {
+class ExercicesViewController: MuscleGroupsViewController {
     
     //MARK: - Private properties
     private lazy var navigationTittle = ""
@@ -10,11 +10,9 @@ class ExercicesVC: MuscleGroupsVC {
     //MARK: - Properties
     override var headerTittle: String {
         get {
-            return "Select exercices"
+            return LocalizedString.selectExercises
         }
-        set {
-            
-        }
+        set {}
     }
     
     //MARK: - Lifecycle
@@ -48,7 +46,6 @@ class ExercicesVC: MuscleGroupsVC {
     }
     
     private func addExercicesComplition() {
-      //  if UserModel.shared.createTrain(with: self.selectedExercices) {
         if UserTrainingModelFileManager.shared.addExercesToTrain(self.selectedExercices) {
             NotificationCenter.default.post(name: .addNewTrain,
                                             object: nil,
@@ -64,9 +61,9 @@ class ExercicesVC: MuscleGroupsVC {
     private func showAddExerciceAllert() {
         AlertHelper.shared.showDefaultAlert(on: self,
                                             title: nil,
-                                            message: "Add this exercice to train?",
-                                            cancelTitle: "Cancel",
-                                            okTitle: "Ok",
+                                            message: LocalizedString.alertAddThisExercisesToTrain,
+                                            cancelTitle: LocalizedString.cancel,
+                                            okTitle: LocalizedString.ok,
                                             style: .alert,
                                             completion: { self.addExercicesComplition() })
     }
@@ -74,9 +71,9 @@ class ExercicesVC: MuscleGroupsVC {
     private func showAddedAllert() {
         AlertHelper.shared.showDefaultAlert(on: self,
                                             title: nil,
-                                            message: "Exercices added",
+                                            message: LocalizedString.exercisesAdded,
                                             cancelTitle: nil,
-                                            okTitle: "Ok",
+                                            okTitle: LocalizedString.ok,
                                             style: .alert,
                                             completion: { self.deselectAllRows()
                                                 self.setAddExercicesButton() })
@@ -95,11 +92,10 @@ class ExercicesVC: MuscleGroupsVC {
     @objc private func addExercicesButtonTouched() {
         self.showAddExerciceAllert()
     }
-    
 }
 
-//MARK: - Table view data sourse and delegate
-extension ExercicesVC {
+//MARK: - UITableView methods
+extension ExercicesViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercices.count
@@ -107,20 +103,17 @@ extension ExercicesVC {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
-                                                 for: indexPath) as! DTActivitiesCell
-        let exercice = self.exercices[indexPath.row]
-        cell.exerciceNameLabel.text = exercice.name
-        cell.muscleGroupImage.image = exercice.muscleSubGroupImage
+                                                 for: indexPath)
+        let choosenExercice = self.exercices[indexPath.row]
+        (cell as? DTActivitiesCell)?.setCellFor(choosenExercice)
         
-        
-        if exercice.isSelected {
-            cell.containerView.backgroundColor = .red
+        if choosenExercice.isSelected {
+            (cell as? DTActivitiesCell)?.setBackroundColorTo(.red)
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
         } else {
-            cell.containerView.backgroundColor = .viewFlipsideBckgoundColor
+            (cell as? DTActivitiesCell)?.setBackroundColorTo(.viewFlipsideBckgoundColor)
             tableView.deselectRow(at: indexPath, animated: true)
         }
-   
         return cell
     }
   

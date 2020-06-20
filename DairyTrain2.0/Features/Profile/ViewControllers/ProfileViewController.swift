@@ -179,8 +179,8 @@ class ProfileViewController: MainTabBarItemVC {
         AlertHelper.shared.showDefaultAlert(on: self,
                                             title: LocalizedString.signOutAlert,
                                             message: LocalizedString.signOutAlerMessage,
-                                            cancelTitle: LocalizedString.ok,
-                                            okTitle: LocalizedString.quit,
+                                            cancelTitle: LocalizedString.cancel,
+                                            okTitle: LocalizedString.ok,
                                             style: .actionSheet,
                                             completion: { [weak self] in
                                                 guard let self = self else { return }

@@ -27,7 +27,7 @@
 		13416FA22485345100EC6590 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13416FA12485345100EC6590 /* GoogleSignInButton.swift */; };
 		134403412499123F00D21284 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134403402499123F00D21284 /* LocalizedString.swift */; };
 		13479F37247BD55D002FFB4E /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */; };
-		13479F39247BD82C002FFB4E /* MuscleGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F38247BD82C002FFB4E /* MuscleGroupsVC.swift */; };
+		13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */; };
 		13479F3B247BD84A002FFB4E /* TrainingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F3A247BD84A002FFB4E /* TrainingListVC.swift */; };
 		134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */; };
 		135B8815248132360032251D /* DTAproachCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B8814248132360032251D /* DTAproachCell.swift */; };
@@ -70,7 +70,7 @@
 		13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */; };
 		13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */; };
 		13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */; };
-		13EB98FD247D54B300DE9CD9 /* MuscleSubgroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsVC.swift */; };
+		13EB98FD247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift */; };
 		13EC52552480748900A05BCA /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC52542480748900A05BCA /* TrainingVC.swift */; };
 		13EC525F24810E4A00A05BCA /* DTEditingExerciceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC525E24810E4A00A05BCA /* DTEditingExerciceCell.swift */; };
 		13EDD9B7247AAF63008EE212 /* Train.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9B6247AAF63008EE212 /* Train.swift */; };
@@ -106,7 +106,7 @@
 		13416FA12485345100EC6590 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		134403402499123F00D21284 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
-		13479F38247BD82C002FFB4E /* MuscleGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsVC.swift; sourceTree = "<group>"; };
+		13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsViewController.swift; sourceTree = "<group>"; };
 		13479F3A247BD84A002FFB4E /* TrainingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListVC.swift; sourceTree = "<group>"; };
 		134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationsViewController.swift; sourceTree = "<group>"; };
 		135B8814248132360032251D /* DTAproachCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAproachCell.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDRecomendationCell.swift; sourceTree = "<group>"; };
 		13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoAlertButton.swift; sourceTree = "<group>"; };
 		13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgroups.swift; sourceTree = "<group>"; };
-		13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgroupsVC.swift; sourceTree = "<group>"; };
+		13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgroupsViewController.swift; sourceTree = "<group>"; };
 		13EC52542480748900A05BCA /* TrainingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
 		13EC525E24810E4A00A05BCA /* DTEditingExerciceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTEditingExerciceCell.swift; sourceTree = "<group>"; };
 		13EDD9B6247AAF63008EE212 /* Train.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Train.swift; sourceTree = "<group>"; };
@@ -362,7 +362,7 @@
 		132125D72494DBD600FDCDB4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				13479F38247BD82C002FFB4E /* MuscleGroupsVC.swift */,
+				13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -378,7 +378,7 @@
 		132125D92494DBF700FDCDB4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsVC.swift */,
+				13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -463,8 +463,8 @@
 			isa = PBXGroup;
 			children = (
 				136F3FFA2498D07D00C6944B /* AppDelegate */,
-				132D958B2485809B006E5A41 /* AppAuthentication.swift */,
 				136F401024990D4000C6944B /* Features */,
+				13F1158C249E168700B6B7D8 /* Firebase */,
 				139D530B2473DF560028AE6A /* Helpers */,
 				131107C7246582C30023A29A /* CommonClasses */,
 				1386AA1E246C15260016A757 /* Data */,
@@ -665,7 +665,6 @@
 			isa = PBXGroup;
 			children = (
 				139FE9D624783CAA00B22C40 /* DTHeaderView.swift */,
-				139B4ADA249C9D3500409B6E /* DTDownloadHud.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -708,6 +707,7 @@
 		13A9E7BF2494E10900DEDCBE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */,
 				13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */,
 			);
 			path = ViewControllers;
@@ -717,7 +717,6 @@
 			isa = PBXGroup;
 			children = (
 				13A9E7C12494E22200DEDCBE /* UserMainInfoModel.swift */,
-				1335B2682495183300D8276F /* DTFirebaseFileManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -772,11 +771,84 @@
 		13BA17A32461A49600DF5D7D /* StartApp */ = {
 			isa = PBXGroup;
 			children = (
-				1396F6012484216B0012A76A /* LoginViewController.swift */,
-				13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */,
-				132F588E249A87F00089FA09 /* DTSplashScreenViewController.swift */,
+				13F11584249E15B900B6B7D8 /* Features */,
 			);
 			path = StartApp;
+			sourceTree = "<group>";
+		};
+		13F11584249E15B900B6B7D8 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				13F11588249E160200B6B7D8 /* LogIn */,
+				13F11585249E15C800B6B7D8 /* SplashScreen */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		13F11585249E15C800B6B7D8 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				13F11586249E15D100B6B7D8 /* ViewControllers */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		13F11586249E15D100B6B7D8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				132F588E249A87F00089FA09 /* DTSplashScreenViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		13F11587249E15D900B6B7D8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				139B4ADA249C9D3500409B6E /* DTDownloadHud.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		13F11588249E160200B6B7D8 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				13F11589249E160900B6B7D8 /* ViewControllers */,
+				13F1158A249E162600B6B7D8 /* Utilities */,
+				13F11587249E15D900B6B7D8 /* Views */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
+		13F11589249E160900B6B7D8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1396F6012484216B0012A76A /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		13F1158A249E162600B6B7D8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				132D958B2485809B006E5A41 /* AppAuthentication.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		13F1158C249E168700B6B7D8 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				13F1158D249E169000B6B7D8 /* Utilities */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		13F1158D249E169000B6B7D8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1335B2682495183300D8276F /* DTFirebaseFileManager.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		44C9618063996B2C26547A86 /* Frameworks */ = {
@@ -932,7 +1004,7 @@
 				1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */,
 				139B4ADB249C9D3500409B6E /* DTDownloadHud.swift in Sources */,
 				1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */,
-				13479F39247BD82C002FFB4E /* MuscleGroupsVC.swift in Sources */,
+				13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */,
 				13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */,
 				139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */,
 				136F3FFE2498D0DE00C6944B /* UserData.xcdatamodeld in Sources */,
@@ -976,7 +1048,7 @@
 				1325A0ED249546AA00349E47 /* UserTrainingModelFileManager.swift in Sources */,
 				13C89D22247046D2008AEF18 /* DTRecomendationHeaderView.swift in Sources */,
 				13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */,
-				13EB98FD247D54B300DE9CD9 /* MuscleSubgroupsVC.swift in Sources */,
+				13EB98FD247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift in Sources */,
 				136570D3249125DB00BF926B /* TrainStatisticsViewController.swift in Sources */,
 				1380D933247AC55300212CB4 /* UserModel.swift in Sources */,
 				135B8815248132360032251D /* DTAproachCell.swift in Sources */,

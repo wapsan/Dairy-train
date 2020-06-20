@@ -71,14 +71,11 @@ extension RecomendationsViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: TDRecomendationCell.cellID,
-                                                    for: indexPath) as? TDRecomendationCell {
-            let recomendationInfo = self.supplyModel[indexPath.section]
-            cell.setCell(for: recomendationInfo)
-            return cell
-        } else {
-            return UITableViewCell()
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: TDRecomendationCell.cellID,
+                                                 for: indexPath)
+        let recomendationInfo = self.supplyModel[indexPath.section]
+        (cell as? TDRecomendationCell)?.setCell(for: recomendationInfo)
+        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

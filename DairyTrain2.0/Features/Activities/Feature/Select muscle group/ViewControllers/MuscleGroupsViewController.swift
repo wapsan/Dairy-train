@@ -1,12 +1,12 @@
 import UIKit
 
-class MuscleGroupsVC: MainTabBarItemVC {
+class MuscleGroupsViewController: MainTabBarItemVC {
     
     //MARK: - Private properties
-    private var muscleGroups = MuscleGroup().groups
+    private lazy var muscleGroups = MuscleGroup().groups
     
     //MARK: - Properties
-    var headerTittle = "Select muscle group"
+    var headerTittle = LocalizedString.selectMuscularGroup
     
     //MARK: - GUI Properties
     private(set) lazy var tableView: UITableView = {
@@ -58,7 +58,7 @@ class MuscleGroupsVC: MainTabBarItemVC {
 }
 
 //MARK: -  UITableViewDataSourse, UITableViewDelegate
-extension MuscleGroupsVC: UITableViewDataSource, UITableViewDelegate {
+extension MuscleGroupsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return muscleGroups.count
@@ -66,20 +66,19 @@ extension MuscleGroupsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
-                                                 for: indexPath) as! DTActivitiesCell
-        let muscleGroup = self.muscleGroups[indexPath.row]
-        cell.exerciceNameLabel.text = muscleGroup.rawValue
-        cell.muscleGroupImage.image = muscleGroup.image
+                                                 for: indexPath)
+        let choosenMuscularGroup = self.muscleGroups[indexPath.row]
+        (cell as? DTActivitiesCell)?.setCellFor(choosenMuscularGroup)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let subgroupVC = MuscleSubgroupsVC()
+        let subgroupViewController = MuscleSubgroupsViewController()
         let muscleGroup = self.muscleGroups[indexPath.row]
         let muscleGropupList = MuscleSubgroup(for: muscleGroup).listOfSubgroups
-        subgroupVC.setMuscleSubgroupList(to: muscleGropupList)
-        subgroupVC.setNavigationTittle(to: muscleGroup.rawValue)
-        self.navigationController?.pushViewController(subgroupVC, animated: true)
+        subgroupViewController.setMuscleSubgroupList(to: muscleGropupList)
+        subgroupViewController.setNavigationTittle(to: muscleGroup.rawValue)
+        self.navigationController?.pushViewController(subgroupViewController, animated: true)
     }
 }
 

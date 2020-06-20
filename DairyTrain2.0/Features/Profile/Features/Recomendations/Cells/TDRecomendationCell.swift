@@ -67,11 +67,12 @@ class TDRecomendationCell: UITableViewCell {
     }
     
     private func initCell() {
+        self.backgroundColor = .viewFlipsideBckgoundColor
+        self.selectionStyle = .none
         self.addSubview(self.labelsStackView)
         self.setConstraints()
-        self.setCell()
     }
-    
+
     //MARK: - Seter
     func setCell(for recomendationInfo: RecomendationInfo) {
         self.caloriesLabel.text = recomendationInfo.caloriesRecomendation
@@ -79,13 +80,7 @@ class TDRecomendationCell: UITableViewCell {
         self.carbohydratesLabel.text = recomendationInfo.carbohydratesRcomendation
         self.fatsLabel.text = recomendationInfo.fatRecomandation
     }
-    
-    //MARK: - Private methods
-    private func setCell() {
-        self.backgroundColor = .viewFlipsideBckgoundColor
-        self.selectionStyle = .none
-    }
-    
+
     //MARK: - Constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([

@@ -143,6 +143,5 @@ class Setting {
                 self.curenttValue = "ft."
             }
         }
-    }
-    
+    }    
 }

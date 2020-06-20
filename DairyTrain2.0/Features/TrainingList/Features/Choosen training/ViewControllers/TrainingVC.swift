@@ -1,6 +1,6 @@
 import UIKit
 
-class TrainingVC: MuscleGroupsVC {
+class TrainingVC: MuscleGroupsViewController {
 
     //MARK: - Properties
     var exercices: [Exercise] = []

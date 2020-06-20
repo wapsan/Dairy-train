@@ -218,19 +218,19 @@ class LoginViewController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { (authDataresult, error) in
             if let _ = authDataresult {
                 AlertHelper.shared.showDefaultAlert(on: self,
-                                                    title: "Succes",
-                                                    message: "Successful registration",
+                                                    title: LocalizedString.success,
+                                                    message: LocalizedString.successfulRegistration,
                                                     cancelTitle: nil,
-                                                    okTitle: "Ok",
+                                                    okTitle: LocalizedString.ok,
                                                     style: .alert,
                                                     completion: nil)
                 self.resetTextFields()
             } else {
                 AlertHelper.shared.showDefaultAlert(on: self,
-                                                    title: "Error",
-                                                    message: error?.localizedDescription ?? "Unexpected error",
+                                                    title: LocalizedString.alertError,
+                                                    message: error?.localizedDescription ?? LocalizedString.unknownError,
                                                     cancelTitle: nil,
-                                                    okTitle: "Ok",
+                                                    okTitle: LocalizedString.ok,
                                                     style: .alert,
                                                     completion: nil)
             }
@@ -248,10 +248,10 @@ class LoginViewController: UIViewController {
                 self.presentMainTabBarViewController()
             } else {
                 AlertHelper.shared.showDefaultAlert(on: self,
-                                                    title: "Erro",
-                                                    message: error?.localizedDescription ?? "Unexpected error",
+                                                    title: LocalizedString.alertError,
+                                                    message: error?.localizedDescription ?? LocalizedString.unknownError,
                                                     cancelTitle: nil,
-                                                    okTitle: "Ok",
+                                                    okTitle: LocalizedString.ok,
                                                     style: .alert,
                                                     completion: nil)
             }

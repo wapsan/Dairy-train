@@ -23,7 +23,6 @@ class DTMuscleSubgroupsCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Private methods
     private func initCell() {
         self.backgroundColor = .clear
         self.contentView.addSubview(self.muscleSubgropImageView)

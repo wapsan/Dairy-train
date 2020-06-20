@@ -48,4 +48,15 @@ class LocalizedString {
     static let avarageProjectileWeigt = "Avarage projectile weight"
     static let totalTrainWeight = "Total train weight"
     
+    //MARK: - LoginViewController
+    static let success = "Success"
+    static let successfulRegistration = "Successful registration"
+    static let unknownError = "Unknown error"
+    
+    //MARK: - Activities block
+    static let selectMuscularGroup = "Select a muscular group"
+    static let selectMuscularSubgroup = "Select muscular subgroup"
+    static let selectExercises = "Select exercises"
+    static let alertAddThisExercisesToTrain = "Add this exercice to train?"
+    static let exercisesAdded = "Exercises added!"
 }

@@ -32,7 +32,7 @@ class MainTabBarViewController: UITabBarController {
     
     private func setUpTabBarViewControllers() {
         let profileViewController = ProfileViewController()
-        let activitiesViewController = MuscleGroupsVC()
+        let activitiesViewController = MuscleGroupsViewController()
         let trainingListViewController = TrainingListVC()
         
         activitiesViewController.tabBarItem = .init(title: nil,

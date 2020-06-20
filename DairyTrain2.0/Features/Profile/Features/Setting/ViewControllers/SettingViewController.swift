@@ -47,7 +47,7 @@ extension SettingViewController {
         if isCheckedIn {
             (cell as? DTSettingCell)?.setCheked()
         } else {
-            (cell as? DTSettingCell)?.setUnchekde()
+            (cell as? DTSettingCell)?.setUncheked()
         }
         return cell
     }

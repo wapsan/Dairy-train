@@ -101,7 +101,6 @@ extension DTTrainedMusclesView: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DTMuscleSubgroupsCell.cellID,
                                                       for: indexPath)
-        
         let submuscleGroupImage = self.subgroupsList[indexPath.row].image
         (cell as? DTMuscleSubgroupsCell)?.setCellImage(to: submuscleGroupImage)
         return cell

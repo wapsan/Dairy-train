@@ -2,7 +2,7 @@ import Firebase
 import GoogleSignIn
 
 class AppAuthentication: NSObject, GIDSignInDelegate {
-   
+    
     //MARK: - Singletone propertie
     static let shared = AppAuthentication()
     
@@ -19,9 +19,9 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
     }
     
     func handle(url: URL) -> Bool {
-         return GIDSignIn.sharedInstance().handle(url)
+        return GIDSignIn.sharedInstance().handle(url)
     }
-        
+    
     //MARK: - APIs methods
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
@@ -30,7 +30,7 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
         }
         
         if let _ = user {
-            NotificationCenter.default.post(name: .startGoogleSignIn, object: nil)
+            self.postNotificationForStartGoogleSignIn()
         }
         
         guard let authentication = user.authentication else { return }
@@ -40,7 +40,7 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
         Auth.auth().signIn(with: credential) { (result, error) in
             if let token = result?.user.refreshToken {
                 DTSettingManager.shared.setUserToken(to: token)
-                self.postNotificationForGoogleSingIn()
+                self.postNotificationForGoogleSingedIn()
             } else {
                 print("GooglSignInErrro")
             }
@@ -48,9 +48,13 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
     }
     
     //MARK: - Private methods
-    private func postNotificationForGoogleSingIn() {
+    private func postNotificationForGoogleSingedIn() {
         NotificationCenter.default.post(name: .googleSignIn,
                                         object: nil,
                                         userInfo: nil)
+    }
+    
+    private func postNotificationForStartGoogleSignIn() {
+        NotificationCenter.default.post(name: .startGoogleSignIn, object: nil)
     }
 }
