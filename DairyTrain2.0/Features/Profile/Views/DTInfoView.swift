@@ -64,22 +64,22 @@ class DTInfoView: UIView {
             self.addSubview(self.valueLabel)
         case .gender:
             self.titleLabel.text = LocalizedString.gender
-            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.gender ?? "_"
+            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayGender
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .activityLevel:
             self.titleLabel.text = LocalizedString.activityLevel
-            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.activitylevel ?? "_"
+            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .age:
             self.titleLabel.text = LocalizedString.age
-            self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.age ?? 0)
+            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayAge
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .height:
             self.titleLabel.text = LocalizedString.height
-            self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.height ?? 0)
+            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayHeight
             self.descriptionLabel.text = MeteringSetting.shared.heightDescription
             self.addSubview(self.descriptionLabel)
             self.addSubview(self.titleLabel)
@@ -87,7 +87,7 @@ class DTInfoView: UIView {
             self.setConstraintForDescriptionLabel()
         case .weight:
             self.titleLabel.text = LocalizedString.weight
-            self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.weight ?? 0)
+            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayWeight
             self.descriptionLabel.text = MeteringSetting.shared.weightDescription
             self.addSubview(self.descriptionLabel)
             self.addSubview(self.titleLabel)

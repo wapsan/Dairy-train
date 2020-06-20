@@ -4,9 +4,15 @@ import UIKit
 class DTInfoAlertButton: UIButton {
     
     //MARK: - GUI Properties
-    lazy var animateView: UIView = {
-        let view = UIView()
-        return view
+    private lazy var customTittle: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 25)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        label.textAlignment = .center
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     //MARK: - Private properties
@@ -14,8 +20,10 @@ class DTInfoAlertButton: UIButton {
     
     //MARK: - Initialization
     init(title: String) {
-        super.init(frame: .zero)
-        self.setTitle(title, for: .normal)
+        super.init(frame: .zero)        
+        self.addSubview(self.customTittle)
+        self.customTittle.text = title
+        self.activateConstraints()
         self.setBehavor()
         self.setAppearance()
     }
@@ -24,15 +32,23 @@ class DTInfoAlertButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Constraints
+    private func activateConstraints() {
+        NSLayoutConstraint.activate([
+            self.customTittle.topAnchor.constraint(equalTo: self.topAnchor),
+            self.customTittle.leftAnchor.constraint(equalTo: self.leftAnchor),
+            self.customTittle.rightAnchor.constraint(equalTo: self.rightAnchor),
+            self.customTittle.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+        ])
+    }
+    
     //MARK: - Private methods
     private func setAppearance() {
         self.backgroundColor = .clear
         self.tintColor = .white
         self.layer.cornerRadius = 10
-    
     }
 
-    
     private func setBehavor() {
         self.addTarget(self, action: #selector(self.behavor), for: [.touchUpInside, .touchDown])
     }

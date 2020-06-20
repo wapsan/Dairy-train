@@ -26,7 +26,7 @@ class DTSystemButton: UIButton {
     private func setAppearance() {
         self.backgroundColor = .red
         self.titleLabel?.textColor = .white
-        self.titleLabel?.font = .systemFont(ofSize: 20)
+        self.titleLabel?.font = .systemFont(ofSize: 25)
         self.setDefaultLayer()
     }
     

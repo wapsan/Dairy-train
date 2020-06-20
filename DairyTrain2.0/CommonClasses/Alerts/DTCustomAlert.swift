@@ -67,14 +67,16 @@ class DTCustomAlert: UIView {
     }()
     
     private lazy var okButton: DTInfoAlertButton = {
-        let button = DTInfoAlertButton(title: "Ok")
+        let button = DTInfoAlertButton(title: LocalizedString.ok)
+       // button.titleLabel?.font = .systemFont(ofSize: 25)
         button.addTarget(self, action: #selector(self.okPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private lazy var cancelButton: DTInfoAlertButton = {
-        let button = DTInfoAlertButton(title: "Cancel")
+        let button = DTInfoAlertButton(title: LocalizedString.cancel)
+       // button.titleLabel?.font = .systemFont(ofSize: 25)
         button.addTarget(self, action: #selector(self.cancelPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -93,18 +95,18 @@ class DTCustomAlert: UIView {
     }()
     
     //MARK: - Weight/Height/Age type GUI properties
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
+    private lazy var titleLabel: DTAdaptiveLabel = {
+        let label = DTAdaptiveLabel()
         label.textColor = .white
         label.textAlignment  = .center
-        label.font = .systemFont(ofSize: 17)
+        label.font = .boldSystemFont(ofSize: 25)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var valueTextField: DTTextField = {
            let textField = DTTextField(placeholder: "")
-           textField.font = .boldSystemFont(ofSize: 25)
+           textField.font = .systemFont(ofSize: 40)
            textField.adjustsFontSizeToFitWidth = true
            textField.textAlignment = .center
            textField.textColor = .white
@@ -328,6 +330,8 @@ class DTCustomAlert: UIView {
                     guard let button = view as? UIButton else { return }
                     if button.currentTitle == infoView.valueLabel.text {
                         button.isSelected = true
+                    } else {
+                        button.isSelected = false
                     }
                     self.setButtonState(button)
                 }
@@ -549,18 +553,28 @@ class DTCustomAlert: UIView {
             self.visualEffectView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
         
+        let widthContainerAlertViewConstraint = NSLayoutConstraint(item: self.containerAlertView,
+                                                                   attribute: .width,
+                                                                   relatedBy: .equal,
+                                                                   toItem: self.containerAlertView,
+                                                                   attribute: .height,
+                                                                   multiplier: 1,
+                                                                   constant: 0)
+        widthContainerAlertViewConstraint.priority = UILayoutPriority(rawValue: 750)
+        
         NSLayoutConstraint.activate([
-            self.containerAlertView.topAnchor.constraint(equalTo: self.topAnchor, constant: 64),
-            self.containerAlertView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 64),
-            self.containerAlertView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -64),
-            self.containerAlertView.heightAnchor.constraint(equalTo: self.alertView.widthAnchor, multiplier: 1)
+            self.containerAlertView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: 8),
+            self.containerAlertView.bottomAnchor.constraint(equalTo: self.centerYAnchor),
+            self.containerAlertView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.containerAlertView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
+            widthContainerAlertViewConstraint
         ])
         
         NSLayoutConstraint.activate([
-            self.alertView.topAnchor.constraint(equalTo: self.containerAlertView.topAnchor, constant: 0),
-            self.alertView.leftAnchor.constraint(equalTo: self.containerAlertView.leftAnchor, constant: 0),
-            self.alertView.rightAnchor.constraint(equalTo: self.containerAlertView.rightAnchor, constant: 0),
-            self.alertView.bottomAnchor.constraint(equalTo: self.containerAlertView.bottomAnchor, constant: 0)
+            self.alertView.topAnchor.constraint(equalTo: self.containerAlertView.topAnchor),
+            self.alertView.leftAnchor.constraint(equalTo: self.containerAlertView.leftAnchor),
+            self.alertView.rightAnchor.constraint(equalTo: self.containerAlertView.rightAnchor),
+            self.alertView.bottomAnchor.constraint(equalTo: self.containerAlertView.bottomAnchor)
         ])
     }
     
@@ -645,28 +659,19 @@ class DTCustomAlert: UIView {
             switch tappedInfoView.type {
             case .gender:
                 self.writeListSelectionInfo()
-               // self.tappedInfoView?.valueLabel.text = profileManager.profileInfo?.gender?.rawValue ?? "_"
-                self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.gender ?? "_"
-               // self.tappedInfoView?.valueLabel.text = UserModel.shared.displayGender
+                self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayGender
             case .activityLevel:
                 self.writeListSelectionInfo()
-               // self.tappedInfoView?.valueLabel.text = profileManager.profileInfo?.activityLevel?.rawValue ?? "_"
-                 self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.activitylevel ?? "_"
-               // self.tappedInfoView?.valueLabel.text = UserModel.shared.displayActivityLevel
+                 self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel
             case .age:
                 self.writeValueInfo()
-                self.tappedInfoView?.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.age ?? 0)
-              //  self.tappedInfoView?.valueLabel.text = String(profileManager.profileInfo?.age ?? 0)
+                self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayAge
             case .height:
                 self.writeValueInfo()
-                 self.tappedInfoView?.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.height ?? 0)
-               // self.tappedInfoView?.valueLabel.text = String(profileManager.profileInfo?.height ?? 0)
-                //self.tappedInfoView?.valueLabel.text = UserModel.shared.displayHeight
+                 self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayHeight
             case .weight:
                 self.writeValueInfo()
-                 self.tappedInfoView?.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.weight ?? 0)
-              //  self.tappedInfoView?.valueLabel.text = String(profileManager.profileInfo?.weight ?? 0)
-               // self.tappedInfoView?.valueLabel.text = UserModel.shared.displayWeight
+                self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayWeight
             default:
                 break
             }
@@ -685,6 +690,8 @@ class DTCustomAlert: UIView {
     @objc private func cancelPressed() {
         self.hideAlert()
         guard let alertCancelTapped = self.delegate?.alertCancelPressed?() else { return }
+        guard let tappedInfoView = self.tappedInfoView else { return }
+        self.setUpDefaultsValue(with: tappedInfoView)
         alertCancelTapped
     }
 }
