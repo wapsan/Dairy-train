@@ -39,7 +39,8 @@ class DTSystemButton: UIButton {
     private func setBehavors() {
         self.addTarget(self, action: #selector(self.behavor), for: [.touchUpInside,
                                                                     .touchUpOutside,
-                                                                    .touchDown])
+                                                                    .touchDown,
+                                                                    .touchCancel])
     }
     
     private func setLayotLayer() {

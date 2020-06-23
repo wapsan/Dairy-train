@@ -126,18 +126,35 @@ class DTInfoView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.setLayotLayer()
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.red.cgColor, UIColor.black.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.bounds
+        gradientLayer.cornerRadius = 30
+        gradientLayer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+        gradientLayer.borderColor = UIColor.red.cgColor
+        gradientLayer.borderWidth = 1
+        //gradientLayer.shadowColor = UIColor.darkGray.cgColor
+        //gradientLayer.shadowOffset = .init(width: 0, height: 5)
+       // gradientLayer.shadowOpacity = 5
+        self.layer.insertSublayer(gradientLayer, at:0)
+      //  self.setLayotLayer()
+      //  self.setDefaultLayer()
     }
     
     //MARK: - Private methods
     private func setAppearance() {
-        self.backgroundColor = .viewFlipsideBckgoundColor
+        
+        
+        self.backgroundColor = .clear
         self.addSubview(self.titleLabel)
         self.addSubview(self.valueLabel)
-        self.setDefaultLayer()
+       // self.setDefaultLayer()
     }
     
     private func setDefaultLayer() {
+        self.layer.cornerRadius = 30
+        self.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
         self.layer.shadowColor = UIColor.darkGray.cgColor
         self.layer.shadowOffset = .init(width: 0, height: 5)
         self.layer.shadowOpacity = 5

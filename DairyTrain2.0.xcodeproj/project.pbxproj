@@ -45,6 +45,7 @@
 		1380D933247AC55300212CB4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1380D932247AC55300212CB4 /* UserModel.swift */; };
 		1386AA20246C15500016A757 /* ReadWriteFirebasedata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386AA1F246C15500016A757 /* ReadWriteFirebasedata.swift */; };
 		138BDB78248665330033F378 /* DTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BDB77248665330033F378 /* DTTextField.swift */; };
+		138E8224249F9BBB00A60885 /* MenuStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E8223249F9BBB00A60885 /* MenuStackViewController.swift */; };
 		13902AB12493D45C00963A07 /* DTTrainedMusclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13902AB02493D45C00963A07 /* DTTrainedMusclesView.swift */; };
 		13902AB4249411ED00963A07 /* DTMuscleSubgroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */; };
 		1390520B24993F5E0070D0EB /* RecomendationInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390520A24993F5E0070D0EB /* RecomendationInfoModel.swift */; };
@@ -59,6 +60,8 @@
 		139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531224740BCE0028AE6A /* SettingViewController.swift */; };
 		139D531924748BE00028AE6A /* ColorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531824748BE00028AE6A /* ColorSetting.swift */; };
 		139D531B24753D060028AE6A /* SettingCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531A24753D060028AE6A /* SettingCore.swift */; };
+		139D688424A220800094E498 /* MenuPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D688324A220800094E498 /* MenuPresentationViewController.swift */; };
+		139D688624A223B70094E498 /* DTMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D688524A223B70094E498 /* DTMenuButton.swift */; };
 		139FE9D3247838EF00B22C40 /* DTActivitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */; };
 		139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D624783CAA00B22C40 /* DTHeaderView.swift */; };
 		13A9E7C22494E22200DEDCBE /* UserMainInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A9E7C12494E22200DEDCBE /* UserMainInfoModel.swift */; };
@@ -124,6 +127,7 @@
 		1380D932247AC55300212CB4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		1386AA1F246C15500016A757 /* ReadWriteFirebasedata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWriteFirebasedata.swift; sourceTree = "<group>"; };
 		138BDB77248665330033F378 /* DTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTextField.swift; sourceTree = "<group>"; };
+		138E8223249F9BBB00A60885 /* MenuStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuStackViewController.swift; sourceTree = "<group>"; };
 		13902AB02493D45C00963A07 /* DTTrainedMusclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainedMusclesView.swift; sourceTree = "<group>"; };
 		13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMuscleSubgroupsCell.swift; sourceTree = "<group>"; };
 		1390520A24993F5E0070D0EB /* RecomendationInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationInfoModel.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 		139D531224740BCE0028AE6A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		139D531824748BE00028AE6A /* ColorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetting.swift; sourceTree = "<group>"; };
 		139D531A24753D060028AE6A /* SettingCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCore.swift; sourceTree = "<group>"; };
+		139D688324A220800094E498 /* MenuPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresentationViewController.swift; sourceTree = "<group>"; };
+		139D688524A223B70094E498 /* DTMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMenuButton.swift; sourceTree = "<group>"; };
 		139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTActivitiesCell.swift; sourceTree = "<group>"; };
 		139FE9D624783CAA00B22C40 /* DTHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTHeaderView.swift; sourceTree = "<group>"; };
 		13A9E7C12494E22200DEDCBE /* UserMainInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainInfoModel.swift; sourceTree = "<group>"; };
@@ -285,6 +291,7 @@
 		132125CD2494D9C600FDCDB4 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				139D688724A27B890094E498 /* Menu */,
 				134DA009246ECE1F00B2FBDE /* Recomendations */,
 				136570CF2491253E00BF926B /* Statistic */,
 				13151D4B247169D9002C15AA /* Setting */,
@@ -661,6 +668,32 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		139D688724A27B890094E498 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				139D688824A27B8F0094E498 /* ViewControllers */,
+				139D688924A27BA00094E498 /* Buttons */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		139D688824A27B8F0094E498 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				138E8223249F9BBB00A60885 /* MenuStackViewController.swift */,
+				139D688324A220800094E498 /* MenuPresentationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		139D688924A27BA00094E498 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				139D688524A223B70094E498 /* DTMenuButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		139FE9DC247859FD00B22C40 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1005,6 +1038,7 @@
 				139B4ADB249C9D3500409B6E /* DTDownloadHud.swift in Sources */,
 				1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */,
 				13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */,
+				138E8224249F9BBB00A60885 /* MenuStackViewController.swift in Sources */,
 				13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */,
 				139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */,
 				136F3FFE2498D0DE00C6944B /* UserData.xcdatamodeld in Sources */,
@@ -1023,6 +1057,7 @@
 				13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */,
 				1379800924733AEB00BAD87C /* SettingsSectionViewController.swift in Sources */,
 				1390520B24993F5E0070D0EB /* RecomendationInfoModel.swift in Sources */,
+				139D688424A220800094E498 /* MenuPresentationViewController.swift in Sources */,
 				1396F6002484175E0012A76A /* DTInfoView.swift in Sources */,
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
 				139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */,
@@ -1053,6 +1088,7 @@
 				1380D933247AC55300212CB4 /* UserModel.swift in Sources */,
 				135B8815248132360032251D /* DTAproachCell.swift in Sources */,
 				131107C3246582210023A29A /* UIView+Ex.swift in Sources */,
+				139D688624A223B70094E498 /* DTMenuButton.swift in Sources */,
 				134403412499123F00D21284 /* LocalizedString.swift in Sources */,
 				137D55B624897B6300EFBAB6 /* DTSettingManager.swift in Sources */,
 				139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */,

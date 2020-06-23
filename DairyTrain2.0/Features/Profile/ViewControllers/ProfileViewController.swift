@@ -4,8 +4,6 @@ import Firebase
 class ProfileViewController: MainTabBarItemVC {
     
     //MARK: - Private properties
-    
-    
     private var isAllInfoWasSeted: Bool {
         if self.ageInfoView.isValueSeted,
             self.heightInfoView.isValueSeted,
@@ -68,83 +66,38 @@ class ProfileViewController: MainTabBarItemVC {
         return view
     }()
     
-    private lazy var recomendationButton: DTSystemButton = {
-        let button = DTSystemButton(tittle: LocalizedString.recomendations)
-        button.addTarget(self, action: #selector(self.recomendationButtonPressed),
-                         for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button 
-    }()
-    
-    private lazy var statisticButton: DTSystemButton = {
-        let button = DTSystemButton(tittle: LocalizedString.statistics)
-        button.addTarget(self, action: #selector(self.statisticsButtonPressed),
-                         for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var settingButton: DTSystemButton = {
-        let button = DTSystemButton(tittle: LocalizedString.setting)
-        button.addTarget(self, action: #selector(self.settingButtonpPressed),
-                         for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var signOutButton: DTSystemButton = {
-        let button = DTSystemButton(tittle: LocalizedString.signOut)
-        button.addTarget(self, action: #selector(self.signtOutButtonPressed),
-                         for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var buttonStackView: UIStackView = {
+    private lazy var totalTrainActivityLevelStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = self.stackViewSpacing
+        stackView.axis = .horizontal
+        stackView.spacing = 16
         stackView.distribution = .fillEqually
+        stackView.addArrangedSubview(self.totalTrainInfoView)
+        stackView.addArrangedSubview(self.activivtyInfoView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(self.recomendationButton)
-        stackView.addArrangedSubview(self.statisticButton)
-        stackView.addArrangedSubview(self.settingButton)
-        stackView.addArrangedSubview(self.signOutButton)
         return stackView
     }()
     
-    private lazy var metricStaclView: UIStackView = {
+    private lazy var gennderAgeStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = self.stackViewSpacing
+        stackView.spacing = 16
         stackView.distribution = .fillEqually
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(self.genderInfoView)
         stackView.addArrangedSubview(self.ageInfoView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
+    private lazy var weightHeightStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 16
+        stackView.distribution = .fillEqually
         stackView.addArrangedSubview(self.heightInfoView)
         stackView.addArrangedSubview(self.weightInfoView)
-        return stackView
-    }()
-    
-    private lazy var genderAndactivivtyStacView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.spacing = self.stackViewSpacing
-        stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(self.genderInfoView)
-        stackView.addArrangedSubview(self.activivtyInfoView)
-        return stackView
-    }()
-    
-    private lazy var infoViewsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = self.stackViewSpacing
-        stackView.distribution = .fillEqually
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(self.totalTrainInfoView)
-        stackView.addArrangedSubview(self.genderAndactivivtyStacView)
-        stackView.addArrangedSubview(self.metricStaclView)
+        
         return stackView
     }()
     
@@ -153,6 +106,7 @@ class ProfileViewController: MainTabBarItemVC {
         super.viewDidLoad()
         self.setUpGuiElements()
         self.setUpInfoViewAction()
+        self.setUpMenuButtonBar()
     }
     
     //MARK: - Private methods
@@ -163,6 +117,30 @@ class ProfileViewController: MainTabBarItemVC {
                 DTCustomAlert.shared.showInfoAlert(on: self, with: infoView)
             }
         }
+    }
+    
+    private func setUpGuiElements() {
+        self.view.backgroundColor = .black
+        self.view.addSubview(self.totalTrainActivityLevelStackView)
+        self.view.addSubview(self.gennderAgeStackView)
+        self.view.addSubview(self.weightHeightStackView)
+        self.setUpConstraints()
+    }
+    
+    private func setUpMenuButtonBar() {
+        let menuButton = UIBarButtonItem(image: UIImage(named: "menu"),
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(self.menuButtonPressed))
+        self.navigationItem.rightBarButtonItem = menuButton
+    }
+    
+    private func showMenuStackView() {
+        let menuStackViewController = MenuStackViewController()
+        menuStackViewController.modalPresentationStyle = .custom
+        menuStackViewController.transitioningDelegate = self
+        menuStackViewController.delegate = self
+        self.present(menuStackViewController, animated: true, completion: nil)
     }
     
     private func showRecomendationAlert() {
@@ -187,23 +165,6 @@ class ProfileViewController: MainTabBarItemVC {
                                                 self.signOut()
         })
     }
-  
-    private func setUpGuiElements() {
-        self.view.backgroundColor = .black
-        self.view.addSubview(self.infoViewsStackView)
-        self.view.addSubview(self.buttonStackView)
-        self.setUpViewConstraints()
-    }
-    
-    private func pushSettingViewController(with title: String) {
-        let settingSectionVC = SettingsSectionViewController(with: title)
-        self.navigationController?.pushViewController(settingSectionVC, animated: true)
-    }
-    
-    private func pushRecomendationViewController() {
-        let recomendationVC = RecomendationsViewController()
-        self.navigationController?.pushViewController(recomendationVC, animated: true)
-    }
     
     private func signOut() {
         let firebaseAuth = Auth.auth()
@@ -222,42 +183,64 @@ class ProfileViewController: MainTabBarItemVC {
     }
     
     //MARK: - Constraints
-    private func setUpViewConstraints() {
+    private func setUpConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.infoViewsStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 16),
-            self.infoViewsStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
-            self.infoViewsStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16)
+            self.totalTrainActivityLevelStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 16),
+            self.totalTrainActivityLevelStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16),
+            self.totalTrainActivityLevelStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
         ])
         
         NSLayoutConstraint.activate([
-            self.buttonStackView.topAnchor.constraint(equalTo: self.infoViewsStackView.bottomAnchor, constant: 16),
-            self.buttonStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16),
-            self.buttonStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
-            self.buttonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -16),
-            self.buttonStackView.heightAnchor.constraint(equalTo: self.infoViewsStackView.heightAnchor, multiplier: 0.8)
+            self.gennderAgeStackView.topAnchor.constraint(equalTo: self.totalTrainActivityLevelStackView.bottomAnchor,
+                                                          constant: 16),
+            self.gennderAgeStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16),
+            self.gennderAgeStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
+            self.gennderAgeStackView.heightAnchor.constraint(equalTo: self.totalTrainActivityLevelStackView.heightAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.weightHeightStackView.topAnchor.constraint(equalTo: self.gennderAgeStackView.bottomAnchor, constant: 16),
+            self.weightHeightStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16),
+            self.weightHeightStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
+            self.weightHeightStackView.heightAnchor.constraint(equalTo: self.gennderAgeStackView.heightAnchor),
+            self.weightHeightStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -16)
         ])
     }
-
+    
     //MARK: - Actions
-    @objc private func settingButtonpPressed(_ sender: DTSystemButton) {
-        guard let buttonTittle = sender.currentTitle else { return }
-        self.pushSettingViewController(with: buttonTittle)
-    }
-    
-    @objc private func statisticsButtonPressed() {
-        let commonStatisticsVC = CommonStatisticsViewController()
-        self.navigationController?.pushViewController(commonStatisticsVC, animated: true)
-    }
-    
-    @objc private func recomendationButtonPressed() {
-        self.pushRecomendationViewController()
-    }
-    
-    @objc private func signtOutButtonPressed() {
-        self.showSignOutAllert()
+    @objc private func menuButtonPressed() {
+        self.showMenuStackView()
     }
 }
 
+//MARK: - UIViewControllerTransitioningDelegate
+extension ProfileViewController: UIViewControllerTransitioningDelegate {
+    
+    func presentationController(forPresented presented: UIViewController,
+                                presenting: UIViewController?,
+                                source: UIViewController) -> UIPresentationController? {
+        return MenuPresentationViewController(presentedViewController: presented,
+                                              presenting: presenting)
+    }
+}
 
-
+//MARK: - MenuStackViewControllerDelegate
+extension ProfileViewController: MenuStackViewControllerDelegate {
+    
+    func signOutPressed() {
+        self.showSignOutAllert()
+    }
+    
+    func pushViewController(_ pushedViewController: UIViewController) {
+        if pushedViewController is RecomendationsViewController {
+            if self.isAllInfoWasSeted {
+                self.navigationController?.pushViewController(pushedViewController, animated: true)
+            } else {
+                self.showRecomendationAlert()
+            }
+        } else {
+            self.navigationController?.pushViewController(pushedViewController, animated: true)
+        }
+    }
+}
