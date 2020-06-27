@@ -15,7 +15,7 @@
         <relationship name="training" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Training" inverseName="exercises" inverseEntity="Training"/>
     </entity>
     <entity name="Training" representedClassName=".TrainingManagedObject" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="formatedDate" optional="YES" attributeType="String"/>
         <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="training" inverseEntity="Exercise"/>
     </entity>

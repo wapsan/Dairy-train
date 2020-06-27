@@ -214,10 +214,25 @@ class CoreDataManager {
     func fetchTrainingList() -> [TrainingManagedObject] {
         let fetchRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
         if let trainingList = try? self.trainInfoContext.fetch(fetchRequest) {
-            return trainingList
+            return trainingList.sorted(by: { $0.date > $1.date })
         } else {
             return []
         }
+    }
+//
+//    var a = [1,2,3,4,5]
+//    var b = [2]
+//    for i in b {
+//        print(a.filter({ $0 != i }))
+//    }
+//
+    func removeTraining(_ trainingListForRemoving: [TrainingManagedObject]) {
+       // let baseTrainigList = self.fetchTrainingList()
+        
+        for train in trainingListForRemoving {
+            self.trainInfoContext.delete(train)
+        }
+        self.updateTrainInfoContext()
     }
     
     func fetchExerciceListIn(_ train: TrainingManagedObject) -> [ExerciseManagedObject] {

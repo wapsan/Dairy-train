@@ -3,11 +3,16 @@ import UIKit
 class TrainingListViewController: MainTabBarItemVC {
     
     //MARK: - Private properties
-    private lazy var isTrainingChenged: Bool = false
+    private lazy var isTrainingChanged: Bool = false
     private lazy var trainList: [TrainingManagedObject] = []
     private lazy var trainingForDeleting: [Int: TrainingManagedObject] = [:]
     
-    private var isEditingMode: Bool = false {
+    private var trainingListForDeleting: [TrainingManagedObject] {
+        return self.trainingForDeleting.values.map({ $0 })
+    }
+    
+    //MARK: - Properties
+    override var isEditing: Bool {
         didSet {
             self.navigationItem.rightBarButtonItem = oldValue == false ? self.deleteTrainButton : nil
         }
@@ -15,7 +20,7 @@ class TrainingListViewController: MainTabBarItemVC {
     
     //MARK: - Properties
     lazy var headerTitle = "Your trains"
-
+    
     //MARK: - GUI Properties
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,7 +33,7 @@ class TrainingListViewController: MainTabBarItemVC {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-       
+    
     lazy var headerView: DTHeaderView = {
         let view = DTHeaderView(title: self.headerTitle)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -44,10 +49,11 @@ class TrainingListViewController: MainTabBarItemVC {
     }()
     
     private lazy var deleteTrainButton: UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .trash,
-                                            target: self,
-                                            action: #selector(self.removeChoosenTrain))
-        return barButtonItem
+        let removeTrainingButton = UIBarButtonItem(barButtonSystemItem: .trash,
+                                                   target: self,
+                                                   action: #selector(self.removeChoosenTrain))
+        removeTrainingButton.isEnabled = false
+        return removeTrainingButton
     }()
     
     private lazy var editTrainListButton: UIBarButtonItem = {
@@ -55,10 +61,9 @@ class TrainingListViewController: MainTabBarItemVC {
                                             style: .done,
                                             target: self,
                                             action: #selector(self.editingButtonPressed(_:)))
+        
         return editingButton
     }()
-    
-
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -69,13 +74,11 @@ class TrainingListViewController: MainTabBarItemVC {
         self.setUpEditingButton()
     }
     
-   
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if self.isTrainingChenged {
+        if self.isTrainingChanged {
             self.setUpViewController()
-            self.isTrainingChenged = false
+            self.isTrainingChanged = false
         }
     }
     
@@ -85,13 +88,8 @@ class TrainingListViewController: MainTabBarItemVC {
     }
     
     private func setUpEditingButton() {
-//        let editingButton = UIBarButtonItem(barButtonSystemItem: .edit,
-//                                            target: self,
-//                                            action: #selector(self.editingButtonPressed(_:)))
         self.navigationItem.leftBarButtonItem = self.editTrainListButton
     }
-    
-   
     
     private func setUpViewController() {
         self.trainList = CoreDataManager.shared.fetchTrainingList()
@@ -132,6 +130,14 @@ class TrainingListViewController: MainTabBarItemVC {
         self.navigationController?.pushViewController(trainVC, animated: true)
     }
     
+    private func setTrashButttonState() {
+        if !self.trainingForDeleting.isEmpty {
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+        } else {
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+    
     private func addObserverForAddTrainToList() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.trainingWasAdded),
@@ -141,6 +147,49 @@ class TrainingListViewController: MainTabBarItemVC {
                                                selector: #selector(self.trainingWasAdded),
                                                name: .trainingWasChanged,
                                                object: nil)
+    }
+    
+    private func deselectSelectedItem() {
+        guard let indexPaths = self.collectionView.indexPathsForSelectedItems else { return }
+        for indexPath in indexPaths {
+            if let cell = self.collectionView.cellForItem(at: indexPath) as? DTTrainCell {
+                cell.setBackgroundColorTo(.viewFlipsideBckgoundColor)
+                self.collectionView.deselectItem(at: indexPath, animated: true)
+            }
+        }
+    }
+    
+    private func deleteChoosenTrain() {
+        self.deselectSelectedItem()
+        CoreDataManager.shared.removeTraining(self.trainingListForDeleting)
+        self.trainingForDeleting.removeAll()
+        self.setTrashButttonState()
+        self.setUpViewController()
+    }
+    
+    private func showDeletingTrainAlert() {
+        AlertHelper.shared.showDefaultAlert(
+            on: self,
+            title: "Are you shure?",
+            message: "Delete choosen trainings?",
+            cancelTitle: "Cancel",
+            okTitle: "Ok",
+            style: .alert,
+            completion: { [weak self] in
+                guard let self = self else { return }
+                self.deleteChoosenTrain()
+                self.showDeletedTrainAlert()
+        })
+    }
+    
+    private func showDeletedTrainAlert() {
+        AlertHelper.shared.showDefaultAlert(on: self,
+                                            title: "Training was deleted",
+                                            message: "",
+                                            cancelTitle: nil,
+                                            okTitle: LocalizedString.ok,
+                                            style: .alert,
+                                            completion: nil)
     }
     
     //MARK: - Constraint
@@ -168,21 +217,21 @@ class TrainingListViewController: MainTabBarItemVC {
     
     private func deactivateNotEmptyTrainingListConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
-               NSLayoutConstraint.deactivate([
-                   self.collectionView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
-                                                            constant: 8),
-                   self.collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-                   self.collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor,
-                                                                constant: 16),
-                   self.collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor,
-                                                                 constant: -16)
-               ])
+        NSLayoutConstraint.deactivate([
+            self.collectionView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
+                                                     constant: 8),
+            self.collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            self.collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor,
+                                                         constant: 16),
+            self.collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor,
+                                                          constant: -16)
+        ])
         
         NSLayoutConstraint.deactivate([
-                   self.headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-                   self.headerView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-                   self.headerView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
-               ])
+            self.headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.headerView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            self.headerView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
+        ])
     }
     
     private func setUpEmtyTrainingListLabelConstraints() {
@@ -203,26 +252,25 @@ class TrainingListViewController: MainTabBarItemVC {
     @objc private func trainingWasAdded() {
         print("Ttrain list vc trainig was changed")
         self.setUpViewController()
-        self.isTrainingChenged = true
+        self.isTrainingChanged = true
     }
     
     @objc private func editingButtonPressed(_ sender: UIBarButtonItem) {
-        if self.isEditingMode {
+        //MARK: TODO - доделать удаление тренировки
+        if self.isEditing {
             self.editTrainListButton.title = "Edit"
             self.trainingForDeleting.removeAll()
-            for train in self.trainList {
-                train.isSelected = false
-            }
-            self.isEditingMode = false
+            self.deselectSelectedItem()
+            self.isEditing = false
         } else {
             self.editTrainListButton.title = "Done"
-            self.isEditingMode = true
+            self.isEditing = true
             self.setUpViewController()
         }
     }
     
     @objc private func removeChoosenTrain() {
-        self.setUpViewController()
+        self.showDeletingTrainAlert()
     }
 }
 
@@ -234,58 +282,11 @@ extension TrainingListViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DTTrainCell.cellID,
                                                       for: indexPath)
         let train = self.trainList[indexPath.row]
-        (cell as? DTTrainCell)?.dateLabel.text = train.formatedDate
+        (cell as? DTTrainCell)?.setCellFor(train)
         (cell as? DTTrainCell)?.setGroupIcons(by: train.muscleGroupInCurrentTrain)
-        (cell as? DTTrainCell)?.tapAction = {
-            
-            // train.isSelected = true
-            
-            if train.isSelected {
-                self.trainingForDeleting.removeValue(forKey: indexPath.row)
-              //  self.trainingForDeleting.remove(at: indexPath.row)
-              //  (cell as? DTTrainCell)?.containerView.backgroundColor = .viewFlipsideBckgoundColor
-                train.isSelected = false
-            } else {
-                self.trainingForDeleting[indexPath.row] = self.trainList[indexPath.row]
-              //  self.trainingForDeleting.append(self.trainList[indexPath.row])
-               // (cell as? DTTrainCell)?.containerView.backgroundColor = .red
-                train.isSelected = true
-            }
-    
-         
-//            print("Deleting train count - \(self.trainingForDeleting.count)")
-//            for (key, value) in self.trainingForDeleting {
-//                
-//                print("Key - \(key), date of train - \(train.formatedDate)")
-//            }
-            collectionView.reloadData()
-        }
-        
-        if train.isSelected {
-          //  self.trainingForDeleting.removeValue(forKey: indexPath.row)
-          //  self.trainingForDeleting.remove(at: indexPath.row)
-            (cell as? DTTrainCell)?.containerView.backgroundColor = .red
-          //  train.isSelected = false
-        } else {
-           // self.trainingForDeleting[indexPath.row] = self.trainList[indexPath.row]
-          //  self.trainingForDeleting.append(self.trainList[indexPath.row])
-            (cell as? DTTrainCell)?.containerView.backgroundColor = .viewFlipsideBckgoundColor
-           // train.isSelected = true
-        }
-        if self.isEditingMode {
-            (cell as? DTTrainCell)?.addTapAction()
-        } else {
-            (cell as? DTTrainCell)?.removeTapAction()
-        }
-        if !self.trainingForDeleting.isEmpty {
-            self.navigationItem.rightBarButtonItem?.isEnabled = true
-        } else {
-            self.navigationItem.rightBarButtonItem?.isEnabled = false
-        }
         return cell
     }
     
@@ -301,39 +302,32 @@ extension TrainingListViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !self.isEditingMode {
-            let trainIndex = indexPath.row
-            self.pushTrainViewController(with: trainIndex)
-//            if self.trainList[indexPath.row].isSelected {
-//                self.trainingForDeleting.remove(at: indexPath.row)
-//                self.trainList[indexPath.row].isSelected = false
-//            } else {
-//                self.trainingForDeleting.append(trainList[indexPath.row])
-//                self.trainList[indexPath.row].isSelected = true
-//            }
-            
-//            for train in trainList {
-//                if train.isSelected {
-//
-//                    train.isSelected = false
-//                } else {
-//                    train.isSelected = true
-//                }
-//            }
-          //  self.trainList[indexPath.row].isSelected = false
-          //  self.isEditingMode = false
-   //         self.collectionView.reloadData()
+        if self.isEditing {
+            if let cell = collectionView.cellForItem(at: indexPath) as? DTTrainCell {
+                cell.setBackgroundColorTo(.red)
+            }
+            self.trainingForDeleting[indexPath.row] = self.trainList[indexPath.row]
+            self.setTrashButttonState()
         } else {
-            
+            self.pushTrainViewController(with: indexPath.row)
+            collectionView.deselectItem(at: indexPath, animated: true)
         }
-//
-        
-      
     }
     
-  
-
-
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if self.isEditing {
+            if let cell = collectionView.cellForItem(at: indexPath) as? DTTrainCell {
+                cell.setBackgroundColorTo(.viewFlipsideBckgoundColor)
+            }
+            self.trainingForDeleting.removeValue(forKey: indexPath.row)
+            self.setTrashButttonState()
+        }
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: true)
+        self.collectionView.allowsMultipleSelection = true
+    }
 }
 
 

@@ -4,10 +4,9 @@ class DTTrainCell: UICollectionViewCell {
     
     //MARK: - Static cellID
     static let cellID = "TESTDTTrainCollectionCell"
-    var tapAction: (() -> Void)?
     
     //MARK: - GUI Properties
-    lazy var containerView: UIView = {
+    private lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .viewFlipsideBckgoundColor
         view.layer.shadowColor = UIColor.darkGray.cgColor
@@ -19,14 +18,14 @@ class DTTrainCell: UICollectionViewCell {
         return view
     }()
     
-    lazy var imageContainerView: UIView = {
+    private lazy var imageContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var dateLabel: DTAdaptiveLabel = {
+    private lazy var dateLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.font = .systemFont(ofSize: 20)
         label.text = "10 May 2020"
@@ -34,55 +33,49 @@ class DTTrainCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var firstGroupImage: UIImageView = {
+    private lazy var firstGroupImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage.chestImage
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    lazy var secondGroupImage: UIImageView = {
+    private lazy var secondGroupImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage.chestImage
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    lazy var thirdGroupImage: UIImageView = {
+    private lazy var thirdGroupImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage.chestImage
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    lazy var fourthGroupImage: UIImageView = {
+    private lazy var fourthGroupImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage.chestImage
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    lazy var horizontalLine: UIView = {
+    private lazy var horizontalLine: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var verticalLine: UIView = {
+    private lazy var verticalLine: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-    }()
-    
-    private lazy var tapGestureRecognizer: UITapGestureRecognizer = {
-        let tapGesture = UITapGestureRecognizer(target: self,
-                                                action: #selector(self.pressOnSelf))
-        return tapGesture
     }()
 
-    lazy var groupImages = [self.firstGroupImage,
+    private lazy var groupImages = [self.firstGroupImage,
                             self.secondGroupImage,
                             self.thirdGroupImage,
                             self.fourthGroupImage]
@@ -118,6 +111,15 @@ class DTTrainCell: UICollectionViewCell {
     }
     
     //MARK: - Setter
+    func setBackgroundColorTo(_ color: UIColor) {
+        self.containerView.backgroundColor = color
+    }
+    
+    func setCellFor(_ train: TrainingManagedObject) {
+        guard let formatedDate = train.formatedDate else { return }
+        self.dateLabel.text = formatedDate
+    }
+    
     func setGroupIcons(by groups: [MuscleGroup.Group]) {
         self.hideIcons()
         if self.groupImages.count >= groups.count {
@@ -131,15 +133,6 @@ class DTTrainCell: UICollectionViewCell {
                 icon.isHidden = false
             }
         }
-    }
-    
-    //MARK: - Public methods
-    func addTapAction() {
-        self.addGestureRecognizer(self.tapGestureRecognizer)
-    }
-    
-    func removeTapAction() {
-        self.removeGestureRecognizer(self.tapGestureRecognizer)
     }
     
     //MARK: - Constraints
@@ -218,10 +211,5 @@ class DTTrainCell: UICollectionViewCell {
             self.verticalLine.centerYAnchor.constraint(equalTo: self.imageContainerView.centerYAnchor),
             self.verticalLine.centerXAnchor.constraint(equalTo: self.imageContainerView.centerXAnchor)
         ])
-    }
-    
-    //MARK: - Actions
-    @objc private func pressOnSelf() {
-        self.tapAction?()
     }
 }

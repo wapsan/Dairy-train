@@ -36,10 +36,10 @@ class DTSplashScreenViewController: UIViewController {
     }
     
     private func updateFirebaseDataIfNeeds() {
-        DTFirebaseFileManager.shared.updateLoggedInMainUserFromFirebase(completion: {
+      //  DTFirebaseFileManager.shared.updateLoggedInMainUserFromFirebase(completion: {
             let profileViewController = MainTabBarViewController()
             self.navigationController?.pushViewController(profileViewController, animated: true)
-        })
+       // })
     }
    
     //MARK: - Constraints

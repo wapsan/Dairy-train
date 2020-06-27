@@ -17,7 +17,7 @@ extension TrainingManagedObject {
         return NSFetchRequest<TrainingManagedObject>(entityName: "Training")
     }
 
-    @NSManaged public var date: Date?
+    @NSManaged public var date: Date
     @NSManaged public var exercises: NSSet?
     @NSManaged public var formatedDate: String?
     

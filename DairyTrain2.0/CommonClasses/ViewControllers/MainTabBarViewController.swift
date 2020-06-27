@@ -97,7 +97,7 @@ class MainTabBarViewController: UITabBarController {
         guard let userInfo = (notification as NSNotification).userInfo else { return }
         guard let trains = userInfo["Trains"] as? [Train] else { return }
         let trainsVC = TrainingListViewController()
-        trainsVC.userTrainsList = trains
+      //  trainsVC.userTrainsList = trains
     }
 }
 
