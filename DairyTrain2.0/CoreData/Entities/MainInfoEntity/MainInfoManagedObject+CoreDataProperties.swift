@@ -14,6 +14,7 @@ extension MainInfoManagedObject {
     @NSManaged public var activitylevel: String?
     @NSManaged public var heightMode: String?
     @NSManaged public var weightMode: String?
+    @NSManaged public var id: Int64
     
     var displayAge: String {
         return String(age)

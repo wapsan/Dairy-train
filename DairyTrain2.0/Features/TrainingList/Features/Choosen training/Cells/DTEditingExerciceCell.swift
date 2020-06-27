@@ -6,7 +6,7 @@ class DTEditingExerciceCell: UITableViewCell {
     static let cellID = "TestExerciceCell"
     
     //MARK: - Private properties
-    private  var exercise: Exercise?
+    private var exercise: ExerciseManagedObject?
     var addButtonAction: (()-> Void)?
     
     //MARK: - GUI Properties
@@ -65,6 +65,8 @@ class DTEditingExerciceCell: UITableViewCell {
     //MARK: - Layout subviews
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.containerView.layer.cornerRadius = 30
+        self.containerView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
     }
     
     //MARK: - Initialization
@@ -77,11 +79,11 @@ class DTEditingExerciceCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Public methods
-    func setUpFor(_ exercise: Exercise) {
+    //MARK: - Setter
+    func setUpFor(_ exercise: ExerciseManagedObject) {
         self.exercise = exercise
         self.exerciceNameLabel.text = exercise.name
-        self.muscleSubGroupImage.image = exercise.muscleSubGroupImage
+        self.muscleSubGroupImage.image = exercise.image
         self.aproachCollectionList.reloadData()
     }
     
@@ -91,6 +93,7 @@ class DTEditingExerciceCell: UITableViewCell {
     
     //MARK: - Private methods
     private func initCell() {
+        self.backgroundColor = .clear
         self.selectionStyle = .none
         self.contentView.addSubview(self.containerView)
         self.containerView.addSubview(self.muscleSubGroupImage)
@@ -161,7 +164,7 @@ extension DTEditingExerciceCell: UICollectionViewDelegate, UICollectionViewDataS
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DTAproachCell.cellID,
                                                          for: indexPath) as? DTAproachCell {
             guard let exercise = self.exercise else { return UICollectionViewCell() }
-            let aproach = exercise.aproaches[indexPath.row]
+            let aproach = exercise.aproachesArray[indexPath.row]
             cell.weightLabel.text = aproach.weightDisplayvalue
             cell.repsLabel.text = aproach.repsDisplayValue
             cell.aproachNumberLabel.text = "№ " + String(indexPath.row + 1)

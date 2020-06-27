@@ -85,7 +85,6 @@ class ProfileViewController: MainTabBarItemVC {
         stackView.addArrangedSubview(self.genderInfoView)
         stackView.addArrangedSubview(self.ageInfoView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
         return stackView
     }()
     
@@ -97,7 +96,6 @@ class ProfileViewController: MainTabBarItemVC {
         stackView.addArrangedSubview(self.heightInfoView)
         stackView.addArrangedSubview(self.weightInfoView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
         return stackView
     }()
     
@@ -136,7 +134,7 @@ class ProfileViewController: MainTabBarItemVC {
     }
     
     private func showMenuStackView() {
-        let menuStackViewController = MenuStackViewController()
+        let menuStackViewController = MenuViewController()
         menuStackViewController.modalPresentationStyle = .custom
         menuStackViewController.transitioningDelegate = self
         menuStackViewController.delegate = self

@@ -1,6 +1,6 @@
 import UIKit
 
-class CommonStatisticsViewController: TrainingListVC {
+class CommonStatisticsViewController: TrainingListViewController {
     
     //MARK: - Private properties
     private lazy var trains = UserModel.shared.trains

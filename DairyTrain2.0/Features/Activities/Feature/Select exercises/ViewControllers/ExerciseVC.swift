@@ -46,14 +46,14 @@ class ExercicesViewController: MuscleGroupsViewController {
     }
     
     private func addExercicesComplition() {
-        if UserTrainingModelFileManager.shared.addExercesToTrain(self.selectedExercices) {
+        if CoreDataManager.shared.addExercisesToTtrain(self.selectedExercices) {
             NotificationCenter.default.post(name: .addNewTrain,
-                                            object: nil,
-                                            userInfo: ["Trains": UserModel.shared.trains] )
+                                                        object: nil,
+                                                        userInfo: ["Trains": CoreDataManager.shared.fetchTrainingList()] )
         } else {
             NotificationCenter.default.post(name: .trainingWasChanged,
-                                            object: nil,
-                                            userInfo: ["Train": UserTrainingModelFileManager.shared.trainingInfo.trainingList[0]])
+                                                        object: nil,
+                                                        userInfo: ["Train": CoreDataManager.shared.fetchTrainingList()[0]])
         }
         self.showAddedAllert()
     }
@@ -104,10 +104,10 @@ extension ExercicesViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
                                                  for: indexPath)
-        let choosenExercice = self.exercices[indexPath.row]
-        (cell as? DTActivitiesCell)?.setCellFor(choosenExercice)
+        let exercise = self.exercices[indexPath.row]
+        (cell as? DTActivitiesCell)?.setCellFor(exercise)
         
-        if choosenExercice.isSelected {
+        if exercise.isSelected {
             (cell as? DTActivitiesCell)?.setBackroundColorTo(.red)
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
         } else {

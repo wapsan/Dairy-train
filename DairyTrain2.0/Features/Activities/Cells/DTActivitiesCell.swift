@@ -55,6 +55,8 @@ class DTActivitiesCell: UITableViewCell {
         self.setUpConstraints()
     }
     
+    
+    
     //MARK: - Setter
     func setCellFor(_ muscleGroup: MuscleGroup.Group) {
         self.exerciceNameLabel.text = muscleGroup.rawValue
@@ -76,13 +78,29 @@ class DTActivitiesCell: UITableViewCell {
     }
     //MARK: - Private Methods
     private func setLayout() {
-        self.containerView.layer.cornerRadius = self.containerView.bounds.height / 2
+        self.containerView.layer.cornerRadius = 30
+        self.containerView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+       // self.containerView.layer.cornerRadius = self.containerView.bounds.height / 2
     }
    
     //MARK: - Publick methods
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setLayout()
+        let gradientLayer = CAGradientLayer()
+           gradientLayer.colors = [UIColor.viewFlipsideBckgoundColor.cgColor, UIColor.black.cgColor]
+           gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.containerView.bounds
+           gradientLayer.cornerRadius = 30
+           gradientLayer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+        //   gradientLayer.borderColor = UIColor.red.cgColor
+           gradientLayer.borderWidth = 1
+           gradientLayer.startPoint = CGPoint(x: 1, y: 0)
+           gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+           //gradientLayer.shadowColor = UIColor.darkGray.cgColor
+           //gradientLayer.shadowOffset = .init(width: 0, height: 5)
+          // gradientLayer.shadowOpacity = 5
+       // self.containerView.layer.insertSublayer(gradientLayer, at:0)
     }
     
     //MARK: - Constraints

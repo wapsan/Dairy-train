@@ -14,8 +14,9 @@ class MuscleGroupsViewController: MainTabBarItemVC {
         table.delegate = self
         table.dataSource = self
         table.register(DTActivitiesCell.self, forCellReuseIdentifier: DTActivitiesCell.cellID)
-        table.backgroundColor = .black
+        table.backgroundColor = .clear
         table.separatorStyle = .none
+        table.showsVerticalScrollIndicator = false
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
@@ -30,6 +31,22 @@ class MuscleGroupsViewController: MainTabBarItemVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpTableView()
+        
+        self.view.backgroundColor = .clear
+        let gradientLayer = CAGradientLayer()
+           gradientLayer.colors = [UIColor.red.cgColor, UIColor.viewFlipsideBckgoundColor.cgColor]
+           gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.bounds
+           gradientLayer.cornerRadius = 30
+           gradientLayer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+        //   gradientLayer.borderColor = UIColor.red.cgColor
+           gradientLayer.borderWidth = 1
+           gradientLayer.startPoint = CGPoint(x: 1, y: 0)
+           gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+           gradientLayer.shadowColor = UIColor.darkGray.cgColor
+           gradientLayer.shadowOffset = .init(width: 0, height: 5)
+           gradientLayer.shadowOpacity = 5
+        self.view.layer.insertSublayer(gradientLayer, at:0)
     }
     
     //MARK: - Private methods

@@ -12,12 +12,17 @@ class DateHelper {
     
     //MARK: - Computed properties
     var currnetDate: String {
-        dateFormater.dateFormat = dateFormat
-        return dateFormater.string(from: date)
+        self.dateFormater.dateFormat = dateFormat
+        return self.dateFormater.string(from: self.date)
     }
     
     //MARK: - Initialization
     private init () {
         
+    }
+    
+    //MARK: - Public methods
+    func getFormatedDateFrom(_ date: Date) -> String {
+        return self.dateFormater.string(from: date)
     }
 }

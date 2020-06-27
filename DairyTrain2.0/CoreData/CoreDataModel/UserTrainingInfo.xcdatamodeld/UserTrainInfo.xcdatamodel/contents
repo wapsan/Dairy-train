@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Aproach" representedClassName=".AproachManagedObject" syncable="YES">
+        <attribute name="number" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reps" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="aproaches" inverseEntity="Exercise"/>
+    </entity>
+    <entity name="Exercise" representedClassName=".ExerciseManagedObject" syncable="YES">
+        <attribute name="groupName" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="subgroupName" attributeType="String"/>
+        <relationship name="aproaches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Aproach" inverseName="exercise" inverseEntity="Aproach"/>
+        <relationship name="training" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Training" inverseName="exercises" inverseEntity="Training"/>
+    </entity>
+    <entity name="Training" representedClassName=".TrainingManagedObject" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="formatedDate" optional="YES" attributeType="String"/>
+        <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="training" inverseEntity="Exercise"/>
+    </entity>
+    <elements>
+        <element name="Aproach" positionX="148.76171875" positionY="134.1484375" width="128" height="103"/>
+        <element name="Exercise" positionX="-105.65625" positionY="53.09765625" width="128" height="133"/>
+        <element name="Training" positionX="-347.9921875" positionY="-191.46484375" width="128" height="88"/>
+    </elements>
+</model>

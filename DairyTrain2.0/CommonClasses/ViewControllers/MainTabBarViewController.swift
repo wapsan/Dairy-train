@@ -33,7 +33,7 @@ class MainTabBarViewController: UITabBarController {
     private func setUpTabBarViewControllers() {
         let profileViewController = ProfileViewController()
         let activitiesViewController = MuscleGroupsViewController()
-        let trainingListViewController = TrainingListVC()
+        let trainingListViewController = TrainingListViewController()
         
         activitiesViewController.tabBarItem = .init(title: nil,
                                                     image: UIImage.tabBarActivities,
@@ -96,7 +96,7 @@ class MainTabBarViewController: UITabBarController {
     @objc private func exerciceDidAdd(_ notification: NSNotification) {
         guard let userInfo = (notification as NSNotification).userInfo else { return }
         guard let trains = userInfo["Trains"] as? [Train] else { return }
-        let trainsVC = TrainingListVC()
+        let trainsVC = TrainingListViewController()
         trainsVC.userTrainsList = trains
     }
 }

@@ -127,16 +127,18 @@ class DTInfoView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.red.cgColor, UIColor.black.cgColor]
+        gradientLayer.colors = [UIColor.red.cgColor, UIColor.viewFlipsideBckgoundColor.cgColor]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = self.bounds
         gradientLayer.cornerRadius = 30
         gradientLayer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
-        gradientLayer.borderColor = UIColor.red.cgColor
+     //   gradientLayer.borderColor = UIColor.red.cgColor
         gradientLayer.borderWidth = 1
-        //gradientLayer.shadowColor = UIColor.darkGray.cgColor
-        //gradientLayer.shadowOffset = .init(width: 0, height: 5)
-       // gradientLayer.shadowOpacity = 5
+        gradientLayer.startPoint = CGPoint(x: 1, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.shadowColor = UIColor.darkGray.cgColor
+        gradientLayer.shadowOffset = .init(width: 0, height: 5)
+        gradientLayer.shadowOpacity = 5
         self.layer.insertSublayer(gradientLayer, at:0)
       //  self.setLayotLayer()
       //  self.setDefaultLayer()

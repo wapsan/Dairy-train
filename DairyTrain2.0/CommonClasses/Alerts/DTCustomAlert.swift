@@ -29,7 +29,7 @@ class DTCustomAlert: UIView {
     */
     private var alertType: DTCustomAlert.AlertType?
     private var changingAproachIndex: Int?
-    private weak var exercice: Exercise?
+    private weak var exercice: ExerciseManagedObject?
     private weak var tappedInfoView: DTInfoView?
     private lazy var setAgeTitle = "Set age"
     private lazy var setWeightTitle = "Set weight"
@@ -291,17 +291,17 @@ class DTCustomAlert: UIView {
           - Parameter aproachNumber: Aproach wich will be changed, if you add new aproach this parameter must be **nill**
     */
     func showAproachAlert(on viewController: UIViewController,
-                          with exercice: Exercise,
+                          with exercice: ExerciseManagedObject,
                           and aproachNumber: Int?) {
         if let aproachIndex = aproachNumber {
-            let aproach = exercice.aproaches[aproachIndex]
+            let aproach = exercice.aproachesArray[aproachIndex]
             self.titleLabel.text = "Aproach №\(aproachIndex + 1)"
             if aproach.weight.truncatingRemainder(dividingBy: 1) == 0 {
                 self.weightTextField.text = String(format: "%.0f", aproach.weight)
             } else {
                 self.weightTextField.text = String(format: "%.1f", aproach.weight)
             }
-            self.repsTextField.text = String(exercice.aproaches[aproachIndex].reps)
+            self.repsTextField.text = String(exercice.aproachesArray[aproachIndex].reps)
             self.changingAproachIndex = aproachIndex
             self.alertType = .aproachAlert
         } else {
@@ -487,14 +487,21 @@ class DTCustomAlert: UIView {
     private func writeNewAproachInfo() {
         guard let reps = Int(self.repsTextField.text ?? "0") else { return }
         guard let weight = Float(self.weightTextField.text ?? "0") else { return }
-        self.exercice?.addAproachWith(reps, and: weight)
-        UserTrainingModelFileManager.shared.writeData()
+        //self.exercice?.addAproachWith(reps, and: weight)
+        if let exercise = self.exercice {
+           CoreDataManager.shared.addWeight(weight, and: reps, to: exercise)
+        }
+        
+       // UserTrainingModelFileManager.shared.writeData()
     }
     
     private func changeAproachInfo(for index: Int) {
         guard let reps = Int(self.repsTextField.text ?? "0") else { return }
         guard let weight = Float(self.weightTextField.text ?? "0") else { return }
-        self.exercice?.changeAproach(index, with: reps, and: weight)
+        if let exercise = self.exercice {
+            CoreDataManager.shared.changeAproachAt(index, in: exercise, to: weight, and: reps)
+        }
+     //   self.exercice?.changeAproach(index, with: reps, and: weight)
     }
       
     private func setButtonState(_ button: UIButton) {

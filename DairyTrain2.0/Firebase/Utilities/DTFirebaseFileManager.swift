@@ -17,7 +17,8 @@ class DTFirebaseFileManager {
     func updateMainUserInfoInFirebase() {
         guard let userUid = Auth.auth().currentUser?.uid,
             let userMainInfo = UserMainInfoModel(from: CoreDataManager.shared.readUserMainInfo()) else { return }
-        let localJSONStringModel = userMainInfo.convertToJSONString()
+            let localJSONStringModel = userMainInfo.convertToJSONString()
+        
         self.fetchMainUserInfo { (fireBaseJSONString) in
             guard let fireBaseJsonStringModel = fireBaseJSONString else { return }
             if fireBaseJsonStringModel != localJSONStringModel {

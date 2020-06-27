@@ -4,6 +4,7 @@ class DTTrainCell: UICollectionViewCell {
     
     //MARK: - Static cellID
     static let cellID = "TESTDTTrainCollectionCell"
+    var tapAction: (() -> Void)?
     
     //MARK: - GUI Properties
     lazy var containerView: UIView = {
@@ -75,6 +76,12 @@ class DTTrainCell: UICollectionViewCell {
         return view
     }()
     
+    private lazy var tapGestureRecognizer: UITapGestureRecognizer = {
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(self.pressOnSelf))
+        return tapGesture
+    }()
+
     lazy var groupImages = [self.firstGroupImage,
                             self.secondGroupImage,
                             self.thirdGroupImage,
@@ -91,12 +98,8 @@ class DTTrainCell: UICollectionViewCell {
     }
     
     //MARK: - Private methods
-    private func setUpCell() {
-        self.backgroundColor = .clear
-    }
-    
     private func initCell() {
-        self.setUpCell()
+        self.backgroundColor = .clear
         self.addSubview(self.containerView)
         self.containerView.addSubview(self.imageContainerView)
         self.containerView.addSubview(self.dateLabel)
@@ -109,12 +112,12 @@ class DTTrainCell: UICollectionViewCell {
     }
     
     private func hideIcons() {
-           for icon in self.groupImages {
-               icon.isHidden = true
-           }
-       }
-       
-    //MARK: - Publick methods
+        for icon in self.groupImages {
+            icon.isHidden = true
+        }
+    }
+    
+    //MARK: - Setter
     func setGroupIcons(by groups: [MuscleGroup.Group]) {
         self.hideIcons()
         if self.groupImages.count >= groups.count {
@@ -128,6 +131,15 @@ class DTTrainCell: UICollectionViewCell {
                 icon.isHidden = false
             }
         }
+    }
+    
+    //MARK: - Public methods
+    func addTapAction() {
+        self.addGestureRecognizer(self.tapGestureRecognizer)
+    }
+    
+    func removeTapAction() {
+        self.removeGestureRecognizer(self.tapGestureRecognizer)
     }
     
     //MARK: - Constraints
@@ -208,8 +220,8 @@ class DTTrainCell: UICollectionViewCell {
         ])
     }
     
-    
-    
-    
-    
+    //MARK: - Actions
+    @objc private func pressOnSelf() {
+        self.tapAction?()
+    }
 }
