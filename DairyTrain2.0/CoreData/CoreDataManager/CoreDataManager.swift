@@ -219,33 +219,26 @@ class CoreDataManager {
             return []
         }
     }
-//
-//    var a = [1,2,3,4,5]
-//    var b = [2]
-//    for i in b {
-//        print(a.filter({ $0 != i }))
-//    }
-//
+
     func removeTraining(_ trainingListForRemoving: [TrainingManagedObject]) {
-       // let baseTrainigList = self.fetchTrainingList()
-        
         for train in trainingListForRemoving {
             self.trainInfoContext.delete(train)
         }
         self.updateTrainInfoContext()
     }
     
-    func fetchExerciceListIn(_ train: TrainingManagedObject) -> [ExerciseManagedObject] {
-        let fetchRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
-        var exerciceList: [ExerciseManagedObject] = []
-        if let dataBaseTrainList = try? self.trainInfoContext.fetch(fetchRequest) {
-            dataBaseTrainList.forEach({
-                if $0.date == train.date {
-                    exerciceList = $0.exercicesArray
-                }
-            })
-        }
-        return exerciceList
+    func fetchExercisesFor(_ choosenTrain: TrainingManagedObject) -> [ExerciseManagedObject] {
+//        let fetchRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
+//        var exerciceListTrain: [ExerciseManagedObject] = []
+//        if let dataBaseTrainList = try? self.trainInfoContext.fetch(fetchRequest) {
+//            dataBaseTrainList.forEach({
+//                if $0.objectID == choosenTrain.objectID {
+//                    exerciceListTrain = $0.exercicesArray
+//                }
+//            })
+//        }
+       // return exerciceListTrain
+        return choosenTrain.exercicesArray
     }
     
     func addExercisesToTtrain(_ exercises: [Exercise]) -> Bool {
@@ -310,43 +303,24 @@ class CoreDataManager {
         }
     }
     
-    
-    func removeTrainList() {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataManager.EntitiesName.training.rawValue)
-        if let trainList = try? self.trainInfoContext.fetch(fetchRequest) {
-            for train in trainList {
-                self.trainInfoContext.delete(train)
-            }
-            self.updateTrainInfoContext()
-        }
-    }
-    
     func removeExercise(_ exercise: ExerciseManagedObject, from train: TrainingManagedObject) {
-        let fethcRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
-        guard let trainDate = train.formatedDate else { return }
-        fethcRequest.predicate = NSPredicate(format: "formatedDate == %@", trainDate as CVarArg )
-        if let trainingList = try? self.trainInfoContext.fetch(fethcRequest),
-            let currentTrain = trainingList.first {
-            currentTrain.exercicesArray.forEach({
-                if $0.id == exercise.id {
-                    currentTrain.removeFromExercises($0)
-                }
-            })
-            self.updateTrainInfoContext()
-        }
-    }
-    
-    func moveExerciseFrom(_ fromIndex: Int, to toIndex: Int, in train: TrainingManagedObject) {
-       guard let fromIndexExercice = train.exercicesArray.filter({ $0.id == Int64(fromIndex) }).first,
-        let toIndexExercice = train.exercicesArray.filter({ $0.id == Int64(toIndex) }).first else { return }
-        fromIndexExercice.id = Int64(toIndex)
-        toIndexExercice.id = Int64(fromIndex)
+//        let fethcRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
+//        guard let trainDate = train.formatedDate else { return }
+//        fethcRequest.predicate = NSPredicate(format: "formatedDate == %@", trainDate)
+//        if let trainingList = try? self.trainInfoContext.fetch(fethcRequest),
+//            let currentTrain = trainingList.first {
+//            currentTrain.exercicesArray.forEach({
+//                if $0.id == exercise.id {
+//                    currentTrain.removeFromExercises($0)
+//                }
+//            })
+//            self.updateTrainInfoContext()
+//        }
+        train.removeFromExercises(exercise)
         self.updateTrainInfoContext()
     }
     
-  
-    
-    func addWeight(_ weight: Float, and reps: Int, to exercise: ExerciseManagedObject) {
+    func addAproachWith(_ weight: Float, and reps: Int, to exercise: ExerciseManagedObject) {
         let newAproach = AproachManagedObject(context: self.trainInfoContext)
         newAproach.number = Int64(exercise.aproachesArray.count + 1)
         newAproach.weight = weight
@@ -362,6 +336,11 @@ class CoreDataManager {
         let changedAproach = exercise.aproachesArray[index]
         changedAproach.weight = weight
         changedAproach.reps = Int64(reps)
+        self.updateTrainInfoContext()
+    }
+    
+    func removeAproachIn(_ exercise: ExerciseManagedObject) {
+        exercise.aproachesArray.removeLast()
         self.updateTrainInfoContext()
     }
     

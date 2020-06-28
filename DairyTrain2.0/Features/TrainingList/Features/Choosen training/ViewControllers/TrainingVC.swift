@@ -10,7 +10,7 @@ class TrainingVC: MuscleGroupsViewController {
    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.setUpNavigationBar()
+    //   self.setUpNavigationBar()
         self.addObserverForChangingTraining()
        // self.setCurrentTrain()
         self.tableView.register(DTEditingExerciceCell.self, forCellReuseIdentifier: DTEditingExerciceCell.cellID)
@@ -68,41 +68,21 @@ class TrainingVC: MuscleGroupsViewController {
 extension TrainingVC {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//         if let cell = tableView.dequeueReusableCell(withIdentifier: DTEditingExerciceCell.cellID,
-//                                                     for: indexPath) as? DTEditingExerciceCell {
-//           //  let exercice = self.exercices[indexPath.row]
-//        //    let exercice = self.train!.exercises[indexPath.row]
-//             cell.setUpFor(exercice)
-//             cell.addButtonAction = { [weak self] in
-//                 guard let self = self else { return }
-//                 DTCustomAlert.shared.showAproachAlert(on: self, with: exercice, and: nil)
-//             }
-//             cell.backgroundColor = .black
-//             return cell
-//         } else {
-//             return UITableViewCell()
-//         }
-//        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: DTEditingExerciceCell.cellID,
                                                  for: indexPath)
         guard let train = self.train else { return UITableViewCell() }
-        let exercices = CoreDataManager.shared.fetchExerciceListIn(train)
+        let exercices = CoreDataManager.shared.fetchExercisesFor(train)
         let exercise = exercices[indexPath.row]
-    //    if let exercise = self.train?.exercicesArray[indexPath.row] {
-            (cell as? DTEditingExerciceCell)?.setUpFor(exercise)
-            (cell as? DTEditingExerciceCell)?.addButtonAction = { [weak self] in
-                if let self = self {
-                    DTCustomAlert.shared.showAproachAlert(on: self, with: exercise, and: nil)
-                }
-          //  }
+        (cell as? DTEditingExerciceCell)?.setUpFor(exercise)
+        (cell as? DTEditingExerciceCell)?.addAproachButtonAction = { [weak self] in
+            guard let self = self else { return }
+            DTCustomAlert.shared.showAproachAlert(on: self, with: exercise, and: nil)
         }
         return cell
-     }
+    }
      
-     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-     }
-     
+  
      
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
          let safeArea = self.view.safeAreaLayoutGuide.layoutFrame
@@ -111,7 +91,7 @@ extension TrainingVC {
      
      override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let train = self.train else { return 0 }
-        let exercises = CoreDataManager.shared.fetchExerciceListIn(train)
+        let exercises = CoreDataManager.shared.fetchExercisesFor(train)
         return exercises.count
      }
     
@@ -122,27 +102,16 @@ extension TrainingVC {
             let removedExercise = train.exercicesArray[indexPath.row]
             train.removeFromExercises(removedExercise)
             tableView.performBatchUpdates({ //[weak self] in
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.deleteRows(at: [indexPath], with: .top)
                 CoreDataManager.shared.removeExercise(removedExercise, from: train)
             }, completion: { _ in
                 
             })
         }
     }
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-      //  self.exercices.swapAt(sourceIndexPath.row, destinationIndexPath.row)
-      //  self.train!.exercises.swapAt(sourceIndexPath.row, destinationIndexPath.row)
-        print("From \(sourceIndexPath.row)")
-        print("To \(destinationIndexPath.row)")
-       // NotificationCenter.default.post(name: .trainingWasChanged, object: nil)
-    }
+   
 
      func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-         return true
-     }
-
-     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
          return true
      }
 }

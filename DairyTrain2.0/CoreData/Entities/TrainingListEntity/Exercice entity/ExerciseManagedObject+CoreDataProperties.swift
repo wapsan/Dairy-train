@@ -16,8 +16,13 @@ extension ExerciseManagedObject {
     @NSManaged public var aproaches: NSSet
     
     var aproachesArray: [AproachManagedObject] {
-        let aproachesSet = self.aproaches as? Set<AproachManagedObject> ?? []
-        return aproachesSet.sorted(by: { $0.number < $1.number })
+        get {
+             let aproachesSet = self.aproaches as? Set<AproachManagedObject> ?? []
+             return aproachesSet.sorted(by: { $0.number < $1.number })
+        }
+        set {
+            self.aproaches = NSSet(array: newValue)
+        }
     }
     
     var subGroup: MuscleSubgroup.Subgroup? {

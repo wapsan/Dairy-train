@@ -37,11 +37,15 @@ class DTAproachCell: UICollectionViewCell {
     }()
     
     
+    
     //MARK: - LayoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setGuiElements()
     }
+    
+    //MARK: - Setters
+  //  func setUpForA
     
     
     //MARK: - Private methods

@@ -7,7 +7,8 @@ class DTEditingExerciceCell: UITableViewCell {
     
     //MARK: - Private properties
     private var exercise: ExerciseManagedObject?
-    var addButtonAction: (()-> Void)?
+    var addAproachButtonAction: (() -> Void)?
+    var removeAproachButtonAction: (() -> Void)?
     
     //MARK: - GUI Properties
     private var containerView: UIView = {
@@ -62,6 +63,12 @@ class DTEditingExerciceCell: UITableViewCell {
         return button
     }()
     
+    private lazy var removeLastAproachButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     //MARK: - Layout subviews
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -86,10 +93,6 @@ class DTEditingExerciceCell: UITableViewCell {
         self.muscleSubGroupImage.image = exercise.image
         self.aproachCollectionList.reloadData()
     }
-    
-//    func reloadAproachList() {
-//        self.aproachCollectionList.reloadData()
-//    }
     
     //MARK: - Private methods
     private func initCell() {
@@ -149,9 +152,14 @@ class DTEditingExerciceCell: UITableViewCell {
     }
     
     //MARK: - Actions
-    @objc func addButtonTouched() {
-        self.addButtonAction?()
+    @objc private func addButtonTouched() {
+        self.addAproachButtonAction?()
     }
+    
+    @objc private func removeLastAproachesButtonPressed() {
+        
+    }
+  
 }
 
 extension DTEditingExerciceCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

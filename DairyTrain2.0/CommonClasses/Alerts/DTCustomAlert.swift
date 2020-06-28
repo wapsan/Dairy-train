@@ -488,8 +488,11 @@ class DTCustomAlert: UIView {
         guard let reps = Int(self.repsTextField.text ?? "0") else { return }
         guard let weight = Float(self.weightTextField.text ?? "0") else { return }
         //self.exercice?.addAproachWith(reps, and: weight)
+        
         if let exercise = self.exercice {
-           CoreDataManager.shared.addWeight(weight, and: reps, to: exercise)
+            let numberOfAproaches = exercise.aproachesArray.count
+            
+           CoreDataManager.shared.addAproachWith(weight, and: reps, to: exercise)
         }
         
        // UserTrainingModelFileManager.shared.writeData()
