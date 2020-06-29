@@ -52,21 +52,38 @@ class DTEditingExerciceCell: UITableViewCell {
         return collectionView
     }()
     
-    private lazy var addAproachBurron: UIButton = {
+    private lazy var addAproachButton: UIButton = {
         let button = UIButton()
         let addImage = UIImage(named: "add")
         button.setImage(addImage, for: .normal)
-        button.contentMode = .scaleAspectFit
-        button.titleLabel?.textColor = .white
-        button.addTarget(self, action: #selector(self.addButtonTouched), for: .touchUpInside)
+        button.addTarget(self,
+                         action: #selector(self.addButtonTouched),
+                         for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private lazy var removeLastAproachButton: UIButton = {
         let button = UIButton()
+        let removeImage = UIImage(named: "remove")
+        
+        button.setImage(removeImage, for: .normal)
+        button.addTarget(self,
+                         action: #selector(self.removeLastAproachesButtonPressed),
+                         for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+    
+    private lazy var aproachesButtonStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        stackView.distribution = .fillEqually
+        stackView.addArrangedSubview(self.removeLastAproachButton)
+        stackView.addArrangedSubview(self.addAproachButton)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
     
     //MARK: - Layout subviews
@@ -102,12 +119,13 @@ class DTEditingExerciceCell: UITableViewCell {
         self.containerView.addSubview(self.muscleSubGroupImage)
         self.containerView.addSubview(self.exerciceNameLabel)
         self.containerView.addSubview(self.aproachCollectionList)
-        self.containerView.addSubview(self.addAproachBurron)
-        self.setUpConstraints()
+
+        self.containerView.addSubview(self.aproachesButtonStack)
+        self.setUpNewConstraints()
     }
     
     //MARK: - Constraints
-    private func setUpConstraints() {
+    private func setUpNewConstraints() {
         NSLayoutConstraint.activate([
             self.containerView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
             self.containerView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 8),
@@ -133,13 +151,13 @@ class DTEditingExerciceCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            self.addAproachBurron.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -8),
-            self.addAproachBurron.leftAnchor.constraint(equalTo: self.aproachCollectionList.rightAnchor,
-                                                        constant: 8),
-            self.addAproachBurron.centerYAnchor.constraint(equalTo: self.aproachCollectionList.centerYAnchor),
-            self.addAproachBurron.heightAnchor.constraint(equalTo: self.addAproachBurron.widthAnchor),
+            self.aproachesButtonStack.topAnchor.constraint(equalTo: self.containerView.topAnchor),
+            self.aproachesButtonStack.leftAnchor.constraint(equalTo: self.aproachCollectionList.rightAnchor, constant: 8),
+            self.aproachesButtonStack.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -8),
+            self.aproachesButtonStack.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor),
         ])
         
+   
         NSLayoutConstraint.activate([
             self.aproachCollectionList.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,
                                                                constant: -8),
@@ -157,11 +175,11 @@ class DTEditingExerciceCell: UITableViewCell {
     }
     
     @objc private func removeLastAproachesButtonPressed() {
-        
+        self.removeAproachButtonAction?()
     }
-  
 }
 
+//MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension DTEditingExerciceCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -169,18 +187,11 @@ extension DTEditingExerciceCell: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DTAproachCell.cellID,
-                                                         for: indexPath) as? DTAproachCell {
-            guard let exercise = self.exercise else { return UICollectionViewCell() }
-            let aproach = exercise.aproachesArray[indexPath.row]
-            cell.weightLabel.text = aproach.weightDisplayvalue
-            cell.repsLabel.text = aproach.repsDisplayValue
-            cell.aproachNumberLabel.text = "№ " + String(indexPath.row + 1)
-            
-            return cell
-        } else {
-            return UICollectionViewCell()
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DTAproachCell.cellID,
+                                                      for: indexPath)
+        guard let aproach = self.exercise?.aproachesArray[indexPath.row] else { return UICollectionViewCell() }
+        (cell as? DTAproachCell)?.setUpFor(aproach)
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

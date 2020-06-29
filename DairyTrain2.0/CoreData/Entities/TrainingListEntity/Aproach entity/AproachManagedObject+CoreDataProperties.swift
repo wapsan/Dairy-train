@@ -1,7 +1,5 @@
-
 import Foundation
 import CoreData
-
 
 extension AproachManagedObject {
 
@@ -13,6 +11,10 @@ extension AproachManagedObject {
     @NSManaged public var reps: Int64
     @NSManaged public var weight: Float
     @NSManaged public var exercise: ExerciseManagedObject?
+}
+
+//MARK: - Custom properties
+extension AproachManagedObject {
     
     var weightDisplayvalue: String {
         switch MeteringSetting.shared.weightMode {
@@ -32,7 +34,6 @@ extension AproachManagedObject {
     }
     
     var repsDisplayValue: String {
-               return "\(self.reps) reps"
-           }
-
+        return "\(self.reps) reps"
+    }
 }

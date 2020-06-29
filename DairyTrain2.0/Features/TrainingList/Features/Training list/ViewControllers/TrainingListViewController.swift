@@ -82,6 +82,11 @@ class TrainingListViewController: MainTabBarItemVC {
         }
     }
     
+    //MARK: - Setter
+    func setFor(_ traininglist: [TrainingManagedObject]) {
+        self.trainList = traininglist
+    }
+    
     //MARK: - Private methods
     private func setUpTrainList() {
         self.trainList = CoreDataManager.shared.fetchTrainingList()
@@ -123,11 +128,11 @@ class TrainingListViewController: MainTabBarItemVC {
     }
     
     private func pushTrainViewController(with trainIndex: Int) {
-        let train = self.trainList[trainIndex]
-        let trainVC = TrainingVC()
-        trainVC.train = train
-        trainVC.headerTittle = train.formatedDate ?? "0"
-        self.navigationController?.pushViewController(trainVC, animated: true)
+        let training = self.trainList[trainIndex]
+        let trainViewController = TrainingViewController()
+        trainViewController.setTraining(training)
+        trainViewController.headerTittle = training.formatedDate ?? "0"
+        self.navigationController?.pushViewController(trainViewController, animated: true)
     }
     
     private func setTrashButttonState() {

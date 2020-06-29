@@ -340,19 +340,26 @@ class CoreDataManager {
     }
     
     func removeAproachIn(_ exercise: ExerciseManagedObject) {
-        exercise.aproachesArray.removeLast()
+        if !exercise.aproachesArray.isEmpty {
+            exercise.aproachesArray.removeLast()
+        }
         self.updateTrainInfoContext()
     }
     
-//    func isAnyDataSaved() -> Bool {
-//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: EntitiesName.mainInfo.rawValue)
-//        guard let result = try? self.mainInfoContext.fetch(fetchRequest) else { return false }
-//        if result.isEmpty {
-//            return false
-//        } else {
-//            return true
-//        }
-//    }
+    func removeAllUserData() {
+        let fetchMainInfoRequest: NSFetchRequest<MainInfoManagedObject> = MainInfoManagedObject.fetchRequest()
+        let fetchTrainInfoRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
+        if let mainInfoList = try? self.mainInfoContext.fetch(fetchMainInfoRequest) {
+            for object in mainInfoList {
+                self.mainInfoContext.delete(object)
+            }
+        }
+        if let trainingInfo = try? self.trainInfoContext.fetch(fetchTrainInfoRequest) {
+            for object in trainingInfo {
+                self.trainInfoContext.delete(object)
+            }
+        }
+    }
     
     //MARK: - Initialization
     private init() { }

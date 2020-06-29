@@ -95,9 +95,9 @@ class MainTabBarViewController: UITabBarController {
     //MARK: - Actions
     @objc private func exerciceDidAdd(_ notification: NSNotification) {
         guard let userInfo = (notification as NSNotification).userInfo else { return }
-//        guard let trains = userInfo["Trains"] as? [Train] else { return }
-//        let trainsVC = TrainingListViewController()
-      //  trainsVC.userTrainsList = trains
+        guard let trains = userInfo["Trains"] as? [TrainingManagedObject] else { return }
+        let trainigsViewController = TrainingListViewController()
+        trainigsViewController.setFor(trains)
     }
 }
 

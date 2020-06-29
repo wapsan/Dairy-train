@@ -1,7 +1,6 @@
 import UIKit
 import CoreData
 
-
 extension ExerciseManagedObject {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ExerciseManagedObject> {
@@ -14,24 +13,6 @@ extension ExerciseManagedObject {
     @NSManaged public var groupName: String
     @NSManaged public var training: TrainingManagedObject?
     @NSManaged public var aproaches: NSSet
-    
-    var aproachesArray: [AproachManagedObject] {
-        get {
-             let aproachesSet = self.aproaches as? Set<AproachManagedObject> ?? []
-             return aproachesSet.sorted(by: { $0.number < $1.number })
-        }
-        set {
-            self.aproaches = NSSet(array: newValue)
-        }
-    }
-    
-    var subGroup: MuscleSubgroup.Subgroup? {
-        return MuscleSubgroup.Subgroup.init(rawValue: self.subgroupName)
-    }
-    
-    var image: UIImage? {
-        return self.subGroup?.image
-    }
 }
 
 // MARK: Generated accessors for aproaches
@@ -48,5 +29,26 @@ extension ExerciseManagedObject {
 
     @objc(removeAproaches:)
     @NSManaged public func removeFromAproaches(_ values: NSSet)
+}
 
+//MARK: - Custom properties
+extension ExerciseManagedObject {
+    
+    var aproachesArray: [AproachManagedObject] {
+        get {
+            let aproachesSet = self.aproaches as? Set<AproachManagedObject> ?? []
+            return aproachesSet.sorted(by: { $0.number < $1.number })
+        }
+        set {
+            self.aproaches = NSSet(array: newValue)
+        }
+    }
+    
+    var subGroup: MuscleSubgroup.Subgroup? {
+        return MuscleSubgroup.Subgroup.init(rawValue: self.subgroupName)
+    }
+    
+    var image: UIImage? {
+        return self.subGroup?.image
+    }
 }

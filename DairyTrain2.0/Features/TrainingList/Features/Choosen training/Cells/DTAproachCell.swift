@@ -6,7 +6,7 @@ class DTAproachCell: UICollectionViewCell {
     static let cellID = "TestAproachCell"
     
     //MARK: - GUI Properties
-    lazy var aproachNumberLabel: UILabel = {
+    private lazy var aproachNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "№1"
         label.textColor = .white
@@ -16,7 +16,7 @@ class DTAproachCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var weightLabel: DTAdaptiveLabel = {
+    private lazy var weightLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.text = "80 kg."
         label.textColor = .white
@@ -26,7 +26,7 @@ class DTAproachCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var repsLabel: UILabel = {
+    private lazy var repsLabel: UILabel = {
         let label = UILabel()
         label.text = "12 reps."
         label.textColor = .white
@@ -36,18 +36,19 @@ class DTAproachCell: UICollectionViewCell {
         return label
     }()
     
-    
-    
     //MARK: - LayoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setGuiElements()
     }
     
-    //MARK: - Setters
-  //  func setUpForA
-    
-    
+    //MARK: - Setter
+    func setUpFor(_ aproach: AproachManagedObject) {
+        self.weightLabel.text = aproach.weightDisplayvalue
+        self.repsLabel.text = aproach.repsDisplayValue
+        self.aproachNumberLabel.text = "№ \(aproach.number)"
+    }
+ 
     //MARK: - Private methods
     private func setGuiElements() {
         self.addSubview(self.weightLabel)
@@ -80,5 +81,4 @@ class DTAproachCell: UICollectionViewCell {
             self.repsLabel.heightAnchor.constraint(equalTo: self.aproachNumberLabel.heightAnchor, multiplier: 1.3)
         ])
     }
-    
 }

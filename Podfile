@@ -10,5 +10,4 @@ pod 'GoogleSignIn'
 pod 'Firebase/Firestore'
 pod 'Firebase/Database'
   # Pods for DairyTrain2.0
-
 end
