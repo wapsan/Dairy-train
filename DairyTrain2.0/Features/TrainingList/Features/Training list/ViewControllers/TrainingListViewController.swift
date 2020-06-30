@@ -22,7 +22,7 @@ class TrainingListViewController: MainTabBarItemVC {
     lazy var headerTitle = "Your trains"
     
     //MARK: - GUI Properties
-    lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -34,13 +34,13 @@ class TrainingListViewController: MainTabBarItemVC {
         return collectionView
     }()
     
-    lazy var headerView: DTHeaderView = {
+   private lazy var headerView: DTHeaderView = {
         let view = DTHeaderView(title: self.headerTitle)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var emptyTainingListLabel: DTAdaptiveLabel = {
+    private lazy var emptyTainingListLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.text = "No training yet"
         label.font = .systemFont(ofSize: 20)
@@ -61,7 +61,6 @@ class TrainingListViewController: MainTabBarItemVC {
                                             style: .done,
                                             target: self,
                                             action: #selector(self.editingButtonPressed(_:)))
-        
         return editingButton
     }()
     

@@ -29,10 +29,12 @@ extension MainInfoManagedObject {
                 return String(format: "%.1f", self.height)
             }
         } else {
-            if self.height.truncatingRemainder(dividingBy: 1) == 0 {
-                return String(format: "%.0f", self.height * MeteringSetting.shared.heightMultiplier)
+            
+            let newHeigt = self.height * MeteringSetting.shared.heightMultiplier
+            if newHeigt.truncatingRemainder(dividingBy: 1) == 0 {
+                return String(format: "%.0f", newHeigt)
             } else {
-                return String(format: "%.1f", self.height * MeteringSetting.shared.heightMultiplier)
+                return String(format: "%.1f", newHeigt)
             }
         }
     }
@@ -46,10 +48,11 @@ extension MainInfoManagedObject {
                 return String(format: "%.1f", self.weight)
             }
         } else {
-            if self.weight.truncatingRemainder(dividingBy: 1) == 0 {
-                return String(format: "%.0f", self.weight * MeteringSetting.shared.weightMultiplier)
+            let newWeight = self.weight * MeteringSetting.shared.weightMultiplier
+            if newWeight.truncatingRemainder(dividingBy: 1) == 0 {
+                return String(format: "%.0f", newWeight)
             } else {
-                return String(format: "%.1f", self.weight * MeteringSetting.shared.weightMultiplier)
+                return String(format: "%.1f", newWeight)
             }
         }
     }

@@ -2,24 +2,25 @@ import UIKit
     
 class DTInfoView: UIView {
         
+    //MARK: - Private properties
     private lazy var userInfo = CoreDataManager.shared.readUserMainInfo()
     
     //MARK: - GUI Elemnts
-    lazy var titleLabel: DTAdaptiveLabel = {
-        let label = DTAdaptiveLabel()
-        label.font = .boldSystemFont(ofSize: 25)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    lazy var valueLabel: DTAdaptiveLabel = {
+    private(set) lazy var valueLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.font = .systemFont(ofSize: 25)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    lazy var descriptionLabel: DTAdaptiveLabel = {
+    private lazy var titleLabel: DTAdaptiveLabel = {
+        let label = DTAdaptiveLabel()
+        label.font = .boldSystemFont(ofSize: 25)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var descriptionLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.font = .systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +38,6 @@ class DTInfoView: UIView {
         
         case totalReps
         case totalAproach
-      //  case numberOfSubgroups
         case avarageProjectileWeight
         case totalWeight
     }
@@ -103,10 +103,6 @@ class DTInfoView: UIView {
             self.titleLabel.text = LocalizedString.totalAproach
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
-//        case .numberOfSubgroups:
-//            self.titleLabel.text = "Number of muscle subgroups"
-//            self.addSubview(self.titleLabel)
-//            self.addSubview(self.valueLabel)
         case .avarageProjectileWeight:
             self.titleLabel.text = LocalizedString.avarageProjectileWeigt
             self.addSubview(self.titleLabel)
@@ -146,10 +142,13 @@ class DTInfoView: UIView {
       //  self.setDefaultLayer()
     }
     
+    //MARK: - Setter
+    func setValueLabelTo(_ text: String) {
+        self.valueLabel.text = text
+    }
+    
     //MARK: - Private methods
     private func setAppearance() {
-        
-        
         self.backgroundColor = .clear
         self.addSubview(self.titleLabel)
         self.addSubview(self.valueLabel)
@@ -201,29 +200,15 @@ class DTInfoView: UIView {
             guard let userInfo = self.userInfo else { return }
             self.valueLabel.text = userInfo.displayHeight
             self.descriptionLabel.text = MeteringSetting.shared.heightDescription
-//            guard let height = CoreDataManager.shared.readUserMainInfo()?.height else { return }
-//            let multipliedHeight = height * MeteringSetting.shared.heightMultiplier
-//            let newHeight = Float(round(10 * multipliedHeight) / 10)
-//            CoreDataManager.shared.updateHeight(to: newHeight)
-//            self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.height ?? 0)
-//            self.descriptionLabel.text = MeteringSetting.shared.heightDescription
         }
     }
     
     @objc private func weightSettingChanged() {
-        print("weightSettingChanged DTInfoView ")
         guard let type = self.type else { return }
         if type == .weight {
-          //  guard let userInfo =
             guard let userInfo = self.userInfo else { return }
             self.valueLabel.text = userInfo.displayWeight
             self.descriptionLabel.text = MeteringSetting.shared.weightDescription
-//            guard let weight = CoreDataManager.shared.readUserMainInfo()?.weight else { return }
-//            let multipliedWeight = weight * MeteringSetting.shared.weightMultiplier
-//            let newWeight = Float(round(10 * multipliedWeight) / 10)
-//            CoreDataManager.shared.updateWeight(to: newWeight)
-//            self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.weight ?? 0)
-//            self.descriptionLabel.text = MeteringSetting.shared.weightDescription
         }
     }
     

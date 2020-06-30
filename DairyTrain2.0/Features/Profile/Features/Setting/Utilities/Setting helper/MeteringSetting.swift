@@ -20,8 +20,8 @@ class MeteringSetting {
     //MARK: - Private properties
     private lazy var kgMultiplier: Float = 1 / 2.2
     private lazy var lbsMultiplier: Float = 1 * 2.2
-    private lazy var cmMultiplier: Float = 1 * 0.032
-    private lazy var ftMultiplier: Float = 1 / 0.032
+    private lazy var cmMultiplier: Float = 1 / 0.032
+    private lazy var ftMultiplier: Float = 1 * 0.032
     
     private lazy var kgDescription: String = " Kg."
     private lazy var lbsDescription: String = " Lbs."
@@ -50,14 +50,8 @@ class MeteringSetting {
     
     var weightMode: WeightMode = .kg {
         willSet {
-          
             DTSettingManager.shared.setWeightMode(to: newValue)
         }
-        didSet {
-         //   CoreDataManager.shared.updateWeightMode(to: self.weightMode)
-          //  DTFirebaseFileManager.shared.updateMainUserInfoInFirebase()
-         //   NotificationCenter.default.post(name: .weightMetricChanged, object: nil)
-        }//
     }
     
     var heightDescription: String {
@@ -68,6 +62,7 @@ class MeteringSetting {
             return self.ftDescription
         }
     }
+    
     var heightMultiplier: Float {
         switch self.heightMode {
         case .cm:
@@ -79,13 +74,7 @@ class MeteringSetting {
     
     var heightMode: HeightMode = .cm {
         willSet {
-            
             DTSettingManager.shared.setHeightMode(to: newValue)
-        }
-        didSet {
-           // CoreDataManager.shared.updateHeightMode(to: self.heightMode)
-          //  DTFirebaseFileManager.shared.updateMainUserInfoInFirebase()
-           // NotificationCenter.default.post(name: .heightMetricChanged, object: nil)
         }
     }
 }

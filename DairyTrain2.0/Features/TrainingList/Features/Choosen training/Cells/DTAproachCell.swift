@@ -4,6 +4,8 @@ class DTAproachCell: UICollectionViewCell {
     
     //MARK: - Static properties
     static let cellID = "TestAproachCell"
+    
+    //MARK: - Private properties
     private var aproach: AproachManagedObject?
     
     //MARK: - GUI Properties
@@ -42,17 +44,7 @@ class DTAproachCell: UICollectionViewCell {
         super.layoutSubviews()
         self.setGuiElements()
     }
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     //MARK: - Setter
     func setUpFor(_ aproach: AproachManagedObject) {
         self.aproach = aproach
@@ -61,9 +53,6 @@ class DTAproachCell: UICollectionViewCell {
         self.aproachNumberLabel.text = "№ \(aproach.number)"
     }
     
-    //MARK: - Actions
-  
- 
     //MARK: - Private methods
     private func setGuiElements() {
         self.addSubview(self.weightLabel)

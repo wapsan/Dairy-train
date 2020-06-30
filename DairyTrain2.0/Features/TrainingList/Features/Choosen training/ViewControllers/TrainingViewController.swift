@@ -10,11 +10,7 @@ class TrainingViewController: MuscleGroupsViewController {
         super.viewDidLoad()
         self.addObserverForChangingTraining()
         self.setUpTableCell()
-        NotificationCenter.default.addObserver(self,
-        selector: #selector(self.weightModeWasChanged),
-        name: .weightMetricChanged,
-        object: nil)
-      
+        self.addObserverForWeightModeChanged()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +23,13 @@ class TrainingViewController: MuscleGroupsViewController {
     }
     
     //MARK: - Private methods
+    private func addObserverForWeightModeChanged() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.weightModeWasChanged),
+                                               name: .weightMetricChanged,
+                                               object: nil)
+    }
+    
     private func setUpTableCell() {
         self.tableView.register(DTEditingExerciceCell.self,
                                 forCellReuseIdentifier: DTEditingExerciceCell.cellID)
@@ -78,6 +81,7 @@ extension TrainingViewController {
                                                  for: indexPath)
         guard let train = self.train else { return UITableViewCell() }
         let exercise = train.exercicesArray[indexPath.row]
+        
         (cell as? DTEditingExerciceCell)?.setUpFor(exercise)
         (cell as? DTEditingExerciceCell)?.addAproachButtonAction = { [weak self] in
             guard let self = self else { return }
@@ -101,8 +105,7 @@ extension TrainingViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let train = self.train else { return 0 }
-        return train.exercicesArray.count
+        return self.train?.exercicesArray.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

@@ -60,7 +60,7 @@ class DTTrainedMusclesView: UIView {
         self.layer.cornerRadius = 25
     }
 
-    //MARK: - Public methods
+    //MARK: - Setter
     func updateSubgroupsImages(for subgroups: [MuscleSubgroup.Subgroup]?) {
         guard let subgroupsFromTrain = subgroups else { return }
         self.subgroupsList = subgroupsFromTrain

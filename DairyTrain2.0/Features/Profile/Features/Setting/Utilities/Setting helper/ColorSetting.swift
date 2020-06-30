@@ -7,9 +7,7 @@ class ColorSetting {
         case dark
         case light
     }
-    
-    let possibleSettingList = ["Dark", "Light"]
-    let settingTitle = "Color theme"
+  
     //MARK: - Properties
     static let shared = ColorSetting()
     

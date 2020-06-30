@@ -662,7 +662,6 @@ class DTCustomAlert: UIView {
             default:
                 break
             }
-           // DTFirebaseFileManager.shared.updateMainUserInfoInFirebase()
         case .newAproachAlert:
             self.writeNewAproachInfo()
         case .aproachAlert:

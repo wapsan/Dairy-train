@@ -7,12 +7,14 @@ class DTEditingExerciceCell: UITableViewCell {
     
     //MARK: - Private properties
     private var exercise: ExerciseManagedObject?
+    
+    //MARK: - Properties
     var addAproachButtonAction: (() -> Void)?
     var removeAproachButtonAction: (() -> Void)?
     
     //MARK: - GUI Properties
     private var containerView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .viewFlipsideBckgoundColor
         view.layer.cornerRadius = 20
         view.layer.shadowColor = UIColor.darkGray.cgColor
@@ -99,6 +101,17 @@ class DTEditingExerciceCell: UITableViewCell {
         self.initCell()
     }
     
+    private func initCell() {
+        self.backgroundColor = .clear
+        self.selectionStyle = .none
+        self.contentView.addSubview(self.containerView)
+        self.containerView.addSubview(self.muscleSubGroupImage)
+        self.containerView.addSubview(self.exerciceNameLabel)
+        self.containerView.addSubview(self.aproachCollectionList)
+        self.containerView.addSubview(self.aproachesButtonStack)
+        self.setUpNewConstraints()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -109,21 +122,6 @@ class DTEditingExerciceCell: UITableViewCell {
         self.exerciceNameLabel.text = exercise.name
         self.muscleSubGroupImage.image = exercise.image
         self.aproachCollectionList.reloadData()
-    }
-    
-    //MARK: - Private methods
-    private func initCell() {
-        self.backgroundColor = .clear
-        self.selectionStyle = .none
-        self.contentView.addSubview(self.containerView)
-        self.containerView.addSubview(self.muscleSubGroupImage)
-        self.containerView.addSubview(self.exerciceNameLabel)
-        self.containerView.addSubview(self.aproachCollectionList)
-
-        self.containerView.addSubview(self.aproachesButtonStack)
-        self.setUpNewConstraints()
-        
-        
     }
     
     //MARK: - Constraints
@@ -159,7 +157,7 @@ class DTEditingExerciceCell: UITableViewCell {
             self.aproachesButtonStack.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor),
         ])
         
-   
+        
         NSLayoutConstraint.activate([
             self.aproachCollectionList.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,
                                                                constant: -8),
@@ -179,10 +177,6 @@ class DTEditingExerciceCell: UITableViewCell {
     @objc private func removeLastAproachesButtonPressed() {
         self.removeAproachButtonAction?()
     }
-    
-   
-    
-    
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout

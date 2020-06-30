@@ -56,25 +56,19 @@ class Setting {
                 }
             case .weightMetric:
                 if curenttValue == "kg." {
-                    CoreDataManager.shared.updateWeightMode(to: .kg)
                     MeteringSetting.shared.weightMode = .kg
                 } else  if curenttValue == "lbs." {
-                    CoreDataManager.shared.updateWeightMode(to: .lbs)
                     MeteringSetting.shared.weightMode = .lbs
                 } else {
-                    CoreDataManager.shared.updateWeightMode(to: .kg)
                     MeteringSetting.shared.weightMode = .kg
                 }
                 NotificationCenter.default.post(name: .weightMetricChanged, object: nil)
             case .heightMetric:
                 if curenttValue == "cm." {
-                   CoreDataManager.shared.updateHeightMode(to: .cm)
                     MeteringSetting.shared.heightMode = .cm
                 } else if curenttValue == "ft." {
-                    CoreDataManager.shared.updateHeightMode(to: .ft)
                     MeteringSetting.shared.heightMode = .ft
                 } else {
-                    CoreDataManager.shared.updateHeightMode(to: .cm)
                     MeteringSetting.shared.heightMode = .cm
                 }
                 NotificationCenter.default.post(name: .heightMetricChanged, object: nil)

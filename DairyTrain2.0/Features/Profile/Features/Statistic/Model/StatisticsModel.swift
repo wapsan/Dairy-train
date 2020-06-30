@@ -4,7 +4,6 @@ class Statistics {
     
     //MARK: - Properties
     private lazy var weightDescription = MeteringSetting.shared.weightDescription
-    
     private var weightMetric: MeteringSetting.WeightMode {
         return MeteringSetting.shared.weightMode
     }
@@ -29,20 +28,6 @@ class Statistics {
         } else {
             return String(format: "%.1f", self._averageProjectileWeight) + self.weightDescription
         }
-//        switch self.weightMetric {
-//        case .kg:
-//            if self._averageProjectileWeight.truncatingRemainder(dividingBy: 1) == 0 {
-//                return String(format: "%.0f", self._averageProjectileWeight) + self.weightDescription
-//            } else {
-//                return String(format: "%.1f", self._averageProjectileWeight) + self.weightDescription
-//            }
-//        case .lbs:
-//             if self._averageProjectileWeight.truncatingRemainder(dividingBy: 1) == 0 {
-//                 return String(format: "%.0f", self._averageProjectileWeight) + self.weightDescription
-//            } else {
-//                 return String(format: "%.1f", self._averageProjectileWeight) + self.weightDescription
-//            }
-//        }
     }
     
     var totalWorkoutWeight: String {
@@ -118,16 +103,5 @@ class Statistics {
         
         self.trainedSubGroupsList = train.muscleSubgroupInCurentTraint
         self._numberOfTrainedSubgroups = train.muscleSubgroupInCurentTraint.count
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.weightMetricWasChanged(_:)),
-                                               name: .weightMetricChanged,
-                                               object: nil)
-    }
-    
-    //MARK: - Actions
-    @objc private func weightMetricWasChanged(_ notification: Notification) {
-        guard let userInfo = (notification as NSNotification).userInfo else { return }
-        guard let _ = userInfo["WeightMetric"] as? MeteringSetting.WeightMode else { return }
-      print("Chnage metric from statistics")
     }
 }

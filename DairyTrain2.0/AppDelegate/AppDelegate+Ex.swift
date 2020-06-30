@@ -10,7 +10,6 @@ extension AppDelegate {
         if let userToken = DTSettingManager.shared.getUserToken() {
             print("User token - \(userToken).")
             window.rootViewController = navigationController
-           // window.rootViewController = MainTabBarViewController()
         } else {
             print("User token - nill.")
             window.rootViewController = LoginViewController()
