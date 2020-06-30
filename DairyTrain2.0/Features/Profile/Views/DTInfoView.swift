@@ -2,6 +2,8 @@ import UIKit
     
 class DTInfoView: UIView {
         
+    private lazy var userInfo = CoreDataManager.shared.readUserMainInfo()
+    
     //MARK: - GUI Elemnts
     lazy var titleLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
@@ -196,24 +198,32 @@ class DTInfoView: UIView {
     @objc private func heightSettingWasChanged() {
      guard let type = self.type else { return }
         if type == .height {
-            guard let height = CoreDataManager.shared.readUserMainInfo()?.height else { return }
-            let multipliedHeight = height * MeteringSetting.shared.heightMultiplier
-            let newHeight = Float(round(10 * multipliedHeight) / 10)
-            CoreDataManager.shared.updateHeight(to: newHeight)
-            self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.height ?? 0)
+            guard let userInfo = self.userInfo else { return }
+            self.valueLabel.text = userInfo.displayHeight
             self.descriptionLabel.text = MeteringSetting.shared.heightDescription
+//            guard let height = CoreDataManager.shared.readUserMainInfo()?.height else { return }
+//            let multipliedHeight = height * MeteringSetting.shared.heightMultiplier
+//            let newHeight = Float(round(10 * multipliedHeight) / 10)
+//            CoreDataManager.shared.updateHeight(to: newHeight)
+//            self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.height ?? 0)
+//            self.descriptionLabel.text = MeteringSetting.shared.heightDescription
         }
     }
     
     @objc private func weightSettingChanged() {
+        print("weightSettingChanged DTInfoView ")
         guard let type = self.type else { return }
         if type == .weight {
-            guard let weight = CoreDataManager.shared.readUserMainInfo()?.weight else { return }
-            let multipliedWeight = weight * MeteringSetting.shared.weightMultiplier
-            let newWeight = Float(round(10 * multipliedWeight) / 10)
-            CoreDataManager.shared.updateWeight(to: newWeight)
-            self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.weight ?? 0)
+          //  guard let userInfo =
+            guard let userInfo = self.userInfo else { return }
+            self.valueLabel.text = userInfo.displayWeight
             self.descriptionLabel.text = MeteringSetting.shared.weightDescription
+//            guard let weight = CoreDataManager.shared.readUserMainInfo()?.weight else { return }
+//            let multipliedWeight = weight * MeteringSetting.shared.weightMultiplier
+//            let newWeight = Float(round(10 * multipliedWeight) / 10)
+//            CoreDataManager.shared.updateWeight(to: newWeight)
+//            self.valueLabel.text = String(CoreDataManager.shared.readUserMainInfo()?.weight ?? 0)
+//            self.descriptionLabel.text = MeteringSetting.shared.weightDescription
         }
     }
     

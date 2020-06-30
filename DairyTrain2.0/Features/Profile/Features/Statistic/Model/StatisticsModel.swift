@@ -3,6 +3,12 @@ import Foundation
 class Statistics {
     
     //MARK: - Properties
+    private lazy var weightDescription = MeteringSetting.shared.weightDescription
+    
+    private var weightMetric: MeteringSetting.WeightMode {
+        return MeteringSetting.shared.weightMode
+    }
+    
     var trainedSubGroupsList: [MuscleSubgroup.Subgroup]
     
     var numberOfTrainedSubgroups: String {
@@ -18,11 +24,33 @@ class Statistics {
     }
     
     var averageProjectileWeight: String {
-        return String(format: "%.1f", self._averageProjectileWeight)
+        if self._averageProjectileWeight.truncatingRemainder(dividingBy: 1) == 0 {
+            return String(format: "%.0f", self._averageProjectileWeight) + self.weightDescription
+        } else {
+            return String(format: "%.1f", self._averageProjectileWeight) + self.weightDescription
+        }
+//        switch self.weightMetric {
+//        case .kg:
+//            if self._averageProjectileWeight.truncatingRemainder(dividingBy: 1) == 0 {
+//                return String(format: "%.0f", self._averageProjectileWeight) + self.weightDescription
+//            } else {
+//                return String(format: "%.1f", self._averageProjectileWeight) + self.weightDescription
+//            }
+//        case .lbs:
+//             if self._averageProjectileWeight.truncatingRemainder(dividingBy: 1) == 0 {
+//                 return String(format: "%.0f", self._averageProjectileWeight) + self.weightDescription
+//            } else {
+//                 return String(format: "%.1f", self._averageProjectileWeight) + self.weightDescription
+//            }
+//        }
     }
     
     var totalWorkoutWeight: String {
-        return String(self._totalWorkoutWeight)
+        if self._totalWorkoutWeight.truncatingRemainder(dividingBy: 1) == 0 {
+            return String(format: "%.0f", self._totalWorkoutWeight) + self.weightDescription
+        } else {
+            return String(format: "%.1f", self._totalWorkoutWeight) + self.weightDescription
+        }
     }
     
     //MARK: - Private properties
@@ -30,45 +58,76 @@ class Statistics {
     private var _totalNumberOfReps: Int
     private var _totalNumberOfAproach: Int
     private var _totalWorkoutWeight: Float
-    
-    private var _averageProjectileWeight: Float {
-        if self._totalWorkoutWeight != 0 && self._totalNumberOfAproach != 0 {
-            return self._totalWorkoutWeight / Float(self._totalNumberOfAproach)
-        } else {
-            return 0.0
-        }
-    }
+    private var _averageProjectileWeight: Float
     
     //MARK: - Initialization
-    init(for train: Train) {
-        self._numberOfTrainedSubgroups = train.subgroupInCurrentTrain.count
+    init(for train: TrainingManagedObject) {
         self._totalNumberOfAproach = {
             var aproaches = 0
-            train.exercises.forEach { (exercise) in
+            train.exercicesArray.forEach { (exercise) in
                 exercise.aproaches.forEach { (aproach) in
                     aproaches += 1
                 }
             }
             return aproaches
         }()
+        
         self._totalNumberOfReps = {
             var reps = 0
-            train.exercises.forEach { (exercise) in
-                exercise.aproaches.forEach { (aproach) in
-                    reps += aproach.reps
+            train.exercicesArray.forEach { (exercise) in
+                exercise.aproachesArray.forEach { (aproach) in
+                    reps += Int(aproach.reps)
                 }
             }
             return reps
         }()
+        
         self._totalWorkoutWeight = {
             var totalWeight: Float = 0.0
-            train.exercises.forEach { (exercise) in
-                exercise.aproaches.forEach { (aproach) in
-                    totalWeight += aproach.weight
+            train.exercicesArray.forEach { (exercise) in
+                exercise.aproachesArray.forEach { (aproach) in
+                    guard let aproachWeightMode = aproach.weightEnumMode else { return }
+                    if aproachWeightMode == MeteringSetting.shared.weightMode {
+                        totalWeight += (aproach.weight * Float(aproach.reps))
+                    } else {
+                        totalWeight += (aproach.weight * MeteringSetting.shared.weightMultiplier * Float(aproach.reps))
+                    }
                 }
             }
             return totalWeight
         }()
-        self.trainedSubGroupsList = train.subgroupInCurrentTrain
+        
+        self._averageProjectileWeight = {
+            var averageProjectileWeight: Float = 0.0
+            var aproachesCountInTtrain: Float = 0.0
+            train.exercicesArray.forEach { (exercise) in
+                exercise.aproachesArray.forEach { (aproach) in
+                    guard let aproachWeightMode = aproach.weightEnumMode else { return }
+                    if aproachWeightMode == MeteringSetting.shared.weightMode {
+                        averageProjectileWeight += aproach.weight
+                        aproachesCountInTtrain += 1
+                    } else {
+                        averageProjectileWeight += (aproach.weight * MeteringSetting.shared.weightMultiplier)
+                        aproachesCountInTtrain += 1
+                    }
+                    
+                }
+            }
+            return averageProjectileWeight / aproachesCountInTtrain
+        }()
+        
+        self.trainedSubGroupsList = train.muscleSubgroupInCurentTraint
+        self._numberOfTrainedSubgroups = train.muscleSubgroupInCurentTraint.count
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.weightMetricWasChanged(_:)),
+                                               name: .weightMetricChanged,
+                                               object: nil)
+    }
+    
+    //MARK: - Actions
+    @objc private func weightMetricWasChanged(_ notification: Notification) {
+        guard let userInfo = (notification as NSNotification).userInfo else { return }
+        guard let _ = userInfo["WeightMetric"] as? MeteringSetting.WeightMode else { return }
+      print("Chnage metric from statistics")
     }
 }

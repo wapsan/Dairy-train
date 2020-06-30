@@ -3,15 +3,17 @@ import Foundation
 class ColorSetting {
     
     //MARK: - Enums
-    enum ColorTheme {
+    enum ColorTheme: String {
         case dark
         case light
     }
     
+    let possibleSettingList = ["Dark", "Light"]
+    let settingTitle = "Color theme"
     //MARK: - Properties
     static let shared = ColorSetting()
     
-    var themeColor: ColorTheme = .dark {
+     var themeColor: ColorTheme = .dark {
         willSet {
             switch newValue {
             case .dark:

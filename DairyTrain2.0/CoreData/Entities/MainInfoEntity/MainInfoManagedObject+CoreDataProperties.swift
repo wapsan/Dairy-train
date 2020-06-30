@@ -21,18 +21,36 @@ extension MainInfoManagedObject {
     }
     
     var displayHeight: String {
-        if self.height.truncatingRemainder(dividingBy: 1) == 0 {
-            return String(format: "%.0f", self.height)
+        guard let heightMode = MeteringSetting.HeightMode.init(rawValue: self.heightMode ?? "") else { return "" }
+        if heightMode == MeteringSetting.shared.heightMode {
+            if self.height.truncatingRemainder(dividingBy: 1) == 0 {
+                return String(format: "%.0f", self.height)
+            } else {
+                return String(format: "%.1f", self.height)
+            }
         } else {
-            return String(format: "%.1f", self.height)
+            if self.height.truncatingRemainder(dividingBy: 1) == 0 {
+                return String(format: "%.0f", self.height * MeteringSetting.shared.heightMultiplier)
+            } else {
+                return String(format: "%.1f", self.height * MeteringSetting.shared.heightMultiplier)
+            }
         }
     }
     
     var displayWeight: String {
-        if self.weight.truncatingRemainder(dividingBy: 1) == 0 {
-            return String(format: "%.0f", self.weight)
+        guard let weightMode = MeteringSetting.WeightMode.init(rawValue: self.weightMode ?? "") else { return "" }
+        if weightMode == MeteringSetting.shared.weightMode {
+            if self.weight.truncatingRemainder(dividingBy: 1) == 0 {
+                return String(format: "%.0f", self.weight)
+            } else {
+                return String(format: "%.1f", self.weight)
+            }
         } else {
-            return String(format: "%.1f", self.weight)
+            if self.weight.truncatingRemainder(dividingBy: 1) == 0 {
+                return String(format: "%.0f", self.weight * MeteringSetting.shared.weightMultiplier)
+            } else {
+                return String(format: "%.1f", self.weight * MeteringSetting.shared.weightMultiplier)
+            }
         }
     }
     

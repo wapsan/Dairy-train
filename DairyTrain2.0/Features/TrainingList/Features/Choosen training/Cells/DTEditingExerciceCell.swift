@@ -122,6 +122,8 @@ class DTEditingExerciceCell: UITableViewCell {
 
         self.containerView.addSubview(self.aproachesButtonStack)
         self.setUpNewConstraints()
+        
+        
     }
     
     //MARK: - Constraints
@@ -177,6 +179,10 @@ class DTEditingExerciceCell: UITableViewCell {
     @objc private func removeLastAproachesButtonPressed() {
         self.removeAproachButtonAction?()
     }
+    
+   
+    
+    
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout

@@ -10,6 +10,11 @@ class TrainingViewController: MuscleGroupsViewController {
         super.viewDidLoad()
         self.addObserverForChangingTraining()
         self.setUpTableCell()
+        NotificationCenter.default.addObserver(self,
+        selector: #selector(self.weightModeWasChanged),
+        name: .weightMetricChanged,
+        object: nil)
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +61,10 @@ class TrainingViewController: MuscleGroupsViewController {
         guard let userInfo = (notification as NSNotification).userInfo else { return }
         guard let train = userInfo["Train"] as? TrainingManagedObject else { return }
         self.train = train
+        self.tableView.reloadData()
+    }
+    
+    @objc func weightModeWasChanged() {
         self.tableView.reloadData()
     }
 }

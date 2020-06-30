@@ -29,6 +29,7 @@ class DTCustomAlert: UIView {
     */
     private var alertType: DTCustomAlert.AlertType?
     private var changingAproachIndex: Int?
+    private weak var mainInfo: MainInfoManagedObject?
     private weak var exercice: ExerciseManagedObject?
     private weak var tappedInfoView: DTInfoView?
     private lazy var setAgeTitle = "Set age"
@@ -443,7 +444,7 @@ class DTCustomAlert: UIView {
         default:
             break
         }
-        DTFirebaseFileManager.shared.updateMainUserInfoInFirebase()
+      //  DTFirebaseFileManager.shared.updateMainUserInfoInFirebase()
     }
     
     private func writeListSelectionInfo() {
@@ -464,7 +465,7 @@ class DTCustomAlert: UIView {
                 }
             }
         }
-        DTFirebaseFileManager.shared.updateMainUserInfoInFirebase()
+      //  DTFirebaseFileManager.shared.updateMainUserInfoInFirebase()
     }
     
     private func writeNewAproachInfo() {

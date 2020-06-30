@@ -87,9 +87,9 @@ class TrainStatisticsViewController: MainTabBarItemVC {
     }
     
     //MARK: - Public methods
-    func setTrain(to train: Train) {
+    func setTrain(to train: TrainingManagedObject) {
         self.statistics = Statistics(for: train)
-        self.trainDate = train.dateTittle
+        self.trainDate = train.formatedDate
     }
     
     //MARK: - Constraints
@@ -110,7 +110,7 @@ class TrainStatisticsViewController: MainTabBarItemVC {
     //MARK: - Actions
     @objc private func trainingWasChanged(_ notification: Notification) {
         guard let userInfo = (notification as NSNotification).userInfo else { return }
-        guard let train = userInfo["Train"] as? Train else { return }
-        self.trainedMusclesView.updateSubgroupsImages(for: train.subgroupInCurrentTrain)
+        guard let train = userInfo["Train"] as? TrainingManagedObject else { return }
+        self.trainedMusclesView.updateSubgroupsImages(for: train.muscleSubgroupInCurentTraint)
     }
 }

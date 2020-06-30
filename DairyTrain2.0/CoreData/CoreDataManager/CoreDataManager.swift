@@ -80,8 +80,6 @@ class CoreDataManager {
         }
     }
     
-    
-    
     //MARK: - Public methods
     func readUserMainInfo() -> MainInfoManagedObject? {
         let fetchRequset: NSFetchRequest<MainInfoManagedObject> = MainInfoManagedObject
@@ -116,18 +114,27 @@ class CoreDataManager {
             newMainInfo.weight = weight
         } else {
             mainInfoList[0].weight = weight
+            mainInfoList[0].weightMode = MeteringSetting.shared.weightMode.rawValue
         }
+        
+//        guard let mainInfo = self.readUserMainInfo() else { return }
+//        mainInfo.weight = weight
+//        mainInfo.weightMode = MeteringSetting.shared.weightMode.rawValue
         self.updateMainInfoContext()
     }
     
     func updateHeight(to heigth: Float) {
-        guard let mainInfoList = self.fetchMainInfoList() else { return }
-        if mainInfoList.isEmpty {
-            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
-            newMainInfo.height = heigth
-        } else {
-            mainInfoList[0].height = heigth
-        }
+//        guard let mainInfoList = self.fetchMainInfoList() else { return }
+//        if mainInfoList.isEmpty {
+//            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
+//            newMainInfo.height = heigth
+//        } else {
+//            mainInfoList[0].height = heigth
+//        }
+        
+        guard let mainInfo = self.readUserMainInfo() else { return }
+        mainInfo.height = heigth
+        mainInfo.heightMode = MeteringSetting.shared.heightMode.rawValue
        self.updateMainInfoContext()
     }
     
@@ -154,24 +161,36 @@ class CoreDataManager {
     }
     
     func updateHeightMode(to heightMode: MeteringSetting.HeightMode) {
-        guard let mainInfoList = self.fetchMainInfoList() else { return }
-        if mainInfoList.isEmpty {
-            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
-            newMainInfo.heightMode = heightMode.rawValue
-        } else {
-            mainInfoList[0].heightMode = heightMode.rawValue
-        }
+//        guard let mainInfoList = self.fetchMainInfoList() else { return }
+//        if mainInfoList.isEmpty {
+//            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
+//            newMainInfo.heightMode = heightMode.rawValue
+//        } else {
+//            mainInfoList[0].heightMode = heightMode.rawValue
+//        }
+        guard let mainUserInfo = self.readUserMainInfo() else { return }
+        mainUserInfo.heightMode = heightMode.rawValue
+        mainUserInfo.height = mainUserInfo.height * MeteringSetting.shared.heightMultiplier
        self.updateMainInfoContext()
     }
     
     func updateWeightMode(to weightMode: MeteringSetting.WeightMode) {
-        guard let mainInfoList = self.fetchMainInfoList() else { return }
-        if mainInfoList.isEmpty {
-            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
-            newMainInfo.weightMode = weightMode.rawValue
-        } else {
-            mainInfoList[0].weightMode = weightMode.rawValue
-        }
+//        guard let mainInfoList = self.fetchMainInfoList() else { return }
+//        if mainInfoList.isEmpty {
+//            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
+//            newMainInfo.weightMode = weightMode.rawValue
+//        } else {
+//            mainInfoList[0].weightMode = weightMode.rawValue
+//        }
+        guard let mainUserInfo = self.readUserMainInfo() else { return }
+      
+            mainUserInfo.weightMode = weightMode.rawValue
+            mainUserInfo.weight = mainUserInfo.weight / MeteringSetting.shared.weightMultiplier
+       
+        
+      
+        
+        
         self.updateMainInfoContext()
     }
     
@@ -228,16 +247,6 @@ class CoreDataManager {
     }
     
     func fetchExercisesFor(_ choosenTrain: TrainingManagedObject) -> [ExerciseManagedObject] {
-//        let fetchRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
-//        var exerciceListTrain: [ExerciseManagedObject] = []
-//        if let dataBaseTrainList = try? self.trainInfoContext.fetch(fetchRequest) {
-//            dataBaseTrainList.forEach({
-//                if $0.objectID == choosenTrain.objectID {
-//                    exerciceListTrain = $0.exercicesArray
-//                }
-//            })
-//        }
-       // return exerciceListTrain
         return choosenTrain.exercicesArray
     }
     
@@ -304,18 +313,6 @@ class CoreDataManager {
     }
     
     func removeExercise(_ exercise: ExerciseManagedObject, from train: TrainingManagedObject) {
-//        let fethcRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
-//        guard let trainDate = train.formatedDate else { return }
-//        fethcRequest.predicate = NSPredicate(format: "formatedDate == %@", trainDate)
-//        if let trainingList = try? self.trainInfoContext.fetch(fethcRequest),
-//            let currentTrain = trainingList.first {
-//            currentTrain.exercicesArray.forEach({
-//                if $0.id == exercise.id {
-//                    currentTrain.removeFromExercises($0)
-//                }
-//            })
-//            self.updateTrainInfoContext()
-//        }
         train.removeFromExercises(exercise)
         self.updateTrainInfoContext()
     }
@@ -325,6 +322,7 @@ class CoreDataManager {
         newAproach.number = Int64(exercise.aproachesArray.count + 1)
         newAproach.weight = weight
         newAproach.reps = Int64(reps)
+        newAproach.weightMode = MeteringSetting.shared.weightMode.rawValue
         newAproach.exercise = exercise
         self.updateTrainInfoContext()
     }

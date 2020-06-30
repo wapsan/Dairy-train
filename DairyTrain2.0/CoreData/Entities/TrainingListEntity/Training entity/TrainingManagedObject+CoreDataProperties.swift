@@ -54,7 +54,7 @@ extension TrainingManagedObject {
         var subGroupSet = Set<MuscleSubgroup.Subgroup>()
         var subGroupArray: [MuscleSubgroup.Subgroup] = []
         for exercice in self.exercicesArray {
-            if let subGroup = MuscleSubgroup.Subgroup.init(rawValue: exercice.groupName) {
+            if let subGroup = MuscleSubgroup.Subgroup.init(rawValue: exercice.subgroupName) {
                 if subGroupSet.insert(subGroup).inserted {
                     subGroupArray.append(subGroup)
                 }

@@ -10,6 +10,7 @@
 		131107C3246582210023A29A /* UIView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131107C2246582210023A29A /* UIView+Ex.swift */; };
 		1313693A2461B1C200372F26 /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131369392461B1C200372F26 /* String+Ex.swift */; };
 		13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13151D4924715C9D002C15AA /* UIColor+Ex.swift */; };
+		1315413F24ABB5CD00CDFFF4 /* NewSettingCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1315413E24ABB5CD00CDFFF4 /* NewSettingCore.swift */; };
 		131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131733722490E08600292D84 /* DTExerciseCell+Ex.swift */; };
 		13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A3D247E4A6300AB7419 /* DTTrainCell.swift */; };
 		13243A41247E768B00AB7419 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A40247E768B00AB7419 /* DateHelper.swift */; };
@@ -97,6 +98,7 @@
 		131107C2246582210023A29A /* UIView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ex.swift"; sourceTree = "<group>"; };
 		131369392461B1C200372F26 /* String+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
 		13151D4924715C9D002C15AA /* UIColor+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ex.swift"; sourceTree = "<group>"; };
+		1315413E24ABB5CD00CDFFF4 /* NewSettingCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSettingCore.swift; sourceTree = "<group>"; };
 		131733722490E08600292D84 /* DTExerciseCell+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTExerciseCell+Ex.swift"; sourceTree = "<group>"; };
 		13243A3D247E4A6300AB7419 /* DTTrainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainCell.swift; sourceTree = "<group>"; };
 		13243A40247E768B00AB7419 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -779,6 +781,7 @@
 				139D531A24753D060028AE6A /* SettingCore.swift */,
 				139D531824748BE00028AE6A /* ColorSetting.swift */,
 				13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */,
+				1315413E24ABB5CD00CDFFF4 /* NewSettingCore.swift */,
 			);
 			path = "Setting helper";
 			sourceTree = "<group>";
@@ -1083,6 +1086,7 @@
 				139B4ADB249C9D3500409B6E /* DTDownloadHud.swift in Sources */,
 				1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */,
 				13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */,
+				1315413F24ABB5CD00CDFFF4 /* NewSettingCore.swift in Sources */,
 				138E8224249F9BBB00A60885 /* MenuViewController.swift in Sources */,
 				13C0EEDD24A529DD00F55C54 /* UserTrainingInfo.xcdatamodeld in Sources */,
 				13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */,
