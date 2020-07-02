@@ -12,6 +12,7 @@
 		13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13151D4924715C9D002C15AA /* UIColor+Ex.swift */; };
 		1315413F24ABB5CD00CDFFF4 /* NewSettingCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1315413E24ABB5CD00CDFFF4 /* NewSettingCore.swift */; };
 		131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131733722490E08600292D84 /* DTExerciseCell+Ex.swift */; };
+		131B9F9D24ADF2AC004FE9AD /* DTSynhronizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */; };
 		13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A3D247E4A6300AB7419 /* DTTrainCell.swift */; };
 		13243A41247E768B00AB7419 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A40247E768B00AB7419 /* DateHelper.swift */; };
 		1325A0EB2495435600349E47 /* UserTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1325A0EA2495435600349E47 /* UserTrainingModel.swift */; };
@@ -100,6 +101,7 @@
 		13151D4924715C9D002C15AA /* UIColor+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ex.swift"; sourceTree = "<group>"; };
 		1315413E24ABB5CD00CDFFF4 /* NewSettingCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSettingCore.swift; sourceTree = "<group>"; };
 		131733722490E08600292D84 /* DTExerciseCell+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTExerciseCell+Ex.swift"; sourceTree = "<group>"; };
+		131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSynhronizeCell.swift; sourceTree = "<group>"; };
 		13243A3D247E4A6300AB7419 /* DTTrainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainCell.swift; sourceTree = "<group>"; };
 		13243A40247E768B00AB7419 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		1325A0EA2495435600349E47 /* UserTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrainingModel.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				139D53102474035C0028AE6A /* DTSettingCell.swift */,
+				131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1122,6 +1125,7 @@
 				13BF82BD247C2E54005C5494 /* MainTabBarItemVC.swift in Sources */,
 				136F3FF92498CF0400C6944B /* AppDelegate+Ex.swift in Sources */,
 				1325A0F22495506700349E47 /* CurrentTrainingFileManager.swift in Sources */,
+				131B9F9D24ADF2AC004FE9AD /* DTSynhronizeCell.swift in Sources */,
 				1335B2692495183300D8276F /* DTFirebaseFileManager.swift in Sources */,
 				13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */,
 				136F40092498D44B00C6944B /* CoreDataManager.swift in Sources */,

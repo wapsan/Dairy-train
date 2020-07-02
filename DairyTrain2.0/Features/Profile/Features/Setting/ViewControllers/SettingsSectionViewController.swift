@@ -4,9 +4,16 @@ class SettingsSectionViewController: UITableViewController {
     
     //MARK: - Private properties
     private lazy var settingModel = [SettingSection(type: .metrics),
-                                     SettingSection(type: .style)]
+                                     SettingSection(type: .style),
+                                     SettingSection(type: .synchronization)]
     private lazy var navigationTittle = LocalizedString.setting
     
+    
+    private lazy var a: DTDownloadHud = {
+        let a = DTDownloadHud(frame: .zero)
+        a.translatesAutoresizingMaskIntoConstraints = false
+        return a
+    }()
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +33,7 @@ class SettingsSectionViewController: UITableViewController {
     
     private func initializationTableView() {
         self.tableView?.register(DTSettingCell.self, forCellReuseIdentifier: DTSettingCell.cellID)
+        self.tableView.register(DTSynhronizeCell.self, forCellReuseIdentifier: DTSynhronizeCell.cellID)
         self.tableView?.backgroundColor = UIColor.black
         self.tableView?.sizeToFit()
         self.tableView?.rowHeight = 50
@@ -46,6 +54,8 @@ class SettingsSectionViewController: UITableViewController {
     @objc private func settingWasChanged() {
         self.tableView.reloadData()
     }
+    
+ 
 }
 
 //MARK: - UITableViewDelegate, UITableViewDatasourse methods
@@ -60,9 +70,13 @@ extension SettingsSectionViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let choosenSetting = settingModel[indexPath.section].settings[indexPath.row]
-        let setingViewController = SettingViewController(with: choosenSetting)
-        self.navigationController?.pushViewController(setingViewController, animated: true)
+        if self.settingModel[indexPath.section].type == .synchronization {
+            print("Sinhronization")
+        } else {
+            let choosenSetting = settingModel[indexPath.section].settings[indexPath.row]
+            let setingViewController = SettingViewController(with: choosenSetting)
+            self.navigationController?.pushViewController(setingViewController, animated: true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -76,12 +90,20 @@ extension SettingsSectionViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DTSettingCell.cellID,
-                                                 for: indexPath)
         let section = indexPath.section
         let row = indexPath.row
         let setting = self.settingModel[section].settings[row]
-        (cell as? DTSettingCell)?.setSetingSectionCell(for: setting)
-        return cell
+
+        if self.settingModel[indexPath.section].type == .synchronization {
+            let cell = tableView.dequeueReusableCell(withIdentifier: DTSynhronizeCell.cellID, for: indexPath)
+            let updateDate = DTFirebaseFileManager.shared.lastUpdatedDate
+            (cell as? DTSynhronizeCell)?.setUpdateDateTo(updateDate)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: DTSettingCell.cellID,
+                                                     for: indexPath)
+            (cell as? DTSettingCell)?.setSetingSectionCell(for: setting)
+            return cell
+        }
     }
 }

@@ -7,12 +7,18 @@ class DateHelper {
     
     //MARK: - Private properties
     private var date  = Date()
-    private var dateFormat = "dd/MM/yyyy"
+    private var standartDateFormat = "dd/MM/yyyy"
+    private var dateFormatForSynhronization = "MM-dd-yyyy HH:mm"
     private var dateFormater = DateFormatter()
     
     //MARK: - Computed properties
     var currnetDate: String {
-        self.dateFormater.dateFormat = dateFormat
+        self.dateFormater.dateFormat = standartDateFormat
+        return self.dateFormater.string(from: self.date)
+    }
+    
+    var currentDateForSynhronize: String {
+        self.dateFormater.dateFormat = dateFormatForSynhronization
         return self.dateFormater.string(from: self.date)
     }
     

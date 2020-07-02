@@ -8,7 +8,19 @@ class DTFirebaseFileManager {
     
     //MARK: - Private properties
     private lazy var firebaseRef = Database.database().reference()
-
+    private lazy var _lastUpdatedDate: String = ""
+    private lazy var notUpdatedDate = "Date is not updated."
+    
+    //MARK: - Properties
+    lazy var isDataUpdated: Bool = false
+    var lastUpdatedDate: String {
+        if !self.isDataUpdated {
+            return self.notUpdatedDate
+        } else {
+            return self._lastUpdatedDate
+        }
+    }
+    
     //MARK: - Initialization
     private init () { }
     
@@ -25,6 +37,7 @@ class DTFirebaseFileManager {
                 self.firebaseRef.child("user").child(userUid).setValue(["userMainInfo": localJSONStringModel])
             }
         }
+        
     }
     
     //updating usermaininfo data from firebase to coredata if user logged in

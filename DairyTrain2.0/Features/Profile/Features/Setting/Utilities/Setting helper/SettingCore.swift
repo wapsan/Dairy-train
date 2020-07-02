@@ -3,22 +3,26 @@ import Foundation
 enum SettingSectionType {
     case metrics
     case style
+    case synchronization
 }
 
 enum SettingType {
     case colorTheme
     case weightMetric
     case heightMetric
+    case synchronization
 }
 
 class SettingSection {
     
     //MARK: - Properties
+    var type: SettingSectionType
     var tittle: String
     var settings: [Setting]
     
     //MARK: - Initialization
     init(type: SettingSectionType) {
+        self.type = type
         switch type {
         case .metrics:
             self.tittle = "Metric"
@@ -27,6 +31,9 @@ class SettingSection {
         case .style:
             self.tittle = "Style"
             self.settings = [Setting(type: .colorTheme)]
+        case .synchronization:
+            self.tittle = "Cloud synchronization"
+            self.settings = [Setting(type: .synchronization)]
         }
     }
     
@@ -72,6 +79,8 @@ class Setting {
                     MeteringSetting.shared.heightMode = .cm
                 }
                 NotificationCenter.default.post(name: .heightMetricChanged, object: nil)
+            case .synchronization:
+                break
             }
         }
     }
@@ -104,6 +113,8 @@ class Setting {
             } else {
                 return false
             }
+        case .synchronization: 
+            return false
         }
     }
     
@@ -144,6 +155,11 @@ class Setting {
             } else {
                 self.curenttValue = "ft."
             }
+        case .synchronization:
+            self.header = ""
+            self.tittle = "Synhronize"
+            self.possibleList = [""]
+            self.possibleSetting = [""]
         }
     }    
 }

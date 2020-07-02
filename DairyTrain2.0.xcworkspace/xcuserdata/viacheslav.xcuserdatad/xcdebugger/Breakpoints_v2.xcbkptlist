@@ -606,8 +606,8 @@
             filePath = "DairyTrain2.0/Helpers/Date helper/DateHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "getFormatedDateFrom(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -846,8 +846,8 @@
             filePath = "DairyTrain2.0/Firebase/Utilities/DTFirebaseFileManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "updateLoggedInMainUserFromFirebase(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -862,8 +862,8 @@
             filePath = "DairyTrain2.0/Firebase/Utilities/DTFirebaseFileManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "updateLoggedInMainUserFromFirebase(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -878,8 +878,8 @@
             filePath = "DairyTrain2.0/Firebase/Utilities/DTFirebaseFileManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "updateNotLogInUserFromFirebase(completion:)"
             landmarkType = "7">
          </BreakpointContent>
