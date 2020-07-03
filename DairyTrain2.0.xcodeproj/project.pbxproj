@@ -23,6 +23,7 @@
 		132F588F249A87F00089FA09 /* DTSplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F588E249A87F00089FA09 /* DTSplashScreenViewController.swift */; };
 		1335B2692495183300D8276F /* DTFirebaseFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335B2682495183300D8276F /* DTFirebaseFileManager.swift */; };
 		1335CBB02465AC03009C2E20 /* DTStyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */; };
+		133A7BE224AE13D900409D3F /* AproachFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133A7BE124AE13D900409D3F /* AproachFirebase.swift */; };
 		133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133AA5A5246163E5009EBF8E /* AppDelegate.swift */; };
 		133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5AE246163E7009EBF8E /* Assets.xcassets */; };
 		133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5B0246163E7009EBF8E /* LaunchScreen.storyboard */; };
@@ -112,6 +113,7 @@
 		132F588E249A87F00089FA09 /* DTSplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSplashScreenViewController.swift; sourceTree = "<group>"; };
 		1335B2682495183300D8276F /* DTFirebaseFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTFirebaseFileManager.swift; sourceTree = "<group>"; };
 		1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTStyledTextField.swift; sourceTree = "<group>"; };
+		133A7BE124AE13D900409D3F /* AproachFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachFirebase.swift; sourceTree = "<group>"; };
 		133AA5A2246163E5009EBF8E /* DairyTrain2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DairyTrain2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		133AA5A5246163E5009EBF8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		133AA5AE246163E7009EBF8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -463,6 +465,14 @@
 			children = (
 				1325A0EF24954FBC00349E47 /* CurrentTrainingModel.swift */,
 				1325A0F12495506700349E47 /* CurrentTrainingFileManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		133A7BE024AE13B800409D3F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				133A7BE124AE13D900409D3F /* AproachFirebase.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -922,6 +932,7 @@
 		13F1158C249E168700B6B7D8 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				133A7BE024AE13B800409D3F /* Models */,
 				13F1158D249E169000B6B7D8 /* Utilities */,
 			);
 			path = Firebase;
@@ -1140,6 +1151,7 @@
 				13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */,
 				1325A0ED249546AA00349E47 /* UserTrainingModelFileManager.swift in Sources */,
 				13C89D22247046D2008AEF18 /* DTRecomendationHeaderView.swift in Sources */,
+				133A7BE224AE13D900409D3F /* AproachFirebase.swift in Sources */,
 				13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */,
 				13EB98FD247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift in Sources */,
 				136570D3249125DB00BF926B /* TrainStatisticsViewController.swift in Sources */,

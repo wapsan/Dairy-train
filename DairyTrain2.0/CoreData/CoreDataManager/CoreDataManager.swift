@@ -9,12 +9,12 @@ struct CoreDataModelName {
 class CoreDataManager {
     
     //MARK: - Enums
-    enum EntitiesName: String {
-        case mainInfo = "MainInfo"
-        case training = "Training"
-        case exercise = "Exercise"
-        case aproach = "Aproach"
-    }
+//    enum EntitiesName: String {
+//        case mainInfo = "MainInfo"
+//        case training = "Training"
+//        case exercise = "Exercise"
+//        case aproach = "Aproach"
+//    }
     
     //MARK: - Singletone propertie
     static let shared = CoreDataManager()
@@ -49,17 +49,6 @@ class CoreDataManager {
     }
     
     //MARK: - Private methods
-    private func fetchMainInfoList() -> [MainInfoManagedObject]? {
-        let fetchRequset: NSFetchRequest<MainInfoManagedObject> = MainInfoManagedObject
-            .fetchRequest()
-        do {
-            let mainInfoList = try self.mainInfoContext.fetch(fetchRequset)
-            return mainInfoList
-        } catch {
-            return nil
-        }
-    }
-    
     private func updateMainInfoContext() {
         if self.mainInfoContext.hasChanges {
             do {
@@ -84,119 +73,70 @@ class CoreDataManager {
     func readUserMainInfo() -> MainInfoManagedObject? {
         let fetchRequset: NSFetchRequest<MainInfoManagedObject> = MainInfoManagedObject
             .fetchRequest()
-        do {
-            let mainInfoList = try self.mainInfoContext.fetch(fetchRequset)
-            if mainInfoList.isEmpty {
-                return nil
-            } else {
-                return mainInfoList[0]
-            }
-        } catch {
+        if let mainInfoList = try? self.mainInfoContext.fetch(fetchRequset) {
+            return mainInfoList.isEmpty ? nil : mainInfoList.first
+        } else {
             return nil
         }
     }
     
     func updateAge(to age: Int) {
-        guard let mainInfoList = self.fetchMainInfoList() else { return }
-        if mainInfoList.isEmpty {
-            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
-            newMainInfo.age = Int64(age)
-        } else {
-            mainInfoList[0].age = Int64(age)
-        }
+        guard let userMainInfo = self.readUserMainInfo() else { return }
+        userMainInfo.age = Int64(age)
         self.updateMainInfoContext()
     }
     
     func updateWeight(to weight: Float) {
-        guard let mainInfoList = self.fetchMainInfoList() else { return }
-        if mainInfoList.isEmpty {
-            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
-            newMainInfo.weight = weight
-        } else {
-            mainInfoList[0].weight = weight
-            mainInfoList[0].weightMode = MeteringSetting.shared.weightMode.rawValue
-        }
-        
-//        guard let mainInfo = self.readUserMainInfo() else { return }
-//        mainInfo.weight = weight
-//        mainInfo.weightMode = MeteringSetting.shared.weightMode.rawValue
+        guard let mainInfo = self.readUserMainInfo() else { return }
+        mainInfo.weight = weight
+        mainInfo.weightMode = MeteringSetting.shared.weightMode.rawValue
         self.updateMainInfoContext()
     }
     
     func updateHeight(to heigth: Float) {
-//        guard let mainInfoList = self.fetchMainInfoList() else { return }
-//        if mainInfoList.isEmpty {
-//            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
-//            newMainInfo.height = heigth
-//        } else {
-//            mainInfoList[0].height = heigth
-//        }
-        
         guard let mainInfo = self.readUserMainInfo() else { return }
         mainInfo.height = heigth
         mainInfo.heightMode = MeteringSetting.shared.heightMode.rawValue
-       self.updateMainInfoContext()
+        self.updateMainInfoContext()
     }
     
     func updateGender(to gender: UserMainInfoModel.Gender) {
-        guard let mainInfoList = self.fetchMainInfoList() else { return }
-        if mainInfoList.isEmpty {
-            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
-            newMainInfo.gender = gender.rawValue
-        } else {
-            mainInfoList[0].gender = gender.rawValue
-        }
+        guard let mainInfo = self.readUserMainInfo() else { return }
+        mainInfo.gender = gender.rawValue
         self.updateMainInfoContext()
     }
     
     func updateActivityLevel(to activitylevel: UserMainInfoModel.ActivityLevel) {
-        guard let mainInfoList = self.fetchMainInfoList() else { return }
-        if mainInfoList.isEmpty {
-            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
-            newMainInfo.activitylevel = activitylevel.rawValue
-        } else {
-            mainInfoList[0].activitylevel = activitylevel.rawValue
-        }
+        guard let mainInfo = self.readUserMainInfo() else { return }
+        mainInfo.activitylevel = activitylevel.rawValue
         self.updateMainInfoContext()
     }
     
     func updateHeightMode(to heightMode: MeteringSetting.HeightMode) {
-//        guard let mainInfoList = self.fetchMainInfoList() else { return }
-//        if mainInfoList.isEmpty {
-//            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
-//            newMainInfo.heightMode = heightMode.rawValue
-//        } else {
-//            mainInfoList[0].heightMode = heightMode.rawValue
-//        }
         guard let mainUserInfo = self.readUserMainInfo() else { return }
         mainUserInfo.heightMode = heightMode.rawValue
         mainUserInfo.height = mainUserInfo.height * MeteringSetting.shared.heightMultiplier
-       self.updateMainInfoContext()
+        self.updateMainInfoContext()
     }
     
     func updateWeightMode(to weightMode: MeteringSetting.WeightMode) {
-//        guard let mainInfoList = self.fetchMainInfoList() else { return }
-//        if mainInfoList.isEmpty {
-//            let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
-//            newMainInfo.weightMode = weightMode.rawValue
-//        } else {
-//            mainInfoList[0].weightMode = weightMode.rawValue
-//        }
         guard let mainUserInfo = self.readUserMainInfo() else { return }
-      
-            mainUserInfo.weightMode = weightMode.rawValue
-            mainUserInfo.weight = mainUserInfo.weight / MeteringSetting.shared.weightMultiplier
-       
-        
-      
-        
-        
+        mainUserInfo.weightMode = weightMode.rawValue
+        mainUserInfo.weight = mainUserInfo.weight / MeteringSetting.shared.weightMultiplier
         self.updateMainInfoContext()
     }
     
     func updateUserMainInfo(to userMainInfo: UserMainInfoModel) {
-        guard let mainInfoList = self.fetchMainInfoList() else { return }
-        if mainInfoList.isEmpty {
+        if let mainUserInfo = self.readUserMainInfo() {
+            mainUserInfo.age = Int64(userMainInfo.age ?? 0)
+            mainUserInfo.height = userMainInfo.height ?? 0
+            mainUserInfo.weight = userMainInfo.weight ?? 0
+            mainUserInfo.height = userMainInfo.height ?? 0
+            mainUserInfo.gender = userMainInfo.gender?.rawValue
+            mainUserInfo.activitylevel = userMainInfo.activityLevel?.rawValue
+            mainUserInfo.heightMode = userMainInfo.heightMode?.rawValue
+            mainUserInfo.weightMode = userMainInfo.weightMode?.rawValue
+        } else {
             let newMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
             newMainInfo.age = Int64(userMainInfo.age ?? 0)
             newMainInfo.height = userMainInfo.height ?? 0
@@ -206,21 +146,13 @@ class CoreDataManager {
             newMainInfo.activitylevel = userMainInfo.activityLevel?.rawValue
             newMainInfo.heightMode = userMainInfo.heightMode?.rawValue
             newMainInfo.weightMode = userMainInfo.weightMode?.rawValue
-        } else {
-            mainInfoList[0].age = Int64(userMainInfo.age ?? 0)
-            mainInfoList[0].height = userMainInfo.height ?? 0
-            mainInfoList[0].weight = userMainInfo.weight ?? 0
-            mainInfoList[0].height = userMainInfo.height ?? 0
-            mainInfoList[0].gender = userMainInfo.gender?.rawValue
-            mainInfoList[0].activitylevel = userMainInfo.activityLevel?.rawValue
-            mainInfoList[0].heightMode = userMainInfo.heightMode?.rawValue
-            mainInfoList[0].weightMode = userMainInfo.weightMode?.rawValue
         }
         self.updateMainInfoContext()
     }
     
     func deleteUserMainInfoData(completion: @escaping () -> Void) {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: EntitiesName.mainInfo.rawValue)
+       // let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: EntitiesName.mainInfo.rawValue)
+        let fetchRequest: NSFetchRequest<MainInfoManagedObject> = MainInfoManagedObject.fetchRequest()
         guard let result = try? self.mainInfoContext.fetch(fetchRequest) else { return }
         for object in result {
             self.mainInfoContext.delete(object)
@@ -238,8 +170,8 @@ class CoreDataManager {
             return []
         }
     }
-
-    func removeTraining(_ trainingListForRemoving: [TrainingManagedObject]) {
+    
+    func removeAllTraining(_ trainingListForRemoving: [TrainingManagedObject]) {
         for train in trainingListForRemoving {
             self.trainInfoContext.delete(train)
         }
@@ -250,67 +182,75 @@ class CoreDataManager {
         return choosenTrain.exercicesArray
     }
     
-    func addExercisesToTtrain(_ exercises: [Exercise]) -> Bool {
+    func addExercisesToTrain(_ exercises: [Exercise]) -> Bool {
         let trainingList = self.fetchTrainingList()
         var exerciseNameSet = Set<String>()
         var newExercises: [ExerciseManagedObject] = []
         if trainingList.isEmpty {
+            print("Create new train block in empty trainlist")
+            let newTrain = TrainingManagedObject(context: self.trainInfoContext)
             for exercise in exercises {
                 let newExercice = ExerciseManagedObject(context: self.trainInfoContext)
                 newExercice.id = Int64(newExercises.count + 1)
                 newExercice.name = exercise.name
                 newExercice.groupName = exercise.group.rawValue
                 newExercice.subgroupName = exercise.subgroub.rawValue
+                newExercice.training = newTrain
                 newExercises.append(newExercice)
             }
-            let newTrain = TrainingManagedObject(context: self.trainInfoContext)
             newTrain.date = Date()
             newTrain.formatedDate = DateHelper.shared.currnetDate
             newTrain.exercises = NSSet(array: newExercises)
             self.updateTrainInfoContext()
             return true
         } else {
-            let fethcRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
-            let curentDate = DateHelper.shared.currnetDate
-            fethcRequest.predicate = NSPredicate(format: "formatedDate == %@", curentDate as CVarArg )
-            if let trainingListf = try? self.trainInfoContext.fetch(fethcRequest),
-                let todaysTraon = trainingListf.first {
-                newExercises = []
-                for exerciseFromBase in todaysTraon.exercicesArray {
-                    exerciseNameSet.insert(exerciseFromBase.name)
-                }
-                for newExercise in exercises {
-                    if exerciseNameSet.insert(newExercise.name).inserted {
-                        let newEx = ExerciseManagedObject(context: self.trainInfoContext)
-                        newEx.id = Int64(todaysTraon.exercicesArray.count + 1)
-                        newEx.name = newExercise.name
-                        newEx.groupName = newExercise.group.rawValue
-                        newEx.subgroupName = newExercise.subgroub.rawValue
-                        newExercises.append(newEx)
+            print("Add exercices to today train")
+            newExercises = []
+            for train in trainingList {
+                if train.formatedDate! == DateHelper.shared.currnetDate {
+                    if let todayTrain = trainingList.first {
+                        todayTrain.exercicesArray.forEach({ (exercise) in
+                            exerciseNameSet.insert(exercise.name)
+                        })
+                        for newExercise in exercises {
+                            if exerciseNameSet.insert(newExercise.name).inserted {
+                                let newEx = ExerciseManagedObject(context: self.trainInfoContext)
+                                newEx.id = Int64(todayTrain.exercicesArray.count + 1)
+                                newEx.name = newExercise.name
+                                newEx.groupName = newExercise.group.rawValue
+                                newEx.subgroupName = newExercise.subgroub.rawValue
+                                newEx.training = todayTrain
+                                newExercises.append(newEx)
+                            }
+                        }
+                        todayTrain.addToExercises(NSSet(array: newExercises))
+                        self.updateTrainInfoContext()
+                        return false
                     }
                 }
-                todaysTraon.addToExercises(NSSet(array: newExercises))
-            } else {
-                newExercises = []
-                for newExercise in exercises {
-                    if exerciseNameSet.insert(newExercise.name).inserted {
-                        let newEx = ExerciseManagedObject(context: self.trainInfoContext)
-                        newEx.id = Int64(newExercises.count + 1)
-                        newEx.name = newExercise.name
-                        newEx.groupName = newExercise.group.rawValue
-                        newEx.subgroupName = newExercise.subgroub.rawValue
-                        newExercises.append(newEx)
-                    }
-                }
-                let newTrain = TrainingManagedObject(context: self.trainInfoContext)
-                newTrain.date = Date()
-                newTrain.formatedDate = DateHelper.shared.currnetDate
-                newTrain.exercises = NSSet(array: newExercises)
             }
+            print("Add new train with not empty training list")
+            newExercises = []
+            let newTrain = TrainingManagedObject(context: self.trainInfoContext)
+            for newExercise in exercises {
+                if exerciseNameSet.insert(newExercise.name).inserted {
+                    let newEx = ExerciseManagedObject(context: self.trainInfoContext)
+                    newEx.id = Int64(newExercises.count + 1)
+                    newEx.name = newExercise.name
+                    newEx.groupName = newExercise.group.rawValue
+                    newEx.subgroupName = newExercise.subgroub.rawValue
+                    newEx.training = newTrain
+                    newExercises.append(newEx)
+                }
+            }
+            newTrain.date = Date()
+            newTrain.formatedDate = DateHelper.shared.currnetDate
+            newTrain.exercises = NSSet(array: newExercises)
             self.updateTrainInfoContext()
             return false
         }
     }
+    
     
     func removeExercise(_ exercise: ExerciseManagedObject, from train: TrainingManagedObject) {
         train.removeFromExercises(exercise)

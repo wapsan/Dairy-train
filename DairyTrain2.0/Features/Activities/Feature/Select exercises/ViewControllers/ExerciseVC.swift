@@ -46,7 +46,8 @@ class ExercicesViewController: MuscleGroupsViewController {
     }
     
     private func addExercicesComplition() {
-        if CoreDataManager.shared.addExercisesToTtrain(self.selectedExercices) {
+     //   CoreDataManager.shared.addExercisesToTtrain(self.selectedExercices)
+        if CoreDataManager.shared.addExercisesToTrain(self.selectedExercices) {
             NotificationCenter.default.post(name: .addNewTrain,
                                                         object: nil,
                                                         userInfo: ["Trains": CoreDataManager.shared.fetchTrainingList()] )

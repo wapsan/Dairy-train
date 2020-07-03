@@ -14,6 +14,7 @@ class TrainingListViewController: MainTabBarItemVC {
     //MARK: - Properties
     override var isEditing: Bool {
         didSet {
+            self.editTrainListButton.title = oldValue == true ? "Edit" : "Done"
             self.navigationItem.rightBarButtonItem = oldValue == false ? self.deleteTrainButton : nil
         }
     }
@@ -78,6 +79,13 @@ class TrainingListViewController: MainTabBarItemVC {
         if self.isTrainingChanged {
             self.setUpViewController()
             self.isTrainingChanged = false
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if self.isEditing {
+            self.isEditing = false
         }
     }
     
@@ -165,7 +173,7 @@ class TrainingListViewController: MainTabBarItemVC {
     
     private func deleteChoosenTrain() {
         self.deselectSelectedItem()
-        CoreDataManager.shared.removeTraining(self.trainingListForDeleting)
+        CoreDataManager.shared.removeAllTraining(self.trainingListForDeleting)
         self.trainingForDeleting.removeAll()
         self.setTrashButttonState()
         self.setUpViewController()
@@ -260,14 +268,11 @@ class TrainingListViewController: MainTabBarItemVC {
     }
     
     @objc private func editingButtonPressed(_ sender: UIBarButtonItem) {
-        //MARK: TODO - доделать удаление тренировки
         if self.isEditing {
-            self.editTrainListButton.title = "Edit"
             self.trainingForDeleting.removeAll()
             self.deselectSelectedItem()
             self.isEditing = false
         } else {
-            self.editTrainListButton.title = "Done"
             self.isEditing = true
             self.setUpViewController()
         }

@@ -36,7 +36,6 @@ class SettingSection {
             self.settings = [Setting(type: .synchronization)]
         }
     }
-    
 }
    
 class Setting {
@@ -47,7 +46,6 @@ class Setting {
     var tittle: String
     var possibleList: [String]
     var possibleSetting: [String]
-    
     
     var curenttValue: String? {
         didSet {

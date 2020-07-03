@@ -1,5 +1,5 @@
 import UIKit
-
+//FIXME -  add two exercice ???
 class TrainingViewController: MuscleGroupsViewController {
     
     //MARK: - Properties
@@ -11,6 +11,7 @@ class TrainingViewController: MuscleGroupsViewController {
         self.addObserverForChangingTraining()
         self.setUpTableCell()
         self.addObserverForWeightModeChanged()
+        self.title = "Train"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,6 +117,7 @@ extension TrainingViewController {
             tableView.performBatchUpdates({
                 tableView.deleteRows(at: [indexPath], with: .top)
                 CoreDataManager.shared.removeExercise(removedExercise, from: train)
+                NotificationCenter.default.post(name: .trainingWasChanged, object: nil)
             }, completion: { _ in
                 
             })

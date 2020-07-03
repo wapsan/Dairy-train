@@ -99,4 +99,27 @@ class DTFirebaseFileManager {
             print(error.localizedDescription)
         }
     }
+    
+    func updateTrainDataToServer(_ userTrainingObject: [TrainingManagedObject]) {
+        //ecode to json
+        var trainInfo: [String: String] = [:]
+        userTrainingObject.enumerated().forEach({(index, train) in
+            let trainingData = TrainingFirebase(with: train)
+            guard let jsonData = trainingData.toJSONString() else { return }
+            trainInfo["Train \(index + 1)"] = jsonData
+        })
+        print(trainInfo)
+        //decode from json
+        var arrayTrain: [TrainingFirebase] = []
+        for (key, _) in trainInfo {
+            guard let data = trainInfo[key]?.data(using: .utf8) else { return }
+            if let trainInfo = try? JSONDecoder().decode(TrainingFirebase.self, from: data) {
+                arrayTrain.append(trainInfo)
+            } else {
+                print("Can not decode")
+            }
+        }
+        print("")
+        
+    }
 }

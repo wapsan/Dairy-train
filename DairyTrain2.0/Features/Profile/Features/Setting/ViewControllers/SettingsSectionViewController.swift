@@ -54,8 +54,6 @@ class SettingsSectionViewController: UITableViewController {
     @objc private func settingWasChanged() {
         self.tableView.reloadData()
     }
-    
- 
 }
 
 //MARK: - UITableViewDelegate, UITableViewDatasourse methods
@@ -71,6 +69,8 @@ extension SettingsSectionViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.settingModel[indexPath.section].type == .synchronization {
+            let userTrainingData = CoreDataManager.shared.fetchTrainingList()
+            DTFirebaseFileManager.shared.updateTrainDataToServer(userTrainingData)
             print("Sinhronization")
         } else {
             let choosenSetting = settingModel[indexPath.section].settings[indexPath.row]
