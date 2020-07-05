@@ -189,11 +189,12 @@ class LoginViewController: UIViewController {
     }
     
     private func presentMainTabBarViewController() {
-        DTFirebaseFileManager.shared.synhronizeDataFromServer { [weak self] (mainData, trainingList) in
+        DTFirebaseFileManager.shared.synhronizeDataFromServer { [weak self] (mainData, trainingList, dateOfUpdate) in
             guard let self = self else { return }
             if let mainData = mainData {
                 CoreDataManager.shared.updateUserMainInfo(to: mainData)
             }
+            CoreDataManager.shared.updateDateOfLastUpdateTo(dateOfUpdate)
             CoreDataManager.shared.updateUserTrainInfoFrom(trainingList)
             let mainTabBarVC = MainTabBarViewController()
             mainTabBarVC.modalPresentationStyle = .fullScreen

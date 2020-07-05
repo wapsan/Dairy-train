@@ -24,6 +24,7 @@ class UserMainInfoCodableModel: NSObject, Codable {
     var weight: Float?
     var height: Float?
     var gender: Gender?
+    var dateOfLastUpdate: String?
     var activityLevel: ActivityLevel?
     var heightMode: MeteringSetting.HeightMode?
     var weightMode: MeteringSetting.WeightMode?

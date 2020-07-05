@@ -9,4 +9,5 @@ extension Notification.Name {
     static var addNewTrain = Notification.Name("addNewTrain")
     static var settingWasChanged = Notification.Name("settingWasChanged")
     static var startGoogleSignIn = Notification.Name("startGoogleSignIn")
+    static var dataWasSynhronize = Notification.Name("dataWasSynhronize")
 }

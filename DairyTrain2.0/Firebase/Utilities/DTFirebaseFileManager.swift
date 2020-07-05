@@ -14,39 +14,47 @@ class DTFirebaseFileManager {
     private lazy var userMainInfoKey = "userMainInfo"
     private lazy var userTrainInfoKey = "userTrainingList"
     private lazy var userKeyPath = "user"
+    private lazy var updateDateKeyPatth = "lastUpdateDate"
     
-    //MARK: - Properties
-    lazy var isDataUpdated: Bool = false
-    var lastUpdatedDate: String {
-        if !self.isDataUpdated {
-            return self.notUpdatedDate
-        } else {
-            return self._lastUpdatedDate
-        }
+    private var currentDateWithUpdatingFromat: String {
+        return DateHelper.shared.currentDateForSynhronize
     }
     
     //MARK: - Initialization
     private init () { }
     
     //MARK: - Publick methods
+    private  func upDateDateOfLastUpdate() {
+        guard let userUid = Auth.auth().currentUser?.uid else { return }
+        self.firebaseRef
+            .child(self.userKeyPath)
+            .child(userUid)
+            .child(self.updateDateKeyPatth)
+            .setValue(self.currentDateWithUpdatingFromat)
+        
+    }
+    
     func synhronizeDataToServer(completion: @escaping () -> Void) {
         self.synhronizeMainUserInfoToServer()
         self.synhronizeTrainingUserInfoToServer()
+        self.upDateDateOfLastUpdate()
         completion()
+        
     }
     
     func synhronizeDataFromServer(completion: @escaping (_ mainInfo: UserMainInfoCodableModel?,
-        _ trainingList: [TrainingCodableModel]) -> Void) {
+        _ trainingList: [TrainingCodableModel], _ dateOfUpdate: String?) -> Void) {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         var traingArray: [TrainingCodableModel] = []
         var mainInfo: UserMainInfoCodableModel?
+        var dateOfUpdate: String?
         self.firebaseRef
             .child(self.userKeyPath)
             .child(userUid)
             .observeSingleEvent(of: .value) { (snapshot) in
                 
                 guard let dictionaryValue = snapshot.value as? NSDictionary else {
-                    completion(nil, [])
+                    completion(nil, [], nil)
                     return
                 }
                 
@@ -55,6 +63,10 @@ class DTFirebaseFileManager {
                     let mainInfo2 = try? JSONDecoder().decode(UserMainInfoCodableModel.self,
                                                               from: mainInfoData)
                     mainInfo = mainInfo2
+                }
+                
+                if let dateOfUpdateFromServer = dictionaryValue[self.updateDateKeyPatth] as? String {
+                    dateOfUpdate = dateOfUpdateFromServer
                 }
                 
                 if let trainingInfoDictionary = dictionaryValue[self.userTrainInfoKey] as? [String: String] {
@@ -66,7 +78,7 @@ class DTFirebaseFileManager {
                         }
                     }
                 }
-                completion(mainInfo, traingArray)
+                completion(mainInfo, traingArray, dateOfUpdate)
         }
     }
     

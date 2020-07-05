@@ -72,6 +72,17 @@ class CoreDataManager {
         }
     }
     
+    func updateDateOfLastUpdateTo(_ date: String?) {
+        if let userMainInfo = self.readUserMainInfo() {
+            userMainInfo.dateOfLastUpdate = date
+            self.updateMainInfoContext()
+        } else {
+            let newUserMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
+            newUserMainInfo.dateOfLastUpdate = date
+            self.updateMainInfoContext()
+        }
+    }
+    
     func updateAge(to age: Int) {
         if let userMainInfo = self.readUserMainInfo() {
             userMainInfo.age = Int64(age)
@@ -126,6 +137,7 @@ class CoreDataManager {
             self.updateMainInfoContext()
         }
     }
+    
     
 //    func updateHeightMode(to heightMode: MeteringSetting.HeightMode) {
 //        guard let mainUserInfo = self.readUserMainInfo() else { return }

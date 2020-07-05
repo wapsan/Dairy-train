@@ -7,16 +7,19 @@ class SettingsSectionViewController: UITableViewController {
                                      SettingSection(type: .style),
                                      SettingSection(type: .synchronization)]
     private lazy var navigationTittle = LocalizedString.setting
-    
+    private lazy var lastSynhronizeDate = CoreDataManager.shared.readUserMainInfo()?.dateOfLastUpdate
+                                          ?? "Data don't up to date."
     
     private lazy var a: DTDownloadHud = {
         let a = DTDownloadHud(frame: .zero)
         a.translatesAutoresizingMaskIntoConstraints = false
         return a
     }()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.dataWasSynhronize), name: .dataWasSynhronize, object: nil)
     }
 
     //MARK: - Initialization
@@ -54,6 +57,15 @@ class SettingsSectionViewController: UITableViewController {
     @objc private func settingWasChanged() {
         self.tableView.reloadData()
     }
+    
+    @objc private func dataWasSynhronize() {
+        guard let indexPaths = self.tableView.indexPathsForVisibleRows else { return }
+        for indexPath in indexPaths {
+            if self.settingModel[indexPath.section].type == .synchronization {
+                self.tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        }
+    }
 }
 
 //MARK: - UITableViewDelegate, UITableViewDatasourse methods
@@ -69,8 +81,11 @@ extension SettingsSectionViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.settingModel[indexPath.section].type == .synchronization {
+            
+           // self.az = DateHelper.shared.currentDateForSynhronize
+            CoreDataManager.shared.updateDateOfLastUpdateTo(DateHelper.shared.currentDateForSynhronize)
             DTFirebaseFileManager.shared.synhronizeDataToServer(completion: {
-                print("Data synhronnized")
+                NotificationCenter.default.post(name: .dataWasSynhronize, object: nil)
             })
         } else {
             let choosenSetting = settingModel[indexPath.section].settings[indexPath.row]
@@ -96,8 +111,7 @@ extension SettingsSectionViewController {
 
         if self.settingModel[indexPath.section].type == .synchronization {
             let cell = tableView.dequeueReusableCell(withIdentifier: DTSynhronizeCell.cellID, for: indexPath)
-            let updateDate = DTFirebaseFileManager.shared.lastUpdatedDate
-            (cell as? DTSynhronizeCell)?.setUpdateDateTo(updateDate)
+            (cell as? DTSynhronizeCell)?.setUpdateDateTo(self.lastSynhronizeDate)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: DTSettingCell.cellID,

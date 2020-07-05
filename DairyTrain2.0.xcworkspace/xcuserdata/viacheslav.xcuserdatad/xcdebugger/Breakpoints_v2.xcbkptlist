@@ -718,8 +718,8 @@
             filePath = "DairyTrain2.0/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataProperties.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "displayHeight"
             landmarkType = "24">
          </BreakpointContent>
@@ -734,8 +734,8 @@
             filePath = "DairyTrain2.0/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataProperties.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "displayHeight"
             landmarkType = "24">
          </BreakpointContent>
@@ -750,8 +750,8 @@
             filePath = "DairyTrain2.0/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataProperties.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "displayHeight"
             landmarkType = "24">
          </BreakpointContent>
@@ -766,8 +766,8 @@
             filePath = "DairyTrain2.0/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataProperties.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "displayWeight"
             landmarkType = "24">
          </BreakpointContent>
@@ -782,8 +782,8 @@
             filePath = "DairyTrain2.0/CoreData/CoreDataManager/CoreDataManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "updateUserTrainInfoFrom(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -801,6 +801,38 @@
             startingLineNumber = "79"
             endingLineNumber = "79"
             landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "549BDA40-06E9-4EB7-A448-F0AA8F9368A0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DairyTrain2.0/Features/StartApp/Features/LogIn/Views/DTDownloadHud.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "showOn(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3FBA0512-8AB0-4CD1-B365-B916A8197F72"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DairyTrain2.0/Features/Profile/Features/Setting/ViewControllers/SettingsSectionViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "dataWasSynhronize()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

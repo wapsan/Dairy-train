@@ -3,6 +3,7 @@
     <entity name="MainInfo" representedClassName=".MainInfoManagedObject" syncable="YES">
         <attribute name="activitylevel" optional="YES" attributeType="String"/>
         <attribute name="age" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dateOfLastUpdate" optional="YES" attributeType="String"/>
         <attribute name="gender" optional="YES" attributeType="String"/>
         <attribute name="height" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="heightMode" optional="YES" attributeType="String"/>
@@ -11,6 +12,6 @@
         <attribute name="weightMode" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="MainInfo" positionX="-63" positionY="-18" width="128" height="28"/>
+        <element name="MainInfo" positionX="-63" positionY="-18" width="128" height="178"/>
     </elements>
 </model>

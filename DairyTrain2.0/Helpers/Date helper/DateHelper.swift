@@ -6,7 +6,7 @@ class DateHelper {
     static var shared = DateHelper()
     
     //MARK: - Private properties
-    private var date  = Date()
+    private var date = Date()
     private var standartDateFormat = "dd/MM/yyyy"
     private var dateFormatForSynhronization = "MM-dd-yyyy HH:mm"
     private var dateFormater = DateFormatter()
@@ -19,7 +19,7 @@ class DateHelper {
     
     var currentDateForSynhronize: String {
         self.dateFormater.dateFormat = dateFormatForSynhronization
-        return self.dateFormater.string(from: self.date)
+        return self.dateFormater.string(from: Date())
     }
     
     //MARK: - Initialization

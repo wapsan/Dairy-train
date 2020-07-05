@@ -15,9 +15,18 @@ extension MainInfoManagedObject {
     @NSManaged public var heightMode: String?
     @NSManaged public var weightMode: String?
     @NSManaged public var id: Int64
+    @NSManaged public var dateOfLastUpdate: String?
     
     var displayAge: String {
         return String(age)
+    }
+    
+    var displayDateOfLastUpdate: String {
+        if let lastUpdateDate = self.dateOfLastUpdate {
+            return lastUpdateDate
+        } else {
+            return "Date don't update."
+        }
     }
     
     var displayHeight: String {
