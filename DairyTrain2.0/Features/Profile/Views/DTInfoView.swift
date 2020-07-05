@@ -13,6 +13,13 @@ class DTInfoView: UIView {
         return label
     }()
     
+    private lazy var backgroundImage: UIImageView = {
+        let imageview = UIImageView()
+        imageview.contentMode = .scaleAspectFit
+        imageview.translatesAutoresizingMaskIntoConstraints = false
+        return imageview
+    }()
+    
     private lazy var titleLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.font = .boldSystemFont(ofSize: 25)
@@ -27,6 +34,36 @@ class DTInfoView: UIView {
         return label
     }()
     
+    private lazy var contView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 30
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+        view.layer.masksToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+       
+        return view
+    }()
+    
+    private lazy var whiteLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var containerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 8
+        stackView.addArrangedSubview(self.titleLabel)
+        stackView.addArrangedSubview(self.whiteLine)
+        stackView.addArrangedSubview(self.valueLabel)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
     //MARK: - Enums
     enum InfoViewValue {
         case trainCount
@@ -62,60 +99,114 @@ class DTInfoView: UIView {
         case .trainCount:
             self.titleLabel.text = LocalizedString.totalTrain
             self.valueLabel.text = String(CoreDataManager.shared.fetchTrainingList().count)
-            self.addSubview(self.titleLabel)
-            self.addSubview(self.valueLabel)
+            self.backgroundImage.image = UIImage.totalTraininBackgroundImage
+          //  self.addSubview(self.titleLabel)
+          //  self.addSubview(self.valueLabel)
         case .gender:
             self.titleLabel.text = LocalizedString.gender
             self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayGender ?? "_"
-            self.addSubview(self.titleLabel)
-            self.addSubview(self.valueLabel)
+            self.backgroundImage.image = UIImage.genderBackgroundImage
+            
+         //   self.addSubview(self.titleLabel)
+         //   self.addSubview(self.valueLabel)
         case .activityLevel:
             self.titleLabel.text = LocalizedString.activityLevel
             self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel ?? "_"
-            self.addSubview(self.titleLabel)
-            self.addSubview(self.valueLabel)
+            self.backgroundImage.image = UIImage.activityLevelBackgroundImage
+          //  self.addSubview(self.titleLabel)
+          //  self.addSubview(self.valueLabel)
         case .age:
             self.titleLabel.text = LocalizedString.age
             self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayAge ?? "0"
-            self.addSubview(self.titleLabel)
-            self.addSubview(self.valueLabel)
+            self.backgroundImage.image = UIImage.ageBackgroundImage
+          //  self.addSubview(self.titleLabel)
+          //  self.addSubview(self.valueLabel)
         case .height:
             self.titleLabel.text = LocalizedString.height
             self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayHeight ?? "0"
             self.descriptionLabel.text = MeteringSetting.shared.heightDescription
-            self.addSubview(self.descriptionLabel)
-            self.addSubview(self.titleLabel)
-            self.addSubview(self.valueLabel)
-            self.setConstraintForDescriptionLabel()
+            self.backgroundImage.image = UIImage.heightBackgroundImage
+          //  self.addSubview(self.descriptionLabel)
+          //  self.addSubview(self.titleLabel)
+          //  self.addSubview(self.valueLabel)
+          //  self.setConstraintForDescriptionLabel()
+            self.containerStackView.addArrangedSubview(self.descriptionLabel)
         case .weight:
             self.titleLabel.text = LocalizedString.weight
             self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayWeight ?? "0"
             self.descriptionLabel.text = MeteringSetting.shared.weightDescription
-            self.addSubview(self.descriptionLabel)
-            self.addSubview(self.titleLabel)
-            self.addSubview(self.valueLabel)
-            self.setConstraintForDescriptionLabel()
+            self.backgroundImage.image = UIImage.weightBackgroundImage
+           // self.addSubview(self.descriptionLabel)
+           // self.addSubview(self.titleLabel)
+           // self.addSubview(self.valueLabel)
+          //  self.setConstraintForDescriptionLabel()
+            self.containerStackView.addArrangedSubview(self.descriptionLabel)
         case .totalReps:
             self.titleLabel.text = LocalizedString.totalReps
-            self.addSubview(self.titleLabel)
-            self.addSubview(self.valueLabel)
+          //  self.addSubview(self.titleLabel)
+          //  self.addSubview(self.valueLabel)
         case .totalAproach:
             self.titleLabel.text = LocalizedString.totalAproach
-            self.addSubview(self.titleLabel)
-            self.addSubview(self.valueLabel)
+          //  self.addSubview(self.titleLabel)
+          //  self.addSubview(self.valueLabel)
         case .avarageProjectileWeight:
             self.titleLabel.text = LocalizedString.avarageProjectileWeigt
-            self.addSubview(self.titleLabel)
-            self.addSubview(self.valueLabel)
+          //  self.addSubview(self.titleLabel)
+          //  self.addSubview(self.valueLabel)
         case .totalWeight:
             self.titleLabel.text = LocalizedString.totalTrainWeight
-            self.addSubview(self.titleLabel)
-            self.addSubview(self.valueLabel)
+          //  self.addSubview(self.titleLabel)
+          //  self.addSubview(self.valueLabel)
         }
+//        self.layer.cornerRadius = 30
+//        self.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+//        self.layer.masksToBounds = true
+//
+        
         self.setTapRecognizer()
-        self.setAppearance()
-        self.setConstraints()
+      //  self.setAppearance()
+      //  self.setConstraints()
+        self.setUpStackView()
         self.addObserverForMeteringSetting()
+    }
+    
+    private func setUpStackView() {
+       // self.addSubview(self.containerStackView)
+        self.addSubview(self.contView)
+        self.contView.addSubview(self.backgroundImage)
+        self.backgroundImage.addSubview(self.containerStackView)
+        NSLayoutConstraint.activate([
+            self.contView.topAnchor.constraint(equalTo: self.topAnchor),
+            self.contView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            self.contView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            self.contView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.containerStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.containerStackView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: 16),
+          //  self.containerStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            self.containerStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+            self.containerStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+        //    self.containerStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16),
+            self.containerStackView.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -16)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.backgroundImage.topAnchor.constraint(equalTo: self.contView.topAnchor),
+            self.backgroundImage.leftAnchor.constraint(equalTo: self.contView.leftAnchor),
+
+            self.backgroundImage.rightAnchor.constraint(equalTo: self.contView.rightAnchor),
+
+            self.backgroundImage.bottomAnchor.constraint(equalTo: self.contView.bottomAnchor)
+
+            
+            
+        ])
+        
+        NSLayoutConstraint.activate([
+                   self.whiteLine.heightAnchor.constraint(equalToConstant: 1)
+               ])
     }
     
     required init?(coder: NSCoder) {
@@ -124,6 +215,8 @@ class DTInfoView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [UIColor.red.cgColor, UIColor.viewFlipsideBckgoundColor.cgColor]
         gradientLayer.locations = [0.0, 1.0]
@@ -137,9 +230,10 @@ class DTInfoView: UIView {
         gradientLayer.shadowColor = UIColor.darkGray.cgColor
         gradientLayer.shadowOffset = .init(width: 0, height: 5)
         gradientLayer.shadowOpacity = 5
-        self.layer.insertSublayer(gradientLayer, at:0)
+       // self.layer.insertSublayer(gradientLayer, at:0)
       //  self.setLayotLayer()
-      //  self.setDefaultLayer()
+        self.setDefaultLayer()
+       // self.layer.masksToBounds = true
     }
     
     //MARK: - Setter
@@ -156,11 +250,13 @@ class DTInfoView: UIView {
     }
     
     private func setDefaultLayer() {
-        self.layer.cornerRadius = 30
-        self.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
-        self.layer.shadowColor = UIColor.darkGray.cgColor
+//        self.layer.cornerRadius = 30
+//        self.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+//        
+       self.layer.shadowColor = UIColor.darkGray.cgColor
         self.layer.shadowOffset = .init(width: 0, height: 5)
         self.layer.shadowOpacity = 5
+   //     self.layer.masksToBounds = true
     }
     
     private  func setLayotLayer() {

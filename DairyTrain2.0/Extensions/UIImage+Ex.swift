@@ -45,4 +45,12 @@ extension UIImage {
     static let backSideLegsImage = UIImage(named: "backLeg")
     static let calvesImage = UIImage(named: "calves")
     
+    
+    //MARK: - DTInfoView Background Images
+    static let activityLevelBackgroundImage = UIImage(named: "activityLevelInfoViewBackground")
+    static let ageBackgroundImage = UIImage(named: "ageInfoViewBackground")
+    static let genderBackgroundImage = UIImage(named: "genderInfoViewBackground")
+    static let heightBackgroundImage = UIImage(named: "heightInfoViewBackground")
+    static let totalTraininBackgroundImage = UIImage(named: "totalTraininfoViewBackground")
+    static let weightBackgroundImage = UIImage(named: "weightInfoViewBackground")
 }
