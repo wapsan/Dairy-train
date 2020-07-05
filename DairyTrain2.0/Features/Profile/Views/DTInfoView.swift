@@ -61,27 +61,27 @@ class DTInfoView: UIView {
         switch type {
         case .trainCount:
             self.titleLabel.text = LocalizedString.totalTrain
-            self.valueLabel.text = UserModel.shared.displayTrainCount
+            self.valueLabel.text = String(CoreDataManager.shared.fetchTrainingList().count)
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .gender:
             self.titleLabel.text = LocalizedString.gender
-            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayGender
+            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayGender ?? "_"
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .activityLevel:
             self.titleLabel.text = LocalizedString.activityLevel
-            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel
+            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel ?? "_"
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .age:
             self.titleLabel.text = LocalizedString.age
-            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayAge
+            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayAge ?? "0"
             self.addSubview(self.titleLabel)
             self.addSubview(self.valueLabel)
         case .height:
             self.titleLabel.text = LocalizedString.height
-            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayHeight
+            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayHeight ?? "0"
             self.descriptionLabel.text = MeteringSetting.shared.heightDescription
             self.addSubview(self.descriptionLabel)
             self.addSubview(self.titleLabel)
@@ -89,7 +89,7 @@ class DTInfoView: UIView {
             self.setConstraintForDescriptionLabel()
         case .weight:
             self.titleLabel.text = LocalizedString.weight
-            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayWeight
+            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayWeight ?? "0"
             self.descriptionLabel.text = MeteringSetting.shared.weightDescription
             self.addSubview(self.descriptionLabel)
             self.addSubview(self.titleLabel)

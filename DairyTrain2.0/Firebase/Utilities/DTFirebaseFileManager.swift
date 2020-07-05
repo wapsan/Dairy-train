@@ -11,6 +11,10 @@ class DTFirebaseFileManager {
     private lazy var _lastUpdatedDate: String = ""
     private lazy var notUpdatedDate = "Date is not updated."
     
+    private lazy var userMainInfoKey = "userMainInfo"
+    private lazy var userTrainInfoKey = "userTrainingList"
+    private lazy var userKeyPath = "user"
+    
     //MARK: - Properties
     lazy var isDataUpdated: Bool = false
     var lastUpdatedDate: String {
@@ -24,102 +28,73 @@ class DTFirebaseFileManager {
     //MARK: - Initialization
     private init () { }
     
-    //MARK: - Public methods
-    //update usermaininfo data from coredata to firebase
-    func updateMainUserInfoInFirebase() {
+    //MARK: - Publick methods
+    func synhronizeDataToServer(completion: @escaping () -> Void) {
+        self.synhronizeMainUserInfoToServer()
+        self.synhronizeTrainingUserInfoToServer()
+        completion()
+    }
+    
+    func synhronizeDataFromServer(completion: @escaping (_ mainInfo: UserMainInfoCodableModel?,
+        _ trainingList: [TrainingCodableModel]) -> Void) {
+        guard let userUid = Auth.auth().currentUser?.uid else { return }
+        var traingArray: [TrainingCodableModel] = []
+        var mainInfo: UserMainInfoCodableModel?
+        self.firebaseRef
+            .child(self.userKeyPath)
+            .child(userUid)
+            .observeSingleEvent(of: .value) { (snapshot) in
+                
+                guard let dictionaryValue = snapshot.value as? NSDictionary else {
+                    completion(nil, [])
+                    return
+                }
+                
+                if let mainInfoJSON = dictionaryValue[self.userMainInfoKey] as? String,
+                    let mainInfoData = mainInfoJSON.data(using: .utf8) {
+                    let mainInfo2 = try? JSONDecoder().decode(UserMainInfoCodableModel.self,
+                                                              from: mainInfoData)
+                    mainInfo = mainInfo2
+                }
+                
+                if let trainingInfoDictionary = dictionaryValue[self.userTrainInfoKey] as? [String: String] {
+                    for element in trainingInfoDictionary {
+                        if let trainingData = element.value.data(using: .utf8),
+                            let train = try? JSONDecoder().decode(TrainingCodableModel.self,
+                                                                  from: trainingData) {
+                            traingArray.append(train)
+                        }
+                    }
+                }
+                completion(mainInfo, traingArray)
+        }
+    }
+    
+    //MARK: - Private methods
+    private func synhronizeMainUserInfoToServer() {
         guard let userUid = Auth.auth().currentUser?.uid,
-            let userMainInfo = UserMainInfoModel(from: CoreDataManager.shared.readUserMainInfo()) else { return }
-            let localJSONStringModel = userMainInfo.convertToJSONString()
-        
-        self.fetchMainUserInfo { (fireBaseJSONString) in
-            guard let fireBaseJsonStringModel = fireBaseJSONString else { return }
-            if fireBaseJsonStringModel != localJSONStringModel {
-                self.firebaseRef.child("user").child(userUid).setValue(["userMainInfo": localJSONStringModel])
-            }
-        }
-        
+            let userMainInfo = UserMainInfoCodableModel(from: CoreDataManager.shared.readUserMainInfo()) else { return }
+        let userMainInfoJSON = userMainInfo.convertToJSONString()
+        self.firebaseRef
+            .child(self.userKeyPath)
+            .child(userUid)
+            .child(self.userMainInfoKey)
+            .setValue(userMainInfoJSON)
     }
     
-    //updating usermaininfo data from firebase to coredata if user logged in
-    func updateLoggedInMainUserFromFirebase(completion: @escaping () -> Void) {
-        self.fetchMainUserInfo(completion: { (fireBaseJSONString) in
-            let sortedJSONString = fireBaseJSONString?.sorted(by: <)
-            guard let fireBaseJsonStringModel = fireBaseJSONString else { return }
-            if let userMainInfo = UserMainInfoModel(from: CoreDataManager.shared.readUserMainInfo()) {
-                let localJSONStringModel = userMainInfo.convertToJSONString()?.sorted(by: <)
-                if sortedJSONString != localJSONStringModel {
-                    guard let data = fireBaseJsonStringModel.data(using: .utf8),
-                        let mainInfo = try? JSONDecoder().decode(UserMainInfoModel.self, from: data) else {
-                            completion()
-                            return }
-                    CoreDataManager.shared.updateUserMainInfo(to: mainInfo)
-                    completion()
-                } else {
-                    completion()
-                }
-            } else {
-                guard let data = fireBaseJsonStringModel.data(using: .utf8),
-                    let mainInfo = try? JSONDecoder().decode(UserMainInfoModel.self, from: data) else {
-                        completion()
-                        return }
-                CoreDataManager.shared.updateUserMainInfo(to: mainInfo)
-                completion()
-            }
-        })
-    }
-    
-    //Updating mainuserinfo from firebase to coredata if users not loged in and do it right now
-    func updateNotLogInUserFromFirebase(completion: @escaping () -> Void) {
+    private func synhronizeTrainingUserInfoToServer() {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
-        self.firebaseRef.child("user").child(userUid).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let _ = snapshot.value as? NSDictionary {
-                self.fetchMainUserInfo { (fireBaseJSONString) in
-                    guard let fireBaseJsonStringModel = fireBaseJSONString,
-                        let data = fireBaseJsonStringModel.data(using: .utf8),
-                        let mainInfo = try? JSONDecoder().decode(UserMainInfoModel.self, from: data) else { return }
-                    CoreDataManager.shared.updateUserMainInfo(to: mainInfo)
-                    completion()
-                }
-            } else {
-                self.firebaseRef.child("user").child(userUid).setValue(["userMainInfo": ""])
-                completion()
-            }
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
-  
-    private func fetchMainUserInfo(completion: @escaping ((String?) -> Void)) {
-        guard let userUid = Auth.auth().currentUser?.uid else { return }
-        self.firebaseRef.child("user").child(userUid).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionaryValue = snapshot.value as? NSDictionary,
-             let jsonString = dictionaryValue["userMainInfo"] as? String else { return }
-            completion(jsonString)
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
-    
-    func updateTrainDataToServer(_ userTrainingObject: [TrainingManagedObject]) {
-        //ecode to json
-        var trainInfo: [String: String] = [:]
-        userTrainingObject.enumerated().forEach({(index, train) in
-            let trainingData = TrainingFirebase(with: train)
-            guard let jsonData = trainingData.toJSONString() else { return }
-            trainInfo["Train \(index + 1)"] = jsonData
+        let trainingListFromLocalBase = CoreDataManager.shared.fetchTrainingList()
+        var trainingInfoDictionary: [String: String] = [:]
+        trainingListFromLocalBase.enumerated().forEach( {(index, train) in
+            let trainingData = TrainingCodableModel(with: train)
+            guard let trainingInfoJSON = trainingData.toJSONString() else { return }
+            trainingInfoDictionary["Train \(index + 1)"] = trainingInfoJSON
         })
-        print(trainInfo)
-        //decode from json
-        var arrayTrain: [TrainingFirebase] = []
-        for (key, _) in trainInfo {
-            guard let data = trainInfo[key]?.data(using: .utf8) else { return }
-            if let trainInfo = try? JSONDecoder().decode(TrainingFirebase.self, from: data) {
-                arrayTrain.append(trainInfo)
-            } else {
-                print("Can not decode")
-            }
-        }
-        print("")
-        
+        self.firebaseRef
+            .child(self.userKeyPath)
+            .child(userUid)
+            .child(self.userTrainInfoKey)
+            .setValue(trainingInfoDictionary)
     }
 }

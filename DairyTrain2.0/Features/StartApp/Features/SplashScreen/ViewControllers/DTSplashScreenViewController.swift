@@ -22,7 +22,7 @@ class DTSplashScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpMainView()
-        self.updateFirebaseDataIfNeeds()
+        self.pushStartViewController()
     }
     
     //MARK: - Private methods
@@ -35,11 +35,9 @@ class DTSplashScreenViewController: UIViewController {
         self.activateConstraints()
     }
     
-    private func updateFirebaseDataIfNeeds() {
-      //  DTFirebaseFileManager.shared.updateLoggedInMainUserFromFirebase(completion: {
-            let profileViewController = MainTabBarViewController()
-            self.navigationController?.pushViewController(profileViewController, animated: true)
-      //  })
+    private func pushStartViewController() {
+        let profileViewController = MainTabBarViewController()
+        self.navigationController?.pushViewController(profileViewController, animated: true)
     }
    
     //MARK: - Constraints

@@ -170,6 +170,7 @@ class LoginViewController: UIViewController {
     
     private func setUpSignMode() {
         guard self.isSignInMode else { return }
+        //TODO - BACKGROUND COLOR IN BUTTON CLASS
         self.signInModeButton.pressed()
         self.signUpModeButton.backgroundColor = .gray
     }
@@ -188,12 +189,16 @@ class LoginViewController: UIViewController {
     }
     
     private func presentMainTabBarViewController() {
-        DTFirebaseFileManager.shared.updateNotLogInUserFromFirebase(completion: { [weak self] in
+        DTFirebaseFileManager.shared.synhronizeDataFromServer { [weak self] (mainData, trainingList) in
             guard let self = self else { return }
+            if let mainData = mainData {
+                CoreDataManager.shared.updateUserMainInfo(to: mainData)
+            }
+            CoreDataManager.shared.updateUserTrainInfoFrom(trainingList)
             let mainTabBarVC = MainTabBarViewController()
             mainTabBarVC.modalPresentationStyle = .fullScreen
             self.present(mainTabBarVC, animated: true, completion: nil)
-        })
+        }
     }
     
     private func addObserverForGoogleSignedIn() {

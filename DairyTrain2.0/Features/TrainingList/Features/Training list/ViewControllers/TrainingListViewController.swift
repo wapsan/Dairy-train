@@ -76,6 +76,7 @@ class TrainingListViewController: MainTabBarItemVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("")
         if self.isTrainingChanged {
             self.setUpViewController()
             self.isTrainingChanged = false
@@ -173,7 +174,7 @@ class TrainingListViewController: MainTabBarItemVC {
     
     private func deleteChoosenTrain() {
         self.deselectSelectedItem()
-        CoreDataManager.shared.removeAllTraining(self.trainingListForDeleting)
+        CoreDataManager.shared.removeChoosenTrainings(self.trainingListForDeleting)
         self.trainingForDeleting.removeAll()
         self.setTrashButttonState()
         self.setUpViewController()

@@ -38,7 +38,7 @@ class RecomendationsViewController: UIViewController {
     
     private func setRecomendationInfoModel() {
         guard let mainInfoMO = self.mainInfoManagedObject else { return }
-        guard let userMainInfo = UserMainInfoModel(from: mainInfoMO) else { return }
+        guard let userMainInfo = UserMainInfoCodableModel(from: mainInfoMO) else { return }
         CaloriesCalculator.shared.getUserParameters(from: userMainInfo)
         self.supplyModel = CaloriesCalculator.shared.getRecomendatinoInfo()
     }

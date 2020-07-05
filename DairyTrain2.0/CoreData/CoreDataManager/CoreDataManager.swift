@@ -7,15 +7,7 @@ struct CoreDataModelName {
 }
 
 class CoreDataManager {
-    
-    //MARK: - Enums
-//    enum EntitiesName: String {
-//        case mainInfo = "MainInfo"
-//        case training = "Training"
-//        case exercise = "Exercise"
-//        case aproach = "Aproach"
-//    }
-    
+
     //MARK: - Singletone propertie
     static let shared = CoreDataManager()
     
@@ -54,7 +46,7 @@ class CoreDataManager {
             do {
                 try self.mainInfoContext.save()
             } catch {
-                print("Data don't update.")
+                print("MainInfoContext don't update")
             }
         }
     }
@@ -64,7 +56,7 @@ class CoreDataManager {
             do {
                 try self.trainInfoContext.save()
             } catch {
-                print("Data don't update.")
+                print("TrainInfoContext dont't update")
             }
         }
     }
@@ -81,52 +73,80 @@ class CoreDataManager {
     }
     
     func updateAge(to age: Int) {
-        guard let userMainInfo = self.readUserMainInfo() else { return }
-        userMainInfo.age = Int64(age)
-        self.updateMainInfoContext()
+        if let userMainInfo = self.readUserMainInfo() {
+            userMainInfo.age = Int64(age)
+            self.updateMainInfoContext()
+        } else {
+            let newUserMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
+            newUserMainInfo.age = Int64(age)
+            self.updateMainInfoContext()
+        }
     }
     
     func updateWeight(to weight: Float) {
-        guard let mainInfo = self.readUserMainInfo() else { return }
-        mainInfo.weight = weight
-        mainInfo.weightMode = MeteringSetting.shared.weightMode.rawValue
-        self.updateMainInfoContext()
+        if let userMainInfo = self.readUserMainInfo() {
+            userMainInfo.weight = weight
+            self.updateMainInfoContext()
+        } else {
+            let newUserMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
+            newUserMainInfo.weight = weight
+            self.updateMainInfoContext()
+        }
     }
     
     func updateHeight(to heigth: Float) {
-        guard let mainInfo = self.readUserMainInfo() else { return }
-        mainInfo.height = heigth
-        mainInfo.heightMode = MeteringSetting.shared.heightMode.rawValue
-        self.updateMainInfoContext()
+        if let userMainInfo = self.readUserMainInfo() {
+            userMainInfo.height = heigth
+            self.updateMainInfoContext()
+        } else {
+            let newUserMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
+            newUserMainInfo.height = heigth
+            self.updateMainInfoContext()
+        }
     }
     
-    func updateGender(to gender: UserMainInfoModel.Gender) {
-        guard let mainInfo = self.readUserMainInfo() else { return }
-        mainInfo.gender = gender.rawValue
-        self.updateMainInfoContext()
+    func updateGender(to gender: UserMainInfoCodableModel.Gender) {
+        if let userMainInfo = self.readUserMainInfo() {
+            userMainInfo.gender = gender.rawValue
+            self.updateMainInfoContext()
+        } else {
+            let newUserMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
+            newUserMainInfo.gender = gender.rawValue
+            self.updateMainInfoContext()
+        }
     }
     
-    func updateActivityLevel(to activitylevel: UserMainInfoModel.ActivityLevel) {
-        guard let mainInfo = self.readUserMainInfo() else { return }
-        mainInfo.activitylevel = activitylevel.rawValue
-        self.updateMainInfoContext()
+    func updateActivityLevel(to activitylevel: UserMainInfoCodableModel.ActivityLevel) {
+        if let userMainInfo = self.readUserMainInfo() {
+            userMainInfo.activitylevel = activitylevel.rawValue
+            self.updateMainInfoContext()
+        } else {
+            let newUserMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
+            newUserMainInfo.activitylevel = activitylevel.rawValue
+            self.updateMainInfoContext()
+        }
     }
     
-    func updateHeightMode(to heightMode: MeteringSetting.HeightMode) {
-        guard let mainUserInfo = self.readUserMainInfo() else { return }
-        mainUserInfo.heightMode = heightMode.rawValue
-        mainUserInfo.height = mainUserInfo.height * MeteringSetting.shared.heightMultiplier
-        self.updateMainInfoContext()
-    }
+//    func updateHeightMode(to heightMode: MeteringSetting.HeightMode) {
+//        guard let mainUserInfo = self.readUserMainInfo() else { return }
+//        mainUserInfo.heightMode = heightMode.rawValue
+//        mainUserInfo.height = mainUserInfo.height * MeteringSetting.shared.heightMultiplier
+//        self.updateMainInfoContext()
+//        if let mainUserInfo = self.readUserMainInfo() {
+//            
+//        } else {
+//            
+//        }
+//    }
+//    
+//    func updateWeightMode(to weightMode: MeteringSetting.WeightMode) {
+//        guard let mainUserInfo = self.readUserMainInfo() else { return }
+//        mainUserInfo.weightMode = weightMode.rawValue
+//        mainUserInfo.weight = mainUserInfo.weight / MeteringSetting.shared.weightMultiplier
+//        self.updateMainInfoContext()
+//    }
     
-    func updateWeightMode(to weightMode: MeteringSetting.WeightMode) {
-        guard let mainUserInfo = self.readUserMainInfo() else { return }
-        mainUserInfo.weightMode = weightMode.rawValue
-        mainUserInfo.weight = mainUserInfo.weight / MeteringSetting.shared.weightMultiplier
-        self.updateMainInfoContext()
-    }
-    
-    func updateUserMainInfo(to userMainInfo: UserMainInfoModel) {
+    func updateUserMainInfo(to userMainInfo: UserMainInfoCodableModel) {
         if let mainUserInfo = self.readUserMainInfo() {
             mainUserInfo.age = Int64(userMainInfo.age ?? 0)
             mainUserInfo.height = userMainInfo.height ?? 0
@@ -151,7 +171,6 @@ class CoreDataManager {
     }
     
     func deleteUserMainInfoData(completion: @escaping () -> Void) {
-       // let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: EntitiesName.mainInfo.rawValue)
         let fetchRequest: NSFetchRequest<MainInfoManagedObject> = MainInfoManagedObject.fetchRequest()
         guard let result = try? self.mainInfoContext.fetch(fetchRequest) else { return }
         for object in result {
@@ -171,7 +190,7 @@ class CoreDataManager {
         }
     }
     
-    func removeAllTraining(_ trainingListForRemoving: [TrainingManagedObject]) {
+    func removeChoosenTrainings(_ trainingListForRemoving: [TrainingManagedObject]) {
         for train in trainingListForRemoving {
             self.trainInfoContext.delete(train)
         }
@@ -251,7 +270,6 @@ class CoreDataManager {
         }
     }
     
-    
     func removeExercise(_ exercise: ExerciseManagedObject, from train: TrainingManagedObject) {
         train.removeFromExercises(exercise)
         self.updateTrainInfoContext()
@@ -269,7 +287,7 @@ class CoreDataManager {
     
     func changeAproachAt(_ index: Int,
                          in exercise: ExerciseManagedObject,
-                         to weight: Float,
+                         with weight: Float,
                          and reps: Int) {
         let changedAproach = exercise.aproachesArray[index]
         changedAproach.weight = weight
@@ -284,7 +302,34 @@ class CoreDataManager {
         self.updateTrainInfoContext()
     }
     
-    func removeAllUserData() {
+    func updateUserTrainInfoFrom(_ trainingArray: [TrainingCodableModel]) {
+        for training in trainingArray {
+            let newTrain = TrainingManagedObject(context: self.trainInfoContext)
+            newTrain.formatedDate = training.formatedDate
+            newTrain.date = training.date
+            for exercice in training.exerciceArray {
+                let newExercice = ExerciseManagedObject(context: self.trainInfoContext)
+                newExercice.name = exercice.name
+                newExercice.subgroupName = exercice.subgroupName
+                newExercice.groupName = exercice.groupName
+                newExercice.id = Int64(exercice.id)
+                newExercice.training = newTrain
+                newTrain.addToExercises(newExercice)
+                for aproach in exercice.aproachlist {
+                    let newAproah = AproachManagedObject(context: self.trainInfoContext)
+                    newAproah.number = Int64(aproach.number)
+                    newAproah.reps = Int64(aproach.reps)
+                    newAproah.weight = aproach.weight
+                    newAproah.weightMode = aproach.weightMode
+                    newAproah.exercise = newExercice
+                    newExercice.addToAproaches(newAproah)
+                }
+            }
+        }
+        self.updateTrainInfoContext()
+    }
+    
+    func removeAllUserData(_ completionHandler: @escaping () -> Void) {
         let fetchMainInfoRequest: NSFetchRequest<MainInfoManagedObject> = MainInfoManagedObject.fetchRequest()
         let fetchTrainInfoRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
         if let mainInfoList = try? self.mainInfoContext.fetch(fetchMainInfoRequest) {
@@ -297,6 +342,9 @@ class CoreDataManager {
                 self.trainInfoContext.delete(object)
             }
         }
+        self.updateMainInfoContext()
+        self.updateTrainInfoContext()
+        completionHandler()
     }
     
     //MARK: - Initialization

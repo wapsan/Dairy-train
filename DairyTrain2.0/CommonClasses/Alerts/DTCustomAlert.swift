@@ -455,10 +455,10 @@ class DTCustomAlert: UIView {
                     let tappedInfoViewValue = self.tappedInfoView?.type else { return }
                 switch tappedInfoViewValue {
                 case .gender:
-                    guard let newGenderValue = UserMainInfoModel.Gender.init(rawValue: buttonTittle) else { return }
+                    guard let newGenderValue = UserMainInfoCodableModel.Gender.init(rawValue: buttonTittle) else { return }
                     CoreDataManager.shared.updateGender(to: newGenderValue)
                 case .activityLevel:
-                    guard let newActivityLevelValue = UserMainInfoModel.ActivityLevel.init(rawValue: buttonTittle) else { return }
+                    guard let newActivityLevelValue = UserMainInfoCodableModel.ActivityLevel.init(rawValue: buttonTittle) else { return }
                     CoreDataManager.shared.updateActivityLevel(to: newActivityLevelValue)
                 default:
                     break
@@ -480,7 +480,7 @@ class DTCustomAlert: UIView {
         guard let reps = Int(self.repsTextField.text ?? "0") else { return }
         guard let weight = Float(self.weightTextField.text ?? "0") else { return }
         if let exercise = self.exercice {
-            CoreDataManager.shared.changeAproachAt(index, in: exercise, to: weight, and: reps)
+            CoreDataManager.shared.changeAproachAt(index, in: exercise, with: weight, and: reps)
         }
     }
       

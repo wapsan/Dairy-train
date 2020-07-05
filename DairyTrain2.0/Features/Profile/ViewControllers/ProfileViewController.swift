@@ -169,7 +169,7 @@ class ProfileViewController: MainTabBarItemVC {
         do {
             try firebaseAuth.signOut()
             DTSettingManager.shared.deleteUserToken()
-            CoreDataManager.shared.deleteUserMainInfoData(completion: { [weak self] in
+            CoreDataManager.shared.removeAllUserData({[weak self] in
                 guard let self = self else { return }
                 let mainLoginVC = LoginViewController()
                 mainLoginVC.modalPresentationStyle = .overFullScreen

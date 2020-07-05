@@ -40,9 +40,9 @@ class CaloriesCalculator {
     
     private var weightMode: MeteringSetting.WeightMode?
     private var heightMode: MeteringSetting.HeightMode?
-    private var gender: UserMainInfoModel.Gender?
+    private var gender: UserMainInfoCodableModel.Gender?
     
-    private var activityLevel: UserMainInfoModel.ActivityLevel? {
+    private var activityLevel: UserMainInfoCodableModel.ActivityLevel? {
         willSet {
             switch newValue {
             case .low:
@@ -87,7 +87,7 @@ class CaloriesCalculator {
         return [loseWeightInfo, balanceInfo, gainWeightInfo]
     }
     
-    func getUserParameters(from userMainInfo: UserMainInfoModel) {
+    func getUserParameters(from userMainInfo: UserMainInfoCodableModel) {
         guard let gender = userMainInfo.gender,
             let activityLevel = userMainInfo.activityLevel,
             let age = userMainInfo.age,
