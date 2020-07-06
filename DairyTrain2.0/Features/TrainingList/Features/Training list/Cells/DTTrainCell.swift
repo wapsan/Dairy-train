@@ -8,12 +8,12 @@ class DTTrainCell: UICollectionViewCell {
     //MARK: - GUI Properties
     private lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .viewFlipsideBckgoundColor
-        view.layer.shadowColor = UIColor.darkGray.cgColor
-        view.layer.shadowOffset = .init(width: 0, height: 5)
-        view.layer.shadowOpacity = 5
-        view.layer.cornerRadius = 25
-        view.layer.borderColor = UIColor.black.cgColor
+//        view.backgroundColor = .viewFlipsideBckgoundColor
+//        view.layer.shadowColor = UIColor.darkGray.cgColor
+//        view.layer.shadowOffset = .init(width: 0, height: 5)
+//        view.layer.shadowOpacity = 5
+//        view.layer.cornerRadius = 25
+//        view.layer.borderColor = UIColor.black.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -85,9 +85,15 @@ class DTTrainCell: UICollectionViewCell {
         super.init(frame: frame)
         self.initCell()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+//
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let gradient = CAGradientLayer.getGradientFor(self.containerView)
+        self.containerView.layer.insertSublayer(gradient, at: 0)
     }
     
     //MARK: - Private methods

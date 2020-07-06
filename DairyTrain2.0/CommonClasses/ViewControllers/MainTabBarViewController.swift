@@ -83,7 +83,7 @@ class MainTabBarViewController: UITabBarController {
                     let xPosition = itemSize.width * CGFloat(index)
                     let separator = UIView(frame: CGRect(
                         x: xPosition, y: 0, width: 1, height: height))
-                    separator.backgroundColor = UIColor.black
+                    separator.backgroundColor = UIColor.white
                     tabBar.insertSubview(separator, at: 1)
                 }
             }

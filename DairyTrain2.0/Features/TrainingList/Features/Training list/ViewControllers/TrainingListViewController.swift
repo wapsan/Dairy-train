@@ -1,6 +1,6 @@
 import UIKit
 
-class TrainingListViewController: MainTabBarItemVC {
+class TrainingListViewController: DTBackgroundedViewController {
     
     //MARK: - Private properties
     private lazy var isTrainingChanged: Bool = false
@@ -10,6 +10,7 @@ class TrainingListViewController: MainTabBarItemVC {
     private var trainingListForDeleting: [TrainingManagedObject] {
         return self.trainingForDeleting.values.map({ $0 })
     }
+    
     
     //MARK: - Properties
     override var isEditing: Bool {
@@ -27,6 +28,7 @@ class TrainingListViewController: MainTabBarItemVC {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(DTTrainCell.self,
@@ -72,8 +74,9 @@ class TrainingListViewController: MainTabBarItemVC {
         self.setUpViewController()
         self.setUpTrainList()
         self.setUpEditingButton()
+        self.setBackgroundImageTo(UIImage.trainingListBackground)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("")

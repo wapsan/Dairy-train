@@ -46,18 +46,20 @@ class DTTrainedMusclesView: UIView {
     }
     
     private func initView() {
-        self.backgroundColor = .viewFlipsideBckgoundColor
+        self.backgroundColor = .clear
         self.addSubview(self.titleLabel)
         self.addSubview(self.subgroupCollectionList)
         self.setUpConstraints()
-        self.setDefaultLayer()
     }
     
-    private func setDefaultLayer() {
-        self.layer.shadowColor = UIColor.darkGray.cgColor
-        self.layer.shadowOffset = .init(width: 0, height: 5)
-        self.layer.shadowOpacity = 5
-        self.layer.cornerRadius = 25
+    override func layoutSubviews() {
+       super.layoutSubviews()
+        self.setGradientLayer()
+    }
+    
+    private func setGradientLayer() {
+        let gradientLayer = CAGradientLayer.getGradientFor(self)
+        self.layer.insertSublayer(gradientLayer, at: 0)
     }
 
     //MARK: - Setter

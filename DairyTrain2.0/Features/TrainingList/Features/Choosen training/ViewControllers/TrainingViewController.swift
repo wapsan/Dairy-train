@@ -11,6 +11,7 @@ class TrainingViewController: MuscleGroupsViewController {
         self.addObserverForChangingTraining()
         self.setUpTableCell()
         self.addObserverForWeightModeChanged()
+        self.setBackgroundImageTo(UIImage.currentTrainbackground)
         self.title = "Train"
     }
     

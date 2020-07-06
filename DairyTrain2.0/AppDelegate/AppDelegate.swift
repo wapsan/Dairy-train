@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DTSettingManager.shared.activateDefaultSetting()
         AppAuthentication.shared.initAuth()
         self.initStartViewController()
-        UINavigationBar.appearance().tintColor = .red
+        UINavigationBar.appearance().tintColor = .white
         return true
     }
     

@@ -13,6 +13,10 @@ extension UIColor {
                                           green: 20 / 255,
                                           blue: 60 / 255,
                                           alpha: 1)
+    static let darkBordoColor: UIColor = .init(red: 85 / 255,
+                                               green: 13 / 255,
+                                               blue: 12 / 255,
+                                               alpha: 1)
 }
 
 

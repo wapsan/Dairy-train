@@ -31,7 +31,7 @@ class DTHeaderView: UIView {
     
     //MARK: - Private methods
     private func viewInit() {
-        self.backgroundColor = .black
+        self.backgroundColor = .clear
         self.addSubview(self.titleLabel)
         self.addSubview(self.whiteLineUnderLabel)
         self.setUpConstraints()

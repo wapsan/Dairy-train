@@ -53,4 +53,11 @@ extension UIImage {
     static let heightBackgroundImage = UIImage(named: "heightInfoViewBackground")
     static let totalTraininBackgroundImage = UIImage(named: "totalTraininfoViewBackground")
     static let weightBackgroundImage = UIImage(named: "weightInfoViewBackground")
+    static let totalRepsBackgroundImage = UIImage(named: "totalRepsBackground")
+    static let totalAproachBackgroundImage = UIImage(named: "totalAproachBackground")
+    static let avareProjectileWeightBackgroundImage = UIImage(named: "avareProjectileWeightBackground")
+    static let totalTrainingWeightbackgroundImage = UIImage(named: "totalTrainingWeightbackground")
+    static let activitiesBackGroundImage = UIImage(named: "activitiesBackGrounImage")
+    static let currentTrainbackground = UIImage(named: "currentTrainbackground")
+    static let trainingListBackground = UIImage(named: "trainingListBackground")
 }

@@ -21,6 +21,8 @@
 		1325A0F22495506700349E47 /* CurrentTrainingFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1325A0F12495506700349E47 /* CurrentTrainingFileManager.swift */; };
 		132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132D958B2485809B006E5A41 /* AppAuthentication.swift */; };
 		132F588F249A87F00089FA09 /* DTSplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F588E249A87F00089FA09 /* DTSplashScreenViewController.swift */; };
+		13344E5124B3402E00BE3D65 /* CAGradientLayer+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13344E5024B3402E00BE3D65 /* CAGradientLayer+Ex.swift */; };
+		13344E5324B3619500BE3D65 /* DTBackgroundedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13344E5224B3619500BE3D65 /* DTBackgroundedViewController.swift */; };
 		1335B2692495183300D8276F /* DTFirebaseFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335B2682495183300D8276F /* DTFirebaseFileManager.swift */; };
 		1335CBB02465AC03009C2E20 /* DTStyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */; };
 		133A7BE224AE13D900409D3F /* AproachCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133A7BE124AE13D900409D3F /* AproachCodableModel.swift */; };
@@ -113,6 +115,8 @@
 		1325A0F12495506700349E47 /* CurrentTrainingFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTrainingFileManager.swift; sourceTree = "<group>"; };
 		132D958B2485809B006E5A41 /* AppAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthentication.swift; sourceTree = "<group>"; };
 		132F588E249A87F00089FA09 /* DTSplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSplashScreenViewController.swift; sourceTree = "<group>"; };
+		13344E5024B3402E00BE3D65 /* CAGradientLayer+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Ex.swift"; sourceTree = "<group>"; };
+		13344E5224B3619500BE3D65 /* DTBackgroundedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTBackgroundedViewController.swift; sourceTree = "<group>"; };
 		1335B2682495183300D8276F /* DTFirebaseFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTFirebaseFileManager.swift; sourceTree = "<group>"; };
 		1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTStyledTextField.swift; sourceTree = "<group>"; };
 		133A7BE124AE13D900409D3F /* AproachCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachCodableModel.swift; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 				1396F5F9248392760012A76A /* UIImage+Ex.swift */,
 				13786E1C2478271C0084E48C /* NotificationName+Ex.swift */,
 				131369392461B1C200372F26 /* String+Ex.swift */,
+				13344E5024B3402E00BE3D65 /* CAGradientLayer+Ex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -782,6 +787,7 @@
 			children = (
 				13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */,
 				13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */,
+				13344E5224B3619500BE3D65 /* DTBackgroundedViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1114,6 +1120,7 @@
 				13EDD9B7247AAF63008EE212 /* Train.swift in Sources */,
 				1313693A2461B1C200372F26 /* String+Ex.swift in Sources */,
 				13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */,
+				13344E5124B3402E00BE3D65 /* CAGradientLayer+Ex.swift in Sources */,
 				139D531B24753D060028AE6A /* SettingCore.swift in Sources */,
 				1393EDFD24A634B600EBD938 /* TrainingManagedObject+CoreDataProperties.swift in Sources */,
 				133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */,
@@ -1164,6 +1171,7 @@
 				139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */,
 				13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */,
 				135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */,
+				13344E5324B3619500BE3D65 /* DTBackgroundedViewController.swift in Sources */,
 				139FE9D3247838EF00B22C40 /* DTActivitiesCell.swift in Sources */,
 				13EDD9BF247AB9A4008EE212 /* ExerciseVC.swift in Sources */,
 				13C0EEE824A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift in Sources */,

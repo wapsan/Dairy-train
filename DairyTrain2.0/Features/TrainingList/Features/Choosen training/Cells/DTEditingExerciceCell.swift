@@ -15,11 +15,6 @@ class DTEditingExerciceCell: UITableViewCell {
     //MARK: - GUI Properties
     private var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .viewFlipsideBckgoundColor
-        view.layer.cornerRadius = 20
-        view.layer.shadowColor = UIColor.darkGray.cgColor
-        view.layer.shadowOffset = .init(width: 0, height: 5)
-        view.layer.shadowOpacity = 5
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -91,8 +86,8 @@ class DTEditingExerciceCell: UITableViewCell {
     //MARK: - Layout subviews
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.containerView.layer.cornerRadius = 30
-        self.containerView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+        let gradient = CAGradientLayer.getGradientFor(self.containerView)
+        self.containerView.layer.insertSublayer(gradient, at: 0)
     }
     
     //MARK: - Initialization

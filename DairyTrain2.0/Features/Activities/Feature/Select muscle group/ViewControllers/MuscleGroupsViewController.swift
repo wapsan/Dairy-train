@@ -1,6 +1,6 @@
 import UIKit
 
-class MuscleGroupsViewController: MainTabBarItemVC {
+class MuscleGroupsViewController: DTBackgroundedViewController {
     
     //MARK: - Private properties
     private lazy var muscleGroups = MuscleGroup().groups
@@ -33,20 +33,8 @@ class MuscleGroupsViewController: MainTabBarItemVC {
         self.setUpTableView()
         
         self.view.backgroundColor = .clear
-        let gradientLayer = CAGradientLayer()
-           gradientLayer.colors = [UIColor.red.cgColor, UIColor.viewFlipsideBckgoundColor.cgColor]
-           gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = self.view.bounds
-           gradientLayer.cornerRadius = 30
-           gradientLayer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
-        //   gradientLayer.borderColor = UIColor.red.cgColor
-           gradientLayer.borderWidth = 1
-           gradientLayer.startPoint = CGPoint(x: 1, y: 0)
-           gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-           gradientLayer.shadowColor = UIColor.darkGray.cgColor
-           gradientLayer.shadowOffset = .init(width: 0, height: 5)
-           gradientLayer.shadowOpacity = 5
-        self.view.layer.insertSublayer(gradientLayer, at:0)
+        self.setBackgroundImageTo(UIImage.activitiesBackGroundImage)
+
     }
     
     //MARK: - Private methods
@@ -65,7 +53,7 @@ class MuscleGroupsViewController: MainTabBarItemVC {
             self.tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
-        
+
         NSLayoutConstraint.activate([
             self.headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             self.headerView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),

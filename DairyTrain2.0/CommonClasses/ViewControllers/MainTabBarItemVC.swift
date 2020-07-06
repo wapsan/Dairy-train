@@ -16,8 +16,7 @@ class MainTabBarItemVC: UIViewController {
     //MARK: - Private methods
     private func setUpCurrentTabBarController() {
         self.view.backgroundColor = .black
-        
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         self.navigationController?.navigationBar.isTranslucent = false
