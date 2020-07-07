@@ -59,4 +59,15 @@ class LocalizedString {
     static let selectExercises = "Select exercises"
     static let alertAddThisExercisesToTrain = "Add this exercice to train?"
     static let exercisesAdded = "Exercises added!"
+    
+    //MARK: - Setting
+    static let colorTheme = "Color theme"
+    static let theme = "Theme"
+    static let weightMode = "Weight mode"
+    static let mode = "Mode"
+    static let heightMode = "Height mode"
+    static let synhronization = "Synhronization"
+    static let metric = "Metric"
+    static let style = "Style"
+    static let cloydSynhronization = "Cloud synchronization"
 }

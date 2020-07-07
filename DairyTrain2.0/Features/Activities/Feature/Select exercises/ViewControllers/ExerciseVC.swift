@@ -46,7 +46,6 @@ class ExercicesViewController: MuscleGroupsViewController {
     }
     
     private func addExercicesComplition() {
-     //   CoreDataManager.shared.addExercisesToTtrain(self.selectedExercices)
         if CoreDataManager.shared.addExercisesToTrain(self.selectedExercices) {
             NotificationCenter.default.post(name: .addNewTrain,
                                                         object: nil,
@@ -107,31 +106,35 @@ extension ExercicesViewController {
                                                  for: indexPath)
         let exercise = self.exercices[indexPath.row]
         (cell as? DTActivitiesCell)?.setCellFor(exercise)
-        
-        if exercise.isSelected {
-            (cell as? DTActivitiesCell)?.setBackroundColorTo(.red)
-            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-        } else {
-            (cell as? DTActivitiesCell)?.setBackroundColorTo(.viewFlipsideBckgoundColor)
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
+        //TODO: - Chek this code
+//        if exercise.isSelected {
+//            //(cell as? DTActivitiesCell)?.setSelectedBackgroundColor()
+//            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+//        } else {
+//           // (cell as? DTActivitiesCell)?.setUnselectedBackgroundColor()
+//            tableView.deselectRow(at: indexPath, animated: true)
+//        }
         return cell
     }
   
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
+            cell.setSelectedBackgroundColor()
+        }
         self.exercices[indexPath.row].isSelected = true
         let exercice = exercices[indexPath.row]
         self.selectedExercices.append(exercice)
         self.setAddExercicesButton()
-        self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
+            cell.setUnselectedBackgroundColor()
+        }
         self.exercices[indexPath.row].isSelected = false
         self.selectedExercices = self.selectedExercices.filter { (exercice) -> Bool in
             self.exercices[indexPath.row].name != exercice.name
         }
         self.setAddExercicesButton()
-        self.tableView.reloadData()
     }
 }

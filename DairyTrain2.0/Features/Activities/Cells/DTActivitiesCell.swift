@@ -5,6 +5,21 @@ class DTActivitiesCell: UITableViewCell {
     //MARK: - Static cellID
     static let cellID: String = "DTActivitiesCell"
     
+    //MARK: - CALayers
+    private lazy var defaultGradient: CAGradientLayer = {
+        let gradient =  CAGradientLayer.getChangedGradient(self.containerView,
+                                                           with: .darkBordoColor,
+                                                           and: .black)
+        return gradient
+    }()
+    
+    private lazy var selectedGradient: CAGradientLayer = {
+        let gradient = CAGradientLayer.getDefaultGradientFor(self.containerView,
+                                                             with: .red,
+                                                             and: .black)
+        return gradient
+    }()
+    
     //MARK: - GUI Properties
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -66,15 +81,20 @@ class DTActivitiesCell: UITableViewCell {
         self.muscleGroupImage.image = exercice.muscleSubGroupImage
     }
     
-    func setBackroundColorTo(_ color: UIColor) {
-        self.containerView.backgroundColor = color
+    func setUnselectedBackgroundColor() {
+        self.defaultGradient.bringToFront()
+    }
+    
+    func setSelectedBackgroundColor() {
+        self.selectedGradient.bringToFront()
     }
     
     //MARK: - Publick methods
     override func layoutSubviews() {
         super.layoutSubviews()
-        let gradient = CAGradientLayer.getGradientFor(self.containerView)
-        self.containerView.layer.insertSublayer(gradient, at: 0)
+        self.containerView.layer.addSublayer(self.defaultGradient)
+        self.containerView.layer.addSublayer(self.selectedGradient)
+        self.defaultGradient.bringToFront()
     }
     
     //MARK: - Constraints

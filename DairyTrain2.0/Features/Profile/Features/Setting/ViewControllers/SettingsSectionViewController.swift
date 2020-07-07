@@ -3,9 +3,10 @@ import UIKit
 class SettingsSectionViewController: UITableViewController {
     
     //MARK: - Private properties
-    private lazy var settingModel = [SettingSection(type: .metrics),
-                                     SettingSection(type: .style),
-                                     SettingSection(type: .synchronization)]
+    private lazy var settingModel = [SettingSectionModel(type: .metrics),
+                                         SettingSectionModel(type: .style),
+                                         SettingSectionModel(type: .synchronization)]
+    
     private lazy var navigationTittle = LocalizedString.setting
     private lazy var lastSynhronizeDate = CoreDataManager.shared.readUserMainInfo()?.dateOfLastUpdate
                                           ?? "Data don't up to date."
@@ -81,9 +82,8 @@ extension SettingsSectionViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.settingModel[indexPath.section].type == .synchronization {
-            
-           // self.az = DateHelper.shared.currentDateForSynhronize
             CoreDataManager.shared.updateDateOfLastUpdateTo(DateHelper.shared.currentDateForSynhronize)
+            self.lastSynhronizeDate = DateHelper.shared.currentDateForSynhronize
             DTFirebaseFileManager.shared.synhronizeDataToServer(completion: {
                 NotificationCenter.default.post(name: .dataWasSynhronize, object: nil)
             })

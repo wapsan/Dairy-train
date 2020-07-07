@@ -58,7 +58,7 @@ class DTTrainedMusclesView: UIView {
     }
     
     private func setGradientLayer() {
-        let gradientLayer = CAGradientLayer.getGradientFor(self)
+        let gradientLayer = CAGradientLayer.getDefaultGradientFor(self, with: .darkBordoColor, and: .black)
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
 

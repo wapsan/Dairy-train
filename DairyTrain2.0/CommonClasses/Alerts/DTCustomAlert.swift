@@ -444,7 +444,6 @@ class DTCustomAlert: UIView {
         default:
             break
         }
-      //  DTFirebaseFileManager.shared.updateMainUserInfoInFirebase()
     }
     
     private func writeListSelectionInfo() {
@@ -465,7 +464,6 @@ class DTCustomAlert: UIView {
                 }
             }
         }
-      //  DTFirebaseFileManager.shared.updateMainUserInfoInFirebase()
     }
     
     private func writeNewAproachInfo() {

@@ -10,7 +10,6 @@
 		131107C3246582210023A29A /* UIView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131107C2246582210023A29A /* UIView+Ex.swift */; };
 		1313693A2461B1C200372F26 /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131369392461B1C200372F26 /* String+Ex.swift */; };
 		13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13151D4924715C9D002C15AA /* UIColor+Ex.swift */; };
-		1315413F24ABB5CD00CDFFF4 /* NewSettingCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1315413E24ABB5CD00CDFFF4 /* NewSettingCore.swift */; };
 		131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131733722490E08600292D84 /* DTExerciseCell+Ex.swift */; };
 		131B9F9D24ADF2AC004FE9AD /* DTSynhronizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */; };
 		13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A3D247E4A6300AB7419 /* DTTrainCell.swift */; };
@@ -35,6 +34,7 @@
 		13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */; };
 		13479F3B247BD84A002FFB4E /* TrainingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F3A247BD84A002FFB4E /* TrainingListViewController.swift */; };
 		134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */; };
+		134DF5B524B4E50D007A7B8A /* ColorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DF5B424B4E50D007A7B8A /* ColorSetting.swift */; };
 		135B8815248132360032251D /* DTAproachCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B8814248132360032251D /* DTAproachCell.swift */; };
 		135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F22892494296F00EEE140 /* StatisticsModel.swift */; };
 		136570D12491259C00BF926B /* CommonStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136570D02491259C00BF926B /* CommonStatisticsViewController.swift */; };
@@ -65,8 +65,7 @@
 		139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D530C2473DF790028AE6A /* AlertHelper.swift */; };
 		139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D53102474035C0028AE6A /* DTSettingCell.swift */; };
 		139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531224740BCE0028AE6A /* SettingViewController.swift */; };
-		139D531924748BE00028AE6A /* ColorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531824748BE00028AE6A /* ColorSetting.swift */; };
-		139D531B24753D060028AE6A /* SettingCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531A24753D060028AE6A /* SettingCore.swift */; };
+		139D531B24753D060028AE6A /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531A24753D060028AE6A /* SettingModel.swift */; };
 		139D688424A220800094E498 /* MenuPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D688324A220800094E498 /* MenuPresentationViewController.swift */; };
 		139D688624A223B70094E498 /* DTMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D688524A223B70094E498 /* DTMenuButton.swift */; };
 		139FE9D3247838EF00B22C40 /* DTActivitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */; };
@@ -81,6 +80,7 @@
 		13C0EEE824A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0EEE624A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift */; };
 		13C0EEEB24A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0EEE924A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift */; };
 		13C0EEEC24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0EEEA24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift */; };
+		13C0F4FF24B4E24A0005A011 /* SettingSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0F4FE24B4E24A0005A011 /* SettingSectionModel.swift */; };
 		13C89D22247046D2008AEF18 /* DTRecomendationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D21247046D2008AEF18 /* DTRecomendationHeaderView.swift */; };
 		13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */; };
 		13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */; };
@@ -104,7 +104,6 @@
 		131107C2246582210023A29A /* UIView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ex.swift"; sourceTree = "<group>"; };
 		131369392461B1C200372F26 /* String+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
 		13151D4924715C9D002C15AA /* UIColor+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ex.swift"; sourceTree = "<group>"; };
-		1315413E24ABB5CD00CDFFF4 /* NewSettingCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSettingCore.swift; sourceTree = "<group>"; };
 		131733722490E08600292D84 /* DTExerciseCell+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTExerciseCell+Ex.swift"; sourceTree = "<group>"; };
 		131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSynhronizeCell.swift; sourceTree = "<group>"; };
 		13243A3D247E4A6300AB7419 /* DTTrainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainCell.swift; sourceTree = "<group>"; };
@@ -131,6 +130,7 @@
 		13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsViewController.swift; sourceTree = "<group>"; };
 		13479F3A247BD84A002FFB4E /* TrainingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListViewController.swift; sourceTree = "<group>"; };
 		134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationsViewController.swift; sourceTree = "<group>"; };
+		134DF5B424B4E50D007A7B8A /* ColorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetting.swift; sourceTree = "<group>"; };
 		135B8814248132360032251D /* DTAproachCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAproachCell.swift; sourceTree = "<group>"; };
 		135F22892494296F00EEE140 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
 		136570D02491259C00BF926B /* CommonStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStatisticsViewController.swift; sourceTree = "<group>"; };
@@ -161,8 +161,7 @@
 		139D530C2473DF790028AE6A /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		139D53102474035C0028AE6A /* DTSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSettingCell.swift; sourceTree = "<group>"; };
 		139D531224740BCE0028AE6A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		139D531824748BE00028AE6A /* ColorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetting.swift; sourceTree = "<group>"; };
-		139D531A24753D060028AE6A /* SettingCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCore.swift; sourceTree = "<group>"; };
+		139D531A24753D060028AE6A /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		139D688324A220800094E498 /* MenuPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresentationViewController.swift; sourceTree = "<group>"; };
 		139D688524A223B70094E498 /* DTMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMenuButton.swift; sourceTree = "<group>"; };
 		139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTActivitiesCell.swift; sourceTree = "<group>"; };
@@ -177,6 +176,7 @@
 		13C0EEE624A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13C0EEE924A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AproachManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		13C0EEEA24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AproachManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13C0F4FE24B4E24A0005A011 /* SettingSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionModel.swift; sourceTree = "<group>"; };
 		13C89D21247046D2008AEF18 /* DTRecomendationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTRecomendationHeaderView.swift; sourceTree = "<group>"; };
 		13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDRecomendationCell.swift; sourceTree = "<group>"; };
 		13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoAlertButton.swift; sourceTree = "<group>"; };
@@ -302,6 +302,7 @@
 		13151D4B247169D9002C15AA /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				13C0F50024B4E2940005A011 /* Models */,
 				13A9E7BE2494E0B400DEDCBE /* Utilities */,
 				132125D42494DAF000FDCDB4 /* Cells */,
 				132125D32494DADB00FDCDB4 /* ViewControllers */,
@@ -777,7 +778,7 @@
 		13A9E7BE2494E0B400DEDCBE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				13AD1AFC2475C51600D5B39F /* Setting helper */,
+				13C0F4FC24B4E1E40005A011 /* UserDefault setting manager */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -790,18 +791,6 @@
 				13344E5224B3619500BE3D65 /* DTBackgroundedViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		13AD1AFC2475C51600D5B39F /* Setting helper */ = {
-			isa = PBXGroup;
-			children = (
-				137D55B524897B6300EFBAB6 /* DTSettingManager.swift */,
-				139D531A24753D060028AE6A /* SettingCore.swift */,
-				139D531824748BE00028AE6A /* ColorSetting.swift */,
-				13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */,
-				1315413E24ABB5CD00CDFFF4 /* NewSettingCore.swift */,
-			);
-			path = "Setting helper";
 			sourceTree = "<group>";
 		};
 		13AF91DD248A2D21006211B7 /* Labels */ = {
@@ -872,6 +861,25 @@
 				13C0EEEA24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift */,
 			);
 			path = "Aproach entity";
+			sourceTree = "<group>";
+		};
+		13C0F4FC24B4E1E40005A011 /* UserDefault setting manager */ = {
+			isa = PBXGroup;
+			children = (
+				137D55B524897B6300EFBAB6 /* DTSettingManager.swift */,
+			);
+			path = "UserDefault setting manager";
+			sourceTree = "<group>";
+		};
+		13C0F50024B4E2940005A011 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				13C0F4FE24B4E24A0005A011 /* SettingSectionModel.swift */,
+				139D531A24753D060028AE6A /* SettingModel.swift */,
+				13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */,
+				134DF5B424B4E50D007A7B8A /* ColorSetting.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		13F11584249E15B900B6B7D8 /* Features */ = {
@@ -1100,11 +1108,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				134DF5B524B4E50D007A7B8A /* ColorSetting.swift in Sources */,
 				1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */,
 				139B4ADB249C9D3500409B6E /* DTDownloadHud.swift in Sources */,
 				1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */,
 				13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */,
-				1315413F24ABB5CD00CDFFF4 /* NewSettingCore.swift in Sources */,
 				138E8224249F9BBB00A60885 /* MenuViewController.swift in Sources */,
 				13C0EEDD24A529DD00F55C54 /* UserTrainingInfo.xcdatamodeld in Sources */,
 				13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */,
@@ -1114,14 +1122,13 @@
 				134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */,
 				13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */,
 				13FCA9C3248EF7E00056E659 /* DTCustomAlert.swift in Sources */,
-				139D531924748BE00028AE6A /* ColorSetting.swift in Sources */,
 				13243A41247E768B00AB7419 /* DateHelper.swift in Sources */,
 				13479F3B247BD84A002FFB4E /* TrainingListViewController.swift in Sources */,
 				13EDD9B7247AAF63008EE212 /* Train.swift in Sources */,
 				1313693A2461B1C200372F26 /* String+Ex.swift in Sources */,
 				13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */,
 				13344E5124B3402E00BE3D65 /* CAGradientLayer+Ex.swift in Sources */,
-				139D531B24753D060028AE6A /* SettingCore.swift in Sources */,
+				139D531B24753D060028AE6A /* SettingModel.swift in Sources */,
 				1393EDFD24A634B600EBD938 /* TrainingManagedObject+CoreDataProperties.swift in Sources */,
 				133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */,
 				13C0EEEC24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift in Sources */,
@@ -1187,6 +1194,7 @@
 				13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */,
 				13EC525F24810E4A00A05BCA /* DTEditingExerciceCell.swift in Sources */,
 				1325A0F024954FBC00349E47 /* CurrentTrainingModel.swift in Sources */,
+				13C0F4FF24B4E24A0005A011 /* SettingSectionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

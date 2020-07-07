@@ -3,14 +3,14 @@ import Foundation
 class MeteringSetting {
     
     //MARK: - Enums
-    enum WeightMode: String, Codable {
-        case kg
-        case lbs
+    enum WeightMode: String, Codable, CaseIterable {
+        case kg = "Kg."
+        case lbs = "Lbs."
     }
     
-    enum HeightMode: String, Codable {
-        case cm
-        case ft
+    enum HeightMode: String, Codable, CaseIterable {
+        case cm = "Cm."
+        case ft = "Ft."
     }
     
     //MARK: - Singletone properties
@@ -42,13 +42,13 @@ class MeteringSetting {
     var weightDescription: String {
         switch self.weightMode {
         case .kg:
-           return self.kgDescription
+            return self.kgDescription
         case .lbs:
-           return self.lbsDescription
+            return self.lbsDescription
         }
     }
     
-    var weightMode: WeightMode = .kg {
+    private(set) var weightMode: WeightMode = .kg {
         willSet {
             DTSettingManager.shared.setWeightMode(to: newValue)
         }
@@ -72,9 +72,18 @@ class MeteringSetting {
         }
     }
     
-    var heightMode: HeightMode = .cm {
+    private(set) var heightMode: HeightMode = .cm {
         willSet {
             DTSettingManager.shared.setHeightMode(to: newValue)
         }
+    }
+    
+    //MARK: - Setters
+    func setWeightMode(to mode: WeightMode) {
+        self.weightMode = mode
+    }
+    
+    func setHeightMode(to mode: HeightMode) {
+        self.heightMode = mode
     }
 }

@@ -97,10 +97,12 @@ class CoreDataManager {
     func updateWeight(to weight: Float) {
         if let userMainInfo = self.readUserMainInfo() {
             userMainInfo.weight = weight
+            userMainInfo.weightMode = MeteringSetting.shared.weightMode.rawValue
             self.updateMainInfoContext()
         } else {
             let newUserMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
             newUserMainInfo.weight = weight
+            newUserMainInfo.weightMode = MeteringSetting.shared.weightMode.rawValue
             self.updateMainInfoContext()
         }
     }
@@ -108,10 +110,12 @@ class CoreDataManager {
     func updateHeight(to heigth: Float) {
         if let userMainInfo = self.readUserMainInfo() {
             userMainInfo.height = heigth
+            userMainInfo.heightMode = MeteringSetting.shared.heightMode.rawValue
             self.updateMainInfoContext()
         } else {
             let newUserMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
-            newUserMainInfo.height = heigth
+             newUserMainInfo.height = heigth
+            newUserMainInfo.heightMode = MeteringSetting.shared.heightMode.rawValue
             self.updateMainInfoContext()
         }
     }

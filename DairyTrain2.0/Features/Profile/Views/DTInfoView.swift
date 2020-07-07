@@ -153,28 +153,7 @@ class DTInfoView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    override func layoutSubviews() {
- //       super.layoutSubviews()
-        
-        
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.colors = [UIColor.red.cgColor, UIColor.viewFlipsideBckgoundColor.cgColor]
-//        gradientLayer.locations = [0.0, 1.0]
-//        gradientLayer.frame = self.bounds
-//        gradientLayer.cornerRadius = 30
-//        gradientLayer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
-//     //   gradientLayer.borderColor = UIColor.red.cgColor
-//        gradientLayer.borderWidth = 1
-//        gradientLayer.startPoint = CGPoint(x: 1, y: 0)
-//        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-//        gradientLayer.shadowColor = UIColor.darkGray.cgColor
-//        gradientLayer.shadowOffset = .init(width: 0, height: 5)
-//        gradientLayer.shadowOpacity = 5
-//
-        
- //   }
-    
+
     //MARK: - Setter
     func setValueLabelTo(_ text: String) {
         self.valueLabel.text = text

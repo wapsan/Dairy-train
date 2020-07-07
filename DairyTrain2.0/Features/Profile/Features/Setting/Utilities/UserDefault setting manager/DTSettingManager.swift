@@ -7,7 +7,7 @@ class DTSettingManager {
     private init() { }
     
     //MARK: - Private properties
-    private var userDefaults = UserDefaults.standard
+    private lazy var userDefaults = UserDefaults.standard
     
     //MARK: - Enum setting key
     struct UserSettingKeys {
@@ -20,38 +20,38 @@ class DTSettingManager {
     //MARK: - Private methods
     private func setDefaultWeightMode() {
         if UserDefaults.standard.value(forKey: UserSettingKeys.weighMetricKey) == nil {
-            MeteringSetting.shared.weightMode = .kg
+            MeteringSetting.shared.setWeightMode(to: .kg)
         }
         if UserDefaults.standard.bool(forKey: UserSettingKeys.weighMetricKey) == true {
-            MeteringSetting.shared.weightMode = .kg
+            MeteringSetting.shared.setWeightMode(to: .kg)
         } else {
-            MeteringSetting.shared.weightMode = .lbs
+            MeteringSetting.shared.setWeightMode(to: .lbs)
         }
     }
     
     private func setDefaultHeightMode() {
         if UserDefaults.standard.value(forKey: UserSettingKeys.heightMetricKey) == nil {
-            MeteringSetting.shared.heightMode = .cm
+            MeteringSetting.shared.setHeightMode(to: .cm)
         }
         if UserDefaults.standard.bool(forKey: UserSettingKeys.heightMetricKey) == true {
-            MeteringSetting.shared.heightMode = .cm
+            MeteringSetting.shared.setHeightMode(to: .cm)
         } else {
-            MeteringSetting.shared.heightMode = .ft
+            MeteringSetting.shared.setHeightMode(to: .ft)
         }
     }
     
     private func setDefaultColorTheme() {
         if UserDefaults.standard.value(forKey: UserSettingKeys.colorThemeKey) == nil {
-            ColorSetting.shared.themeColor = .dark
+            ColorSetting.shared.setColotTheme(to: .dark)
         }
         if UserDefaults.standard.bool(forKey: UserSettingKeys.colorThemeKey) == true {
-            ColorSetting.shared.themeColor = .dark
+             ColorSetting.shared.setColotTheme(to: .dark)
         } else {
-            ColorSetting.shared.themeColor = .light
+             ColorSetting.shared.setColotTheme(to: .light)
         }
     }
     
-    //MARK: - Public methods
+    //MARK: - Setters
     func activateDefaultSetting() {
         self.setDefaultWeightMode()
         self.setDefaultHeightMode()

@@ -8,7 +8,7 @@ class ColorSetting {
         case light = "Light"
     }
     
-    //MARK: - Singletone Propertie
+    //MARK: - Properties
     static let shared = ColorSetting()
     
     //MARK: - Properties
@@ -18,7 +18,7 @@ class ColorSetting {
             case .dark:
                 DTSettingManager.shared.setColorTheme(to: newValue)
             case .light:
-                 DTSettingManager.shared.setColorTheme(to: newValue)
+                DTSettingManager.shared.setColorTheme(to: newValue)
             }
         }
     }
@@ -28,5 +28,3 @@ class ColorSetting {
         self.colorTheme = theme
     }
 }
-
-

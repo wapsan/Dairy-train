@@ -86,7 +86,7 @@ class DTEditingExerciceCell: UITableViewCell {
     //MARK: - Layout subviews
     override func layoutSubviews() {
         super.layoutSubviews()
-        let gradient = CAGradientLayer.getGradientFor(self.containerView)
+        let gradient = CAGradientLayer.getDefaultGradientFor(self.containerView, with: .darkBordoColor, and: .black)
         self.containerView.layer.insertSublayer(gradient, at: 0)
     }
     
@@ -141,7 +141,7 @@ class DTEditingExerciceCell: UITableViewCell {
         NSLayoutConstraint.activate([
             self.exerciceNameLabel.leftAnchor.constraint(equalTo: self.muscleSubGroupImage.rightAnchor,
                                                          constant: 8),
-            self.exerciceNameLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -8),
+            self.exerciceNameLabel.rightAnchor.constraint(equalTo: self.aproachesButtonStack.leftAnchor, constant: -8),
             self.exerciceNameLabel.centerYAnchor.constraint(equalTo: self.muscleSubGroupImage.centerYAnchor),
         ])
         

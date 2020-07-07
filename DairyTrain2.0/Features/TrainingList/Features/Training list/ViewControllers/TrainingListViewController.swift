@@ -79,7 +79,6 @@ class TrainingListViewController: DTBackgroundedViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("")
         if self.isTrainingChanged {
             self.setUpViewController()
             self.isTrainingChanged = false
@@ -169,7 +168,9 @@ class TrainingListViewController: DTBackgroundedViewController {
         guard let indexPaths = self.collectionView.indexPathsForSelectedItems else { return }
         for indexPath in indexPaths {
             if let cell = self.collectionView.cellForItem(at: indexPath) as? DTTrainCell {
-                cell.setBackgroundColorTo(.viewFlipsideBckgoundColor)
+                //cell.setBackgroundColorTo(.viewFlipsideBckgoundColor)
+                cell.setDeselectedBackground()
+               // self.collectionView.reloadItems(at: [indexPath])
                 self.collectionView.deselectItem(at: indexPath, animated: true)
             }
         }
@@ -194,6 +195,7 @@ class TrainingListViewController: DTBackgroundedViewController {
             completion: { [weak self] in
                 guard let self = self else { return }
                 self.deleteChoosenTrain()
+              //  self.deselectSelectedItem()
                 self.showDeletedTrainAlert()
         })
     }
@@ -317,7 +319,9 @@ extension TrainingListViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.isEditing {
             if let cell = collectionView.cellForItem(at: indexPath) as? DTTrainCell {
-                cell.setBackgroundColorTo(.red)
+              //  cell.setBackgroundColorTo(.red)
+                cell.setSelectedBackground()
+
             }
             self.trainingForDeleting[indexPath.row] = self.trainList[indexPath.row]
             self.setTrashButttonState()
@@ -330,10 +334,15 @@ extension TrainingListViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if self.isEditing {
             if let cell = collectionView.cellForItem(at: indexPath) as? DTTrainCell {
-                cell.setBackgroundColorTo(.viewFlipsideBckgoundColor)
+                cell.setDeselectedBackground()
+             
+                    self.trainingForDeleting.removeValue(forKey: indexPath.row)
+                    self.setTrashButttonState()
+                
+              //  cell.setBackgroundColorTo(.viewFlipsideBckgoundColor)
             }
-            self.trainingForDeleting.removeValue(forKey: indexPath.row)
-            self.setTrashButttonState()
+      //      self.trainingForDeleting.removeValue(forKey: indexPath.row)
+          //  self.setTrashButttonState()
         }
     }
     

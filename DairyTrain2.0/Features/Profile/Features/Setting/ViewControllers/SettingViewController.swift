@@ -3,11 +3,11 @@ import UIKit
 class SettingViewController: SettingsSectionViewController {
     
     //MARK: - Private properties
-    private var settingInfo: Setting?
+    private var settingInfo: SettingModel?
     
     //MARK: - Initialization
-    init(with setting: Setting) {
-        super.init(with: setting.tittle)
+    init(with setting: SettingModel) {
+        super.init(with: setting.title)
         self.tableView.allowsMultipleSelection = false
         self.tableView.sectionHeaderHeight = 10
         self.settingInfo = setting
@@ -27,8 +27,7 @@ class SettingViewController: SettingsSectionViewController {
 extension SettingViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let settingCount = self.settingInfo?.possibleList.count else { return 0 }
-        return settingCount
+        return  self.settingInfo?.possibleSetting.count ?? 0
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -38,13 +37,14 @@ extension SettingViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTSettingCell.cellID,
                                                  for: indexPath)
-        guard let settingInfo = self.settingInfo,
-            let isCheckedIn = self.settingInfo?.isChekedIn(indexPath.row) else {
-                return UITableViewCell() }
+        guard let settinginfo = self.settingInfo,
+            let isSettingSelected = self.settingInfo?.isSettingSelected(at: indexPath.row) else {
+                return UITableViewCell()
+        }
         
-        (cell as? DTSettingCell)?.setCurrentSettingCell(for: settingInfo, and: indexPath.row)
+        (cell as? DTSettingCell)?.setCurrentSettingCell(for: settinginfo, and: indexPath.row)
         
-        if isCheckedIn {
+        if isSettingSelected {
             (cell as? DTSettingCell)?.setCheked()
         } else {
             (cell as? DTSettingCell)?.setUncheked()
@@ -53,12 +53,12 @@ extension SettingViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.settingInfo?.header
+        return self.settingInfo?.sectionTitle
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let currentValue = self.settingInfo?.possibleSetting[indexPath.row] else { return }
-        self.settingInfo?.curenttValue = currentValue
+        self.settingInfo?.currentValue = currentValue
         self.settingWasChanged()
         self.tableView.reloadData()
     }

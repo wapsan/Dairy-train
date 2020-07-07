@@ -61,13 +61,13 @@ class DTSettingCell: UITableViewCell {
     }
     
     //MARK: - Setter
-    func setSetingSectionCell(for setting: Setting) {
-        self.mainSettingLabel.text = setting.tittle
-        self.currentSettingLabel.text = setting.curenttValue
+    func setSetingSectionCell(for setting: SettingModel) {
+        self.mainSettingLabel.text = setting.title
+        self.currentSettingLabel.text = setting.currentValue
     }
     
-    func setCurrentSettingCell(for settings: Setting, and index: Int) {
-        self.mainSettingLabel.text = settings.possibleList[index]
+    func setCurrentSettingCell(for settings: SettingModel, and index: Int) {
+        self.mainSettingLabel.text = settings.possibleSetting[index]
         self.currentSettingLabel.text = nil
         self.selectionStyle = .none
     }

@@ -5,22 +5,30 @@ class DTTrainCell: UICollectionViewCell {
     //MARK: - Static cellID
     static let cellID = "TESTDTTrainCollectionCell"
     
+    //MARK: - CALayers
+    private lazy var defaultGradient: CAGradientLayer = {
+        let gradient =  CAGradientLayer.getChangedGradient(self.containerView,
+                                                           with: .darkBordoColor,
+                                                           and: .black)
+        return gradient
+    }()
+    
+    private lazy var selectedGradient: CAGradientLayer = {
+        let gradient = CAGradientLayer.getDefaultGradientFor(self.containerView,
+                                                             with: .red,
+                                                             and: .black)
+        return gradient
+    }()
+    
     //MARK: - GUI Properties
     private lazy var containerView: UIView = {
         let view = UIView()
-//        view.backgroundColor = .viewFlipsideBckgoundColor
-//        view.layer.shadowColor = UIColor.darkGray.cgColor
-//        view.layer.shadowOffset = .init(width: 0, height: 5)
-//        view.layer.shadowOpacity = 5
-//        view.layer.cornerRadius = 25
-//        view.layer.borderColor = UIColor.black.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var imageContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -74,39 +82,33 @@ class DTTrainCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     private lazy var groupImages = [self.firstGroupImage,
-                            self.secondGroupImage,
-                            self.thirdGroupImage,
-                            self.fourthGroupImage]
+                                    self.secondGroupImage,
+                                    self.thirdGroupImage,
+                                    self.fourthGroupImage]
     
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initCell()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-//
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let gradient = CAGradientLayer.getGradientFor(self.containerView)
-        self.containerView.layer.insertSublayer(gradient, at: 0)
     }
     
     //MARK: - Private methods
     private func initCell() {
         self.backgroundColor = .clear
         self.addSubview(self.containerView)
-        self.containerView.addSubview(self.imageContainerView)
-        self.containerView.addSubview(self.dateLabel)
+        self.addSubview(self.imageContainerView)
+        self.addSubview(self.dateLabel)
         for image in self.groupImages {
-            self.containerView.addSubview(image)
+            self.addSubview(image)
         }
-        self.imageContainerView.addSubview(self.horizontalLine)
-        self.imageContainerView.addSubview(self.verticalLine)
+        self.addSubview(self.horizontalLine)
+        self.addSubview(self.verticalLine)
         self.setUpConstraints()
     }
     
@@ -126,6 +128,14 @@ class DTTrainCell: UICollectionViewCell {
         self.dateLabel.text = formatedDate
     }
     
+    func setSelectedBackground() {
+        self.selectedGradient.bringToFront()
+    }
+    
+    func setDeselectedBackground() {
+        self.defaultGradient.bringToFront()
+    }
+    
     func setGroupIcons(by groups: [MuscleGroup.Group]) {
         self.hideIcons()
         if self.groupImages.count >= groups.count {
@@ -139,6 +149,13 @@ class DTTrainCell: UICollectionViewCell {
                 icon.isHidden = false
             }
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.containerView.layer.addSublayer(self.defaultGradient)
+        self.containerView.layer.addSublayer(self.selectedGradient)
+        self.defaultGradient.bringToFront()
     }
     
     //MARK: - Constraints
