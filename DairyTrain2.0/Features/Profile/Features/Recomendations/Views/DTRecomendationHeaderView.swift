@@ -1,5 +1,6 @@
 import UIKit
 
+//MARK: - Protocol delegate
 protocol DTRecomendationHeaderViewDelegate: class {
     func moreInfoButtonPressed(_ sender: UIButton)
 }
@@ -10,7 +11,7 @@ class DTRecomendationHeaderView: UIView {
     weak var delegate: DTRecomendationHeaderViewDelegate?
     
     //MARK: - Private properties
-    private var moreInfobuttonIsTouched: Bool = false
+    private lazy var moreInfobuttonIsTouched: Bool = false
     
     //MARK: - GUI Properties
     private lazy var tittle: UILabel = {
@@ -25,7 +26,8 @@ class DTRecomendationHeaderView: UIView {
     private lazy var moreInfoButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage.downArrow, for: .normal)
-        button.addTarget(self, action: #selector(self.openInfoButtonPressed(_:)),
+        button.addTarget(self,
+                         action: #selector(self.openInfoButtonPressed(_:)),
                          for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -36,7 +38,7 @@ class DTRecomendationHeaderView: UIView {
         super.init(frame: .zero)
         self.initView()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

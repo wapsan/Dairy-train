@@ -16,10 +16,7 @@ class ProfileViewController: MainTabBarItemVC {
         }
     }
     
-    //DOTO: - system spacing
-    private var stackViewSpacing: CGFloat {
-        return 16 // UIScreen.main.bounds.height / 56
-    }
+    private lazy var stackViewSpacing: CGFloat = 16
     
     private var infoViews: [DTInfoView] {
         return [self.activivtyInfoView,
@@ -169,7 +166,7 @@ class ProfileViewController: MainTabBarItemVC {
         do {
             try firebaseAuth.signOut()
             DTSettingManager.shared.deleteUserToken()
-            CoreDataManager.shared.removeAllUserData({[weak self] in
+            CoreDataManager.shared.removeAllUserData({ [weak self] in
                 guard let self = self else { return }
                 let mainLoginVC = LoginViewController()
                 mainLoginVC.modalPresentationStyle = .overFullScreen

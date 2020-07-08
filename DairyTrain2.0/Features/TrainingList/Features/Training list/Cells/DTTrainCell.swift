@@ -7,7 +7,7 @@ class DTTrainCell: UICollectionViewCell {
     
     //MARK: - CALayers
     private lazy var defaultGradient: CAGradientLayer = {
-        let gradient =  CAGradientLayer.getChangedGradient(self.containerView,
+        let gradient =  CAGradientLayer.getSelectedGradientFor(self.containerView,
                                                            with: .darkBordoColor,
                                                            and: .black)
         return gradient
@@ -36,7 +36,6 @@ class DTTrainCell: UICollectionViewCell {
     private lazy var dateLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.font = .systemFont(ofSize: 20)
-        label.text = "10 May 2020"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -161,10 +160,14 @@ class DTTrainCell: UICollectionViewCell {
     //MARK: - Constraints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            self.containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            self.containerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8),
-            self.containerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8),
-            self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            self.containerView.topAnchor.constraint(equalTo: self.topAnchor,
+                                                    constant: 8),
+            self.containerView.leftAnchor.constraint(equalTo: self.leftAnchor,
+                                                     constant: 8),
+            self.containerView.rightAnchor.constraint(equalTo: self.rightAnchor,
+                                                      constant: -8),
+            self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
+                                                       constant: -8),
         ])
         
         NSLayoutConstraint.activate([
@@ -180,10 +183,14 @@ class DTTrainCell: UICollectionViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            self.dateLabel.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 8),
-            self.dateLabel.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 16),
-            self.dateLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -16),
-            self.dateLabel.bottomAnchor.constraint(equalTo: self.imageContainerView.topAnchor, constant: -8)
+            self.dateLabel.topAnchor.constraint(equalTo: self.containerView.topAnchor,
+                                                constant: 8),
+            self.dateLabel.leftAnchor.constraint(equalTo: self.containerView.leftAnchor,
+                                                 constant: 16),
+            self.dateLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor,
+                                                  constant: -16),
+            self.dateLabel.bottomAnchor.constraint(equalTo: self.imageContainerView.topAnchor,
+                                                   constant: -8)
         ])
         
         NSLayoutConstraint.activate([
@@ -195,42 +202,59 @@ class DTTrainCell: UICollectionViewCell {
                                                         constant: -8),
             self.firstGroupImage.bottomAnchor.constraint(equalTo: self.thirdGroupImage.topAnchor,
                                                          constant: -8),
-            self.firstGroupImage.heightAnchor.constraint(equalTo: self.firstGroupImage.widthAnchor, multiplier: 1),
-            self.firstGroupImage.heightAnchor.constraint(equalTo: self.secondGroupImage.heightAnchor, multiplier: 1),
-            self.firstGroupImage.heightAnchor.constraint(equalTo: self.thirdGroupImage.heightAnchor, multiplier: 1),
-            self.firstGroupImage.heightAnchor.constraint(equalTo: self.fourthGroupImage.heightAnchor, multiplier: 1)
+            self.firstGroupImage.heightAnchor.constraint(equalTo: self.firstGroupImage.widthAnchor,
+                                                         multiplier: 1),
+            self.firstGroupImage.heightAnchor.constraint(equalTo: self.secondGroupImage.heightAnchor,
+                                                         multiplier: 1),
+            self.firstGroupImage.heightAnchor.constraint(equalTo: self.thirdGroupImage.heightAnchor,
+                                                         multiplier: 1),
+            self.firstGroupImage.heightAnchor.constraint(equalTo: self.fourthGroupImage.heightAnchor,
+                                                         multiplier: 1)
         ])
         
         NSLayoutConstraint.activate([
-            self.secondGroupImage.topAnchor.constraint(equalTo: self.imageContainerView.topAnchor, constant: 0),
-            self.secondGroupImage.rightAnchor.constraint(equalTo: self.imageContainerView.rightAnchor, constant: 0),
-            self.secondGroupImage.bottomAnchor.constraint(equalTo: self.fourthGroupImage.topAnchor, constant: -8),
-            self.secondGroupImage.heightAnchor.constraint(equalTo: self.secondGroupImage.widthAnchor, multiplier: 1)
+            self.secondGroupImage.topAnchor.constraint(equalTo: self.imageContainerView.topAnchor,
+                                                       constant: 0),
+            self.secondGroupImage.rightAnchor.constraint(equalTo: self.imageContainerView.rightAnchor,
+                                                         constant: 0),
+            self.secondGroupImage.bottomAnchor.constraint(equalTo: self.fourthGroupImage.topAnchor,
+                                                          constant: -8),
+            self.secondGroupImage.heightAnchor.constraint(equalTo: self.secondGroupImage.widthAnchor,
+                                                          multiplier: 1)
         ])
         
         NSLayoutConstraint.activate([
-            self.thirdGroupImage.leftAnchor.constraint(equalTo: self.imageContainerView.leftAnchor, constant: 0),
-            self.thirdGroupImage.rightAnchor.constraint(equalTo: self.fourthGroupImage.leftAnchor, constant: -8),
-            self.thirdGroupImage.bottomAnchor.constraint(equalTo: self.imageContainerView.bottomAnchor, constant: 0),
-            self.thirdGroupImage.heightAnchor.constraint(equalTo: self.thirdGroupImage.widthAnchor, multiplier: 1)
+            self.thirdGroupImage.leftAnchor.constraint(equalTo: self.imageContainerView.leftAnchor,
+                                                       constant: 0),
+            self.thirdGroupImage.rightAnchor.constraint(equalTo: self.fourthGroupImage.leftAnchor,
+                                                        constant: -8),
+            self.thirdGroupImage.bottomAnchor.constraint(equalTo: self.imageContainerView.bottomAnchor,
+                                                         constant: 0),
+            self.thirdGroupImage.heightAnchor.constraint(equalTo: self.thirdGroupImage.widthAnchor,
+                                                         multiplier: 1)
         ])
         
         NSLayoutConstraint.activate([
-            self.fourthGroupImage.rightAnchor.constraint(equalTo: self.imageContainerView.rightAnchor, constant: 0),
-            self.fourthGroupImage.bottomAnchor.constraint(equalTo: self.imageContainerView.bottomAnchor, constant: 0),
-            self.fourthGroupImage.heightAnchor.constraint(equalTo: self.fourthGroupImage.widthAnchor, multiplier: 1)
+            self.fourthGroupImage.rightAnchor.constraint(equalTo: self.imageContainerView.rightAnchor,
+                                                         constant: 0),
+            self.fourthGroupImage.bottomAnchor.constraint(equalTo: self.imageContainerView.bottomAnchor,
+                                                          constant: 0),
+            self.fourthGroupImage.heightAnchor.constraint(equalTo: self.fourthGroupImage.widthAnchor,
+                                                          multiplier: 1)
         ])
         
         NSLayoutConstraint.activate([
             self.horizontalLine.heightAnchor.constraint(equalToConstant: 1),
-            self.horizontalLine.widthAnchor.constraint(equalTo: self.imageContainerView.widthAnchor, multiplier: 1),
+            self.horizontalLine.widthAnchor.constraint(equalTo: self.imageContainerView.widthAnchor,
+                                                       multiplier: 1),
             self.horizontalLine.centerYAnchor.constraint(equalTo: self.imageContainerView.centerYAnchor),
             self.horizontalLine.centerXAnchor.constraint(equalTo: self.imageContainerView.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
             self.verticalLine.widthAnchor.constraint(equalToConstant: 1),
-            self.verticalLine.heightAnchor.constraint(equalTo: self.imageContainerView.widthAnchor, multiplier: 1),
+            self.verticalLine.heightAnchor.constraint(equalTo: self.imageContainerView.widthAnchor,
+                                                      multiplier: 1),
             self.verticalLine.centerYAnchor.constraint(equalTo: self.imageContainerView.centerYAnchor),
             self.verticalLine.centerXAnchor.constraint(equalTo: self.imageContainerView.centerXAnchor)
         ])

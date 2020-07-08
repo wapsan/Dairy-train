@@ -27,11 +27,11 @@ class MainTabBarItemVC: UIViewController {
         
         switch self.tabBarItem.tag {
         case 0:
-            self.navigationItem.title = "Activities"
+            self.navigationItem.title = LocalizedString.activities
         case 1:
-            self.navigationItem.title = "Trains"
+            self.navigationItem.title = LocalizedString.training
         case 2:
-            self.navigationItem.title = "Profile"
+            self.navigationItem.title = LocalizedString.profile
         default:
             break
         }

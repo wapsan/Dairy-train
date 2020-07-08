@@ -37,7 +37,8 @@ class AppAuthentication: NSObject, GIDSignInDelegate {
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         
-        Auth.auth().signIn(with: credential) { (result, error) in
+        Auth.auth().signIn(with: credential) { [weak self] (result, error) in
+            guard let self = self else { return }
             if let token = result?.user.refreshToken {
                 DTSettingManager.shared.setUserToken(to: token)
                 self.postNotificationForGoogleSingedIn()

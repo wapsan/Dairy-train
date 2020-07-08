@@ -10,7 +10,7 @@ class DTSynhronizeCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .white
         label.font = .systemFont(ofSize: 20)
-        label.text = "Synhronize"
+        label.text = LocalizedString.synhronization
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -18,9 +18,8 @@ class DTSynhronizeCell: UITableViewCell {
     private lazy var lastSynhronizeDateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-         label.font = .systemFont(ofSize: 17)
+        label.font = .systemFont(ofSize: 17)
         label.textAlignment = .right
-        label.text = "12.12.2002 12:33"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -47,7 +46,7 @@ class DTSynhronizeCell: UITableViewCell {
     func setUpdateDateTo(_ date: String) {
         self.lastSynhronizeDateLabel.text = date
     }
-
+    
     //MARK: - Constraints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([

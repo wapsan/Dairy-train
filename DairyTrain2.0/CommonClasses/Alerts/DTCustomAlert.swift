@@ -694,6 +694,3 @@ class DTCustomAlert: UIView {
         alertCancelTapped
     }
 }
-
-
-

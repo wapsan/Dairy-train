@@ -14,7 +14,7 @@ class DTTextField: UITextField {
     init(placeholder: String) {
         super.init(frame: .zero)
         self.attributedPlaceholder = NSAttributedString(string: placeholder,
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         self.initView()
     }
     
@@ -22,8 +22,6 @@ class DTTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    //MARK: - Private methods
     private func initView() {
         self.font = .systemFont(ofSize: 20)
         self.textAlignment = .center
@@ -32,8 +30,7 @@ class DTTextField: UITextField {
         self.setUpConstraints()
     }
     
-    
-    
+    //MARK: - Constrints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             self.whiteLineUnderTextField.heightAnchor.constraint(equalToConstant: 1),

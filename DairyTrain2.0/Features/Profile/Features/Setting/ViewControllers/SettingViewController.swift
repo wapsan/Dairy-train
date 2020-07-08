@@ -23,7 +23,7 @@ class SettingViewController: SettingsSectionViewController {
     }
 }
 
-//MARK: - Table view methods
+//MARK: - UITableViewDelegate, UITableViewDataSourse
 extension SettingViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,7 +31,7 @@ extension SettingViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

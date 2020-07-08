@@ -44,36 +44,7 @@ class Exercise: NSObject, Codable {
     var muscleSubGroupImage: UIImage? {
         return self.subgroub.image
     }
-    
-    //MARK: - Publick methods
-    func addAproachWith(_ reps: Int, and weight: Float) {
-        var aproachesSet = Set<Approach>()
-        let aproach = Approach(weight: weight, reps: reps)
-        if aproachesSet.insert(aproach).inserted {
-            self.aproaches.append(aproach)
-        }
-    }
-    
-    func changeAproach(_ aproachIndex: Int, with reps: Int, and weight: Float) {
-        if reps == 0 || weight == 0 {
-            self.aproaches.remove(at: aproachIndex)
-        } else {
-            var aproach = self.aproaches[aproachIndex]
-            aproach.weight = weight
-            aproach.reps = reps
-            self.aproaches.remove(at: aproachIndex)
-            self.aproaches.insert(aproach, at: aproachIndex)
-        }
-    }
-    
-    func removeAproach() {
-        self.aproaches.removeLast()
-    }
-    
-    func removeAproachAt(_ index: Int) {
-        self.aproaches.remove(at: index)
-    }
-    
+
     //MARK: - Initialization
     init(name: String, subgroup: MuscleSubgroup.Subgroup) {
         self.name = name
@@ -112,5 +83,3 @@ class Exercise: NSObject, Codable {
         }
     }
 }
-
-

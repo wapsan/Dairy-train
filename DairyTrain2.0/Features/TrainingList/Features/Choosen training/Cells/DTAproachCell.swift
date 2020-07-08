@@ -11,7 +11,6 @@ class DTAproachCell: UICollectionViewCell {
     //MARK: - GUI Properties
     private lazy var aproachNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "№1"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -21,7 +20,6 @@ class DTAproachCell: UICollectionViewCell {
     
     private lazy var weightLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
-        label.text = "80 kg."
         label.textColor = .white
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +29,6 @@ class DTAproachCell: UICollectionViewCell {
     
     private lazy var repsLabel: UILabel = {
         let label = UILabel()
-        label.text = "12 reps."
         label.textColor = .white
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 15)
@@ -44,7 +41,7 @@ class DTAproachCell: UICollectionViewCell {
         super.layoutSubviews()
         self.setGuiElements()
     }
-
+    
     //MARK: - Setter
     func setUpFor(_ aproach: AproachManagedObject) {
         self.aproach = aproach
@@ -74,7 +71,8 @@ class DTAproachCell: UICollectionViewCell {
             self.weightLabel.bottomAnchor.constraint(equalTo: self.repsLabel.topAnchor),
             self.weightLabel.leftAnchor.constraint(equalTo: self.leftAnchor),
             self.weightLabel.rightAnchor.constraint(equalTo: self.rightAnchor),
-            self.weightLabel.heightAnchor.constraint(equalTo: self.aproachNumberLabel.heightAnchor, multiplier: 1.3)
+            self.weightLabel.heightAnchor.constraint(equalTo: self.aproachNumberLabel.heightAnchor,
+                                                     multiplier: 1.3)
         ])
         
         NSLayoutConstraint.activate([
@@ -82,7 +80,8 @@ class DTAproachCell: UICollectionViewCell {
             self.repsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.repsLabel.leftAnchor.constraint(equalTo: self.leftAnchor),
             self.repsLabel.rightAnchor.constraint(equalTo: self.rightAnchor),
-            self.repsLabel.heightAnchor.constraint(equalTo: self.aproachNumberLabel.heightAnchor, multiplier: 1.3)
+            self.repsLabel.heightAnchor.constraint(equalTo: self.aproachNumberLabel.heightAnchor,
+                                                   multiplier: 1.3)
         ])
     }
 }

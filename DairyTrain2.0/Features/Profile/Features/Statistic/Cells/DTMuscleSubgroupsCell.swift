@@ -29,7 +29,7 @@ class DTMuscleSubgroupsCell: UICollectionViewCell {
         self.setUpConstraints()
     }
     
-    //MARK: - Public methods
+    //MARK: - Setter
     func setCellImage(to image: UIImage?) {
         self.muscleSubgropImageView.image = image
     }

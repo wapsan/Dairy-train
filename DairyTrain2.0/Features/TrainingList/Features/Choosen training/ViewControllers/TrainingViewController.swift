@@ -1,5 +1,5 @@
 import UIKit
-//FIXME -  add two exercice ???
+
 class TrainingViewController: MuscleGroupsViewController {
     
     //MARK: - Properties
@@ -115,7 +115,7 @@ extension TrainingViewController {
             guard let train = self.train else { return }
             let removedExercise = train.exercicesArray[indexPath.row]
            train.removeFromExercises(removedExercise)
-            tableView.performBatchUpdates({
+            tableView.performBatchUpdates({ 
                 tableView.deleteRows(at: [indexPath], with: .top)
                 CoreDataManager.shared.removeExercise(removedExercise, from: train)
                 NotificationCenter.default.post(name: .trainingWasChanged, object: nil)

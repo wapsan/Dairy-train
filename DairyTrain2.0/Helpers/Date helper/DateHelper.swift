@@ -6,15 +6,14 @@ class DateHelper {
     static var shared = DateHelper()
     
     //MARK: - Private properties
-    private var date = Date()
-    private var standartDateFormat = "dd/MM/yyyy"
-    private var dateFormatForSynhronization = "MM-dd-yyyy HH:mm"
-    private var dateFormater = DateFormatter()
+    private lazy var standartDateFormat = "dd/MM/yyyy"
+    private lazy var dateFormatForSynhronization = "MM-dd-yyyy HH:mm"
+    private lazy var dateFormater = DateFormatter()
     
     //MARK: - Computed properties
     var currnetDate: String {
         self.dateFormater.dateFormat = standartDateFormat
-        return self.dateFormater.string(from: self.date)
+        return self.dateFormater.string(from: Date())
     }
     
     var currentDateForSynhronize: String {
@@ -23,9 +22,7 @@ class DateHelper {
     }
     
     //MARK: - Initialization
-    private init () {
-        
-    }
+    private init () { }
     
     //MARK: - Public methods
     func getFormatedDateFrom(_ date: Date) -> String {

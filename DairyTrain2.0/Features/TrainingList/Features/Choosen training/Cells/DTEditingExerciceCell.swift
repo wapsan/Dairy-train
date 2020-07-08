@@ -20,14 +20,13 @@ class DTEditingExerciceCell: UITableViewCell {
     }()
     
     private let muscleSubGroupImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "chest"))
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private lazy var exerciceNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Exercice name"
         label.textColor = .white
         label.numberOfLines = 2
         label.minimumScaleFactor = 1/2
@@ -36,10 +35,15 @@ class DTEditingExerciceCell: UITableViewCell {
         return label
     }()
     
-    private lazy var aproachCollectionList: UICollectionView = {
+    private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return layout
+    }()
+    
+    private lazy var aproachCollectionList: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: self.collectionViewLayout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(DTAproachCell.self, forCellWithReuseIdentifier: DTAproachCell.cellID)
@@ -82,15 +86,22 @@ class DTEditingExerciceCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    private lazy var a: CAGradientLayer = {
+        let gradient = CAGradientLayer.getDefaultGradientFor(self.containerView,
+        with: .darkBordoColor,
+        and: .black)
+        return gradient
+    }()
     
     //MARK: - Layout subviews
     //FIXME: - CONTAINER VIEW BOUNDS
     override func layoutSubviews() {
         super.layoutSubviews()
-        let gradient = CAGradientLayer.getDefaultGradientFor(self.containerView,
-                                                             with: .darkBordoColor,
-                                                             and: .black)
-        self.containerView.layer.insertSublayer(gradient, at: 0)
+        
+      //  self.containerView.layer.insertSublayer(gradient, at: 0)
+        self.containerView.layer.addSublayer(self.a)
+        self.a.bringToFront()
+        
     }
     
     //MARK: - Initialization
@@ -103,10 +114,15 @@ class DTEditingExerciceCell: UITableViewCell {
         self.backgroundColor = .clear
         self.selectionStyle = .none
         self.contentView.addSubview(self.containerView)
-        self.containerView.addSubview(self.muscleSubGroupImage)
-        self.containerView.addSubview(self.exerciceNameLabel)
-        self.containerView.addSubview(self.aproachCollectionList)
-        self.containerView.addSubview(self.aproachesButtonStack)
+        
+        self.contentView.addSubview(self.muscleSubGroupImage)
+        self.contentView.addSubview(self.exerciceNameLabel)
+        self.contentView.addSubview(self.aproachCollectionList)
+        self.contentView.addSubview(self.aproachesButtonStack)
+        //        self.containerView.addSubview(self.muscleSubGroupImage)
+        //        self.containerView.addSubview(self.exerciceNameLabel)
+        //        self.containerView.addSubview(self.aproachCollectionList)
+        //        self.containerView.addSubview(self.aproachesButtonStack)
         self.setUpNewConstraints()
     }
     
@@ -125,10 +141,15 @@ class DTEditingExerciceCell: UITableViewCell {
     //MARK: - Constraints
     private func setUpNewConstraints() {
         NSLayoutConstraint.activate([
-            self.containerView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
-            self.containerView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 8),
-            self.containerView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8),
-            self.containerView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8),
+            self.containerView.topAnchor.constraint(equalTo: self.contentView.topAnchor,
+                                                    constant: 8),
+            self.containerView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor,
+                                                     constant: 8),
+            self.containerView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor,
+                                                      constant: -8),
+            self.containerView.heightAnchor.constraint(equalTo: self.containerView.widthAnchor, multiplier: 1/2)
+//            self.containerView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
+//                                                       constant: -8),
         ])
         
         NSLayoutConstraint.activate([
@@ -144,14 +165,17 @@ class DTEditingExerciceCell: UITableViewCell {
         NSLayoutConstraint.activate([
             self.exerciceNameLabel.leftAnchor.constraint(equalTo: self.muscleSubGroupImage.rightAnchor,
                                                          constant: 8),
-            self.exerciceNameLabel.rightAnchor.constraint(equalTo: self.aproachesButtonStack.leftAnchor, constant: -8),
+            self.exerciceNameLabel.rightAnchor.constraint(equalTo: self.aproachesButtonStack.leftAnchor,
+                                                          constant: -8),
             self.exerciceNameLabel.centerYAnchor.constraint(equalTo: self.muscleSubGroupImage.centerYAnchor),
         ])
         
         NSLayoutConstraint.activate([
             self.aproachesButtonStack.topAnchor.constraint(equalTo: self.containerView.topAnchor),
-            self.aproachesButtonStack.leftAnchor.constraint(equalTo: self.aproachCollectionList.rightAnchor, constant: 8),
-            self.aproachesButtonStack.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -8),
+            self.aproachesButtonStack.leftAnchor.constraint(equalTo: self.aproachCollectionList.rightAnchor,
+                                                            constant: 8),
+            self.aproachesButtonStack.rightAnchor.constraint(equalTo: self.containerView.rightAnchor,
+                                                             constant: -8),
             self.aproachesButtonStack.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor),
         ])
         
@@ -159,7 +183,8 @@ class DTEditingExerciceCell: UITableViewCell {
         NSLayoutConstraint.activate([
             self.aproachCollectionList.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,
                                                                constant: -8),
-            self.aproachCollectionList.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 8),
+            self.aproachCollectionList.leftAnchor.constraint(equalTo: self.containerView.leftAnchor,
+                                                             constant: 8),
             self.aproachCollectionList.widthAnchor.constraint(equalTo: self.containerView.widthAnchor,
                                                               multiplier: 0.8),
             self.aproachCollectionList.heightAnchor.constraint(equalTo: self.containerView.heightAnchor,
@@ -209,5 +234,3 @@ extension DTEditingExerciceCell: UICollectionViewDelegate, UICollectionViewDataS
         return 0
     }
 }
-
-

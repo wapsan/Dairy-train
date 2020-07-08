@@ -1,7 +1,7 @@
 import UIKit
-    
+
 class DTInfoView: UIView {
-        
+    
     //MARK: - Private properties
     private lazy var userInfo = CoreDataManager.shared.readUserMainInfo()
     
@@ -62,7 +62,7 @@ class DTInfoView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-
+    
     //MARK: - Enums
     enum InfoViewValue {
         case trainCount
@@ -153,7 +153,7 @@ class DTInfoView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     //MARK: - Setter
     func setValueLabelTo(_ text: String) {
         self.valueLabel.text = text
@@ -165,10 +165,6 @@ class DTInfoView: UIView {
         self.layer.shadowOffset = .init(width: 0, height: 5)
         self.layer.shadowOpacity = 5
     }
-    
-//    private  func setLayotLayer() {
-//        self.layer.cornerRadius = 25
-//    }
     
     private func setTapRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapSelector))
@@ -186,7 +182,7 @@ class DTInfoView: UIView {
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.newTrainAded),
-                                               name: .addNewTrain,
+                                               name: .trainingListWasChanged,
                                                object: nil)
         
     }
@@ -221,7 +217,7 @@ class DTInfoView: UIView {
             self.whiteLine.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
-
+    
     //MARK: - Actions
     @objc private func tapSelector() {
         guard let type = self.type else { return }
@@ -229,7 +225,7 @@ class DTInfoView: UIView {
     }
     
     @objc private func heightSettingWasChanged() {
-     guard let type = self.type else { return }
+        guard let type = self.type else { return }
         if type == .height {
             guard let userInfo = self.userInfo else { return }
             self.valueLabel.text = userInfo.displayHeight
@@ -250,7 +246,7 @@ class DTInfoView: UIView {
         print("New train aded")
         guard let type = self.type else { return }
         if type == .trainCount {
-            self.valueLabel.text = String(UserModel.shared.trains.count)
+            self.valueLabel.text = String(CoreDataManager.shared.fetchTrainingList().count)
         }
     }
 }

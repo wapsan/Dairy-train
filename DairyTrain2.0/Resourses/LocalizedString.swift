@@ -70,4 +70,24 @@ class LocalizedString {
     static let metric = "Metric"
     static let style = "Style"
     static let cloydSynhronization = "Cloud synchronization"
+    static let dataDontUpdate = "Data don't update."
+    
+    //MARK: - Metering setting
+    static let kgDescription = " Kg."
+    static let lbsDescription = " Lbs."
+    static let cmDescription = " Cm."
+    static let ftDescription = " Ft."
+    
+    //MARK: - Training list viewController
+    static let edit = "Edit"
+    static let done = "Done"
+    static let deleltingTrainAlertTitle = "Are you shure?"
+    static let deleltingTrainAlertMessage = "Delete choosen trainings?"
+    static let deletedTrainAlertTitle = "Training was deleted"
+    
+    //MARK: - Main TabBarItemViewController
+    static let activities = "Activivties"
+    static let training = "Training"
+    static let profile = "Profile"
+    
 }

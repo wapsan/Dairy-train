@@ -37,7 +37,8 @@ class LoginViewController: UIViewController {
     
     private lazy var signInModeButton: DTSystemButton = {
         let button = DTSystemButton(tittle: LocalizedString.signIn )
-        button.addTarget(self, action: #selector(self.signInModeButtonTouched),
+        button.addTarget(self,
+                         action: #selector(self.signInModeButtonTouched),
                          for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -45,7 +46,8 @@ class LoginViewController: UIViewController {
     
     private lazy var signUpModeButton: DTSystemButton = {
         let button = DTSystemButton(tittle: LocalizedString.signUp)
-        button.addTarget(self, action: #selector(self.signUpModeButtonTouched),
+        button.addTarget(self,
+                         action: #selector(self.signUpModeButtonTouched),
                          for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -70,14 +72,15 @@ class LoginViewController: UIViewController {
 
     private lazy var containerForMainSignInButton: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var mainSignButton: DTSystemButton = {
         let button = DTSystemButton(tittle: LocalizedString.signIn)
-        button.addTarget(self, action: #selector(self.mainSignInButtonPressed(_:)),
+        button.addTarget(self,
+                         action: #selector(self.mainSignInButtonPressed(_:)),
                          for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -85,7 +88,9 @@ class LoginViewController: UIViewController {
     
     private lazy var googleSignInButton: GoogleSignInButton = {
         let button = GoogleSignInButton()
-        button.addTarget(self, action: #selector(self.googleSignInPressed), for: .touchUpInside)
+        button.addTarget(self,
+                         action: #selector(self.googleSignInPressed),
+                         for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -126,7 +131,6 @@ class LoginViewController: UIViewController {
         self.setUpGooglePresentingViewController()
         self.setGuiElements()
         self.setUpSignMode()
-        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -150,6 +154,7 @@ class LoginViewController: UIViewController {
     }
       
     private func setGuiElements() {
+        self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .black
         
         self.view.addSubview(self.logoImageView)
@@ -170,7 +175,6 @@ class LoginViewController: UIViewController {
     
     private func setUpSignMode() {
         guard self.isSignInMode else { return }
-        //TODO - BACKGROUND COLOR IN BUTTON CLASS
         self.signInModeButton.pressed()
         self.signUpModeButton.backgroundColor = .gray
     }
@@ -246,7 +250,8 @@ class LoginViewController: UIViewController {
     private func makeSignIn() {
         guard let email = self.emailTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
-        Auth.auth().signIn(withEmail: email, password: password) { (authDataresult, error) in
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (authDataresult, error) in
+            guard let self = self else { return }
             if let result  = authDataresult {
                 guard let tokent = result.user.refreshToken else { return }
                 DTSettingManager.shared.setUserToken(to: tokent)

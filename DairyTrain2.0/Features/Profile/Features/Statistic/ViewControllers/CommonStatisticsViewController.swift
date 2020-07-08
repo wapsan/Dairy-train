@@ -55,7 +55,3 @@ extension CommonStatisticsViewController {
         self.pushStatisticsViewController(for: choosenTrain)
     }
 }
-
-
-
-

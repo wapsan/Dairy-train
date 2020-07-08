@@ -6,7 +6,7 @@ class MuscleGroupsViewController: DTBackgroundedViewController {
     private lazy var muscleGroups = MuscleGroup().groups
     
     //MARK: - Properties
-    var headerTittle = LocalizedString.selectMuscularGroup
+    lazy var headerTittle = LocalizedString.selectMuscularGroup
     
     //MARK: - GUI Properties
     private(set) lazy var tableView: UITableView = {
@@ -31,13 +31,15 @@ class MuscleGroupsViewController: DTBackgroundedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpTableView()
-        
-        self.view.backgroundColor = .clear
-        self.setBackgroundImageTo(UIImage.activitiesBackGroundImage)
-
+        self.setUpMainView()
     }
     
     //MARK: - Private methods
+    private func setUpMainView() {
+        self.view.backgroundColor = .clear
+        self.setBackgroundImageTo(UIImage.activitiesBackGroundImage)
+    }
+    
     private func setUpTableView() {
         self.view.addSubview(self.tableView)
         self.view.addSubview(self.headerView)
@@ -53,7 +55,7 @@ class MuscleGroupsViewController: DTBackgroundedViewController {
             self.tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
-
+        
         NSLayoutConstraint.activate([
             self.headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             self.headerView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
@@ -86,5 +88,3 @@ extension MuscleGroupsViewController: UITableViewDataSource, UITableViewDelegate
         self.navigationController?.pushViewController(subgroupViewController, animated: true)
     }
 }
-
-

@@ -22,15 +22,14 @@ class DTHeaderView: UIView {
     init(title: String) {
         super.init(frame: .zero)
         self.titleLabel.text = title
-        self.viewInit()
+        self.initView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Private methods
-    private func viewInit() {
+    private func initView() {
         self.backgroundColor = .clear
         self.addSubview(self.titleLabel)
         self.addSubview(self.whiteLineUnderLabel)
@@ -53,5 +52,4 @@ class DTHeaderView: UIView {
             self.titleLabel.bottomAnchor.constraint(equalTo: self.whiteLineUnderLabel.topAnchor, constant: -8)
         ])
     }
-    
 }

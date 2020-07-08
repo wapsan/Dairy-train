@@ -30,7 +30,7 @@ extension MainInfoManagedObject {
     }
     
     var displayHeight: String {
-        guard let heightMode = MeteringSetting.HeightMode.init(rawValue: self.heightMode ?? "") else { return "" }
+        guard let heightMode = MeteringSetting.HeightMode.init(rawValue: self.heightMode ?? "0") else { return "0" }
         if heightMode == MeteringSetting.shared.heightMode {
             if self.height.truncatingRemainder(dividingBy: 1) == 0 {
                 return String(format: "%.0f", self.height)
@@ -49,7 +49,7 @@ extension MainInfoManagedObject {
     }
     
     var displayWeight: String {
-        guard let weightMode = MeteringSetting.WeightMode.init(rawValue: self.weightMode ?? "") else { return "" }
+        guard let weightMode = MeteringSetting.WeightMode.init(rawValue: self.weightMode ?? "0") else { return "0" }
         if weightMode == MeteringSetting.shared.weightMode {
             if self.weight.truncatingRemainder(dividingBy: 1) == 0 {
                 return String(format: "%.0f", self.weight)

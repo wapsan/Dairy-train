@@ -20,7 +20,7 @@ class MainTabBarViewController: UITabBarController {
     private func addObserverForAddingExerciceToTrain() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.exerciceDidAdd),
-                                               name: .addNewTrain,
+                                               name: .trainingListWasChanged,
                                                object: nil)
     }
     
@@ -63,9 +63,9 @@ class MainTabBarViewController: UITabBarController {
     private func setDefaultTabBar() {
         UITabBar.appearance().tintColor = UIColor.white
         self.tabBar.isTranslucent = false
-        self.tabBar.tintColor = .white //selected tab bat color
-        self.tabBar.barTintColor = .viewFlipsideBckgoundColor//baclground tabbar color
-        self.tabBar.unselectedItemTintColor = .red //unselected tab bar color
+        self.tabBar.tintColor = .white
+        self.tabBar.barTintColor = .viewFlipsideBckgoundColor
+        self.tabBar.unselectedItemTintColor = .red
         self.setTabBarSeparationLine()
     }
     
@@ -123,8 +123,7 @@ class TabBarTransitionAnimation: NSObject, UIViewControllerAnimatedTransitioning
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
-        guard
-            let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
+        guard let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
             let fromView = fromVC.view,
             let fromIndex = getIndex(forViewController: fromVC),
             let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
@@ -162,4 +161,3 @@ class TabBarTransitionAnimation: NSObject, UIViewControllerAnimatedTransitioning
         return nil
     }
 }
-

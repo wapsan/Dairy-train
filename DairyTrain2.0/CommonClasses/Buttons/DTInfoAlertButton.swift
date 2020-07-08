@@ -1,6 +1,5 @@
 import UIKit
 
-
 class DTInfoAlertButton: UIButton {
     
     //MARK: - GUI Properties
@@ -16,7 +15,7 @@ class DTInfoAlertButton: UIButton {
     }()
     
     //MARK: - Private properties
-    private var isPressed: Bool = false
+    private lazy var isPressed: Bool = false
     
     //MARK: - Initialization
     init(title: String) {
@@ -66,6 +65,4 @@ class DTInfoAlertButton: UIButton {
     @objc func behavor() {
         self.isPressed ? self.unPressed() : self.pressed()
     }
-    
-    
 }

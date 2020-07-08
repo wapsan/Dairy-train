@@ -5,10 +5,13 @@ class AlertHelper {
     //MARK: - Properties
     static var shared = AlertHelper()
     
+    //MARK: - Initialization
+    private init() {}
+    
     //MARK: - Publick methods
     func showDefaultAlert(on viewController: UIViewController,
                       title: String?,
-                      message: String,
+                      message: String?,
                       cancelTitle: String?,
                       okTitle: String?,
                       style: UIAlertController.Style,
@@ -27,5 +30,4 @@ class AlertHelper {
         
         viewController.present(alert, animated: true, completion: nil)
     }
-    
 }

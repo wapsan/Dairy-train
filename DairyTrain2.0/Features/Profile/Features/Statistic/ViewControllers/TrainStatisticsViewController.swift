@@ -11,28 +11,24 @@ class TrainStatisticsViewController: MainTabBarItemVC {
     private lazy var totalWeightView: DTInfoView = {
         let view = DTInfoView(type: .totalWeight)
         view.setValueLabelTo(self.statistics?.totalWorkoutWeight ?? "0")
-        //view.valueLabel.text = self.statistics?.totalWorkoutWeight ?? "0"
         return view
     }()
     
     private lazy var avaragepProgectileWeightView: DTInfoView = {
         let view = DTInfoView(type: .avarageProjectileWeight)
         view.setValueLabelTo(self.statistics?.averageProjectileWeight ?? "0")
-       // view.valueLabel.text = self.statistics?.averageProjectileWeight ?? "0"
         return view
     }()
     
     private lazy var totalRepsView: DTInfoView = {
         let view = DTInfoView(type: .totalReps)
         view.setValueLabelTo(self.statistics?.totalNumberOfReps ?? "0")
-       // view.valueLabel.text = self.statistics?.totalNumberOfReps ?? "0"
         return view
     }()
     
     private lazy var totalAproachesView: DTInfoView = {
         let view = DTInfoView(type: .totalAproach)
         view.setValueLabelTo(self.statistics?.totalNumberOfAproach ?? "0")
-   //     view.valueLabel.text = self.statistics?.totalNumberOfAproach ?? "0"
         return view
     }()
     

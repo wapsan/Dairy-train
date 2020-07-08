@@ -20,7 +20,7 @@ extension CAGradientLayer {
         return gradientLayer
     }
     
-    static func getChangedGradient<T: UIView>(_ view: T,
+    static func getSelectedGradientFor<T: UIView>(_ view: T,
                                              with firstColor: UIColor,
                                              and secondColor: UIColor) -> CAGradientLayer {
            let gradientLayer = CAGradientLayer()
@@ -34,24 +34,4 @@ extension CAGradientLayer {
            gradientLayer.endPoint = CGPoint(x: 1, y: 1)
            return gradientLayer
        }
-}
-
-
-extension CALayer {
-
-   func bringToFront() {
-      guard let sLayer = superlayer else {
-         return
-      }
-      removeFromSuperlayer()
-      sLayer.insertSublayer(self, at: UInt32(sLayer.sublayers?.count ?? 0))
-   }
-
-   func sendToBack() {
-      guard let sLayer = superlayer else {
-         return
-      }
-      removeFromSuperlayer()
-      sLayer.insertSublayer(self, at: 0)
-   }
 }

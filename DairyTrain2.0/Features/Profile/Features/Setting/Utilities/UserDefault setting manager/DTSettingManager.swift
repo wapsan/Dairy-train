@@ -4,7 +4,6 @@ class DTSettingManager {
     
     //MARK: - Singletone propetie
     static let shared = DTSettingManager()
-    private init() { }
     
     //MARK: - Private properties
     private lazy var userDefaults = UserDefaults.standard
@@ -16,6 +15,9 @@ class DTSettingManager {
         static let weighMetricKey = "Weight metric"
         static let heightMetricKey = "Height metric"
     }
+    
+    //MARK: - Initialization
+    private init() { }
     
     //MARK: - Private methods
     private func setDefaultWeightMode() {
@@ -45,9 +47,9 @@ class DTSettingManager {
             ColorSetting.shared.setColotTheme(to: .dark)
         }
         if UserDefaults.standard.bool(forKey: UserSettingKeys.colorThemeKey) == true {
-             ColorSetting.shared.setColotTheme(to: .dark)
+            ColorSetting.shared.setColotTheme(to: .dark)
         } else {
-             ColorSetting.shared.setColotTheme(to: .light)
+            ColorSetting.shared.setColotTheme(to: .light)
         }
     }
     
@@ -74,7 +76,7 @@ class DTSettingManager {
         case .cm:
             self.userDefaults.set(true, forKey: UserSettingKeys.heightMetricKey)
         case .ft:
-             self.userDefaults.set(false, forKey: UserSettingKeys.heightMetricKey)
+            self.userDefaults.set(false, forKey: UserSettingKeys.heightMetricKey)
         }
     }
     

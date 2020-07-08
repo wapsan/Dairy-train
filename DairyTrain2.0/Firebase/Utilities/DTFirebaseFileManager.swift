@@ -13,7 +13,7 @@ class DTFirebaseFileManager {
     
     private lazy var userMainInfoKey = "userMainInfo"
     private lazy var userTrainInfoKey = "userTrainingList"
-    private lazy var userKeyPath = "user"
+    private lazy var userKeyPath = "users"
     private lazy var updateDateKeyPatth = "lastUpdateDate"
     
     private var currentDateWithUpdatingFromat: String {
@@ -39,7 +39,6 @@ class DTFirebaseFileManager {
         self.synhronizeTrainingUserInfoToServer()
         self.upDateDateOfLastUpdate()
         completion()
-        
     }
     
     func synhronizeDataFromServer(completion: @escaping (_ mainInfo: UserMainInfoCodableModel?,

@@ -29,7 +29,7 @@ class RecomendationsViewController: UIViewController {
         self.setRecomendationInfoModel()
         self.setUpTable()
     }
-
+    
     //MARK: - Private Methods
     private func setUpTable() {
         self.view.addSubview(self.tableView)

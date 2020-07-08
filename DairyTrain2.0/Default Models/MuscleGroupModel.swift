@@ -33,8 +33,4 @@ class MuscleGroup: NSObject, Codable {
     override init() {
         self.groups = [.shoulders, .arms, .chest, .back, .core, .legs]
     }
-    
 }
-
-
-

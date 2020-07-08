@@ -7,7 +7,7 @@ class DTActivitiesCell: UITableViewCell {
     
     //MARK: - CALayers
     private lazy var defaultGradient: CAGradientLayer = {
-        let gradient =  CAGradientLayer.getChangedGradient(self.containerView,
+        let gradient =  CAGradientLayer.getSelectedGradientFor(self.containerView,
                                                            with: .darkBordoColor,
                                                            and: .black)
         return gradient
@@ -65,7 +65,7 @@ class DTActivitiesCell: UITableViewCell {
         self.setUpConstraints()
     }
     
-    //MARK: - Setter
+    //MARK: - Setters
     func setCellFor(_ muscleGroup: MuscleGroup.Group) {
         self.exerciceNameLabel.text = muscleGroup.rawValue
         self.muscleGroupImage.image = muscleGroup.image
@@ -104,25 +104,32 @@ class DTActivitiesCell: UITableViewCell {
             self.containerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8),
             self.containerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8),
             self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            self.containerView.heightAnchor.constraint(lessThanOrEqualTo: self.containerView.widthAnchor, multiplier: 1/4)
+            self.containerView.heightAnchor.constraint(lessThanOrEqualTo: self.containerView.widthAnchor,
+                                                       multiplier: 1/4)
         ])
         
         NSLayoutConstraint.activate([
-            self.exerciceNameLabel.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 8),
-            self.exerciceNameLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -8),
-            self.exerciceNameLabel.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: -8),
-            self.exerciceNameLabel.leftAnchor.constraint(equalTo: self.muscleGroupImage.rightAnchor, constant: 8),
+            self.exerciceNameLabel.topAnchor.constraint(equalTo: self.containerView.topAnchor,
+                                                        constant: 8),
+            self.exerciceNameLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor,
+                                                          constant: -8),
+            self.exerciceNameLabel.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,
+                                                           constant: -8),
+            self.exerciceNameLabel.leftAnchor.constraint(equalTo: self.muscleGroupImage.rightAnchor,
+                                                         constant: 8),
             self.exerciceNameLabel.centerYAnchor.constraint(equalTo: self.containerView.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.muscleGroupImage.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 8),
-            self.muscleGroupImage.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: -8),
-            self.muscleGroupImage.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 8),
-            self.muscleGroupImage.widthAnchor.constraint(equalTo: self.muscleGroupImage.heightAnchor, multiplier: 1),
-            self.muscleGroupImage.centerYAnchor.constraint(equalTo: self.containerView.centerYAnchor),
+            self.muscleGroupImage.topAnchor.constraint(equalTo: self.containerView.topAnchor,
+                                                       constant: 8),
+            self.muscleGroupImage.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,
+                                                          constant: -8),
+            self.muscleGroupImage.leftAnchor.constraint(equalTo: self.containerView.leftAnchor,
+                                                        constant: 8),
+            self.muscleGroupImage.widthAnchor.constraint(equalTo: self.muscleGroupImage.heightAnchor,
+                                                         multiplier: 1),
+            self.muscleGroupImage.centerYAnchor.constraint(equalTo: self.containerView.centerYAnchor)
         ])
     }
 }
-
-

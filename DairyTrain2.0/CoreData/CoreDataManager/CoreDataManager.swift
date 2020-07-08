@@ -141,27 +141,7 @@ class CoreDataManager {
             self.updateMainInfoContext()
         }
     }
-    
-    
-//    func updateHeightMode(to heightMode: MeteringSetting.HeightMode) {
-//        guard let mainUserInfo = self.readUserMainInfo() else { return }
-//        mainUserInfo.heightMode = heightMode.rawValue
-//        mainUserInfo.height = mainUserInfo.height * MeteringSetting.shared.heightMultiplier
-//        self.updateMainInfoContext()
-//        if let mainUserInfo = self.readUserMainInfo() {
-//            
-//        } else {
-//            
-//        }
-//    }
-//    
-//    func updateWeightMode(to weightMode: MeteringSetting.WeightMode) {
-//        guard let mainUserInfo = self.readUserMainInfo() else { return }
-//        mainUserInfo.weightMode = weightMode.rawValue
-//        mainUserInfo.weight = mainUserInfo.weight / MeteringSetting.shared.weightMultiplier
-//        self.updateMainInfoContext()
-//    }
-    
+
     func updateUserMainInfo(to userMainInfo: UserMainInfoCodableModel) {
         if let mainUserInfo = self.readUserMainInfo() {
             mainUserInfo.age = Int64(userMainInfo.age ?? 0)
@@ -282,7 +262,7 @@ class CoreDataManager {
             newTrain.formatedDate = DateHelper.shared.currnetDate
             newTrain.exercises = NSSet(array: newExercises)
             self.updateTrainInfoContext()
-            return false
+            return true
         }
     }
     

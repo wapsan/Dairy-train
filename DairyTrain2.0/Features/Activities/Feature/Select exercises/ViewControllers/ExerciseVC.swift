@@ -47,13 +47,15 @@ class ExercicesViewController: MuscleGroupsViewController {
     
     private func addExercicesComplition() {
         if CoreDataManager.shared.addExercisesToTrain(self.selectedExercices) {
-            NotificationCenter.default.post(name: .addNewTrain,
-                                                        object: nil,
-                                                        userInfo: ["Trains": CoreDataManager.shared.fetchTrainingList()] )
+            NotificationCenter.default.post(
+                name: .trainingListWasChanged,
+                object: nil,
+                userInfo: ["Trains": CoreDataManager.shared.fetchTrainingList()] )
         } else {
-            NotificationCenter.default.post(name: .trainingWasChanged,
-                                                        object: nil,
-                                                        userInfo: ["Train": CoreDataManager.shared.fetchTrainingList()[0]])
+            NotificationCenter.default.post(
+                name: .trainingWasChanged,
+                object: nil,
+                userInfo: ["Train": CoreDataManager.shared.fetchTrainingList()[0]])
         }
         self.showAddedAllert()
     }
@@ -65,7 +67,9 @@ class ExercicesViewController: MuscleGroupsViewController {
                                             cancelTitle: LocalizedString.cancel,
                                             okTitle: LocalizedString.ok,
                                             style: .alert,
-                                            completion: { self.addExercicesComplition() })
+                                            completion: { [weak self] in
+                                                guard let self = self else { return }
+                                                self.addExercicesComplition() })
     }
     
     private func showAddedAllert() {
@@ -75,7 +79,9 @@ class ExercicesViewController: MuscleGroupsViewController {
                                             cancelTitle: nil,
                                             okTitle: LocalizedString.ok,
                                             style: .alert,
-                                            completion: { self.deselectAllRows()
+                                            completion: { [weak self] in
+                                                guard let self = self else { return }
+                                                self.deselectAllRows()
                                                 self.setAddExercicesButton() })
     }
     
@@ -106,14 +112,6 @@ extension ExercicesViewController {
                                                  for: indexPath)
         let exercise = self.exercices[indexPath.row]
         (cell as? DTActivitiesCell)?.setCellFor(exercise)
-        //TODO: - Chek this code
-//        if exercise.isSelected {
-//            //(cell as? DTActivitiesCell)?.setSelectedBackgroundColor()
-//            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-//        } else {
-//           // (cell as? DTActivitiesCell)?.setUnselectedBackgroundColor()
-//            tableView.deselectRow(at: indexPath, animated: true)
-//        }
         return cell
     }
   

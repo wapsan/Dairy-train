@@ -1,5 +1,6 @@
 import UIKit
 
+//MARK: - Protocol delegate
 protocol MenuStackViewControllerDelegate: class {
     func pushViewController(_ pushedViewController: UIViewController)
     func signOutPressed()
@@ -44,7 +45,7 @@ class MenuViewController: UIViewController {
         menuButton.addTarget(self,
                              action: #selector(self.settingButtonpPressed(_:)),
                              for: .touchUpInside)
-         menuButton.translatesAutoresizingMaskIntoConstraints = false
+        menuButton.translatesAutoresizingMaskIntoConstraints = false
         return menuButton
     }()
     
@@ -56,11 +57,11 @@ class MenuViewController: UIViewController {
         menuButton.addTarget(self,
                              action: #selector(self.statisticsButtonPressed),
                              for: .touchUpInside)
-         menuButton.translatesAutoresizingMaskIntoConstraints = false
+        menuButton.translatesAutoresizingMaskIntoConstraints = false
         return menuButton
     }()
     
-        
+    
     private lazy var recomendationButton: DTMenuButton = {
         let menuButton = DTMenuButton()
         menuButton.setTitle(LocalizedString.recomendations, for: .normal)
@@ -69,7 +70,7 @@ class MenuViewController: UIViewController {
         menuButton.addTarget(self,
                              action: #selector(self.recomendationButtonPressed),
                              for: .touchUpInside)
-         menuButton.translatesAutoresizingMaskIntoConstraints = false
+        menuButton.translatesAutoresizingMaskIntoConstraints = false
         return menuButton
     }()
     
@@ -121,35 +122,33 @@ class MenuViewController: UIViewController {
     }
     
     //MARK: - Actions
-    @objc private func dissmisViewController() {
-    }
-    
     @objc private func settingButtonpPressed(_ sender: DTSystemButton) {
         guard let title = sender.titleLabel?.text else { return }
-        self.dismiss(animated: true, completion: {
+        self.dismiss(animated: true, completion: { [weak self] in
+            guard let self = self else { return }
             self.delegate?.pushViewController(SettingsSectionViewController(with: title))
         })
     }
     
     @objc private func statisticsButtonPressed() {
-        self.dismiss(animated: true, completion: {
+        self.dismiss(animated: true, completion: { [weak self] in
+            guard let self = self else { return }
             self.delegate?.pushViewController(CommonStatisticsViewController())
         })
     }
     
     @objc private func recomendationButtonPressed() {
-        self.dismiss(animated: true, completion: {
+        self.dismiss(animated: true, completion: { [weak self] in
+            guard let self = self else { return }
             self.delegate?.pushViewController(RecomendationsViewController())
         })
     }
     
     @objc private func signtOutButtonPressed() {
         self.view.layer.speed = 1.5
-        self.dismiss(animated: true, completion: {
+        self.dismiss(animated: true, completion: { [weak self] in
+            guard let self = self else { return }
             self.delegate?.signOutPressed()
         })
     }
 }
-
-
-

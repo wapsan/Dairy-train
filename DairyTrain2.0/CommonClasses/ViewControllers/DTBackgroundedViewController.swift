@@ -6,7 +6,7 @@ class DTBackgroundedViewController: MainTabBarItemVC {
     private lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "activitiesBackGrounImage")
+        imageView.image = UIImage.activitiesBackGroundImage
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

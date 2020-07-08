@@ -1,4 +1,3 @@
-
 class CaloriesCalculator {
     
     //MARK: - Singletone propertie
@@ -60,9 +59,9 @@ class CaloriesCalculator {
     private var heightMultiplier: Float {
         switch MeteringSetting.shared.heightMode {
         case .cm:
-              return 1
-           case .ft:
-              return 1 / 0.032
+            return 1
+        case .ft:
+            return 1 / 0.032
         }
     }
     
@@ -126,8 +125,8 @@ class CaloriesCalculator {
         case .notSet:
             break
         }
-            self.neutralCalories = Int(Float(self.loseWeightCalories) * self.neutralCaloriesMultiplier)
-            self.gainWeightCalories = Int(Float(self.neutralCalories) * self.neutralCaloriesMultiplier)
+        self.neutralCalories = Int(Float(self.loseWeightCalories) * self.neutralCaloriesMultiplier)
+        self.gainWeightCalories = Int(Float(self.neutralCalories) * self.neutralCaloriesMultiplier)
     }
     
     private func getBalanceSupplyRecomendation() -> RecomendationInfo {
@@ -171,6 +170,3 @@ class CaloriesCalculator {
         return gainWeightSupply
     }
 }
-
-
-

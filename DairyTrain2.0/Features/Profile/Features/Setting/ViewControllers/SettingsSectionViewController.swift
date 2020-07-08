@@ -4,12 +4,12 @@ class SettingsSectionViewController: UITableViewController {
     
     //MARK: - Private properties
     private lazy var settingModel = [SettingSectionModel(type: .metrics),
-                                         SettingSectionModel(type: .style),
-                                         SettingSectionModel(type: .synchronization)]
+                                     SettingSectionModel(type: .style),
+                                     SettingSectionModel(type: .synchronization)]
     
     private lazy var navigationTittle = LocalizedString.setting
     private lazy var lastSynhronizeDate = CoreDataManager.shared.readUserMainInfo()?.dateOfLastUpdate
-                                          ?? "Data don't up to date."
+        ?? LocalizedString.dataDontUpdate
     
     private lazy var a: DTDownloadHud = {
         let a = DTDownloadHud(frame: .zero)
@@ -20,14 +20,15 @@ class SettingsSectionViewController: UITableViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.dataWasSynhronize), name: .dataWasSynhronize, object: nil)
+        
     }
-
+    
     //MARK: - Initialization
     init(with name: String) {
         super.init(style: .grouped)
         self.initializationTableView()
         self.addObserverForSettingChanged()
+        self.addObserverForSynhronization()
         self.navigationItem.title = name
     }
     
@@ -53,7 +54,13 @@ class SettingsSectionViewController: UITableViewController {
                                                name: .settingWasChanged,
                                                object: nil)
     }
-
+    
+    private func addObserverForSynhronization() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.dataWasSynhronize),
+                                               name: .dataWasSynhronize, object: nil)
+    }
+    
     //MARK: - Actions
     @objc private func settingWasChanged() {
         self.tableView.reloadData()
@@ -108,7 +115,7 @@ extension SettingsSectionViewController {
         let section = indexPath.section
         let row = indexPath.row
         let setting = self.settingModel[section].settings[row]
-
+        
         if self.settingModel[indexPath.section].type == .synchronization {
             let cell = tableView.dequeueReusableCell(withIdentifier: DTSynhronizeCell.cellID, for: indexPath)
             (cell as? DTSynhronizeCell)?.setUpdateDateTo(self.lastSynhronizeDate)

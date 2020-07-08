@@ -53,15 +53,18 @@ class DTTrainedMusclesView: UIView {
     }
     
     override func layoutSubviews() {
-       super.layoutSubviews()
+        super.layoutSubviews()
         self.setGradientLayer()
     }
     
+    //MARK: - Private methods
     private func setGradientLayer() {
-        let gradientLayer = CAGradientLayer.getDefaultGradientFor(self, with: .darkBordoColor, and: .black)
+        let gradientLayer = CAGradientLayer.getDefaultGradientFor(self,
+                                                                  with: .darkBordoColor,
+                                                                  and: .black)
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
-
+    
     //MARK: - Setter
     func updateSubgroupsImages(for subgroups: [MuscleSubgroup.Subgroup]?) {
         guard let subgroupsFromTrain = subgroups else { return }
@@ -107,7 +110,7 @@ extension DTTrainedMusclesView: UICollectionViewDelegate, UICollectionViewDataSo
         (cell as? DTMuscleSubgroupsCell)?.setCellImage(to: submuscleGroupImage)
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemHeight = collectionView.bounds.height
         let itemWidth = itemHeight

@@ -87,5 +87,4 @@ class MuscleSubgroup: NSObject, Codable {
                                     MuscleSubgroup.Subgroup.calves]
         }
     }
-    
 }

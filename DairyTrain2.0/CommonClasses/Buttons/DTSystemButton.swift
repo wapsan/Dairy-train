@@ -45,10 +45,10 @@ class DTSystemButton: UIButton {
     }
     
     private func setLayotLayer() {
-        self.layer.cornerRadius = self.bounds.size.height / 4
-        self.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
-        self.layer.masksToBounds = true
-   //     self.layer.cornerRadius = self.bounds.size.height / 2
+//        self.layer.cornerRadius = self.bounds.size.height / 4
+//        self.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+//        self.layer.masksToBounds = true
+        self.layer.cornerRadius = self.bounds.size.height / 2
     }
     
     //MARK: - Public methods
@@ -70,5 +70,4 @@ class DTSystemButton: UIButton {
     @objc private func behavor() {
         self.isPressed ? self.unpressed() : self.pressed()
     }
-    
 }

@@ -3,14 +3,14 @@ import UIKit
 class GoogleSignInButton: DTSystemButton {
     
     //MARK: - GUI Properties
-    lazy var googleImage: UIImageView = {
+    private lazy var googleImage: UIImageView = {
         let imageView = UIImageView(image: UIImage.googleImage)
         imageView.backgroundColor = .clear
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    lazy var googleButtonTittle: UILabel = {
+    private lazy var googleButtonTittle: UILabel = {
         let label = UILabel()
         label.text = "Sign in with Google"
         label.textAlignment = .center
@@ -19,7 +19,7 @@ class GoogleSignInButton: DTSystemButton {
         return label
     }()
     
-    lazy var googleStackView: UIStackView = {
+    private lazy var googleStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 8
@@ -57,5 +57,4 @@ class GoogleSignInButton: DTSystemButton {
             self.googleImage.heightAnchor.constraint(equalTo: self.googleImage.widthAnchor)
         ])
     }
-    
 }

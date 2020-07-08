@@ -44,10 +44,10 @@ class DTDownloadHud: UIView {
     }
     
     override func layoutSubviews() {
-          super.layoutSubviews()
-          self.logoImageView.layer.masksToBounds = true
-          self.logoImageView.layer.cornerRadius = self.logoImageView.bounds.height / 2
-      }
+        super.layoutSubviews()
+        self.logoImageView.layer.masksToBounds = true
+        self.logoImageView.layer.cornerRadius = self.logoImageView.bounds.height / 2
+    }
     
     //MARK: - Public methods
     func showOn(_ viewController: UIViewController) {
@@ -90,7 +90,7 @@ class DTDownloadHud: UIView {
             self.logoImageView.heightAnchor.constraint(equalTo: self.logoImageView.widthAnchor)
         ])
     }
-
+    
     //MARK: - Private methods
     private func animateInView(completion: @escaping () -> Void) {
         self.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)

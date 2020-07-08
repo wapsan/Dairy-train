@@ -2,6 +2,8 @@ import UIKit
 
 extension AppDelegate {
     
+    
+    
     //MARK: - Public methods
     func initStartViewController() {
         self.window = UIWindow(frame: UIScreen.main.bounds)

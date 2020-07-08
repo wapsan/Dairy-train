@@ -3,6 +3,8 @@ import UIKit
 class TrainingListViewController: DTBackgroundedViewController {
     
     //MARK: - Private properties
+    private lazy var editButtonTitle: String = LocalizedString.edit
+    private lazy var doneButtonTitle: String = LocalizedString.done
     private lazy var isTrainingChanged: Bool = false
     private lazy var trainList: [TrainingManagedObject] = []
     private lazy var trainingForDeleting: [Int: TrainingManagedObject] = [:]
@@ -11,12 +13,15 @@ class TrainingListViewController: DTBackgroundedViewController {
         return self.trainingForDeleting.values.map({ $0 })
     }
     
-    
     //MARK: - Properties
     override var isEditing: Bool {
         didSet {
-            self.editTrainListButton.title = oldValue == true ? "Edit" : "Done"
-            self.navigationItem.rightBarButtonItem = oldValue == false ? self.deleteTrainButton : nil
+            self.editTrainListButton.title = oldValue == true ?
+                self.editButtonTitle :
+                self.doneButtonTitle
+            self.navigationItem.rightBarButtonItem = oldValue == false ?
+                self.deleteTrainButton :
+            nil
         }
     }
     
@@ -37,7 +42,7 @@ class TrainingListViewController: DTBackgroundedViewController {
         return collectionView
     }()
     
-   private lazy var headerView: DTHeaderView = {
+    private lazy var headerView: DTHeaderView = {
         let view = DTHeaderView(title: self.headerTitle)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -76,7 +81,7 @@ class TrainingListViewController: DTBackgroundedViewController {
         self.setUpEditingButton()
         self.setBackgroundImageTo(UIImage.trainingListBackground)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if self.isTrainingChanged {
@@ -156,7 +161,7 @@ class TrainingListViewController: DTBackgroundedViewController {
     private func addObserverForAddTrainToList() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.trainingWasAdded),
-                                               name: .addNewTrain,
+                                               name: .trainingListWasChanged,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.trainingWasAdded),
@@ -168,9 +173,7 @@ class TrainingListViewController: DTBackgroundedViewController {
         guard let indexPaths = self.collectionView.indexPathsForSelectedItems else { return }
         for indexPath in indexPaths {
             if let cell = self.collectionView.cellForItem(at: indexPath) as? DTTrainCell {
-                //cell.setBackgroundColorTo(.viewFlipsideBckgoundColor)
                 cell.setDeselectedBackground()
-               // self.collectionView.reloadItems(at: [indexPath])
                 self.collectionView.deselectItem(at: indexPath, animated: true)
             }
         }
@@ -187,27 +190,28 @@ class TrainingListViewController: DTBackgroundedViewController {
     private func showDeletingTrainAlert() {
         AlertHelper.shared.showDefaultAlert(
             on: self,
-            title: "Are you shure?",
-            message: "Delete choosen trainings?",
-            cancelTitle: "Cancel",
-            okTitle: "Ok",
+            title: LocalizedString.deleltingTrainAlertTitle,
+            message: LocalizedString.deleltingTrainAlertMessage,
+            cancelTitle: LocalizedString.cancel,
+            okTitle: LocalizedString.ok,
             style: .alert,
             completion: { [weak self] in
                 guard let self = self else { return }
                 self.deleteChoosenTrain()
-              //  self.deselectSelectedItem()
                 self.showDeletedTrainAlert()
+                NotificationCenter.default.post(name: .trainingListWasChanged, object: nil)
         })
     }
     
     private func showDeletedTrainAlert() {
-        AlertHelper.shared.showDefaultAlert(on: self,
-                                            title: "Training was deleted",
-                                            message: "",
-                                            cancelTitle: nil,
-                                            okTitle: LocalizedString.ok,
-                                            style: .alert,
-                                            completion: nil)
+        AlertHelper.shared.showDefaultAlert(
+            on: self,
+            title: LocalizedString.deletedTrainAlertTitle,
+            message: "",
+            cancelTitle: nil,
+            okTitle: LocalizedString.ok,
+            style: .alert,
+            completion: nil)
     }
     
     //MARK: - Constraint
@@ -319,9 +323,7 @@ extension TrainingListViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.isEditing {
             if let cell = collectionView.cellForItem(at: indexPath) as? DTTrainCell {
-              //  cell.setBackgroundColorTo(.red)
                 cell.setSelectedBackground()
-
             }
             self.trainingForDeleting[indexPath.row] = self.trainList[indexPath.row]
             self.setTrashButttonState()
@@ -335,14 +337,9 @@ extension TrainingListViewController: UICollectionViewDelegate, UICollectionView
         if self.isEditing {
             if let cell = collectionView.cellForItem(at: indexPath) as? DTTrainCell {
                 cell.setDeselectedBackground()
-             
-                    self.trainingForDeleting.removeValue(forKey: indexPath.row)
-                    self.setTrashButttonState()
-                
-              //  cell.setBackgroundColorTo(.viewFlipsideBckgoundColor)
+                self.trainingForDeleting.removeValue(forKey: indexPath.row)
+                self.setTrashButttonState()
             }
-      //      self.trainingForDeleting.removeValue(forKey: indexPath.row)
-          //  self.setTrashButttonState()
         }
     }
     

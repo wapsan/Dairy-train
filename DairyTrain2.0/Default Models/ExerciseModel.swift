@@ -118,12 +118,4 @@ class ExersiceModel {
     init(for group: MuscleSubgroup.Subgroup) {
         self.setUpExercices(for: group)
     }
-    
-    deinit {
-        print("exercice model destroyde")
-    }
-    
 }
-
-
-

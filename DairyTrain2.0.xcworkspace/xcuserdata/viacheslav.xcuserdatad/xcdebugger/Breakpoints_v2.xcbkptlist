@@ -599,22 +599,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B1F5446B-5A42-4B42-8917-321A86E41C81"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DairyTrain2.0/Helpers/Date helper/DateHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "getFormatedDateFrom(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "64FA9B06-A650-4B41-9B66-F777F8D0FF04"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -743,22 +727,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B90F26A7-6EF3-463B-B303-11897DD4891C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DairyTrain2.0/CoreData/CoreDataManager/CoreDataManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
-            landmarkName = "updateUserTrainInfoFrom(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "9B1D1B8D-825A-49BA-98EE-34F8D7AD0D04"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -766,8 +734,8 @@
             filePath = "DairyTrain2.0/Features/TrainingList/Features/Training list/ViewControllers/TrainingListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "deselectSelectedItem()"
             landmarkType = "7">
          </BreakpointContent>

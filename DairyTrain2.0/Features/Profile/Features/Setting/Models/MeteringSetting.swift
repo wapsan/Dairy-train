@@ -23,11 +23,10 @@ class MeteringSetting {
     private lazy var cmMultiplier: Float = 1 / 0.032
     private lazy var ftMultiplier: Float = 1 * 0.032
     
-    private lazy var kgDescription: String = " Kg."
-    private lazy var lbsDescription: String = " Lbs."
-    private lazy var cmDescription: String = " Cm."
-    private lazy var ftDescription: String = " Ft."
-    
+    private lazy var kgDescription: String = LocalizedString.kgDescription
+    private lazy var lbsDescription: String = LocalizedString.lbsDescription
+    private lazy var cmDescription: String = LocalizedString.cmDescription
+    private lazy var ftDescription: String = LocalizedString.ftDescription
     
     //MARK: - Properties
     var weightMultiplier: Float {
