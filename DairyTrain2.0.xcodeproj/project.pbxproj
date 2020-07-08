@@ -89,7 +89,7 @@
 		13FCA9C3248EF7E00056E659 /* DTCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FCA9C2248EF7E00056E659 /* DTCustomAlert.swift */; };
 		13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */; };
 		13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */; };
-		6632C8B9392FB2776FD08AEA /* Pods_DairyTrain2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 489508DA5FF6CAFD605F1258 /* Pods_DairyTrain2_0.framework */; };
+		B945124618561610420C2578 /* Pods_DairyTrain2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BABE25628BE7A9B20116BE7 /* Pods_DairyTrain2_0.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -177,9 +177,9 @@
 		13FCA9C2248EF7E00056E659 /* DTCustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTCustomAlert.swift; sourceTree = "<group>"; };
 		13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCodableModel.swift; sourceTree = "<group>"; };
 		13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCodableModel.swift; sourceTree = "<group>"; };
-		15297B168E3C89AD62162EEF /* Pods-DairyTrain2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DairyTrain2.0.release.xcconfig"; path = "Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0.release.xcconfig"; sourceTree = "<group>"; };
-		489508DA5FF6CAFD605F1258 /* Pods_DairyTrain2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DairyTrain2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		79E67D4147B0E67A401929BA /* Pods-DairyTrain2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DairyTrain2.0.debug.xcconfig"; path = "Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0.debug.xcconfig"; sourceTree = "<group>"; };
+		47BE5E984BBD96CA41369600 /* Pods-DairyTrain2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DairyTrain2.0.debug.xcconfig"; path = "Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0.debug.xcconfig"; sourceTree = "<group>"; };
+		6BABE25628BE7A9B20116BE7 /* Pods_DairyTrain2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DairyTrain2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82464124A547B9BF59C62682 /* Pods-DairyTrain2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DairyTrain2.0.release.xcconfig"; path = "Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6632C8B9392FB2776FD08AEA /* Pods_DairyTrain2_0.framework in Frameworks */,
+				B945124618561610420C2578 /* Pods_DairyTrain2_0.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,7 +459,7 @@
 				133AA5A4246163E5009EBF8E /* DairyTrain2.0 */,
 				133AA5A3246163E5009EBF8E /* Products */,
 				498B8DAC8926C90BF31635DE /* Pods */,
-				44C9618063996B2C26547A86 /* Frameworks */,
+				5D4EA3DFBFE7961530360326 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -918,21 +918,21 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		44C9618063996B2C26547A86 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				489508DA5FF6CAFD605F1258 /* Pods_DairyTrain2_0.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		498B8DAC8926C90BF31635DE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				79E67D4147B0E67A401929BA /* Pods-DairyTrain2.0.debug.xcconfig */,
-				15297B168E3C89AD62162EEF /* Pods-DairyTrain2.0.release.xcconfig */,
+				47BE5E984BBD96CA41369600 /* Pods-DairyTrain2.0.debug.xcconfig */,
+				82464124A547B9BF59C62682 /* Pods-DairyTrain2.0.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		5D4EA3DFBFE7961530360326 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6BABE25628BE7A9B20116BE7 /* Pods_DairyTrain2_0.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -942,12 +942,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 133AA5B6246163E7009EBF8E /* Build configuration list for PBXNativeTarget "DairyTrain2.0" */;
 			buildPhases = (
-				6E6B53C08B816A4CADE74441 /* [CP] Check Pods Manifest.lock */,
+				E6CC79F23C9A8BAD90397F07 /* [CP] Check Pods Manifest.lock */,
 				133AA59E246163E5009EBF8E /* Sources */,
 				133AA59F246163E5009EBF8E /* Frameworks */,
 				133AA5A0246163E5009EBF8E /* Resources */,
-				D0D5A86BA29198F7C240A11B /* [CP] Embed Pods Frameworks */,
-				3534FCDA8CCD74A4E1DE9741 /* [CP] Copy Pods Resources */,
+				09232A1A4EA8DBBFAC785DE5 /* [CP] Embed Pods Frameworks */,
+				69D571276F3F3E0B09B984EE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1005,7 +1005,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3534FCDA8CCD74A4E1DE9741 /* [CP] Copy Pods Resources */ = {
+		09232A1A4EA8DBBFAC785DE5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69D571276F3F3E0B09B984EE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1022,7 +1039,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6E6B53C08B816A4CADE74441 /* [CP] Check Pods Manifest.lock */ = {
+		E6CC79F23C9A8BAD90397F07 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1042,23 +1059,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D0D5A86BA29198F7C240A11B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DairyTrain2.0/Pods-DairyTrain2.0-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1198,6 +1198,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_NS_ASSERTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1280,7 +1281,7 @@
 		};
 		133AA5B7246163E7009EBF8E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79E67D4147B0E67A401929BA /* Pods-DairyTrain2.0.debug.xcconfig */;
+			baseConfigurationReference = 47BE5E984BBD96CA41369600 /* Pods-DairyTrain2.0.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1300,7 +1301,7 @@
 		};
 		133AA5B8246163E7009EBF8E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15297B168E3C89AD62162EEF /* Pods-DairyTrain2.0.release.xcconfig */;
+			baseConfigurationReference = 82464124A547B9BF59C62682 /* Pods-DairyTrain2.0.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

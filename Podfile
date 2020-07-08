@@ -7,7 +7,6 @@ target 'DairyTrain2.0' do
 
 pod 'Firebase/Auth'
 pod 'GoogleSignIn'
-pod 'Firebase/Firestore'
 pod 'Firebase/Database'
   # Pods for DairyTrain2.0
 end
