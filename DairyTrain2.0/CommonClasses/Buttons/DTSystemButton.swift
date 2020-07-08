@@ -25,6 +25,7 @@ class DTSystemButton: UIButton {
     //MARK: - Private methods
     private func setAppearance() {
         self.backgroundColor = .red
+        
         self.titleLabel?.textColor = .white
         self.titleLabel?.font = .systemFont(ofSize: 25)
         self.setDefaultLayer()
@@ -44,7 +45,10 @@ class DTSystemButton: UIButton {
     }
     
     private func setLayotLayer() {
-        self.layer.cornerRadius = self.bounds.size.height / 2
+        self.layer.cornerRadius = self.bounds.size.height / 4
+        self.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+        self.layer.masksToBounds = true
+   //     self.layer.cornerRadius = self.bounds.size.height / 2
     }
     
     //MARK: - Public methods

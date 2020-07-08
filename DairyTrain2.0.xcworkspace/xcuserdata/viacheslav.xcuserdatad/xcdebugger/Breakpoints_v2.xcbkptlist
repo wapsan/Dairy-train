@@ -158,8 +158,8 @@
             filePath = "DairyTrain2.0/CommonClasses/Alerts/DTCustomAlert.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
+            startingLineNumber = "447"
+            endingLineNumber = "447"
             landmarkName = "writeValueInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +174,8 @@
             filePath = "DairyTrain2.0/CommonClasses/Alerts/DTCustomAlert.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
+            startingLineNumber = "449"
+            endingLineNumber = "449"
             landmarkName = "writeValueInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -190,8 +190,8 @@
             filePath = "DairyTrain2.0/CommonClasses/Alerts/DTCustomAlert.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
+            startingLineNumber = "451"
+            endingLineNumber = "451"
             landmarkName = "writeValueInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,8 +206,8 @@
             filePath = "DairyTrain2.0/CommonClasses/Alerts/DTCustomAlert.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
+            startingLineNumber = "466"
+            endingLineNumber = "466"
             landmarkName = "writeListSelectionInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +222,8 @@
             filePath = "DairyTrain2.0/CommonClasses/Alerts/DTCustomAlert.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "460"
-            endingLineNumber = "460"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
             landmarkName = "writeListSelectionInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -526,8 +526,8 @@
             filePath = "DairyTrain2.0/CommonClasses/Alerts/DTCustomAlert.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "cancelButton"
             landmarkType = "24">
          </BreakpointContent>
@@ -670,8 +670,8 @@
             filePath = "DairyTrain2.0/CommonClasses/Alerts/DTCustomAlert.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "462"
-            endingLineNumber = "462"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
             landmarkName = "writeListSelectionInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -753,22 +753,6 @@
             startingLineNumber = "321"
             endingLineNumber = "321"
             landmarkName = "updateUserTrainInfoFrom(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "549BDA40-06E9-4EB7-A448-F0AA8F9368A0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DairyTrain2.0/Features/StartApp/Features/LogIn/Views/DTDownloadHud.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "showOn(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

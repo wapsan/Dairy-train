@@ -43,7 +43,8 @@ class DTCustomAlert: UIView {
     private lazy var alertView: UIView = {
         let view = UIView()
         view.backgroundColor = .viewFlipsideBckgoundColor
-        view.layer.cornerRadius = 20
+        view.layer.cornerRadius = 30
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -51,8 +52,6 @@ class DTCustomAlert: UIView {
     
     private lazy var containerAlertView: UIView = {
          let view = UIView()
-         view.backgroundColor = .viewFlipsideBckgoundColor
-         view.layer.cornerRadius = 20
          view.layer.shadowColor = UIColor.black.cgColor
          view.layer.shadowOffset = .init(width: 0, height: 5)
          view.layer.shadowOpacity = 5
@@ -183,7 +182,7 @@ class DTCustomAlert: UIView {
     
     private lazy var repsLabel: UILabel = {
         let label = UILabel()
-        label.text = "reps."
+        label.text = " Reps."
         label.backgroundColor = .clear
         label.textColor = .white
         label.font = .systemFont(ofSize: 17)
@@ -199,7 +198,7 @@ class DTCustomAlert: UIView {
     
     private lazy var weightLabel: UILabel = {
         let label = UILabel()
-        label.text = MeteringSetting.shared.weightDescription + "."
+        label.text = MeteringSetting.shared.weightDescription
         label.backgroundColor = .clear
         label.textColor = .white
         label.font = .systemFont(ofSize: 17)
@@ -212,7 +211,7 @@ class DTCustomAlert: UIView {
         stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.distribution = .fillEqually
-        stackView.alignment = .lastBaseline
+        stackView.alignment = .center
         stackView.addArrangedSubview(self.weightTextField)
         stackView.addArrangedSubview(self.weightLabel)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -224,7 +223,7 @@ class DTCustomAlert: UIView {
         stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.distribution = .fillEqually
-        stackView.alignment = .lastBaseline
+        stackView.alignment = .center
         stackView.addArrangedSubview(self.repsTextField)
         stackView.addArrangedSubview(self.repsLabel)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -294,11 +293,21 @@ class DTCustomAlert: UIView {
         if let aproachIndex = aproachNumber {
             let aproach = exercice.aproachesArray[aproachIndex]
             self.titleLabel.text = "Aproach №\(aproachIndex + 1)"
-            if aproach.weight.truncatingRemainder(dividingBy: 1) == 0 {
-                self.weightTextField.text = String(format: "%.0f", aproach.weight)
+            if aproach.weightMode == MeteringSetting.shared.weightMode.rawValue {
+                if aproach.weight.truncatingRemainder(dividingBy: 1) == 0 {
+                    self.weightTextField.text = String(format: "%.0f", aproach.weight)
+                } else {
+                    self.weightTextField.text = String(format: "%.1f", aproach.weight)
+                }
             } else {
-                self.weightTextField.text = String(format: "%.1f", aproach.weight)
+                let newWeight = aproach.weight * MeteringSetting.shared.weightMultiplier
+                if newWeight.truncatingRemainder(dividingBy: 1) == 0 {
+                    self.weightTextField.text = String(format: "%.0f", newWeight)
+                } else {
+                    self.weightTextField.text = String(format: "%.1f", newWeight)
+                }
             }
+            self.weightLabel.text = MeteringSetting.shared.weightDescription
             self.repsTextField.text = String(exercice.aproachesArray[aproachIndex].reps)
             self.changingAproachIndex = aproachIndex
             self.alertType = .aproachAlert
@@ -483,7 +492,7 @@ class DTCustomAlert: UIView {
     }
       
     private func setButtonState(_ button: UIButton) {
-        button.layer.backgroundColor = button.isSelected ? UIColor.red.cgColor : UIColor.clear.cgColor
+        button.layer.backgroundColor = button.isSelected ? UIColor.darkBordoColor.cgColor : UIColor.clear.cgColor
     }
     
     private func setUpKeyBoardStyle(for textField: UITextField) {
@@ -616,7 +625,13 @@ class DTCustomAlert: UIView {
             self.infoBlockStackView.centerYAnchor.constraint(equalTo: self.alertView.centerYAnchor),
             self.infoBlockStackView.centerXAnchor.constraint(equalTo: self.alertView.centerXAnchor),
             self.infoBlockStackView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
-            self.infoBlockStackView.bottomAnchor.constraint(equalTo: self.systemButtonsStackView.topAnchor)
+            self.infoBlockStackView.bottomAnchor.constraint(equalTo: self.systemButtonsStackView.topAnchor),
+            self.infoBlockStackView.widthAnchor.constraint(equalTo: self.alertView.widthAnchor, multiplier: 2/3)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.repsTextField.widthAnchor.constraint(equalTo: self.infoBlockStackView.widthAnchor, multiplier: 1/3),
+            self.weightTextField.widthAnchor.constraint(equalTo: self.infoBlockStackView.widthAnchor, multiplier: 1/3)
         ])
         
         NSLayoutConstraint.activate([

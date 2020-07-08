@@ -16,8 +16,6 @@
 		13243A41247E768B00AB7419 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A40247E768B00AB7419 /* DateHelper.swift */; };
 		1325A0EB2495435600349E47 /* UserTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1325A0EA2495435600349E47 /* UserTrainingModel.swift */; };
 		1325A0ED249546AA00349E47 /* UserTrainingModelFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1325A0EC249546AA00349E47 /* UserTrainingModelFileManager.swift */; };
-		1325A0F024954FBC00349E47 /* CurrentTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1325A0EF24954FBC00349E47 /* CurrentTrainingModel.swift */; };
-		1325A0F22495506700349E47 /* CurrentTrainingFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1325A0F12495506700349E47 /* CurrentTrainingFileManager.swift */; };
 		132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132D958B2485809B006E5A41 /* AppAuthentication.swift */; };
 		132F588F249A87F00089FA09 /* DTSplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F588E249A87F00089FA09 /* DTSplashScreenViewController.swift */; };
 		13344E5124B3402E00BE3D65 /* CAGradientLayer+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13344E5024B3402E00BE3D65 /* CAGradientLayer+Ex.swift */; };
@@ -110,8 +108,6 @@
 		13243A40247E768B00AB7419 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		1325A0EA2495435600349E47 /* UserTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrainingModel.swift; sourceTree = "<group>"; };
 		1325A0EC249546AA00349E47 /* UserTrainingModelFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrainingModelFileManager.swift; sourceTree = "<group>"; };
-		1325A0EF24954FBC00349E47 /* CurrentTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTrainingModel.swift; sourceTree = "<group>"; };
-		1325A0F12495506700349E47 /* CurrentTrainingFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTrainingFileManager.swift; sourceTree = "<group>"; };
 		132D958B2485809B006E5A41 /* AppAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthentication.swift; sourceTree = "<group>"; };
 		132F588E249A87F00089FA09 /* DTSplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSplashScreenViewController.swift; sourceTree = "<group>"; };
 		13344E5024B3402E00BE3D65 /* CAGradientLayer+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Ex.swift"; sourceTree = "<group>"; };
@@ -234,7 +230,6 @@
 			children = (
 				1306344A2494DFC5008C1ECF /* Cells */,
 				130634482494DEEB008C1ECF /* ViewControllers */,
-				1325A0EE24954F9E00349E47 /* Models */,
 			);
 			path = "Choosen training";
 			sourceTree = "<group>";
@@ -468,15 +463,6 @@
 				1325A0EC249546AA00349E47 /* UserTrainingModelFileManager.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		1325A0EE24954F9E00349E47 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				1325A0EF24954FBC00349E47 /* CurrentTrainingModel.swift */,
-				1325A0F12495506700349E47 /* CurrentTrainingFileManager.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		133A7BE024AE13B800409D3F /* Models */ = {
@@ -1147,7 +1133,6 @@
 				13902AB4249411ED00963A07 /* DTMuscleSubgroupsCell.swift in Sources */,
 				13BF82BD247C2E54005C5494 /* MainTabBarItemVC.swift in Sources */,
 				136F3FF92498CF0400C6944B /* AppDelegate+Ex.swift in Sources */,
-				1325A0F22495506700349E47 /* CurrentTrainingFileManager.swift in Sources */,
 				131B9F9D24ADF2AC004FE9AD /* DTSynhronizeCell.swift in Sources */,
 				1335B2692495183300D8276F /* DTFirebaseFileManager.swift in Sources */,
 				13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */,
@@ -1193,7 +1178,6 @@
 				139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */,
 				13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */,
 				13EC525F24810E4A00A05BCA /* DTEditingExerciceCell.swift in Sources */,
-				1325A0F024954FBC00349E47 /* CurrentTrainingModel.swift in Sources */,
 				13C0F4FF24B4E24A0005A011 /* SettingSectionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -166,9 +166,9 @@ class DTInfoView: UIView {
         self.layer.shadowOpacity = 5
     }
     
-    private  func setLayotLayer() {
-        self.layer.cornerRadius = 25
-    }
+//    private  func setLayotLayer() {
+//        self.layer.cornerRadius = 25
+//    }
     
     private func setTapRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapSelector))

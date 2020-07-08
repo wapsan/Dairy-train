@@ -84,9 +84,12 @@ class DTEditingExerciceCell: UITableViewCell {
     }()
     
     //MARK: - Layout subviews
+    //FIXME: - CONTAINER VIEW BOUNDS
     override func layoutSubviews() {
         super.layoutSubviews()
-        let gradient = CAGradientLayer.getDefaultGradientFor(self.containerView, with: .darkBordoColor, and: .black)
+        let gradient = CAGradientLayer.getDefaultGradientFor(self.containerView,
+                                                             with: .darkBordoColor,
+                                                             and: .black)
         self.containerView.layer.insertSublayer(gradient, at: 0)
     }
     

@@ -20,6 +20,7 @@ class DTDownloadHud: UIView {
     
     private lazy var logoImageView: UIImageView = {
         let view = UIImageView()
+        view.contentMode = .scaleAspectFill
         view.image = UIImage.mainLogo
         view.backgroundColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
