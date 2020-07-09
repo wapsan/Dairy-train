@@ -183,8 +183,11 @@ class DTCustomAlert: UIView {
     private lazy var repsLabel: UILabel = {
         let label = UILabel()
         label.text = " Reps."
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         label.backgroundColor = .clear
         label.textColor = .white
+        label.numberOfLines = 1
         label.font = .systemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -626,7 +629,8 @@ class DTCustomAlert: UIView {
             self.infoBlockStackView.centerXAnchor.constraint(equalTo: self.alertView.centerXAnchor),
             self.infoBlockStackView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
             self.infoBlockStackView.bottomAnchor.constraint(equalTo: self.systemButtonsStackView.topAnchor),
-            self.infoBlockStackView.widthAnchor.constraint(equalTo: self.alertView.widthAnchor, multiplier: 2/3)
+            self.infoBlockStackView.widthAnchor.constraint(equalTo: self.alertView.widthAnchor, multiplier: 0.7)
+         //   self.infoBlockStackView.widthAnchor.constraint(equalTo: self.alertView.widthAnchor, multiplier: 2/3)
         ])
         
         NSLayoutConstraint.activate([

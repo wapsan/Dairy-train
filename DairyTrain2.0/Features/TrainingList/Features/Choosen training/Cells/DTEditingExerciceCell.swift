@@ -13,6 +13,11 @@ class DTEditingExerciceCell: UITableViewCell {
     var removeAproachButtonAction: (() -> Void)?
     
     //MARK: - GUI Properties
+    private lazy var backgroundGradient: CAGradientLayer = {
+        let gradient = DTGradientLayerMaker.shared.makeDefaultGradient()
+        return gradient
+    }()
+    
     private var containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +60,7 @@ class DTEditingExerciceCell: UITableViewCell {
     
     private lazy var addAproachButton: UIButton = {
         let button = UIButton()
-        let addImage = UIImage(named: "add")
+        let addImage = UIImage.dtAdd
         button.setImage(addImage, for: .normal)
         button.addTarget(self,
                          action: #selector(self.addButtonTouched),
@@ -66,8 +71,7 @@ class DTEditingExerciceCell: UITableViewCell {
     
     private lazy var removeLastAproachButton: UIButton = {
         let button = UIButton()
-        let removeImage = UIImage(named: "remove")
-        
+        let removeImage = UIImage.dtRemove
         button.setImage(removeImage, for: .normal)
         button.addTarget(self,
                          action: #selector(self.removeLastAproachesButtonPressed),
@@ -86,22 +90,11 @@ class DTEditingExerciceCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    private lazy var a: CAGradientLayer = {
-        let gradient = CAGradientLayer.getDefaultGradientFor(self.containerView,
-        with: .darkBordoColor,
-        and: .black)
-        return gradient
-    }()
     
     //MARK: - Layout subviews
-    //FIXME: - CONTAINER VIEW BOUNDS
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-      //  self.containerView.layer.insertSublayer(gradient, at: 0)
-        self.containerView.layer.addSublayer(self.a)
-        self.a.bringToFront()
-        
+        self.backgroundGradient.frame = self.containerView.bounds
     }
     
     //MARK: - Initialization
@@ -111,6 +104,9 @@ class DTEditingExerciceCell: UITableViewCell {
     }
     
     private func initCell() {
+        self.containerView.layer.addSublayer(self.backgroundGradient)
+        self.backgroundGradient.bringToFront()
+        
         self.backgroundColor = .clear
         self.selectionStyle = .none
         self.contentView.addSubview(self.containerView)
@@ -119,10 +115,6 @@ class DTEditingExerciceCell: UITableViewCell {
         self.contentView.addSubview(self.exerciceNameLabel)
         self.contentView.addSubview(self.aproachCollectionList)
         self.contentView.addSubview(self.aproachesButtonStack)
-        //        self.containerView.addSubview(self.muscleSubGroupImage)
-        //        self.containerView.addSubview(self.exerciceNameLabel)
-        //        self.containerView.addSubview(self.aproachCollectionList)
-        //        self.containerView.addSubview(self.aproachesButtonStack)
         self.setUpNewConstraints()
     }
     
@@ -141,15 +133,14 @@ class DTEditingExerciceCell: UITableViewCell {
     //MARK: - Constraints
     private func setUpNewConstraints() {
         NSLayoutConstraint.activate([
-            self.containerView.topAnchor.constraint(equalTo: self.contentView.topAnchor,
+            self.containerView.topAnchor.constraint(equalTo: self.topAnchor,
                                                     constant: 8),
-            self.containerView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor,
+            self.containerView.leftAnchor.constraint(equalTo: self.leftAnchor,
                                                      constant: 8),
-            self.containerView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor,
+            self.containerView.rightAnchor.constraint(equalTo: self.rightAnchor,
                                                       constant: -8),
-            self.containerView.heightAnchor.constraint(equalTo: self.containerView.widthAnchor, multiplier: 1/2)
-//            self.containerView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
-//                                                       constant: -8),
+            self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
+                                                       constant: -8)
         ])
         
         NSLayoutConstraint.activate([

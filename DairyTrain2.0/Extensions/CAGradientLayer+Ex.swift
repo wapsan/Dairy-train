@@ -2,6 +2,14 @@ import UIKit
 
 extension CAGradientLayer {
     
+    //MARK: - Gradient style enum
+    enum GradientStyle {
+        case selectedStyle
+        case defaultStyle
+    }
+    
+
+    
     static func getDefaultGradientFor<T: UIView>(_ view: T,
                                           with firstColor: UIColor,
                                           and secondColor: UIColor) -> CAGradientLayer {

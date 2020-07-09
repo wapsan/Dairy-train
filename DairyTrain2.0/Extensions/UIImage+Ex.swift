@@ -4,6 +4,8 @@ import UIKit
 extension UIImage {
     
     //MARK: - System images
+    static let dtRemove = UIImage(named: "remove")
+    static let dtAdd = UIImage(named: "add")
     static let mainLogo = UIImage(named: "mainLogo")
     static let textLogo = UIImage(named: "logoText")
     static let checkMark = UIImage(named: "checkMark")

@@ -98,7 +98,11 @@ class Statistics {
                     
                 }
             }
-            return averageProjectileWeight / aproachesCountInTtrain
+            if aproachesCountInTtrain == 0 {
+                return 0
+            } else {
+                return averageProjectileWeight / aproachesCountInTtrain
+            }
         }()
         
         self.trainedSubGroupsList = train.muscleSubgroupInCurentTraint

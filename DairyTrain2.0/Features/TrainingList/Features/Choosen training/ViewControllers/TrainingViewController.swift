@@ -101,9 +101,9 @@ extension TrainingViewController {
     }
     
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let safeArea = self.view.safeAreaLayoutGuide.layoutFrame
-        return safeArea.height / 3.5
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = self.view.safeAreaLayoutGuide.layoutFrame.height / 3.5
+        return height
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

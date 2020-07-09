@@ -33,6 +33,7 @@
 		135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F22892494296F00EEE140 /* StatisticsModel.swift */; };
 		136570D12491259C00BF926B /* CommonStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136570D02491259C00BF926B /* CommonStatisticsViewController.swift */; };
 		136570D3249125DB00BF926B /* TrainStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136570D2249125DB00BF926B /* TrainStatisticsViewController.swift */; };
+		1366942624B7273E00F58422 /* DTGradientLayerMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1366942524B7273E00F58422 /* DTGradientLayerMaker.swift */; };
 		136F3FF92498CF0400C6944B /* AppDelegate+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F3FF82498CF0400C6944B /* AppDelegate+Ex.swift */; };
 		136F3FFE2498D0DE00C6944B /* UserMainInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 136F3FFC2498D0DE00C6944B /* UserMainInfo.xcdatamodeld */; };
 		136F40092498D44B00C6944B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F40082498D44B00C6944B /* CoreDataManager.swift */; };
@@ -121,6 +122,7 @@
 		135F22892494296F00EEE140 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
 		136570D02491259C00BF926B /* CommonStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStatisticsViewController.swift; sourceTree = "<group>"; };
 		136570D2249125DB00BF926B /* TrainStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStatisticsViewController.swift; sourceTree = "<group>"; };
+		1366942524B7273E00F58422 /* DTGradientLayerMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTGradientLayerMaker.swift; sourceTree = "<group>"; };
 		136F3FF82498CF0400C6944B /* AppDelegate+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Ex.swift"; sourceTree = "<group>"; };
 		136F3FFD2498D0DE00C6944B /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
 		136F40082498D44B00C6944B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -520,6 +522,14 @@
 			path = Statistic;
 			sourceTree = "<group>";
 		};
+		1366942424B7271A00F58422 /* Gradient maker */ = {
+			isa = PBXGroup;
+			children = (
+				1366942524B7273E00F58422 /* DTGradientLayerMaker.swift */,
+			);
+			path = "Gradient maker";
+			sourceTree = "<group>";
+		};
 		136F3FFA2498D07D00C6944B /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -668,6 +678,7 @@
 		139D530B2473DF560028AE6A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1366942424B7271A00F58422 /* Gradient maker */,
 				13243A3F247E765500AB7419 /* Date helper */,
 				139D530A2473DF3F0028AE6A /* AlertHelper */,
 			);
@@ -1140,6 +1151,7 @@
 				13EC52552480748900A05BCA /* TrainingViewController.swift in Sources */,
 				13479F37247BD55D002FFB4E /* MainTabBarViewController.swift in Sources */,
 				13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */,
+				1366942624B7273E00F58422 /* DTGradientLayerMaker.swift in Sources */,
 				132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */,
 				1396F5FC248394C20012A76A /* ProfileViewController.swift in Sources */,
 				136570D12491259C00BF926B /* CommonStatisticsViewController.swift in Sources */,

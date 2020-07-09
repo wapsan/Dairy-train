@@ -7,16 +7,12 @@ class DTActivitiesCell: UITableViewCell {
     
     //MARK: - CALayers
     private lazy var defaultGradient: CAGradientLayer = {
-        let gradient =  CAGradientLayer.getSelectedGradientFor(self.containerView,
-                                                           with: .darkBordoColor,
-                                                           and: .black)
+        let gradient = DTGradientLayerMaker.shared.makeDefaultGradient()
         return gradient
     }()
     
     private lazy var selectedGradient: CAGradientLayer = {
-        let gradient = CAGradientLayer.getDefaultGradientFor(self.containerView,
-                                                             with: .red,
-                                                             and: .black)
+        let gradient = DTGradientLayerMaker.shared.makeSelectedGradient()
         return gradient
     }()
     
@@ -63,6 +59,7 @@ class DTActivitiesCell: UITableViewCell {
         self.addSubview(self.muscleGroupImage)
         self.addSubview(self.exerciceNameLabel)
         self.setUpConstraints()
+        self.setUpGradientsLayers()
     }
     
     //MARK: - Setters
@@ -92,6 +89,12 @@ class DTActivitiesCell: UITableViewCell {
     //MARK: - Publick methods
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.selectedGradient.frame = self.containerView.bounds
+        self.defaultGradient.frame = self.containerView.bounds
+    }
+    
+    //MARK: - Private methods
+    private func setUpGradientsLayers() {
         self.containerView.layer.addSublayer(self.defaultGradient)
         self.containerView.layer.addSublayer(self.selectedGradient)
         self.defaultGradient.bringToFront()
@@ -104,8 +107,6 @@ class DTActivitiesCell: UITableViewCell {
             self.containerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8),
             self.containerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8),
             self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            self.containerView.heightAnchor.constraint(lessThanOrEqualTo: self.containerView.widthAnchor,
-                                                       multiplier: 1/4)
         ])
         
         NSLayoutConstraint.activate([

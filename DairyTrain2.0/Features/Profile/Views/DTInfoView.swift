@@ -8,7 +8,7 @@ class DTInfoView: UIView {
     //MARK: - GUI Elemnts
     private(set) lazy var valueLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
-        label.font = .systemFont(ofSize: 25)
+        label.font = .systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -22,7 +22,7 @@ class DTInfoView: UIView {
     
     private lazy var titleLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
-        label.font = .boldSystemFont(ofSize: 25)
+        label.font = .boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -198,10 +198,11 @@ class DTInfoView: UIView {
         
         NSLayoutConstraint.activate([
             self.containerStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.containerStackView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: 16),
+            self.containerStackView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: 8),
+           // self.containerStackView.topAnchor.constraint(lessThanOrEqualTo: self.topAnchor, constant: 8),
             self.containerStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
             self.containerStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            self.containerStackView.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -16)
+            self.containerStackView.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -8)
         ])
         
         NSLayoutConstraint.activate([

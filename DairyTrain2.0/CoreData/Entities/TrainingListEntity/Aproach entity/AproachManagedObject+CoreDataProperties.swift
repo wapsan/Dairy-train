@@ -44,6 +44,6 @@ extension AproachManagedObject {
     }
     
     var repsDisplayValue: String {
-        return "\(self.reps) reps"
+        return "\(self.reps) Reps"
     }
 }

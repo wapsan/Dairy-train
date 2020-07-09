@@ -6,9 +6,9 @@ class DTAdaptiveLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.adjustsFontSizeToFitWidth = true
-        self.minimumScaleFactor = 0.5
-        self.numberOfLines = 0
-        self.lineBreakMode = .byWordWrapping
+        self.minimumScaleFactor = 0.1
+        self.numberOfLines = 1
+        self.baselineAdjustment = .alignCenters
         self.textAlignment = .center
         self.textColor = .white
     }

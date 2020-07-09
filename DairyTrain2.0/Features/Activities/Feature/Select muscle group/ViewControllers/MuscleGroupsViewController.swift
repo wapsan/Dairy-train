@@ -79,6 +79,11 @@ extension MuscleGroupsViewController: UITableViewDataSource, UITableViewDelegate
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = self.view.bounds.width / 3.5
+        return height
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let subgroupViewController = MuscleSubgroupsViewController()
         let muscleGroup = self.muscleGroups[indexPath.row]

@@ -7,16 +7,12 @@ class DTTrainCell: UICollectionViewCell {
     
     //MARK: - CALayers
     private lazy var defaultGradient: CAGradientLayer = {
-        let gradient =  CAGradientLayer.getSelectedGradientFor(self.containerView,
-                                                           with: .darkBordoColor,
-                                                           and: .black)
+        let gradient = DTGradientLayerMaker.shared.makeDefaultGradient()
         return gradient
     }()
     
     private lazy var selectedGradient: CAGradientLayer = {
-        let gradient = CAGradientLayer.getDefaultGradientFor(self.containerView,
-                                                             with: .red,
-                                                             and: .black)
+        let gradient = DTGradientLayerMaker.shared.makeSelectedGradient()
         return gradient
     }()
     
@@ -91,13 +87,15 @@ class DTTrainCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initCell()
+        
+        
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Private methods
     private func initCell() {
         self.backgroundColor = .clear
         self.addSubview(self.containerView)
@@ -109,12 +107,20 @@ class DTTrainCell: UICollectionViewCell {
         self.addSubview(self.horizontalLine)
         self.addSubview(self.verticalLine)
         self.setUpConstraints()
+        self.setGradientsLayer()
     }
     
+    //MARK: - Private methods
     private func hideIcons() {
         for icon in self.groupImages {
             icon.isHidden = true
         }
+    }
+    
+    private func setGradientsLayer() {
+        self.containerView.layer.addSublayer(self.defaultGradient)
+        self.containerView.layer.addSublayer(self.selectedGradient)
+        self.defaultGradient.bringToFront()
     }
     
     //MARK: - Setter
@@ -152,9 +158,8 @@ class DTTrainCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.containerView.layer.addSublayer(self.defaultGradient)
-        self.containerView.layer.addSublayer(self.selectedGradient)
-        self.defaultGradient.bringToFront()
+        self.defaultGradient.frame = self.containerView.bounds
+        self.selectedGradient.frame = self.containerView.bounds
     }
     
     //MARK: - Constraints
