@@ -59,9 +59,16 @@ class DTCustomAlert: UIView {
         return view
     }()
     
+    private lazy var tapForVisualEffectView: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(self.cancelPressed))
+        return tap
+    }()
+    
     private lazy var visualEffectView: UIVisualEffectView = {
         let blurEffectView = UIBlurEffect(style: .light)
         let visualEffectView = UIVisualEffectView(effect: blurEffectView)
+        visualEffectView.addGestureRecognizer(self.tapForVisualEffectView)
         visualEffectView.translatesAutoresizingMaskIntoConstraints = false
         return visualEffectView
     }()
