@@ -134,48 +134,48 @@ class DTEditingExerciceCell: UITableViewCell {
     private func setUpNewConstraints() {
         NSLayoutConstraint.activate([
             self.containerView.topAnchor.constraint(equalTo: self.topAnchor,
-                                                    constant: 8),
+                                                    constant: DTEdgeInsets.small.top),
             self.containerView.leftAnchor.constraint(equalTo: self.leftAnchor,
-                                                     constant: 8),
+                                                     constant: DTEdgeInsets.small.left),
             self.containerView.rightAnchor.constraint(equalTo: self.rightAnchor,
-                                                      constant: -8),
+                                                      constant: DTEdgeInsets.small.right),
             self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
-                                                       constant: -8)
+                                                       constant: DTEdgeInsets.small.bottom)
         ])
         
         NSLayoutConstraint.activate([
             self.muscleSubGroupImage.leftAnchor.constraint(equalTo: self.containerView.leftAnchor,
-                                                           constant: 8),
+                                                           constant: DTEdgeInsets.small.left),
             self.muscleSubGroupImage.topAnchor.constraint(equalTo: self.containerView.topAnchor,
-                                                          constant: 8),
+                                                          constant: DTEdgeInsets.small.top),
             self.muscleSubGroupImage.bottomAnchor.constraint(equalTo: self.aproachCollectionList.topAnchor,
-                                                             constant: -8),
+                                                             constant: DTEdgeInsets.small.bottom),
             self.muscleSubGroupImage.widthAnchor.constraint(equalTo: self.muscleSubGroupImage.heightAnchor),
         ])
         
         NSLayoutConstraint.activate([
             self.exerciceNameLabel.leftAnchor.constraint(equalTo: self.muscleSubGroupImage.rightAnchor,
-                                                         constant: 8),
+                                                         constant: DTEdgeInsets.small.left),
             self.exerciceNameLabel.rightAnchor.constraint(equalTo: self.aproachesButtonStack.leftAnchor,
-                                                          constant: -8),
+                                                          constant: DTEdgeInsets.small.right),
             self.exerciceNameLabel.centerYAnchor.constraint(equalTo: self.muscleSubGroupImage.centerYAnchor),
         ])
         
         NSLayoutConstraint.activate([
             self.aproachesButtonStack.topAnchor.constraint(equalTo: self.containerView.topAnchor),
             self.aproachesButtonStack.leftAnchor.constraint(equalTo: self.aproachCollectionList.rightAnchor,
-                                                            constant: 8),
+                                                            constant: DTEdgeInsets.small.left),
             self.aproachesButtonStack.rightAnchor.constraint(equalTo: self.containerView.rightAnchor,
-                                                             constant: -8),
+                                                             constant: DTEdgeInsets.small.right),
             self.aproachesButtonStack.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor),
         ])
         
         
         NSLayoutConstraint.activate([
             self.aproachCollectionList.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,
-                                                               constant: -8),
+                                                               constant: DTEdgeInsets.small.bottom),
             self.aproachCollectionList.leftAnchor.constraint(equalTo: self.containerView.leftAnchor,
-                                                             constant: 8),
+                                                             constant: DTEdgeInsets.small.left),
             self.aproachCollectionList.widthAnchor.constraint(equalTo: self.containerView.widthAnchor,
                                                               multiplier: 0.8),
             self.aproachCollectionList.heightAnchor.constraint(equalTo: self.containerView.heightAnchor,

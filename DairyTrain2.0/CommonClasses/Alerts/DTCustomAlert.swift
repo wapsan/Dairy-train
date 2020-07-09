@@ -567,7 +567,8 @@ class DTCustomAlert: UIView {
         widthContainerAlertViewConstraint.priority = UILayoutPriority(rawValue: 750)
         
         NSLayoutConstraint.activate([
-            self.containerAlertView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: 8),
+            self.containerAlertView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor,
+                                                         constant: DTEdgeInsets.small.top),
             self.containerAlertView.bottomAnchor.constraint(equalTo: self.centerYAnchor),
             self.containerAlertView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.containerAlertView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
@@ -584,34 +585,45 @@ class DTCustomAlert: UIView {
     
     private func setUpValueAlertTypeConstraints() {
         NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.alertView.topAnchor, constant: 8),
-            self.titleLabel.leftAnchor.constraint(equalTo: self.alertView.leftAnchor, constant: 8),
-            self.titleLabel.rightAnchor.constraint(equalTo: self.alertView.rightAnchor, constant: -8),
-            self.titleLabel.bottomAnchor.constraint(equalTo: self.valueTextField.topAnchor, constant: -8)
+            self.titleLabel.topAnchor.constraint(equalTo: self.alertView.topAnchor,
+                                                 constant: DTEdgeInsets.small.top),
+            self.titleLabel.leftAnchor.constraint(equalTo: self.alertView.leftAnchor,
+                                                  constant: DTEdgeInsets.small.left),
+            self.titleLabel.rightAnchor.constraint(equalTo: self.alertView.rightAnchor,
+                                                   constant: DTEdgeInsets.small.right),
+            self.titleLabel.bottomAnchor.constraint(equalTo: self.valueTextField.topAnchor,
+                                                    constant: DTEdgeInsets.small.bottom)
         ])
         
         NSLayoutConstraint.activate([
             self.valueTextField.centerXAnchor.constraint(equalTo: self.alertView.centerXAnchor),
             self.valueTextField.centerYAnchor.constraint(equalTo: self.alertView.centerYAnchor),
-            self.valueTextField.widthAnchor.constraint(equalTo: self.alertView.widthAnchor, multiplier: 0.5),
-            self.valueTextField.heightAnchor.constraint(equalTo: self.alertView.heightAnchor, multiplier: 0.3)
+            self.valueTextField.widthAnchor.constraint(equalTo: self.alertView.widthAnchor,
+                                                       multiplier: 0.5),
+            self.valueTextField.heightAnchor.constraint(equalTo: self.alertView.heightAnchor,
+                                                        multiplier: 0.3)
         ])
         
         NSLayoutConstraint.activate([
             self.systemButtonsStackView.topAnchor.constraint(greaterThanOrEqualTo: self.valueTextField.bottomAnchor,
-                                                             constant: 8),
-            self.systemButtonsStackView.leftAnchor.constraint(equalTo: self.alertView.leftAnchor, constant: 16),
-            self.systemButtonsStackView.rightAnchor.constraint(equalTo: self.alertView.rightAnchor, constant: -16),
-            self.systemButtonsStackView.bottomAnchor.constraint(equalTo: self.alertView.bottomAnchor, constant: -8)
+                                                             constant: DTEdgeInsets.small.top),
+            self.systemButtonsStackView.leftAnchor.constraint(equalTo: self.alertView.leftAnchor,
+                                                              constant: DTEdgeInsets.medium.left),
+            self.systemButtonsStackView.rightAnchor.constraint(equalTo: self.alertView.rightAnchor,
+                                                               constant: DTEdgeInsets.medium.right),
+            self.systemButtonsStackView.bottomAnchor.constraint(equalTo: self.alertView.bottomAnchor,
+                                                                constant: DTEdgeInsets.small.bottom)
         ])
     }
     
     private func setUpListSelectionTypeConstraints() {
         let heightMultiplier: CGFloat =  CGFloat(self.selectionButtonsStackView.arrangedSubviews.count + 1)
         NSLayoutConstraint.activate([
-            self.systemButtonsStackView.leftAnchor.constraint(equalTo: self.alertView.leftAnchor, constant: 16),
-            self.systemButtonsStackView.rightAnchor.constraint(equalTo: self.alertView.rightAnchor, constant: -16),
-            self.systemButtonsStackView.bottomAnchor.constraint(equalTo: self.alertView.bottomAnchor, constant: 0),
+            self.systemButtonsStackView.leftAnchor.constraint(equalTo: self.alertView.leftAnchor,
+                                                              constant: DTEdgeInsets.medium.left),
+            self.systemButtonsStackView.rightAnchor.constraint(equalTo: self.alertView.rightAnchor,
+                                                               constant: DTEdgeInsets.medium.right),
+            self.systemButtonsStackView.bottomAnchor.constraint(equalTo: self.alertView.bottomAnchor),
             self.systemButtonsStackView.heightAnchor.constraint(equalTo: self.alertView.heightAnchor,
                                                          multiplier: 1 / heightMultiplier)
         ])
@@ -627,8 +639,10 @@ class DTCustomAlert: UIView {
     private func setUpAproachAlertTypeConstraints() {
         NSLayoutConstraint.activate([
             self.titleLabel.topAnchor.constraint(equalTo: self.alertView.topAnchor),
-            self.titleLabel.leftAnchor.constraint(equalTo: self.alertView.leftAnchor, constant: 8),
-            self.titleLabel.rightAnchor.constraint(equalTo: self.alertView.rightAnchor, constant: -8)
+            self.titleLabel.leftAnchor.constraint(equalTo: self.alertView.leftAnchor,
+                                                  constant: DTEdgeInsets.small.left),
+            self.titleLabel.rightAnchor.constraint(equalTo: self.alertView.rightAnchor,
+                                                   constant: DTEdgeInsets.small.right)
         ])
         
         NSLayoutConstraint.activate([
@@ -637,19 +651,24 @@ class DTCustomAlert: UIView {
             self.infoBlockStackView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
             self.infoBlockStackView.bottomAnchor.constraint(equalTo: self.systemButtonsStackView.topAnchor),
             self.infoBlockStackView.widthAnchor.constraint(equalTo: self.alertView.widthAnchor, multiplier: 0.7)
-         //   self.infoBlockStackView.widthAnchor.constraint(equalTo: self.alertView.widthAnchor, multiplier: 2/3)
         ])
         
         NSLayoutConstraint.activate([
-            self.repsTextField.widthAnchor.constraint(equalTo: self.infoBlockStackView.widthAnchor, multiplier: 1/3),
-            self.weightTextField.widthAnchor.constraint(equalTo: self.infoBlockStackView.widthAnchor, multiplier: 1/3)
+            self.repsTextField.widthAnchor.constraint(equalTo: self.infoBlockStackView.widthAnchor,
+                                                      multiplier: 1/3),
+            self.weightTextField.widthAnchor.constraint(equalTo: self.infoBlockStackView.widthAnchor,
+                                                        multiplier: 1/3)
         ])
         
         NSLayoutConstraint.activate([
-            self.systemButtonsStackView.leftAnchor.constraint(equalTo: self.alertView.leftAnchor, constant: 8),
-            self.systemButtonsStackView.rightAnchor.constraint(equalTo: self.alertView.rightAnchor, constant: -8),
-            self.systemButtonsStackView.bottomAnchor.constraint(equalTo: self.alertView.bottomAnchor, constant: -8),
-            self.systemButtonsStackView.heightAnchor.constraint(equalTo: self.alertView.heightAnchor, multiplier: 0.25)
+            self.systemButtonsStackView.leftAnchor.constraint(equalTo: self.alertView.leftAnchor,
+                                                              constant: DTEdgeInsets.small.left),
+            self.systemButtonsStackView.rightAnchor.constraint(equalTo: self.alertView.rightAnchor,
+                                                               constant: DTEdgeInsets.small.right),
+            self.systemButtonsStackView.bottomAnchor.constraint(equalTo: self.alertView.bottomAnchor,
+                                                                constant: DTEdgeInsets.small.bottom),
+            self.systemButtonsStackView.heightAnchor.constraint(equalTo: self.alertView.heightAnchor,
+                                                                multiplier: 0.25)
         ])
     }
     

@@ -73,20 +73,21 @@ class DTRecomendationHeaderView: UIView {
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             self.tittle.topAnchor.constraint(equalTo: self.topAnchor,
-                                             constant: 8),
+                                             constant: DTEdgeInsets.small.top),
             self.tittle.leftAnchor.constraint(equalTo: self.leftAnchor,
-                                              constant: 8),
+                                              constant: DTEdgeInsets.small.left),
             self.tittle.rightAnchor.constraint(greaterThanOrEqualTo: self.moreInfoButton.leftAnchor,
-                                               constant: -8),
+                                               constant: DTEdgeInsets.small.right),
             self.tittle.bottomAnchor.constraint(equalTo: self.bottomAnchor,
-                                                constant: -8),
+                                                constant: DTEdgeInsets.small.bottom),
         ])
         
         NSLayoutConstraint.activate([
             self.moreInfoButton.centerYAnchor.constraint(equalTo: self.tittle.centerYAnchor),
             self.moreInfoButton.heightAnchor.constraint(equalTo: self.tittle.heightAnchor),
             self.moreInfoButton.widthAnchor.constraint(equalTo: self.moreInfoButton.heightAnchor),
-            self.moreInfoButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8)
+            self.moreInfoButton.rightAnchor.constraint(equalTo: self.rightAnchor,
+                                                       constant: DTEdgeInsets.small.right)
         ])
     }
     

@@ -78,11 +78,11 @@ class DTTrainedMusclesView: UIView {
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor,
-                                                 constant: self.edgeInsets.top),
+                                                 constant: DTEdgeInsets.small.top),
             self.titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor,
-                                                  constant: self.edgeInsets.left),
+                                                  constant: DTEdgeInsets.small.left),
             self.titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor,
-                                                   constant: self.edgeInsets.right),
+                                                   constant: DTEdgeInsets.small.right),
             self.titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor,
                                                     multiplier: 0.25)
         ])
@@ -90,9 +90,9 @@ class DTTrainedMusclesView: UIView {
         NSLayoutConstraint.activate([
             self.subgroupCollectionList.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
             self.subgroupCollectionList.leftAnchor.constraint(equalTo: self.leftAnchor,
-                                                              constant: self.edgeInsets.left),
+                                                              constant: DTEdgeInsets.small.left),
             self.subgroupCollectionList.rightAnchor.constraint(equalTo: self.rightAnchor,
-                                                               constant: self.edgeInsets.right),
+                                                               constant: DTEdgeInsets.small.right),
             self.subgroupCollectionList.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
     }

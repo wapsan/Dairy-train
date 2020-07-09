@@ -40,6 +40,12 @@ class ExercicesViewController: MuscleGroupsViewController {
     }
     
     private func deselectAllRows() {
+        guard let indexPaths = self.tableView.indexPathsForSelectedRows else { return }
+        for indexPath in indexPaths {
+            if let cell = self.tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
+                cell.setUnselectedBackgroundColor()
+            }
+        }
         self.exercices.forEach({ $0.isSelected = false })
         self.selectedExercices.removeAll()
         self.tableView.reloadData()

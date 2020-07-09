@@ -85,10 +85,14 @@ class DTSettingCell: UITableViewCell {
     //MARK: - Constraints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            self.mainSettingLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            self.mainSettingLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8),
-            self.mainSettingLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            self.mainSettingLabel.rightAnchor.constraint(greaterThanOrEqualTo: self.stackView.leftAnchor, constant: -8)
+            self.mainSettingLabel.topAnchor.constraint(equalTo: self.topAnchor,
+                                                       constant: DTEdgeInsets.small.top),
+            self.mainSettingLabel.leftAnchor.constraint(equalTo: self.leftAnchor,
+                                                        constant: DTEdgeInsets.small.left),
+            self.mainSettingLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor,
+                                                          constant: DTEdgeInsets.small.bottom),
+            self.mainSettingLabel.rightAnchor.constraint(greaterThanOrEqualTo: self.stackView.leftAnchor,
+                                                         constant: DTEdgeInsets.small.right)
         ])
         
         NSLayoutConstraint.activate([
@@ -96,9 +100,12 @@ class DTSettingCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            self.stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            self.stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8),
-            self.stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            self.stackView.topAnchor.constraint(equalTo: self.topAnchor,
+                                                constant: DTEdgeInsets.small.top),
+            self.stackView.rightAnchor.constraint(equalTo: self.rightAnchor,
+                                                  constant: DTEdgeInsets.small.right),
+            self.stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
+                                                   constant: DTEdgeInsets.small.bottom),
         ])
     }
 }

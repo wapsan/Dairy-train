@@ -50,7 +50,8 @@ class MuscleGroupsViewController: DTBackgroundedViewController {
     func setTableConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor, constant: 8),
+            self.tableView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
+                                                constant: DTEdgeInsets.small.top),
             self.tableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
             self.tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)

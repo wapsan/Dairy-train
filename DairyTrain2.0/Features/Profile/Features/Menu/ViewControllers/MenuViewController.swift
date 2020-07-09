@@ -99,25 +99,34 @@ class MenuViewController: UIViewController {
     //MARK: - Constraints
     private func setUpTopLineViewConstraints() {
         NSLayoutConstraint.activate([
-            self.topLineView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 16),
-            self.topLineView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1/10),
+            self.topLineView.topAnchor.constraint(equalTo: self.view.topAnchor,
+                                                  constant: DTEdgeInsets.medium.top),
+            self.topLineView.widthAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                    multiplier: 1/10),
             self.topLineView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.topLineView.heightAnchor.constraint(equalTo: self.topLineView.widthAnchor, multiplier: 1/10)
+            self.topLineView.heightAnchor.constraint(equalTo: self.topLineView.widthAnchor,
+                                                     multiplier: 1/10)
         ])
     }
     
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            self.menuButtonStackView.topAnchor.constraint(equalTo: self.topLineView.bottomAnchor, constant: 16),
+            self.menuButtonStackView.topAnchor.constraint(equalTo: self.topLineView.bottomAnchor,
+                                                          constant: DTEdgeInsets.medium.top),
             self.menuButtonStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.menuButtonStackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8),
+            self.menuButtonStackView.widthAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                            multiplier: 0.8),
         ])
         
         NSLayoutConstraint.activate([
-            self.recomendationButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.15),
-            self.statisticsButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.15),
-            self.settingButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.15),
-            self.signOutButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.15),
+            self.recomendationButton.heightAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                             multiplier: 0.15),
+            self.statisticsButton.heightAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                          multiplier: 0.15),
+            self.settingButton.heightAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                       multiplier: 0.15),
+            self.signOutButton.heightAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                       multiplier: 0.15),
         ])
     }
     

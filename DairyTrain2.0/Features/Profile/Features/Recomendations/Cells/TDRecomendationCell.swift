@@ -84,10 +84,14 @@ class TDRecomendationCell: UITableViewCell {
     //MARK: - Constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            self.labelsStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            self.labelsStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8),
-            self.labelsStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8),
-            self.labelsStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            self.labelsStackView.topAnchor.constraint(equalTo: self.topAnchor,
+                                                      constant: DTEdgeInsets.small.top),
+            self.labelsStackView.leftAnchor.constraint(equalTo: self.leftAnchor,
+                                                       constant: DTEdgeInsets.small.left),
+            self.labelsStackView.rightAnchor.constraint(equalTo: self.rightAnchor,
+                                                        constant: DTEdgeInsets.small.right),
+            self.labelsStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
+                                                         constant: DTEdgeInsets.small.bottom),
         ])
     }
 }

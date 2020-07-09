@@ -46,10 +46,12 @@ class DTHeaderView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor,
+                                                 constant: DTEdgeInsets.small.top),
             self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.titleLabel.widthAnchor.constraint(equalTo: self.whiteLineUnderLabel.widthAnchor),
-            self.titleLabel.bottomAnchor.constraint(equalTo: self.whiteLineUnderLabel.topAnchor, constant: -8)
+            self.titleLabel.bottomAnchor.constraint(equalTo: self.whiteLineUnderLabel.topAnchor,
+                                                    constant: DTEdgeInsets.small.bottom)
         ])
     }
 }

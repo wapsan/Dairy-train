@@ -136,4 +136,3 @@ class DTDownloadHud: UIView {
         self.progressLineLayer.add(basicAnimation, forKey: "uorSoBasic")
     }
 }
-

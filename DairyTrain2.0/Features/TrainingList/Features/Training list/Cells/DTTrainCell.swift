@@ -166,22 +166,22 @@ class DTTrainCell: UICollectionViewCell {
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             self.containerView.topAnchor.constraint(equalTo: self.topAnchor,
-                                                    constant: 8),
+                                                    constant: DTEdgeInsets.small.top),
             self.containerView.leftAnchor.constraint(equalTo: self.leftAnchor,
-                                                     constant: 8),
+                                                     constant: DTEdgeInsets.small.left),
             self.containerView.rightAnchor.constraint(equalTo: self.rightAnchor,
-                                                      constant: -8),
+                                                      constant: DTEdgeInsets.small.right),
             self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
-                                                       constant: -8),
+                                                       constant: DTEdgeInsets.small.bottom),
         ])
         
         NSLayoutConstraint.activate([
             self.imageContainerView.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,
-                                                            constant: -8),
+                                                            constant: DTEdgeInsets.small.bottom),
             self.imageContainerView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor,
-                                                           constant: -8),
+                                                           constant: DTEdgeInsets.small.right),
             self.imageContainerView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor,
-                                                          constant: 8),
+                                                          constant: DTEdgeInsets.small.left),
             self.imageContainerView.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor),
             self.imageContainerView.heightAnchor.constraint(equalTo: self.imageContainerView.widthAnchor,
                                                             multiplier: 1)
@@ -189,77 +189,60 @@ class DTTrainCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             self.dateLabel.topAnchor.constraint(equalTo: self.containerView.topAnchor,
-                                                constant: 8),
+                                                constant: DTEdgeInsets.small.top),
             self.dateLabel.leftAnchor.constraint(equalTo: self.containerView.leftAnchor,
-                                                 constant: 16),
+                                                 constant: DTEdgeInsets.medium.left),
             self.dateLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor,
-                                                  constant: -16),
+                                                  constant: DTEdgeInsets.small.right),
             self.dateLabel.bottomAnchor.constraint(equalTo: self.imageContainerView.topAnchor,
-                                                   constant: -8)
+                                                   constant: DTEdgeInsets.small.bottom)
         ])
         
         NSLayoutConstraint.activate([
-            self.firstGroupImage.leftAnchor.constraint(equalTo: self.imageContainerView.leftAnchor,
-                                                       constant: 0),
-            self.firstGroupImage.topAnchor.constraint(equalTo: self.imageContainerView.topAnchor,
-                                                      constant: 0),
+            self.firstGroupImage.leftAnchor.constraint(equalTo: self.imageContainerView.leftAnchor),
+            self.firstGroupImage.topAnchor.constraint(equalTo: self.imageContainerView.topAnchor),
             self.firstGroupImage.rightAnchor.constraint(equalTo: self.secondGroupImage.leftAnchor,
-                                                        constant: -8),
+                                                        constant: DTEdgeInsets.small.right),
             self.firstGroupImage.bottomAnchor.constraint(equalTo: self.thirdGroupImage.topAnchor,
-                                                         constant: -8),
-            self.firstGroupImage.heightAnchor.constraint(equalTo: self.firstGroupImage.widthAnchor,
-                                                         multiplier: 1),
-            self.firstGroupImage.heightAnchor.constraint(equalTo: self.secondGroupImage.heightAnchor,
-                                                         multiplier: 1),
-            self.firstGroupImage.heightAnchor.constraint(equalTo: self.thirdGroupImage.heightAnchor,
-                                                         multiplier: 1),
-            self.firstGroupImage.heightAnchor.constraint(equalTo: self.fourthGroupImage.heightAnchor,
-                                                         multiplier: 1)
+                                                         constant: DTEdgeInsets.small.bottom),
+            self.firstGroupImage.heightAnchor.constraint(equalTo: self.firstGroupImage.widthAnchor),
+            self.firstGroupImage.heightAnchor.constraint(equalTo: self.secondGroupImage.heightAnchor),
+            self.firstGroupImage.heightAnchor.constraint(equalTo: self.thirdGroupImage.heightAnchor),
+            self.firstGroupImage.heightAnchor.constraint(equalTo: self.fourthGroupImage.heightAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.secondGroupImage.topAnchor.constraint(equalTo: self.imageContainerView.topAnchor,
-                                                       constant: 0),
-            self.secondGroupImage.rightAnchor.constraint(equalTo: self.imageContainerView.rightAnchor,
-                                                         constant: 0),
+            self.secondGroupImage.topAnchor.constraint(equalTo: self.imageContainerView.topAnchor),
+            self.secondGroupImage.rightAnchor.constraint(equalTo: self.imageContainerView.rightAnchor),
             self.secondGroupImage.bottomAnchor.constraint(equalTo: self.fourthGroupImage.topAnchor,
-                                                          constant: -8),
-            self.secondGroupImage.heightAnchor.constraint(equalTo: self.secondGroupImage.widthAnchor,
-                                                          multiplier: 1)
+                                                          constant: DTEdgeInsets.small.bottom),
+            self.secondGroupImage.heightAnchor.constraint(equalTo: self.secondGroupImage.widthAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.thirdGroupImage.leftAnchor.constraint(equalTo: self.imageContainerView.leftAnchor,
-                                                       constant: 0),
+            self.thirdGroupImage.leftAnchor.constraint(equalTo: self.imageContainerView.leftAnchor),
             self.thirdGroupImage.rightAnchor.constraint(equalTo: self.fourthGroupImage.leftAnchor,
-                                                        constant: -8),
-            self.thirdGroupImage.bottomAnchor.constraint(equalTo: self.imageContainerView.bottomAnchor,
-                                                         constant: 0),
-            self.thirdGroupImage.heightAnchor.constraint(equalTo: self.thirdGroupImage.widthAnchor,
-                                                         multiplier: 1)
+                                                        constant: DTEdgeInsets.small.right),
+            self.thirdGroupImage.bottomAnchor.constraint(equalTo: self.imageContainerView.bottomAnchor),
+            self.thirdGroupImage.heightAnchor.constraint(equalTo: self.thirdGroupImage.widthAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.fourthGroupImage.rightAnchor.constraint(equalTo: self.imageContainerView.rightAnchor,
-                                                         constant: 0),
-            self.fourthGroupImage.bottomAnchor.constraint(equalTo: self.imageContainerView.bottomAnchor,
-                                                          constant: 0),
-            self.fourthGroupImage.heightAnchor.constraint(equalTo: self.fourthGroupImage.widthAnchor,
-                                                          multiplier: 1)
+            self.fourthGroupImage.rightAnchor.constraint(equalTo: self.imageContainerView.rightAnchor),
+            self.fourthGroupImage.bottomAnchor.constraint(equalTo: self.imageContainerView.bottomAnchor),
+            self.fourthGroupImage.heightAnchor.constraint(equalTo: self.fourthGroupImage.widthAnchor)
         ])
         
         NSLayoutConstraint.activate([
             self.horizontalLine.heightAnchor.constraint(equalToConstant: 1),
-            self.horizontalLine.widthAnchor.constraint(equalTo: self.imageContainerView.widthAnchor,
-                                                       multiplier: 1),
+            self.horizontalLine.widthAnchor.constraint(equalTo: self.imageContainerView.widthAnchor),
             self.horizontalLine.centerYAnchor.constraint(equalTo: self.imageContainerView.centerYAnchor),
             self.horizontalLine.centerXAnchor.constraint(equalTo: self.imageContainerView.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
             self.verticalLine.widthAnchor.constraint(equalToConstant: 1),
-            self.verticalLine.heightAnchor.constraint(equalTo: self.imageContainerView.widthAnchor,
-                                                      multiplier: 1),
+            self.verticalLine.heightAnchor.constraint(equalTo: self.imageContainerView.widthAnchor),
             self.verticalLine.centerYAnchor.constraint(equalTo: self.imageContainerView.centerYAnchor),
             self.verticalLine.centerXAnchor.constraint(equalTo: self.imageContainerView.centerXAnchor)
         ])

@@ -198,19 +198,20 @@ class DTInfoView: UIView {
         
         NSLayoutConstraint.activate([
             self.containerStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.containerStackView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: 8),
-           // self.containerStackView.topAnchor.constraint(lessThanOrEqualTo: self.topAnchor, constant: 8),
-            self.containerStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            self.containerStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            self.containerStackView.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -8)
+            self.containerStackView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor,
+                                                         constant: DTEdgeInsets.small.top),
+            self.containerStackView.leftAnchor.constraint(equalTo: self.leftAnchor,
+                                                          constant: DTEdgeInsets.medium.left),
+            self.containerStackView.rightAnchor.constraint(equalTo: self.rightAnchor,
+                                                           constant: DTEdgeInsets.medium.right),
+            self.containerStackView.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor,
+                                                            constant: DTEdgeInsets.small.bottom)
         ])
         
         NSLayoutConstraint.activate([
             self.backgroundImage.topAnchor.constraint(equalTo: self.containerViewView.topAnchor),
             self.backgroundImage.leftAnchor.constraint(equalTo: self.containerViewView.leftAnchor),
-            
             self.backgroundImage.rightAnchor.constraint(equalTo: self.containerViewView.rightAnchor),
-            
             self.backgroundImage.bottomAnchor.constraint(equalTo: self.containerViewView.bottomAnchor)
         ])
         

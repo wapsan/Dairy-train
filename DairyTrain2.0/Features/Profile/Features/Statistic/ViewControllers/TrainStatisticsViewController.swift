@@ -5,7 +5,6 @@ class TrainStatisticsViewController: MainTabBarItemVC {
     //MARK: - Private properties
     private var statistics: Statistics?
     private var trainDate: String?
-    private lazy var edgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: -16, right: -16)
     
     //MARK: - GUI Properties
     private lazy var totalWeightView: DTInfoView = {
@@ -97,13 +96,13 @@ class TrainStatisticsViewController: MainTabBarItemVC {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             self.mainContainerStackView.topAnchor.constraint(equalTo: safeArea.topAnchor,
-                                                             constant: self.edgeInsets.top),
+                                                             constant: DTEdgeInsets.medium.top),
             self.mainContainerStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
-                                                              constant: self.edgeInsets.left),
+                                                              constant: DTEdgeInsets.medium.left),
             self.mainContainerStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
-                                                               constant: self.edgeInsets.right),
+                                                               constant: DTEdgeInsets.medium.right),
             self.mainContainerStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor,
-                                                                constant: self.edgeInsets.bottom),
+                                                                constant: DTEdgeInsets.medium.bottom),
         ])
     }
     

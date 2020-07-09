@@ -45,9 +45,6 @@ class DTSystemButton: UIButton {
     }
     
     private func setLayotLayer() {
-//        self.layer.cornerRadius = self.bounds.size.height / 4
-//        self.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
-//        self.layer.masksToBounds = true
         self.layer.cornerRadius = self.bounds.size.height / 2
     }
     

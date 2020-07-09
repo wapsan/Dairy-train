@@ -273,44 +273,59 @@ class LoginViewController: UIViewController {
     private func setUpConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.logoImageView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 16),
-            self.logoImageView.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.2),
-            self.logoImageView.widthAnchor.constraint(equalTo: self.logoImageView.heightAnchor, multiplier: 1),
+            self.logoImageView.topAnchor.constraint(equalTo: safeArea.topAnchor,
+                                                    constant: DTEdgeInsets.medium.top),
+            self.logoImageView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
+                                                       multiplier: 0.2),
+            self.logoImageView.widthAnchor.constraint(equalTo: self.logoImageView.heightAnchor),
             self.logoImageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.textLogoImageView.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor, constant: 8),
+            self.textLogoImageView.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor,
+                                                        constant: DTEdgeInsets.small.top),
             self.textLogoImageView.centerXAnchor.constraint(equalTo: self.logoImageView.centerXAnchor),
-            self.textLogoImageView.heightAnchor.constraint(equalTo: self.logoImageView.heightAnchor, multiplier: 0.4),
-            self.textLogoImageView.widthAnchor.constraint(equalTo: self.logoImageView.widthAnchor, multiplier: 1.5),
+            self.textLogoImageView.heightAnchor.constraint(equalTo: self.logoImageView.heightAnchor,
+                                                           multiplier: 0.4),
+            self.textLogoImageView.widthAnchor.constraint(equalTo: self.logoImageView.widthAnchor,
+                                                          multiplier: 1.5),
         ])
         
         NSLayoutConstraint.activate([
-            self.signInModeButton.topAnchor.constraint(equalTo: self.textLogoImageView.bottomAnchor, constant: 16),
-            self.signInModeButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 32),
-            self.signInModeButton.rightAnchor.constraint(equalTo: self.signUpModeButton.leftAnchor, constant: -32),
-            self.signInModeButton.heightAnchor.constraint(equalTo: self.signInModeButton.widthAnchor, multiplier: 0.25),
+            self.signInModeButton.topAnchor.constraint(equalTo: self.textLogoImageView.bottomAnchor,
+                                                       constant: DTEdgeInsets.medium.top),
+            self.signInModeButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
+                                                        constant: DTEdgeInsets.large.left),
+            self.signInModeButton.rightAnchor.constraint(equalTo: self.signUpModeButton.leftAnchor,
+                                                         constant: DTEdgeInsets.large.right),
+            self.signInModeButton.heightAnchor.constraint(equalTo: self.signInModeButton.widthAnchor,
+                                                          multiplier: 0.25),
         ])
         
         NSLayoutConstraint.activate([
             self.signUpModeButton.centerYAnchor.constraint(equalTo: self.signInModeButton.centerYAnchor),
             self.signUpModeButton.heightAnchor.constraint(equalTo: self.signInModeButton.heightAnchor),
-            self.signUpModeButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -32),
-            self.signUpModeButton.widthAnchor.constraint(equalTo: self.signInModeButton.widthAnchor, multiplier: 1)
+            self.signUpModeButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
+                                                         constant: DTEdgeInsets.large.right),
+            self.signUpModeButton.widthAnchor.constraint(equalTo: self.signInModeButton.widthAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.emailTextField.topAnchor.constraint(equalTo: self.signUpModeButton.bottomAnchor, constant: 32),
-            self.emailTextField.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16),
-            self.emailTextField.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
-            self.emailTextField.heightAnchor.constraint(equalTo: self.signInModeButton.heightAnchor, multiplier: 1.3)
+            self.emailTextField.topAnchor.constraint(equalTo: self.signUpModeButton.bottomAnchor,
+                                                     constant: DTEdgeInsets.large.top),
+            self.emailTextField.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
+                                                      constant: DTEdgeInsets.medium.left),
+            self.emailTextField.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
+                                                       constant: DTEdgeInsets.medium.right),
+            self.emailTextField.heightAnchor.constraint(equalTo: self.signInModeButton.heightAnchor,
+                                                        multiplier: 1.3)
         ])
   
         NSLayoutConstraint.activate([
-            self.passwordTextField.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 8),
-            self.passwordTextField.widthAnchor.constraint(equalTo: self.emailTextField.widthAnchor, multiplier: 1),
-            self.passwordTextField.heightAnchor.constraint(equalTo: self.emailTextField.heightAnchor, multiplier: 1),
+            self.passwordTextField.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor,
+                                                        constant: DTEdgeInsets.small.top),
+            self.passwordTextField.widthAnchor.constraint(equalTo: self.emailTextField.widthAnchor),
+            self.passwordTextField.heightAnchor.constraint(equalTo: self.emailTextField.heightAnchor),
             self.passwordTextField.centerXAnchor.constraint(equalTo: self.emailTextField.centerXAnchor)
         ])
         
@@ -325,8 +340,10 @@ class LoginViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             mainSignInButtopTopConstraint,
-            self.containerForMainSignInButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16),
-            self.containerForMainSignInButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
+            self.containerForMainSignInButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
+                                                                    constant: DTEdgeInsets.medium.left),
+            self.containerForMainSignInButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
+                                                                     constant: DTEdgeInsets.medium.right),
             self.containerForMainSignInButton.heightAnchor.constraint(equalTo: self.containerForMainSignInButton.widthAnchor,
                                                                       multiplier: 0.2)
         ])
@@ -340,32 +357,43 @@ class LoginViewController: UIViewController {
         ])
   
         NSLayoutConstraint.activate([
-            self.orLabel.topAnchor.constraint(equalTo: self.mainSignButton.bottomAnchor, constant: 8),
+            self.orLabel.topAnchor.constraint(equalTo: self.mainSignButton.bottomAnchor,
+                                              constant: DTEdgeInsets.small.top),
             self.orLabel.centerXAnchor.constraint(equalTo: self.mainSignButton.centerXAnchor),
-            self.orLabel.heightAnchor.constraint(equalTo: self.mainSignButton.heightAnchor, multiplier: 0.3),
-            self.orLabel.widthAnchor.constraint(equalTo: self.orLabel.widthAnchor, multiplier: 1)
+            self.orLabel.heightAnchor.constraint(equalTo: self.mainSignButton.heightAnchor,
+                                                 multiplier: 0.3),
+            self.orLabel.widthAnchor.constraint(equalTo: self.orLabel.widthAnchor,
+                                                multiplier: 1)
         ])
         
         NSLayoutConstraint.activate([
-            self.leftLine.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 32),
-            self.leftLine.rightAnchor.constraint(equalTo: self.orLabel.leftAnchor, constant: -16),
+            self.leftLine.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
+                                                constant: DTEdgeInsets.large.left),
+            self.leftLine.rightAnchor.constraint(equalTo: self.orLabel.leftAnchor,
+                                                 constant: DTEdgeInsets.medium.right),
             self.leftLine.heightAnchor.constraint(equalToConstant: 1),
             self.leftLine.centerYAnchor.constraint(equalTo: self.orLabel.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.rightLine.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -32),
-            self.rightLine.leftAnchor.constraint(equalTo: self.orLabel.rightAnchor, constant: 16),
+            self.rightLine.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
+                                                  constant: DTEdgeInsets.large.right),
+            self.rightLine.leftAnchor.constraint(equalTo: self.orLabel.rightAnchor,
+                                                 constant: DTEdgeInsets.medium.left),
             self.rightLine.heightAnchor.constraint(equalToConstant: 1),
             self.rightLine.centerYAnchor.constraint(equalTo: self.orLabel.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.googleSignInButton.topAnchor.constraint(equalTo: self.orLabel.bottomAnchor, constant: 8),
-            self.googleSignInButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16),
-            self.googleSignInButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
-            self.googleSignInButton.heightAnchor.constraint(equalTo: self.mainSignButton.heightAnchor, multiplier: 1),
-            self.googleSignInButton.bottomAnchor.constraint(lessThanOrEqualTo: safeArea.bottomAnchor, constant: -32)
+            self.googleSignInButton.topAnchor.constraint(equalTo: self.orLabel.bottomAnchor,
+                                                         constant: DTEdgeInsets.small.top),
+            self.googleSignInButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
+                                                          constant: DTEdgeInsets.medium.left),
+            self.googleSignInButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
+                                                           constant: DTEdgeInsets.medium.right),
+            self.googleSignInButton.heightAnchor.constraint(equalTo: self.mainSignButton.heightAnchor),
+            self.googleSignInButton.bottomAnchor.constraint(lessThanOrEqualTo: safeArea.bottomAnchor,
+                                                            constant: DTEdgeInsets.large.bottom)
         ])
     }
     

@@ -38,13 +38,13 @@ class DTMuscleSubgroupsCell: UICollectionViewCell {
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             self.muscleSubgropImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor,
-                                                             constant: 4),
+                                                             constant: DTEdgeInsets.small.top / 2),
             self.muscleSubgropImageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor,
-                                                              constant: 4),
+                                                              constant: DTEdgeInsets.small.left / 2),
             self.muscleSubgropImageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor,
-                                                               constant: -4),
+                                                               constant: DTEdgeInsets.small.right / 2),
             self.muscleSubgropImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
-                                                                constant: -4),
+                                                                constant: DTEdgeInsets.small.bottom / 2),
         ])
     }
 }

@@ -45,16 +45,20 @@ class DTSplashScreenViewController: UIViewController {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             self.mainLogo.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.mainLogo.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
+            self.mainLogo.widthAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                 multiplier: 0.5),
             self.mainLogo.bottomAnchor.constraint(equalTo: safeArea.centerYAnchor),
             self.mainLogo.heightAnchor.constraint(equalTo: self.mainLogo.widthAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.textLogo.topAnchor.constraint(equalTo: self.mainLogo.bottomAnchor, constant: 16),
+            self.textLogo.topAnchor.constraint(equalTo: self.mainLogo.bottomAnchor,
+                                               constant: DTEdgeInsets.medium.top),
             self.textLogo.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.textLogo.widthAnchor.constraint(equalTo: self.mainLogo.widthAnchor, multiplier: 1.3),
-            self.textLogo.heightAnchor.constraint(equalTo: self.mainLogo.heightAnchor, multiplier: 0.4),
+            self.textLogo.widthAnchor.constraint(equalTo: self.mainLogo.widthAnchor,
+                                                 multiplier: 1.3),
+            self.textLogo.heightAnchor.constraint(equalTo: self.mainLogo.heightAnchor,
+                                                  multiplier: 0.4),
         ])
     }
 }

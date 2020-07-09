@@ -103,31 +103,35 @@ class DTActivitiesCell: UITableViewCell {
     //MARK: - Constraints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            self.containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            self.containerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8),
-            self.containerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8),
-            self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            self.containerView.topAnchor.constraint(equalTo: self.topAnchor,
+                                                    constant: DTEdgeInsets.small.top),
+            self.containerView.leftAnchor.constraint(equalTo: self.leftAnchor,
+                                                     constant: DTEdgeInsets.small.left),
+            self.containerView.rightAnchor.constraint(equalTo: self.rightAnchor,
+                                                      constant: DTEdgeInsets.small.right),
+            self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
+                                                       constant: DTEdgeInsets.small.bottom),
         ])
         
         NSLayoutConstraint.activate([
             self.exerciceNameLabel.topAnchor.constraint(equalTo: self.containerView.topAnchor,
-                                                        constant: 8),
+                                                        constant: DTEdgeInsets.small.top),
             self.exerciceNameLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor,
-                                                          constant: -8),
+                                                          constant: DTEdgeInsets.small.right),
             self.exerciceNameLabel.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,
-                                                           constant: -8),
+                                                           constant: DTEdgeInsets.small.bottom),
             self.exerciceNameLabel.leftAnchor.constraint(equalTo: self.muscleGroupImage.rightAnchor,
-                                                         constant: 8),
+                                                         constant: DTEdgeInsets.small.left),
             self.exerciceNameLabel.centerYAnchor.constraint(equalTo: self.containerView.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
             self.muscleGroupImage.topAnchor.constraint(equalTo: self.containerView.topAnchor,
-                                                       constant: 8),
+                                                       constant: DTEdgeInsets.small.top),
             self.muscleGroupImage.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,
-                                                          constant: -8),
+                                                          constant: DTEdgeInsets.small.bottom),
             self.muscleGroupImage.leftAnchor.constraint(equalTo: self.containerView.leftAnchor,
-                                                        constant: 8),
+                                                        constant: DTEdgeInsets.small.left),
             self.muscleGroupImage.widthAnchor.constraint(equalTo: self.muscleGroupImage.heightAnchor,
                                                          multiplier: 1),
             self.muscleGroupImage.centerYAnchor.constraint(equalTo: self.containerView.centerYAnchor)

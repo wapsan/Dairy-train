@@ -228,12 +228,12 @@ class TrainingListViewController: DTBackgroundedViewController {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             self.collectionView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
-                                                     constant: 8),
+                                                     constant: DTEdgeInsets.small.top),
             self.collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             self.collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor,
-                                                         constant: 16),
+                                                         constant: DTEdgeInsets.medium.left),
             self.collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor,
-                                                          constant: -16)
+                                                          constant: DTEdgeInsets.medium.right)
         ])
     }
     
@@ -241,12 +241,12 @@ class TrainingListViewController: DTBackgroundedViewController {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.deactivate([
             self.collectionView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
-                                                     constant: 8),
+                                                     constant: DTEdgeInsets.small.top),
             self.collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             self.collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor,
-                                                         constant: 16),
+                                                         constant: DTEdgeInsets.medium.left),
             self.collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor,
-                                                          constant: -16)
+                                                          constant: DTEdgeInsets.medium.right)
         ])
         
         NSLayoutConstraint.deactivate([
@@ -348,6 +348,3 @@ extension TrainingListViewController: UICollectionViewDelegate, UICollectionView
         self.collectionView.allowsMultipleSelection = true
     }
 }
-
-
-

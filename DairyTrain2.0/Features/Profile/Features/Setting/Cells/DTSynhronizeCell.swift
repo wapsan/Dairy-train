@@ -51,11 +51,11 @@ class DTSynhronizeCell: UITableViewCell {
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor,
-                                                 constant: 8),
+                                                 constant: DTEdgeInsets.small.top),
             self.titleLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor,
-                                                  constant: 8),
+                                                  constant: DTEdgeInsets.small.left),
             self.titleLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
-                                                    constant: -8),
+                                                    constant: DTEdgeInsets.small.bottom),
             self.titleLabel.rightAnchor.constraint(equalTo: self.lastSynhronizeDateLabel.leftAnchor),
             self.titleLabel.widthAnchor.constraint(equalTo: self.lastSynhronizeDateLabel.widthAnchor,
                                                    multiplier: 1)
@@ -63,11 +63,11 @@ class DTSynhronizeCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             self.lastSynhronizeDateLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor,
-                                                              constant: 8),
+                                                              constant: DTEdgeInsets.small.top),
             self.lastSynhronizeDateLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor,
-                                                                constant: -8),
+                                                                constant: DTEdgeInsets.small.right),
             self.lastSynhronizeDateLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
-                                                                 constant: -8)
+                                                                 constant: DTEdgeInsets.small.bottom)
         ])
     }
 }

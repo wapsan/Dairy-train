@@ -47,10 +47,14 @@ class GoogleSignInButton: DTSystemButton {
     //MARK: - Constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            self.googleStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            self.googleStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8),
-            self.googleStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8),
-            self.googleStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            self.googleStackView.topAnchor.constraint(equalTo: self.topAnchor,
+                                                      constant: DTEdgeInsets.small.top),
+            self.googleStackView.leftAnchor.constraint(equalTo: self.leftAnchor,
+                                                       constant: DTEdgeInsets.small.left),
+            self.googleStackView.rightAnchor.constraint(equalTo: self.rightAnchor,
+                                                        constant: DTEdgeInsets.small.right),
+            self.googleStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
+                                                         constant: DTEdgeInsets.small.bottom),
         ])
         
         NSLayoutConstraint.activate([

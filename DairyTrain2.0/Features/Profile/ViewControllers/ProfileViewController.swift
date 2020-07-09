@@ -181,25 +181,34 @@ class ProfileViewController: MainTabBarItemVC {
     private func setUpConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.totalTrainActivityLevelStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 16),
-            self.totalTrainActivityLevelStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16),
-            self.totalTrainActivityLevelStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
+            self.totalTrainActivityLevelStackView.topAnchor.constraint(equalTo: safeArea.topAnchor,
+                                                                       constant: DTEdgeInsets.medium.top),
+            self.totalTrainActivityLevelStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
+                                                                        constant: DTEdgeInsets.medium.left),
+            self.totalTrainActivityLevelStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
+                                                                         constant: DTEdgeInsets.medium.right),
         ])
         
         NSLayoutConstraint.activate([
             self.gennderAgeStackView.topAnchor.constraint(equalTo: self.totalTrainActivityLevelStackView.bottomAnchor,
-                                                          constant: 16),
-            self.gennderAgeStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16),
-            self.gennderAgeStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
+                                                          constant: DTEdgeInsets.medium.top),
+            self.gennderAgeStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
+                                                           constant: DTEdgeInsets.medium.left),
+            self.gennderAgeStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
+                                                            constant: DTEdgeInsets.medium.right),
             self.gennderAgeStackView.heightAnchor.constraint(equalTo: self.totalTrainActivityLevelStackView.heightAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.weightHeightStackView.topAnchor.constraint(equalTo: self.gennderAgeStackView.bottomAnchor, constant: 16),
-            self.weightHeightStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 16),
-            self.weightHeightStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16),
+            self.weightHeightStackView.topAnchor.constraint(equalTo: self.gennderAgeStackView.bottomAnchor,
+                                                            constant: DTEdgeInsets.medium.top),
+            self.weightHeightStackView.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
+                                                             constant: DTEdgeInsets.medium.left),
+            self.weightHeightStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
+                                                              constant: DTEdgeInsets.medium.right),
             self.weightHeightStackView.heightAnchor.constraint(equalTo: self.gennderAgeStackView.heightAnchor),
-            self.weightHeightStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -16)
+            self.weightHeightStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor,
+                                                               constant: DTEdgeInsets.medium.bottom)
         ])
     }
     
