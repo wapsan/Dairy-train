@@ -22,7 +22,7 @@ class MuscleSubgroup: NSObject, Codable {
         case lowBack = "Low back"
         
         case latissimusDorsi = "Latissimus dorsi"
-        case trapezoid = "Trapezoid"
+        case trapezoid = "Trapezius"
         
         var image: UIImage? {
             switch self {

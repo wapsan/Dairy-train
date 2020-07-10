@@ -46,7 +46,6 @@ class ExercicesViewController: MuscleGroupsViewController {
                 cell.setUnselectedBackgroundColor()
             }
         }
-        self.exercices.forEach({ $0.isSelected = false })
         self.selectedExercices.removeAll()
         self.tableView.reloadData()
     }
@@ -125,7 +124,6 @@ extension ExercicesViewController {
         if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
             cell.setSelectedBackgroundColor()
         }
-        self.exercices[indexPath.row].isSelected = true
         let exercice = exercices[indexPath.row]
         self.selectedExercices.append(exercice)
         self.setAddExercicesButton()
@@ -135,7 +133,6 @@ extension ExercicesViewController {
         if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
             cell.setUnselectedBackgroundColor()
         }
-        self.exercices[indexPath.row].isSelected = false
         self.selectedExercices = self.selectedExercices.filter { (exercice) -> Bool in
             self.exercices[indexPath.row].name != exercice.name
         }

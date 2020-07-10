@@ -104,13 +104,41 @@ class ExersiceModel {
                                     Exercise(name: "Seated Calf Raise Machine", subgroup: muscleSubgroup),
                                     Exercise(name: "Calf Press", subgroup: muscleSubgroup)]
         case .abs:
-            break
+            self.listOfExercices = [Exercise(name: "High Crunches", subgroup: muscleSubgroup),
+                                    Exercise(name: "Bicycle Crunches", subgroup: muscleSubgroup),
+                                    Exercise(name: "Leg Rises", subgroup: muscleSubgroup),
+                                    Exercise(name: "Rised Legs Hold", subgroup: muscleSubgroup),
+                                    Exercise(name: "Flutter Kicks", subgroup: muscleSubgroup),
+                                    Exercise(name: "Scissors", subgroup: muscleSubgroup),
+                                    Exercise(name: "Plank", subgroup: muscleSubgroup),
+                                    Exercise(name: "Hanging Leg Raise", subgroup: muscleSubgroup),
+                                    Exercise(name: "Hanging Knee Raise Twist", subgroup: muscleSubgroup),
+                                    Exercise(name: "Hanging Knee Raise", subgroup: muscleSubgroup)]
         case .lowBack:
-            break
+            self.listOfExercices = [Exercise(name: "Hyperextensions", subgroup: muscleSubgroup),
+                                    Exercise(name: "Good Morning", subgroup: muscleSubgroup),
+                                    Exercise(name: "Deficit Deadlift", subgroup: muscleSubgroup),
+                                    Exercise(name: "Bridges", subgroup: muscleSubgroup)]
         case .latissimusDorsi:
-            break
+            self.listOfExercices = [Exercise(name: "Pull-ups", subgroup: muscleSubgroup),
+                                    Exercise(name: "Barbell Row", subgroup: muscleSubgroup),
+                                    Exercise(name: "Reverse-Grip Barbell Row", subgroup: muscleSubgroup),
+                                    Exercise(name: "Single-Arm Dumbbell Row", subgroup: muscleSubgroup),
+                                    Exercise(name: "Landmine Row", subgroup: muscleSubgroup),
+                                    Exercise(name: "Dumbbell Pullover", subgroup: muscleSubgroup),
+                                    Exercise(name: "Single-Arm Cable Row", subgroup: muscleSubgroup),
+                                    Exercise(name: "Seated Low-Cable Row", subgroup: muscleSubgroup),
+                                    Exercise(name: "Lat Pull-down", subgroup: muscleSubgroup),
+                                    Exercise(name: "Reverse-Grip Lat Pull-Down", subgroup: muscleSubgroup),
+                                    Exercise(name: "Close-Grip Lat Pull-Down", subgroup: muscleSubgroup)]
         case .trapezoid:
-            break
+            self.listOfExercices = [Exercise(name: "Barbell Shrug", subgroup: muscleSubgroup),
+                                    Exercise(name: "Barbell Behind-the-Back Shrug", subgroup: muscleSubgroup),
+                                    Exercise(name: "Dumbbell Shrug", subgroup: muscleSubgroup),
+                                    Exercise(name: "Incline Dumbbell Shrug", subgroup: muscleSubgroup),
+                                    Exercise(name: "Snatch-Grip Barbell High Pull", subgroup: muscleSubgroup),
+                                    Exercise(name: "Upright Row", subgroup: muscleSubgroup),
+                                    Exercise(name: "Farmer's Carry", subgroup: muscleSubgroup)]
         }
     }
     
