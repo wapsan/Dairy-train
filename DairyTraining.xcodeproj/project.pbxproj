@@ -1,0 +1,1389 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13151D4924715C9D002C15AA /* UIColor+Ex.swift */; };
+		131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131733722490E08600292D84 /* DTExerciseCell+Ex.swift */; };
+		131B9F9D24ADF2AC004FE9AD /* DTSynhronizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */; };
+		13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A3D247E4A6300AB7419 /* DTTrainCell.swift */; };
+		13243A41247E768B00AB7419 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A40247E768B00AB7419 /* DateHelper.swift */; };
+		132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132D958B2485809B006E5A41 /* AppAuthentication.swift */; };
+		132F588F249A87F00089FA09 /* DTSplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F588E249A87F00089FA09 /* DTSplashScreenViewController.swift */; };
+		132FC7B924B79DCD00A70F7E /* DTEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132FC7B824B79DCD00A70F7E /* DTEdgeInsets.swift */; };
+		13344E5324B3619500BE3D65 /* DTBackgroundedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13344E5224B3619500BE3D65 /* DTBackgroundedViewController.swift */; };
+		1335B2692495183300D8276F /* DTFirebaseFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335B2682495183300D8276F /* DTFirebaseFileManager.swift */; };
+		1335CBB02465AC03009C2E20 /* DTStyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */; };
+		133A7BE224AE13D900409D3F /* AproachCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133A7BE124AE13D900409D3F /* AproachCodableModel.swift */; };
+		133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133AA5A5246163E5009EBF8E /* AppDelegate.swift */; };
+		133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5AE246163E7009EBF8E /* Assets.xcassets */; };
+		133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5B0246163E7009EBF8E /* LaunchScreen.storyboard */; };
+		13416FA22485345100EC6590 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13416FA12485345100EC6590 /* GoogleSignInButton.swift */; };
+		134403412499123F00D21284 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134403402499123F00D21284 /* LocalizedString.swift */; };
+		13479F37247BD55D002FFB4E /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */; };
+		13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */; };
+		13479F3B247BD84A002FFB4E /* TrainingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F3A247BD84A002FFB4E /* TrainingListViewController.swift */; };
+		134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */; };
+		134DF5B524B4E50D007A7B8A /* ColorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DF5B424B4E50D007A7B8A /* ColorSetting.swift */; };
+		135B8815248132360032251D /* DTAproachCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B8814248132360032251D /* DTAproachCell.swift */; };
+		135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F22892494296F00EEE140 /* StatisticsModel.swift */; };
+		136570D12491259C00BF926B /* CommonStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136570D02491259C00BF926B /* CommonStatisticsViewController.swift */; };
+		136570D3249125DB00BF926B /* TrainStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136570D2249125DB00BF926B /* TrainStatisticsViewController.swift */; };
+		1366942624B7273E00F58422 /* DTGradientLayerMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1366942524B7273E00F58422 /* DTGradientLayerMaker.swift */; };
+		136F3FF92498CF0400C6944B /* AppDelegate+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F3FF82498CF0400C6944B /* AppDelegate+Ex.swift */; };
+		136F3FFE2498D0DE00C6944B /* UserMainInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 136F3FFC2498D0DE00C6944B /* UserMainInfo.xcdatamodeld */; };
+		136F40092498D44B00C6944B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F40082498D44B00C6944B /* CoreDataManager.swift */; };
+		136F400C2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F400A2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift */; };
+		136F400D2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F400B2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift */; };
+		13786E1D2478271C0084E48C /* NotificationName+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13786E1C2478271C0084E48C /* NotificationName+Ex.swift */; };
+		1379800924733AEB00BAD87C /* SettingsSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379800824733AEB00BAD87C /* SettingsSectionViewController.swift */; };
+		137D55B624897B6300EFBAB6 /* DTSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137D55B524897B6300EFBAB6 /* DTSettingManager.swift */; };
+		138BDB78248665330033F378 /* DTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BDB77248665330033F378 /* DTTextField.swift */; };
+		138E8224249F9BBB00A60885 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E8223249F9BBB00A60885 /* MenuViewController.swift */; };
+		13902AB12493D45C00963A07 /* DTTrainedMusclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13902AB02493D45C00963A07 /* DTTrainedMusclesView.swift */; };
+		13902AB4249411ED00963A07 /* DTMuscleSubgroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */; };
+		1390520B24993F5E0070D0EB /* RecomendationInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390520A24993F5E0070D0EB /* RecomendationInfoModel.swift */; };
+		1393EDFC24A634B600EBD938 /* TrainingManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393EDFA24A634B600EBD938 /* TrainingManagedObject+CoreDataClass.swift */; };
+		1393EDFD24A634B600EBD938 /* TrainingManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393EDFB24A634B600EBD938 /* TrainingManagedObject+CoreDataProperties.swift */; };
+		1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5F9248392760012A76A /* UIImage+Ex.swift */; };
+		1396F5FC248394C20012A76A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FB248394C20012A76A /* ProfileViewController.swift */; };
+		1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FD2483BE480012A76A /* DTSystemButton.swift */; };
+		1396F6002484175E0012A76A /* DTInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FF2484175E0012A76A /* DTInfoView.swift */; };
+		1396F6022484216B0012A76A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F6012484216B0012A76A /* LoginViewController.swift */; };
+		139B4ADB249C9D3500409B6E /* DTDownloadHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B4ADA249C9D3500409B6E /* DTDownloadHud.swift */; };
+		139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D530C2473DF790028AE6A /* AlertHelper.swift */; };
+		139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D53102474035C0028AE6A /* DTSettingCell.swift */; };
+		139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531224740BCE0028AE6A /* SettingViewController.swift */; };
+		139D531B24753D060028AE6A /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531A24753D060028AE6A /* SettingModel.swift */; };
+		139D688424A220800094E498 /* MenuPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D688324A220800094E498 /* MenuPresentationViewController.swift */; };
+		139D688624A223B70094E498 /* DTMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D688524A223B70094E498 /* DTMenuButton.swift */; };
+		139FE9D3247838EF00B22C40 /* DTActivitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */; };
+		139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D624783CAA00B22C40 /* DTHeaderView.swift */; };
+		13A8CA3F24B6312E00624AA3 /* CALayer+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A8CA3E24B6312E00624AA3 /* CALayer+Ex.swift */; };
+		13A9E7C22494E22200DEDCBE /* UserMainInfoCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A9E7C12494E22200DEDCBE /* UserMainInfoCodableModel.swift */; };
+		13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */; };
+		13AF79482486D3A100F2F7F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13AF79472486D3A100F2F7F7 /* GoogleService-Info.plist */; };
+		13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AF91D9248A2B2A006211B7 /* DTAdaptiveLabel.swift */; };
+		13BF82BD247C2E54005C5494 /* MainTabBarItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */; };
+		13C0EEDD24A529DD00F55C54 /* UserTrainingInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13C0EEDB24A529DC00F55C54 /* UserTrainingInfo.xcdatamodeld */; };
+		13C0EEE724A5E3EB00F55C54 /* ExerciceManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0EEE524A5E3EB00F55C54 /* ExerciceManagedObject+CoreDataClass.swift */; };
+		13C0EEE824A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0EEE624A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift */; };
+		13C0EEEB24A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0EEE924A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift */; };
+		13C0EEEC24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0EEEA24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift */; };
+		13C0F4FF24B4E24A0005A011 /* SettingSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0F4FE24B4E24A0005A011 /* SettingSectionModel.swift */; };
+		13C89D22247046D2008AEF18 /* DTRecomendationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D21247046D2008AEF18 /* DTRecomendationHeaderView.swift */; };
+		13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */; };
+		13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */; };
+		13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */; };
+		13EB98FD247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift */; };
+		13EC52552480748900A05BCA /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC52542480748900A05BCA /* TrainingViewController.swift */; };
+		13EC525F24810E4A00A05BCA /* DTEditingExerciceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC525E24810E4A00A05BCA /* DTEditingExerciceCell.swift */; };
+		13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9B8247AB03D008EE212 /* ExerciseModel.swift */; };
+		13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BA247AB0FC008EE212 /* Exercise.swift */; };
+		13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BC247AB145008EE212 /* MuscleGroupModel.swift */; };
+		13EDD9BF247AB9A4008EE212 /* ExerciseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BE247AB9A4008EE212 /* ExerciseVC.swift */; };
+		13FAF17A246FCAA600537408 /* CaloriesCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FAF179246FCAA600537408 /* CaloriesCalculator.swift */; };
+		13FCA9C3248EF7E00056E659 /* DTCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FCA9C2248EF7E00056E659 /* DTCustomAlert.swift */; };
+		13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */; };
+		13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */; };
+		A0FDC77B1E46C8317869A4DF /* Pods_Dairy_Training.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE30C9910DF57A02C803F88B /* Pods_Dairy_Training.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		13151D4924715C9D002C15AA /* UIColor+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ex.swift"; sourceTree = "<group>"; };
+		131733722490E08600292D84 /* DTExerciseCell+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTExerciseCell+Ex.swift"; sourceTree = "<group>"; };
+		131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSynhronizeCell.swift; sourceTree = "<group>"; };
+		13243A3D247E4A6300AB7419 /* DTTrainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainCell.swift; sourceTree = "<group>"; };
+		13243A40247E768B00AB7419 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		132D958B2485809B006E5A41 /* AppAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthentication.swift; sourceTree = "<group>"; };
+		132F588E249A87F00089FA09 /* DTSplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSplashScreenViewController.swift; sourceTree = "<group>"; };
+		132FC7B824B79DCD00A70F7E /* DTEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTEdgeInsets.swift; sourceTree = "<group>"; };
+		13344E5224B3619500BE3D65 /* DTBackgroundedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTBackgroundedViewController.swift; sourceTree = "<group>"; };
+		1335B2682495183300D8276F /* DTFirebaseFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTFirebaseFileManager.swift; sourceTree = "<group>"; };
+		1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTStyledTextField.swift; sourceTree = "<group>"; };
+		133A7BE124AE13D900409D3F /* AproachCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachCodableModel.swift; sourceTree = "<group>"; };
+		133AA5A2246163E5009EBF8E /* Dairy Training.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dairy Training.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		133AA5A5246163E5009EBF8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		133AA5AE246163E7009EBF8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		133AA5B1246163E7009EBF8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		133AA5B3246163E7009EBF8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13416FA12485345100EC6590 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
+		134403402499123F00D21284 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsViewController.swift; sourceTree = "<group>"; };
+		13479F3A247BD84A002FFB4E /* TrainingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListViewController.swift; sourceTree = "<group>"; };
+		134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationsViewController.swift; sourceTree = "<group>"; };
+		134DF5B424B4E50D007A7B8A /* ColorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetting.swift; sourceTree = "<group>"; };
+		135B8814248132360032251D /* DTAproachCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAproachCell.swift; sourceTree = "<group>"; };
+		135F22892494296F00EEE140 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
+		136570D02491259C00BF926B /* CommonStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStatisticsViewController.swift; sourceTree = "<group>"; };
+		136570D2249125DB00BF926B /* TrainStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStatisticsViewController.swift; sourceTree = "<group>"; };
+		1366942524B7273E00F58422 /* DTGradientLayerMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTGradientLayerMaker.swift; sourceTree = "<group>"; };
+		136F3FF82498CF0400C6944B /* AppDelegate+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Ex.swift"; sourceTree = "<group>"; };
+		136F3FFD2498D0DE00C6944B /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
+		136F40082498D44B00C6944B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		136F400A2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MainInfoManagedObject+CoreDataClass.swift"; path = "DairyTraining/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		136F400B2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MainInfoManagedObject+CoreDataProperties.swift"; path = "DairyTraining/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		13786E1C2478271C0084E48C /* NotificationName+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Ex.swift"; sourceTree = "<group>"; };
+		1379800824733AEB00BAD87C /* SettingsSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionViewController.swift; sourceTree = "<group>"; };
+		137D55B524897B6300EFBAB6 /* DTSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSettingManager.swift; sourceTree = "<group>"; };
+		138BDB77248665330033F378 /* DTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTextField.swift; sourceTree = "<group>"; };
+		138E8223249F9BBB00A60885 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		13902AB02493D45C00963A07 /* DTTrainedMusclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainedMusclesView.swift; sourceTree = "<group>"; };
+		13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMuscleSubgroupsCell.swift; sourceTree = "<group>"; };
+		1390520A24993F5E0070D0EB /* RecomendationInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationInfoModel.swift; sourceTree = "<group>"; };
+		1393EDFA24A634B600EBD938 /* TrainingManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainingManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1393EDFB24A634B600EBD938 /* TrainingManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainingManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1396F5F9248392760012A76A /* UIImage+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ex.swift"; sourceTree = "<group>"; };
+		1396F5FB248394C20012A76A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		1396F5FD2483BE480012A76A /* DTSystemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSystemButton.swift; sourceTree = "<group>"; };
+		1396F5FF2484175E0012A76A /* DTInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoView.swift; sourceTree = "<group>"; };
+		1396F6012484216B0012A76A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		139B4ADA249C9D3500409B6E /* DTDownloadHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTDownloadHud.swift; sourceTree = "<group>"; };
+		139D530C2473DF790028AE6A /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		139D53102474035C0028AE6A /* DTSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSettingCell.swift; sourceTree = "<group>"; };
+		139D531224740BCE0028AE6A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		139D531A24753D060028AE6A /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		139D688324A220800094E498 /* MenuPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresentationViewController.swift; sourceTree = "<group>"; };
+		139D688524A223B70094E498 /* DTMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMenuButton.swift; sourceTree = "<group>"; };
+		139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTActivitiesCell.swift; sourceTree = "<group>"; };
+		139FE9D624783CAA00B22C40 /* DTHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTHeaderView.swift; sourceTree = "<group>"; };
+		13A8CA3E24B6312E00624AA3 /* CALayer+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Ex.swift"; sourceTree = "<group>"; };
+		13A9E7C12494E22200DEDCBE /* UserMainInfoCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainInfoCodableModel.swift; sourceTree = "<group>"; };
+		13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteringSetting.swift; sourceTree = "<group>"; };
+		13AF79472486D3A100F2F7F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		13AF91D9248A2B2A006211B7 /* DTAdaptiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAdaptiveLabel.swift; sourceTree = "<group>"; };
+		13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarItemVC.swift; sourceTree = "<group>"; };
+		13C0EEDC24A529DC00F55C54 /* UserTrainInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserTrainInfo.xcdatamodel; sourceTree = "<group>"; };
+		13C0EEE524A5E3EB00F55C54 /* ExerciceManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciceManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		13C0EEE624A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13C0EEE924A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AproachManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		13C0EEEA24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AproachManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13C0F4FE24B4E24A0005A011 /* SettingSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionModel.swift; sourceTree = "<group>"; };
+		13C89D21247046D2008AEF18 /* DTRecomendationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTRecomendationHeaderView.swift; sourceTree = "<group>"; };
+		13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDRecomendationCell.swift; sourceTree = "<group>"; };
+		13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoAlertButton.swift; sourceTree = "<group>"; };
+		13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgroups.swift; sourceTree = "<group>"; };
+		13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgroupsViewController.swift; sourceTree = "<group>"; };
+		13EC52542480748900A05BCA /* TrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
+		13EC525E24810E4A00A05BCA /* DTEditingExerciceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTEditingExerciceCell.swift; sourceTree = "<group>"; };
+		13EDD9B8247AB03D008EE212 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
+		13EDD9BA247AB0FC008EE212 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		13EDD9BC247AB145008EE212 /* MuscleGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupModel.swift; sourceTree = "<group>"; };
+		13EDD9BE247AB9A4008EE212 /* ExerciseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseVC.swift; sourceTree = "<group>"; };
+		13FAF179246FCAA600537408 /* CaloriesCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculator.swift; sourceTree = "<group>"; };
+		13FCA9C2248EF7E00056E659 /* DTCustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTCustomAlert.swift; sourceTree = "<group>"; };
+		13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCodableModel.swift; sourceTree = "<group>"; };
+		13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCodableModel.swift; sourceTree = "<group>"; };
+		2740772531A1CC6877C3890D /* Pods-Dairy Training.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.debug.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.debug.xcconfig"; sourceTree = "<group>"; };
+		4AA0A949465FAA2821C9427D /* Pods-Dairy Training.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.release.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.release.xcconfig"; sourceTree = "<group>"; };
+		FE30C9910DF57A02C803F88B /* Pods_Dairy_Training.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dairy_Training.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		133AA59F246163E5009EBF8E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0FDC77B1E46C8317869A4DF /* Pods_Dairy_Training.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		130634442494DE76008C1ECF /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				130634452494DE80008C1ECF /* Training list */,
+				130634462494DEA9008C1ECF /* Choosen training */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		130634452494DE80008C1ECF /* Training list */ = {
+			isa = PBXGroup;
+			children = (
+				130634472494DEE0008C1ECF /* ViewControllers */,
+				130634492494DF8D008C1ECF /* Cells */,
+			);
+			path = "Training list";
+			sourceTree = "<group>";
+		};
+		130634462494DEA9008C1ECF /* Choosen training */ = {
+			isa = PBXGroup;
+			children = (
+				1306344A2494DFC5008C1ECF /* Cells */,
+				130634482494DEEB008C1ECF /* ViewControllers */,
+			);
+			path = "Choosen training";
+			sourceTree = "<group>";
+		};
+		130634472494DEE0008C1ECF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13479F3A247BD84A002FFB4E /* TrainingListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		130634482494DEEB008C1ECF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13EC52542480748900A05BCA /* TrainingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		130634492494DF8D008C1ECF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				13243A3D247E4A6300AB7419 /* DTTrainCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1306344A2494DFC5008C1ECF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				13EC525E24810E4A00A05BCA /* DTEditingExerciceCell.swift */,
+				135B8814248132360032251D /* DTAproachCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		131107C1246581FC0023A29A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				13151D4924715C9D002C15AA /* UIColor+Ex.swift */,
+				131733722490E08600292D84 /* DTExerciseCell+Ex.swift */,
+				1396F5F9248392760012A76A /* UIImage+Ex.swift */,
+				13786E1C2478271C0084E48C /* NotificationName+Ex.swift */,
+				13A8CA3E24B6312E00624AA3 /* CALayer+Ex.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		131107C7246582C30023A29A /* CommonClasses */ = {
+			isa = PBXGroup;
+			children = (
+				132FC7BC24B7CD2F00A70F7E /* EdgeInsets */,
+				13A9E7BF2494E10900DEDCBE /* ViewControllers */,
+				13AF91DD248A2D21006211B7 /* Labels */,
+				139FE9DC247859FD00B22C40 /* Views */,
+				139FE9DD24785A1B00B22C40 /* Alerts */,
+				139FE9DF24785A5300B22C40 /* TextFields */,
+				139FE9DE24785A3E00B22C40 /* Buttons */,
+			);
+			path = CommonClasses;
+			sourceTree = "<group>";
+		};
+		13151D4B247169D9002C15AA /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				13C0F50024B4E2940005A011 /* Models */,
+				13A9E7BE2494E0B400DEDCBE /* Utilities */,
+				132125D42494DAF000FDCDB4 /* Cells */,
+				132125D32494DADB00FDCDB4 /* ViewControllers */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		132125CC2494D9B100FDCDB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1396F5FB248394C20012A76A /* ProfileViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		132125CD2494D9C600FDCDB4 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				139D688724A27B890094E498 /* Menu */,
+				134DA009246ECE1F00B2FBDE /* Recomendations */,
+				136570CF2491253E00BF926B /* Statistic */,
+				13151D4B247169D9002C15AA /* Setting */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		132125CE2494DA2D00FDCDB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		132125D02494DA4100FDCDB4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				13FAF179246FCAA600537408 /* CaloriesCalculator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		132125D12494DA6900FDCDB4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		132125D22494DA7800FDCDB4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				13C89D21247046D2008AEF18 /* DTRecomendationHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		132125D32494DADB00FDCDB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1379800824733AEB00BAD87C /* SettingsSectionViewController.swift */,
+				139D531224740BCE0028AE6A /* SettingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		132125D42494DAF000FDCDB4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				139D53102474035C0028AE6A /* DTSettingCell.swift */,
+				131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		132125D52494DBB000FDCDB4 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				132125D62494DBC500FDCDB4 /* Select muscle group */,
+				132125D82494DBE400FDCDB4 /* Select muscle subgroup */,
+				132125DA2494DC0F00FDCDB4 /* Select exercises */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		132125D62494DBC500FDCDB4 /* Select muscle group */ = {
+			isa = PBXGroup;
+			children = (
+				132125D72494DBD600FDCDB4 /* ViewControllers */,
+			);
+			path = "Select muscle group";
+			sourceTree = "<group>";
+		};
+		132125D72494DBD600FDCDB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		132125D82494DBE400FDCDB4 /* Select muscle subgroup */ = {
+			isa = PBXGroup;
+			children = (
+				132125D92494DBF700FDCDB4 /* ViewControllers */,
+			);
+			path = "Select muscle subgroup";
+			sourceTree = "<group>";
+		};
+		132125D92494DBF700FDCDB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		132125DA2494DC0F00FDCDB4 /* Select exercises */ = {
+			isa = PBXGroup;
+			children = (
+				132125DB2494DC3100FDCDB4 /* ViewControllers */,
+			);
+			path = "Select exercises";
+			sourceTree = "<group>";
+		};
+		132125DB2494DC3100FDCDB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13EDD9BE247AB9A4008EE212 /* ExerciseVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		132125DC2494DC4F00FDCDB4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		132125DD2494DC8000FDCDB4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1396F5FF2484175E0012A76A /* DTInfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		13243A3F247E765500AB7419 /* Date helper */ = {
+			isa = PBXGroup;
+			children = (
+				13243A40247E768B00AB7419 /* DateHelper.swift */,
+			);
+			path = "Date helper";
+			sourceTree = "<group>";
+		};
+		132FC7BC24B7CD2F00A70F7E /* EdgeInsets */ = {
+			isa = PBXGroup;
+			children = (
+				132FC7B824B79DCD00A70F7E /* DTEdgeInsets.swift */,
+			);
+			path = EdgeInsets;
+			sourceTree = "<group>";
+		};
+		133A7BE024AE13B800409D3F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				133A7BE124AE13D900409D3F /* AproachCodableModel.swift */,
+				13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */,
+				13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */,
+				13A9E7C12494E22200DEDCBE /* UserMainInfoCodableModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		133AA599246163E5009EBF8E = {
+			isa = PBXGroup;
+			children = (
+				133AA5A4246163E5009EBF8E /* DairyTraining */,
+				133AA5A3246163E5009EBF8E /* Products */,
+				498B8DAC8926C90BF31635DE /* Pods */,
+				6DC67019104FF70CE7183999 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		133AA5A3246163E5009EBF8E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				133AA5A2246163E5009EBF8E /* Dairy Training.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		133AA5A4246163E5009EBF8E /* DairyTraining */ = {
+			isa = PBXGroup;
+			children = (
+				136F3FFA2498D07D00C6944B /* AppDelegate */,
+				136F401024990D4000C6944B /* Features */,
+				13F1158C249E168700B6B7D8 /* Firebase */,
+				139D530B2473DF560028AE6A /* Helpers */,
+				131107C7246582C30023A29A /* CommonClasses */,
+				1386AA1E246C15260016A757 /* Default Models */,
+				136F3FFB2498D0BB00C6944B /* CoreData */,
+				131107C1246581FC0023A29A /* Extensions */,
+				136F400E24990D0C00C6944B /* Resourses */,
+				136F400F24990D2100C6944B /* Configurations */,
+			);
+			path = DairyTraining;
+			sourceTree = "<group>";
+		};
+		134DA009246ECE1F00B2FBDE /* Recomendations */ = {
+			isa = PBXGroup;
+			children = (
+				132125CE2494DA2D00FDCDB4 /* ViewControllers */,
+				132125D22494DA7800FDCDB4 /* Views */,
+				132125D12494DA6900FDCDB4 /* Cells */,
+				1390520824993F330070D0EB /* Model */,
+				132125D02494DA4100FDCDB4 /* Helpers */,
+			);
+			path = Recomendations;
+			sourceTree = "<group>";
+		};
+		135F22882494293300EEE140 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				135F22892494296F00EEE140 /* StatisticsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		136570CF2491253E00BF926B /* Statistic */ = {
+			isa = PBXGroup;
+			children = (
+				13902AB52494268D00963A07 /* ViewControllers */,
+				13902AB2249411BB00963A07 /* Cells */,
+				13902AAF2493D41A00963A07 /* Views */,
+				135F22882494293300EEE140 /* Model */,
+			);
+			path = Statistic;
+			sourceTree = "<group>";
+		};
+		1366942424B7271A00F58422 /* Gradient maker */ = {
+			isa = PBXGroup;
+			children = (
+				1366942524B7273E00F58422 /* DTGradientLayerMaker.swift */,
+			);
+			path = "Gradient maker";
+			sourceTree = "<group>";
+		};
+		136F3FFA2498D07D00C6944B /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				133AA5A5246163E5009EBF8E /* AppDelegate.swift */,
+				136F3FF82498CF0400C6944B /* AppDelegate+Ex.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		136F3FFB2498D0BB00C6944B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				136F40072498D43600C6944B /* CoreDataManager */,
+				136F3FFF2498D17900C6944B /* CoreDataModel */,
+				136F40002498D18300C6944B /* Entities */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		136F3FFF2498D17900C6944B /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				136F3FFC2498D0DE00C6944B /* UserMainInfo.xcdatamodeld */,
+				13C0EEDB24A529DC00F55C54 /* UserTrainingInfo.xcdatamodeld */,
+			);
+			path = CoreDataModel;
+			sourceTree = "<group>";
+		};
+		136F40002498D18300C6944B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				136F40022498D1A100C6944B /* TrainingListEntity */,
+				136F40012498D18900C6944B /* MainInfoEntity */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		136F40012498D18900C6944B /* MainInfoEntity */ = {
+			isa = PBXGroup;
+			children = (
+				136F400A2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift */,
+				136F400B2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift */,
+			);
+			path = MainInfoEntity;
+			sourceTree = "<group>";
+		};
+		136F40022498D1A100C6944B /* TrainingListEntity */ = {
+			isa = PBXGroup;
+			children = (
+				13C0EEE024A52E7D00F55C54 /* Aproach entity */,
+				13C0EEDF24A52E6C00F55C54 /* Exercice entity */,
+				13C0EEDE24A52E5700F55C54 /* Training entity */,
+			);
+			path = TrainingListEntity;
+			sourceTree = "<group>";
+		};
+		136F40072498D43600C6944B /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				136F40082498D44B00C6944B /* CoreDataManager.swift */,
+			);
+			path = CoreDataManager;
+			sourceTree = "<group>";
+		};
+		136F400E24990D0C00C6944B /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				134403402499123F00D21284 /* LocalizedString.swift */,
+				133AA5AE246163E7009EBF8E /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		136F400F24990D2100C6944B /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				13AF79472486D3A100F2F7F7 /* GoogleService-Info.plist */,
+				133AA5B3246163E7009EBF8E /* Info.plist */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		136F401024990D4000C6944B /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				13BA17A32461A49600DF5D7D /* StartApp */,
+				13BA179F2461A45200DF5D7D /* Profile */,
+				13BA17A02461A45D00DF5D7D /* Activities */,
+				13BA17A22461A47700DF5D7D /* TrainingList */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		1386AA1E246C15260016A757 /* Default Models */ = {
+			isa = PBXGroup;
+			children = (
+				13EDD9BA247AB0FC008EE212 /* Exercise.swift */,
+				13EDD9B8247AB03D008EE212 /* ExerciseModel.swift */,
+				13EB98FA247D49AC00DE9CD9 /* MuscleSubgroups.swift */,
+				13EDD9BC247AB145008EE212 /* MuscleGroupModel.swift */,
+			);
+			path = "Default Models";
+			sourceTree = "<group>";
+		};
+		13902AAF2493D41A00963A07 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				13902AB02493D45C00963A07 /* DTTrainedMusclesView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		13902AB2249411BB00963A07 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		13902AB52494268D00963A07 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				136570D02491259C00BF926B /* CommonStatisticsViewController.swift */,
+				136570D2249125DB00BF926B /* TrainStatisticsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1390520824993F330070D0EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1390520A24993F5E0070D0EB /* RecomendationInfoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		139D530A2473DF3F0028AE6A /* AlertHelper */ = {
+			isa = PBXGroup;
+			children = (
+				139D530C2473DF790028AE6A /* AlertHelper.swift */,
+			);
+			path = AlertHelper;
+			sourceTree = "<group>";
+		};
+		139D530B2473DF560028AE6A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1366942424B7271A00F58422 /* Gradient maker */,
+				13243A3F247E765500AB7419 /* Date helper */,
+				139D530A2473DF3F0028AE6A /* AlertHelper */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		139D688724A27B890094E498 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				139D688824A27B8F0094E498 /* ViewControllers */,
+				139D688924A27BA00094E498 /* Buttons */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		139D688824A27B8F0094E498 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				138E8223249F9BBB00A60885 /* MenuViewController.swift */,
+				139D688324A220800094E498 /* MenuPresentationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		139D688924A27BA00094E498 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				139D688524A223B70094E498 /* DTMenuButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		139FE9DC247859FD00B22C40 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				139FE9D624783CAA00B22C40 /* DTHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		139FE9DD24785A1B00B22C40 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				13FCA9C2248EF7E00056E659 /* DTCustomAlert.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		139FE9DE24785A3E00B22C40 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				13416FA12485345100EC6590 /* GoogleSignInButton.swift */,
+				13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */,
+				1396F5FD2483BE480012A76A /* DTSystemButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		139FE9DF24785A5300B22C40 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */,
+				138BDB77248665330033F378 /* DTTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		13A9E7BE2494E0B400DEDCBE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				13C0F4FC24B4E1E40005A011 /* UserDefault setting manager */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		13A9E7BF2494E10900DEDCBE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */,
+				13BF82BC247C2E54005C5494 /* MainTabBarItemVC.swift */,
+				13344E5224B3619500BE3D65 /* DTBackgroundedViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		13AF91DD248A2D21006211B7 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				13AF91D9248A2B2A006211B7 /* DTAdaptiveLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		13BA179F2461A45200DF5D7D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				132125CC2494D9B100FDCDB4 /* ViewControllers */,
+				132125CD2494D9C600FDCDB4 /* Features */,
+				132125DD2494DC8000FDCDB4 /* Views */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		13BA17A02461A45D00DF5D7D /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				132125D52494DBB000FDCDB4 /* Feature */,
+				132125DC2494DC4F00FDCDB4 /* Cells */,
+			);
+			path = Activities;
+			sourceTree = "<group>";
+		};
+		13BA17A22461A47700DF5D7D /* TrainingList */ = {
+			isa = PBXGroup;
+			children = (
+				130634442494DE76008C1ECF /* Features */,
+			);
+			path = TrainingList;
+			sourceTree = "<group>";
+		};
+		13BA17A32461A49600DF5D7D /* StartApp */ = {
+			isa = PBXGroup;
+			children = (
+				13F11584249E15B900B6B7D8 /* Features */,
+			);
+			path = StartApp;
+			sourceTree = "<group>";
+		};
+		13C0EEDE24A52E5700F55C54 /* Training entity */ = {
+			isa = PBXGroup;
+			children = (
+				1393EDFA24A634B600EBD938 /* TrainingManagedObject+CoreDataClass.swift */,
+				1393EDFB24A634B600EBD938 /* TrainingManagedObject+CoreDataProperties.swift */,
+			);
+			path = "Training entity";
+			sourceTree = "<group>";
+		};
+		13C0EEDF24A52E6C00F55C54 /* Exercice entity */ = {
+			isa = PBXGroup;
+			children = (
+				13C0EEE524A5E3EB00F55C54 /* ExerciceManagedObject+CoreDataClass.swift */,
+				13C0EEE624A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift */,
+			);
+			path = "Exercice entity";
+			sourceTree = "<group>";
+		};
+		13C0EEE024A52E7D00F55C54 /* Aproach entity */ = {
+			isa = PBXGroup;
+			children = (
+				13C0EEE924A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift */,
+				13C0EEEA24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift */,
+			);
+			path = "Aproach entity";
+			sourceTree = "<group>";
+		};
+		13C0F4FC24B4E1E40005A011 /* UserDefault setting manager */ = {
+			isa = PBXGroup;
+			children = (
+				137D55B524897B6300EFBAB6 /* DTSettingManager.swift */,
+			);
+			path = "UserDefault setting manager";
+			sourceTree = "<group>";
+		};
+		13C0F50024B4E2940005A011 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				13C0F4FE24B4E24A0005A011 /* SettingSectionModel.swift */,
+				139D531A24753D060028AE6A /* SettingModel.swift */,
+				13AD1AFA2475C3FF00D5B39F /* MeteringSetting.swift */,
+				134DF5B424B4E50D007A7B8A /* ColorSetting.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		13F11584249E15B900B6B7D8 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				13F11588249E160200B6B7D8 /* LogIn */,
+				13F11585249E15C800B6B7D8 /* SplashScreen */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		13F11585249E15C800B6B7D8 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				13F11586249E15D100B6B7D8 /* ViewControllers */,
+				133AA5B0246163E7009EBF8E /* LaunchScreen.storyboard */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		13F11586249E15D100B6B7D8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				132F588E249A87F00089FA09 /* DTSplashScreenViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		13F11587249E15D900B6B7D8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				139B4ADA249C9D3500409B6E /* DTDownloadHud.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		13F11588249E160200B6B7D8 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				13F11589249E160900B6B7D8 /* ViewControllers */,
+				13F1158A249E162600B6B7D8 /* Utilities */,
+				13F11587249E15D900B6B7D8 /* Views */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
+		13F11589249E160900B6B7D8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1396F6012484216B0012A76A /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		13F1158A249E162600B6B7D8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				132D958B2485809B006E5A41 /* AppAuthentication.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		13F1158C249E168700B6B7D8 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				133A7BE024AE13B800409D3F /* Models */,
+				13F1158D249E169000B6B7D8 /* Utilities */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		13F1158D249E169000B6B7D8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1335B2682495183300D8276F /* DTFirebaseFileManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		498B8DAC8926C90BF31635DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2740772531A1CC6877C3890D /* Pods-Dairy Training.debug.xcconfig */,
+				4AA0A949465FAA2821C9427D /* Pods-Dairy Training.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6DC67019104FF70CE7183999 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE30C9910DF57A02C803F88B /* Pods_Dairy_Training.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		133AA5A1246163E5009EBF8E /* Dairy Training */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 133AA5B6246163E7009EBF8E /* Build configuration list for PBXNativeTarget "Dairy Training" */;
+			buildPhases = (
+				12CB46B92AB176DE1A1E115A /* [CP] Check Pods Manifest.lock */,
+				133AA59E246163E5009EBF8E /* Sources */,
+				133AA59F246163E5009EBF8E /* Frameworks */,
+				133AA5A0246163E5009EBF8E /* Resources */,
+				0F515F1FB8D69F4E4459A5CB /* [CP] Embed Pods Frameworks */,
+				09C2C13E7B92F39DC6D7CAC4 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Dairy Training";
+			productName = DairyTrain2.0;
+			productReference = 133AA5A2246163E5009EBF8E /* Dairy Training.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		133AA59A246163E5009EBF8E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Вячеслав";
+				TargetAttributes = {
+					133AA5A1246163E5009EBF8E = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 133AA59D246163E5009EBF8E /* Build configuration list for PBXProject "DairyTraining" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 133AA599246163E5009EBF8E;
+			productRefGroup = 133AA5A3246163E5009EBF8E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				133AA5A1246163E5009EBF8E /* Dairy Training */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		133AA5A0246163E5009EBF8E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13AF79482486D3A100F2F7F7 /* GoogleService-Info.plist in Resources */,
+				133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */,
+				133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09C2C13E7B92F39DC6D7CAC4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0F515F1FB8D69F4E4459A5CB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		12CB46B92AB176DE1A1E115A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dairy Training-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		133AA59E246163E5009EBF8E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				132FC7B924B79DCD00A70F7E /* DTEdgeInsets.swift in Sources */,
+				134DF5B524B4E50D007A7B8A /* ColorSetting.swift in Sources */,
+				1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */,
+				139B4ADB249C9D3500409B6E /* DTDownloadHud.swift in Sources */,
+				1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */,
+				13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */,
+				138E8224249F9BBB00A60885 /* MenuViewController.swift in Sources */,
+				13C0EEDD24A529DD00F55C54 /* UserTrainingInfo.xcdatamodeld in Sources */,
+				13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */,
+				139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */,
+				136F3FFE2498D0DE00C6944B /* UserMainInfo.xcdatamodeld in Sources */,
+				13902AB12493D45C00963A07 /* DTTrainedMusclesView.swift in Sources */,
+				134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */,
+				13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */,
+				13FCA9C3248EF7E00056E659 /* DTCustomAlert.swift in Sources */,
+				13243A41247E768B00AB7419 /* DateHelper.swift in Sources */,
+				13479F3B247BD84A002FFB4E /* TrainingListViewController.swift in Sources */,
+				13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */,
+				139D531B24753D060028AE6A /* SettingModel.swift in Sources */,
+				1393EDFD24A634B600EBD938 /* TrainingManagedObject+CoreDataProperties.swift in Sources */,
+				133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */,
+				13C0EEEC24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift in Sources */,
+				13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */,
+				1379800924733AEB00BAD87C /* SettingsSectionViewController.swift in Sources */,
+				1390520B24993F5E0070D0EB /* RecomendationInfoModel.swift in Sources */,
+				139D688424A220800094E498 /* MenuPresentationViewController.swift in Sources */,
+				1396F6002484175E0012A76A /* DTInfoView.swift in Sources */,
+				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
+				139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */,
+				131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */,
+				1393EDFC24A634B600EBD938 /* TrainingManagedObject+CoreDataClass.swift in Sources */,
+				13A9E7C22494E22200DEDCBE /* UserMainInfoCodableModel.swift in Sources */,
+				132F588F249A87F00089FA09 /* DTSplashScreenViewController.swift in Sources */,
+				13902AB4249411ED00963A07 /* DTMuscleSubgroupsCell.swift in Sources */,
+				13BF82BD247C2E54005C5494 /* MainTabBarItemVC.swift in Sources */,
+				136F3FF92498CF0400C6944B /* AppDelegate+Ex.swift in Sources */,
+				131B9F9D24ADF2AC004FE9AD /* DTSynhronizeCell.swift in Sources */,
+				1335B2692495183300D8276F /* DTFirebaseFileManager.swift in Sources */,
+				13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */,
+				136F40092498D44B00C6944B /* CoreDataManager.swift in Sources */,
+				13C0EEE724A5E3EB00F55C54 /* ExerciceManagedObject+CoreDataClass.swift in Sources */,
+				13416FA22485345100EC6590 /* GoogleSignInButton.swift in Sources */,
+				136F400D2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift in Sources */,
+				13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */,
+				13FAF17A246FCAA600537408 /* CaloriesCalculator.swift in Sources */,
+				1335CBB02465AC03009C2E20 /* DTStyledTextField.swift in Sources */,
+				13786E1D2478271C0084E48C /* NotificationName+Ex.swift in Sources */,
+				136F400C2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift in Sources */,
+				13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */,
+				13C89D22247046D2008AEF18 /* DTRecomendationHeaderView.swift in Sources */,
+				133A7BE224AE13D900409D3F /* AproachCodableModel.swift in Sources */,
+				13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */,
+				13EB98FD247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift in Sources */,
+				136570D3249125DB00BF926B /* TrainStatisticsViewController.swift in Sources */,
+				135B8815248132360032251D /* DTAproachCell.swift in Sources */,
+				13C0EEEB24A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift in Sources */,
+				139D688624A223B70094E498 /* DTMenuButton.swift in Sources */,
+				134403412499123F00D21284 /* LocalizedString.swift in Sources */,
+				137D55B624897B6300EFBAB6 /* DTSettingManager.swift in Sources */,
+				13A8CA3F24B6312E00624AA3 /* CALayer+Ex.swift in Sources */,
+				139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */,
+				13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */,
+				135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */,
+				13344E5324B3619500BE3D65 /* DTBackgroundedViewController.swift in Sources */,
+				139FE9D3247838EF00B22C40 /* DTActivitiesCell.swift in Sources */,
+				13EDD9BF247AB9A4008EE212 /* ExerciseVC.swift in Sources */,
+				13C0EEE824A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift in Sources */,
+				1396F6022484216B0012A76A /* LoginViewController.swift in Sources */,
+				138BDB78248665330033F378 /* DTTextField.swift in Sources */,
+				13EC52552480748900A05BCA /* TrainingViewController.swift in Sources */,
+				13479F37247BD55D002FFB4E /* MainTabBarViewController.swift in Sources */,
+				13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */,
+				1366942624B7273E00F58422 /* DTGradientLayerMaker.swift in Sources */,
+				132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */,
+				1396F5FC248394C20012A76A /* ProfileViewController.swift in Sources */,
+				136570D12491259C00BF926B /* CommonStatisticsViewController.swift in Sources */,
+				139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */,
+				13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */,
+				13EC525F24810E4A00A05BCA /* DTEditingExerciceCell.swift in Sources */,
+				13C0F4FF24B4E24A0005A011 /* SettingSectionModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		133AA5B0246163E7009EBF8E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				133AA5B1246163E7009EBF8E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		133AA5B4246163E7009EBF8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_NS_ASSERTIONS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		133AA5B5246163E7009EBF8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		133AA5B7246163E7009EBF8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2740772531A1CC6877C3890D /* Pods-Dairy Training.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J7WFZB9557;
+				INFOPLIST_FILE = "$(SRCROOT)/DairyTraining/Configurations/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sl.slavik.DairyTrain2-0";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		133AA5B8246163E7009EBF8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AA0A949465FAA2821C9427D /* Pods-Dairy Training.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J7WFZB9557;
+				INFOPLIST_FILE = "$(SRCROOT)/DairyTraining/Configurations/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sl.slavik.DairyTrain2-0";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		133AA59D246163E5009EBF8E /* Build configuration list for PBXProject "DairyTraining" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				133AA5B4246163E7009EBF8E /* Debug */,
+				133AA5B5246163E7009EBF8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		133AA5B6246163E7009EBF8E /* Build configuration list for PBXNativeTarget "Dairy Training" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				133AA5B7246163E7009EBF8E /* Debug */,
+				133AA5B8246163E7009EBF8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		136F3FFC2498D0DE00C6944B /* UserMainInfo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				136F3FFD2498D0DE00C6944B /* UserData.xcdatamodel */,
+			);
+			currentVersion = 136F3FFD2498D0DE00C6944B /* UserData.xcdatamodel */;
+			path = UserMainInfo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		13C0EEDB24A529DC00F55C54 /* UserTrainingInfo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				13C0EEDC24A529DC00F55C54 /* UserTrainInfo.xcdatamodel */,
+			);
+			currentVersion = 13C0EEDC24A529DC00F55C54 /* UserTrainInfo.xcdatamodel */;
+			path = UserTrainingInfo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 133AA59A246163E5009EBF8E /* Project object */;
+}
