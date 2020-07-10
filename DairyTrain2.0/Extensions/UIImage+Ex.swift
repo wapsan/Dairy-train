@@ -16,6 +16,7 @@ extension UIImage {
     static let tabBarTrains = UIImage(named: "trains")
     static let systemAddIcon = UIImage(named: "add")
     static let googleImage = UIImage(named: "googleCustom")
+    static let downloadArrows = UIImage(named: "downloadArrows")
     
     //MARK: - Muscle group images
     static let chestImage = UIImage(named: "chest")

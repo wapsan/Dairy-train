@@ -61,6 +61,18 @@ class SettingsSectionViewController: UITableViewController {
                                                name: .dataWasSynhronize, object: nil)
     }
     
+    private func synhronizeData() {
+        CoreDataManager.shared.updateDateOfLastUpdateTo(DateHelper.shared.currentDateForSynhronize)
+        self.lastSynhronizeDate = DateHelper.shared.currentDateForSynhronize
+        DispatchQueue.global(qos: .background).async {
+            DTFirebaseFileManager.shared.synhronizeDataToServer(completion: {
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .dataWasSynhronize, object: nil)
+                }
+            })
+        }
+    }
+    
     //MARK: - Actions
     @objc private func settingWasChanged() {
         self.tableView.reloadData()
@@ -88,12 +100,8 @@ extension SettingsSectionViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.settingModel[indexPath.section].type == .synchronization {
-            CoreDataManager.shared.updateDateOfLastUpdateTo(DateHelper.shared.currentDateForSynhronize)
-            self.lastSynhronizeDate = DateHelper.shared.currentDateForSynhronize
-            DTFirebaseFileManager.shared.synhronizeDataToServer(completion: {
-                NotificationCenter.default.post(name: .dataWasSynhronize, object: nil)
-            })
+        if let _ = tableView.cellForRow(at: indexPath) as? DTSynhronizeCell {
+            self.synhronizeData()
         } else {
             let choosenSetting = settingModel[indexPath.section].settings[indexPath.row]
             let setingViewController = SettingViewController(with: choosenSetting)

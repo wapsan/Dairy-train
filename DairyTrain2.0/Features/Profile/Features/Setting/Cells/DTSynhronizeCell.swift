@@ -14,7 +14,7 @@ class DTSynhronizeCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private lazy var lastSynhronizeDateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -46,7 +46,7 @@ class DTSynhronizeCell: UITableViewCell {
     func setUpdateDateTo(_ date: String) {
         self.lastSynhronizeDateLabel.text = date
     }
-    
+ 
     //MARK: - Constraints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
@@ -57,8 +57,8 @@ class DTSynhronizeCell: UITableViewCell {
             self.titleLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
                                                     constant: DTEdgeInsets.small.bottom),
             self.titleLabel.rightAnchor.constraint(equalTo: self.lastSynhronizeDateLabel.leftAnchor),
-            self.titleLabel.widthAnchor.constraint(equalTo: self.lastSynhronizeDateLabel.widthAnchor,
-                                                   multiplier: 1)
+            self.titleLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor,
+                                                   multiplier: 0.5)
         ])
         
         NSLayoutConstraint.activate([
@@ -67,7 +67,7 @@ class DTSynhronizeCell: UITableViewCell {
             self.lastSynhronizeDateLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor,
                                                                 constant: DTEdgeInsets.small.right),
             self.lastSynhronizeDateLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
-                                                                 constant: DTEdgeInsets.small.bottom)
+                                                                 constant: DTEdgeInsets.small.bottom),
         ])
     }
 }
