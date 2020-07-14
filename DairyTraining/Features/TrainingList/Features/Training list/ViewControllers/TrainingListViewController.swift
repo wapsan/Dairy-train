@@ -26,7 +26,7 @@ class TrainingListViewController: DTBackgroundedViewController {
     }
     
     //MARK: - Properties
-    lazy var headerTitle = "Your trains"
+    lazy var headerTitle = LocalizedString.trainingListHeader
     
     //MARK: - GUI Properties
     private lazy var collectionView: UICollectionView = {

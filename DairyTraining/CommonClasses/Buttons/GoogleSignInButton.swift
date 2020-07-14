@@ -12,7 +12,7 @@ class GoogleSignInButton: DTSystemButton {
     
     private lazy var googleButtonTittle: UILabel = {
         let label = UILabel()
-        label.text = "Sign in with Google"
+        label.text = LocalizedString.signInWithGoogle
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 20)
         label.textColor = .black

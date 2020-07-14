@@ -1,3 +1,5 @@
+import Foundation
+
 struct RecomendationInfo {
     
     //MARK: - Properties
@@ -10,9 +12,13 @@ struct RecomendationInfo {
     //MARK: - Initialization
     init(tittle: String, calories: String, proteins: String, carbohydrates: String, fats: String) {
         self.tittle = tittle
-        self.caloriesRecomendation = "Calories: \(calories) ccal."
-        self.proteinRecomendation = "Proteins: \(proteins) grams."
-        self.carbohydratesRcomendation = "Carbohydrates: \(carbohydrates) grams."
-        self.fatRecomandation = "Fats: \(fats) grams."
+        self.caloriesRecomendation = String(format: NSLocalizedString("Calories: number ccal.",
+                                                                      comment: ""), calories)
+        self.proteinRecomendation = String(format: NSLocalizedString("Proteins: number grams.",
+                                                                     comment: ""), proteins)
+        self.carbohydratesRcomendation = String(format: NSLocalizedString("Carbohydrates: number grams.",
+                                                                          comment: ""), carbohydrates)
+        self.fatRecomandation = String(format: NSLocalizedString("Fats: number grams.",
+                                                                 comment: ""), fats)
     }
 }

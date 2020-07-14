@@ -1,0 +1,110 @@
+//MARK: - English
+
+//MARK: - Login ViewController
+"Sign in" = "Sign in";
+"Sign up" = "Sign up";
+"Create account" = "Create account";
+"Email" = "Email";
+"Password" = "Password";
+"or" = "or";
+"Sign in with Google" = "Sign in with Google";
+
+//MARK: - ProfileViewController
+"Recomendations" = "Recomendations";
+"Setting" = "Setting";
+"Sign out" = "Sign out";
+"Quit" = "Quit";
+"Fill in data to recive recomendtations." = "Fill in data to recive recomendtations.";
+
+//MARK: - Default Alert
+"Error" = "Error";
+"Ok" = "Ok";
+"Cancel" = "Cancel";
+"Sign out?" = "Sign out?";
+"Are you sure?" = "Are you sure?";
+
+//MARK: - Calories calculator
+"Balance weigh supply" = "Balance weigh supply";
+"Lose weight supply" = "Lose weight supply";
+"Muscle gain supply" = "Muscle gain supply";
+
+"Calories: number ccal." = "Calories: %@ ccal.";
+"Proteins: number grams." = "Proteins: %@ grams.";
+"Carbohydrates: number grams." = "Carbohydrates: %@ grams.";
+"Fats: number grams." = "Fats: %@ grams.";
+
+//MARK: - CommonStatisticsViewController
+"Training statistics" = "Training statistics";
+"Statistic" = "Statistic";
+
+//MARK: - DTTrainedMusclesView
+"Trained muscles" = "Trained muscles";
+
+//MARK: - DTInfoView
+"Total train" = "Total train";
+"Gender" = "Gender";
+"Activity level" = "Activity level";
+"Age" = "Age";
+"Height" = "Height";
+"Weight" = "Weight";
+"Total reps" = "Total reps";
+"Total aproach" = "Total aproach";
+"Avarage projectile weight" = "Avarage projectile weight";
+"Total train weight" = "Total train weight";
+
+//MARK: - LoginViewController
+"Success" = "Success";
+"Successful registration" = "Successful registration";
+"Unknown error" = "Unknown error";
+
+//MARK: - Activities block
+"Select a muscular group" = "Select a muscular group";
+"Select muscular subgroup" = "Select muscular subgroup";
+"Select exercises" = "Select exercises";
+"Add this exercice to train?" = "Add this exercice to train?";
+"Exercises added!" = "Exercises added!";
+
+//MARK: - Setting
+"Color theme" = "Color theme";
+"Theme" = "Theme";
+"Weight mode" = "Weight mode";
+"Mode" = "Mode";
+"Height mode" = "Height mode";
+"Synhronization" = "Synhronization";
+"Metric" = "Metric";
+"Style" = "Style";
+"Cloud synchronization" = "Cloud synchronization";
+"Data don't update." = "Data don't update.";
+
+//MARK: - Metering setting
+" Kg." = " Kg.";
+" Lb." = " lb.";
+" Cm." = " Cm.";
+" Ft." = " Ft.";
+
+//MARK: - Training list viewController
+"Your trains" = "Your trains";
+"Edit" = "Edit";
+"Done" = "Done";
+"Are you shure?" = "Are you shure?";
+"Delete choosen trainings?" = "Delete choosen trainings?";
+"Training was deleted" = "Training was deleted";
+
+//MARK: - Main TabBarItemViewController
+"Activivties" = "Activivties";
+"Training" = "Training";
+"Profile" = "Profile";
+
+//MARK: - Activity levels
+"Low" = "Low";
+"Mid" = "Mid";
+"High" = "High";
+
+//MARK: - Genders
+"Male" = "Male";
+"Female" = "Female";
+
+//MARK: - Setter for main user info
+"Set age" = "Set age";
+"Set weight" = "Set weight";
+"Set height" = "Set height";

@@ -1,0 +1,110 @@
+//MARK: - Russian
+
+//MARK: - Login ViewController
+"Sign in" = "Зарегистрироваться";
+"Sign up" = "Войти";
+"Create account" = "Создать аккаунт";
+"Email" = "Эл.Почта";
+"Password" = "Пароль";
+"or" = "или";
+"Sign in with Google" = "Войти с помощью Google";
+
+//MARK: - ProfileViewController
+"Recomendations" = "Рекомендации";
+"Setting" = "Настройки";
+"Sign out" = "Выйти";
+"Quit" = "Выйти";
+"Fill in data to recive recomendtations." = "Заполните данные для получения рекомендаций.";
+
+//MARK: - Default Alert
+"Error" = "Ошибка";
+"Ok" = "Ок";
+"Cancel" = "Отмена";
+"Sign out?" = "Выйти";
+"Are you sure?" = "Вы уверенны?";
+
+//MARK: - Calories calculator
+"Balance weigh supply" = "Таблица для баланса веса";
+"Lose weight supply" = "Таблица для потери веса";
+"Muscle gain supply" = "Таблица для набора мыщечной массы";
+
+"Calories: number ccal." = "Калорий: %@ ккал.";
+"Proteins: number grams." = "Белки: %@ грамм.";
+"Carbohydrates: number grams." = "Углеводы: %@ грамм.";
+"Fats: number grams." = "Жиры: %@ грамм.";
+
+//MARK: - CommonStatisticsViewController
+"Training statistics" = "Тренировочная статистика";
+"Statistic" = "Статистика";
+
+//MARK: - DTTrainedMusclesView
+"Trained muscles" = "Тренируемые мыщцы";
+
+//MARK: - DTInfoView
+"Total train" = "Количество тренировок";
+"Gender" = "Пол";
+"Activity level" = "Уровень активности";
+"Age" = "Возраст";
+"Height" = "Рост";
+"Weight" = "Вес";
+"Total reps" = "Количество повторений";
+"Total aproach" = "Количество подходов";
+"Avarage projectile weight" = "Средний вес снаряда";
+"Total train weight" = "Макс. объем тренировки";
+
+//MARK: - LoginViewController
+"Success" = "Успех";
+"Successful registration" = "Успешная регистрация";
+"Unknown error" = "Неизвестная ошибка";
+
+//MARK: - Activities block
+"Select a muscular group" = "Выберите мыщечную группу";
+"Select muscular subgroup" = "Выберите мыщечную подгруппу";
+"Select exercises" = "Выберите упражнения";
+"Add this exercice to train?" = "Добавить упражнения в тренировку?";
+"Exercises added!" = "Упражнения добавлены!";
+
+//MARK: - Setting
+"Color theme" = "Цветовая тема";
+"Theme" = "Тема";
+"Weight mode" = "Режим измерения веса";
+"Mode" = "Режим";
+"Height mode" = "Режим измерения роста";
+"Synhronization" = "Синхронизация данных";
+"Metric" = "Режимы измерения";
+"Style" = "Внешний вид";
+"Cloud synchronization" = "Облачная синхронизация";
+"Data don't update." = "Данные не обновленны.";
+
+//MARK: - Metering setting
+" Kg." = " Кг.";
+" Lb." = " lb.";
+" Cm." = " См.";
+" Ft." = " Ft.";
+
+//MARK: - Training list viewController
+"Your trains" = "Ваши тренировки";
+"Edit" = "Редактировать";
+"Done" = "Ок";
+"Are you shure?" = "Вы уверенны?";
+"Delete choosen trainings?" = "Удалить выбранные тренировки?";
+"Training was deleted" = "Тренировки были удалены";
+
+//MARK: - Main TabBarItemViewController
+"Activivties" = "Упражнения";
+"Training" = "Тренировки";
+"Profile" = "Профиль";
+
+//MARK: - Activity levels
+"Low" = "Низкий";
+"Mid" = "Средний";
+"High" = "Высокий";
+
+//MARK: - Genders
+"Male" = "Мужской";
+"Female" = "Женский";
+
+//MARK: - Setter for main user info
+"Set age" = "Укажите возраст";
+"Set weight" = "Укажите вес";
+"Set height" = "Укажите рост";

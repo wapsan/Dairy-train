@@ -101,11 +101,19 @@ class DTInfoView: UIView {
             self.backgroundImage.image = UIImage.totalTraininBackgroundImage
         case .gender:
             self.titleLabel.text = LocalizedString.gender
-            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayGender ?? "_"
+            if let localizedGender = CoreDataManager.shared.readUserMainInfo()?.displayGender {
+                self.valueLabel.text = NSLocalizedString(localizedGender, comment: "")
+            } else {
+                self.valueLabel.text = "_"
+            }
             self.backgroundImage.image = UIImage.genderBackgroundImage
         case .activityLevel:
             self.titleLabel.text = LocalizedString.activityLevel
-            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel ?? "_"
+            if let localizedActivityLevel =  CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel {
+              self.valueLabel.text = NSLocalizedString(localizedActivityLevel, comment: "")
+            } else {
+                self.valueLabel.text = "_"
+            }
             self.backgroundImage.image = UIImage.activityLevelBackgroundImage
         case .age:
             self.titleLabel.text = LocalizedString.age

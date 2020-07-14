@@ -32,9 +32,9 @@ class DTCustomAlert: UIView {
     private weak var mainInfo: MainInfoManagedObject?
     private weak var exercice: ExerciseManagedObject?
     private weak var tappedInfoView: DTInfoView?
-    private lazy var setAgeTitle = "Set age"
-    private lazy var setWeightTitle = "Set weight"
-    private lazy var setHeightTitle = "Set height"
+    private lazy var setAgeTitle = LocalizedString.setAgeAlert
+    private lazy var setWeightTitle = LocalizedString.setWeightAlert
+    private lazy var setHeightTitle = LocalizedString.setHeightAlert
     
     //MARK: - Public properties
     weak var delegate: DTCustomAlertDelegate?
@@ -120,9 +120,10 @@ class DTCustomAlert: UIView {
     }()
     
     //MARK: - Gender type GUI properties
-    private lazy var maleButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Male", for: .normal)
+    private lazy var maleButton: DTAlertSelectionButton = {
+        let button = DTAlertSelectionButton()
+        button.infovalue = "Male"
+        button.setTitle(NSLocalizedString("Male", comment: ""), for: .normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(self.selectListButtonPressed), for: .touchUpInside)
@@ -130,9 +131,10 @@ class DTCustomAlert: UIView {
         return button
     }()
     
-    private lazy var femaleButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Female", for: .normal)
+    private lazy var femaleButton: DTAlertSelectionButton = {
+        let button = DTAlertSelectionButton()
+        button.infovalue = "Female"
+        button.setTitle(NSLocalizedString("Female", comment: ""), for: .normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(self.selectListButtonPressed), for: .touchUpInside)
@@ -141,9 +143,10 @@ class DTCustomAlert: UIView {
     }()
     
     //MARK: - Activity type GUI properties
-    private lazy var lowActivivtyButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Low", for: .normal)
+    private lazy var lowActivivtyButton: DTAlertSelectionButton = {
+        let button = DTAlertSelectionButton()
+        button.infovalue = "Low"
+        button.setTitle(NSLocalizedString("Low", comment: ""), for: .normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(self.selectListButtonPressed), for: .touchUpInside)
@@ -151,9 +154,10 @@ class DTCustomAlert: UIView {
         return button
     }()
     
-    private lazy var midActivivtyButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Mid", for: .normal)
+    private lazy var midActivivtyButton: DTAlertSelectionButton = {
+        let button = DTAlertSelectionButton()
+        button.infovalue = "Mid"
+        button.setTitle(NSLocalizedString("Mid", comment: ""), for: .normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(self.selectListButtonPressed), for: .touchUpInside)
@@ -161,9 +165,10 @@ class DTCustomAlert: UIView {
         return button
     }()
     
-    private lazy var highActivivtyButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("High", for: .normal)
+    private lazy var highActivivtyButton: DTAlertSelectionButton = {
+        let button = DTAlertSelectionButton()
+        button.infovalue = "High"
+        button.setTitle(NSLocalizedString("High", comment: ""), for: .normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(self.selectListButtonPressed), for: .touchUpInside)
@@ -467,16 +472,16 @@ class DTCustomAlert: UIView {
     
     private func writeListSelectionInfo() {
         for view in self.selectionButtonsStackView.arrangedSubviews {
-            guard let button = view as? UIButton else { return }
+            guard let button = view as? DTAlertSelectionButton else { return }
             if button.isSelected {
-                guard let buttonTittle = button.titleLabel?.text,
-                    let tappedInfoViewValue = self.tappedInfoView?.type else { return }
-                switch tappedInfoViewValue {
+                guard let buttonValue = button.infovalue,
+                    let tappedInfoViewType = self.tappedInfoView?.type else { return }
+                switch tappedInfoViewType {
                 case .gender:
-                    guard let newGenderValue = UserMainInfoCodableModel.Gender.init(rawValue: buttonTittle) else { return }
+                    guard let newGenderValue = UserMainInfoCodableModel.Gender.init(rawValue: buttonValue) else { return }
                     CoreDataManager.shared.updateGender(to: newGenderValue)
                 case .activityLevel:
-                    guard let newActivityLevelValue = UserMainInfoCodableModel.ActivityLevel.init(rawValue: buttonTittle) else { return }
+                    guard let newActivityLevelValue = UserMainInfoCodableModel.ActivityLevel.init(rawValue: buttonValue) else { return }
                     CoreDataManager.shared.updateActivityLevel(to: newActivityLevelValue)
                 default:
                     break
@@ -689,10 +694,18 @@ class DTCustomAlert: UIView {
             switch tappedInfoView.type {
             case .gender:
                 self.writeListSelectionInfo()
-                self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayGender
+                if let localizedGender = CoreDataManager.shared.readUserMainInfo()?.displayGender {
+                  self.tappedInfoView?.valueLabel.text = NSLocalizedString(localizedGender, comment: "")
+                } else {
+                    self.tappedInfoView?.valueLabel.text = "_"
+                }
             case .activityLevel:
                 self.writeListSelectionInfo()
-                 self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel
+                if let localizedActivityLevel =  CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel {
+                   self.tappedInfoView?.valueLabel.text = NSLocalizedString(localizedActivityLevel, comment: "")
+                } else {
+                    self.tappedInfoView?.valueLabel.text = "_"
+                }
             case .age:
                 self.writeValueInfo()
                 self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayAge

@@ -53,6 +53,7 @@ class DTFirebaseFileManager {
             .observeSingleEvent(of: .value) { (snapshot) in
                 
                 guard let dictionaryValue = snapshot.value as? NSDictionary else {
+                    
                     completion(nil, [], nil)
                     return
                 }

@@ -3,91 +3,98 @@ import Foundation
 class LocalizedString {
     
     //MARK: - LoginViewController
-    static let signIn = "Sign in"
-    static let signUp = "Sign up"
-    static let createAccount = "Create account"
-    static let email = "Email"
-    static let password = "Password"
-    static let or = "or"
+    static let signIn = NSLocalizedString("Sign in", comment: "")
+    static let signUp = NSLocalizedString("Sign up", comment: "")
+    static let createAccount = NSLocalizedString("Create account", comment: "")
+    static let email = NSLocalizedString("Email", comment: "")
+    static let password = NSLocalizedString("Password", comment: "")
+    static let or = NSLocalizedString("or", comment: "")
+    static let signInWithGoogle = NSLocalizedString("Sign in with Google", comment: "")
     
     //MARK: - ProfileViewController
-    static let recomendations = "Recomendations"
-    static let setting = "Setting"
-    static let signOut = "Sign out"
-    static let fillInDataErrorMessage = "Fill in data to recive recomendtations."
-    static let quit = "Quit"
+    static let recomendations = NSLocalizedString("Recomendations", comment: "")
+    static let setting = NSLocalizedString("Setting", comment: "")
+    static let signOut = NSLocalizedString("Sign out", comment: "")
+    static let fillInDataErrorMessage = NSLocalizedString("Fill in data to recive recomendtations.",
+                                                          comment: "")
+    static let quit = NSLocalizedString("Quit", comment: "")
     
-    //MARK: - Alert
-    static let alertError = "Error"
-    static let ok = "Ok"
-    static let cancel = "Cancel"
-    static let signOutAlert = "Sign out?"
-    static let signOutAlerMessage = "Are you sure?"
+    //MARK: - Default Alert
+    static let alertError = NSLocalizedString("Error", comment: "")
+    static let ok = NSLocalizedString("Ok", comment: "")
+    static let cancel = NSLocalizedString("Cancel", comment: "")
+    static let signOutAlert = NSLocalizedString("Sign out?", comment: "")
+    static let signOutAlerMessage = NSLocalizedString("Are you sure?", comment: "")
     
     //MARK: - Calories calculator
-    static let balanceWeightSupply = "Balance weigh supply"
-    static let loseWeightSupply = "Lose weight supply"
-    static let muscleGainSupply = "Muscle gain supply"
+    static let balanceWeightSupply = NSLocalizedString("Balance weigh supply", comment: "")
+    static let loseWeightSupply = NSLocalizedString("Lose weight supply", comment: "")
+    static let muscleGainSupply = NSLocalizedString("Muscle gain supply", comment: "")
     
     //MARK: - CommonStatisticsViewController
-    static let trainingStatistics = "Training statistics"
-    static let statistics = "Statistic"
+    static let trainingStatistics = NSLocalizedString("Training statistics", comment: "")
+    static let statistics = NSLocalizedString("Statistic", comment: "")
     
     //MARK: - DTTrainedMusclesView
-    static let trainedMuscles = "Trained muscles"
+    static let trainedMuscles = NSLocalizedString("Trained muscles", comment: "")
     
     //MARK: - DTInfoView
-    static let totalTrain = "Total train"
-    static let gender = "Gender"
-    static let activityLevel = "Activity level"
-    static let age = "Age"
-    static let height = "Height"
-    static let weight = "Weight"
-    static let totalReps = "Total reps"
-    static let totalAproach = "Total aproach"
-    static let avarageProjectileWeigt = "Avarage projectile weight"
-    static let totalTrainWeight = "Total train weight"
+    static let totalTrain = NSLocalizedString("Total train", comment: "")
+    static let gender = NSLocalizedString("Gender", comment: "")
+    static let activityLevel = NSLocalizedString("Activity level", comment: "")
+    static let age = NSLocalizedString("Age", comment: "")
+    static let height = NSLocalizedString("Height", comment: "")
+    static let weight = NSLocalizedString("Weight", comment: "")
+    static let totalReps = NSLocalizedString("Total reps", comment: "")
+    static let totalAproach = NSLocalizedString("Total aproach", comment: "")
+    static let avarageProjectileWeigt = NSLocalizedString("Avarage projectile weight", comment: "")
+    static let totalTrainWeight = NSLocalizedString("Total train weight", comment: "")
     
     //MARK: - LoginViewController
-    static let success = "Success"
-    static let successfulRegistration = "Successful registration"
-    static let unknownError = "Unknown error"
+    static let success = NSLocalizedString("Success", comment: "")
+    static let successfulRegistration = NSLocalizedString("Successful registration", comment: "")
+    static let unknownError = NSLocalizedString("Unknown error", comment: "")
     
     //MARK: - Activities block
-    static let selectMuscularGroup = "Select a muscular group"
-    static let selectMuscularSubgroup = "Select muscular subgroup"
-    static let selectExercises = "Select exercises"
-    static let alertAddThisExercisesToTrain = "Add this exercice to train?"
-    static let exercisesAdded = "Exercises added!"
+    static let selectMuscularGroup = NSLocalizedString("Select a muscular group", comment: "")
+    static let selectMuscularSubgroup = NSLocalizedString("Select muscular subgroup", comment: "")
+    static let selectExercises = NSLocalizedString("Select exercises", comment: "")
+    static let alertAddThisExercisesToTrain = NSLocalizedString("Add this exercice to train?", comment: "")
+    static let exercisesAdded = NSLocalizedString("Add this exercice to train?", comment: "")
     
     //MARK: - Setting
-    static let colorTheme = "Color theme"
-    static let theme = "Theme"
-    static let weightMode = "Weight mode"
-    static let mode = "Mode"
-    static let heightMode = "Height mode"
-    static let synhronization = "Synhronization"
-    static let metric = "Metric"
-    static let style = "Style"
-    static let cloydSynhronization = "Cloud synchronization"
-    static let dataDontUpdate = "Data don't update."
+    static let colorTheme = NSLocalizedString("Color theme", comment: "")
+    static let theme = NSLocalizedString("Theme", comment: "")
+    static let weightMode = NSLocalizedString("Weight mode", comment: "")
+    static let mode = NSLocalizedString("Mode", comment: "")
+    static let heightMode = NSLocalizedString("Height mode", comment: "")
+    static let synhronization = NSLocalizedString("Synhronization", comment: "")
+    static let metric = NSLocalizedString("Metric", comment: "")
+    static let style = NSLocalizedString("Style", comment: "")
+    static let cloydSynhronization = NSLocalizedString("Cloud synchronization", comment: "")
+    static let dataDontUpdate = NSLocalizedString("Data don't update.", comment: "")
     
     //MARK: - Metering setting
-    static let kgDescription = " Kg."
-    static let lbsDescription = " Lbs."
-    static let cmDescription = " Cm."
-    static let ftDescription = " Ft."
+    static let kgDescription = NSLocalizedString(" Kg.", comment: "")
+    static let lbsDescription = NSLocalizedString(" Lb.", comment: "")
+    static let cmDescription = NSLocalizedString(" Cm.", comment: "")
+    static let ftDescription = NSLocalizedString(" Ft.", comment: "")
     
     //MARK: - Training list viewController
-    static let edit = "Edit"
-    static let done = "Done"
-    static let deleltingTrainAlertTitle = "Are you shure?"
-    static let deleltingTrainAlertMessage = "Delete choosen trainings?"
-    static let deletedTrainAlertTitle = "Training was deleted"
+    static let trainingListHeader = NSLocalizedString("Your trains", comment: "")
+    static let edit = NSLocalizedString("Edit", comment: "")
+    static let done = NSLocalizedString("Done", comment: "")
+    static let deleltingTrainAlertTitle = NSLocalizedString("Are you shure?", comment: "")
+    static let deleltingTrainAlertMessage = NSLocalizedString("Delete choosen trainings?", comment: "")
+    static let deletedTrainAlertTitle = NSLocalizedString("Training was deleted", comment: "")
     
     //MARK: - Main TabBarItemViewController
-    static let activities = "Activivties"
-    static let training = "Training"
-    static let profile = "Profile"
+    static let activities = NSLocalizedString("Activivties", comment: "")
+    static let training = NSLocalizedString("Training", comment: "")
+    static let profile = NSLocalizedString("Profile", comment: "")
     
+    //MARK: - Custom alert type
+    static let setAgeAlert = NSLocalizedString("Set age", comment: "")
+    static let setWeightAlert = NSLocalizedString("Set weight", comment: "")
+    static let setHeightAlert = NSLocalizedString("Set height", comment: "")
 }

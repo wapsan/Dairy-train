@@ -27,7 +27,6 @@ class AlertHelper {
             let cancelAction = UIAlertAction(title: cancelTitle, style: .default, handler: nil)
             alert.addAction(cancelAction)
         }
-        
         viewController.present(alert, animated: true, completion: nil)
     }
 }
