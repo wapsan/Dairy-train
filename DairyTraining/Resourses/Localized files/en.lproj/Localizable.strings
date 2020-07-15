@@ -77,10 +77,13 @@
 "Data don't update." = "Data don't update.";
 
 //MARK: - Metering setting
-" Kg." = " Kg.";
-" Lb." = " lb.";
-" Cm." = " Cm.";
-" Ft." = " Ft.";
+"Kg." = " Kg.";
+"Lb." = " lb.";
+"Cm." = " Cm.";
+"Ft." = " Ft.";
+"Reps" = "Reps";
+"Dark" = "Dark";
+"Light" = "Light";
 
 //MARK: - Training list viewController
 "Your trains" = "Your trains";
@@ -89,6 +92,7 @@
 "Are you shure?" = "Are you shure?";
 "Delete choosen trainings?" = "Delete choosen trainings?";
 "Training was deleted" = "Training was deleted";
+"No training yet" = "No training yet";
 
 //MARK: - Main TabBarItemViewController
 "Activivties" = "Activivties";
@@ -108,3 +112,173 @@
 "Set age" = "Set age";
 "Set weight" = "Set weight";
 "Set height" = "Set height";
+
+//MARK: - Muscular groups name
+"Shoulders" = "Shoulders";
+"Chest" = "Chest";
+"Arms" = "Arms";
+"Back" = "Back";
+"Core" = "Core";
+"Legs" = "Legs";
+
+//MARK: - Muscular subGroups name
+"Front delts" = "Front delts";
+"Middle delts" = "Middle delts";
+"Rear delts" = "Rear delts";
+"Upper chest" = "Upper chest";
+"Middle chest" = "Middle chest";
+"Lower chest" = "Lower chest";
+"Biceps" = "Biceps";
+"Triceps" = "Triceps";
+"Front side hip" = "Front side hip";
+"Back side hip" = "Back side hip";
+"Calves" = "Calves";
+"ABS" = "ABS";
+"Low back" = "Low back";
+"Latissimus dorsi" = "Latissimus dorsi";
+"Trapezius" = "Trapezius";
+
+//MARK: - Eexercises name
+//MARK: - Front delts
+"Barbell press" = "Barbell press";
+"Military press" = "Military press";
+"Dumbbell front raise" = "Dumbbell front raise";
+"Arnold press" = "Arnold press";
+"Cable front raise" = "Cable front raise";
+"Cable lateral Raise" = "Cable lateral Raise";
+
+//MARK: - Middle delts
+"Barbell overhead press" = "Barbell overhead press";
+"Dumbbell Press" = "Dumbbell Press";
+"Seated dumbbell press" = "Seated dumbbell press";
+"Dumbbell lateral raise" = "Dumbbell lateral raise";
+"Barbell upright row" = "Barbell upright row";
+"Cable upright row" = "Cable upright row";
+"Machine Shoulder Press" = "Machine Shoulder Press";
+"Machine Rear-Delt Fly" = "Machine Rear-Delt Fly";
+
+//MARK: - Rear delts
+"Dumbbell back raise" = "Dumbbell back raise";
+"Reverse pec deck fly" = "Reverse pec deck fly";
+
+//MARK: - Upper chest
+"Incline Barbell Bench Press" = "Incline Barbell Bench Press";
+"Incline Dumbbell Bench Press" = "Incline Dumbbell Bench Press";
+"Incline Dumbbell Flye" = "Incline Dumbbell Flye";
+"Smith Machine Incline Press" = "Smith Machine Incline Press";
+"Machine Incline Press" = "Machine Incline Press";
+"Dumbbell Pull-Over" = "Dumbbell Pull-Over";
+"Low-Cable Crossover" = "Low-Cable Crossover";
+
+//MARK: - Middle chest
+"Barbell Bench Press" = "Barbell Bench Press";
+"Dumbbell Bench Press" = "Dumbbell Bench Press";
+"Dumbbell Flye" = "Dumbbell Flye";
+"Smith Machine Press" = "Smith Machine Press";
+"Machine Press" = "Machine Press";
+"Pec-Deck Machine" = "Pec-Deck Machine";
+"Pushups" = "Pushups";
+
+//MARK: - Lower chest
+"Decline Barbell Bench Press" = "Decline Barbell Bench Press";
+"Decline Dumbell Bench Press" = "Decline Dumbell Bench Press";
+"Decline Dumbbell Flye" = "Decline Dumbbell Flye";
+"Smith Machine Decline Press" = "Smith Machine Decline Press";
+"Machine Decline Press" = "Machine Decline Press";
+"Dips For Chest" = "Dips For Chest";
+"Cable Crossover" = "Cable Crossover";
+
+//MARK: - Biceps
+"Barbell Biceps Curl" = "Barbell Biceps Curl";
+"Standing Dumbbell Biceps Curl" = "Standing Dumbbell Biceps Curl";
+"Standing Hummer curl" = "Standing Hummer curl";
+"Seating Hummer curl" = "Seating Hummer curl";
+"EZ-Bar Biceps Curl" = "EZ-Bar Biceps Curl";
+"Incline Dumbbell Curl" = "Incline Dumbbell Curl";
+"Decline Dumbbell Curl" = "Decline Dumbbell Curl";
+"Concentration Biceps Curl" = "Concentration Biceps Curl";
+"Overhead Cable Curl" = "Overhead Cable Curl";
+
+//MARK: - Triceps
+"Close-grip Bench Press" = "Close-grip Bench Press";
+"Skullcrusher" = "Skullcrusher";
+"Tricep Dips" = "Tricep Dips";
+"Triceps Dip Machine" = "Triceps Dip Machine";
+"Overhead Triceps Extension" = "Overhead Triceps Extension";
+"Cable Push-Down" = "Cable Push-Down";
+"Kickbacks" = "Kickbacks";
+"Bar Push-Down" = "Bar Push-Down";
+"Diamond Push-Ups" = "Diamond Push-Ups";
+"Bench Dip" = "Bench Dip";
+"One-Arm Overhead Extension" = "One-Arm Overhead Extension";
+
+//MARK: - Front side hip
+"Barbell Squat" = "Barbell Squat";
+"Front Squat" = "Front Squat";
+"Leg press" = "Leg press";
+"Walking Lunge" = "Walking Lunge";
+"Hack Squat" = "Hack Squat";
+"Leg Extension" = "Leg Extension";
+"One Leg Extension" = "One Leg Extension";
+"Bulgarian Split Squat" = "Bulgarian Split Squat";
+"Pistol Squat" = "Pistol Squat";
+
+//MARK: - Bcak side hip
+"Deadlift" = "Deadlift";
+"Romanian Deadlift" = "Romanian Deadlift";
+"Single Leg Deadlift" = "Single Leg Deadlift";
+"Leg Curl" = "Leg Curl";
+"Single Leg Curl" = "Single Leg Curl";
+"Hip Thruster" = "Hip Thruster";
+"Sumo Squat" = "Sumo Squat";
+
+//MARK: - Calves
+"Machine Standing Calf Raise" = "Machine Standing Calf Raise";
+"Dumbbell Calf Raise" = "Dumbbell Calf Raise";
+"Barbell Calf Raises" = "Barbell Calf Raises";
+"Single Leg Calf Raise" = "Single Leg Calf Raise";
+"Donkey Calf Raises" = "Donkey Calf Raises";
+"Seated Calf Raise Machine" = "Seated Calf Raise Machine";
+"Calf Press" = "Calf Press";
+
+//MARK: - ABS
+"High Crunches" = "High Crunches";
+"Bicycle Crunches" = "Bicycle Crunches";
+"Leg Rises" = "Leg Rises";
+"Rised Legs Hold" = "Rised Legs Hold";
+"Flutter Kicks" = "Flutter Kicks";
+"Scissors" = "Scissors";
+"Plank" = "Plank";
+"Hanging Leg Raise" = "Hanging Leg Raise";
+"Hanging Knee Raise Twist" = "Hanging Knee Raise Twist";
+"Hanging Knee Raise" = "Hanging Knee Raise";
+
+//MARK: Low back
+"Hyperextensions" = "Hyperextensions";
+"Good Morning" = "Good Morning";
+"Deficit Deadlift" = "Deficit Deadlift";
+"Bridges" = "Bridges";
+
+//MARK: Lats
+"Pull-ups" = "Pull-ups";
+"Barbell Row" = "Barbell Row";
+"Reverse-Grip Barbell Row" = "Reverse-Grip Barbell Row";
+"Single-Arm Dumbbell Row" = "Single-Arm Dumbbell Row";
+"Landmine Row" = "Landmine Row";
+"Dumbbell Pullover" = "Dumbbell Pullover";
+"Single-Arm Cable Row" = "Single-Arm Cable Row";
+"Seated Low-Cable Row" = "Seated Low-Cable Row";
+"Lat Pull-down" = "Lat Pull-down";
+"Reverse-Grip Lat Pull-Down" = "Reverse-Grip Lat Pull-Down";
+"Close-Grip Lat Pull-Down" = "Close-Grip Lat Pull-Down";
+
+//MARK: - Trapezois
+"Barbell Shrug" = "Barbell Shrug";
+"Barbell Behind-the-Back Shrug" = "Barbell Behind-the-Back Shrug";
+"Dumbbell Shrug" = "Dumbbell Shrug";
+"Incline Dumbbell Shrug" = "Incline Dumbbell Shrug";
+"Snatch-Grip Barbell High Pull" = "Snatch-Grip Barbell High Pull";
+"Upright Row" = "Upright Row";
+"Farmer's Carry" = "Farmer's Carry";
+
+

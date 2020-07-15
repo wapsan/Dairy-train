@@ -32,7 +32,7 @@ class ExercicesViewController: MuscleGroupsViewController {
     }
     
     private func setUpNavigationItem() {
-        self.navigationItem.title = self.navigationTittle
+        self.navigationItem.title = NSLocalizedString(self.navigationTittle, comment: "") 
     }
     
     private func setUpTableView() {

@@ -30,11 +30,10 @@ class DTEditingExerciceCell: UITableViewCell {
         return imageView
     }()
     
-    private lazy var exerciceNameLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
+    private lazy var exerciceNameLabel: DTAdaptiveLabel = {
+        let label = DTAdaptiveLabel()
         label.numberOfLines = 2
-        label.minimumScaleFactor = 1/2
+        label.textAlignment = .left
         label.font = .systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -125,7 +124,7 @@ class DTEditingExerciceCell: UITableViewCell {
     //MARK: - Setter
     func setUpFor(_ exercise: ExerciseManagedObject) {
         self.exercise = exercise
-        self.exerciceNameLabel.text = exercise.name
+        self.exerciceNameLabel.text = NSLocalizedString(exercise.name, comment: "") 
         self.muscleSubGroupImage.image = exercise.image
         self.aproachCollectionList.reloadData()
     }

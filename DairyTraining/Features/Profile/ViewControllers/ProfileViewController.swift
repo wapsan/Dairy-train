@@ -199,17 +199,6 @@ class ProfileViewController: MainTabBarItemVC {
             self.gennderAgeStackView.heightAnchor.constraint(equalTo: self.totalTrainActivityLevelStackView.heightAnchor)
         ])
         
-        let weightAndHeightStackBottomConstraint = NSLayoutConstraint(
-            item: self.weightHeightStackView,
-            attribute: .bottom,
-            relatedBy: .equal,
-            toItem: safeArea,
-            attribute: .bottom,
-            multiplier: 1,
-            constant: -16)
-        weightAndHeightStackBottomConstraint.priority = UILayoutPriority(rawValue: 750)
-        
-        
         NSLayoutConstraint.activate([
             self.weightHeightStackView.topAnchor.constraint(equalTo: self.gennderAgeStackView.bottomAnchor,
                                                             constant: DTEdgeInsets.medium.top),
@@ -218,9 +207,8 @@ class ProfileViewController: MainTabBarItemVC {
             self.weightHeightStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
                                                               constant: DTEdgeInsets.medium.right),
             self.weightHeightStackView.heightAnchor.constraint(equalTo: self.gennderAgeStackView.heightAnchor),
-            weightAndHeightStackBottomConstraint
-     //       self.weightHeightStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor,
-        //                                                       constant: DTEdgeInsets.medium.bottom)
+            self.weightHeightStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor,
+                                                               constant: DTEdgeInsets.medium.bottom)
         ])
     }
     

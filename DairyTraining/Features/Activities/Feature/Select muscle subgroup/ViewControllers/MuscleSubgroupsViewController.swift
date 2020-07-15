@@ -22,7 +22,7 @@ class MuscleSubgroupsViewController: MuscleGroupsViewController {
     
     //MARK: - Setters
     func setNavigationTittle(to tittle: String) {
-        self.navigationTittle = tittle
+        self.navigationTittle = NSLocalizedString(tittle, comment: "")
     }
     
     func setMuscleSubgroupList(to list: [MuscleSubgroup.Subgroup] ) {

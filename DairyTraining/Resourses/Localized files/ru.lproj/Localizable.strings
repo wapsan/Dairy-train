@@ -77,18 +77,22 @@
 "Data don't update." = "Данные не обновленны.";
 
 //MARK: - Metering setting
-" Kg." = " Кг.";
-" Lb." = " lb.";
-" Cm." = " См.";
-" Ft." = " Ft.";
+"Kg." = " Кг.";
+"Lb." = " lb.";
+"Cm." = " См.";
+"Ft." = " Ft.";
+"Reps" = "ПВТ.";
+"Dark" = "Темная";
+"Light" = "Светлая";
 
 //MARK: - Training list viewController
 "Your trains" = "Ваши тренировки";
-"Edit" = "Редактировать";
+"Edit" = "Ред.";
 "Done" = "Ок";
 "Are you shure?" = "Вы уверенны?";
 "Delete choosen trainings?" = "Удалить выбранные тренировки?";
 "Training was deleted" = "Тренировки были удалены";
+"No training yet" = "Тренировочный лист пуст";
 
 //MARK: - Main TabBarItemViewController
 "Activivties" = "Упражнения";
@@ -108,3 +112,172 @@
 "Set age" = "Укажите возраст";
 "Set weight" = "Укажите вес";
 "Set height" = "Укажите рост";
+
+//MARK: - Eexercises name
+//MARK: - Muscular groups name
+"Shoulders" = "Плечи";
+"Chest" = "Грудь";
+"Arms" = "Руки";
+"Back" = "Спина";
+"Core" = "Мыщцы кора";
+"Legs" = "Ноги";
+
+//MARK: - Muscular subGroups name
+"Front delts" = "Передния часть дельты";
+"Middle delts" = "Средня часть дельты ";
+"Rear delts" = "Звдняя часть дельты";
+"Upper chest" = "Верхний отдел груди";
+"Middle chest" = "Средний отдел груди";
+"Lower chest" = "Нижний отдел груди";
+"Biceps" = "Бицепс";
+"Triceps" = "Трицепс";
+"Front side hip" = "Передняя часть бедра";
+"Back side hip" = "Задняя часть бедра";
+"Calves" = "Икроножный мыщцы";
+"ABS" = "Пресс";
+"Low back" = "Нижняя часть спины";
+"Latissimus dorsi" = "Широчайщие мышцы спины";
+"Trapezius" = "Трапеция";
+
+//MARK: - Eexercises name
+//MARK: - Front delts
+"Barbell press" = "Жим штанги сидя";
+"Military press" = "Армейский жим";
+"Dumbbell front raise" = "Подъем гантелей перед собой";
+"Arnold press" = "Жим Арнольда";
+"Cable front raise" = "Тяга нижнего блока перед собой";
+"Cable lateral Raise" = "Тяга нижнего блока в сторону одной рукой";
+
+//MARK: - Middle delts
+"Barbell overhead press" = "Жим штанги из-за головы";
+"Dumbbell Press" = "Жим гантелей";
+"Seated dumbbell press" = "Жим гантелей сидя";
+"Dumbbell lateral raise" = "Подьем гантелей в стороны";
+"Barbell upright row" = "Тяга штанги к подбородку";
+"Cable upright row" = "Тяга нижнего блока к подбородку";
+"Machine Shoulder Press" = "Жим сидя в хамер машине";
+"Machine Rear-Delt Fly" = "Подъем рук в стороны в тренажере";
+
+//MARK: - Rear delts
+"Dumbbell back raise" = "Подьем гантелей в стороны в наклоне";
+"Reverse pec deck fly" = "Разведение рук в стороны в тренажере";
+
+//MARK: - Upper chest
+"Incline Barbell Bench Press" = "Жим штанги под положительным углом";
+"Incline Dumbbell Bench Press" = "Жим гантелей под положительным углом";
+"Incline Dumbbell Flye" = "Сведение гантелей под положительным углом";
+"Smith Machine Incline Press" = "Жим в машине Смитта под положительным углом";
+"Machine Incline Press" = "Жим в хамер машине под положительным углом";
+"Dumbbell Pull-Over" = "Пуловер с гантелью";
+"Low-Cable Crossover" = "Кроссовер нижнего блока";
+
+//MARK: - Middle chest
+"Barbell Bench Press" = "Жим штанги лежа";
+"Dumbbell Bench Press" = "Жим гантелей лежа";
+"Dumbbell Flye" = "Сведение гантелей на горизонтальной скамье";
+"Smith Machine Press" = "Жим лежа в машине Смитта";
+"Machine Press" = "Жим лежа в хамер машине";
+"Pec-Deck Machine" = "Тренажер бабочка";
+"Pushups" = "Отжимания";
+
+//MARK: - Lower chest
+"Decline Barbell Bench Press" = "Жим штанги под отрицательным углом";
+"Decline Dumbell Bench Press" = "Жим гантелей под отрицательным углом";
+"Decline Dumbbell Flye" = "Сведение гантелей под отрицательным углом";
+"Smith Machine Decline Press" = "Жим в машине Смитта под отрицательным углом";
+"Machine Decline Press" = "Жим лежа в хамер машине под отрицательным углом";
+"Dips For Chest" = "Отжимание на брусьях широким хватом";
+"Cable Crossover" = "Кроссовер";
+
+//MARK: - Biceps
+"Barbell Biceps Curl" = "Подьем штанги на бицепс";
+"Standing Dumbbell Biceps Curl" = "Подьем гантелей на бицепс стоя";
+"Standing Hummer curl" = "Подьем гантелей стоя хватом \"Молот\"";
+"Seating Hummer curl" = "Подьем гантелей сидя хватом \"Молот\"";
+"EZ-Bar Biceps Curl" = "Подьем EZ-Штанги на бицепс";
+"Incline Dumbbell Curl" = "Подъем гантелей сидя на наклонной скамье";
+"Decline Dumbbell Curl" = "Подъем гантелей лежа на наклонной скамье";
+"Concentration Biceps Curl" = "Концентрированный подьем на бицепс";
+"Overhead Cable Curl" = "Тяга кроссовера на бицепс";
+
+//MARK: - Triceps
+"Close-grip Bench Press" = "Жим штанги лежа узким хватом";
+"Skullcrusher" = "Французкий жим";
+"Tricep Dips" = "Отжимания на брусьях узким хватом";
+"Triceps Dip Machine" = "Отжмания в хамер машине узким хватом";
+"Overhead Triceps Extension" = "Французкий жим сидя";
+"Cable Push-Down" = "Тяга верхнего блока на трицепс с канатом";
+"Kickbacks" = "Разгибание руки с гантелью в наклоне";
+"Bar Push-Down" = "Тяга верхнего блока на трицепс";
+"Diamond Push-Ups" = "Отжимания от пола узким хватом";
+"Bench Dip" = "Обратные отжимания от скамьи";
+"One-Arm Overhead Extension" = "Разгибание гантели из-за головы одной рукой";
+
+//MARK: - Front side hip
+"Barbell Squat" = "Приседания со штангой";
+"Front Squat" = "Фронтальные приседания";
+"Leg press" = "Жим ногами";
+"Walking Lunge" = "Выпады";
+"Hack Squat" = "Гакк-приседания";
+"Leg Extension" = "Разгибание ног на тренажере";
+"One Leg Extension" = "Разгибание одной ноги на тренажере";
+"Bulgarian Split Squat" = "Болгарские приседания";
+"Pistol Squat" = "Приседания \"Пистолет\"";
+
+//MARK: - Bcak side hip
+"Deadlift" = "Становая тяга";
+"Romanian Deadlift" = "Румынская тяга";
+"Single Leg Deadlift" = "Становая тяга на одной ноге";
+"Leg Curl" = "Сгибание ног в тренажере";
+"Single Leg Curl" = "Сгибание одной ноги в тренажере";
+"Hip Thruster" = "Ягодичный мостик";
+"Sumo Squat" = "Приседания \"Суммо\"";
+
+//MARK: - Calves
+"Machine Standing Calf Raise" = "Подъем на носки в тренажере";
+"Dumbbell Calf Raise" = "Подъем на носки с гантелью";
+"Barbell Calf Raises" = "Подьем на носки со штангой";
+"Single Leg Calf Raise" = "Подьем на одной ноге";
+"Donkey Calf Raises" = "Подъем на носки \"Ослик\"";
+"Seated Calf Raise Machine" = "Подъем на носки сидя";
+"Calf Press" = "Жим носками в тренажере";
+
+//MARK: - ABS
+"High Crunches" = "Высокие скручивания лежа";
+"Bicycle Crunches" = "Скручивания \"Велосипед\"";
+"Leg Rises" = "Подъем ног лежа";
+"Rised Legs Hold" = "Удержания ног лежа на спине";
+"Flutter Kicks" = "Попеременные подъемы ног лежа на спине";
+"Scissors" = "Ножницы";
+"Plank" = "Планка";
+"Hanging Leg Raise" = "Подъем ног к перекладине в висе";
+"Hanging Knee Raise Twist" = "Боковой подъем колен к груди в висе";
+"Hanging Knee Raise" = "Подъем колен к груди в висе";
+
+//MARK: Low back
+"Hyperextensions" = "Гиперэкстензия";
+"Good Morning" = "Упражнение \"Доброе утро\"";
+"Deficit Deadlift" = "Становая тяга на прямых ногах";
+"Bridges" = "Мостик";
+
+//MARK: Lats
+"Pull-ups" = "Подтягиваня";
+"Barbell Row" = "Тяга штанги в наклоне";
+"Reverse-Grip Barbell Row" = "Тяга штанги в наклоне обратным хватом";
+"Single-Arm Dumbbell Row" = "Тяга гантели в наклоне";
+"Landmine Row" = "Тяга грифа в наклоне";
+"Dumbbell Pullover" = "Пуловер с гантелью на широчайшие мыщцы спины";
+"Single-Arm Cable Row" = "Тяга нижнего блока сидя одной рукой";
+"Seated Low-Cable Row" = "Тяга нижнего блока сидя";
+"Lat Pull-down" = "Тяга верхнего блока широким хватом";
+"Reverse-Grip Lat Pull-Down" = "Тяга верхнего блока обратным хватом";
+"Close-Grip Lat Pull-Down" = "Тяга оверхнего блока узким хватом";
+
+//MARK: - Trapezois
+"Barbell Shrug" = "Шраги со штангой";
+"Barbell Behind-the-Back Shrug" = "Шраги со штангой хватом за спиной";
+"Dumbbell Shrug" = "Шраги с гантелями";
+"Incline Dumbbell Shrug" = "Шраги с гантелями под наклоном";
+"Snatch-Grip Barbell High Pull" = "Взятие штанги на грудь";
+"Upright Row" = "Тяга штанги к подбородку узким хватом";
+"Farmer's Carry" = "Прогулка фермера";

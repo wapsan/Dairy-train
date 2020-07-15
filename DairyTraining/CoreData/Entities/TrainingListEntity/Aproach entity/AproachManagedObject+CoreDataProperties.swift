@@ -44,6 +44,7 @@ extension AproachManagedObject {
     }
     
     var repsDisplayValue: String {
-        return "\(self.reps) Reps"
+        let localizedReps = NSLocalizedString("Reps", comment: "")
+        return "\(self.reps)" + " " + localizedReps
     }
 }

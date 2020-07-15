@@ -1,6 +1,6 @@
 import Foundation
 
-class LocalizedString {
+struct LocalizedString {
     
     //MARK: - LoginViewController
     static let signIn = NSLocalizedString("Sign in", comment: "")
@@ -81,6 +81,7 @@ class LocalizedString {
     static let ftDescription = NSLocalizedString(" Ft.", comment: "")
     
     //MARK: - Training list viewController
+    static let trainingListIsEmty = NSLocalizedString("No training yet", comment: "")
     static let trainingListHeader = NSLocalizedString("Your trains", comment: "")
     static let edit = NSLocalizedString("Edit", comment: "")
     static let done = NSLocalizedString("Done", comment: "")

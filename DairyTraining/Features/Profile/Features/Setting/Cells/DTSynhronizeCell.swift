@@ -6,8 +6,8 @@ class DTSynhronizeCell: UITableViewCell {
     static let cellID = "DTSynhronizeCell"
     
     //MARK: - GUI Properties
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
+    private lazy var titleLabel: DTAdaptiveLabel = {
+        let label = DTAdaptiveLabel()
         label.textColor = .white
         label.font = .systemFont(ofSize: 20)
         label.text = LocalizedString.synhronization

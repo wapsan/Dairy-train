@@ -64,12 +64,14 @@ class DTActivitiesCell: UITableViewCell {
     
     //MARK: - Setters
     func setCellFor(_ muscleGroup: MuscleGroup.Group) {
-        self.exerciceNameLabel.text = muscleGroup.rawValue
+        self.exerciceNameLabel.text =  NSLocalizedString(muscleGroup.rawValue, comment: "")
         self.muscleGroupImage.image = muscleGroup.image
     }
     
     func setCellFor(_ muscleSubroup: MuscleSubgroup.Subgroup) {
-        self.exerciceNameLabel.text = muscleSubroup.rawValue
+        //
+        
+        self.exerciceNameLabel.text = NSLocalizedString(muscleSubroup.rawValue, comment: "")//muscleSubroup.rawValue
         self.muscleGroupImage.image = muscleSubroup.image
     }
     

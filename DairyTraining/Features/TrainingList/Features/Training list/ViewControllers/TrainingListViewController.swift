@@ -50,7 +50,7 @@ class TrainingListViewController: DTBackgroundedViewController {
     
     private lazy var emptyTainingListLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
-        label.text = "No training yet"
+        label.text = LocalizedString.trainingListIsEmty
         label.font = .systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -65,7 +65,7 @@ class TrainingListViewController: DTBackgroundedViewController {
     }()
     
     private lazy var editTrainListButton: UIBarButtonItem = {
-        let editingButton = UIBarButtonItem(title: "Edit",
+        let editingButton = UIBarButtonItem(title: LocalizedString.edit,
                                             style: .done,
                                             target: self,
                                             action: #selector(self.editingButtonPressed(_:)))

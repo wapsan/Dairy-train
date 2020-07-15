@@ -63,11 +63,12 @@ class DTSettingCell: UITableViewCell {
     //MARK: - Setter
     func setSetingSectionCell(for setting: SettingModel) {
         self.mainSettingLabel.text = setting.title
-        self.currentSettingLabel.text = setting.currentValue
+        guard let currentValue = setting.currentValue else { return }
+        self.currentSettingLabel.text = NSLocalizedString(currentValue, comment: "")
     }
     
     func setCurrentSettingCell(for settings: SettingModel, and index: Int) {
-        self.mainSettingLabel.text = settings.possibleSetting[index]
+        self.mainSettingLabel.text = NSLocalizedString(settings.possibleSetting[index], comment: "")
         self.currentSettingLabel.text = nil
         self.selectionStyle = .none
     }

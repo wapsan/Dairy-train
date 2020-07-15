@@ -96,6 +96,7 @@ class DTInfoView: UIView {
         self.type = type
         switch type {
         case .trainCount:
+            self.titleLabel.numberOfLines = 2
             self.titleLabel.text = LocalizedString.totalTrain
             self.valueLabel.text = String(CoreDataManager.shared.fetchTrainingList().count)
             self.backgroundImage.image = UIImage.totalTraininBackgroundImage
@@ -108,6 +109,7 @@ class DTInfoView: UIView {
             }
             self.backgroundImage.image = UIImage.genderBackgroundImage
         case .activityLevel:
+            self.titleLabel.numberOfLines = 2
             self.titleLabel.text = LocalizedString.activityLevel
             if let localizedActivityLevel =  CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel {
               self.valueLabel.text = NSLocalizedString(localizedActivityLevel, comment: "")
@@ -132,9 +134,11 @@ class DTInfoView: UIView {
             self.backgroundImage.image = UIImage.weightBackgroundImage
             self.containerStackView.addArrangedSubview(self.descriptionLabel)
         case .totalReps:
+            self.titleLabel.numberOfLines = 2
             self.titleLabel.text = LocalizedString.totalReps
             self.backgroundImage.image = UIImage.totalRepsBackgroundImage
         case .totalAproach:
+            self.titleLabel.numberOfLines = 2
             self.titleLabel.text = LocalizedString.totalAproach
             self.backgroundImage.image = UIImage.totalAproachBackgroundImage
         case .avarageProjectileWeight:
