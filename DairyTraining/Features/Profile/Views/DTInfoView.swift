@@ -36,8 +36,8 @@ class DTInfoView: UIView {
     
     private lazy var containerViewView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 30
-        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+        view.layer.cornerRadius = UIScreen.main.bounds.height / 30 //30
+        //view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

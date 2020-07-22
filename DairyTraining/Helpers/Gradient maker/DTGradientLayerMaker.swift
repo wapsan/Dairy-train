@@ -13,8 +13,9 @@ class DTGradientLayerMaker {
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.darkBordoColor.cgColor, UIColor.black.cgColor]
         gradient.locations = [0.0, 1.0]
-        gradient.cornerRadius = 30
-        gradient.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+        gradient.cornerRadius = UIScreen.main.bounds.width / 20
+//        gradient.cornerRadius = 20
+//        gradient.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
         gradient.borderWidth = 1
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 1)

@@ -69,9 +69,7 @@ class DTActivitiesCell: UITableViewCell {
     }
     
     func setCellFor(_ muscleSubroup: MuscleSubgroup.Subgroup) {
-        //
-        
-        self.exerciceNameLabel.text = NSLocalizedString(muscleSubroup.rawValue, comment: "")//muscleSubroup.rawValue
+        self.exerciceNameLabel.text = NSLocalizedString(muscleSubroup.rawValue, comment: "")
         self.muscleGroupImage.image = muscleSubroup.image
     }
     

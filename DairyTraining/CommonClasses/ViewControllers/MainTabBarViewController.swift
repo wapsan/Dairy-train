@@ -1,7 +1,7 @@
 import UIKit
 
 class MainTabBarViewController: UITabBarController {
-    
+        
     //MARK: - Private properties
     private lazy var profileViewControllerIndex = 2
     
@@ -33,15 +33,9 @@ class MainTabBarViewController: UITabBarController {
         let activitiesViewController = MuscleGroupsViewController()
         let trainingListViewController = TrainingListViewController()
         
-        activitiesViewController.tabBarItem = .init(title: nil,
-                                                    image: UIImage.tabBarActivities,
-                                                    tag: 0)
-        trainingListViewController.tabBarItem = .init(title: nil,
-                                                      image: UIImage.tabBarTrains,
-                                                      tag: 1)
-        profileViewController.tabBarItem = .init(title: nil,
-                                                 image: UIImage.tabBarProfile,
-                                                 tag: 2)
+        profileViewController.tabBarItem = DTTabBarItems.profile.item
+        activitiesViewController.tabBarItem = DTTabBarItems.activivties.item
+        trainingListViewController.tabBarItem = DTTabBarItems.training.item
         
         self.viewControllers = [activitiesViewController,
                                 trainingListViewController,

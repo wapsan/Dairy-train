@@ -63,6 +63,7 @@ class MuscleGroupsViewController: DTBackgroundedViewController {
             self.headerView.rightAnchor.constraint(equalTo: safeArea.rightAnchor)
         ])
     }
+    
 }
 
 //MARK: -  UITableViewDataSourse, UITableViewDelegate

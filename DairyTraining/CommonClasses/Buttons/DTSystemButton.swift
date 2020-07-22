@@ -45,7 +45,7 @@ class DTSystemButton: UIButton {
     }
     
     private func setLayotLayer() {
-        self.layer.cornerRadius = self.bounds.size.height / 2
+        self.layer.cornerRadius = self.bounds.size.height / 3.57
     }
     
     //MARK: - Public methods
