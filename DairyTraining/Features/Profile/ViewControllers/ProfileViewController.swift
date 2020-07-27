@@ -1,7 +1,17 @@
 import UIKit
-import Firebase
 
-class ProfileViewController: MainTabBarItemVC {
+protocol ProfileViewPresenter: AnyObject {
+    func showRecomendationAlert()
+    func showMenu()
+    func showSignOutAlert()
+    func presentLoginViewController()
+    func showErrorSignOutAlert(with error: Error)
+}
+
+final class ProfileViewController: MainTabBarItemVC {
+    
+    //MARK: - Properties
+    var viewModel: ProfileViewModel!
     
     //MARK: - Private properties
     private var isAllInfoWasSeted: Bool {
@@ -129,54 +139,7 @@ class ProfileViewController: MainTabBarItemVC {
                                          action: #selector(self.menuButtonPressed))
         self.navigationItem.rightBarButtonItem = menuButton
     }
-    
-    private func showMenuStackView() {
-        let menuStackViewController = MenuViewController()
-        menuStackViewController.modalPresentationStyle = .custom
-        menuStackViewController.transitioningDelegate = self
-        menuStackViewController.delegate = self
-        self.present(menuStackViewController, animated: true, completion: nil)
-    }
-    
-    private func showRecomendationAlert() {
-        AlertHelper.shared.showDefaultAlert(on: self,
-                                            title: LocalizedString.alertError,
-                                            message: LocalizedString.fillInDataErrorMessage,
-                                            cancelTitle: nil,
-                                            okTitle: LocalizedString.ok,
-                                            style: .alert,
-                                            completion: nil)
-    }
-    
-    private func showSignOutAllert() {
-        AlertHelper.shared.showDefaultAlert(on: self,
-                                            title: LocalizedString.signOutAlert,
-                                            message: LocalizedString.signOutAlerMessage,
-                                            cancelTitle: LocalizedString.cancel,
-                                            okTitle: LocalizedString.ok,
-                                            style: .actionSheet,
-                                            completion: { [weak self] in
-                                                guard let self = self else { return }
-                                                self.signOut()
-        })
-    }
-    
-    private func signOut() {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            DTSettingManager.shared.deleteUserToken()
-            CoreDataManager.shared.removeAllUserData({ [weak self] in
-                guard let self = self else { return }
-                let mainLoginVC = LoginViewController()
-                mainLoginVC.modalPresentationStyle = .overFullScreen
-                self.present(mainLoginVC, animated: true, completion: nil)
-            })
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
-    
+
     //MARK: - Constraints
     private func setUpConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
@@ -214,7 +177,7 @@ class ProfileViewController: MainTabBarItemVC {
     
     //MARK: - Actions
     @objc private func menuButtonPressed() {
-        self.showMenuStackView()
+        self.showMenu()
     }
 }
 
@@ -229,11 +192,56 @@ extension ProfileViewController: UIViewControllerTransitioningDelegate {
     }
 }
 
+//MARK: - ProfileViewPresenter
+extension ProfileViewController: ProfileViewPresenter {
+    
+    func showRecomendationAlert() {
+        self.showDefaultAlert(title: LocalizedString.alertError,
+                              message: LocalizedString.fillInDataErrorMessage,
+                              preffedStyle: .alert,
+                              okTitle: LocalizedString.ok)
+    }
+    
+    func showMenu() {
+        let menuStackViewController = MenuViewController()
+        menuStackViewController.modalPresentationStyle = .custom
+        menuStackViewController.transitioningDelegate = self
+        menuStackViewController.delegate = self
+        self.present(menuStackViewController, animated: true, completion: nil)
+    }
+    
+    func showErrorSignOutAlert(with error: Error) {
+        self.showDefaultAlert(title: LocalizedString.alertError,
+                              message: error.localizedDescription,
+                              preffedStyle: .alert,
+                              okTitle: LocalizedString.ok)
+    }
+    
+    func showSignOutAlert() {
+        self.showDefaultAlert(
+            title: LocalizedString.signOutAlert,
+            message: LocalizedString.signOutAlerMessage,
+            preffedStyle: .actionSheet,
+            okTitle: LocalizedString.ok,
+            cancelTitle: LocalizedString.cancel,
+            completion: { [weak self] in
+                guard let self = self else { return }
+                self.viewModel.signOut()
+        })
+    }
+    
+    func presentLoginViewController() {
+        let mainLoginVC = LoginViewController()
+        mainLoginVC.modalPresentationStyle = .overFullScreen
+        self.present(mainLoginVC, animated: true, completion: nil)
+    }
+}
+
 //MARK: - MenuStackViewControllerDelegate
 extension ProfileViewController: MenuStackViewControllerDelegate {
     
     func signOutPressed() {
-        self.showSignOutAllert()
+        self.showSignOutAlert()
     }
     
     func pushViewController(_ pushedViewController: UIViewController) {

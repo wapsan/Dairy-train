@@ -1,8 +1,8 @@
 //MARK: - Russian
 
 //MARK: - Login ViewController
-"Sign in" = "Зарегистрироваться";
-"Sign up" = "Войти";
+"Sign in" = "Войти";
+"Sign up" = "Зарегистрироваться";
 "Create account" = "Создать аккаунт";
 "Email" = "Эл.Почта";
 "Password" = "Пароль";

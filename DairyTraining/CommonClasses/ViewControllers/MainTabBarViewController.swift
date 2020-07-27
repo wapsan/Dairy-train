@@ -28,8 +28,21 @@ class MainTabBarViewController: UITabBarController {
         self.selectedIndex = self.profileViewControllerIndex
     }
     
+    func configureProfileVC() -> ProfileViewController {
+        let profileVC = ProfileViewController()
+        let profileViewModel = ProfileViewModel()
+        let profileModel = ProfileModel()
+      
+        profileVC.viewModel = profileViewModel
+        profileViewModel.model = profileModel
+        profileViewModel.viewPresenter = profileVC
+        profileModel.delegate = profileViewModel
+        profileVC.tabBarItem = DTTabBarItems.profile.item
+        return profileVC
+    }
+    
     private func setUpTabBarViewControllers() {
-        let profileViewController = ProfileViewController()
+        let profileViewController = self.configureProfileVC() //ProfileViewController()
         let activitiesViewController = MuscleGroupsViewController()
         let trainingListViewController = TrainingListViewController()
         

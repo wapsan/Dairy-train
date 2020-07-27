@@ -35,6 +35,35 @@ class LoginViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var modeSegmentedControll: UISegmentedControl = {
+        let segmentedControll = UISegmentedControl()
+        segmentedControll.insertSegment(withTitle: "Sign In", at: 0, animated: true)
+        segmentedControll.insertSegment(withTitle: "Sign Up", at: 1, animated: true)
+        segmentedControll.backgroundColor = .viewFlipsideBckgoundColor
+        segmentedControll.selectedSegmentTintColor = .red
+        segmentedControll.selectedSegmentIndex = 0
+        segmentedControll.addTarget(self, action: #selector(self.modeSwitched(_:)), for: .valueChanged)
+        segmentedControll.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControll.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white],
+                                                 for: .normal)
+        return segmentedControll
+    }()
+    
+    @objc private func modeSwitched(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.mainSignButton.setTitle(LocalizedString.signIn, for: .normal)
+            self.flipMainSignInButton()
+            self.isSignInMode = true
+        case 1:
+            self.mainSignButton.setTitle(LocalizedString.signUp, for: .normal)
+            self.flipMainSignInButton()
+            self.isSignInMode = false
+        default:
+            break
+        }
+    }
+    
     private lazy var signInModeButton: DTSystemButton = {
         let button = DTSystemButton(tittle: LocalizedString.signIn )
         button.addTarget(self,
@@ -131,6 +160,7 @@ class LoginViewController: UIViewController {
         self.setUpGooglePresentingViewController()
         self.setGuiElements()
         self.setUpSignMode()
+        //self.modeSwitched(self.modeSegmentedControll)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -159,8 +189,11 @@ class LoginViewController: UIViewController {
         
         self.view.addSubview(self.logoImageView)
         self.view.addSubview(self.textLogoImageView)
-        self.view.addSubview(self.signInModeButton)
-        self.view.addSubview(self.signUpModeButton)
+        self.view.addSubview(self.modeSegmentedControll)
+        
+     //   self.view.addSubview(self.signInModeButton)
+      //  self.view.addSubview(self.signUpModeButton)
+        
         self.view.addSubview(self.emailTextField)
         self.view.addSubview(self.passwordTextField)
         self.view.addSubview(self.containerForMainSignInButton)
@@ -290,35 +323,52 @@ class LoginViewController: UIViewController {
             self.textLogoImageView.widthAnchor.constraint(equalTo: self.logoImageView.widthAnchor,
                                                           multiplier: 1.5),
         ])
-        
         NSLayoutConstraint.activate([
-            self.signInModeButton.topAnchor.constraint(equalTo: self.textLogoImageView.bottomAnchor,
-                                                       constant: DTEdgeInsets.medium.top),
-            self.signInModeButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
-                                                        constant: DTEdgeInsets.large.left),
-            self.signInModeButton.rightAnchor.constraint(equalTo: self.signUpModeButton.leftAnchor,
-                                                         constant: DTEdgeInsets.large.right),
-            self.signInModeButton.heightAnchor.constraint(equalTo: self.signInModeButton.widthAnchor,
-                                                          multiplier: 0.25),
+            self.modeSegmentedControll.topAnchor.constraint(equalTo: self.textLogoImageView.bottomAnchor,
+                                                            constant: DTEdgeInsets.medium.top),
+            self.modeSegmentedControll.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
+                                                                    constant: DTEdgeInsets.large.left),
+            self.modeSegmentedControll.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
+                                                                     constant: DTEdgeInsets.large.right),
+            self.modeSegmentedControll.heightAnchor.constraint(equalTo: self.textLogoImageView.heightAnchor,
+                                                               multiplier: 0.6)
         ])
         
-        NSLayoutConstraint.activate([
-            self.signUpModeButton.centerYAnchor.constraint(equalTo: self.signInModeButton.centerYAnchor),
-            self.signUpModeButton.heightAnchor.constraint(equalTo: self.signInModeButton.heightAnchor),
-            self.signUpModeButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
-                                                         constant: DTEdgeInsets.large.right),
-            self.signUpModeButton.widthAnchor.constraint(equalTo: self.signInModeButton.widthAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            self.signInModeButton.topAnchor.constraint(equalTo: self.textLogoImageView.bottomAnchor,
+//                                                       constant: DTEdgeInsets.medium.top),
+//            self.signInModeButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
+//                                                        constant: DTEdgeInsets.large.left),
+//            self.signInModeButton.rightAnchor.constraint(equalTo: self.signUpModeButton.leftAnchor,
+//                                                         constant: DTEdgeInsets.large.right),
+//            self.signInModeButton.heightAnchor.constraint(equalTo: self.signInModeButton.widthAnchor,
+//                                                          multiplier: 0.25),
+//        ])
+//
+//        NSLayoutConstraint.activate([
+//            self.signUpModeButton.centerYAnchor.constraint(equalTo: self.signInModeButton.centerYAnchor),
+//            self.signUpModeButton.heightAnchor.constraint(equalTo: self.signInModeButton.heightAnchor),
+//            self.signUpModeButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
+//                                                         constant: DTEdgeInsets.large.right),
+//            self.signUpModeButton.widthAnchor.constraint(equalTo: self.signInModeButton.widthAnchor)
+//        ])
         
         NSLayoutConstraint.activate([
-            self.emailTextField.topAnchor.constraint(equalTo: self.signUpModeButton.bottomAnchor,
-                                                     constant: DTEdgeInsets.large.top),
+            self.emailTextField.topAnchor.constraint(equalTo: self.modeSegmentedControll.bottomAnchor,
+                                                                constant: DTEdgeInsets.large.top),
+//            self.emailTextField.topAnchor.constraint(equalTo: self.signUpModeButton.bottomAnchor,
+//                                                     constant: DTEdgeInsets.large.top),
             self.emailTextField.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
                                                       constant: DTEdgeInsets.medium.left),
             self.emailTextField.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
                                                        constant: DTEdgeInsets.medium.right),
-            self.emailTextField.heightAnchor.constraint(equalTo: self.signInModeButton.heightAnchor,
-                                                        multiplier: 1.3)
+//            self.emailTextField.heightAnchor.constraint(equalTo: self.signInModeButton.heightAnchor,
+//                                                        multiplier: 1.3)
+//            self.emailTextField.heightAnchor.constraint(equalTo: self.modeSegmentedControll.heightAnchor,
+//            multiplier: 1.3)
+            
+              self.emailTextField.heightAnchor.constraint(equalTo: self.mainSignButton.heightAnchor,
+                                                          multiplier: 0.75)
         ])
   
         NSLayoutConstraint.activate([
@@ -335,7 +385,7 @@ class LoginViewController: UIViewController {
                                    toItem: self.passwordTextField,
                                    attribute: .bottom,
                                    multiplier: 1,
-                                   constant: 64)
+                                   constant: 32)
         mainSignInButtopTopConstraint.priority = UILayoutPriority(rawValue: 750)
         
         NSLayoutConstraint.activate([
