@@ -2,6 +2,14 @@ import UIKit
 
 class GoogleSignInButton: DTSystemButton {
     
+    override var unpressedBackgroundColor: UIColor {
+        return UIColor.white
+    }
+    
+    override var pressedBackgroundColor: UIColor {
+        return UIColor.lightGray
+    }
+    
     //MARK: - GUI Properties
     private lazy var googleImage: UIImageView = {
         let imageView = UIImageView(image: UIImage.googleImage)
@@ -15,6 +23,9 @@ class GoogleSignInButton: DTSystemButton {
         label.text = LocalizedString.signInWithGoogle
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 20)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.2
+        label.numberOfLines = 1
         label.textColor = .black
         return label
     }()
@@ -52,7 +63,7 @@ class GoogleSignInButton: DTSystemButton {
             self.googleStackView.leftAnchor.constraint(equalTo: self.leftAnchor,
                                                        constant: DTEdgeInsets.small.left),
             self.googleStackView.rightAnchor.constraint(equalTo: self.rightAnchor,
-                                                        constant: DTEdgeInsets.small.right),
+                                                        constant: DTEdgeInsets.medium.right),
             self.googleStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
                                                          constant: DTEdgeInsets.small.bottom),
         ])

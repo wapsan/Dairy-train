@@ -5,12 +5,23 @@ class DTSystemButton: UIButton {
     //MARK: - Properties
     var isPressed: Bool = false
     
+    var pressedBackgroundColor: UIColor {
+        UIColor.red.withAlphaComponent(0.5)
+    }
+    
+    var unpressedBackgroundColor: UIColor {
+        UIColor.red
+    }
+    
     //MARK: - Initialization
     init(tittle: String) {
         super.init(frame: .zero)
         self.setTitle(tittle, for: .normal)
         self.setAppearance()
         self.setBehavors()
+        self.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.titleLabel?.numberOfLines = 1
+        self.titleLabel?.minimumScaleFactor = 0.1
     }
     
     required init?(coder: NSCoder) {
@@ -25,16 +36,8 @@ class DTSystemButton: UIButton {
     //MARK: - Private methods
     private func setAppearance() {
         self.backgroundColor = .red
-        
         self.titleLabel?.textColor = .white
-        self.titleLabel?.font = .systemFont(ofSize: 25)
-        self.setDefaultLayer()
-    }
-    
-    private func setDefaultLayer() {
-        self.layer.shadowColor = UIColor.darkGray.cgColor
-        self.layer.shadowOffset = .init(width: 0, height: 5)
-        self.layer.shadowOpacity = 5
+        self.titleLabel?.font = .systemFont(ofSize: 20)
     }
     
     private func setBehavors() {
@@ -50,15 +53,13 @@ class DTSystemButton: UIButton {
     
     //MARK: - Public methods
     func unpressed() {
-        self.frame.origin.y = self.frame.origin.y - 5
-        self.layer.shadowOpacity = 5
+        self.backgroundColor = self.unpressedBackgroundColor
         self.isUserInteractionEnabled = true
         self.isPressed = false
     }
     
     func pressed() {
-        self.frame.origin.y = self.frame.origin.y + 5
-        self.layer.shadowOpacity = 0
+        self.backgroundColor = self.pressedBackgroundColor
         self.isUserInteractionEnabled = false
         self.isPressed = true
     }

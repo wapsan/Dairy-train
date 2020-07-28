@@ -1,15 +1,15 @@
 import UIKit
 
 protocol LoginViewControllerPresenter: AnyObject {
-    func signInSuccesed() //done
-    func signInFailed(with errorMessage: String) //done
+    func signInSuccesed()
+    func signInFailed(with errorMessage: String) 
     
     func startSigninIn()
     
-    func failedSignUp(with errorMessage: String) //done
-    func succesSignUp() //done
+    func failedSignUp(with errorMessage: String)
+    func succesSignUp()
     
-    func googleSignInStart() //done
+    func googleSignInStart()
 }
 
 final class LoginViewController: UIViewController {
@@ -81,13 +81,6 @@ final class LoginViewController: UIViewController {
         return textField
     }()
 
-    private lazy var containerForMainSignInButton: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     private lazy var mainSignButton: DTSystemButton = {
         let button = DTSystemButton(tittle: LocalizedString.signIn)
         button.addTarget(self,
@@ -141,6 +134,8 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel.setUpGooglePresentingViewController(to: self)
         self.setGuiElements()
+        self.addObserverForKeyboardShow()
+        self.addObserverForHideKeyboard()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -149,6 +144,20 @@ final class LoginViewController: UIViewController {
     }
     
     //MARK: - Private methods
+    private func addObserverForKeyboardShow() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillChange(_:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+    }
+    
+    private func addObserverForHideKeyboard() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+
     private func setGuiElements() {
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .black
@@ -157,8 +166,8 @@ final class LoginViewController: UIViewController {
         self.view.addSubview(self.modeSegmentedControll)
         self.view.addSubview(self.emailTextField)
         self.view.addSubview(self.passwordTextField)
-        self.view.addSubview(self.containerForMainSignInButton)
-        self.containerForMainSignInButton.addSubview(self.mainSignButton)
+        
+        self.view.addSubview(self.mainSignButton)
         
         self.view.addSubview(self.leftLine)
         self.view.addSubview(self.orLabel)
@@ -166,24 +175,12 @@ final class LoginViewController: UIViewController {
         self.view.addSubview(self.googleSignInButton)
         self.setUpConstraints()
     }
-
-    private func flipMainSignInButton() {
-//        UIView.transition(with: self.containerForMainSignInButton,
-//                          duration: 0.5,
-//                          options: [.transitionFlipFromTop, .allowAnimatedContent],
-//                          animations: {},
-//                          completion: nil)
+    
+    private func renderSignInButton() {
         self.mainSignButton.titleLabel?.alpha = 0
         UIView.animate(withDuration: 0.4,
                        animations: {
                         self.mainSignButton.titleLabel?.alpha = 1
-                       // self.containerForMainSignInButton.alpha = 0
-        }, completion: { _ in
-//            UIView.animate(withDuration: 0.25,
-//                           animations: {
-    //                       self.mainSignButton.titleLabel?.alpha = 1
-//                           // self.containerForMainSignInButton.alpha = 1
-//            }, completion: nil)
         })
     }
     
@@ -208,50 +205,45 @@ final class LoginViewController: UIViewController {
         NSLayoutConstraint.activate([
             self.logoImageView.topAnchor.constraint(equalTo: safeArea.topAnchor,
                                                     constant: DTEdgeInsets.medium.top),
-            self.logoImageView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
-                                                       multiplier: 0.2),
-            self.logoImageView.widthAnchor.constraint(equalTo: self.logoImageView.heightAnchor),
+            self.logoImageView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
+                                                      multiplier: 1/3),
+            self.logoImageView.heightAnchor.constraint(equalTo: self.logoImageView.widthAnchor),
             self.logoImageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.textLogoImageView.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor,
-                                                        constant: DTEdgeInsets.small.top),
-            self.textLogoImageView.centerXAnchor.constraint(equalTo: self.logoImageView.centerXAnchor),
-            self.textLogoImageView.heightAnchor.constraint(equalTo: self.logoImageView.heightAnchor,
-                                                           multiplier: 0.4),
-            self.textLogoImageView.widthAnchor.constraint(equalTo: self.logoImageView.widthAnchor,
-                                                          multiplier: 1.5),
+            self.textLogoImageView.topAnchor.constraint(lessThanOrEqualTo: self.logoImageView.bottomAnchor,
+                                                        constant: DTEdgeInsets.medium.top),
+            self.textLogoImageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            self.textLogoImageView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
+                                                          multiplier: 0.5),
+            self.textLogoImageView.heightAnchor.constraint(equalTo: self.textLogoImageView.widthAnchor,
+                                                           multiplier: 1/3)
         ])
+        
         NSLayoutConstraint.activate([
             self.modeSegmentedControll.topAnchor.constraint(equalTo: self.textLogoImageView.bottomAnchor,
                                                             constant: DTEdgeInsets.medium.top),
             self.modeSegmentedControll.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
-                                                                    constant: DTEdgeInsets.large.left),
+                                                             constant: DTEdgeInsets.large.left),
             self.modeSegmentedControll.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
-                                                                     constant: DTEdgeInsets.large.right),
+                                                              constant: DTEdgeInsets.large.right),
             self.modeSegmentedControll.heightAnchor.constraint(equalTo: self.textLogoImageView.heightAnchor,
                                                                multiplier: 0.6)
         ])
-
+        
         NSLayoutConstraint.activate([
             self.emailTextField.topAnchor.constraint(equalTo: self.modeSegmentedControll.bottomAnchor,
-                                                                constant: DTEdgeInsets.large.top),
-//            self.emailTextField.topAnchor.constraint(equalTo: self.signUpModeButton.bottomAnchor,
-//                                                     constant: DTEdgeInsets.large.top),
+                                                     constant: DTEdgeInsets.large.top),
+            
             self.emailTextField.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
                                                       constant: DTEdgeInsets.medium.left),
             self.emailTextField.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
                                                        constant: DTEdgeInsets.medium.right),
-//            self.emailTextField.heightAnchor.constraint(equalTo: self.signInModeButton.heightAnchor,
-//                                                        multiplier: 1.3)
-//            self.emailTextField.heightAnchor.constraint(equalTo: self.modeSegmentedControll.heightAnchor,
-//            multiplier: 1.3)
-            
-              self.emailTextField.heightAnchor.constraint(equalTo: self.mainSignButton.heightAnchor,
-                                                          multiplier: 0.75)
+            self.emailTextField.heightAnchor.constraint(equalTo: self.mainSignButton.heightAnchor,
+                                                        multiplier: 0.75)
         ])
-  
+        
         NSLayoutConstraint.activate([
             self.passwordTextField.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor,
                                                         constant: DTEdgeInsets.small.top),
@@ -260,36 +252,28 @@ final class LoginViewController: UIViewController {
             self.passwordTextField.centerXAnchor.constraint(equalTo: self.emailTextField.centerXAnchor)
         ])
         
-        let mainSignInButtopTopConstraint = NSLayoutConstraint(item: self.containerForMainSignInButton,
-                                   attribute: .top,
-                                   relatedBy: .equal,
-                                   toItem: self.passwordTextField,
-                                   attribute: .bottom,
-                                   multiplier: 1,
-                                   constant: 32)
+        let mainSignInButtopTopConstraint = NSLayoutConstraint(item: self.mainSignButton,
+                                                               attribute: .top,
+                                                               relatedBy: .equal,
+                                                               toItem: self.passwordTextField,
+                                                               attribute: .bottom,
+                                                               multiplier: 1,
+                                                               constant: 32)
         mainSignInButtopTopConstraint.priority = UILayoutPriority(rawValue: 750)
         
         NSLayoutConstraint.activate([
             mainSignInButtopTopConstraint,
-            self.containerForMainSignInButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
-                                                                    constant: DTEdgeInsets.medium.left),
-            self.containerForMainSignInButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
-                                                                     constant: DTEdgeInsets.medium.right),
-            self.containerForMainSignInButton.heightAnchor.constraint(equalTo: self.containerForMainSignInButton.widthAnchor,
-                                                                      multiplier: 0.2)
+            self.mainSignButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
+                                                      constant: DTEdgeInsets.medium.left),
+            self.mainSignButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
+                                                       constant: DTEdgeInsets.medium.right),
+            self.mainSignButton.heightAnchor.constraint(equalTo: self.mainSignButton.widthAnchor,
+                                                        multiplier: 0.2),
+            self.mainSignButton.bottomAnchor.constraint(equalTo: self.orLabel.topAnchor,
+                                                        constant: DTEdgeInsets.small.bottom)
         ])
-       
+        
         NSLayoutConstraint.activate([
-            self.mainSignButton.topAnchor.constraint(equalTo: self.containerForMainSignInButton.topAnchor),
-            self.mainSignButton.leftAnchor.constraint(equalTo: self.containerForMainSignInButton.leftAnchor),
-            self.mainSignButton.rightAnchor.constraint(equalTo: self.containerForMainSignInButton.rightAnchor),
-            self.mainSignButton.bottomAnchor.constraint(equalTo: self.containerForMainSignInButton.bottomAnchor,
-                                                        constant: -5)
-        ])
-  
-        NSLayoutConstraint.activate([
-            self.orLabel.topAnchor.constraint(equalTo: self.mainSignButton.bottomAnchor,
-                                              constant: DTEdgeInsets.small.top),
             self.orLabel.centerXAnchor.constraint(equalTo: self.mainSignButton.centerXAnchor),
             self.orLabel.heightAnchor.constraint(equalTo: self.mainSignButton.heightAnchor,
                                                  multiplier: 0.3),
@@ -330,20 +314,19 @@ final class LoginViewController: UIViewController {
     
     //MARK: - Actions
     @objc private func modeSwitched(_ sender: UISegmentedControl) {
-          switch sender.selectedSegmentIndex {
-          case 0:
-              self.mainSignButton.setTitle(LocalizedString.signIn, for: .normal)
-              self.flipMainSignInButton()
-              self.isSignInMode = true
-          case 1:
-              self.mainSignButton.setTitle(LocalizedString.signUp, for: .normal)
-              self.flipMainSignInButton()
-              self.isSignInMode = false
-          default:
-              break
-          }
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.mainSignButton.setTitle(LocalizedString.signIn, for: .normal)
+            self.renderSignInButton()
+            self.isSignInMode = true
+        case 1:
+            self.mainSignButton.setTitle(LocalizedString.signUp, for: .normal)
+            self.renderSignInButton()
+            self.isSignInMode = false
+        default:
+            break
+        }
     }
-
     
     @objc private func mainSignInButtonPressed(_ sender: DTSystemButton) {
         self.emailTextField.resignFirstResponder()
@@ -352,7 +335,18 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func googleSignInPressed() {
+        self.googleSignInButton.unpressed()
         self.viewModel.signInWithGoogle()
+    }
+    
+    @objc private func keyboardWillHide(_ notification: NSNotification) {
+        self.logoImageView.alpha = 1
+        self.view.frame.origin.y = 0
+    }
+    
+    @objc func keyboardWillChange(_ notification: NSNotification) {
+        self.view.frame.origin.y = 0 - self.logoImageView.bounds.size.height
+        self.logoImageView.alpha = 0
     }
 }
 
@@ -409,9 +403,10 @@ extension LoginViewController: LoginViewControllerPresenter {
         mainTabBarViewController.modalPresentationStyle = .fullScreen
         self.present(mainTabBarViewController, animated: true, completion: nil)
     }
-
+    
     
     func signInFailed(with errorMessage: String) {
+        self.mainSignButton.unpressed()
         self.showDefaultAlert(title: LocalizedString.alertError,
                               message: errorMessage,
                               preffedStyle: .alert,
