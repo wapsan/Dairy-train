@@ -12,8 +12,19 @@ extension AppDelegate {
             window.rootViewController = navigationController
         } else {
             print("User token - nill.")
-            window.rootViewController = LoginViewController()
+            window.rootViewController = self.configureLoginViewController()//LoginViewController()
         }
         window.makeKeyAndVisible()
+    }
+    
+    func configureLoginViewController() -> LoginViewController {
+        let loginViewController = LoginViewController()
+        let loginViewModel = LoginViewModel()
+        let loginModel = LoginModel()
+        loginViewController.viewModel = loginViewModel
+        loginViewModel.viewPresenter = loginViewController
+        loginViewModel.model = loginModel
+        loginModel.delegate = loginViewModel
+        return loginViewController
     }
 }

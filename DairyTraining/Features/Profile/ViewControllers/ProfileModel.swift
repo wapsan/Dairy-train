@@ -30,7 +30,8 @@ class ProfileModel {
         do {
             try self.firebaseAuth.signOut()
             self.settingManager.deleteUserToken()
-            self.coreDataManager.removeAllUserData({
+            self.coreDataManager.removeAllUserData({ [weak self] in
+                guard let self = self else { return }
                 self.delegate.succesSignedOut()
             })
         } catch let signOutError {

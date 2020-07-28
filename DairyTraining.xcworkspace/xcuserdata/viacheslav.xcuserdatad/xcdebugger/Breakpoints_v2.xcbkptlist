@@ -55,16 +55,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B31F6AB9-C58F-4147-BC88-FE245C599575"
+            uuid = "AE7C3731-7526-45D8-8D27-AE69ECADE03D"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DairyTraining/Features/StartApp/Features/LogIn/ViewControllers/LoginViewController.swift"
+            filePath = "DairyTraining/Firebase/Utilities/DTFirebaseFileManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
-            landmarkName = "setUpConstraints()"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "synhronizeDataFromServer(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F377FD92-90D3-4EE3-9AC1-2C2EC0D91692"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DairyTraining/Features/Profile/ViewControllers/ProfileModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "signOut()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F377FD92-90D3-4EE3-9AC1-2C2EC0D91692 - c09c5a77bed5e30d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dairy_Training.ProfileModel.signOut() -&gt; ()"
+                  moduleName = "Dairy Training"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/viacheslav/Desktop/Project/Dairy-train/DairyTraining/Features/Profile/ViewControllers/ProfileModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "387">
+               </Location>
+               <Location
+                  uuid = "F377FD92-90D3-4EE3-9AC1-2C2EC0D91692 - 13a34f4046aee185"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Dairy_Training.ProfileModel.signOut() -&gt; ()"
+                  moduleName = "Dairy Training"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/viacheslav/Desktop/Project/Dairy-train/DairyTraining/Features/Profile/ViewControllers/ProfileModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8F13380F-4E68-4DD9-B72D-5485BAA86215"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DairyTraining/Features/StartApp/Features/LogIn/Utilities/AppAuthentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "sign(_:didSignInFor:withError:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

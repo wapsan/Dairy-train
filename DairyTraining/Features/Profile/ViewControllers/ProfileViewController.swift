@@ -230,8 +230,20 @@ extension ProfileViewController: ProfileViewPresenter {
         })
     }
     
+    func configureLoginViewController() -> LoginViewController {
+              let loginViewController = LoginViewController()
+              let loginViewModel = LoginViewModel()
+              let loginModel = LoginModel()
+              loginViewController.viewModel = loginViewModel
+              loginViewModel.viewPresenter = loginViewController
+              loginViewModel.model = loginModel
+              loginModel.delegate = loginViewModel
+              return loginViewController
+        }
+    
     func presentLoginViewController() {
-        let mainLoginVC = LoginViewController()
+      
+        let mainLoginVC = configureLoginViewController()
         mainLoginVC.modalPresentationStyle = .overFullScreen
         self.present(mainLoginVC, animated: true, completion: nil)
     }
