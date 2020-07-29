@@ -23,6 +23,7 @@
 		13344E5324B3619500BE3D65 /* DTBackgroundedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13344E5224B3619500BE3D65 /* DTBackgroundedViewController.swift */; };
 		1335B2692495183300D8276F /* DTFirebaseFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335B2682495183300D8276F /* DTFirebaseFileManager.swift */; };
 		1335CBB02465AC03009C2E20 /* DTStyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */; };
+		133705BC24D14D1400E023CC /* DTActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133705BB24D14D1400E023CC /* DTActivityIndicator.swift */; };
 		133A7BE224AE13D900409D3F /* AproachCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133A7BE124AE13D900409D3F /* AproachCodableModel.swift */; };
 		133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133AA5A5246163E5009EBF8E /* AppDelegate.swift */; };
 		133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5AE246163E7009EBF8E /* Assets.xcassets */; };
@@ -60,7 +61,6 @@
 		1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FD2483BE480012A76A /* DTSystemButton.swift */; };
 		1396F6002484175E0012A76A /* DTInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F5FF2484175E0012A76A /* DTInfoView.swift */; };
 		1396F6022484216B0012A76A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396F6012484216B0012A76A /* LoginViewController.swift */; };
-		139B4ADB249C9D3500409B6E /* DTDownloadHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B4ADA249C9D3500409B6E /* DTDownloadHud.swift */; };
 		139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D530C2473DF790028AE6A /* AlertHelper.swift */; };
 		139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D53102474035C0028AE6A /* DTSettingCell.swift */; };
 		139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531224740BCE0028AE6A /* SettingViewController.swift */; };
@@ -118,6 +118,7 @@
 		13344E5224B3619500BE3D65 /* DTBackgroundedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTBackgroundedViewController.swift; sourceTree = "<group>"; };
 		1335B2682495183300D8276F /* DTFirebaseFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTFirebaseFileManager.swift; sourceTree = "<group>"; };
 		1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTStyledTextField.swift; sourceTree = "<group>"; };
+		133705BB24D14D1400E023CC /* DTActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTActivityIndicator.swift; sourceTree = "<group>"; };
 		133A7BE124AE13D900409D3F /* AproachCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachCodableModel.swift; sourceTree = "<group>"; };
 		133AA5A2246163E5009EBF8E /* Dairy Training.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dairy Training.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		133AA5A5246163E5009EBF8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,7 +158,6 @@
 		1396F5FD2483BE480012A76A /* DTSystemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSystemButton.swift; sourceTree = "<group>"; };
 		1396F5FF2484175E0012A76A /* DTInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoView.swift; sourceTree = "<group>"; };
 		1396F6012484216B0012A76A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		139B4ADA249C9D3500409B6E /* DTDownloadHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTDownloadHud.swift; sourceTree = "<group>"; };
 		139D530C2473DF790028AE6A /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		139D53102474035C0028AE6A /* DTSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSettingCell.swift; sourceTree = "<group>"; };
 		139D531224740BCE0028AE6A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -921,7 +921,7 @@
 		13F11587249E15D900B6B7D8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				139B4ADA249C9D3500409B6E /* DTDownloadHud.swift */,
+				133705BB24D14D1400E023CC /* DTActivityIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1126,7 +1126,6 @@
 				132FC7B924B79DCD00A70F7E /* DTEdgeInsets.swift in Sources */,
 				134DF5B524B4E50D007A7B8A /* ColorSetting.swift in Sources */,
 				1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */,
-				139B4ADB249C9D3500409B6E /* DTDownloadHud.swift in Sources */,
 				1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */,
 				13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */,
 				138E8224249F9BBB00A60885 /* MenuViewController.swift in Sources */,
@@ -1177,6 +1176,7 @@
 				13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */,
 				1306E01924CF3DC1003AEBA7 /* LoginModel.swift in Sources */,
 				13C89D22247046D2008AEF18 /* DTRecomendationHeaderView.swift in Sources */,
+				133705BC24D14D1400E023CC /* DTActivityIndicator.swift in Sources */,
 				133A7BE224AE13D900409D3F /* AproachCodableModel.swift in Sources */,
 				13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */,
 				13EB98FD247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift in Sources */,

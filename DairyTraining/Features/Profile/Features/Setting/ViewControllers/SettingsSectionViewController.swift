@@ -11,11 +11,11 @@ class SettingsSectionViewController: UITableViewController {
     private lazy var lastSynhronizeDate = CoreDataManager.shared.readUserMainInfo()?.dateOfLastUpdate
         ?? LocalizedString.dataDontUpdate
     
-    private lazy var a: DTDownloadHud = {
-        let a = DTDownloadHud(frame: .zero)
-        a.translatesAutoresizingMaskIntoConstraints = false
-        return a
-    }()
+//    private lazy var a: DTDownloadHud = {
+//        let a = DTDownloadHud(frame: .zero)
+//        a.translatesAutoresizingMaskIntoConstraints = false
+//        return a
+//    }()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {

@@ -24,12 +24,6 @@ final class LoginViewController: UIViewController {
     }
     
     //MARK: - GUI Properties
-    private lazy var downloadHud: DTDownloadHud = {
-        let downloadHud = DTDownloadHud(frame: .zero)
-        downloadHud.translatesAutoresizingMaskIntoConstraints = false
-        return downloadHud
-    }()
-    
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage.mainLogo)
         imageView.backgroundColor = .clear
@@ -129,6 +123,11 @@ final class LoginViewController: UIViewController {
         return view
     }()
     
+    let activityIndicator: DTActivityIndicator = {
+        let indicator = DTActivityIndicator()
+        return indicator
+    }()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,7 +139,8 @@ final class LoginViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.downloadHud.remove()
+      //  self.downloadHud.remove()
+        self.activityIndicator.remove()
     }
     
     //MARK: - Private methods
@@ -372,11 +372,11 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController: LoginViewControllerPresenter {
     
     func startSigninIn() {
-        self.downloadHud.showOn(self)
+        self.activityIndicator.showOn(self)
     }
     
     func googleSignInStart() {
-        self.downloadHud.showOn(self)
+        self.activityIndicator.showOn(self)
     }
     
     func succesSignUp() {
