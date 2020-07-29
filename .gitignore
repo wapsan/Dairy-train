@@ -35,8 +35,6 @@ DerivedData/
 *.dSYM.zip
 *.dSYM
 
-## Images
-*.png
 
 ## Playgrounds
 timeline.xctimeline
