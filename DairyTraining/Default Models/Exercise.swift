@@ -1,6 +1,6 @@
 import UIKit
 
-struct Exercise {
+struct Exercise: Groupable {
 
     //MARK: - Properties
     var name: String
@@ -12,7 +12,7 @@ struct Exercise {
     var muscleGroupImage: UIImage? {
         return self.group.image
     }
-    var muscleSubGroupImage: UIImage? {
+    var image: UIImage? {
         return self.subgroub.image
     }
     

@@ -1,8 +1,14 @@
 import UIKit
 
-class MuscleSubgroup: NSObject, Codable {
+protocol Groupable {
+    var image: UIImage? { get }
+    var name: String { get }
+}
+
+struct MuscleSubgroup: Codable {
     
-    enum Subgroup: String, Codable {
+    //MARK: - Enumeration
+    enum Subgroup: String, Codable, Groupable {
         case frontDelts = "Front delts"
         case middleDelts = "Middle delts"
         case rearDelts = "Rear delts"
@@ -23,6 +29,11 @@ class MuscleSubgroup: NSObject, Codable {
         
         case latissimusDorsi = "Latissimus dorsi"
         case trapezoid = "Trapezius"
+        
+        //MARK: - Properties
+        var name: String {
+            return NSLocalizedString(self.rawValue, comment: "")
+        }
         
         var image: UIImage? {
             switch self {
@@ -60,8 +71,9 @@ class MuscleSubgroup: NSObject, Codable {
         }
     }
  
-    var listOfSubgroups: [MuscleSubgroup.Subgroup] = []
+    var listOfSubgroups: [MuscleSubgroup.Subgroup] 
     
+    //MARK: - Initialization
     init(for muscleGroup: MuscleGroup.Group) {
         switch muscleGroup {
         case .shoulders:

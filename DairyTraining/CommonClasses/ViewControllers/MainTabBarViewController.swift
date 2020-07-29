@@ -41,9 +41,18 @@ class MainTabBarViewController: UITabBarController {
         return profileVC
     }
     
+    func configureMuscleVC() -> MuscleGroupsViewController {
+        let muscleGroupsVC = MuscleGroupsViewController()
+        let muscleGroupsViewMode = MuscleGroupsViewModel()
+        muscleGroupsVC.viewModel = muscleGroupsViewMode
+        muscleGroupsViewMode.viewPresenter = muscleGroupsVC
+        return muscleGroupsVC
+        
+    }
+    
     private func setUpTabBarViewControllers() {
         let profileViewController = self.configureProfileVC() //ProfileViewController()
-        let activitiesViewController = MuscleGroupsViewController()
+        let activitiesViewController = self.configureMuscleVC()//MuscleGroupsViewController()
         let trainingListViewController = TrainingListViewController()
         
         profileViewController.tabBarItem = DTTabBarItems.profile.item

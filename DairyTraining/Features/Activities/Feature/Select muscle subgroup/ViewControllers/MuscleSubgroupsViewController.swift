@@ -41,7 +41,7 @@ extension MuscleSubgroupsViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
                                                  for: indexPath)
         let choosenMuscularSubgroups = self.listOfSubgroups[indexPath.row]
-        (cell as? DTActivitiesCell)?.setCellFor(choosenMuscularSubgroups)
+        (cell as? DTActivitiesCell)?.renderCellFor(choosenMuscularSubgroups) //setCellFor(choosenMuscularSubgroups)
         return cell
     }
     

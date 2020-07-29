@@ -15,6 +15,7 @@ class DTBackgroundedViewController: MainTabBarItemVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpViewController()
+        //self.view.backgroundColor = .viewFlipsideBckgoundColor
     }
     
     //MARK: - Private methods

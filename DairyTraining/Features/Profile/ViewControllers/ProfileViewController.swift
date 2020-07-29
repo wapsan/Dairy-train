@@ -242,7 +242,6 @@ extension ProfileViewController: ProfileViewPresenter {
         }
     
     func presentLoginViewController() {
-      
         let mainLoginVC = configureLoginViewController()
         mainLoginVC.modalPresentationStyle = .overFullScreen
         self.present(mainLoginVC, animated: true, completion: nil)

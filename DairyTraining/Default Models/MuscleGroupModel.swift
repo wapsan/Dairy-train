@@ -1,8 +1,8 @@
 import UIKit
 
-class MuscleGroup: Codable {
+struct MuscleGroup: Codable {
     
-    enum Group: String, Codable, CaseIterable {
+    enum Group: String, Codable, CaseIterable, Groupable {
         case shoulders = "Shoulders"
         case chest = "Chest"
         case arms = "Arms"
@@ -25,6 +25,10 @@ class MuscleGroup: Codable {
             case .legs:
                 return UIImage.legsImage
             }
+        }
+        
+        var name: String {
+            return NSLocalizedString(self.rawValue, comment: "")
         }
 
     }

@@ -116,7 +116,7 @@ extension ExercicesViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
                                                  for: indexPath)
         let exercise = self.exercices[indexPath.row]
-        (cell as? DTActivitiesCell)?.setCellFor(exercise)
+        (cell as? DTActivitiesCell)?.renderCellFor(exercise)//setCellFor(exercise)
         return cell
     }
   

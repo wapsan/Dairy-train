@@ -63,21 +63,11 @@ class DTActivitiesCell: UITableViewCell {
     }
     
     //MARK: - Setters
-    func setCellFor(_ muscleGroup: MuscleGroup.Group) {
-        self.exerciceNameLabel.text =  NSLocalizedString(muscleGroup.rawValue, comment: "")
-        self.muscleGroupImage.image = muscleGroup.image
+    func renderCellFor<T: Groupable>(_ groupable: T) {
+        self.exerciceNameLabel.text = groupable.name
+        self.muscleGroupImage.image = groupable.image
     }
-    
-    func setCellFor(_ muscleSubroup: MuscleSubgroup.Subgroup) {
-        self.exerciceNameLabel.text = NSLocalizedString(muscleSubroup.rawValue, comment: "")
-        self.muscleGroupImage.image = muscleSubroup.image
-    }
-    
-    func setCellFor(_ exercice: Exercise) {
-        self.exerciceNameLabel.text = exercice.name
-        self.muscleGroupImage.image = exercice.muscleSubGroupImage
-    }
-    
+
     func setUnselectedBackgroundColor() {
         self.defaultGradient.bringToFront()
     }

@@ -24,6 +24,8 @@
 		1335B2692495183300D8276F /* DTFirebaseFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335B2682495183300D8276F /* DTFirebaseFileManager.swift */; };
 		1335CBB02465AC03009C2E20 /* DTStyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */; };
 		133705BC24D14D1400E023CC /* DTActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133705BB24D14D1400E023CC /* DTActivityIndicator.swift */; };
+		133705BE24D17B3100E023CC /* MuscleGroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133705BD24D17B3100E023CC /* MuscleGroupsViewModel.swift */; };
+		133705C024D17B4000E023CC /* MuscleGroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133705BF24D17B4000E023CC /* MuscleGroupsModel.swift */; };
 		133A7BE224AE13D900409D3F /* AproachCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133A7BE124AE13D900409D3F /* AproachCodableModel.swift */; };
 		133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133AA5A5246163E5009EBF8E /* AppDelegate.swift */; };
 		133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5AE246163E7009EBF8E /* Assets.xcassets */; };
@@ -119,6 +121,8 @@
 		1335B2682495183300D8276F /* DTFirebaseFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTFirebaseFileManager.swift; sourceTree = "<group>"; };
 		1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTStyledTextField.swift; sourceTree = "<group>"; };
 		133705BB24D14D1400E023CC /* DTActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTActivityIndicator.swift; sourceTree = "<group>"; };
+		133705BD24D17B3100E023CC /* MuscleGroupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsViewModel.swift; sourceTree = "<group>"; };
+		133705BF24D17B4000E023CC /* MuscleGroupsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsModel.swift; sourceTree = "<group>"; };
 		133A7BE124AE13D900409D3F /* AproachCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachCodableModel.swift; sourceTree = "<group>"; };
 		133AA5A2246163E5009EBF8E /* Dairy Training.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dairy Training.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		133AA5A5246163E5009EBF8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -405,6 +409,8 @@
 			isa = PBXGroup;
 			children = (
 				13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */,
+				133705BD24D17B3100E023CC /* MuscleGroupsViewModel.swift */,
+				133705BF24D17B4000E023CC /* MuscleGroupsModel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1190,6 +1196,7 @@
 				139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */,
 				13B1E7D524BDD22A00EE84E2 /* DTAlertSelectionButton.swift in Sources */,
 				13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */,
+				133705BE24D17B3100E023CC /* MuscleGroupsViewModel.swift in Sources */,
 				135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */,
 				13344E5324B3619500BE3D65 /* DTBackgroundedViewController.swift in Sources */,
 				139FE9D3247838EF00B22C40 /* DTActivitiesCell.swift in Sources */,
@@ -1202,6 +1209,7 @@
 				134AD82D24C763EE00E651C3 /* DTTabBarItems.swift in Sources */,
 				13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */,
 				1366942624B7273E00F58422 /* DTGradientLayerMaker.swift in Sources */,
+				133705C024D17B4000E023CC /* MuscleGroupsModel.swift in Sources */,
 				132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */,
 				1396F5FC248394C20012A76A /* ProfileViewController.swift in Sources */,
 				136570D12491259C00BF926B /* CommonStatisticsViewController.swift in Sources */,
