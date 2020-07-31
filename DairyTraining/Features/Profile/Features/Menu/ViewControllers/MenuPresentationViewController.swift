@@ -35,10 +35,11 @@ class MenuPresentationViewController: UIPresentationController{
     private func setUpPresentedView() {
         self.presentedView?.layer.cornerRadius = 20
         self.presentedView?.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        self.presentedView?.layer.shadowColor = UIColor.darkGray.cgColor
-        self.presentedView?.layer.shadowOffset = .init(width: 0, height: -5)
-        self.presentedView?.layer.shadowOpacity = 5
-        self.presentedView?.addGestureRecognizer(self.panGestureRecognizer)
+//        self.presentedView?.layer.shadowColor = UIColor.darkGray.cgColor
+//        self.presentedView?.layer.shadowOffset = .init(width: 0, height: -5)
+//        self.presentedView?.layer.shadowOpacity = 5
+        self.backgroundView.addGestureRecognizer(self.panGestureRecognizer)
+      //  self.presentedView?.addGestureRecognizer(self.panGestureRecognizer)
     }
     
     //MARK: - Initialization

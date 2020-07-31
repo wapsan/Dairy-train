@@ -2,6 +2,10 @@ import UIKit
 
 extension UIColor {
     
+    convenience init(red: CGFloat, green: CGFloat, blue: CGFloat) {
+        self.init(red: red / 255, green: green / 255, blue: blue / 255, alpha: 1)
+    }
+    
     static let viewFlipsideBckgoundColor: UIColor = .init(red: 31 / 255,
                                                           green: 33 / 255,
                                                           blue: 36 / 255,

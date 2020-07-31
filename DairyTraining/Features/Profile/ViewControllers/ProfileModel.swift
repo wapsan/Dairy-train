@@ -1,15 +1,19 @@
 import Foundation
 import Firebase
 
-protocol ProfileModelDelegate: AnyObject {
+protocol ProfileModelOutput: AnyObject {
     func succesSignedOut()
     func errorSignedOut(error: Error)
+}
+
+protocol ProfileModelIteracting: AnyObject {
+    func signOut()
 }
 
 class ProfileModel {
     
     //MARK: - Private properties
-    var delegate: ProfileModelDelegate!
+    var output: ProfileModelOutput!
     
     //MARK: - Private properties
     private var firebaseAuth: Auth
@@ -24,18 +28,21 @@ class ProfileModel {
         self.coreDataManager = coreData
         self.settingManager = settingManager
     }
-    
-    //MARK: - Public methods
+}
+
+//MARK: - ProfileModelIteracting
+extension ProfileModel: ProfileModelIteracting {
+
     func signOut() {
         do {
             try self.firebaseAuth.signOut()
             self.settingManager.deleteUserToken()
             self.coreDataManager.removeAllUserData({ [weak self] in
                 guard let self = self else { return }
-                self.delegate.succesSignedOut()
+                self.output.succesSignedOut()
             })
         } catch let signOutError {
-            self.delegate.errorSignedOut(error: signOutError)
+            self.output.errorSignedOut(error: signOutError)
         }
     }
 }

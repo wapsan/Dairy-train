@@ -44,7 +44,7 @@ class DTRecomendationHeaderView: UIView {
     }
     
     private func initView() {
-        self.backgroundColor = .black
+        self.backgroundColor = DTColors.backgroundColor//.black
         self.addSubview(self.tittle)
         self.addSubview(self.moreInfoButton)
         self.setUpConstraints()

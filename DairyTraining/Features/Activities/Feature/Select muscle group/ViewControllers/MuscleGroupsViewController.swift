@@ -33,13 +33,13 @@ class MuscleGroupsViewController: DTBackgroundedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpTableView()
-        self.setUpMainView()
+      //  self.setUpMainView()
     }
     
     //MARK: - Private methods
     private func setUpMainView() {
-        self.view.backgroundColor = .clear
-        self.setBackgroundImageTo(UIImage.activitiesBackGroundImage)
+       // self.view.backgroundColor = .clear
+      //  self.setBackgroundImageTo(UIImage.activitiesBackGroundImage)
     }
     
     private func setUpTableView() {

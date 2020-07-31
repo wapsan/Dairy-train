@@ -29,7 +29,7 @@ class DTSplashScreenViewController: UIViewController {
     private func setUpMainView() {
         self.view.addSubview(self.mainLogo)
         self.view.addSubview(self.textLogo)
-        self.view.backgroundColor = .black
+        self.view.backgroundColor = DTColors.backgroundColor
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.navigationBar.barStyle = .black
         self.activateConstraints()

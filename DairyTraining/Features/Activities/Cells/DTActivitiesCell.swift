@@ -4,18 +4,7 @@ class DTActivitiesCell: UITableViewCell {
     
     //MARK: - Static cellID
     static let cellID: String = "DTActivitiesCell"
-    
-    //MARK: - CALayers
-    private lazy var defaultGradient: CAGradientLayer = {
-        let gradient = DTGradientLayerMaker.shared.makeDefaultGradient()
-        return gradient
-    }()
-    
-    private lazy var selectedGradient: CAGradientLayer = {
-        let gradient = DTGradientLayerMaker.shared.makeSelectedGradient()
-        return gradient
-    }()
-    
+
     //MARK: - GUI Properties
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -58,8 +47,8 @@ class DTActivitiesCell: UITableViewCell {
         self.addSubview(self.containerView)
         self.addSubview(self.muscleGroupImage)
         self.addSubview(self.exerciceNameLabel)
+        self.containerView.backgroundColor = DTColors.controllUnselectedColor
         self.setUpConstraints()
-        self.setUpGradientsLayers()
     }
     
     //MARK: - Setters
@@ -69,25 +58,19 @@ class DTActivitiesCell: UITableViewCell {
     }
 
     func setUnselectedBackgroundColor() {
-        self.defaultGradient.bringToFront()
+        self.containerView.backgroundColor = DTColors.controllUnselectedColor
     }
     
     func setSelectedBackgroundColor() {
-        self.selectedGradient.bringToFront()
+        self.containerView.backgroundColor = DTColors.controllSelectedColor
     }
     
     //MARK: - Publick methods
     override func layoutSubviews() {
+        self.containerView.layer.cornerRadius = self.containerView.bounds.height / 4
+        self.containerView.layer.borderWidth = 1
+        self.containerView.layer.borderColor = DTColors.controllBorderColor.cgColor
         super.layoutSubviews()
-        self.selectedGradient.frame = self.containerView.bounds
-        self.defaultGradient.frame = self.containerView.bounds
-    }
-    
-    //MARK: - Private methods
-    private func setUpGradientsLayers() {
-        self.containerView.layer.addSublayer(self.defaultGradient)
-        self.containerView.layer.addSublayer(self.selectedGradient)
-        self.defaultGradient.bringToFront()
     }
     
     //MARK: - Constraints

@@ -37,13 +37,17 @@ class SettingsSectionViewController: UITableViewController {
     }
     
     private func initializationTableView() {
+        self.view.backgroundColor = .white
         self.tableView?.register(DTSettingCell.self, forCellReuseIdentifier: DTSettingCell.cellID)
         self.tableView.register(DTSynhronizeCell.self, forCellReuseIdentifier: DTSynhronizeCell.cellID)
-        self.tableView?.backgroundColor = UIColor.black
+        self.tableView?.backgroundColor = DTColors.backgroundColor//UIColor.black
         self.tableView?.sizeToFit()
         self.tableView?.rowHeight = 50
         self.tableView?.sectionFooterHeight = 0
         self.tableView?.sectionHeaderHeight = 50
+        self.tableView.separatorColor = DTColors.controllUnselectedColor
+        self.tableView.separatorStyle = .singleLine
+        
         self.tableView.bounces = false
     }
     

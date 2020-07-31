@@ -54,7 +54,7 @@ class DTSettingCell: UITableViewCell {
     }
     
     private func initCell() {
-        self.backgroundColor = .viewFlipsideBckgoundColor
+        self.backgroundColor = DTColors.controllUnselectedColor//.viewFlipsideBckgoundColor
         self.addSubview(self.mainSettingLabel)
         self.addSubview(self.stackView)
         self.setUpConstraints()

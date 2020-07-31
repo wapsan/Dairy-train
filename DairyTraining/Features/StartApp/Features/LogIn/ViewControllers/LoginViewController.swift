@@ -48,8 +48,10 @@ final class LoginViewController: UIViewController {
         segmentedControll.insertSegment(withTitle: LocalizedString.signUp,
                                         at: 1,
                                         animated: true)
-        segmentedControll.backgroundColor = .viewFlipsideBckgoundColor
-        segmentedControll.selectedSegmentTintColor = .red
+        segmentedControll.backgroundColor = DTColors.controllUnselectedColor
+        segmentedControll.selectedSegmentTintColor = DTColors.controllSelectedColor
+        segmentedControll.layer.borderColor = DTColors.controllBorderColor.cgColor
+        segmentedControll.layer.borderWidth = 1
         segmentedControll.selectedSegmentIndex = 0
         segmentedControll.addTarget(self, action: #selector(self.modeSwitched(_:)), for: .valueChanged)
         segmentedControll.translatesAutoresizingMaskIntoConstraints = false
@@ -139,7 +141,6 @@ final class LoginViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-      //  self.downloadHud.remove()
         self.activityIndicator.remove()
     }
     
@@ -160,7 +161,7 @@ final class LoginViewController: UIViewController {
 
     private func setGuiElements() {
         self.navigationController?.navigationBar.isHidden = true
-        self.view.backgroundColor = .black
+        self.view.backgroundColor = DTColors.backgroundColor
         self.view.addSubview(self.logoImageView)
         self.view.addSubview(self.textLogoImageView)
         self.view.addSubview(self.modeSegmentedControll)
@@ -202,17 +203,23 @@ final class LoginViewController: UIViewController {
     //MARK: - Constraints
     private func setUpConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
+        //let logoImageWidthAnchor =
+        
         NSLayoutConstraint.activate([
             self.logoImageView.topAnchor.constraint(equalTo: safeArea.topAnchor,
                                                     constant: DTEdgeInsets.medium.top),
-            self.logoImageView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
-                                                      multiplier: 1/3),
-            self.logoImageView.heightAnchor.constraint(equalTo: self.logoImageView.widthAnchor),
-            self.logoImageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
+            self.logoImageView.heightAnchor.constraint(lessThanOrEqualTo: self.view.widthAnchor, multiplier: 0.6),
+            self.logoImageView.widthAnchor.constraint(equalTo: self.logoImageView.heightAnchor),
+
+//            self.logoImageView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
+//                                                      multiplier: 1/3),
+//            self.logoImageView.heightAnchor.constraint(equalTo: self.logoImageView.widthAnchor),
+            self.logoImageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+     //       self.logoImageView.bottomAnchor.constraint(equalTo: self.textLogoImageView.topAnchor, constant: 16)
         ])
         
         NSLayoutConstraint.activate([
-            self.textLogoImageView.topAnchor.constraint(lessThanOrEqualTo: self.logoImageView.bottomAnchor,
+            self.textLogoImageView.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor,
                                                         constant: DTEdgeInsets.medium.top),
             self.textLogoImageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             self.textLogoImageView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
@@ -262,7 +269,8 @@ final class LoginViewController: UIViewController {
         mainSignInButtopTopConstraint.priority = UILayoutPriority(rawValue: 750)
         
         NSLayoutConstraint.activate([
-            mainSignInButtopTopConstraint,
+            self.mainSignButton.topAnchor.constraint(equalTo: self.passwordTextField.bottomAnchor,
+                                                     constant: 16),
             self.mainSignButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor,
                                                       constant: DTEdgeInsets.medium.left),
             self.mainSignButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor,
@@ -308,7 +316,7 @@ final class LoginViewController: UIViewController {
                                                            constant: DTEdgeInsets.medium.right),
             self.googleSignInButton.heightAnchor.constraint(equalTo: self.mainSignButton.heightAnchor),
             self.googleSignInButton.bottomAnchor.constraint(lessThanOrEqualTo: safeArea.bottomAnchor,
-                                                            constant: DTEdgeInsets.large.bottom)
+                                                            constant: DTEdgeInsets.medium.bottom)
         ])
     }
     
@@ -345,7 +353,11 @@ final class LoginViewController: UIViewController {
     }
     
     @objc func keyboardWillChange(_ notification: NSNotification) {
-        self.view.frame.origin.y = 0 - self.logoImageView.bounds.size.height
+        guard let keyboardSize = (notification
+            .userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?
+            .cgRectValue else  { return }
+        let needeKeyboardOffset = keyboardSize.height - (self.mainSignButton.bounds.height + self.orLabel.bounds.height)
+        self.view.frame.origin.y = 0 - needeKeyboardOffset
         self.logoImageView.alpha = 0
     }
 }

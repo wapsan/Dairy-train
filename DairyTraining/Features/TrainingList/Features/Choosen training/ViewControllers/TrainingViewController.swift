@@ -97,7 +97,7 @@ extension TrainingViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Left it empty 
+        return
     }
     
     
@@ -112,17 +112,28 @@ extension TrainingViewController {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
             guard let train = self.train else { return }
             let removedExercise = train.exercicesArray[indexPath.row]
-           train.removeFromExercises(removedExercise)
-            tableView.performBatchUpdates({ 
-                tableView.deleteRows(at: [indexPath], with: .top)
+            train.removeFromExercises(removedExercise)
+            tableView.performBatchUpdates({
+                tableView.deleteRows(at: [indexPath], with: .fade)
                 CoreDataManager.shared.removeExercise(removedExercise, from: train)
                 NotificationCenter.default.post(name: .trainingWasChanged, object: nil)
             }, completion: { _ in
                 
             })
+            completionHandler(true)
         }
+        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.backgroundColor = DTColors.backgroundColor
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

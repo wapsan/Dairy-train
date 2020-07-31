@@ -1,15 +1,15 @@
 import UIKit
 
 //MARK: - Protocol delegate
-protocol MenuStackViewControllerDelegate: class {
-    func pushViewController(_ pushedViewController: UIViewController)
-    func signOutPressed()
+protocol MenuControllerDelegate: class {
+    func menuFlowSelected(_ pushedViewController: UIViewController)
+    func menuSignOutPressed()
 }
 
 class MenuViewController: UIViewController {
     
     //MARK: - Delegate Propertie
-    weak var delegate: MenuStackViewControllerDelegate?
+    weak var delegate: MenuControllerDelegate?
     
     //MARK: - GUI Properties
     private lazy var menuButtonStackView: UIStackView = {
@@ -84,7 +84,7 @@ class MenuViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .viewFlipsideBckgoundColor
+        self.view.backgroundColor = DTColors.backgroundColor//.viewFlipsideBckgoundColor
         self.view.addSubview(self.topLineView)
         self.view.addSubview(self.menuButtonStackView)
         self.setUpConstraints()
@@ -135,21 +135,21 @@ class MenuViewController: UIViewController {
         guard let title = sender.titleLabel?.text else { return }
         self.dismiss(animated: true, completion: { [weak self] in
             guard let self = self else { return }
-            self.delegate?.pushViewController(SettingsSectionViewController(with: title))
+            self.delegate?.menuFlowSelected(SettingsSectionViewController(with: title))
         })
     }
     
     @objc private func statisticsButtonPressed() {
         self.dismiss(animated: true, completion: { [weak self] in
             guard let self = self else { return }
-            self.delegate?.pushViewController(CommonStatisticsViewController())
+            self.delegate?.menuFlowSelected(CommonStatisticsViewController())
         })
     }
     
     @objc private func recomendationButtonPressed() {
         self.dismiss(animated: true, completion: { [weak self] in
             guard let self = self else { return }
-            self.delegate?.pushViewController(RecomendationsViewController())
+            self.delegate?.menuFlowSelected(RecomendationsViewController())
         })
     }
     
@@ -157,7 +157,7 @@ class MenuViewController: UIViewController {
         self.view.layer.speed = 1.5
         self.dismiss(animated: true, completion: { [weak self] in
             guard let self = self else { return }
-            self.delegate?.signOutPressed()
+            self.delegate?.menuSignOutPressed()
         })
     }
 }

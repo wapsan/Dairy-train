@@ -14,7 +14,7 @@ class DTTextField: UITextField {
     init(placeholder: String) {
         super.init(frame: .zero)
         self.attributedPlaceholder = NSAttributedString(string: placeholder,
-                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                                                        attributes: [NSAttributedString.Key.foregroundColor: DTColors.loginTextFieldsTextColor])
         self.initView()
     }
     

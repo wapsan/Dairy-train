@@ -31,6 +31,7 @@
 		133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5AE246163E7009EBF8E /* Assets.xcassets */; };
 		133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5B0246163E7009EBF8E /* LaunchScreen.storyboard */; };
 		13416FA22485345100EC6590 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13416FA12485345100EC6590 /* GoogleSignInButton.swift */; };
+		1341D7A324D32900000A43A6 /* DTColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1341D7A224D32900000A43A6 /* DTColors.swift */; };
 		134403412499123F00D21284 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134403402499123F00D21284 /* LocalizedString.swift */; };
 		13479F37247BD55D002FFB4E /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */; };
 		13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */; };
@@ -130,6 +131,7 @@
 		133AA5B1246163E7009EBF8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		133AA5B3246163E7009EBF8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13416FA12485345100EC6590 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
+		1341D7A224D32900000A43A6 /* DTColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTColors.swift; sourceTree = "<group>"; };
 		134403402499123F00D21284 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsViewController.swift; sourceTree = "<group>"; };
@@ -525,6 +527,14 @@
 			path = DairyTraining;
 			sourceTree = "<group>";
 		};
+		1341D7A124D328EA000A43A6 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				1341D7A224D32900000A43A6 /* DTColors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
 		134DA009246ECE1F00B2FBDE /* Recomendations */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +641,7 @@
 		136F400E24990D0C00C6944B /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				1341D7A124D328EA000A43A6 /* Colors */,
 				13B1E7CC24BDAD5B00EE84E2 /* Localized files */,
 				134403402499123F00D21284 /* LocalizedString.swift */,
 				133AA5AE246163E7009EBF8E /* Assets.xcassets */,
@@ -1208,6 +1219,7 @@
 				13479F37247BD55D002FFB4E /* MainTabBarViewController.swift in Sources */,
 				134AD82D24C763EE00E651C3 /* DTTabBarItems.swift in Sources */,
 				13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */,
+				1341D7A324D32900000A43A6 /* DTColors.swift in Sources */,
 				1366942624B7273E00F58422 /* DTGradientLayerMaker.swift in Sources */,
 				133705C024D17B4000E023CC /* MuscleGroupsModel.swift in Sources */,
 				132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */,

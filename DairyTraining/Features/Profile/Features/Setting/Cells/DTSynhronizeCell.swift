@@ -36,7 +36,7 @@ class DTSynhronizeCell: UITableViewCell {
     
     private func initCell() {
         self.selectionStyle = .none
-        self.backgroundColor = .viewFlipsideBckgoundColor
+        self.backgroundColor = DTColors.controllUnselectedColor//.viewFlipsideBckgoundColor
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.lastSynhronizeDateLabel)
         self.setUpConstraints()

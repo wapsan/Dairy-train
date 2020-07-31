@@ -7,7 +7,7 @@ struct CoreDataModelName {
 }
 
 class CoreDataManager {
-
+    
     //MARK: - Singletone propertie
     static let shared = CoreDataManager()
     

@@ -36,6 +36,7 @@ class TrainingListViewController: DTBackgroundedViewController {
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.register(DTTrainCell.self,
                                 forCellWithReuseIdentifier: DTTrainCell.cellID)
         collectionView.translatesAutoresizingMaskIntoConstraints = false

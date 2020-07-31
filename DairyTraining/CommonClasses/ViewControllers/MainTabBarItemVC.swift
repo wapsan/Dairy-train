@@ -20,7 +20,8 @@ class MainTabBarItemVC: UIViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.barTintColor = .viewFlipsideBckgoundColor
+        
+        self.navigationController?.navigationBar.barTintColor = DTColors.navigationBarColor
         self.navigationController?.navigationBar.titleTextAttributes = textAttributes
         self.navigationItem.backBarButtonItem = backBarButtonItem
         self.navigationController?.navigationBar.barStyle = .black

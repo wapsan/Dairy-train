@@ -1,7 +1,7 @@
 import UIKit
 
 class DTInfoView: UIView {
-    
+        
     //MARK: - Private properties
     private lazy var userInfo = CoreDataManager.shared.readUserMainInfo()
     
@@ -11,6 +11,25 @@ class DTInfoView: UIView {
         label.font = .systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private lazy var gradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        let firstColor = UIColor.black.withAlphaComponent(0.7)
+        let secondColor = DTColors.controllUnselectedColor.withAlphaComponent(0.5)
+        gradient.colors = [firstColor.cgColor, secondColor.cgColor]
+        gradient.locations = [0.0, 0.9]
+        
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        return gradient
+    }()
+    
+    private lazy var coloredView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear//.withAlphaComponent(0.7)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private lazy var backgroundImage: UIImageView = {
@@ -37,6 +56,8 @@ class DTInfoView: UIView {
     private lazy var containerViewView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = UIScreen.main.bounds.height / 30 //30
+        view.layer.borderWidth = 1
+         view.layer.borderColor = DTColors.controllBorderColor.cgColor
         //view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -152,14 +173,23 @@ class DTInfoView: UIView {
         self.initView()
         self.setTapRecognizer()
         self.addObserverForMeteringSetting()
-        self.setShadowForMainView()
     }
     
     private func initView() {
         self.addSubview(self.containerViewView)
         self.containerViewView.addSubview(self.backgroundImage)
-        self.backgroundImage.addSubview(self.containerStackView)
+        self.backgroundImage.addSubview(self.coloredView)
+        self.coloredView.addSubview(self.containerStackView)
         self.setConstraints()
+        
+        self.coloredView.layer.insertSublayer(self.gradient, at: 0)
+        NSLayoutConstraint.activate([
+            self.coloredView.topAnchor.constraint(equalTo: self.backgroundImage.topAnchor),
+            self.coloredView.leftAnchor.constraint(equalTo: self.backgroundImage.leftAnchor),
+            self.coloredView.rightAnchor.constraint(equalTo: self.backgroundImage.rightAnchor),
+            self.coloredView.bottomAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor)
+            
+        ])
     }
     
     required init?(coder: NSCoder) {
@@ -169,6 +199,12 @@ class DTInfoView: UIView {
     //MARK: - Setter
     func setValueLabelTo(_ text: String) {
         self.valueLabel.text = text
+    }
+    
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.gradient.frame = self.containerViewView.bounds
     }
     
     //MARK: - Private methods

@@ -6,11 +6,13 @@ class DTSystemButton: UIButton {
     var isPressed: Bool = false
     
     var pressedBackgroundColor: UIColor {
-        UIColor.red.withAlphaComponent(0.5)
+        //UIColor.red.withAlphaComponent(0.5)
+        DTColors.controllSelectedColor
     }
     
     var unpressedBackgroundColor: UIColor {
-        UIColor.red
+       // UIColor.red
+        DTColors.controllUnselectedColor
     }
     
     //MARK: - Initialization
@@ -35,7 +37,9 @@ class DTSystemButton: UIButton {
     
     //MARK: - Private methods
     private func setAppearance() {
-        self.backgroundColor = .red
+        self.backgroundColor = self.unpressedBackgroundColor
+        self.layer.borderWidth = 1
+        self.layer.borderColor = DTColors.controllBorderColor.cgColor
         self.titleLabel?.textColor = .white
         self.titleLabel?.font = .systemFont(ofSize: 20)
     }

@@ -6,25 +6,28 @@ protocol ProfileViewPresenter: AnyObject {
     func showSignOutAlert()
     func presentLoginViewController()
     func showErrorSignOutAlert(with error: Error)
+    func pushViewControllerFromMenu(_ viewController: UIViewController)
+    
+   // var isAllInfoWasSeted: Bool { get }
 }
 
 final class ProfileViewController: MainTabBarItemVC {
     
     //MARK: - Properties
-    var viewModel: ProfileViewModel!
+    var viewModel: ProfileViewModelInput!
     
     //MARK: - Private properties
-    private var isAllInfoWasSeted: Bool {
-        if self.ageInfoView.isValueSeted,
-            self.heightInfoView.isValueSeted,
-            self.weightInfoView.isValueSeted,
-            self.genderInfoView.isValueSeted,
-            self.activivtyInfoView.isValueSeted {
-            return true
-        } else {
-            return false
-        }
-    }
+//    var isAllInfoWasSeted: Bool {
+//        if self.ageInfoView.isValueSeted,
+//            self.heightInfoView.isValueSeted,
+//            self.weightInfoView.isValueSeted,
+//            self.genderInfoView.isValueSeted,
+//            self.activivtyInfoView.isValueSeted {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
     
     private lazy var stackViewSpacing: CGFloat = 16
     
@@ -112,6 +115,7 @@ final class ProfileViewController: MainTabBarItemVC {
         self.setUpGuiElements()
         self.setUpInfoViewAction()
         self.setUpMenuButtonBar()
+        self.viewModel.configureInfoViews(self.infoViews)
     }
     
     //MARK: - Private methods
@@ -125,7 +129,7 @@ final class ProfileViewController: MainTabBarItemVC {
     }
     
     private func setUpGuiElements() {
-        self.view.backgroundColor = .black
+        self.view.backgroundColor = DTColors.backgroundColor
         self.view.addSubview(self.totalTrainActivityLevelStackView)
         self.view.addSubview(self.gennderAgeStackView)
         self.view.addSubview(self.weightHeightStackView)
@@ -139,7 +143,7 @@ final class ProfileViewController: MainTabBarItemVC {
                                          action: #selector(self.menuButtonPressed))
         self.navigationItem.rightBarButtonItem = menuButton
     }
-
+    
     //MARK: - Constraints
     private func setUpConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
@@ -177,7 +181,7 @@ final class ProfileViewController: MainTabBarItemVC {
     
     //MARK: - Actions
     @objc private func menuButtonPressed() {
-        self.showMenu()
+        self.viewModel.showMenu()
     }
 }
 
@@ -195,6 +199,10 @@ extension ProfileViewController: UIViewControllerTransitioningDelegate {
 //MARK: - ProfileViewPresenter
 extension ProfileViewController: ProfileViewPresenter {
     
+    func pushViewControllerFromMenu(_ viewController: UIViewController) {
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     func showRecomendationAlert() {
         self.showDefaultAlert(title: LocalizedString.alertError,
                               message: LocalizedString.fillInDataErrorMessage,
@@ -206,7 +214,7 @@ extension ProfileViewController: ProfileViewPresenter {
         let menuStackViewController = MenuViewController()
         menuStackViewController.modalPresentationStyle = .custom
         menuStackViewController.transitioningDelegate = self
-        menuStackViewController.delegate = self
+        menuStackViewController.delegate = self.viewModel as? MenuControllerDelegate
         self.present(menuStackViewController, animated: true, completion: nil)
     }
     
@@ -231,15 +239,15 @@ extension ProfileViewController: ProfileViewPresenter {
     }
     
     func configureLoginViewController() -> LoginViewController {
-              let loginViewController = LoginViewController()
-              let loginViewModel = LoginViewModel()
-              let loginModel = LoginModel()
-              loginViewController.viewModel = loginViewModel
-              loginViewModel.viewPresenter = loginViewController
-              loginViewModel.model = loginModel
-              loginModel.delegate = loginViewModel
-              return loginViewController
-        }
+        let loginViewController = LoginViewController()
+        let loginViewModel = LoginViewModel()
+        let loginModel = LoginModel()
+        loginViewController.viewModel = loginViewModel
+        loginViewModel.viewPresenter = loginViewController
+        loginViewModel.model = loginModel
+        loginModel.delegate = loginViewModel
+        return loginViewController
+    }
     
     func presentLoginViewController() {
         let mainLoginVC = configureLoginViewController()
@@ -248,22 +256,9 @@ extension ProfileViewController: ProfileViewPresenter {
     }
 }
 
-//MARK: - MenuStackViewControllerDelegate
-extension ProfileViewController: MenuStackViewControllerDelegate {
+extension ProfileViewController: DTCustomAlertDelegate {
     
-    func signOutPressed() {
-        self.showSignOutAlert()
-    }
-    
-    func pushViewController(_ pushedViewController: UIViewController) {
-        if pushedViewController is RecomendationsViewController {
-            if self.isAllInfoWasSeted {
-                self.navigationController?.pushViewController(pushedViewController, animated: true)
-            } else {
-                self.showRecomendationAlert()
-            }
-        } else {
-            self.navigationController?.pushViewController(pushedViewController, animated: true)
-        }
+    func alertOkPressed() {
+        self.viewModel.configureInfoViews(self.infoViews)
     }
 }

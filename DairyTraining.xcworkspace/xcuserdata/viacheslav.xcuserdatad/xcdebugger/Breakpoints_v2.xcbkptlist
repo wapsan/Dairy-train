@@ -14,8 +14,8 @@
             filePath = "DairyTraining/CommonClasses/ViewControllers/MainTabBarViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "setDefaultTabBar()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "DairyTraining/CommonClasses/ViewControllers/MainTabBarViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "configureProfileVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "DairyTraining/CommonClasses/ViewControllers/MainTabBarViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "configureProfileVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -66,54 +66,6 @@
             endingLineNumber = "47"
             landmarkName = "synhronizeDataFromServer(completion:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F377FD92-90D3-4EE3-9AC1-2C2EC0D91692"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DairyTraining/Features/Profile/ViewControllers/ProfileModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "signOut()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F377FD92-90D3-4EE3-9AC1-2C2EC0D91692 - c09c5a77bed5e30d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dairy_Training.ProfileModel.signOut() -&gt; ()"
-                  moduleName = "Dairy Training"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/viacheslav/Desktop/Project/Dairy-train/DairyTraining/Features/Profile/ViewControllers/ProfileModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "387">
-               </Location>
-               <Location
-                  uuid = "F377FD92-90D3-4EE3-9AC1-2C2EC0D91692 - 13a34f4046aee185"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Dairy_Training.ProfileModel.signOut() -&gt; ()"
-                  moduleName = "Dairy Training"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/viacheslav/Desktop/Project/Dairy-train/DairyTraining/Features/Profile/ViewControllers/ProfileModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "76">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

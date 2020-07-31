@@ -12,7 +12,7 @@ class RecomendationsViewController: UIViewController {
         let table = UITableView()
         table.dataSource = self
         table.delegate = self
-        table.backgroundColor = .black
+        table.backgroundColor = DTColors.backgroundColor//.black
         table.register(TDRecomendationCell.self,
                        forCellReuseIdentifier: TDRecomendationCell.cellID)
         table.showsVerticalScrollIndicator = false

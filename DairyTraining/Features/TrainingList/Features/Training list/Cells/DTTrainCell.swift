@@ -5,17 +5,6 @@ class DTTrainCell: UICollectionViewCell {
     //MARK: - Static cellID
     static let cellID = "TESTDTTrainCollectionCell"
     
-    //MARK: - CALayers
-    private lazy var defaultGradient: CAGradientLayer = {
-        let gradient = DTGradientLayerMaker.shared.makeDefaultGradient()
-        return gradient
-    }()
-    
-    private lazy var selectedGradient: CAGradientLayer = {
-        let gradient = DTGradientLayerMaker.shared.makeSelectedGradient()
-        return gradient
-    }()
-    
     //MARK: - GUI Properties
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -87,9 +76,6 @@ class DTTrainCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initCell()
-        
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -106,8 +92,8 @@ class DTTrainCell: UICollectionViewCell {
         }
         self.addSubview(self.horizontalLine)
         self.addSubview(self.verticalLine)
+        self.containerView.backgroundColor = DTColors.controllUnselectedColor
         self.setUpConstraints()
-        self.setGradientsLayer()
     }
     
     //MARK: - Private methods
@@ -116,29 +102,19 @@ class DTTrainCell: UICollectionViewCell {
             icon.isHidden = true
         }
     }
-    
-    private func setGradientsLayer() {
-        self.containerView.layer.addSublayer(self.defaultGradient)
-        self.containerView.layer.addSublayer(self.selectedGradient)
-        self.defaultGradient.bringToFront()
-    }
-    
+
     //MARK: - Setter
-    func setBackgroundColorTo(_ color: UIColor) {
-        self.containerView.backgroundColor = color
-    }
-    
     func setCellFor(_ train: TrainingManagedObject) {
         guard let formatedDate = train.formatedDate else { return }
         self.dateLabel.text = formatedDate
     }
     
     func setSelectedBackground() {
-        self.selectedGradient.bringToFront()
+        self.containerView.backgroundColor = DTColors.controllSelectedColor
     }
     
     func setDeselectedBackground() {
-        self.defaultGradient.bringToFront()
+        self.containerView.backgroundColor = DTColors.controllUnselectedColor
     }
     
     func setGroupIcons(by groups: [MuscleGroup.Group]) {
@@ -157,9 +133,10 @@ class DTTrainCell: UICollectionViewCell {
     }
     
     override func layoutSubviews() {
+        self.containerView.layer.cornerRadius = self.bounds.width / 8
+        self.containerView.layer.borderWidth = 1
+        self.containerView.layer.borderColor = DTColors.controllBorderColor.cgColor
         super.layoutSubviews()
-        self.defaultGradient.frame = self.containerView.bounds
-        self.selectedGradient.frame = self.containerView.bounds
     }
     
     //MARK: - Constraints

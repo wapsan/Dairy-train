@@ -5,6 +5,21 @@ class MainTabBarViewController: UITabBarController {
     //MARK: - Private properties
     private lazy var profileViewControllerIndex = 2
     
+    //MARK: - GUI Properties
+    private lazy var leftSwipe: UISwipeGestureRecognizer = {
+        let swipe = UISwipeGestureRecognizer(target: self,
+                                             action: #selector(self.swipeControllers(_:)))
+        swipe.direction = .left
+        return swipe
+    }()
+    
+    private lazy var rightSwipe: UISwipeGestureRecognizer = {
+        let swipe = UISwipeGestureRecognizer(target: self,
+                                             action: #selector(self.swipeControllers(_:)))
+        swipe.direction = .right
+        return swipe
+    }()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,10 +28,16 @@ class MainTabBarViewController: UITabBarController {
         self.setUpTabBarItems()
         self.setUpSelectedTabBarItem()
         self.addObserverForAddingExerciceToTrain()
+        self.setUpSwipes()
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     //MARK: - Private methods
+    private func setUpSwipes() {
+        self.view.addGestureRecognizer(self.leftSwipe)
+        self.view.addGestureRecognizer(self.rightSwipe)
+    }
+    
     private func addObserverForAddingExerciceToTrain() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.exerciceDidAdd),
@@ -35,8 +56,8 @@ class MainTabBarViewController: UITabBarController {
       
         profileVC.viewModel = profileViewModel
         profileViewModel.model = profileModel
-        profileViewModel.viewPresenter = profileVC
-        profileModel.delegate = profileViewModel
+        profileViewModel.view = profileVC
+        profileModel.output = profileViewModel
         profileVC.tabBarItem = DTTabBarItems.profile.item
         return profileVC
     }
@@ -80,9 +101,9 @@ class MainTabBarViewController: UITabBarController {
         UITabBar.appearance().tintColor = UIColor.white
         self.tabBar.isTranslucent = false
         self.tabBar.tintColor = .white
-        self.tabBar.barTintColor = .viewFlipsideBckgoundColor
-        self.tabBar.unselectedItemTintColor = .red
-        self.setTabBarSeparationLine()
+        self.tabBar.barTintColor = DTColors.navigationBarColor
+        self.tabBar.unselectedItemTintColor = DTColors.controllSelectedColor
+      //  self.setTabBarSeparationLine()
     }
     
     private func setTabBarSeparationLine() {
@@ -107,6 +128,22 @@ class MainTabBarViewController: UITabBarController {
     }
     
     //MARK: - Actions
+    @objc private func swipeControllers(_ swipe: UISwipeGestureRecognizer) {
+        guard let controllersCount = self.viewControllers?.count else { return }
+        switch swipe.direction {
+        case .right:
+            if self.selectedIndex >= 0 && self.selectedIndex < controllersCount {
+                self.selectedIndex = self.selectedIndex - 1
+            }
+        case .left:
+            if self.selectedIndex >= 0 && self.selectedIndex < controllersCount {
+                self.selectedIndex = self.selectedIndex + 1
+            }
+        default:
+            break
+        }
+    }
+    
     @objc private func exerciceDidAdd(_ notification: NSNotification) {
         guard let userInfo = (notification as NSNotification).userInfo else { return }
         guard let trains = userInfo["Trains"] as? [TrainingManagedObject] else { return }

@@ -13,11 +13,6 @@ class DTEditingExerciceCell: UITableViewCell {
     var removeAproachButtonAction: (() -> Void)?
     
     //MARK: - GUI Properties
-    private lazy var backgroundGradient: CAGradientLayer = {
-        let gradient = DTGradientLayerMaker.shared.makeDefaultGradient()
-        return gradient
-    }()
-    
     private var containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -92,8 +87,10 @@ class DTEditingExerciceCell: UITableViewCell {
     
     //MARK: - Layout subviews
     override func layoutSubviews() {
+        self.containerView.layer.cornerRadius = 20
+        self.containerView.layer.borderColor = DTColors.controllBorderColor.cgColor
+        self.containerView.layer.borderWidth = 1
         super.layoutSubviews()
-        self.backgroundGradient.frame = self.containerView.bounds
     }
     
     //MARK: - Initialization
@@ -103,9 +100,6 @@ class DTEditingExerciceCell: UITableViewCell {
     }
     
     private func initCell() {
-        self.containerView.layer.addSublayer(self.backgroundGradient)
-        self.backgroundGradient.bringToFront()
-        
         self.backgroundColor = .clear
         self.selectionStyle = .none
         self.contentView.addSubview(self.containerView)
@@ -114,6 +108,7 @@ class DTEditingExerciceCell: UITableViewCell {
         self.contentView.addSubview(self.exerciceNameLabel)
         self.contentView.addSubview(self.aproachCollectionList)
         self.contentView.addSubview(self.aproachesButtonStack)
+        self.containerView.backgroundColor = DTColors.controllUnselectedColor
         self.setUpNewConstraints()
     }
     
