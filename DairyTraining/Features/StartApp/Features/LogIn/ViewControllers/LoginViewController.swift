@@ -133,7 +133,7 @@ final class LoginViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.setUpGooglePresentingViewController(to: self)
+        self.viewModel.setUpGooglePresentingViewController()
         self.setGuiElements()
         self.addObserverForKeyboardShow()
         self.addObserverForHideKeyboard()
@@ -147,7 +147,7 @@ final class LoginViewController: UIViewController {
     //MARK: - Private methods
     private func addObserverForKeyboardShow() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardWillChange(_:)),
+                                               selector: #selector(self.keyboardWillShow(_:)),
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
     }
@@ -203,19 +203,13 @@ final class LoginViewController: UIViewController {
     //MARK: - Constraints
     private func setUpConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
-        //let logoImageWidthAnchor =
-        
         NSLayoutConstraint.activate([
             self.logoImageView.topAnchor.constraint(equalTo: safeArea.topAnchor,
                                                     constant: DTEdgeInsets.medium.top),
-            self.logoImageView.heightAnchor.constraint(lessThanOrEqualTo: self.view.widthAnchor, multiplier: 0.6),
+            self.logoImageView.heightAnchor.constraint(lessThanOrEqualTo: self.view.widthAnchor,
+                                                       multiplier: 0.6),
             self.logoImageView.widthAnchor.constraint(equalTo: self.logoImageView.heightAnchor),
-
-//            self.logoImageView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
-//                                                      multiplier: 1/3),
-//            self.logoImageView.heightAnchor.constraint(equalTo: self.logoImageView.widthAnchor),
             self.logoImageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-     //       self.logoImageView.bottomAnchor.constraint(equalTo: self.textLogoImageView.topAnchor, constant: 16)
         ])
         
         NSLayoutConstraint.activate([
@@ -350,15 +344,17 @@ final class LoginViewController: UIViewController {
     @objc private func keyboardWillHide(_ notification: NSNotification) {
         self.logoImageView.alpha = 1
         self.view.frame.origin.y = 0
+        self.addObserverForKeyboardShow()
     }
     
-    @objc func keyboardWillChange(_ notification: NSNotification) {
+    @objc func keyboardWillShow(_ notification: NSNotification) {
         guard let keyboardSize = (notification
             .userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?
             .cgRectValue else  { return }
         let needeKeyboardOffset = keyboardSize.height - (self.mainSignButton.bounds.height + self.orLabel.bounds.height)
         self.view.frame.origin.y = 0 - needeKeyboardOffset
         self.logoImageView.alpha = 0
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 }
 
@@ -381,6 +377,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
 }
 
+//MARK: - LoginViewControllerPresenter
 extension LoginViewController: LoginViewControllerPresenter {
     
     func startSigninIn() {

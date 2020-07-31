@@ -1,8 +1,8 @@
 import Foundation
 
-protocol MuscleGroupsViewPresenter: AnyObject {
-    func pushSubgroupsViewController(with subgroups: [MuscleSubgroup.Subgroup],
-                                     and groups: MuscleGroup.Group)
+protocol MuscleGroupsViewModelInput {
+    func selectRow(at index: Int)
+    
 }
 
 class MuscleGroupsViewModel {
@@ -18,10 +18,14 @@ class MuscleGroupsViewModel {
     func getChoosenMuscularGroup(by index: Int) -> MuscleGroup.Group {
         return self.muscleGroups[index]
     }
+}
+
+//MARK: - MuscleGroupsViewModelInput
+extension MuscleGroupsViewModel: MuscleGroupsViewModelInput {
     
     func selectRow(at index: Int) {
-        let selectedGroup = self.muscleGroups[index]
-        let subGroupList = MuscleSubgroup(for: selectedGroup).listOfSubgroups
-        self.viewPresenter.pushSubgroupsViewController(with: subGroupList, and: selectedGroup)
-    }
+           let selectedGroup = self.muscleGroups[index]
+           let subGroupList = MuscleSubgroup(for: selectedGroup).listOfSubgroups
+           self.viewPresenter.pushSubgroupsViewController(with: subGroupList, and: selectedGroup)
+       }
 }

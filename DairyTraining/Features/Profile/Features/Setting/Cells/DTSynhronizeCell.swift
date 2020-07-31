@@ -9,6 +9,7 @@ class DTSynhronizeCell: UITableViewCell {
     private lazy var titleLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.textColor = .white
+        label.textAlignment = .left
         label.font = .systemFont(ofSize: 20)
         label.text = LocalizedString.synhronization
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -24,6 +25,13 @@ class DTSynhronizeCell: UITableViewCell {
         return label
     }()
     
+    private lazy var separatorLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = DTColors.controllBorderColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     //MARK: - Initialization
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: DTSynhronizeCell.cellID)
@@ -36,9 +44,10 @@ class DTSynhronizeCell: UITableViewCell {
     
     private func initCell() {
         self.selectionStyle = .none
-        self.backgroundColor = DTColors.controllUnselectedColor//.viewFlipsideBckgoundColor
+        self.backgroundColor = DTColors.controllUnselectedColor
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.lastSynhronizeDateLabel)
+        self.contentView.addSubview(self.separatorLine)
         self.setUpConstraints()
     }
     
@@ -68,6 +77,13 @@ class DTSynhronizeCell: UITableViewCell {
                                                                 constant: DTEdgeInsets.small.right),
             self.lastSynhronizeDateLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
                                                                  constant: DTEdgeInsets.small.bottom),
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.separatorLine.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
+            self.separatorLine.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
+            self.separatorLine.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            self.separatorLine.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
 }

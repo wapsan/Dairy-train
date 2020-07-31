@@ -7,11 +7,6 @@ class DTTrainedMusclesView: UIView {
     private lazy var edgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: -8, right: -8)
     
     //MARK: - GUI Properties
-    private lazy var backgroundGradient: CAGradientLayer = {
-        let gradient = DTGradientLayerMaker.shared.makeDefaultGradient()
-        return gradient
-    }()
-    
     private lazy var titleLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.text = LocalizedString.trainedMuscles
@@ -54,17 +49,15 @@ class DTTrainedMusclesView: UIView {
         self.addSubview(self.titleLabel)
         self.addSubview(self.subgroupCollectionList)
         self.setUpConstraints()
-        self.setGradientLayer()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.backgroundGradient.frame = self.bounds
+        self.setLayer()
     }
     
     //MARK: - Private methods
-    private func setGradientLayer() {
-        self.layer.insertSublayer(self.backgroundGradient, at: 0)
+    private func setLayer() {
+        self.backgroundColor = DTColors.controllUnselectedColor
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 30
+        self.layer.borderColor = DTColors.controllBorderColor.cgColor
     }
     
     //MARK: - Setter

@@ -1,14 +1,20 @@
-import Foundation
 import GoogleSignIn
 import Firebase
 
-protocol LoginModelDelegate: AnyObject {
+protocol LoginModelOutput: AnyObject {
     func startSigninIn()
     func succesSignIn()
     func failedSignIn(with error: Error)
     func succesSignUp()
     func failedSignUp(with error: Error)
     func googleStartSignIn()
+}
+
+protocol LoginModelIteracting {
+    func setUpGooglePresentingViewController(to viewController: UIViewController)
+    func signIn(with email: String?, and password: String?)
+    func signUp(with email: String?, and password: String?)
+    func signInWithGoogle()
 }
 
 final class LoginModel {
@@ -20,7 +26,7 @@ final class LoginModel {
     private let firebaseAuth: Auth
     
     //MARK: - Properties
-    var delegate: LoginModelDelegate!
+    var output: LoginModelOutput!
     
     //MARK: - Initialization
     init(googleSignIn: GIDSignIn? = GIDSignIn.sharedInstance(),
@@ -36,42 +42,42 @@ final class LoginModel {
     }
     
     //MARK: - Public methods
-    func setUpGooglePresentingViewController(to viewController: UIViewController) {
-        self.googleSignIn?.presentingViewController = viewController
-    }
-    
-    func signUp(with email: String?, and password: String?) {
-        guard let email = email, let password = password else { return }
-        self.firebaseAuth.createUser(withEmail: email, password: password) { (result, error) in
-            if let _ = result {
-                self.delegate.succesSignUp()
-            }
-            if let error = error {
-                self.delegate.failedSignUp(with: error)
-            }
-        }
-    }
-    
-    func signIn(with email: String?, and password: String?) {
-        guard let email = email, let password = password else { return }
-        self.firebaseAuth.signIn(withEmail: email, password: password) { (result, error) in
-            if let _ = result {
-                self.delegate.startSigninIn()
-                self.synhronizeDataFreomServer()
-            }
-            if let error = error {
-                self.delegate.failedSignIn(with: error)
-            }
-        }
-    }
-    
-    func signInWithGoogle() {
-        self.googleSignIn?.signIn()
-    }
+//    func setUpGooglePresentingViewController(to viewController: UIViewController) {
+//        self.googleSignIn?.presentingViewController = viewController
+//    }
+//
+//    func signUp(with email: String?, and password: String?) {
+//        guard let email = email, let password = password else { return }
+//        self.firebaseAuth.createUser(withEmail: email, password: password) { (result, error) in
+//            if let _ = result {
+//                self.delegate.succesSignUp()
+//            }
+//            if let error = error {
+//                self.delegate.failedSignUp(with: error)
+//            }
+//        }
+//    }
+//
+//    func signIn(with email: String?, and password: String?) {
+//        guard let email = email, let password = password else { return }
+//        self.firebaseAuth.signIn(withEmail: email, password: password) { (result, error) in
+//            if let _ = result {
+//                self.delegate.startSigninIn()
+//                self.synhronizeDataFreomServer()
+//            }
+//            if let error = error {
+//                self.delegate.failedSignIn(with: error)
+//            }
+//        }
+//    }
+//
+//    func signInWithGoogle() {
+//        self.googleSignIn?.signIn()
+//    }
     
     //MARK: - Actions
     @objc private func googleStartSignIn() {
-        self.delegate.googleStartSignIn()
+        self.output.googleStartSignIn()
         NotificationCenter.default.removeObserver(self, name: .startGoogleSignIn, object: nil)
     }
     
@@ -90,7 +96,7 @@ final class LoginModel {
             }
             self.coreDataManager.updateDateOfLastUpdateTo(dateOfUpdate)
             self.coreDataManager.updateUserTrainInfoFrom(trainingList)
-            self.delegate.succesSignIn()
+            self.output.succesSignIn()
         }
     }
     
@@ -106,5 +112,42 @@ final class LoginModel {
                                                selector: #selector(self.googleStartSignIn),
                                                name: .startGoogleSignIn,
                                                object: nil)
+    }
+}
+
+//MARK: - LoginModelIteracting
+extension LoginModel: LoginModelIteracting {
+    
+    func setUpGooglePresentingViewController(to viewController: UIViewController) {
+        self.googleSignIn?.presentingViewController = viewController
+    }
+    
+    func signIn(with email: String?, and password: String?) {
+        guard let email = email, let password = password else { return }
+        self.firebaseAuth.signIn(withEmail: email, password: password) { (result, error) in
+            if let _ = result {
+                self.output.startSigninIn()
+                self.synhronizeDataFreomServer()
+            }
+            if let error = error {
+                self.output.failedSignIn(with: error)
+            }
+        }
+    }
+    
+    func signUp(with email: String?, and password: String?) {
+        guard let email = email, let password = password else { return }
+        self.firebaseAuth.createUser(withEmail: email, password: password) { (result, error) in
+            if let _ = result {
+                self.output.succesSignUp()
+            }
+            if let error = error {
+                self.output.failedSignUp(with: error)
+            }
+        }
+    }
+    
+    func signInWithGoogle() {
+        self.googleSignIn?.signIn()
     }
 }

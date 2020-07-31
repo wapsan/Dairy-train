@@ -22,9 +22,9 @@ extension AppDelegate {
         let loginViewModel = LoginViewModel()
         let loginModel = LoginModel()
         loginViewController.viewModel = loginViewModel
-        loginViewModel.viewPresenter = loginViewController
+        loginViewModel.view = loginViewController
         loginViewModel.model = loginModel
-        loginModel.delegate = loginViewModel
+        loginModel.output = loginViewModel
         return loginViewController
     }
 }

@@ -1,5 +1,10 @@
 import UIKit
 
+protocol MuscleGroupsViewPresenter: AnyObject {
+    func pushSubgroupsViewController(with subgroups: [MuscleSubgroup.Subgroup],
+                                     and groups: MuscleGroup.Group)
+}
+
 class MuscleGroupsViewController: DTBackgroundedViewController {
     
     //MARK: - Private properties

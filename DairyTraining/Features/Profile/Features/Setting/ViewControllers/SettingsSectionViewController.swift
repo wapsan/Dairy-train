@@ -35,7 +35,7 @@ class SettingsSectionViewController: UITableViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func initializationTableView() {
         self.view.backgroundColor = .white
         self.tableView?.register(DTSettingCell.self, forCellReuseIdentifier: DTSettingCell.cellID)
@@ -45,8 +45,7 @@ class SettingsSectionViewController: UITableViewController {
         self.tableView?.rowHeight = 50
         self.tableView?.sectionFooterHeight = 0
         self.tableView?.sectionHeaderHeight = 50
-        self.tableView.separatorColor = DTColors.controllUnselectedColor
-        self.tableView.separatorStyle = .singleLine
+        
         
         self.tableView.bounces = false
     }

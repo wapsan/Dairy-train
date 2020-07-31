@@ -103,6 +103,13 @@ class MainTabBarViewController: UITabBarController {
         self.tabBar.tintColor = .white
         self.tabBar.barTintColor = DTColors.navigationBarColor
         self.tabBar.unselectedItemTintColor = DTColors.controllSelectedColor
+        //
+        self.tabBar.layer.shadowColor = DTColors.controllBorderColor.cgColor
+        self.tabBar.layer.shadowOffset = CGSize(width: 0.0, height: -1.0)
+        //self.navigationController?.navigationBar.layer.shadowRadius = 4.0
+        self.tabBar.layer.shadowOpacity = 1.0
+        self.tabBar.layer.masksToBounds = false
+        
       //  self.setTabBarSeparationLine()
     }
     

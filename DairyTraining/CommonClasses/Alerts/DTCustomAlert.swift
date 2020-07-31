@@ -42,9 +42,11 @@ class DTCustomAlert: UIView {
     //MARK: - Default GUI Properties
     private lazy var alertView: UIView = {
         let view = UIView()
-        view.backgroundColor = .viewFlipsideBckgoundColor
+        view.backgroundColor = DTColors.backgroundColor//.viewFlipsideBckgoundColor
         view.layer.cornerRadius = 30
-        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
+        view.layer.borderWidth = 1
+        view.layer.borderColor = DTColors.controllBorderColor.cgColor
+       // view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -52,9 +54,7 @@ class DTCustomAlert: UIView {
     
     private lazy var containerAlertView: UIView = {
          let view = UIView()
-         view.layer.shadowColor = UIColor.black.cgColor
-         view.layer.shadowOffset = .init(width: 0, height: 5)
-         view.layer.shadowOpacity = 5
+   
          view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -147,7 +147,7 @@ class DTCustomAlert: UIView {
         let button = DTAlertSelectionButton()
         button.infovalue = "Low"
         button.setTitle(NSLocalizedString("Low", comment: ""), for: .normal)
-        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderColor = DTColors.controllBorderColor.cgColor
         button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(self.selectListButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -158,7 +158,7 @@ class DTCustomAlert: UIView {
         let button = DTAlertSelectionButton()
         button.infovalue = "Mid"
         button.setTitle(NSLocalizedString("Mid", comment: ""), for: .normal)
-        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderColor = DTColors.controllBorderColor.cgColor
         button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(self.selectListButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -169,7 +169,7 @@ class DTCustomAlert: UIView {
         let button = DTAlertSelectionButton()
         button.infovalue = "High"
         button.setTitle(NSLocalizedString("High", comment: ""), for: .normal)
-        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderColor = DTColors.controllBorderColor.cgColor
         button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(self.selectListButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -507,7 +507,7 @@ class DTCustomAlert: UIView {
     }
       
     private func setButtonState(_ button: UIButton) {
-        button.layer.backgroundColor = button.isSelected ? UIColor.darkBordoColor.cgColor : UIColor.clear.cgColor
+        button.layer.backgroundColor = button.isSelected ? DTColors.controllSelectedColor.cgColor : UIColor.clear.cgColor
     }
     
     private func setUpKeyBoardStyle(for textField: UITextField) {

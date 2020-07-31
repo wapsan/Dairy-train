@@ -43,6 +43,13 @@ class DTSettingCell: UITableViewCell {
         return stackView
     }()
     
+    private lazy var separatorLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = DTColors.controllBorderColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     //MARK: - Initialization
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: DTSettingCell.cellID)
@@ -55,8 +62,9 @@ class DTSettingCell: UITableViewCell {
     
     private func initCell() {
         self.backgroundColor = DTColors.controllUnselectedColor//.viewFlipsideBckgoundColor
-        self.addSubview(self.mainSettingLabel)
-        self.addSubview(self.stackView)
+        self.contentView.addSubview(self.mainSettingLabel)
+        self.contentView.addSubview(self.stackView)
+        self.contentView.addSubview(self.separatorLine)
         self.setUpConstraints()
     }
     
@@ -82,7 +90,7 @@ class DTSettingCell: UITableViewCell {
         self.markImage.image = nil
         self.isUserInteractionEnabled = true
     }
-    
+  
     //MARK: - Constraints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
@@ -108,5 +116,12 @@ class DTSettingCell: UITableViewCell {
             self.stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
                                                    constant: DTEdgeInsets.small.bottom),
         ])
+        
+       NSLayoutConstraint.activate([
+           self.separatorLine.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
+           self.separatorLine.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
+           self.separatorLine.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+           self.separatorLine.heightAnchor.constraint(equalToConstant: 1)
+       ])
     }
 }

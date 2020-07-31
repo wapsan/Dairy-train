@@ -1,12 +1,22 @@
 import UIKit
 
+protocol LoginViewModelInput {
+    func signIn(with email: String?, and password: String?)
+    func signUp(with email: String?, and password: String?)
+    func signInWithGoogle()
+    func setUpGooglePresentingViewController()
+}
+
 final class LoginViewModel {
     
     //MARK: - Properties
-    var viewPresenter: LoginViewControllerPresenter!
+    var view: LoginViewControllerPresenter!
     var model: LoginModel!
+}
+
+//MARK: - LoginViewModelInput
+extension LoginViewModel: LoginViewModelInput {
     
-    //MARK: - Public methods
     func signIn(with email: String?, and password: String?) {
         self.model.signIn(with: email, and: password)
     }
@@ -19,35 +29,36 @@ final class LoginViewModel {
         self.model.signInWithGoogle()
     }
     
-    func setUpGooglePresentingViewController(to viewController: UIViewController) {
-        self.model.setUpGooglePresentingViewController(to: viewController)
+    func setUpGooglePresentingViewController() {
+        guard let loginViewController = self.view as? LoginViewController else { return }
+        self.model.setUpGooglePresentingViewController(to: loginViewController)
     }
 }
 
 //MARK: - LoginModelDelegate
-extension LoginViewModel: LoginModelDelegate {
+extension LoginViewModel: LoginModelOutput {
     
     func startSigninIn() {
-        self.viewPresenter.startSigninIn()
+        self.view.startSigninIn()
     }
     
     func googleStartSignIn() {
-        self.viewPresenter.googleSignInStart()
+        self.view.googleSignInStart()
     }
     
     func succesSignUp() {
-        self.viewPresenter.succesSignUp()
+        self.view.succesSignUp()
     }
     
     func failedSignUp(with error: Error) {
-        self.viewPresenter.failedSignUp(with: error.localizedDescription)
+        self.view.failedSignUp(with: error.localizedDescription)
     }
     
     func succesSignIn() {
-        self.viewPresenter.signInSuccesed()
+        self.view.signInSuccesed()
     }
     
     func failedSignIn(with error: Error) {
-        self.viewPresenter.signInFailed(with: error.localizedDescription)
+        self.view.signInFailed(with: error.localizedDescription)
     }
 }

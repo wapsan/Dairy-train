@@ -116,15 +116,34 @@ extension TrainingViewController {
         }
     }
     
+    func completionDeletingExercice(at indexPath: IndexPath) {
+        guard let train = self.train else { return }
+        let removedExercise = train.exercicesArray[indexPath.row]
+        self.showDefaultAlert(
+            //FIXME: - Localization for deleting exercice alert
+            message: "Delete \(self.train!.exercicesArray[indexPath.row].name) from training?",
+            preffedStyle: .alert,
+            okTitle: LocalizedString.ok,
+            cancelTitle: LocalizedString.cancel,
+                              completion: {
+                                train.removeFromExercises(removedExercise)
+                                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                                CoreDataManager.shared.removeExercise(removedExercise, from: train)
+                                NotificationCenter.default.post(name: .trainingWasChanged, object: nil)
+        })
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
-            guard let train = self.train else { return }
-            let removedExercise = train.exercicesArray[indexPath.row]
-            train.removeFromExercises(removedExercise)
+//            guard let train = self.train else { return }
+//            let removedExercise = train.exercicesArray[indexPath.row]
+//
             tableView.performBatchUpdates({
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                CoreDataManager.shared.removeExercise(removedExercise, from: train)
-                NotificationCenter.default.post(name: .trainingWasChanged, object: nil)
+                self.completionDeletingExercice(at: indexPath)
+//                train.removeFromExercises(removedExercise)
+//                tableView.deleteRows(at: [indexPath], with: .fade)
+//                CoreDataManager.shared.removeExercise(removedExercise, from: train)
+//                NotificationCenter.default.post(name: .trainingWasChanged, object: nil)
             }, completion: { _ in
                 
             })
