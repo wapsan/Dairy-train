@@ -3,33 +3,25 @@ import UIKit
 protocol ProfileViewModelInput: AnyObject {
     func signOut()
     func showMenu()
-    func configureInfoViews(_ infoViews: [DTInfoView])    
+    var isMainInfoSet: Bool { get }
 }
 
 class ProfileViewModel {
-    //MARK: - Properties
-    private var _isAllInfoViewSet: Bool = false
     
+    //MARK: - Properties
     var model: ProfileModelIteracting!
-    var view: ProfileViewPresenter!
+    weak var view: ProfileViewPresenter?
 }
 
 //MARK: - ProfileViewModelInput
 extension ProfileViewModel: ProfileViewModelInput {
-
-    func configureInfoViews(_ infoViews: [DTInfoView]) {
-        for view in infoViews {
-            if view.isValueSeted {
-                self._isAllInfoViewSet = true
-            } else {
-                self._isAllInfoViewSet = false
-                break
-            }
-        }
+    
+    var isMainInfoSet: Bool {
+        return self.model.isMainInfoSet
     }
     
     func showMenu() {
-        self.view.showMenu()
+        self.view?.showMenu()
     }
     
     func signOut() {
@@ -41,11 +33,11 @@ extension ProfileViewModel: ProfileViewModelInput {
 extension ProfileViewModel: ProfileModelOutput {
     
     func succesSignedOut() {
-        self.view.presentLoginViewController()
+        self.view?.presentLoginViewController()
     }
     
     func errorSignedOut(error: Error) {
-        self.view.showErrorSignOutAlert(with: error)
+        self.view?.showErrorSignOutAlert(with: error)
     }
 }
 
@@ -54,17 +46,17 @@ extension ProfileViewModel: MenuControllerDelegate {
     
     func menuFlowSelected(_ pushedViewController: UIViewController) {
         guard pushedViewController is RecomendationsViewController else {
-            self.view.pushViewControllerFromMenu(pushedViewController)
+            self.view?.pushViewControllerFromMenu(pushedViewController)
             return
         }
-        if self._isAllInfoViewSet {
-            self.view.pushViewControllerFromMenu(pushedViewController)
+        if self.isMainInfoSet {
+            self.view?.pushViewControllerFromMenu(pushedViewController)
         } else {
-            self.view.showRecomendationAlert()
+            self.view?.showRecomendationAlert()
         }
     }
     
     func menuSignOutPressed() {
-        self.view.showSignOutAlert()
+        self.view?.showSignOutAlert()
     }
 }

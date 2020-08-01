@@ -7,6 +7,8 @@ extension MainInfoManagedObject {
         return NSFetchRequest<MainInfoManagedObject>(entityName: "MainInfo")
     }
 
+    
+    
     @NSManaged public var age: Int64
     @NSManaged public var weight: Float
     @NSManaged public var height: Float
@@ -16,6 +18,25 @@ extension MainInfoManagedObject {
     @NSManaged public var weightMode: String?
     @NSManaged public var id: Int64
     @NSManaged public var dateOfLastUpdate: String?
+    
+    var isSet: Bool {
+        if self.age == 0 {
+            return false
+        }
+        if self.weight == 0 {
+            return false
+        }
+        if self.height == 0 {
+            return false
+        }
+        if self.gender == nil {
+            return false
+        }
+        if self.activitylevel == nil {
+            return false
+        }
+        return true
+    }
     
     var displayAge: String {
         return String(age)

@@ -53,8 +53,10 @@ class MainTabBarViewController: UITabBarController {
         let profileVC = ProfileViewController()
         let profileViewModel = ProfileViewModel()
         let profileModel = ProfileModel()
+        let profileRouter = ProfileRouter(profileVC)
       
         profileVC.viewModel = profileViewModel
+        profileVC.router = profileRouter
         profileViewModel.model = profileModel
         profileViewModel.view = profileVC
         profileModel.output = profileViewModel

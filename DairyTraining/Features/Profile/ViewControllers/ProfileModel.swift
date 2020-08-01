@@ -8,39 +8,34 @@ protocol ProfileModelOutput: AnyObject {
 
 protocol ProfileModelIteracting: AnyObject {
     func signOut()
+    var isMainInfoSet: Bool { get }
 }
 
 class ProfileModel {
     
     //MARK: - Private properties
     var output: ProfileModelOutput!
-    
-    //MARK: - Private properties
-    private var firebaseAuth: Auth
-    private var coreDataManager: CoreDataManager
-    private var settingManager: DTSettingManager
-    
-    //MARK: - Initialization
-    init(firebaseAuth: Auth = Auth.auth(),
-         coreData: CoreDataManager = CoreDataManager.shared,
-         settingManager: DTSettingManager = DTSettingManager.shared) {
-        self.firebaseAuth = firebaseAuth
-        self.coreDataManager = coreData
-        self.settingManager = settingManager
-    }
+
 }
 
 //MARK: - ProfileModelIteracting
 extension ProfileModel: ProfileModelIteracting {
+    
+    var isMainInfoSet: Bool {
+        guard let userMainInfo = CoreDataManager.shared.readUserMainInfo() else {
+            return false
+        }
+        return userMainInfo.isSet
+    }
 
     func signOut() {
         do {
-            try self.firebaseAuth.signOut()
-            self.settingManager.deleteUserToken()
-            self.coreDataManager.removeAllUserData({ [weak self] in
+            try Auth.auth().signOut()
+            DTSettingManager.shared.deleteUserToken()
+            CoreDataManager.shared.removeAllUserData { [weak self] in
                 guard let self = self else { return }
                 self.output.succesSignedOut()
-            })
+            }
         } catch let signOutError {
             self.output.errorSignedOut(error: signOutError)
         }

@@ -7,28 +7,15 @@ protocol ProfileViewPresenter: AnyObject {
     func presentLoginViewController()
     func showErrorSignOutAlert(with error: Error)
     func pushViewControllerFromMenu(_ viewController: UIViewController)
-    
-   // var isAllInfoWasSeted: Bool { get }
 }
 
 final class ProfileViewController: MainTabBarItemVC {
     
     //MARK: - Properties
-    var viewModel: ProfileViewModelInput!
+    weak var viewModel: ProfileViewModelInput?
+    var router: ProfileRouterOutput!
     
     //MARK: - Private properties
-//    var isAllInfoWasSeted: Bool {
-//        if self.ageInfoView.isValueSeted,
-//            self.heightInfoView.isValueSeted,
-//            self.weightInfoView.isValueSeted,
-//            self.genderInfoView.isValueSeted,
-//            self.activivtyInfoView.isValueSeted {
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
-    
     private lazy var stackViewSpacing: CGFloat = 16
     
     private var infoViews: [DTInfoView] {
@@ -115,7 +102,6 @@ final class ProfileViewController: MainTabBarItemVC {
         self.setUpGuiElements()
         self.setUpInfoViewAction()
         self.setUpMenuButtonBar()
-        self.viewModel.configureInfoViews(self.infoViews)
     }
     
     //MARK: - Private methods
@@ -127,7 +113,7 @@ final class ProfileViewController: MainTabBarItemVC {
             }
         }
     }
-    
+ 
     private func setUpGuiElements() {
         self.view.backgroundColor = DTColors.backgroundColor
         self.view.addSubview(self.totalTrainActivityLevelStackView)
@@ -181,7 +167,7 @@ final class ProfileViewController: MainTabBarItemVC {
     
     //MARK: - Actions
     @objc private func menuButtonPressed() {
-        self.viewModel.showMenu()
+        self.viewModel?.showMenu()
     }
 }
 
@@ -200,7 +186,8 @@ extension ProfileViewController: UIViewControllerTransitioningDelegate {
 extension ProfileViewController: ProfileViewPresenter {
     
     func pushViewControllerFromMenu(_ viewController: UIViewController) {
-        self.navigationController?.pushViewController(viewController, animated: true)
+        //self.navigationController?.pushViewController(viewController, animated: true)
+        self.router.pushViewControllerFromMenu(viewController)
     }
     
     func showRecomendationAlert() {
@@ -211,11 +198,12 @@ extension ProfileViewController: ProfileViewPresenter {
     }
     
     func showMenu() {
-        let menuStackViewController = MenuViewController()
-        menuStackViewController.modalPresentationStyle = .custom
-        menuStackViewController.transitioningDelegate = self
-        menuStackViewController.delegate = self.viewModel as? MenuControllerDelegate
-        self.present(menuStackViewController, animated: true, completion: nil)
+        self.router.showMenuController()
+//        let menuStackViewController = MenuViewController()
+//        menuStackViewController.modalPresentationStyle = .custom
+//        menuStackViewController.transitioningDelegate = self
+//        menuStackViewController.delegate = self.viewModel as? MenuControllerDelegate
+//        self.present(menuStackViewController, animated: true, completion: nil)
     }
     
     func showErrorSignOutAlert(with error: Error) {
@@ -234,31 +222,11 @@ extension ProfileViewController: ProfileViewPresenter {
             cancelTitle: LocalizedString.cancel,
             completion: { [weak self] in
                 guard let self = self else { return }
-                self.viewModel.signOut()
+                self.viewModel?.signOut()
         })
     }
     
-    func configureLoginViewController() -> LoginViewController {
-        let loginViewController = LoginViewController()
-        let loginViewModel = LoginViewModel()
-        let loginModel = LoginModel()
-        loginViewController.viewModel = loginViewModel
-        loginViewModel.view = loginViewController
-        loginViewModel.model = loginModel
-        loginModel.output = loginViewModel
-        return loginViewController
-    }
-    
     func presentLoginViewController() {
-        let mainLoginVC = configureLoginViewController()
-        mainLoginVC.modalPresentationStyle = .overFullScreen
-        self.present(mainLoginVC, animated: true, completion: nil)
-    }
-}
-
-extension ProfileViewController: DTCustomAlertDelegate {
-    
-    func alertOkPressed() {
-        self.viewModel.configureInfoViews(self.infoViews)
+        self.router?.presentLoginViewController()
     }
 }
