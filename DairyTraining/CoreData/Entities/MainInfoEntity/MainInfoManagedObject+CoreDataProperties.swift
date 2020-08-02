@@ -59,7 +59,7 @@ extension MainInfoManagedObject {
                 return String(format: "%.1f", self.height)
             }
         } else {
-            
+
             let newHeigt = self.height * MeteringSetting.shared.heightMultiplier
             if newHeigt.truncatingRemainder(dividingBy: 1) == 0 {
                 return String(format: "%.0f", newHeigt)
@@ -68,7 +68,7 @@ extension MainInfoManagedObject {
             }
         }
     }
-    
+
     var displayWeight: String {
         guard let weightMode = MeteringSetting.WeightMode.init(rawValue: self.weightMode ?? "0") else { return "0" }
         if weightMode == MeteringSetting.shared.weightMode {

@@ -9,7 +9,7 @@ protocol ProfileViewModelInput: AnyObject {
 class ProfileViewModel {
     
     //MARK: - Properties
-    var model: ProfileModelIteracting!
+    var model: ProfileModelIteracting?
     weak var view: ProfileViewPresenter?
 }
 
@@ -17,7 +17,8 @@ class ProfileViewModel {
 extension ProfileViewModel: ProfileViewModelInput {
     
     var isMainInfoSet: Bool {
-        return self.model.isMainInfoSet
+        guard let model = self.model else { return false }
+        return model.isMainInfoSet
     }
     
     func showMenu() {
@@ -25,7 +26,7 @@ extension ProfileViewModel: ProfileViewModelInput {
     }
     
     func signOut() {
-        self.model.signOut()
+        self.model?.signOut()
     }
 }
 
@@ -60,3 +61,4 @@ extension ProfileViewModel: MenuControllerDelegate {
         self.view?.showSignOutAlert()
     }
 }
+

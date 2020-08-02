@@ -1,8 +1,9 @@
 import UIKit
 
-@objc protocol DTCustomAlertDelegate: class {
-    @objc optional func alertOkPressed()
-    @objc optional func alertCancelPressed()
+protocol DTCustomAlertDelegate: AnyObject {
+   // @objc optional func alertOkPressed(with newValue: String)
+    func alertOkPressed(with infoViewType: InfoViewValueType)
+ //   @objc optional func alertCancelPressed()
 }
 
 class DTCustomAlert: UIView {
@@ -31,7 +32,7 @@ class DTCustomAlert: UIView {
     private var changingAproachIndex: Int?
     private weak var mainInfo: MainInfoManagedObject?
     private weak var exercice: ExerciseManagedObject?
-    private weak var tappedInfoView: DTInfoView?
+    private weak var tappedInfoView: DTMainInfoView?
     private lazy var setAgeTitle = LocalizedString.setAgeAlert
     private lazy var setWeightTitle = LocalizedString.setWeightAlert
     private lazy var setHeightTitle = LocalizedString.setHeightAlert
@@ -261,6 +262,7 @@ class DTCustomAlert: UIView {
    private init() {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
+   // self.delegate = DTMainInfoViewModel()
     }
     
     required init?(coder: NSCoder) {
@@ -273,10 +275,33 @@ class DTCustomAlert: UIView {
            - Parameter viewController: UIViewControler which will be shown custom alert.
            - Parameter infoView: TDInfoView by clicking on which alert was called
      */
-    func showInfoAlert(on viewController: UIViewController, with infoView: DTInfoView) {
+    func showInfoAlert(oVview: UIView, with infoView: DTMainInfoView) {
+           oVview.addSubview(self)
+           self.tappedInfoView = infoView
+           guard let infoViewType = infoView._type else { return }
+           switch infoViewType {
+           case .gender:
+               self.setUpGenderAlertType()
+           case .activityLevel:
+               self.setUpActivityLevelAlertType()
+           case .age, .height, .weight:
+               self.setUpValueAlertType(with: infoViewType)
+               self.setUpKeyBoardStyle(for: self.valueTextField)
+               self.showKeyboard(for: self.valueTextField)
+           default:
+               break
+           }
+           
+          // self.delegate = viewController as? DTCustomAlertDelegate
+           self.alertType = .setValue
+           self.setUpDefaultsValue(with: infoView)
+           self.animateInAlert()
+       }
+    
+    func showInfoAlert(on viewController: UIViewController, with infoView: DTMainInfoView) {
         viewController.view.addSubview(self)
         self.tappedInfoView = infoView
-        guard let infoViewType = infoView.type else { return }
+        guard let infoViewType = infoView._type else { return }
         switch infoViewType {
         case .gender:
             self.setUpGenderAlertType()
@@ -343,9 +368,9 @@ class DTCustomAlert: UIView {
     }
 
     //MARK: - Private methods
-    private func setUpDefaultsValue(with infoView: DTInfoView) {
+    private func setUpDefaultsValue(with infoView: DTMainInfoView) {
         if infoView.isValueSeted {
-            guard let infoViewType = infoView.type else { return }
+            guard let infoViewType = infoView._type else { return }
             switch infoViewType {
             case .gender, .activityLevel:
                 for view in self.selectionButtonsStackView.arrangedSubviews {
@@ -409,7 +434,7 @@ class DTCustomAlert: UIView {
         self.setUpDefaultsConstraints()
     }
     
-    private func setUpValueAlertType(with valueToSet: DTInfoView.InfoViewValue) {
+    private func setUpValueAlertType(with valueToSet: InfoViewValueType) {
         self.setDefaultAlertType()
         self.alertView.addSubview(self.titleLabel)
         self.alertView.addSubview(self.valueTextField)
@@ -686,54 +711,70 @@ class DTCustomAlert: UIView {
         }
     }
     
+    
     @objc private func okPressed() {
+        self.writeValueInfo()
+        
+        NotificationCenter.default.post(name: .customAlerOkPressed, object: nil)
+       // guard let tappedInfoViewType = self.tappedInfoView?.type else { return }
         guard let alertType = self.alertType else { return }
+     //   self.delegate?.alertOkPressed(with: tappedInfoViewType)
+        self.hideAlert()
         switch alertType {
         case .setValue:
-            guard let tappedInfoView = self.tappedInfoView else { return }
-            switch tappedInfoView.type {
-            case .gender:
-                self.writeListSelectionInfo()
-                if let localizedGender = CoreDataManager.shared.readUserMainInfo()?.displayGender {
-                  self.tappedInfoView?.valueLabel.text = NSLocalizedString(localizedGender, comment: "")
-                } else {
-                    self.tappedInfoView?.valueLabel.text = "_"
-                }
-            case .activityLevel:
-                self.writeListSelectionInfo()
-                if let localizedActivityLevel =  CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel {
-                   self.tappedInfoView?.valueLabel.text = NSLocalizedString(localizedActivityLevel, comment: "")
-                } else {
-                    self.tappedInfoView?.valueLabel.text = "_"
-                }
-            case .age:
-                self.writeValueInfo()
-                self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayAge
-            case .height:
-                self.writeValueInfo()
-                 self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayHeight
-            case .weight:
-                self.writeValueInfo()
-                self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayWeight
-            default:
-                break
-            }
-        case .newAproachAlert:
-            self.writeNewAproachInfo()
+            self.writeValueInfo()
+            
         case .aproachAlert:
-            guard let changinAproach = self.changingAproachIndex else { return }
-            self.changeAproachInfo(for: changinAproach)
+            break
+        case .newAproachAlert:
+            break
         }
-        self.hideAlert()
-        guard let alertOkPressed = self.delegate?.alertOkPressed?() else { return }
-        alertOkPressed
+//        switch alertType {
+//        case .setValue:
+//            guard let tappedInfoView = self.tappedInfoView else { return }
+//            switch tappedInfoView.type {
+//            case .gender:
+//                self.writeListSelectionInfo()
+//                if let localizedGender = CoreDataManager.shared.readUserMainInfo()?.displayGender {
+//                  self.tappedInfoView?.valueLabel.text = NSLocalizedString(localizedGender, comment: "")
+//                } else {
+//                    self.tappedInfoView?.valueLabel.text = "_"
+//                }
+//            case .activityLevel:
+//                self.writeListSelectionInfo()
+//                if let localizedActivityLevel =  CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel {
+//                   self.tappedInfoView?.valueLabel.text = NSLocalizedString(localizedActivityLevel, comment: "")
+//                } else {
+//                    self.tappedInfoView?.valueLabel.text = "_"
+//                }
+//            case .age:
+//                self.writeValueInfo()
+//                self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayAge
+//            case .height:
+//                self.writeValueInfo()
+//                 self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayHeight
+//            case .weight:
+//                self.writeValueInfo()
+//                self.tappedInfoView?.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayWeight
+//            default:
+//                break
+//            }
+//        case .newAproachAlert:
+//            self.writeNewAproachInfo()
+//        case .aproachAlert:
+//            guard let changinAproach = self.changingAproachIndex else { return }
+//            self.changeAproachInfo(for: changinAproach)
+//        }
+//        self.hideAlert()
+//        guard let alertOkPressed = self.delegate?.alertOkPressed?() else { return }
+//        alertOkPressed
     }
     
     @objc private func cancelPressed() {
         self.hideAlert()
-        guard let alertCancelTapped = self.delegate?.alertCancelPressed?() else { return }
+    //    guard let alertCancelTapped = self.delegate?.alertCancelPressed?() else { return }
         guard let tappedInfoView = self.tappedInfoView else { return }
         self.setUpDefaultsValue(with: tappedInfoView)
-        alertCancelTapped
+     //   alertCancelTapped
     }
 }

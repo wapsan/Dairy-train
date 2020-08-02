@@ -14,7 +14,7 @@ protocol ProfileModelIteracting: AnyObject {
 class ProfileModel {
     
     //MARK: - Private properties
-    var output: ProfileModelOutput!
+    weak var output: ProfileModelOutput?
 
 }
 
@@ -34,10 +34,10 @@ extension ProfileModel: ProfileModelIteracting {
             DTSettingManager.shared.deleteUserToken()
             CoreDataManager.shared.removeAllUserData { [weak self] in
                 guard let self = self else { return }
-                self.output.succesSignedOut()
+                self.output?.succesSignedOut()
             }
         } catch let signOutError {
-            self.output.errorSignedOut(error: signOutError)
+            self.output?.errorSignedOut(error: signOutError)
         }
     }
 }

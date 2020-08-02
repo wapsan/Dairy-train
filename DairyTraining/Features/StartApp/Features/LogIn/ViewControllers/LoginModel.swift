@@ -26,7 +26,7 @@ final class LoginModel {
     private let firebaseAuth: Auth
     
     //MARK: - Properties
-    var output: LoginModelOutput!
+    weak var output: LoginModelOutput?
     
     //MARK: - Initialization
     init(googleSignIn: GIDSignIn? = GIDSignIn.sharedInstance(),
@@ -41,43 +41,9 @@ final class LoginModel {
         self.addObserverForStartGoogleSignIn()
     }
     
-    //MARK: - Public methods
-//    func setUpGooglePresentingViewController(to viewController: UIViewController) {
-//        self.googleSignIn?.presentingViewController = viewController
-//    }
-//
-//    func signUp(with email: String?, and password: String?) {
-//        guard let email = email, let password = password else { return }
-//        self.firebaseAuth.createUser(withEmail: email, password: password) { (result, error) in
-//            if let _ = result {
-//                self.delegate.succesSignUp()
-//            }
-//            if let error = error {
-//                self.delegate.failedSignUp(with: error)
-//            }
-//        }
-//    }
-//
-//    func signIn(with email: String?, and password: String?) {
-//        guard let email = email, let password = password else { return }
-//        self.firebaseAuth.signIn(withEmail: email, password: password) { (result, error) in
-//            if let _ = result {
-//                self.delegate.startSigninIn()
-//                self.synhronizeDataFreomServer()
-//            }
-//            if let error = error {
-//                self.delegate.failedSignIn(with: error)
-//            }
-//        }
-//    }
-//
-//    func signInWithGoogle() {
-//        self.googleSignIn?.signIn()
-//    }
-    
     //MARK: - Actions
     @objc private func googleStartSignIn() {
-        self.output.googleStartSignIn()
+        self.output?.googleStartSignIn()
         NotificationCenter.default.removeObserver(self, name: .startGoogleSignIn, object: nil)
     }
     
@@ -96,7 +62,7 @@ final class LoginModel {
             }
             self.coreDataManager.updateDateOfLastUpdateTo(dateOfUpdate)
             self.coreDataManager.updateUserTrainInfoFrom(trainingList)
-            self.output.succesSignIn()
+            self.output?.succesSignIn()
         }
     }
     
@@ -126,11 +92,11 @@ extension LoginModel: LoginModelIteracting {
         guard let email = email, let password = password else { return }
         self.firebaseAuth.signIn(withEmail: email, password: password) { (result, error) in
             if let _ = result {
-                self.output.startSigninIn()
+                self.output?.startSigninIn()
                 self.synhronizeDataFreomServer()
             }
             if let error = error {
-                self.output.failedSignIn(with: error)
+                self.output?.failedSignIn(with: error)
             }
         }
     }
@@ -139,10 +105,10 @@ extension LoginModel: LoginModelIteracting {
         guard let email = email, let password = password else { return }
         self.firebaseAuth.createUser(withEmail: email, password: password) { (result, error) in
             if let _ = result {
-                self.output.succesSignUp()
+                self.output?.succesSignUp()
             }
             if let error = error {
-                self.output.failedSignUp(with: error)
+                self.output?.failedSignUp(with: error)
             }
         }
     }

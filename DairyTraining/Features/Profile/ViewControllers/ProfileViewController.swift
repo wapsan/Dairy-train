@@ -12,53 +12,53 @@ protocol ProfileViewPresenter: AnyObject {
 final class ProfileViewController: MainTabBarItemVC {
     
     //MARK: - Properties
-    weak var viewModel: ProfileViewModelInput?
-    var router: ProfileRouterOutput!
+    var viewModel: ProfileViewModelInput?
+    var router: ProfileRouterOutput?
     
     //MARK: - Private properties
     private lazy var stackViewSpacing: CGFloat = 16
     
-    private var infoViews: [DTInfoView] {
-        return [self.activivtyInfoView,
-                self.genderInfoView,
-                self.ageInfoView,
-                self.heightInfoView,
-                self.weightInfoView]
-    }
+//    private var infoViews: [DTMainInfoView] {
+//        return [self.activivtyInfoView,
+//                self.genderInfoView,
+//                self.ageInfoView,
+//                self.heightInfoView,
+//                self.weightInfoView]
+//    }
     
     //MARK: - GUI Properties
-    private lazy var totalTrainInfoView: DTInfoView = {
-        let view = DTInfoView(type: .trainCount)
+    private lazy var totalTrainInfoView: DTMainInfoView = {
+        let view = DTMainInfoView(type: .trainCount)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var genderInfoView: DTInfoView = {
-        let view = DTInfoView(type: .gender)
+    private lazy var genderInfoView: DTMainInfoView = {
+        let view = DTMainInfoView(type: .gender)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var activivtyInfoView: DTInfoView = {
-        let view = DTInfoView(type: .activityLevel)
+    private lazy var activivtyInfoView: DTMainInfoView = {
+        let view = DTMainInfoView(type: .activityLevel)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var ageInfoView: DTInfoView = {
-        let view = DTInfoView(type: .age)
+    private lazy var ageInfoView: DTMainInfoView = {
+        let view = DTMainInfoView(type: .age)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var heightInfoView: DTInfoView = {
-        let view = DTInfoView(type: .height)
+    private lazy var heightInfoView: DTMainInfoView = {
+        let view = DTMainInfoView(type: .height)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var weightInfoView: DTInfoView = {
-        let view = DTInfoView(type: .weight)
+    private lazy var weightInfoView: DTMainInfoView = {
+        let view = DTMainInfoView(type: .weight)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -100,19 +100,20 @@ final class ProfileViewController: MainTabBarItemVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpGuiElements()
-        self.setUpInfoViewAction()
+      //  self.totalTrainInfoView.setUI()
+      //  self.setUpInfoViewAction()
         self.setUpMenuButtonBar()
     }
     
     //MARK: - Private methods
-    private func setUpInfoViewAction() {
-        for infoView in self.infoViews {
-            infoView.tapped = { [weak self] (infoViewType) in
-                guard let self = self else { return }
-                DTCustomAlert.shared.showInfoAlert(on: self, with: infoView)
-            }
-        }
-    }
+//    private func setUpInfoViewAction() {
+//        for infoView in self.infoViews {
+//            infoView.tapped = { [weak self] (infoViewType) in
+//                guard let self = self else { return }
+//                DTCustomAlert.shared.showInfoAlert(on: self, with: infoView)
+//            }
+//        }
+//    }
  
     private func setUpGuiElements() {
         self.view.backgroundColor = DTColors.backgroundColor
@@ -186,8 +187,7 @@ extension ProfileViewController: UIViewControllerTransitioningDelegate {
 extension ProfileViewController: ProfileViewPresenter {
     
     func pushViewControllerFromMenu(_ viewController: UIViewController) {
-        //self.navigationController?.pushViewController(viewController, animated: true)
-        self.router.pushViewControllerFromMenu(viewController)
+        self.router?.pushViewControllerFromMenu(viewController)
     }
     
     func showRecomendationAlert() {
@@ -198,12 +198,7 @@ extension ProfileViewController: ProfileViewPresenter {
     }
     
     func showMenu() {
-        self.router.showMenuController()
-//        let menuStackViewController = MenuViewController()
-//        menuStackViewController.modalPresentationStyle = .custom
-//        menuStackViewController.transitioningDelegate = self
-//        menuStackViewController.delegate = self.viewModel as? MenuControllerDelegate
-//        self.present(menuStackViewController, animated: true, completion: nil)
+        self.router?.showMenuController()
     }
     
     func showErrorSignOutAlert(with error: Error) {

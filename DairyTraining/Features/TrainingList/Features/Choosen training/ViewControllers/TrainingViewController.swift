@@ -163,7 +163,13 @@ extension TrainingViewController {
 //MARK: - DTCustomAlertDelegate
 extension TrainingViewController: DTCustomAlertDelegate {
     
-    func alertOkPressed() {
+    func alertOkPressed(with infoViewType: InfoViewValueType) {
         self.tableView.reloadData()
     }
+//    
+//
+//    
+//    func alertOkPressed() {
+//        self.tableView.reloadData()
+//    }
 }

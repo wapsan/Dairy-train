@@ -1,9 +1,29 @@
 import UIKit
 
-class DTInfoView: UIView {
+enum InfoViewValueType {
+       case trainCount
+       case gender
+       case activityLevel
+       case age
+       case height
+       case weight
+       
+       case totalReps
+       case totalAproach
+       case avarageProjectileWeight
+       case totalWeight
+}
+
+protocol DTMainInfoViewPresenter: AnyObject {
+    func settingWasChanged()
+    func updateInfo()
+    var type: InfoViewValueType? { get }
+}
+
+class DTMainInfoView: UIView {
         
     //MARK: - Private properties
-    private lazy var userInfo = CoreDataManager.shared.readUserMainInfo()
+    var viewModel: DTMainInfoViewModel?
     
     //MARK: - GUI Elemnts
     private(set) lazy var valueLabel: DTAdaptiveLabel = {
@@ -58,7 +78,6 @@ class DTInfoView: UIView {
         view.layer.cornerRadius = UIScreen.main.bounds.height / 30 //30
         view.layer.borderWidth = 1
          view.layer.borderColor = DTColors.controllBorderColor.cgColor
-        //view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -84,24 +103,9 @@ class DTInfoView: UIView {
         return stackView
     }()
     
-    //MARK: - Enums
-    enum InfoViewValue {
-        case trainCount
-        case gender
-        case activityLevel
-        case age
-        case height
-        case weight
-        
-        case totalReps
-        case totalAproach
-        case avarageProjectileWeight
-        case totalWeight
-    }
-    
     //MARK: - Properties
-    private(set) var type: InfoViewValue?
-    var tapped: ((DTInfoView.InfoViewValue) -> Void)?
+    private(set) var _type: InfoViewValueType?
+    var tapped: (() -> Void)?
     var isValueSeted: Bool {
         switch self.valueLabel.text {
         case "0","_", "0.0":
@@ -111,68 +115,27 @@ class DTInfoView: UIView {
         }
     }
     
+   
     //MARK: - Initialization
-    init(type: InfoViewValue) {
+    init(type: InfoViewValueType) {
         super.init(frame: .zero)
-        self.type = type
-        switch type {
-        case .trainCount:
-            self.titleLabel.numberOfLines = 2
-            self.titleLabel.text = LocalizedString.totalTrain
-            self.valueLabel.text = String(CoreDataManager.shared.fetchTrainingList().count)
-            self.backgroundImage.image = UIImage.totalTraininBackgroundImage
-        case .gender:
-            self.titleLabel.text = LocalizedString.gender
-            if let localizedGender = CoreDataManager.shared.readUserMainInfo()?.displayGender {
-                self.valueLabel.text = NSLocalizedString(localizedGender, comment: "")
-            } else {
-                self.valueLabel.text = "_"
-            }
-            self.backgroundImage.image = UIImage.genderBackgroundImage
-        case .activityLevel:
-            self.titleLabel.numberOfLines = 2
-            self.titleLabel.text = LocalizedString.activityLevel
-            if let localizedActivityLevel =  CoreDataManager.shared.readUserMainInfo()?.displayActivityLevel {
-              self.valueLabel.text = NSLocalizedString(localizedActivityLevel, comment: "")
-            } else {
-                self.valueLabel.text = "_"
-            }
-            self.backgroundImage.image = UIImage.activityLevelBackgroundImage
-        case .age:
-            self.titleLabel.text = LocalizedString.age
-            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayAge ?? "0"
-            self.backgroundImage.image = UIImage.ageBackgroundImage
-        case .height:
-            self.titleLabel.text = LocalizedString.height
-            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayHeight ?? "0"
-            self.descriptionLabel.text = MeteringSetting.shared.heightDescription
-            self.backgroundImage.image = UIImage.heightBackgroundImage
-            self.containerStackView.addArrangedSubview(self.descriptionLabel)
-        case .weight:
-            self.titleLabel.text = LocalizedString.weight
-            self.valueLabel.text = CoreDataManager.shared.readUserMainInfo()?.displayWeight ?? "0"
-            self.descriptionLabel.text = MeteringSetting.shared.weightDescription
-            self.backgroundImage.image = UIImage.weightBackgroundImage
-            self.containerStackView.addArrangedSubview(self.descriptionLabel)
-        case .totalReps:
-            self.titleLabel.numberOfLines = 2
-            self.titleLabel.text = LocalizedString.totalReps
-            self.backgroundImage.image = UIImage.totalRepsBackgroundImage
-        case .totalAproach:
-            self.titleLabel.numberOfLines = 2
-            self.titleLabel.text = LocalizedString.totalAproach
-            self.backgroundImage.image = UIImage.totalAproachBackgroundImage
-        case .avarageProjectileWeight:
-            self.titleLabel.text = LocalizedString.avarageProjectileWeigt
-            self.backgroundImage.image = UIImage.avareProjectileWeightBackgroundImage
-        case .totalWeight:
-            self.titleLabel.text = LocalizedString.totalTrainWeight
-            self.backgroundImage.image = UIImage.totalTrainingWeightbackgroundImage
-        }
+        self._type = type
         
+        let viewModel = DTMainInfoViewModel()
+        let model = DTMainInfoModel()
+        self.viewModel = viewModel
+        viewModel.view = self
+        viewModel.model = model
+        model.output = viewModel
+        
+        self.titleLabel.text = self.viewModel?.title
+        self.valueLabel.text = self.viewModel?.value
+        self.backgroundImage.image = self.viewModel?.backgroundImage
+        self.containerStackView.addArrangedSubview(self.descriptionLabel)
+        self.descriptionLabel.text = self.viewModel?.description
         self.initView()
         self.setTapRecognizer()
-        self.addObserverForMeteringSetting()
+        self.setUpTapAction()
     }
     
     private func initView() {
@@ -180,16 +143,8 @@ class DTInfoView: UIView {
         self.containerViewView.addSubview(self.backgroundImage)
         self.backgroundImage.addSubview(self.coloredView)
         self.coloredView.addSubview(self.containerStackView)
-        self.setConstraints()
-        
         self.coloredView.layer.insertSublayer(self.gradient, at: 0)
-        NSLayoutConstraint.activate([
-            self.coloredView.topAnchor.constraint(equalTo: self.backgroundImage.topAnchor),
-            self.coloredView.leftAnchor.constraint(equalTo: self.backgroundImage.leftAnchor),
-            self.coloredView.rightAnchor.constraint(equalTo: self.backgroundImage.rightAnchor),
-            self.coloredView.bottomAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor)
-            
-        ])
+        self.setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -200,14 +155,22 @@ class DTInfoView: UIView {
     func setValueLabelTo(_ text: String) {
         self.valueLabel.text = text
     }
-    
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         self.gradient.frame = self.containerViewView.bounds
     }
     
     //MARK: - Private methods
+    private func setUpTapAction() {
+        self.tapped = { [weak self] in
+            if let self = self,
+                let a = self.superview?.superview  {
+                DTCustomAlert.shared.showInfoAlert(oVview: a, with: self)
+            }
+        }
+    }
+    
     private func setShadowForMainView() {
         self.layer.shadowColor = UIColor.darkGray.cgColor
         self.layer.shadowOffset = .init(width: 0, height: 5)
@@ -217,22 +180,6 @@ class DTInfoView: UIView {
     private func setTapRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapSelector))
         self.addGestureRecognizer(tap)
-    }
-    
-    private func addObserverForMeteringSetting() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.heightSettingWasChanged),
-                                               name: .heightMetricChanged,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.weightSettingChanged),
-                                               name: .weightMetricChanged,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.newTrainAded),
-                                               name: .trainingListWasChanged,
-                                               object: nil)
-        
     }
     
     //MARK: - Constraints
@@ -266,37 +213,36 @@ class DTInfoView: UIView {
         NSLayoutConstraint.activate([
             self.whiteLine.heightAnchor.constraint(equalToConstant: 1)
         ])
+        
+        NSLayoutConstraint.activate([
+            self.coloredView.topAnchor.constraint(equalTo: self.backgroundImage.topAnchor),
+            self.coloredView.leftAnchor.constraint(equalTo: self.backgroundImage.leftAnchor),
+            self.coloredView.rightAnchor.constraint(equalTo: self.backgroundImage.rightAnchor),
+            self.coloredView.bottomAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor)
+            
+        ])
     }
     
     //MARK: - Actions
     @objc private func tapSelector() {
-        guard let type = self.type else { return }
-        self.tapped?(type)
+        self.tapped?()
+    }
+}
+
+//MARK: - DTMainInfoViewPresenter
+extension DTMainInfoView: DTMainInfoViewPresenter {
+    
+    func settingWasChanged() {
+        self.valueLabel.text = self.viewModel?.value
+        self.descriptionLabel.text = self.viewModel?.description
     }
     
-    @objc private func heightSettingWasChanged() {
-        guard let type = self.type else { return }
-        if type == .height {
-            guard let userInfo = self.userInfo else { return }
-            self.valueLabel.text = userInfo.displayHeight
-            self.descriptionLabel.text = MeteringSetting.shared.heightDescription
-        }
+    
+    var type: InfoViewValueType? {
+        return self._type
     }
     
-    @objc private func weightSettingChanged() {
-        guard let type = self.type else { return }
-        if type == .weight {
-            guard let userInfo = self.userInfo else { return }
-            self.valueLabel.text = userInfo.displayWeight
-            self.descriptionLabel.text = MeteringSetting.shared.weightDescription
-        }
-    }
-    
-    @objc private func newTrainAded() {
-        print("New train aded")
-        guard let type = self.type else { return }
-        if type == .trainCount {
-            self.valueLabel.text = String(CoreDataManager.shared.fetchTrainingList().count)
-        }
+    func updateInfo() {
+        self.valueLabel.text = self.viewModel?.value
     }
 }

@@ -1,6 +1,7 @@
 import UIKit
 
 protocol Router {
+
     init(_ viewController: UIViewController)
 }
 
@@ -11,7 +12,7 @@ protocol ProfileRouterOutput: AnyObject {
 }
 
 class ProfileRouter: Router {
-    
+  
     //MARK: - Private properties
     private weak var rootViewController: ProfileViewController?
     
@@ -25,6 +26,9 @@ class ProfileRouter: Router {
         let loginViewController = LoginViewController()
         let loginViewModel = LoginViewModel()
         let loginModel = LoginModel()
+        let loginRouter = LoginRouter(loginViewController)
+        
+        loginViewController.router = loginRouter
         loginViewController.viewModel = loginViewModel
         loginViewModel.view = loginViewController
         loginViewModel.model = loginModel

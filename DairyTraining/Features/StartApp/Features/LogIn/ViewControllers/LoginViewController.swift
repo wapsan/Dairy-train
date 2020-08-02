@@ -16,7 +16,8 @@ final class LoginViewController: UIViewController {
     
     //MARK: - Private properties
     private lazy var isSignInMode: Bool = true
-    var viewModel: LoginViewModel!
+    var viewModel: LoginViewModel?
+    var router: LoginRouterOutput?
     
     //MARK: - Properties
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -133,7 +134,7 @@ final class LoginViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.setUpGooglePresentingViewController()
+        self.viewModel?.setUpGooglePresentingViewController()
         self.setGuiElements()
         self.addObserverForKeyboardShow()
         self.addObserverForHideKeyboard()
@@ -191,12 +192,12 @@ final class LoginViewController: UIViewController {
     }
     
     private func makeRegistration() {
-        self.viewModel.signUp(with: self.emailTextField.text,
+        self.viewModel?.signUp(with: self.emailTextField.text,
                               and: self.passwordTextField.text)
     }
     
     private func makeSignIn() {
-        self.viewModel.signIn(with: self.emailTextField.text,
+        self.viewModel?.signIn(with: self.emailTextField.text,
                               and: self.passwordTextField.text)
     }
     
@@ -338,7 +339,7 @@ final class LoginViewController: UIViewController {
     
     @objc private func googleSignInPressed() {
         self.googleSignInButton.unpressed()
-        self.viewModel.signInWithGoogle()
+        self.viewModel?.signInWithGoogle()
     }
     
     @objc private func keyboardWillHide(_ notification: NSNotification) {
@@ -408,11 +409,8 @@ extension LoginViewController: LoginViewControllerPresenter {
     }
     
     func signInSuccesed() {
-        let mainTabBarViewController = MainTabBarViewController()
-        mainTabBarViewController.modalPresentationStyle = .fullScreen
-        self.present(mainTabBarViewController, animated: true, completion: nil)
+        self.router?.showMainFlow()
     }
-    
     
     func signInFailed(with errorMessage: String) {
         self.mainSignButton.unpressed()
