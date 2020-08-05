@@ -9,46 +9,6 @@ class DTMainInfoModel {
     
     weak var output: MainInfoModelOutput?
     
-    //MARK: - Private properties
-    var trainCountTitle: String {
-        return LocalizedString.totalTrain
-    }
-    var ageTitle: String {
-        return LocalizedString.age
-    }
-    
-    var heightTitle: String {
-        return LocalizedString.height
-    }
-    
-    var weightTitle: String {
-        return LocalizedString.weight
-    }
-    
-    var genderTitle: String {
-        return LocalizedString.gender
-    }
-   
-    var activityLevelTitle: String {
-        return LocalizedString.activityLevel
-    }
-    
-    var totalRepsTitle: String {
-        return LocalizedString.totalReps
-    }
-    
-    var totalAproachTitle: String {
-        return LocalizedString.totalAproach
-    }
-    
-    var totalWorkoutWeightTitle: String {
-        return LocalizedString.totalTrainWeight
-    }
-    
-    var avarageWeightTitle: String {
-        return LocalizedString.avarageProjectileWeigt
-    }
-    
     var heightMode: String? {
         return CoreDataManager.shared.readUserMainInfo()?.heightMode
     }
@@ -142,7 +102,7 @@ class DTMainInfoModel {
                                                object: nil)
     }
         
-    @objc private func valueWasChanged() {
+    @objc private func valueWasChanged(_ nitofication: NSNotification) {
         self.output?.valueWasChanged()
     }
     

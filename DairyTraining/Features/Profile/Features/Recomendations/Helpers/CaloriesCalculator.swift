@@ -86,14 +86,14 @@ class CaloriesCalculator {
         return [loseWeightInfo, balanceInfo, gainWeightInfo]
     }
     
-    func getUserParameters(from userMainInfo: UserMainInfoCodableModel) {
+    func getUserParameters(from userMainInfo: UserMainInfoCodableModel) -> [RecomendationInfo] {
         guard let gender = userMainInfo.gender,
             let activityLevel = userMainInfo.activityLevel,
             let age = userMainInfo.age,
             let height = userMainInfo.height,
             let weight = userMainInfo.weight,
             let weightMode = userMainInfo.weightMode,
-            let heightMode = userMainInfo.heightMode else { return }
+            let heightMode = userMainInfo.heightMode else { return  [] }
         self.gender = gender
         self.age = age
         self.weight = weight * self.weightMultiplier
@@ -101,6 +101,7 @@ class CaloriesCalculator {
         self.activityLevel = activityLevel
         self.heightMode = heightMode
         self.weightMode = weightMode
+        return self.getRecomendatinoInfo()
     }
     
     //MARK: - Private methods

@@ -8,25 +8,25 @@ class TrainStatisticsViewController: MainTabBarItemVC {
     
     //MARK: - GUI Properties
     private lazy var totalWeightView: DTMainInfoView = {
-        let view = DTMainInfoView(type: .totalWeight)
+        let view = DTMainInfoView(type: .totalWeight, and: self.view)
         view.setValueLabelTo(self.statistics?.totalWorkoutWeight ?? "0")
         return view
     }()
     
     private lazy var avaragepProgectileWeightView: DTMainInfoView = {
-        let view = DTMainInfoView(type: .avarageProjectileWeight)
+        let view = DTMainInfoView(type: .avarageProjectileWeight, and: self.view)
         view.setValueLabelTo(self.statistics?.averageProjectileWeight ?? "0")
         return view
     }()
     
     private lazy var totalRepsView: DTMainInfoView = {
-        let view = DTMainInfoView(type: .totalReps)
+        let view = DTMainInfoView(type: .totalReps, and: self.view)
         view.setValueLabelTo(self.statistics?.totalNumberOfReps ?? "0")
         return view
     }()
     
     private lazy var totalAproachesView: DTMainInfoView = {
-        let view = DTMainInfoView(type: .totalAproach)
+        let view = DTMainInfoView(type: .totalAproach, and: self.view)
         view.setValueLabelTo(self.statistics?.totalNumberOfAproach ?? "0")
         return view
     }()

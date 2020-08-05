@@ -18,6 +18,11 @@ final class ProfileViewController: MainTabBarItemVC {
     //MARK: - Private properties
     private lazy var stackViewSpacing: CGFloat = 16
     
+//    private lazy var alert: DTAlert = {
+//        let alert = DTAlert(on: self)
+//        return alert
+//    }()
+    
 //    private var infoViews: [DTMainInfoView] {
 //        return [self.activivtyInfoView,
 //                self.genderInfoView,
@@ -28,37 +33,37 @@ final class ProfileViewController: MainTabBarItemVC {
     
     //MARK: - GUI Properties
     private lazy var totalTrainInfoView: DTMainInfoView = {
-        let view = DTMainInfoView(type: .trainCount)
+        let view = DTMainInfoView(type: .trainCount, and: self.view)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var genderInfoView: DTMainInfoView = {
-        let view = DTMainInfoView(type: .gender)
+        let view = DTMainInfoView(type: .gender, and: self.view)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var activivtyInfoView: DTMainInfoView = {
-        let view = DTMainInfoView(type: .activityLevel)
+        let view = DTMainInfoView(type: .activityLevel, and: self.view)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var ageInfoView: DTMainInfoView = {
-        let view = DTMainInfoView(type: .age)
+        let view = DTMainInfoView(type: .age, and: self.view)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var heightInfoView: DTMainInfoView = {
-        let view = DTMainInfoView(type: .height)
+        let view = DTMainInfoView(type: .height, and: self.view)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var weightInfoView: DTMainInfoView = {
-        let view = DTMainInfoView(type: .weight)
+        let view = DTMainInfoView(type: .weight, and: self.view)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -100,17 +105,22 @@ final class ProfileViewController: MainTabBarItemVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpGuiElements()
-      //  self.totalTrainInfoView.setUI()
-      //  self.setUpInfoViewAction()
+    //  self.totalTrainInfoView.setUI()
+    //  self.setUpInfoViewAction()
         self.setUpMenuButtonBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     //MARK: - Private methods
 //    private func setUpInfoViewAction() {
 //        for infoView in self.infoViews {
-//            infoView.tapped = { [weak self] (infoViewType) in
+//            infoView.tapped = { [weak self] in
 //                guard let self = self else { return }
-//                DTCustomAlert.shared.showInfoAlert(on: self, with: infoView)
+//                //self.alert.show(for: infoView)
+//              //  DTCustomAlert.shared.showInfoAlert(on: self, with: infoView)
 //            }
 //        }
 //    }

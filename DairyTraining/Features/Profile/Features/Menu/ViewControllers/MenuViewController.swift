@@ -135,6 +135,9 @@ class MenuViewController: UIViewController {
         guard let title = sender.titleLabel?.text else { return }
         self.dismiss(animated: true, completion: { [weak self] in
             guard let self = self else { return }
+            
+            
+            
             self.delegate?.menuFlowSelected(SettingsSectionViewController(with: title))
         })
     }
@@ -149,7 +152,14 @@ class MenuViewController: UIViewController {
     @objc private func recomendationButtonPressed() {
         self.dismiss(animated: true, completion: { [weak self] in
             guard let self = self else { return }
-            self.delegate?.menuFlowSelected(RecomendationsViewController())
+            let recomendationVC = RecomendationsViewController()
+            let recomendationViewModel = RecomendationViewModel()
+            let recomendationModel = RecomendationModel()
+            recomendationVC.viewModel = recomendationViewModel
+            recomendationViewModel.model = recomendationModel
+            recomendationModel.ouptup = recomendationViewModel
+            
+            self.delegate?.menuFlowSelected(recomendationVC)
         })
     }
     

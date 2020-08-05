@@ -185,6 +185,8 @@ class DTEditingExerciceCell: UITableViewCell {
     @objc private func removeLastAproachesButtonPressed() {
         self.removeAproachButtonAction?()
     }
+    
+ 
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
@@ -211,8 +213,9 @@ extension DTEditingExerciceCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let exercice = self.exercise else { return }
-        guard let parentViewController = self.parentViewController else { return }
-        DTCustomAlert.shared.showAproachAlert(on: parentViewController, with: exercice, and: indexPath.row)
+        guard let parentView = self.parentViewController else { return }
+      //  DTAproachAlert().show(on: parentView)
+        DTCustomAlert.shared.showAproachAlert(on: parentView, with: exercice, and: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

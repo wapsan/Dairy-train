@@ -15,8 +15,7 @@ enum InfoViewValueType {
 }
 
 protocol DTMainInfoViewPresenter: AnyObject {
-    func settingWasChanged()
-    func updateInfo()
+    func updateUI()
     var type: InfoViewValueType? { get }
 }
 
@@ -102,6 +101,7 @@ class DTMainInfoView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+
     
     //MARK: - Properties
     private(set) var _type: InfoViewValueType?
@@ -117,10 +117,12 @@ class DTMainInfoView: UIView {
     
    
     //MARK: - Initialization
-    init(type: InfoViewValueType) {
+    init(type: InfoViewValueType, and parentView: UIView) {
         super.init(frame: .zero)
         self._type = type
+        self.parentView = parentView
         
+        //FIXME: - Main info view configuration
         let viewModel = DTMainInfoViewModel()
         let model = DTMainInfoModel()
         self.viewModel = viewModel
@@ -161,14 +163,33 @@ class DTMainInfoView: UIView {
         self.gradient.frame = self.containerViewView.bounds
     }
     
+    var parentView: UIView?
+    
     //MARK: - Private methods
     private func setUpTapAction() {
         self.tapped = { [weak self] in
-            if let self = self,
-                let a = self.superview?.superview  {
-                DTCustomAlert.shared.showInfoAlert(oVview: a, with: self)
-            }
+            guard let self = self else { return }
+            guard let a = self.parentView else { return }
+            DTCustomAlert.shared.showInfoAlert(oVview: a, with: self)
         }
+//        guard let type = self._type ,
+//            type != .trainCount else { return }
+//        self.tapped = { [weak self] in
+//            if let self = self,
+//                let viewType = self._type,
+//                let parentView = self.parentView  {
+//                switch viewType {
+//                case .age, .height, .weight:
+//                    self.valueAlert.show(on: parentView, with: self)
+//                case .activityLevel, .gender:
+//                 break//   self.selectionListAlert.show(on: parentView)
+//                default:
+//                    break
+//                }
+             //   self.valueAlert.show(on: parentView)
+     
+//                }
+//        }
     }
     
     private func setShadowForMainView() {
@@ -232,17 +253,12 @@ class DTMainInfoView: UIView {
 //MARK: - DTMainInfoViewPresenter
 extension DTMainInfoView: DTMainInfoViewPresenter {
     
-    func settingWasChanged() {
-        self.valueLabel.text = self.viewModel?.value
-        self.descriptionLabel.text = self.viewModel?.description
-    }
-    
-    
     var type: InfoViewValueType? {
         return self._type
     }
     
-    func updateInfo() {
+    func updateUI() {
         self.valueLabel.text = self.viewModel?.value
+        self.descriptionLabel.text = self.viewModel?.description
     }
 }

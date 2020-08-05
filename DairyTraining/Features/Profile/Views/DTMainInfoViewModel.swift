@@ -17,13 +17,13 @@ class DTMainInfoViewModel {
 
 //MARK: - MainInfoModelOutput
 extension DTMainInfoViewModel: MainInfoModelOutput {
+    
     func valueWasChanged() {
-        self.view?.updateInfo()
+        self.view?.updateUI()
     }
     
-    
     func settingWasChanged() {
-        self.view?.settingWasChanged()
+        self.view?.updateUI()
     }
 }
 
@@ -107,26 +107,25 @@ extension DTMainInfoViewModel: MainInfoViewModelIteracting {
         }
         switch viewType {
         case .trainCount:
-            return self.model?.trainCountTitle
+            return LocalizedString.totalTrain
         case .gender:
-            return self.model?.trainCountTitle
+            return LocalizedString.gender
         case .activityLevel:
-            return self.model?.activityLevelTitle
+            return LocalizedString.activityLevel
         case .age:
-            return self.model?.ageTitle
+            return LocalizedString.age
         case .height:
-            return self.model?.heightTitle
+            return LocalizedString.height
         case .weight:
-            return self.model?.weightTitle
+            return LocalizedString.weight
         case .totalReps:
-            return self.model?.totalRepsTitle
+            return LocalizedString.totalReps
         case .totalAproach:
-            return self.model?.totalAproachTitle
+            return LocalizedString.totalAproach
         case .avarageProjectileWeight:
-            return self.model?.avarageWeightTitle
+            return LocalizedString.avarageProjectileWeigt
         case .totalWeight:
-            return self.model?.totalWorkoutWeightTitle
+            return LocalizedString.totalTrainWeight
         }
     }
 }
-

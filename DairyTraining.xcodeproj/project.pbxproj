@@ -14,6 +14,8 @@
 		1306E01924CF3DC1003AEBA7 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306E01824CF3DC1003AEBA7 /* LoginModel.swift */; };
 		13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13151D4924715C9D002C15AA /* UIColor+Ex.swift */; };
 		131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131733722490E08600292D84 /* DTExerciseCell+Ex.swift */; };
+		131B670F24DB1DFD0029C456 /* RecomendationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131B670E24DB1DFD0029C456 /* RecomendationViewModel.swift */; };
+		131B671124DB1E1C0029C456 /* RecomendationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131B671024DB1E1C0029C456 /* RecomendationModel.swift */; };
 		131B9F9D24ADF2AC004FE9AD /* DTSynhronizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */; };
 		13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A3D247E4A6300AB7419 /* DTTrainCell.swift */; };
 		13243A41247E768B00AB7419 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A40247E768B00AB7419 /* DateHelper.swift */; };
@@ -116,6 +118,8 @@
 		1306E01824CF3DC1003AEBA7 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		13151D4924715C9D002C15AA /* UIColor+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ex.swift"; sourceTree = "<group>"; };
 		131733722490E08600292D84 /* DTExerciseCell+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTExerciseCell+Ex.swift"; sourceTree = "<group>"; };
+		131B670E24DB1DFD0029C456 /* RecomendationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationViewModel.swift; sourceTree = "<group>"; };
+		131B671024DB1E1C0029C456 /* RecomendationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationModel.swift; sourceTree = "<group>"; };
 		131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSynhronizeCell.swift; sourceTree = "<group>"; };
 		13243A3D247E4A6300AB7419 /* DTTrainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainCell.swift; sourceTree = "<group>"; };
 		13243A40247E768B00AB7419 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -352,6 +356,8 @@
 			isa = PBXGroup;
 			children = (
 				134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */,
+				131B670E24DB1DFD0029C456 /* RecomendationViewModel.swift */,
+				131B671024DB1E1C0029C456 /* RecomendationModel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1164,6 +1170,7 @@
 				136F3FFE2498D0DE00C6944B /* UserMainInfo.xcdatamodeld in Sources */,
 				13902AB12493D45C00963A07 /* DTTrainedMusclesView.swift in Sources */,
 				134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */,
+				131B671124DB1E1C0029C456 /* RecomendationModel.swift in Sources */,
 				13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */,
 				13FCA9C3248EF7E00056E659 /* DTCustomAlert.swift in Sources */,
 				1306E01324CF2503003AEBA7 /* ProfileModel.swift in Sources */,
@@ -1185,6 +1192,7 @@
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
 				139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */,
 				131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */,
+				131B670F24DB1DFD0029C456 /* RecomendationViewModel.swift in Sources */,
 				1393EDFC24A634B600EBD938 /* TrainingManagedObject+CoreDataClass.swift in Sources */,
 				13A9E7C22494E22200DEDCBE /* UserMainInfoCodableModel.swift in Sources */,
 				132F588F249A87F00089FA09 /* DTSplashScreenViewController.swift in Sources */,

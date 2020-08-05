@@ -24,10 +24,18 @@ class DTCustomAlert: UIView {
         case aproachAlert
     }
     
+    enum NewAlertType {
+        case value
+        case selectionList
+        case newAproach
+        case changeAproach(index: Int)
+    }
+    
     //MARK: - Private properties
     /**
         Property based on tapped view type
     */
+    private var newAlertType: DTCustomAlert.NewAlertType?
     private var alertType: DTCustomAlert.AlertType?
     private var changingAproachIndex: Int?
     private weak var mainInfo: MainInfoManagedObject?
@@ -281,10 +289,13 @@ class DTCustomAlert: UIView {
            guard let infoViewType = infoView._type else { return }
            switch infoViewType {
            case .gender:
+            self.newAlertType = .selectionList
                self.setUpGenderAlertType()
            case .activityLevel:
+            self.newAlertType = .selectionList
                self.setUpActivityLevelAlertType()
            case .age, .height, .weight:
+            self.newAlertType = .value
                self.setUpValueAlertType(with: infoViewType)
                self.setUpKeyBoardStyle(for: self.valueTextField)
                self.showKeyboard(for: self.valueTextField)
@@ -351,7 +362,9 @@ class DTCustomAlert: UIView {
             self.repsTextField.text = String(exercice.aproachesArray[aproachIndex].reps)
             self.changingAproachIndex = aproachIndex
             self.alertType = .aproachAlert
+            self.newAlertType = .changeAproach(index: aproachIndex)
         } else {
+              self.newAlertType = .newAproach
             self.alertType = .newAproachAlert
             self.titleLabel.text = "Aproach №\(exercice.aproaches.count + 1)"
             self.setUpDefaultsAproach()
@@ -713,22 +726,25 @@ class DTCustomAlert: UIView {
     
     
     @objc private func okPressed() {
-        self.writeValueInfo()
+     //   self.writeValueInfo()
         
-        NotificationCenter.default.post(name: .customAlerOkPressed, object: nil)
-       // guard let tappedInfoViewType = self.tappedInfoView?.type else { return }
-        guard let alertType = self.alertType else { return }
+        
+      //  guard let tappedInfoViewType = self.tappedInfoView?.type else { return }
+        guard let alertType = self.newAlertType else { return }
      //   self.delegate?.alertOkPressed(with: tappedInfoViewType)
-        self.hideAlert()
+        
         switch alertType {
-        case .setValue:
+        case .value:
             self.writeValueInfo()
-            
-        case .aproachAlert:
-            break
-        case .newAproachAlert:
-            break
+        case .selectionList:
+            self.writeListSelectionInfo()
+        case .newAproach:
+            self.writeNewAproachInfo()
+        case .changeAproach(index: let index):
+            self.changeAproachInfo(for: index)
         }
+        NotificationCenter.default.post(name: .customAlerOkPressed, object: nil)
+        self.hideAlert()
 //        switch alertType {
 //        case .setValue:
 //            guard let tappedInfoView = self.tappedInfoView else { return }

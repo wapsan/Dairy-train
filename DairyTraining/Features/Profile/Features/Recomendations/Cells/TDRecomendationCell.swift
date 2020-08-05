@@ -67,7 +67,7 @@ class TDRecomendationCell: UITableViewCell {
     }
     
     private func initCell() {
-        self.backgroundColor = DTColors.controllUnselectedColor//.viewFlipsideBckgoundColor
+        self.backgroundColor = DTColors.controllUnselectedColor
         self.selectionStyle = .none
         self.addSubview(self.labelsStackView)
         self.setConstraints()
