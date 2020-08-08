@@ -1,8 +1,5 @@
 class CaloriesCalculator {
-    
-    //MARK: - Singletone propertie
-    static var shared = CaloriesCalculator()
-    
+
     //MARK: - Private roperties
     private lazy var maleAgeMultiplier: Float = 5.7
     private lazy var maleWeightMultiplier: Float = 13.4
@@ -73,10 +70,7 @@ class CaloriesCalculator {
             return 1 / 2.2
         }
     }
-    
-    //MARK: - Initialization
-    private init() { }
-    
+ 
     //MARK: - Publick methods
     func getRecomendatinoInfo() -> [RecomendationInfo] {
         self.calculateCalories()

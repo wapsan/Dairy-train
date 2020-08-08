@@ -9,14 +9,20 @@ protocol RecomendationModelIteracting: AnyObject {
 }
 
 final class RecomendationModel {
+    
     weak var ouptup: RecomendationModelOutput?
+    private var caloriesCalculator: CaloriesCalculator
+    
+    init(_ caloriesCalculator: CaloriesCalculator = CaloriesCalculator()) {
+        self.caloriesCalculator = caloriesCalculator
+    }
 }
 
 extension RecomendationModel: RecomendationModelIteracting {
     func calculateRecomendation() {
         guard let mainInfo = CoreDataManager.shared.readUserMainInfo(),
         let mainInfoCodableModel = UserMainInfoCodableModel(from: mainInfo) else { return }
-        let recomendationInfo  = CaloriesCalculator.shared.getUserParameters(from: mainInfoCodableModel)
+        let recomendationInfo  = self.caloriesCalculator.getUserParameters(from: mainInfoCodableModel)
         self.ouptup?.setRecomendationInfo(to: recomendationInfo)
     }
 }

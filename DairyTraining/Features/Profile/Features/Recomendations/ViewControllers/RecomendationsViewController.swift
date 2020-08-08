@@ -3,7 +3,7 @@ import UIKit
 final class RecomendationsViewController: UIViewController {
     
     //MARK: - Properties
-    var viewModel: RecomendationViewModel?
+    var viewModel: RecomendationViewModelInput?
 
     //MARK: - GUI Properties
     private lazy var tableView: UITableView = {

@@ -80,7 +80,8 @@ class TrainingListViewController: DTBackgroundedViewController {
         self.setUpViewController()
         self.setUpTrainList()
         self.setUpEditingButton()
-        self.setBackgroundImageTo(UIImage.trainingListBackground)
+      //  self.setBackgroundImageTo(UIImage.trainingListBackground)
+     //   self.collectionView.backgroundColor = .green
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -231,10 +232,8 @@ class TrainingListViewController: DTBackgroundedViewController {
             self.collectionView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
                                                      constant: DTEdgeInsets.small.top),
             self.collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            self.collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor,
-                                                         constant: DTEdgeInsets.medium.left),
-            self.collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor,
-                                                          constant: DTEdgeInsets.medium.right)
+            self.collectionView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+            self.collectionView.rightAnchor.constraint(equalTo: safeArea.rightAnchor)
         ])
     }
     
@@ -244,10 +243,8 @@ class TrainingListViewController: DTBackgroundedViewController {
             self.collectionView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
                                                      constant: DTEdgeInsets.small.top),
             self.collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            self.collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor,
-                                                         constant: DTEdgeInsets.medium.left),
-            self.collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor,
-                                                          constant: DTEdgeInsets.medium.right)
+            self.collectionView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+            self.collectionView.rightAnchor.constraint(equalTo: safeArea.rightAnchor)
         ])
         
         NSLayoutConstraint.deactivate([
@@ -314,8 +311,12 @@ extension TrainingListViewController: UICollectionViewDelegate, UICollectionView
         return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = self.collectionView.bounds.width / 2 - 8
+        let itemWidth = self.collectionView.bounds.width / 2 //- 8
         let itemHeight = itemWidth * 1.3
         let itemSize = CGSize(width: itemWidth, height: itemHeight)
         return itemSize

@@ -49,20 +49,20 @@ class MainTabBarViewController: UITabBarController {
         self.selectedIndex = self.profileViewControllerIndex
     }
     
-    func configureProfileVC() -> ProfileViewController {
-        let profileVC = ProfileViewController()
-        let profileViewModel = ProfileViewModel()
-        let profileModel = ProfileModel()
-        let profileRouter = ProfileRouter(profileVC)
-      
-        profileVC.viewModel = profileViewModel
-        profileVC.router = profileRouter
-        profileViewModel.model = profileModel
-        profileViewModel.view = profileVC
-        profileModel.output = profileViewModel
-        profileVC.tabBarItem = DTTabBarItems.profile.item
-        return profileVC
-    }
+//    func configureProfileVC() -> ProfileViewController {
+//        let profileVC = ProfileViewController()
+//        let profileViewModel = ProfileViewModel()
+//        let profileModel = ProfileModel()
+//        let profileRouter = ProfileRouter(profileVC)
+//      
+//        profileVC.viewModel = profileViewModel
+//        profileVC.router = profileRouter
+//        profileViewModel.model = profileModel
+//        profileViewModel.view = profileVC
+//        profileModel.output = profileViewModel
+//        profileVC.tabBarItem = DTTabBarItems.profile.item
+//        return profileVC
+//    }
     
     func configureMuscleVC() -> MuscleGroupsViewController {
         let muscleGroupsVC = MuscleGroupsViewController()
@@ -73,8 +73,21 @@ class MainTabBarViewController: UITabBarController {
         
     }
     
+    func configureTestPVC() -> TestPVC {
+        let testPVC = TestPVC()
+        let testPVM = TestPVM()
+        let testPM = TestPM()
+        let testPR = TestPR(testPVC)
+        testPVC.router = testPR
+        testPVC.viewModel = testPVM
+        testPVM.view = testPVC
+        testPVM.model = testPM
+        testPM.output = testPVM
+        return testPVC
+    }
+    
     private func setUpTabBarViewControllers() {
-        let profileViewController = self.configureProfileVC() //ProfileViewController()
+        let profileViewController = self.configureTestPVC()//TestPVC()//self.configureProfileVC() //ProfileViewController()
         let activitiesViewController = self.configureMuscleVC()//MuscleGroupsViewController()
         let trainingListViewController = TrainingListViewController()
         

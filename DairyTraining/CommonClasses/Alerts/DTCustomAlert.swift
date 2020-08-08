@@ -745,6 +745,7 @@ class DTCustomAlert: UIView {
         }
         NotificationCenter.default.post(name: .customAlerOkPressed, object: nil)
         self.hideAlert()
+        
 //        switch alertType {
 //        case .setValue:
 //            guard let tappedInfoView = self.tappedInfoView else { return }

@@ -31,6 +31,13 @@ class DTActivitiesCell: UITableViewCell {
         return imageView
     }()
     
+    private lazy var coloredView: UIView = {
+        let view = UIView()
+        view.backgroundColor = DTColors.backgroundColor.withAlphaComponent(0.4)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     //MARK: - Initialization
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: DTActivitiesCell.cellID)
@@ -47,6 +54,7 @@ class DTActivitiesCell: UITableViewCell {
         self.addSubview(self.containerView)
         self.addSubview(self.muscleGroupImage)
         self.addSubview(self.exerciceNameLabel)
+        
         self.containerView.backgroundColor = DTColors.controllUnselectedColor
         self.setUpConstraints()
     }
@@ -70,6 +78,7 @@ class DTActivitiesCell: UITableViewCell {
         self.containerView.layer.cornerRadius = self.containerView.bounds.height / 4
         self.containerView.layer.borderWidth = 1
         self.containerView.layer.borderColor = DTColors.controllBorderColor.cgColor
+        
         super.layoutSubviews()
     }
     

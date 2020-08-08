@@ -1,9 +1,10 @@
 import UIKit
 
-class CommonStatisticsViewController: TrainingListViewController {
+class TrainingListStatisticsViewController: TrainingListViewController {
     
-    //MARK: - Private properties
-    private lazy var trains = CoreDataManager.shared.fetchTrainingList()
+    //MARK: - Properties
+    var viewModel: TrainingListStatisticsViewModelInput?
+    var router: TrainingListStatisticsRouter?
     
     //MARK: - Properties
     override var headerTitle: String {
@@ -25,6 +26,7 @@ class CommonStatisticsViewController: TrainingListViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel?.loadStatisticsList()
         self.setUpNavigationItem()
     }
     
@@ -34,13 +36,7 @@ class CommonStatisticsViewController: TrainingListViewController {
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.backBarButtonItem = self.backBarButtonItem
     }
-    
-    private func pushStatisticsViewController(for train: TrainingManagedObject) {
-        let trainStatiticsViewController = TrainStatisticsViewController()
-        trainStatiticsViewController.setTrain(to: train)
-        self.navigationController?.pushViewController(trainStatiticsViewController, animated: true)
-    }
-    
+
     //MARK: - Actions
     @objc private func backButtonPressed() {
         self.navigationController?.popViewController(animated: true)
@@ -48,10 +44,10 @@ class CommonStatisticsViewController: TrainingListViewController {
 }
 
 //MARK: - UICollectionview methods
-extension CommonStatisticsViewController {
+extension TrainingListStatisticsViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let choosenTrain = self.trains[indexPath.row]
-        self.pushStatisticsViewController(for: choosenTrain)
+        guard let choosenTrain = self.viewModel?.trainigList[indexPath.row] else { return }
+        self.router?.pushTrainingStatisticsViewController(for: choosenTrain)
     }
 }
