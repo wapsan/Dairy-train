@@ -1,12 +1,32 @@
 import UIKit
 
-class DTTrainedMusclesView: UIView {
+class DTTrainedSubGroupCell: UICollectionViewCell {
     
-    //MARK: - Private properties
+    //MARK: - Static cellID
+    static let cellID = "DTTrainedSubGroupCell"
+    
+    //MARK: - GUI Properties
     private lazy var subgroupsList: [MuscleSubgroup.Subgroup] = []
     private lazy var edgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: -8, right: -8)
     
+    private var itemSize: CGSize {
+        let itemHeight = self.subgroupCollectionList.bounds.height
+        let itemWidth = itemHeight
+        let itemSize = CGSize(width: itemWidth, height: itemHeight)
+        return itemSize
+    }
+    
     //MARK: - GUI Properties
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = UIScreen.main.bounds.height / 30
+        view.layer.borderWidth = 1
+        view.layer.borderColor = DTColors.controllBorderColor.cgColor
+        view.layer.masksToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var titleLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()
         label.text = LocalizedString.trainedMuscles
@@ -34,10 +54,8 @@ class DTTrainedMusclesView: UIView {
     }()
     
     //MARK: - Initialization
-    init(for subgroups: [MuscleSubgroup.Subgroup]?) {
+    override init(frame: CGRect) {
         super.init(frame: .zero)
-        guard let subgroupsFromTrain = subgroups else { return }
-        self.subgroupsList = subgroupsFromTrain
         self.initView()
     }
     
@@ -46,53 +64,64 @@ class DTTrainedMusclesView: UIView {
     }
     
     private func initView() {
-        self.addSubview(self.titleLabel)
-        self.addSubview(self.subgroupCollectionList)
+        self.addSubview(self.containerView)
+        self.containerView.addSubview(self.titleLabel)
+        self.containerView.addSubview(self.subgroupCollectionList)
         self.setUpConstraints()
-        self.setLayer()
-    }
-    
-    //MARK: - Private methods
-    private func setLayer() {
-        self.backgroundColor = DTColors.controllUnselectedColor
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 30
-        self.layer.borderColor = DTColors.controllBorderColor.cgColor
     }
     
     //MARK: - Setter
-    func updateSubgroupsImages(for subgroups: [MuscleSubgroup.Subgroup]?) {
-        guard let subgroupsFromTrain = subgroups else { return }
-        self.subgroupsList = subgroupsFromTrain
+    func renderCell(for statistics: Statistics) {
+        self.subgroupsList = statistics.trainedSubGroupsList
         self.subgroupCollectionList.reloadData()
     }
     
     //MARK: - Constraints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor,
+            self.containerView.topAnchor.constraint(equalTo: self.topAnchor,
+                                                    constant: DTEdgeInsets.small.top),
+            self.containerView.leftAnchor.constraint(equalTo: self.leftAnchor,
+                                                     constant: DTEdgeInsets.small.left),
+            self.containerView.rightAnchor.constraint(equalTo: self.rightAnchor,
+                                                      constant: DTEdgeInsets.small.right),
+            self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
+                                                       constant: DTEdgeInsets.small.bottom),
+            
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.titleLabel.topAnchor.constraint(equalTo: self.containerView.topAnchor,
                                                  constant: DTEdgeInsets.small.top),
-            self.titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor,
+            self.titleLabel.leftAnchor.constraint(equalTo: self.containerView.leftAnchor,
                                                   constant: DTEdgeInsets.small.left),
-            self.titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor,
+            self.titleLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor,
                                                    constant: DTEdgeInsets.small.right),
-            self.titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor,
+            self.titleLabel.heightAnchor.constraint(equalTo: self.containerView.heightAnchor,
                                                     multiplier: 0.25)
         ])
         
         NSLayoutConstraint.activate([
             self.subgroupCollectionList.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
-            self.subgroupCollectionList.leftAnchor.constraint(equalTo: self.leftAnchor,
+            self.subgroupCollectionList.leftAnchor.constraint(equalTo: self.containerView.leftAnchor,
                                                               constant: DTEdgeInsets.small.left),
-            self.subgroupCollectionList.rightAnchor.constraint(equalTo: self.rightAnchor,
+            self.subgroupCollectionList.rightAnchor.constraint(equalTo: self.containerView.rightAnchor,
                                                                constant: DTEdgeInsets.small.right),
-            self.subgroupCollectionList.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.subgroupCollectionList.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor),
         ])
     }
 }
 
-//MARK: - CollectionViewDelegate and datasourse
-extension DTTrainedMusclesView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//MARK: - UICollectionViewDelegateFlowLayout
+extension DTTrainedSubGroupCell: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return self.itemSize
+    }
+}
+
+//MARK: - UICollectionViewDataSource
+extension DTTrainedSubGroupCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.subgroupsList.count
@@ -104,12 +133,5 @@ extension DTTrainedMusclesView: UICollectionViewDelegate, UICollectionViewDataSo
         let submuscleGroupImage = self.subgroupsList[indexPath.row].image
         (cell as? DTMuscleSubgroupsCell)?.setCellImage(to: submuscleGroupImage)
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemHeight = collectionView.bounds.height
-        let itemWidth = itemHeight
-        let itemSize = CGSize(width: itemWidth, height: itemHeight)
-        return itemSize
     }
 }

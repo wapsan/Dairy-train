@@ -8,6 +8,7 @@ class Statistics {
         return MeteringSetting.shared.weightMode
     }
     
+    var trainingDate: String?
     var trainedSubGroupsList: [MuscleSubgroup.Subgroup]
     
     var numberOfTrainedSubgroups: String {
@@ -47,6 +48,7 @@ class Statistics {
     
     //MARK: - Initialization
     init(for train: TrainingManagedObject) {
+        self.trainingDate = train.formatedDate
         self._totalNumberOfAproach = {
             var aproaches = 0
             train.exercicesArray.forEach { (exercise) in

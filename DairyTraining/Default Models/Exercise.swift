@@ -1,24 +1,24 @@
 import UIKit
 
-struct Exercise: Groupable {
+struct Exercise { //: //Groupable {
 
     //MARK: - Properties
-    var name: String
+    private var _name: String
     var group: MuscleGroup.Group
     var subgroub: MuscleSubgroup.Subgroup
     var isSelected: Bool = false
     
     //MARK: - Compudet properties
-    var muscleGroupImage: UIImage? {
-        return self.group.image
-    }
-    var image: UIImage? {
-        return self.subgroub.image
-    }
+//    var muscleGroupImage: UIImage? {
+//        return self.group.image
+//    }
+//    var image: UIImage? {
+//        return self.subgroub.image
+//    }
     
     //MARK: - Initialization
     init(name: String, subgroup: MuscleSubgroup.Subgroup) {
-        self.name = name
+        self._name = name
         self.subgroub = subgroup
         switch subgroub {
         case .frontDelts:
@@ -53,4 +53,17 @@ struct Exercise: Groupable {
             self.group = .back
         }
     }
+}
+
+extension Exercise: Groupable  {
+    
+    var name: String {
+        return self._name
+    }
+    
+    var image: UIImage? {
+        return self.subgroub.image
+    }
+    
+    
 }

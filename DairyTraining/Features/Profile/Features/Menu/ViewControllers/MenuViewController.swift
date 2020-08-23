@@ -2,7 +2,9 @@ import UIKit
 
 //MARK: - Protocol delegate
 protocol MenuControllerDelegate: class {
-    func menuFlowSelected(_ pushedViewController: UIViewController)
+    func pushStatisticsFlow(statisticsViewController: UIViewController)
+    func pushSettingFlow(settingviewController: UIViewController)
+    func pushRecomendationFlow(recomendationViewController: UIViewController)
     func menuSignOutPressed()
 }
 
@@ -84,7 +86,7 @@ class MenuViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = DTColors.backgroundColor//.viewFlipsideBckgoundColor
+        self.view.backgroundColor = DTColors.backgroundColor
         self.view.addSubview(self.topLineView)
         self.view.addSubview(self.menuButtonStackView)
         self.setUpConstraints()
@@ -137,8 +139,7 @@ class MenuViewController: UIViewController {
             guard let self = self else { return }
             
             
-            
-            self.delegate?.menuFlowSelected(SettingsSectionViewController(with: title))
+            self.delegate?.pushSettingFlow(settingviewController: SettingsSectionViewController(with: title))
         })
     }
     
@@ -153,8 +154,7 @@ class MenuViewController: UIViewController {
             trainingListStatisticsVC.viewModel = trainingListStatisticsViewModel
             trainingListStatisticsViewModel.model = trainingListStatisticsModel
             trainingListStatisticsModel.output = trainingListStatisticsViewModel
-             
-            self.delegate?.menuFlowSelected(trainingListStatisticsVC)
+            self.delegate?.pushStatisticsFlow(statisticsViewController: trainingListStatisticsVC)
         })
     }
     
@@ -167,8 +167,7 @@ class MenuViewController: UIViewController {
             recomendationVC.viewModel = recomendationViewModel
             recomendationViewModel.model = recomendationModel
             recomendationModel.ouptup = recomendationViewModel
-            
-            self.delegate?.menuFlowSelected(recomendationVC)
+            self.delegate?.pushRecomendationFlow(recomendationViewController: recomendationVC)
         })
     }
     

@@ -144,11 +144,22 @@ class TrainingListViewController: DTBackgroundedViewController {
         self.setUpEmtyTrainingListLabelConstraints()
     }
     
+    private func configureTrainingViewController(for train: TrainingManagedObject) -> TestTrainingViewController {
+        let trainingViewController = TestTrainingViewController()
+        let trainingViewModel = TrainingViewModel()
+        let trainingModel = TrainingModel(with: train)
+        trainingViewController.viewModel = trainingViewModel
+        trainingViewModel.view = trainingViewController
+        trainingViewModel.model = trainingModel
+        trainingModel.output = trainingViewModel
+        return trainingViewController
+    }
+    
     private func pushTrainViewController(with trainIndex: Int) {
         let training = self.trainList[trainIndex]
-        let trainViewController = TrainingViewController()
-        trainViewController.setTraining(training)
-        trainViewController.headerTittle = training.formatedDate ?? "0"
+        let trainViewController = self.configureTrainingViewController(for: training)//TrainingViewController()
+       // trainViewController.setTraining(training)
+       // trainViewController.headerTittle = training.formatedDate ?? "0"
         self.navigationController?.pushViewController(trainViewController, animated: true)
     }
     

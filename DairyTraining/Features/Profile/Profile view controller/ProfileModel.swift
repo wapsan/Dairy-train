@@ -1,26 +1,23 @@
 import Foundation
 import Firebase
 
-protocol TestPMIterating: AnyObject {
-    func writeNewValue(to value: String, and type: MainInfoCellType)
-    
+protocol ProfileModelIteracting: AnyObject {
+    func writeNewValue(to value: String, and type: ProfileInfoCellType)
     func signOut()
     var isMainInfoSet: Bool { get }
 }
 
-protocol TestPMOutput: AnyObject {
+protocol ProfileModelOutput: AnyObject {
     func valueWasUpdatedForCell(at index: Int)
     func heightModeWasChanged(for cellAtIndex: Int)
     func weightModeWasChanged(for cellAtIndex: Int)
-    
     func succesSignedOut()
     func errorSignedOut(error: Error)
 }
 
-final class TestPM {
+final class ProfileModel {
    
-    
-    weak var output: TestPMOutput?
+    weak var output: ProfileModelOutput?
     
     init() {
         self.addObserverForHeightModeChanged()
@@ -42,16 +39,16 @@ final class TestPM {
     }
     
     @objc private func weightMetricWasChanged() {
-        self.output?.weightModeWasChanged(for: MainInfoCellType.weight.rawValue) 
+        self.output?.weightModeWasChanged(for: ProfileInfoCellType.weight.rawValue) 
     }
     
     @objc private func heightMetricChanged() {
-        self.output?.heightModeWasChanged(for: MainInfoCellType.hight.rawValue)
+        self.output?.heightModeWasChanged(for: ProfileInfoCellType.hight.rawValue)
     }
 }
 
-
-extension TestPM: TestPMIterating {
+//MARK: - ProfileModelIteracting
+extension ProfileModel: ProfileModelIteracting {
     
     func signOut() {
         do {
@@ -73,7 +70,7 @@ extension TestPM: TestPMIterating {
         return userMainInfo.isSet
     }
     
-    func writeNewValue(to value: String, and type: MainInfoCellType) {
+    func writeNewValue(to value: String, and type: ProfileInfoCellType) {
         switch type {
         case .totalTrain:
             break

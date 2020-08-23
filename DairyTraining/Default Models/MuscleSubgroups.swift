@@ -32,7 +32,7 @@ struct MuscleSubgroup: Codable {
         
         //MARK: - Properties
         var name: String {
-            return NSLocalizedString(self.rawValue, comment: "")
+            return self.rawValue//NSLocalizedString(self.rawValue, comment: "")
         }
         
         var image: UIImage? {

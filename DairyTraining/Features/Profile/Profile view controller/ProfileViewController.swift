@@ -1,14 +1,22 @@
 import UIKit
 
-class TestPVC: DTBackgroundedViewController {
+class ProfileViewController: DTBackgroundedViewController {
  
     //MARK: - Private properties
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     private lazy var valueAlert = DTValueAlert()
+    private lazy var selectionListAlert = DTSelectionListAlert()
+    
+    private var itemSize: CGSize {
+        let height = self.collectionView.bounds.height / 3
+        let width = self.collectionView.bounds.width / 2
+        let itemSize = CGSize(width: width, height: height)
+        return itemSize
+    }
     
     //MARK: - properties
-    var viewModel: TestPVM?
-    var router: TestPR?
+    var viewModel: ProfileViewModel?
+    var router: ProfileRouter?
     
     //MARK: - GUI Properties
     private var collactionLayout: UICollectionViewFlowLayout = {
@@ -35,12 +43,13 @@ class TestPVC: DTBackgroundedViewController {
         self.setUpCollectionView()
         self.setUpMenuButtonBar()
         self.valueAlert.delegate = self.viewModel
+        self.selectionListAlert.delegate = self.viewModel
         self.view.backgroundColor = DTColors.backgroundColor
     }
 }
 
 //MARK: - Private extension
-private extension TestPVC {
+private extension ProfileViewController {
     
     @objc func menuButtonPressed() {
         self.viewModel?.showMenu()
@@ -69,7 +78,7 @@ private extension TestPVC {
 }
 
 //MARK: - UICollectionViewDelegate
-extension TestPVC: UICollectionViewDelegate {
+extension ProfileViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.viewModel?.selectRow(at: indexPath.row)
@@ -77,10 +86,10 @@ extension TestPVC: UICollectionViewDelegate {
 }
 
 //MARK: - UICollectionViewDataSource
-extension TestPVC: UICollectionViewDataSource {
+extension ProfileViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MainInfoCellType.allCases.count
+        return ProfileInfoCellType.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -92,13 +101,10 @@ extension TestPVC: UICollectionViewDataSource {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-extension TestPVC: UICollectionViewDelegateFlowLayout {
+extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = (self.collectionView.bounds.height / 3)
-        let width = (self.collectionView.bounds.width / 2)
-        let itemSize = CGSize(width: width, height: height)
-        return itemSize
+        return self.itemSize
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -111,17 +117,29 @@ extension TestPVC: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: - TestPVCPresenter
-extension TestPVC: TestPVCPresenter {
+extension ProfileViewController: ProfileViewModelPresenter {
+    
+    func showSelectionlistAlert(for selectedIndex: Int, and value: String?) {
+        self.selectionListAlert.present(on: self, for: selectedIndex, and: value)
+    }
+    
+    func hideSelectionListAlert() {
+        self.selectionListAlert.hideAlert()
+    }
+    
+    func showValueAlert(for selectedIndex: Int, and value: String?) {
+        self.valueAlert.present(on: self, for: selectedIndex, and: value)
+    }
+    
+    func hideValueAlert() {
+        self.valueAlert.hideAlert()
+    }
     
     func showRecomendationAlert() {
         self.showDefaultAlert(title: LocalizedString.alertError,
         message: LocalizedString.fillInDataErrorMessage,
         preffedStyle: .alert,
         okTitle: LocalizedString.ok)
-    }
-    
-    func showMenu() {
-        self.router?.showMenuController()
     }
     
     func showSignOutAlert() {
@@ -137,10 +155,6 @@ extension TestPVC: TestPVCPresenter {
         })
     }
     
-    func presentLoginViewController() {
-        self.router?.presentLoginViewController()
-    }
-    
     func showErrorSignOutAlert(with error: Error) {
          self.showDefaultAlert(title: LocalizedString.alertError,
                                      message: error.localizedDescription,
@@ -148,6 +162,14 @@ extension TestPVC: TestPVCPresenter {
                                      okTitle: LocalizedString.ok)
     }
     
+    func showMenu() {
+        self.router?.showMenuController()
+    }
+    
+    func presentLoginViewController() {
+        self.router?.presentLoginViewController()
+    }
+
     func pushViewControllerFromMenu(_ viewController: UIViewController) {
         self.router?.pushViewControllerFromMenu(viewController)
     }
@@ -166,15 +188,7 @@ extension TestPVC: TestPVCPresenter {
         }
     }
     
-    func showValueAlert(for selectedIndex: Int, and value: String?) {
-        self.valueAlert.present(on: self, for: selectedIndex, and: value)
-    }
-    
-    func hideaAlert() {
-        self.valueAlert.hideAlert()
-    }
-    
-    func updatCell(at index: Int) {
+    func updatValueInCell(at index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
         if let cell = self.collectionView.cellForItem(at: indexPath) as? DTMainInfoCell {
             cell.renderCell(for: index)
@@ -184,7 +198,7 @@ extension TestPVC: TestPVCPresenter {
 }
 
 //MARK: - UIViewControllerTransitioningDelegate
-extension TestPVC: UIViewControllerTransitioningDelegate {
+extension ProfileViewController: UIViewControllerTransitioningDelegate {
     
     func presentationController(forPresented presented: UIViewController,
                                 presenting: UIViewController?,

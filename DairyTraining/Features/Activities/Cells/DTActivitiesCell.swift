@@ -1,6 +1,6 @@
 import UIKit
 
-class DTActivitiesCell: UITableViewCell {
+final class DTActivitiesCell: UITableViewCell {
     
     //MARK: - Static cellID
     static let cellID: String = "DTActivitiesCell"
@@ -61,7 +61,7 @@ class DTActivitiesCell: UITableViewCell {
     
     //MARK: - Setters
     func renderCellFor<T: Groupable>(_ groupable: T) {
-        self.exerciceNameLabel.text = groupable.name
+        self.exerciceNameLabel.text = NSLocalizedString(groupable.name, comment: "")
         self.muscleGroupImage.image = groupable.image
     }
 

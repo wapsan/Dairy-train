@@ -75,10 +75,10 @@ struct LocalizedString {
     static let dataDontUpdate = NSLocalizedString("Data don't update.", comment: "")
     
     //MARK: - Metering setting
-    static let kgDescription = NSLocalizedString(" Kg.", comment: "")
-    static let lbsDescription = NSLocalizedString(" Lb.", comment: "")
-    static let cmDescription = NSLocalizedString(" Cm.", comment: "")
-    static let ftDescription = NSLocalizedString(" Ft.", comment: "")
+    static let kgDescription = NSLocalizedString("Kg.", comment: "")
+    static let lbsDescription = NSLocalizedString("Lb.", comment: "")
+    static let cmDescription = NSLocalizedString("Cm.", comment: "")
+    static let ftDescription = NSLocalizedString("Ft.", comment: "")
     
     //MARK: - Training list viewController
     static let trainingListIsEmty = NSLocalizedString("No training yet", comment: "")
@@ -98,4 +98,7 @@ struct LocalizedString {
     static let setAgeAlert = NSLocalizedString("Set age", comment: "")
     static let setWeightAlert = NSLocalizedString("Set weight", comment: "")
     static let setHeightAlert = NSLocalizedString("Set height", comment: "")
+    
+    //MARK: - Trainig screen
+    static let deleteLastAproach = NSLocalizedString("Delete last aproach", comment: "")
 }

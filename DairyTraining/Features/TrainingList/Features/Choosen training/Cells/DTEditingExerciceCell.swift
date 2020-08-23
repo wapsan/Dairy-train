@@ -1,16 +1,22 @@
 import UIKit
 
-class DTEditingExerciceCell: UITableViewCell {
+final class DTEditingExerciceCell: UITableViewCell {
     
     //MARK: - Static properties
     static let cellID = "TestExerciceCell"
     
     //MARK: - Private properties
     private var exercise: ExerciseManagedObject?
+    private var aproachItemSize: CGSize {
+        let itemHeight = self.aproachCollectionList.bounds.height * 0.95
+        let itemWidth = self.aproachCollectionList.bounds.width / 4
+        return CGSize(width: itemWidth, height: itemHeight)
+    }
     
     //MARK: - Properties
     var addAproachButtonAction: (() -> Void)?
     var removeAproachButtonAction: (() -> Void)?
+    var changeAproachAction: ((_ index: Int, _ weight: String, _ reps: String) -> Void)?
     
     //MARK: - GUI Properties
     private var containerView: UIView = {
@@ -99,11 +105,46 @@ class DTEditingExerciceCell: UITableViewCell {
         self.initCell()
     }
     
-    private func initCell() {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Interface
+     func setUpFor(_ exercise: ExerciseManagedObject) {
+         self.exercise = exercise
+         self.exerciceNameLabel.text = NSLocalizedString(exercise.name, comment: "")
+         self.muscleSubGroupImage.image = exercise.image
+         self.aproachCollectionList.reloadData()
+     }
+     
+    func removeLastAproach() {
+        guard let aproachesCount = self.exercise?.aproachesArray.count else { return }
+        let lastAproachIndex = aproachesCount
+        let indexPath = IndexPath(row: lastAproachIndex, section: 0)
+        self.aproachCollectionList.performBatchUpdates({
+            self.aproachCollectionList.deleteItems(at: [indexPath])
+        }, completion: nil)
+    }
+    
+    func addAproach() {
+        self.aproachCollectionList.reloadData()
+        let indexPathes = self.aproachCollectionList.indexPathsForVisibleItems
+        self.aproachCollectionList.insertItems(at: indexPathes)
+    }
+    
+    func changeAproach(at index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        self.aproachCollectionList.reloadItems(at: [indexPath])
+    }
+}
+
+//MARK: - Private methods
+private extension DTEditingExerciceCell {
+    
+    func initCell() {
         self.backgroundColor = .clear
         self.selectionStyle = .none
         self.contentView.addSubview(self.containerView)
-        
         self.contentView.addSubview(self.muscleSubGroupImage)
         self.contentView.addSubview(self.exerciceNameLabel)
         self.contentView.addSubview(self.aproachCollectionList)
@@ -112,20 +153,8 @@ class DTEditingExerciceCell: UITableViewCell {
         self.setUpNewConstraints()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    //MARK: - Setter
-    func setUpFor(_ exercise: ExerciseManagedObject) {
-        self.exercise = exercise
-        self.exerciceNameLabel.text = NSLocalizedString(exercise.name, comment: "") 
-        self.muscleSubGroupImage.image = exercise.image
-        self.aproachCollectionList.reloadData()
-    }
-    
     //MARK: - Constraints
-    private func setUpNewConstraints() {
+    func setUpNewConstraints() {
         NSLayoutConstraint.activate([
             self.containerView.topAnchor.constraint(equalTo: self.topAnchor,
                                                     constant: DTEdgeInsets.small.top),
@@ -178,19 +207,18 @@ class DTEditingExerciceCell: UITableViewCell {
     }
     
     //MARK: - Actions
-    @objc private func addButtonTouched() {
+    @objc  func addButtonTouched() {
         self.addAproachButtonAction?()
+        
     }
     
-    @objc private func removeLastAproachesButtonPressed() {
+    @objc  func removeLastAproachesButtonPressed() {
         self.removeAproachButtonAction?()
     }
-    
- 
 }
 
-//MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
-extension DTEditingExerciceCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+extension DTEditingExerciceCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.exercise?.aproaches.count ?? 0
@@ -201,24 +229,21 @@ extension DTEditingExerciceCell: UICollectionViewDelegate, UICollectionViewDataS
                                                       for: indexPath)
         guard let aproach = self.exercise?.aproachesArray[indexPath.row] else { return UICollectionViewCell() }
         (cell as? DTAproachCell)?.setUpFor(aproach)
+        (cell as? DTAproachCell)?.tapAction = { (weight, reps) in
+            self.changeAproachAction?(indexPath.row, weight, reps)
+        }
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemHeight = self.aproachCollectionList.bounds.height * 0.95
-        let itemWidth = self.aproachCollectionList.bounds.width / 4
-        let itemSize = CGSize(width: itemWidth, height: itemHeight)
-        return itemSize
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let exercice = self.exercise else { return }
-        guard let parentView = self.parentViewController else { return }
-      //  DTAproachAlert().show(on: parentView)
-        DTCustomAlert.shared.showAproachAlert(on: parentView, with: exercice, and: indexPath.row)
-    }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+extension DTEditingExerciceCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
+         return 0
+     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return self.aproachItemSize
+      }
 }

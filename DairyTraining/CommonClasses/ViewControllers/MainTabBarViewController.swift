@@ -73,11 +73,11 @@ class MainTabBarViewController: UITabBarController {
         
     }
     
-    func configureTestPVC() -> TestPVC {
-        let testPVC = TestPVC()
-        let testPVM = TestPVM()
-        let testPM = TestPM()
-        let testPR = TestPR(testPVC)
+    func configureTestPVC() -> ProfileViewController {
+        let testPVC = ProfileViewController()
+        let testPVM = ProfileViewModel()
+        let testPM = ProfileModel()
+        let testPR = ProfileRouter(testPVC)
         testPVC.router = testPR
         testPVC.viewModel = testPVM
         testPVM.view = testPVC

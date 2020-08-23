@@ -1,9 +1,9 @@
 import UIKit
 
-class DTMainInfoCell: UICollectionViewCell {
+class DTStatisticInfoCell: UICollectionViewCell {
     
-    //MARK: - Static cell ID
-    static let cellID = "DTMainInfoCell"
+    //MARK: - Static cellID
+    static let cellID = "DTStatisticInfoCell"
     
     //MARK: - GUI Properties
     private(set) lazy var valueLabel: DTAdaptiveLabel = {
@@ -108,34 +108,13 @@ class DTMainInfoCell: UICollectionViewCell {
     }
     
     //MARK: - Public methods
-    func renderCell(for index: Int) {
-        guard let cellType = MainInfoCellType.init(rawValue: index) else { return }
-        self.valueLabel.text = cellType.value
-        self.descriptionLabel.text = cellType.description
+    func renderCell(for cellType: DTStatisticInfoCellType, and statistics: Statistics) {
         self.titleLabel.text = cellType.title
-        self.backgroundImage.image = cellType.backgroubImage
+        self.backgroundImage.image = cellType.backgroundImage
+        self.valueLabel.text = cellType.getValue(for: statistics)
     }
-    
-    func updateWeightMode() {
-        for cellType in MainInfoCellType.allCases {
-            if cellType == .weight {
-                self.descriptionLabel.text = cellType.description
-                               self.valueLabel.text = cellType.value
-            }
-        }
-    }
-    
-    func upDateHeightMode() {
-        for cellType in MainInfoCellType.allCases {
-            if cellType == .hight {
-                self.descriptionLabel.text = cellType.description
-                self.valueLabel.text = cellType.value
-            }
-        }
-    }
-    
-    
-    //MARK: - Private properties
+
+    //MARK: - Private methods
     private func setConstraints() {
         NSLayoutConstraint.activate([
             self.containerView.topAnchor.constraint(equalTo: self.topAnchor,

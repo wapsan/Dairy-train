@@ -1,6 +1,6 @@
 import UIKit
 
-enum MainInfoCellType: Int, CaseIterable {
+enum ProfileInfoCellType: Int, CaseIterable {
     case totalTrain
     case activityLevel
     case gender
@@ -32,9 +32,9 @@ enum MainInfoCellType: Int, CaseIterable {
         case .totalTrain:
             return String(trainingCount)
         case .activityLevel:
-            return userMainInfo.displayActivityLevel
+            return NSLocalizedString(userMainInfo.displayActivityLevel, comment: "")
         case .gender:
-            return userMainInfo.displayGender
+            return NSLocalizedString(userMainInfo.displayGender, comment: "")
         case .age:
             return userMainInfo.displayAge
         case .hight:

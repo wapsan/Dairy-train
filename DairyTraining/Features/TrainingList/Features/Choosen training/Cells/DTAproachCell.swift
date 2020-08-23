@@ -7,6 +7,7 @@ class DTAproachCell: UICollectionViewCell {
     
     //MARK: - Private properties
     private var aproach: AproachManagedObject?
+    var tapAction: ((_ weight: String, _ reps: String) -> Void)?
     
     //MARK: - GUI Properties
     private lazy var aproachNumberLabel: UILabel = {
@@ -36,10 +37,16 @@ class DTAproachCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var tapGesture: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.cellTapped))
+        return tap
+    }()
+    
     //MARK: - LayoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setGuiElements()
+        self.addGestureRecognizer(self.tapGesture)
     }
     
     //MARK: - Setter
@@ -49,16 +56,19 @@ class DTAproachCell: UICollectionViewCell {
         self.repsLabel.text = aproach.repsDisplayValue
         self.aproachNumberLabel.text = "№ \(aproach.number)"
     }
+}
+
+//MARK: - Private methods
+private extension DTAproachCell {
     
-    //MARK: - Private methods
-    private func setGuiElements() {
+    func setGuiElements() {
         self.addSubview(self.weightLabel)
         self.addSubview(self.repsLabel)
         self.addSubview(self.aproachNumberLabel)
         self.setUpConstraints()
     }
     
-    private func setUpConstraints() {
+    func setUpConstraints() {
         NSLayoutConstraint.activate([
             self.aproachNumberLabel.topAnchor.constraint(equalTo: self.topAnchor),
             self.aproachNumberLabel.leftAnchor.constraint(equalTo: self.leftAnchor),
@@ -83,5 +93,12 @@ class DTAproachCell: UICollectionViewCell {
             self.repsLabel.heightAnchor.constraint(equalTo: self.aproachNumberLabel.heightAnchor,
                                                    multiplier: 1.3)
         ])
+    }
+    
+    //MARK: - Actions
+    @objc  func cellTapped() {
+        guard let weight = self.weightLabel.text,
+            let reps = self.repsLabel.text else { return }
+        self.tapAction?(weight, reps)
     }
 }

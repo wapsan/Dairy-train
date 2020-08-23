@@ -6,12 +6,12 @@ protocol ProfileRouterOutputt: AnyObject {
     func showMenuController()
 }
 
-final class TestPR: Router {
+final class ProfileRouter: Router {
     
-    private weak var rootViewController: TestPVC?
+    private weak var rootViewController: ProfileViewController?
     
     init(_ viewController: UIViewController) {
-        self.rootViewController = viewController as? TestPVC
+        self.rootViewController = viewController as? ProfileViewController
     }
     
     private func configureLoginViewController() -> LoginViewController {
@@ -37,7 +37,8 @@ final class TestPR: Router {
     }
 }
 
-extension TestPR: ProfileRouterOutputt {
+//MARK: - ProfileRouterOutputt
+extension ProfileRouter: ProfileRouterOutputt {
     
     func presentLoginViewController() {
         let loginVC = self.configureLoginViewController()

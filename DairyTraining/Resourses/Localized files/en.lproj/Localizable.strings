@@ -94,6 +94,10 @@
 "Training was deleted" = "Training was deleted";
 "No training yet" = "No training yet";
 
+//MARK: Training view controller
+"Delete exercise from trainig?" = "Delete \"%@\" from trainig?";
+"Delete last aproach" = "Delte last aproach?";
+
 //MARK: - Main TabBarItemViewController
 "Activivties" = "Activivties";
 "Training" = "Training";
