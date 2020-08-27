@@ -47,8 +47,8 @@ extension ProfileRouter: ProfileRouterOutputt {
     }
     
     func pushViewControllerFromMenu(_ viewController: UIViewController) {
-          self.rootViewController?.navigationController?.pushViewController(viewController,
-                                                                                animated: true)
+        self.rootViewController?.navigationController?.pushViewController(viewController,
+                                                                          animated: true)
     }
     
     func showMenuController() {

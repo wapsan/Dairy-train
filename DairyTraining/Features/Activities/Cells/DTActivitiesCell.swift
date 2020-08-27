@@ -78,7 +78,6 @@ final class DTActivitiesCell: UITableViewCell {
         self.containerView.layer.cornerRadius = self.containerView.bounds.height / 4
         self.containerView.layer.borderWidth = 1
         self.containerView.layer.borderColor = DTColors.controllBorderColor.cgColor
-        
         super.layoutSubviews()
     }
     

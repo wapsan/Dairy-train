@@ -190,7 +190,6 @@ class DTNewAproachAlert: UIView {
         self.exrciseIndex = exerciceIndex
         self.setUpAlert()
         self.setTitle(for: aporachListCount)
-      //  self.setDefaultValueForTextFields()
         self.showKeyBoard()
         self.animateInAlert()
     }
@@ -292,7 +291,6 @@ private extension DTNewAproachAlert {
                         self.visualEffectView.alpha = 0
                         self.alertView.alpha = 0
                         self.alertView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-                       // self.valueTextField.resignFirstResponder()
         }) { [weak self] _ in
             guard let self = self else { return }
             self.setDefaultValueForTextFields()

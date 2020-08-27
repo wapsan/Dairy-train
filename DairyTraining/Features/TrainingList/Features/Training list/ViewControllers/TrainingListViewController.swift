@@ -144,8 +144,8 @@ class TrainingListViewController: DTBackgroundedViewController {
         self.setUpEmtyTrainingListLabelConstraints()
     }
     
-    private func configureTrainingViewController(for train: TrainingManagedObject) -> TestTrainingViewController {
-        let trainingViewController = TestTrainingViewController()
+    private func configureTrainingViewController(for train: TrainingManagedObject) -> TrainingViewController {
+        let trainingViewController = TrainingViewController()
         let trainingViewModel = TrainingViewModel()
         let trainingModel = TrainingModel(with: train)
         trainingViewController.viewModel = trainingViewModel

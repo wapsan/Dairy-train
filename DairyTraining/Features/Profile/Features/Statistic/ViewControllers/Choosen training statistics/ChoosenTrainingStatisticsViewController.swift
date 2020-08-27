@@ -34,6 +34,8 @@ final class ChoosenTrainingStatisticsViewController: MainTabBarItemVC {
         self.viewModel?.loadStatistics()
         self.navigationItem.title = self.viewModel?.statistic?.trainingDate
     }
+    
+    
 }
 
 //MARK: - Private extension

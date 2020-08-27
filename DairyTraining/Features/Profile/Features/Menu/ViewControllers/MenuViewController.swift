@@ -137,8 +137,6 @@ class MenuViewController: UIViewController {
         guard let title = sender.titleLabel?.text else { return }
         self.dismiss(animated: true, completion: { [weak self] in
             guard let self = self else { return }
-            
-            
             self.delegate?.pushSettingFlow(settingviewController: SettingsSectionViewController(with: title))
         })
     }

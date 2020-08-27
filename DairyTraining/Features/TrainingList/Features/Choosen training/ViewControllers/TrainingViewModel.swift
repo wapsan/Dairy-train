@@ -11,7 +11,7 @@ protocol TrainingViewModeInput: AnyObject {
 final class TrainingViewModel {
     
     var model: TrainingModelIteracting?
-    weak var view: TestTrainingViewControllerIteracting?
+    weak var view: TrainingViewControllerIteracting?
     
     var numberOfExercice: Int {
         self.exerciceList.count

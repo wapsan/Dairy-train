@@ -1,7 +1,7 @@
 import UIKit
 
 extension UIViewController {
-    
+
     func showDefaultAlert(title: String? = nil,
                           message: String? = nil,
                           preffedStyle: UIAlertController.Style = .alert,

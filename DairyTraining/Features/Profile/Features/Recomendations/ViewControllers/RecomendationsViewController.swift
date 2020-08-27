@@ -35,16 +35,24 @@ final class RecomendationsViewController: UIViewController {
         self.viewModel?.calculateRecomendation()
         self.setUpTableConstraints()
     }
-
+    
     //MARK: - Constraints
     private func setUpTableConstraints() {
-        let safeArea = self.view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            self.tableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
-            self.tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
-        ])
+        
+        //self.view.frame = UIScreen.main.bounds
+     //   let safeArea = self.view.safeAreaLayoutGuide
+          NSLayoutConstraint.activate([
+                    self.tableView.topAnchor.constraint(equalTo:  self.view.topAnchor),
+                    self.tableView.leftAnchor.constraint(equalTo:  self.view.leftAnchor),
+                    self.tableView.rightAnchor.constraint(equalTo:  self.view.rightAnchor),
+                    self.tableView.bottomAnchor.constraint(equalTo:  self.view.bottomAnchor)
+                ])
+//        NSLayoutConstraint.activate([
+//            self.tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+//            self.tableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+//            self.tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
+//            self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+//        ])
     }
 }
 

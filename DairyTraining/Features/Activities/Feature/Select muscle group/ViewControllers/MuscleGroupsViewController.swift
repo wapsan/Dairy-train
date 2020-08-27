@@ -8,12 +8,13 @@ protocol MuscleGroupsViewPresenter: AnyObject {
 class MuscleGroupsViewController: DTBackgroundedViewController {
     
     //MARK: - Private properties
-//    private lazy var muscleGroups = MuscleGroup().groups
-    
-    var viewModel: MuscleGroupsViewModel!
+    private var cellHeight: CGFloat {
+        return self.view.bounds.width / 3.5
+    }
     
     //MARK: - Properties
-    lazy var headerTittle = LocalizedString.selectMuscularGroup
+    var viewModel: MuscleGroupsViewModel?
+    var router: MuscleGroupsRouter?
     
     //MARK: - GUI Properties
     private(set) lazy var tableView: UITableView = {
@@ -29,7 +30,7 @@ class MuscleGroupsViewController: DTBackgroundedViewController {
     }()
     
     private lazy var headerView: DTHeaderView = {
-        let view = DTHeaderView(title: self.headerTittle)
+        let view = DTHeaderView(title: LocalizedString.selectMuscularGroup)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view 
     }()
@@ -38,15 +39,9 @@ class MuscleGroupsViewController: DTBackgroundedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpTableView()
-      //  self.setUpMainView()
     }
     
     //MARK: - Private methods
-    private func setUpMainView() {
-       // self.view.backgroundColor = .clear
-      //  self.setBackgroundImageTo(UIImage.activitiesBackGroundImage)
-    }
-    
     private func setUpTableView() {
         self.view.addSubview(self.tableView)
         self.view.addSubview(self.headerView)
@@ -77,40 +72,32 @@ class MuscleGroupsViewController: DTBackgroundedViewController {
 extension MuscleGroupsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.muscleGroups.count//muscleGroups.count
+        return self.viewModel?.muscleGroups.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
                                                  for: indexPath)
-        let choosenMuscularGroup = self.viewModel.getChoosenMuscularGroup(by: indexPath.row)//self.muscleGroups[indexPath.row]
-        (cell as? DTActivitiesCell)?.renderCellFor(choosenMuscularGroup) //setCellFor(choosenMuscularGroup)
+        if let choosenMuscularGroup = self.viewModel?.getChoosenMuscularGroup(by: indexPath.row) {
+            (cell as? DTActivitiesCell)?.renderCellFor(choosenMuscularGroup)
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height = self.view.bounds.width / 3.5
-        return height
+        return self.cellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel.selectRow(at: indexPath.row)
-//        let subgroupViewController = MuscleSubgroupsViewController()
-//        let muscleGroup = self.viewModel.getChoosenMuscularGroup(by: indexPath.row)//self.muscleGroups[indexPath.row]
-//        let muscleGropupList = MuscleSubgroup(for: muscleGroup).listOfSubgroups
-//        subgroupViewController.setMuscleSubgroupList(to: muscleGropupList)
-//        subgroupViewController.setNavigationTittle(to: muscleGroup.rawValue)
-//        self.navigationController?.pushViewController(subgroupViewController, animated: true)
+        self.viewModel?.selectRow(at: indexPath.row)
     }
 }
 
+//MARK: - MuscleGroupsViewPresenter
 extension MuscleGroupsViewController: MuscleGroupsViewPresenter {
     
     func pushSubgroupsViewController(with subgroups: [MuscleSubgroup.Subgroup],
                                      and groups: MuscleGroup.Group) {
-        let subgroupViewController = MuscleSubgroupsViewController()
-        subgroupViewController.setMuscleSubgroupList(to: subgroups)
-        subgroupViewController.setNavigationTittle(to: groups.rawValue)
-        self.navigationController?.pushViewController(subgroupViewController, animated: true)
+        self.router?.pushMuscleSubgroupsGroupViewController(with: subgroups, and: groups.name)
     }
 }

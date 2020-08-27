@@ -4,7 +4,7 @@ class SettingViewController: SettingsSectionViewController {
     
     //MARK: - Private properties
     private var settingInfo: SettingModel?
-    
+        
     //MARK: - Initialization
     init(with setting: SettingModel) {
         super.init(with: setting.title)

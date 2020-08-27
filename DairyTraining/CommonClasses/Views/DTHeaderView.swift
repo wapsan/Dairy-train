@@ -19,7 +19,7 @@ class DTHeaderView: UIView {
     }()
     
     //MARK: - Initialization
-    init(title: String) {
+    init(title: String? = nil) {
         super.init(frame: .zero)
         self.titleLabel.text = title
         self.initView()
@@ -34,6 +34,11 @@ class DTHeaderView: UIView {
         self.addSubview(self.titleLabel)
         self.addSubview(self.whiteLineUnderLabel)
         self.setUpConstraints()
+    }
+    
+    //MARK: - Setter
+    func setTitle(to title: String) {
+        self.titleLabel.text = title
     }
     
     //MARK: - Constraints

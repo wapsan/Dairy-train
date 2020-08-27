@@ -1,56 +1,98 @@
 import UIKit
 
-class MuscleSubgroupsViewController: MuscleGroupsViewController {
+final class MuscleSubgroupsViewController: UIViewController {
     
     //MARK: - Private properties
-    private lazy var listOfSubgroups: [MuscleSubgroup.Subgroup] = []
-    private lazy var navigationTittle: String = ""
-    
-    //MARK: - Public properties
-    override var headerTittle: String {
-        get {
-            return LocalizedString.selectMuscularSubgroup
-        }
-        set { }
+    private var cellHeight: CGFloat {
+        return self.view.bounds.width / 3.5
     }
+    
+    //MARK: - Properties
+    var viewModel: MuscleSubgropsViewModel?
+    var router: MuscleSubgropsRouter?
+    
+    //MARK: - GUI Properties
+    private(set) lazy var tableView: UITableView = {
+        let table = UITableView()
+        table.delegate = self
+        table.dataSource = self
+        table.register(DTActivitiesCell.self, forCellReuseIdentifier: DTActivitiesCell.cellID)
+        table.backgroundColor = .clear
+        table.separatorStyle = .none
+        table.showsVerticalScrollIndicator = false
+        table.translatesAutoresizingMaskIntoConstraints = false
+        return table
+    }()
+    
+    private lazy var headerView: DTHeaderView = {
+        let view = DTHeaderView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = self.navigationTittle
-    }
-    
-    //MARK: - Setters
-    func setNavigationTittle(to tittle: String) {
-        self.navigationTittle = NSLocalizedString(tittle, comment: "")
-    }
-    
-    func setMuscleSubgroupList(to list: [MuscleSubgroup.Subgroup] ) {
-        self.listOfSubgroups = list
+        self.setup()
     }
 }
 
-//MARK: - Table view delegate and data sourse
-extension MuscleSubgroupsViewController {
+//MARK: - Public extension
+private extension MuscleSubgroupsViewController {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listOfSubgroups.count
+    func setup() {
+        self.setUpTableView()
+        self.view.backgroundColor = DTColors.backgroundColor
+        self.title = self.viewModel?.groupTitle
+        self.headerView.setTitle(to: LocalizedString.selectMuscularSubgroup)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func setUpTableView() {
+        self.view.addSubview(self.tableView)
+        self.view.addSubview(self.headerView)
+        self.setTableConstraints()
+    }
+    
+    //MARK: - Constraint
+    func setTableConstraints() {
+        let safeArea = self.view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
+                                                constant: DTEdgeInsets.small.top),
+            self.tableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+            self.tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.headerView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+            self.headerView.rightAnchor.constraint(equalTo: safeArea.rightAnchor)
+        ])
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension MuscleSubgroupsViewController: UITableViewDelegate {
+    //FIXME: Make MVVM module for select exercise controller
+}
+
+//MARK: - UITableViewDataSource
+extension MuscleSubgroupsViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel?.subgroupList.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
                                                  for: indexPath)
-        let choosenMuscularSubgroups = self.listOfSubgroups[indexPath.row]
-        (cell as? DTActivitiesCell)?.renderCellFor(choosenMuscularSubgroups) //setCellFor(choosenMuscularSubgroups)
+        guard let subgroup = self.viewModel?.subgroupList[indexPath.row] else { return UITableViewCell() }
+        (cell as? DTActivitiesCell)?.renderCellFor(subgroup)
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let exerciceVC = ExercicesViewController()
-        let subGroup = self.listOfSubgroups[indexPath.row]
-        let exercicesList = ExersiceModel.init(for: subGroup).listOfExercices
-        exerciceVC.setExercicesList(to: exercicesList)
-        exerciceVC.setNavigationTittle(to: subGroup.rawValue)
-        self.navigationController?.pushViewController(exerciceVC, animated: true)
     }
 }

@@ -67,7 +67,9 @@ class MainTabBarViewController: UITabBarController {
     func configureMuscleVC() -> MuscleGroupsViewController {
         let muscleGroupsVC = MuscleGroupsViewController()
         let muscleGroupsViewMode = MuscleGroupsViewModel()
+        let muscleGroupsRouter = MuscleGroupsRouter(muscleGroupsVC)
         muscleGroupsVC.viewModel = muscleGroupsViewMode
+        muscleGroupsVC.router = muscleGroupsRouter
         muscleGroupsViewMode.viewPresenter = muscleGroupsVC
         return muscleGroupsVC
         

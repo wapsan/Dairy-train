@@ -7,14 +7,6 @@ class ExercicesViewController: MuscleGroupsViewController {
     private lazy var exercices: [Exercise] = []
     private lazy var selectedExercices: [Exercise] = []
     
-    //MARK: - Properties
-    override var headerTittle: String {
-        get {
-            return LocalizedString.selectExercises
-        }
-        set {}
-    }
-    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

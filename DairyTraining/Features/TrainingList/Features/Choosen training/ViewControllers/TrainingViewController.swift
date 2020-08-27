@@ -1,6 +1,6 @@
 import UIKit
 
-protocol TestTrainingViewControllerIteracting: AnyObject {
+protocol TrainingViewControllerIteracting: AnyObject {
     func showDeleteTrainingAlert(for trainigAtIndex: Int, with exerciseName: String)
     func updateTraining(with deletingExerciceIndex: Int)
     func hideAproachAlert()
@@ -10,7 +10,7 @@ protocol TestTrainingViewControllerIteracting: AnyObject {
     func aproachWasChanged(in exersiceIndex: Int, and aptoachIndex: Int)
 }
 
-final class TestTrainingViewController: UIViewController {
+final class TrainingViewController: UIViewController {
     
     //MARK: - Properties
     var viewModel: TrainingViewModel?
@@ -50,7 +50,7 @@ final class TestTrainingViewController: UIViewController {
 }
 
 //MARK: - Private extension
-private extension TestTrainingViewController {
+private extension TrainingViewController {
     
     func showDeletenigAproachAlert(forExerciceAt index: Int) {
         self.showDefaultAlert(message: LocalizedString.deleteLastAproach,
@@ -92,7 +92,7 @@ private extension TestTrainingViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension TestTrainingViewController: UITableViewDataSource {
+extension TrainingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.cellHeight
@@ -125,7 +125,7 @@ extension TestTrainingViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
-extension TestTrainingViewController: UITableViewDelegate {
+extension TrainingViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
@@ -146,7 +146,7 @@ extension TestTrainingViewController: UITableViewDelegate {
 }
 
 //MARK: - TestTrainingViewControllerIteracting
-extension TestTrainingViewController: TestTrainingViewControllerIteracting {
+extension TrainingViewController: TrainingViewControllerIteracting {
     
     func showChangeAproachAlert(in exerciseIndex: Int, with weight: Float, reps: Int, at aproachIndex: Int) {
         self.aproachAlert.present(on: self,
