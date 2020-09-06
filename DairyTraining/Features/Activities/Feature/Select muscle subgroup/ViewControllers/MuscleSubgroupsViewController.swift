@@ -10,7 +10,7 @@ final class MuscleSubgroupsViewController: UIViewController {
     //MARK: - Properties
     var viewModel: MuscleSubgropsViewModel?
     var router: MuscleSubgropsRouter?
-    
+    var some: String?
     //MARK: - GUI Properties
     private(set) lazy var tableView: UITableView = {
         let table = UITableView()
