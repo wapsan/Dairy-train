@@ -1,19 +1,18 @@
 import UIKit
 
-protocol MuscleSubgroupsViewPresenter: AnyObject {
-    func pushExerciseList(with exerciseList: [Exercise], and subgroupTitle: String)
+protocol ExerciseListViewPresenter: AnyObject {
+    func updateAddButton(isActive: Bool)
 }
 
-final class MuscleSubgroupsViewController: UIViewController {
+final class ExerciseListViewControllerNew: UIViewController {
+    
+    //MARK: - Module propertie
+    var viewModel: ExerciseListViewModel?
     
     //MARK: - Private properties
-    private var cellHeight: CGFloat {
-        return self.view.bounds.width / 3.5
-    }
-    
-    //MARK: - Properties
-    var viewModel: MuscleSubgropsViewModel?
-    var router: MuscleSubgropsRouter?
+     private var cellHeight: CGFloat {
+         return self.view.bounds.width / 3.5
+     }
     
     //MARK: - GUI Properties
     private(set) lazy var tableView: UITableView = {
@@ -25,6 +24,7 @@ final class MuscleSubgroupsViewController: UIViewController {
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
         table.translatesAutoresizingMaskIntoConstraints = false
+        table.allowsMultipleSelection = true
         return table
     }()
     
@@ -42,12 +42,12 @@ final class MuscleSubgroupsViewController: UIViewController {
 }
 
 //MARK: - Public extension
-private extension MuscleSubgroupsViewController {
+private extension ExerciseListViewControllerNew {
     
     func setup() {
         self.setUpTableView()
         self.view.backgroundColor = DTColors.backgroundColor
-        self.title = self.viewModel?.groupTitle
+        self.title = self.viewModel?.subgroupTitle
         self.headerView.setTitle(to: LocalizedString.selectMuscularSubgroup)
     }
     
@@ -57,7 +57,14 @@ private extension MuscleSubgroupsViewController {
         self.setTableConstraints()
     }
     
-    //MARK: - Constraint
+    func setAddExercicesButton(to active: Bool) {
+        let addButoon = UIBarButtonItem(barButtonSystemItem: .add,
+                                        target: self,
+                                        action: #selector(self.addExercicesButtonTouched))
+        self.navigationItem.rightBarButtonItem = active ? addButoon : nil
+    }
+    
+    //MARK: - Constraints
     func setTableConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
@@ -74,40 +81,54 @@ private extension MuscleSubgroupsViewController {
             self.headerView.rightAnchor.constraint(equalTo: safeArea.rightAnchor)
         ])
     }
-}
-
-//MARK: - UITableViewDelegate
-extension MuscleSubgroupsViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel?.selectRow(at: indexPath.row)
+    //MARK: - Actions
+    @objc private func addExercicesButtonTouched() {
+       //FIXME: Finish with bussines logic of thiw module
     }
 }
 
 //MARK: - UITableViewDataSource
-extension MuscleSubgroupsViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.cellHeight
-    }
+extension ExerciseListViewControllerNew: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel?.subgroupList.count ?? 0
+        return self.viewModel?.exerciseList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
                                                  for: indexPath)
-        guard let subgroup = self.viewModel?.subgroupList[indexPath.row] else { return UITableViewCell() }
-        (cell as? DTActivitiesCell)?.renderCellFor(subgroup)
+        guard let exercise = self.viewModel?.exerciseList[indexPath.row] else { return UITableViewCell() }
+        (cell as? DTActivitiesCell)?.renderCellFor(exercise)
         return cell
     }
 }
 
-//MARK: - MuscleSubgroupsViewPresenter
-extension MuscleSubgroupsViewController: MuscleSubgroupsViewPresenter {
+//MARK: - UITableViewDelegate
+extension ExerciseListViewControllerNew: UITableViewDelegate {
     
-    func pushExerciseList(with exerciseList: [Exercise], and subgroupTitle: String) {
-        self.router?.pushExerciseListViewController(with: exerciseList, and: subgroupTitle)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.viewModel?.exerciseWasSelected(at: indexPath.row)
+        if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
+            cell.setSelectedBackgroundColor()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        self.viewModel?.exerciseWasDeselect(at: indexPath.row)
+        if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
+            cell.setUnselectedBackgroundColor()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.cellHeight
+    }
+}
+
+extension ExerciseListViewControllerNew: ExerciseListViewPresenter {
+    
+    func updateAddButton(isActive: Bool) {
+        self.setAddExercicesButton(to: !isActive)
     }
 }

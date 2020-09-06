@@ -26,6 +26,7 @@ private extension MuscleGroupsRouter {
         let subgroupListViewController = MuscleSubgroupsViewController()
         let subgroupListViewModel = MuscleSubgropsViewModel(with: subgroup, and: groupTitle)
         let subgroupListRouter = MuscleSubgropsRouter(subgroupListViewController)
+        subgroupListViewModel.view = subgroupListViewController
         subgroupListViewController.viewModel = subgroupListViewModel
         subgroupListViewController.router = subgroupListRouter
         return subgroupListViewController

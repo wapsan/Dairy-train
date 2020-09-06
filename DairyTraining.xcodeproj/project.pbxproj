@@ -10,6 +10,9 @@
 		1306E01524CF293B003AEBA7 /* UIViewController + Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306E01424CF293B003AEBA7 /* UIViewController + Ex.swift */; };
 		1306E01724CF3DAB003AEBA7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306E01624CF3DAB003AEBA7 /* LoginViewModel.swift */; };
 		1306E01924CF3DC1003AEBA7 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306E01824CF3DC1003AEBA7 /* LoginModel.swift */; };
+		1307F0D82505412B00949B97 /* ExerciseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1307F0D72505412B00949B97 /* ExerciseListViewModel.swift */; };
+		1307F0DA2505414400949B97 /* ExerciseListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1307F0D92505414400949B97 /* ExerciseListModel.swift */; };
+		1307F0DC250544A600949B97 /* ExerciseListViewControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1307F0DB250544A600949B97 /* ExerciseListViewControllerNew.swift */; };
 		13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13151D4924715C9D002C15AA /* UIColor+Ex.swift */; };
 		131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131733722490E08600292D84 /* DTExerciseCell+Ex.swift */; };
 		131B670F24DB1DFD0029C456 /* RecomendationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131B670E24DB1DFD0029C456 /* RecomendationViewModel.swift */; };
@@ -116,7 +119,7 @@
 		13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9B8247AB03D008EE212 /* ExerciseModel.swift */; };
 		13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BA247AB0FC008EE212 /* Exercise.swift */; };
 		13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BC247AB145008EE212 /* MuscleGroupModel.swift */; };
-		13EDD9BF247AB9A4008EE212 /* ExerciseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BE247AB9A4008EE212 /* ExerciseVC.swift */; };
+		13EDD9BF247AB9A4008EE212 /* ExerciseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BE247AB9A4008EE212 /* ExerciseListViewController.swift */; };
 		13FAF17A246FCAA600537408 /* CaloriesCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FAF179246FCAA600537408 /* CaloriesCalculator.swift */; };
 		13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */; };
 		13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */; };
@@ -127,6 +130,9 @@
 		1306E01424CF293B003AEBA7 /* UIViewController + Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ex.swift"; sourceTree = "<group>"; };
 		1306E01624CF3DAB003AEBA7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1306E01824CF3DC1003AEBA7 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		1307F0D72505412B00949B97 /* ExerciseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListViewModel.swift; sourceTree = "<group>"; };
+		1307F0D92505414400949B97 /* ExerciseListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListModel.swift; sourceTree = "<group>"; };
+		1307F0DB250544A600949B97 /* ExerciseListViewControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListViewControllerNew.swift; sourceTree = "<group>"; };
 		13151D4924715C9D002C15AA /* UIColor+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ex.swift"; sourceTree = "<group>"; };
 		131733722490E08600292D84 /* DTExerciseCell+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTExerciseCell+Ex.swift"; sourceTree = "<group>"; };
 		131B670E24DB1DFD0029C456 /* RecomendationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationViewModel.swift; sourceTree = "<group>"; };
@@ -237,7 +243,7 @@
 		13EDD9B8247AB03D008EE212 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		13EDD9BA247AB0FC008EE212 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		13EDD9BC247AB145008EE212 /* MuscleGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupModel.swift; sourceTree = "<group>"; };
-		13EDD9BE247AB9A4008EE212 /* ExerciseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseVC.swift; sourceTree = "<group>"; };
+		13EDD9BE247AB9A4008EE212 /* ExerciseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListViewController.swift; sourceTree = "<group>"; };
 		13FAF179246FCAA600537408 /* CaloriesCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculator.swift; sourceTree = "<group>"; };
 		13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCodableModel.swift; sourceTree = "<group>"; };
 		13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCodableModel.swift; sourceTree = "<group>"; };
@@ -478,7 +484,10 @@
 		132125DB2494DC3100FDCDB4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				13EDD9BE247AB9A4008EE212 /* ExerciseVC.swift */,
+				13EDD9BE247AB9A4008EE212 /* ExerciseListViewController.swift */,
+				1307F0DB250544A600949B97 /* ExerciseListViewControllerNew.swift */,
+				1307F0D72505412B00949B97 /* ExerciseListViewModel.swift */,
+				1307F0D92505414400949B97 /* ExerciseListModel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1296,13 +1305,16 @@
 				13A8CA3F24B6312E00624AA3 /* CALayer+Ex.swift in Sources */,
 				1388FFE124E0081000E9FD2C /* DTStatisticInfoCell.swift in Sources */,
 				139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */,
+				1307F0DC250544A600949B97 /* ExerciseListViewControllerNew.swift in Sources */,
 				13B1E7D524BDD22A00EE84E2 /* DTAlertSelectionButton.swift in Sources */,
 				13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */,
 				133705BE24D17B3100E023CC /* MuscleGroupsViewModel.swift in Sources */,
+				1307F0DA2505414400949B97 /* ExerciseListModel.swift in Sources */,
 				135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */,
 				13344E5324B3619500BE3D65 /* DTBackgroundedViewController.swift in Sources */,
 				139FE9D3247838EF00B22C40 /* DTActivitiesCell.swift in Sources */,
-				13EDD9BF247AB9A4008EE212 /* ExerciseVC.swift in Sources */,
+				13EDD9BF247AB9A4008EE212 /* ExerciseListViewController.swift in Sources */,
+				1307F0D82505412B00949B97 /* ExerciseListViewModel.swift in Sources */,
 				13C0EEE824A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift in Sources */,
 				1396F6022484216B0012A76A /* LoginViewController.swift in Sources */,
 				138BDB78248665330033F378 /* DTTextField.swift in Sources */,

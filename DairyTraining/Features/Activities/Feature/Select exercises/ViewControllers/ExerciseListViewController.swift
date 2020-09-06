@@ -1,6 +1,7 @@
 import UIKit
 
-class ExercicesViewController: MuscleGroupsViewController {
+final class ExercicesListViewControllerOld: MuscleGroupsViewController {
+    
     
     //MARK: - Private properties
     private lazy var navigationTittle = ""
@@ -98,7 +99,7 @@ class ExercicesViewController: MuscleGroupsViewController {
 }
 
 //MARK: - UITableView methods
-extension ExercicesViewController {
+extension ExercicesListViewControllerOld {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercices.count
@@ -113,6 +114,8 @@ extension ExercicesViewController {
     }
   
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
         if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
             cell.setSelectedBackgroundColor()
         }
