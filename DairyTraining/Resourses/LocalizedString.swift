@@ -60,7 +60,7 @@ struct LocalizedString {
     static let selectMuscularSubgroup = NSLocalizedString("Select muscular subgroup", comment: "")
     static let selectExercises = NSLocalizedString("Select exercises", comment: "")
     static let alertAddThisExercisesToTrain = NSLocalizedString("Add this exercice to train?", comment: "")
-    static let exercisesAdded = NSLocalizedString("Add this exercice to train?", comment: "")
+    static let exercisesAdded = NSLocalizedString("Exercises added!", comment: "")
     
     //MARK: - Setting
     static let colorTheme = NSLocalizedString("Color theme", comment: "")

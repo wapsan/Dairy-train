@@ -2,8 +2,10 @@ import Foundation
 
 final class ExerciseListViewModel {
     
+    //MARK: - Module properties
     var model: ExerciseListModelIterator?
     weak var view: ExerciseListViewPresenter?
+    
     //MARK: - Properties
     private(set) var exerciseList: [Exercise]
     private(set) var subgroupTitle: String
@@ -24,10 +26,18 @@ final class ExerciseListViewModel {
         let deselectedExercise = exerciseList[index]
         self.model?.removeChossenExerciseFromList(deselectedExercise)
     }
+    
+    func writeExerciseToTraining() {
+        self.model?.writeExerciseToTraining()
+    }
 }
 
 //MARK: - ExerciseListModelOutput
 extension ExerciseListViewModel: ExerciseListModelOutput {
+    
+    func exerciseWasAddedToTraining() {
+        self.view?.apdateUIAfterExerciseAdding()
+    }
     
     func updateExerciseForDeltingListInfo(isEmty: Bool) {
         self.view?.updateAddButton(isActive: isEmty)

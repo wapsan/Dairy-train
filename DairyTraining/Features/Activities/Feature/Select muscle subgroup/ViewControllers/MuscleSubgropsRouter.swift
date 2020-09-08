@@ -19,8 +19,8 @@ final class MuscleSubgropsRouter: Router {
 private extension MuscleSubgropsRouter {
     
     func configureExerciseListViewController(with exerciseList: [Exercise],
-                                             and subgroupTitle: String) -> ExerciseListViewControllerNew {
-        let exerciseListViewController = ExerciseListViewControllerNew()
+                                             and subgroupTitle: String) -> ExerciseListViewController {
+        let exerciseListViewController = ExerciseListViewController()
         let exerciseViewModel = ExerciseListViewModel(with: exerciseList,
                                                       and: subgroupTitle)
         let exerciseListModel = ExerciseListModel()

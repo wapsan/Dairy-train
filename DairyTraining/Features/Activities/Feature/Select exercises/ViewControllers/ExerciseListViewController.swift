@@ -1,95 +1,124 @@
 import UIKit
 
-final class ExercicesListViewControllerOld: MuscleGroupsViewController {
+protocol ExerciseListViewPresenter: AnyObject {
+    func updateAddButton(isActive: Bool)
+    func apdateUIAfterExerciseAdding()
+}
+
+final class ExerciseListViewController: UIViewController {
     
+    //MARK: - Module propertie
+    var viewModel: ExerciseListViewModel?
     
     //MARK: - Private properties
-    private lazy var navigationTittle = ""
-    private lazy var exercices: [Exercise] = []
-    private lazy var selectedExercices: [Exercise] = []
+     private var cellHeight: CGFloat {
+         return self.view.bounds.width / 3.5
+     }
+    
+    //MARK: - GUI Properties
+    private(set) lazy var tableView: UITableView = {
+        let table = UITableView()
+        table.delegate = self
+        table.dataSource = self
+        table.register(DTActivitiesCell.self,
+                       forCellReuseIdentifier: DTActivitiesCell.cellID)
+        table.backgroundColor = .clear
+        table.separatorStyle = .none
+        table.showsVerticalScrollIndicator = false
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.allowsMultipleSelection = true
+        return table
+    }()
+    
+    private lazy var headerView: DTHeaderView = {
+        let view = DTHeaderView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setAddExercicesButton()
-        self.setUpNavigationItem()
+        self.setup()
+    }
+}
+
+//MARK: - Public extension
+private extension ExerciseListViewController {
+    
+    func setup() {
         self.setUpTableView()
+        self.view.backgroundColor = DTColors.backgroundColor
+        self.title = self.viewModel?.subgroupTitle
+        self.headerView.setTitle(to: LocalizedString.selectMuscularSubgroup)
     }
     
-    //MARK: - Private methods
-    private func setAddExercicesButton() {
+    func setUpTableView() {
+        self.view.addSubview(self.tableView)
+        self.view.addSubview(self.headerView)
+        self.setTableConstraints()
+    }
+    
+    func setAddExercicesButton(isActive: Bool) {
         let addButoon = UIBarButtonItem(barButtonSystemItem: .add,
                                         target: self,
                                         action: #selector(self.addExercicesButtonTouched))
-        self.navigationItem.rightBarButtonItem = self.selectedExercices.isEmpty ? nil : addButoon
+        self.navigationItem.rightBarButtonItem = isActive ? addButoon : nil
     }
     
-    private func setUpNavigationItem() {
-        self.navigationItem.title = NSLocalizedString(self.navigationTittle, comment: "") 
+    //MARK: - Constraints
+    func setTableConstraints() {
+        let safeArea = self.view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
+                                                constant: DTEdgeInsets.small.top),
+            self.tableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+            self.tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.headerView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+            self.headerView.rightAnchor.constraint(equalTo: safeArea.rightAnchor)
+        ])
     }
     
-    private func setUpTableView() {
-        self.tableView.allowsMultipleSelection = true
-    }
-    
-    private func deselectAllRows() {
+    func deselectAllRows() {
         guard let indexPaths = self.tableView.indexPathsForSelectedRows else { return }
         for indexPath in indexPaths {
             if let cell = self.tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
                 cell.setUnselectedBackgroundColor()
             }
         }
-        self.selectedExercices.removeAll()
-        self.tableView.reloadData()
     }
     
-    private func addExercicesComplition() {
-        if CoreDataManager.shared.addExercisesToTrain(self.selectedExercices) {
-            NotificationCenter.default.post(
-                name: .trainingListWasChanged,
-                object: nil,
-                userInfo: ["Trains": CoreDataManager.shared.fetchTrainingList()] )
-        } else {
-            NotificationCenter.default.post(
-                name: .trainingWasChanged,
-                object: nil,
-                userInfo: ["Train": CoreDataManager.shared.fetchTrainingList()[0]])
-        }
-        self.showAddedAllert()
+    func showAddExerciceAllert() {
+        AlertHelper.shared.showDefaultAlert(
+            on: self,
+            title: nil,
+            message: LocalizedString.alertAddThisExercisesToTrain,
+            cancelTitle: LocalizedString.cancel,
+            okTitle: LocalizedString.ok,
+            style: .alert,
+            completion: { [weak self] in
+                self?.addExerciseAlertCompletion()
+            })
     }
     
-    private func showAddExerciceAllert() {
-        AlertHelper.shared.showDefaultAlert(on: self,
-                                            title: nil,
-                                            message: LocalizedString.alertAddThisExercisesToTrain,
-                                            cancelTitle: LocalizedString.cancel,
-                                            okTitle: LocalizedString.ok,
-                                            style: .alert,
-                                            completion: { [weak self] in
-                                                guard let self = self else { return }
-                                                self.addExercicesComplition() })
+    func addExerciseAlertCompletion() {
+        self.viewModel?.writeExerciseToTraining()
     }
     
-    private func showAddedAllert() {
-        AlertHelper.shared.showDefaultAlert(on: self,
-                                            title: nil,
-                                            message: LocalizedString.exercisesAdded,
-                                            cancelTitle: nil,
-                                            okTitle: LocalizedString.ok,
-                                            style: .alert,
-                                            completion: { [weak self] in
-                                                guard let self = self else { return }
-                                                self.deselectAllRows()
-                                                self.setAddExercicesButton() })
-    }
-    
-    //MARK: - Publick methods
-    func setNavigationTittle(to tittle: String) {
-        self.navigationTittle = tittle
-    }
-    
-    func setExercicesList(to list: [Exercise]) {
-        self.exercices = list
+    func showExerciseWasAddedAlert() {
+        AlertHelper.shared.showDefaultAlert(
+            on: self,
+            title: nil,
+            message: LocalizedString.exercisesAdded,
+            cancelTitle: nil,
+            okTitle: LocalizedString.ok,
+            style: .alert,
+            completion: nil)
     }
     
     //MARK: - Actions
@@ -98,39 +127,54 @@ final class ExercicesListViewControllerOld: MuscleGroupsViewController {
     }
 }
 
-//MARK: - UITableView methods
-extension ExercicesListViewControllerOld {
+//MARK: - UITableViewDataSource
+extension ExerciseListViewController: UITableViewDataSource {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exercices.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel?.exerciseList.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
                                                  for: indexPath)
-        let exercise = self.exercices[indexPath.row]
-        (cell as? DTActivitiesCell)?.renderCellFor(exercise)//setCellFor(exercise)
+        guard let exercise = self.viewModel?.exerciseList[indexPath.row] else { return UITableViewCell() }
+        (cell as? DTActivitiesCell)?.renderCellFor(exercise)
         return cell
     }
-  
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
+}
+
+//MARK: - UITableViewDelegate
+extension ExerciseListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.viewModel?.exerciseWasSelected(at: indexPath.row)
         if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
             cell.setSelectedBackgroundColor()
         }
-        let exercice = exercices[indexPath.row]
-        self.selectedExercices.append(exercice)
-        self.setAddExercicesButton()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        self.viewModel?.exerciseWasDeselect(at: indexPath.row)
         if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
             cell.setUnselectedBackgroundColor()
         }
-        self.selectedExercices = self.selectedExercices.filter { (exercice) -> Bool in
-            self.exercices[indexPath.row].name != exercice.name
-        }
-        self.setAddExercicesButton()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.cellHeight
+    }
+}
+
+//MARK: - ExerciseListViewPresenter
+extension ExerciseListViewController: ExerciseListViewPresenter {
+    
+    func apdateUIAfterExerciseAdding() {
+        self.deselectAllRows()
+        self.setAddExercicesButton(isActive: false)
+        self.showExerciseWasAddedAlert()
+    }
+    
+    func updateAddButton(isActive: Bool) {
+        self.setAddExercicesButton(isActive: !isActive)
     }
 }
