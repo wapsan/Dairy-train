@@ -4,7 +4,7 @@ final class DTActivitiesCell: UITableViewCell {
     
     //MARK: - Static cellID
     static let cellID: String = "DTActivitiesCell"
-
+    
     //MARK: - GUI Properties
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -64,7 +64,7 @@ final class DTActivitiesCell: UITableViewCell {
         self.exerciceNameLabel.text = NSLocalizedString(groupable.name, comment: "")
         self.muscleGroupImage.image = groupable.image
     }
-
+    
     func setUnselectedBackgroundColor() {
         self.containerView.backgroundColor = DTColors.controllUnselectedColor
     }

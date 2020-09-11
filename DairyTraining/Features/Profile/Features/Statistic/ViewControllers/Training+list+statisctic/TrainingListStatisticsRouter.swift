@@ -3,18 +3,18 @@ import UIKit
 final class TrainingListStatisticsRouter: Router {
     
     //MARK: - Properties
-    private weak var rootViewController: TrainingListStatisticsViewController?
+   // private weak var rootViewController: TrainingListStatisticsViewController?
     
     //MARK: - Initialization
     init(_ viewController: UIViewController) {
-        self.rootViewController = viewController as? TrainingListStatisticsViewController
+      //  self.rootViewController = viewController as? TrainingListStatisticsViewController
     }
     
     //MARK: - Public methods
     func pushTrainingStatisticsViewController(for train: TrainingManagedObject) {
         let chooseTrainingStatistics = self.configureTVSModule(for: train)//self.configureTrainingStatisticsViewController(for: train)
-        self.rootViewController?.navigationController?.pushViewController(chooseTrainingStatistics,
-                                                                          animated: true)
+      //  self.rootViewController?.navigationController?.pushViewController(chooseTrainingStatistics,
+      //                                                                    animated: true)
     }
 }
 

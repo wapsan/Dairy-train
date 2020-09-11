@@ -144,15 +144,15 @@ class MenuViewController: UIViewController {
     @objc private func statisticsButtonPressed() {
         self.dismiss(animated: true, completion: { [weak self] in
             guard let self = self else { return }
-            let trainingListStatisticsVC = TrainingListStatisticsViewController()
-            let trainingListStatisticsViewModel = TrainingListStatisticsViewModel()
-            let trainingListStatisticsModel = TrainingListStatisticsModel()
-            let trainingListStatisticsRouter = TrainingListStatisticsRouter(trainingListStatisticsVC)
-            trainingListStatisticsVC.router = trainingListStatisticsRouter
-            trainingListStatisticsVC.viewModel = trainingListStatisticsViewModel
-            trainingListStatisticsViewModel.model = trainingListStatisticsModel
-            trainingListStatisticsModel.output = trainingListStatisticsViewModel
-            self.delegate?.pushStatisticsFlow(statisticsViewController: trainingListStatisticsVC)
+//        /    let trainingListStatisticsVC = TrainingListStatisticsViewController()
+//            let trainingListStatisticsViewModel = TrainingListStatisticsViewModel()
+//            let trainingListStatisticsModel = TrainingListStatisticsModel()
+//            let trainingListStatisticsRouter = TrainingListStatisticsRouter(trainingListStatisticsVC)
+//            trainingListStatisticsVC.router = trainingListStatisticsRouter
+//            trainingListStatisticsVC.viewModel = trainingListStatisticsViewModel
+//            trainingListStatisticsViewModel.model = trainingListStatisticsModel
+//            trainingListStatisticsModel.output = trainingListStatisticsViewModel
+//            self.delegate?.pushStatisticsFlow(statisticsViewController: trainingListStatisticsVC)
         })
     }
     

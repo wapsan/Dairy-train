@@ -27,7 +27,7 @@ class MainTabBarViewController: UITabBarController {
         self.setUpTabBarViewControllers()
         self.setUpTabBarItems()
         self.setUpSelectedTabBarItem()
-        self.addObserverForAddingExerciceToTrain()
+      //  self.addObserverForAddingExerciceToTrain()
         self.setUpSwipes()
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
@@ -38,12 +38,12 @@ class MainTabBarViewController: UITabBarController {
         self.view.addGestureRecognizer(self.rightSwipe)
     }
     
-    private func addObserverForAddingExerciceToTrain() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.exerciceDidAdd),
-                                               name: .trainingListWasChanged,
-                                               object: nil)
-    }
+//    private func addObserverForAddingExerciceToTrain() {
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(self.exerciceDidAdd),
+//                                               name: .trainingListWasChanged,
+//                                               object: nil)
+//    }
     
     private func setUpSelectedTabBarItem() {
         self.selectedIndex = self.profileViewControllerIndex
@@ -88,10 +88,23 @@ class MainTabBarViewController: UITabBarController {
         return testPVC
     }
     
+    func configureTrainigListViewController() -> TrainingListViewController {
+        let trainingListVC = TrainingListViewController()
+        let trainingListVM = TrainingListViewModel()
+        let trainingListM = TrainingListModel()
+        let trainingListR = TrainingListRouter(trainingListVC)
+        trainingListVC.viewModel = trainingListVM
+        trainingListVM.router = trainingListR
+        trainingListVM.view = trainingListVC
+        trainingListVM.model = trainingListM
+        trainingListM.output = trainingListVM
+        return trainingListVC
+    }
+    
     private func setUpTabBarViewControllers() {
         let profileViewController = self.configureTestPVC()//TestPVC()//self.configureProfileVC() //ProfileViewController()
         let activitiesViewController = self.configureMuscleVC()//MuscleGroupsViewController()
-        let trainingListViewController = TrainingListViewController()
+        let trainingListViewController = self.configureTrainigListViewController()//TrainingListViewController()
         
         profileViewController.tabBarItem = DTTabBarItems.profile.item
         activitiesViewController.tabBarItem = DTTabBarItems.activivties.item
@@ -101,6 +114,8 @@ class MainTabBarViewController: UITabBarController {
                                 trainingListViewController,
                                 profileViewController]
             .map({ UINavigationController(rootViewController: $0) })
+        
+        
     }
     
     private func setUpTabBarItems() {
@@ -126,6 +141,8 @@ class MainTabBarViewController: UITabBarController {
         //self.navigationController?.navigationBar.layer.shadowRadius = 4.0
         self.tabBar.layer.shadowOpacity = 1.0
         self.tabBar.layer.masksToBounds = false
+        
+    
         
       //  self.setTabBarSeparationLine()
     }
@@ -168,12 +185,12 @@ class MainTabBarViewController: UITabBarController {
         }
     }
     
-    @objc private func exerciceDidAdd(_ notification: NSNotification) {
-        guard let userInfo = (notification as NSNotification).userInfo else { return }
-        guard let trains = userInfo["Trains"] as? [TrainingManagedObject] else { return }
-        let trainigsViewController = TrainingListViewController()
-        trainigsViewController.setFor(trains)
-    }
+//    @objc private func exerciceDidAdd(_ notification: NSNotification) {
+//        guard let userInfo = (notification as NSNotification).userInfo else { return }
+//        guard let trains = userInfo["Trains"] as? [TrainingManagedObject] else { return }
+//        let trainigsViewController = TrainingListViewController()
+//        trainigsViewController.setFor(trains)
+//    }
 }
 
 //MARK: - UITabBarControllerDelegate
