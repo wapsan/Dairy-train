@@ -268,6 +268,10 @@ class CoreDataManager {
     
     func removeExercise(_ exercise: ExerciseManagedObject, from train: TrainingManagedObject) {
         train.removeFromExercises(exercise)
+        if train.exercicesArray.isEmpty {
+            self.removeChoosenTrainings([train])
+            NotificationCenter.default.post(name: .trainingListWasChanged, object: nil)
+        }
         self.updateTrainInfoContext()
     }
     

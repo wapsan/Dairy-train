@@ -8,6 +8,7 @@ protocol TrainingViewControllerIteracting: AnyObject {
     func addAproach(inExerciseAt index: Int)
     func showChangeAproachAlert(in exerciseIndex: Int, with weight: Float, reps: Int, at aproachIndex: Int)
     func aproachWasChanged(in exersiceIndex: Int, and aptoachIndex: Int)
+    func trainingWasChanged()
 }
 
 final class TrainingViewController: UIViewController {
@@ -148,6 +149,14 @@ extension TrainingViewController: UITableViewDelegate {
 //MARK: - TestTrainingViewControllerIteracting
 extension TrainingViewController: TrainingViewControllerIteracting {
     
+    func allExercisesWasDeleted() {
+     //  self.navigationController?.popViewController(animated: true)
+    }
+    
+    func trainingWasChanged() {
+        self.tableView.reloadData()
+    }
+    
     func showChangeAproachAlert(in exerciseIndex: Int, with weight: Float, reps: Int, at aproachIndex: Int) {
         self.aproachAlert.present(on: self,
                                      for: aproachIndex,
@@ -195,6 +204,8 @@ extension TrainingViewController: TrainingViewControllerIteracting {
     
     func updateTraining(with deletingExerciceIndex: Int) {
         let indexPath = IndexPath(row: deletingExerciceIndex, section: 0)
+        self.tableView.beginUpdates()
         self.tableView.deleteRows(at: [indexPath], with: .fade)
+        self.tableView.endUpdates()
     }
 }

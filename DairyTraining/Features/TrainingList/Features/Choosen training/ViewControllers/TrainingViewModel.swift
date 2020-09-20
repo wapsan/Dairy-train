@@ -12,6 +12,7 @@ final class TrainingViewModel {
     
     var model: TrainingModelIteracting?
     weak var view: TrainingViewControllerIteracting?
+    var router: TrainingRouter?
     
     var numberOfExercice: Int {
         self.exerciceList.count
@@ -22,6 +23,15 @@ final class TrainingViewModel {
 
 //MARK: - TrainingModelOutput
 extension TrainingViewModel: TrainingModelOutput {
+    
+    func trainingIsEmpty() {
+        self.router?.rootViewController?.navigationController?.popViewController(animated: true)
+    }
+    
+    func trainingWasChange() {
+        self.view?.trainingWasChanged()
+    }
+    
     
     func aproachWillChange(in exerciseIndex: Int, with weight: Float, and reps: Int, at aproachIndex: Int) {
     self.view?.showChangeAproachAlert(in: exerciseIndex, with: weight, reps: reps, at: aproachIndex)

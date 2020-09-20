@@ -18,6 +18,7 @@
 		131B670F24DB1DFD0029C456 /* RecomendationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131B670E24DB1DFD0029C456 /* RecomendationViewModel.swift */; };
 		131B671124DB1E1C0029C456 /* RecomendationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131B671024DB1E1C0029C456 /* RecomendationModel.swift */; };
 		131B9F9D24ADF2AC004FE9AD /* DTSynhronizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */; };
+		131D307A25175874000AC70B /* TrainingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131D307925175874000AC70B /* TrainingRouter.swift */; };
 		13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A3D247E4A6300AB7419 /* DTTrainCell.swift */; };
 		13243A41247E768B00AB7419 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A40247E768B00AB7419 /* DateHelper.swift */; };
 		132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132D958B2485809B006E5A41 /* AppAuthentication.swift */; };
@@ -140,6 +141,7 @@
 		131B670E24DB1DFD0029C456 /* RecomendationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationViewModel.swift; sourceTree = "<group>"; };
 		131B671024DB1E1C0029C456 /* RecomendationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationModel.swift; sourceTree = "<group>"; };
 		131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSynhronizeCell.swift; sourceTree = "<group>"; };
+		131D307925175874000AC70B /* TrainingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingRouter.swift; sourceTree = "<group>"; };
 		13243A3D247E4A6300AB7419 /* DTTrainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainCell.swift; sourceTree = "<group>"; };
 		13243A40247E768B00AB7419 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		132D958B2485809B006E5A41 /* AppAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthentication.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				13D5D57824E19D36003C82F1 /* TrainingViewController.swift */,
 				13D5D57424E19AE3003C82F1 /* TrainingViewModel.swift */,
 				13D5D57624E19AFD003C82F1 /* TrainingModel.swift */,
+				131D307925175874000AC70B /* TrainingRouter.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1302,6 +1305,7 @@
 				13C89D22247046D2008AEF18 /* DTRecomendationHeaderView.swift in Sources */,
 				133705BC24D14D1400E023CC /* DTActivityIndicator.swift in Sources */,
 				133A7BE224AE13D900409D3F /* AproachCodableModel.swift in Sources */,
+				131D307A25175874000AC70B /* TrainingRouter.swift in Sources */,
 				13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */,
 				13EB98FD247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift in Sources */,
 				1346FAC62507F0AA00734215 /* TrainingListViewModel.swift in Sources */,

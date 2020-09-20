@@ -27,12 +27,12 @@ extension ExerciseListModel: ExerciseListModelIterator {
             NotificationCenter.default.post(
                 name: .trainingListWasChanged,
                 object: nil,
-                userInfo: ["Trains": CoreDataManager.shared.fetchTrainingList()] )
+                userInfo: nil )
         } else {
             NotificationCenter.default.post(
                 name: .trainingWasChanged,
                 object: nil,
-                userInfo: ["Train": CoreDataManager.shared.fetchTrainingList()[0]])
+                userInfo: nil)
         }
         self.exerciseListForAddingToTraining.removeAll()
         self.output?.exerciseWasAddedToTraining()

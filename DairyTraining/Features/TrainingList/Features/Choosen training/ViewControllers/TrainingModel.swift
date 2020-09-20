@@ -23,6 +23,8 @@ protocol TrainingModelOutput: AnyObject {
                            weight: Float,
                            reps: Int,
                            in exerciseList: [ExerciseManagedObject])
+    func trainingWasChange()
+    func trainingIsEmpty()
 }
 
 final class TrainingModel {
@@ -34,6 +36,24 @@ final class TrainingModel {
     init(with train: TrainingManagedObject) {
         self.training = train
         self.exerciceList = train.exercicesArray
+        self.registerObserverForTrainingChanging()
+    }
+    
+    private func registerObserverForTrainingChanging() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.trainingWasChanged),
+                                               name: .trainingWasChanged,
+                                               object: nil)
+    }
+    
+    @objc private func trainingWasChanged() {
+        
+        
+        guard let training = CoreDataManager.shared.fetchTrainingList().first else { return }
+        self.exerciceList = training.exercicesArray
+        self.output?.setExerciceList(for: self.exerciceList)
+        self.output?.trainingWasChange()
+       
     }
 }
 
@@ -66,6 +86,9 @@ extension TrainingModel: TrainingModelIteracting {
         let exercise = self.exerciceList[index]
         CoreDataManager.shared.removeExercise(exercise, from: self.training)
         self.exerciceList.remove(at: index)
+        if self.exerciceList.isEmpty {
+            self.output?.trainingIsEmpty()
+        }
         self.output?.setExerciceList(for: self.exerciceList)
         self.output?.exerciceWasDeleted(at: index)
     }
