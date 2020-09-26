@@ -19,6 +19,8 @@
 		131B671124DB1E1C0029C456 /* RecomendationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131B671024DB1E1C0029C456 /* RecomendationModel.swift */; };
 		131B9F9D24ADF2AC004FE9AD /* DTSynhronizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */; };
 		131D307A25175874000AC70B /* TrainingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131D307925175874000AC70B /* TrainingRouter.swift */; };
+		131D307C25175D02000AC70B /* DTMainAddExerciseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131D307B25175D02000AC70B /* DTMainAddExerciseButton.swift */; };
+		131D3081251BBA83000AC70B /* DTAddExerciseSupportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131D3080251BBA83000AC70B /* DTAddExerciseSupportButton.swift */; };
 		13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A3D247E4A6300AB7419 /* DTTrainCell.swift */; };
 		13243A41247E768B00AB7419 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243A40247E768B00AB7419 /* DateHelper.swift */; };
 		132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132D958B2485809B006E5A41 /* AppAuthentication.swift */; };
@@ -142,6 +144,8 @@
 		131B671024DB1E1C0029C456 /* RecomendationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationModel.swift; sourceTree = "<group>"; };
 		131B9F9C24ADF2AC004FE9AD /* DTSynhronizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSynhronizeCell.swift; sourceTree = "<group>"; };
 		131D307925175874000AC70B /* TrainingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingRouter.swift; sourceTree = "<group>"; };
+		131D307B25175D02000AC70B /* DTMainAddExerciseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMainAddExerciseButton.swift; sourceTree = "<group>"; };
+		131D3080251BBA83000AC70B /* DTAddExerciseSupportButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAddExerciseSupportButton.swift; sourceTree = "<group>"; };
 		13243A3D247E4A6300AB7419 /* DTTrainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainCell.swift; sourceTree = "<group>"; };
 		13243A40247E768B00AB7419 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		132D958B2485809B006E5A41 /* AppAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthentication.swift; sourceTree = "<group>"; };
@@ -372,6 +376,15 @@
 				132125D32494DADB00FDCDB4 /* ViewControllers */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		131D307F251BBA24000AC70B /* AddExerciseButtons */ = {
+			isa = PBXGroup;
+			children = (
+				131D307B25175D02000AC70B /* DTMainAddExerciseButton.swift */,
+				131D3080251BBA83000AC70B /* DTAddExerciseSupportButton.swift */,
+			);
+			path = AddExerciseButtons;
 			sourceTree = "<group>";
 		};
 		132125CD2494D9C600FDCDB4 /* Features */ = {
@@ -854,6 +867,7 @@
 		139FE9DE24785A3E00B22C40 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				131D307F251BBA24000AC70B /* AddExerciseButtons */,
 				13416FA12485345100EC6590 /* GoogleSignInButton.swift */,
 				13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */,
 				1396F5FD2483BE480012A76A /* DTSystemButton.swift */,
@@ -1243,6 +1257,7 @@
 				1384BB4524DEEE7A0084705B /* DTMainInfoCell.swift in Sources */,
 				139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */,
 				136F3FFE2498D0DE00C6944B /* UserMainInfo.xcdatamodeld in Sources */,
+				131D3081251BBA83000AC70B /* DTAddExerciseSupportButton.swift in Sources */,
 				134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */,
 				131B671124DB1E1C0029C456 /* RecomendationModel.swift in Sources */,
 				13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */,
@@ -1292,6 +1307,7 @@
 				136F400D2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift in Sources */,
 				13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */,
 				1388FFE924E050D800E9FD2C /* DTTrainedSubGroupCell.swift in Sources */,
+				131D307C25175D02000AC70B /* DTMainAddExerciseButton.swift in Sources */,
 				13FAF17A246FCAA600537408 /* CaloriesCalculator.swift in Sources */,
 				1335CBB02465AC03009C2E20 /* DTStyledTextField.swift in Sources */,
 				13786E1D2478271C0084E48C /* NotificationName+Ex.swift in Sources */,

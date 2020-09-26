@@ -14,6 +14,7 @@ final class TrainingListViewController: MainTabBarItemVC {
     //MARK: - Private properties
     private lazy var editButtonTitle: String = LocalizedString.edit
     private lazy var doneButtonTitle: String = LocalizedString.done
+    private var previousContentOffset: CGFloat = 0
     private var itemSize: CGSize {
         let itemWidth = self.collectionView.bounds.width / 2
         let itemHeight = itemWidth * 1.3
@@ -77,11 +78,41 @@ final class TrainingListViewController: MainTabBarItemVC {
         return editingButton
     }()
     
+    private lazy var addExerciseButton: DTMainAddExerciseButton = {
+        let addButton = DTMainAddExerciseButton(frame: .zero)
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        return addButton
+    }()
+    
+    private lazy var addExerciseFromPaternsButton: DTAddExerciseSupportButton = {
+        let addButton = DTAddExerciseSupportButton(type: .exercoseList)
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        return addButton
+    }()
+    
+    private lazy var addExerciseFromListButton: DTAddExerciseSupportButton = {
+        let addButton = DTAddExerciseSupportButton(type: .pattern)
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        return addButton
+    }()
+    
+    private lazy var backView: UIView = {
+        let view = UIView()
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(self.backViewAction))
+        view.addGestureRecognizer(tap)
+        view.alpha = 0
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpViewController()
         self.setUpEditingButton()
+        self.setUpAddExerciseButton()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -94,6 +125,69 @@ final class TrainingListViewController: MainTabBarItemVC {
 
 //MARK: - Private extension
 private extension TrainingListViewController {
+    
+    func setUpAddExerciseButton() {
+        addExerciseButton.openAction = { isOpen in
+            switch isOpen {
+            case true:
+                UIView.animate(withDuration: 0.25, animations: {
+                    
+                    self.backView.alpha = 0
+                }, completion: { _ in self.backView.isHidden = true })
+                self.addExerciseFromListButton.close()
+                self.addExerciseFromPaternsButton.close()
+            case false:
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.backView.alpha = 1
+                    self.backView.isHidden = false
+                }, completion: {_ in} )
+                self.addExerciseFromListButton.open()
+                self.addExerciseFromPaternsButton.open()
+            }
+        }
+        self.backView.isHidden = true
+        self.view.addSubview(self.backView)
+        self.view.addSubview(self.addExerciseFromPaternsButton)
+        self.view.addSubview(self.addExerciseFromListButton)
+        self.view.addSubview(self.addExerciseButton)
+        NSLayoutConstraint.activate([
+            self.backView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.backView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            self.backView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            self.backView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.addExerciseButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor,
+                                                          constant: -32),
+            self.addExerciseButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
+                                                           constant: -32),
+            self.addExerciseButton.widthAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                          multiplier: 1/7),
+            self.addExerciseButton.heightAnchor.constraint(equalTo: self.addExerciseButton.widthAnchor,
+                                                           multiplier: 1)
+        ])
+        NSLayoutConstraint.activate([
+            self.addExerciseFromPaternsButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor,
+                                                                     constant: -32),
+            self.addExerciseFromPaternsButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
+                                                                      constant: -32),
+            self.addExerciseFromPaternsButton.widthAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                                     multiplier: 1/7),
+            self.addExerciseFromPaternsButton.heightAnchor.constraint(equalTo: self.addExerciseButton.widthAnchor,
+                                                                      multiplier: 1)
+        ])
+        NSLayoutConstraint.activate([
+            self.addExerciseFromListButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor,
+                                                                  constant: -32),
+            self.addExerciseFromListButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
+                                                                   constant: -32),
+            self.addExerciseFromListButton.widthAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                                  multiplier: 1/7),
+            self.addExerciseFromListButton.heightAnchor.constraint(equalTo: self.addExerciseButton.widthAnchor,
+                                                                   multiplier: 1)
+        ])
+    }
     
     func setUpEditingButton() {
         self.navigationItem.leftBarButtonItem = self.editTrainListButton
@@ -226,6 +320,10 @@ private extension TrainingListViewController {
     }
     
     //MARK: - Actions
+    @objc func backViewAction() {
+        self.addExerciseButton.tapAction()
+    }
+    
     @objc  func editingButtonPressed(_ sender: UIBarButtonItem) {
         if self.isEditing {
             self.deselectSelectedItem()
@@ -243,6 +341,19 @@ private extension TrainingListViewController {
 
 //MARK: - CollectionView Extension
 extension TrainingListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.addExerciseFromListButton.alpha = 0
+        self.addExerciseFromPaternsButton.alpha = 0
+        UIView.animate(withDuration: 0.25, animations:{
+            self.addExerciseButton.alpha = 0
+        })
+        if scrollView.contentOffset.y <= 0 {
+            self.addExerciseFromListButton.alpha = 1
+            self.addExerciseFromPaternsButton.alpha = 1
+            self.addExerciseButton.alpha = 1
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel?.trainingCount ?? 0

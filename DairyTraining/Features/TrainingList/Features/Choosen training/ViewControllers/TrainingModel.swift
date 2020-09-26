@@ -47,13 +47,10 @@ final class TrainingModel {
     }
     
     @objc private func trainingWasChanged() {
-        
-        
         guard let training = CoreDataManager.shared.fetchTrainingList().first else { return }
         self.exerciceList = training.exercicesArray
         self.output?.setExerciceList(for: self.exerciceList)
         self.output?.trainingWasChange()
-       
     }
 }
 
