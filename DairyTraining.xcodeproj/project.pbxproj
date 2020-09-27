@@ -52,8 +52,14 @@
 		135B8815248132360032251D /* DTAproachCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B8814248132360032251D /* DTAproachCell.swift */; };
 		135BF56424DDAAB000E1E120 /* DTValueAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135BF56324DDAAB000E1E120 /* DTValueAlert.swift */; };
 		135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F22892494296F00EEE140 /* StatisticsModel.swift */; };
+		1361BE3F2520D97600578DB4 /* MainNutritionVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1361BE3D2520D97600578DB4 /* MainNutritionVIewController.swift */; };
+		1361BE402520D97600578DB4 /* MainNutritionVIewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1361BE3E2520D97600578DB4 /* MainNutritionVIewController.xib */; };
 		136570D12491259C00BF926B /* TrainingListStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136570D02491259C00BF926B /* TrainingListStatisticsViewController.swift */; };
 		1366942624B7273E00F58422 /* DTGradientLayerMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1366942524B7273E00F58422 /* DTGradientLayerMaker.swift */; };
+		136989C22520DF650039B306 /* TrainingPaternsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136989C02520DF650039B306 /* TrainingPaternsViewController.swift */; };
+		136989C32520DF650039B306 /* TrainingPaternsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136989C12520DF650039B306 /* TrainingPaternsViewController.xib */; };
+		136989CB2520E3450039B306 /* TrainingPaternManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136989C92520E3450039B306 /* TrainingPaternManagedObject+CoreDataClass.swift */; };
+		136989CC2520E3450039B306 /* TrainingPaternManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136989CA2520E3450039B306 /* TrainingPaternManagedObject+CoreDataProperties.swift */; };
 		136F3FF92498CF0400C6944B /* AppDelegate+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F3FF82498CF0400C6944B /* AppDelegate+Ex.swift */; };
 		136F3FFE2498D0DE00C6944B /* UserMainInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 136F3FFC2498D0DE00C6944B /* UserMainInfo.xcdatamodeld */; };
 		136F40092498D44B00C6944B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F40082498D44B00C6944B /* CoreDataManager.swift */; };
@@ -179,13 +185,19 @@
 		135B8814248132360032251D /* DTAproachCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAproachCell.swift; sourceTree = "<group>"; };
 		135BF56324DDAAB000E1E120 /* DTValueAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTValueAlert.swift; sourceTree = "<group>"; };
 		135F22892494296F00EEE140 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
+		1361BE3D2520D97600578DB4 /* MainNutritionVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNutritionVIewController.swift; sourceTree = "<group>"; };
+		1361BE3E2520D97600578DB4 /* MainNutritionVIewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNutritionVIewController.xib; sourceTree = "<group>"; };
 		136570D02491259C00BF926B /* TrainingListStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListStatisticsViewController.swift; sourceTree = "<group>"; };
 		1366942524B7273E00F58422 /* DTGradientLayerMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTGradientLayerMaker.swift; sourceTree = "<group>"; };
+		136989C02520DF650039B306 /* TrainingPaternsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPaternsViewController.swift; sourceTree = "<group>"; };
+		136989C12520DF650039B306 /* TrainingPaternsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingPaternsViewController.xib; sourceTree = "<group>"; };
+		136989C92520E3450039B306 /* TrainingPaternManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainingPaternManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		136989CA2520E3450039B306 /* TrainingPaternManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainingPaternManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		136F3FF82498CF0400C6944B /* AppDelegate+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Ex.swift"; sourceTree = "<group>"; };
 		136F3FFD2498D0DE00C6944B /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
 		136F40082498D44B00C6944B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		136F400A2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MainInfoManagedObject+CoreDataClass.swift"; path = "DairyTraining/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		136F400B2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MainInfoManagedObject+CoreDataProperties.swift"; path = "DairyTraining/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		136F400A2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MainInfoManagedObject+CoreDataClass.swift"; path = "DairyTraining/Services/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		136F400B2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MainInfoManagedObject+CoreDataProperties.swift"; path = "DairyTraining/Services/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		13786E1C2478271C0084E48C /* NotificationName+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Ex.swift"; sourceTree = "<group>"; };
 		1379800824733AEB00BAD87C /* SettingsSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionViewController.swift; sourceTree = "<group>"; };
 		137D55B524897B6300EFBAB6 /* DTSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSettingManager.swift; sourceTree = "<group>"; };
@@ -274,31 +286,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		130634442494DE76008C1ECF /* Features */ = {
-			isa = PBXGroup;
-			children = (
-				130634452494DE80008C1ECF /* Training list */,
-				130634462494DEA9008C1ECF /* Choosen training */,
-			);
-			path = Features;
-			sourceTree = "<group>";
-		};
-		130634452494DE80008C1ECF /* Training list */ = {
+		130634452494DE80008C1ECF /* Training+List */ = {
 			isa = PBXGroup;
 			children = (
 				130634472494DEE0008C1ECF /* ViewControllers */,
 				130634492494DF8D008C1ECF /* Cells */,
 			);
-			path = "Training list";
+			path = "Training+List";
 			sourceTree = "<group>";
 		};
-		130634462494DEA9008C1ECF /* Choosen training */ = {
+		130634462494DEA9008C1ECF /* Training */ = {
 			isa = PBXGroup;
 			children = (
 				1306344A2494DFC5008C1ECF /* Cells */,
 				130634482494DEEB008C1ECF /* ViewControllers */,
 			);
-			path = "Choosen training";
+			path = Training;
 			sourceTree = "<group>";
 		};
 		130634472494DEE0008C1ECF /* ViewControllers */ = {
@@ -353,7 +356,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		131107C7246582C30023A29A /* CommonClasses */ = {
+		131107C7246582C30023A29A /* Common+UI */ = {
 			isa = PBXGroup;
 			children = (
 				132FC7BC24B7CD2F00A70F7E /* EdgeInsets */,
@@ -364,7 +367,7 @@
 				139FE9DF24785A5300B22C40 /* TextFields */,
 				139FE9DE24785A3E00B22C40 /* Buttons */,
 			);
-			path = CommonClasses;
+			path = "Common+UI";
 			sourceTree = "<group>";
 		};
 		13151D4B247169D9002C15AA /* Setting */ = {
@@ -450,68 +453,34 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		132125D52494DBB000FDCDB4 /* Feature */ = {
-			isa = PBXGroup;
-			children = (
-				132125D62494DBC500FDCDB4 /* Select muscle group */,
-				132125D82494DBE400FDCDB4 /* Select muscle subgroup */,
-				132125DA2494DC0F00FDCDB4 /* Select exercises */,
-			);
-			path = Feature;
-			sourceTree = "<group>";
-		};
 		132125D62494DBC500FDCDB4 /* Select muscle group */ = {
-			isa = PBXGroup;
-			children = (
-				132125D72494DBD600FDCDB4 /* ViewControllers */,
-			);
-			path = "Select muscle group";
-			sourceTree = "<group>";
-		};
-		132125D72494DBD600FDCDB4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */,
 				133705BD24D17B3100E023CC /* MuscleGroupsViewModel.swift */,
 				1343576F24F829CE00BB3EE6 /* MuscleGroupsRouter.swift */,
 			);
-			path = ViewControllers;
+			path = "Select muscle group";
 			sourceTree = "<group>";
 		};
 		132125D82494DBE400FDCDB4 /* Select muscle subgroup */ = {
-			isa = PBXGroup;
-			children = (
-				132125D92494DBF700FDCDB4 /* ViewControllers */,
-			);
-			path = "Select muscle subgroup";
-			sourceTree = "<group>";
-		};
-		132125D92494DBF700FDCDB4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				13EB98FC247D54B300DE9CD9 /* MuscleSubgroupsViewController.swift */,
 				1343577124F82ADC00BB3EE6 /* MuscleSubgropsViewModel.swift */,
 				1343577324F82CD700BB3EE6 /* MuscleSubgropsRouter.swift */,
 			);
-			path = ViewControllers;
+			path = "Select muscle subgroup";
 			sourceTree = "<group>";
 		};
 		132125DA2494DC0F00FDCDB4 /* Select exercises */ = {
-			isa = PBXGroup;
-			children = (
-				132125DB2494DC3100FDCDB4 /* ViewControllers */,
-			);
-			path = "Select exercises";
-			sourceTree = "<group>";
-		};
-		132125DB2494DC3100FDCDB4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				1307F0DB250544A600949B97 /* ExerciseListViewController.swift */,
 				1307F0D72505412B00949B97 /* ExerciseListViewModel.swift */,
 				1307F0D92505414400949B97 /* ExerciseListModel.swift */,
 			);
-			path = ViewControllers;
+			path = "Select exercises";
 			sourceTree = "<group>";
 		};
 		132125DC2494DC4F00FDCDB4 /* Cells */ = {
@@ -571,12 +540,11 @@
 			isa = PBXGroup;
 			children = (
 				136F3FFA2498D07D00C6944B /* AppDelegate */,
-				136F401024990D4000C6944B /* Features */,
-				13F1158C249E168700B6B7D8 /* Firebase */,
-				131107C7246582C30023A29A /* CommonClasses */,
+				1361BE3B2520D6BF00578DB4 /* Services */,
 				139D530B2473DF560028AE6A /* Helpers */,
+				136F401024990D4000C6944B /* UI */,
+				131107C7246582C30023A29A /* Common+UI */,
 				1386AA1E246C15260016A757 /* Default Models */,
-				136F3FFB2498D0BB00C6944B /* CoreData */,
 				131107C1246581FC0023A29A /* Extensions */,
 				136F400E24990D0C00C6944B /* Resourses */,
 				136F400F24990D2100C6944B /* Configurations */,
@@ -613,6 +581,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1361BE3B2520D6BF00578DB4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				136F3FFB2498D0BB00C6944B /* CoreData */,
+				13F1158C249E168700B6B7D8 /* Firebase */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1361BE3C2520D7C600578DB4 /* Nutrition+Module */ = {
+			isa = PBXGroup;
+			children = (
+				1361BE3D2520D97600578DB4 /* MainNutritionVIewController.swift */,
+				1361BE3E2520D97600578DB4 /* MainNutritionVIewController.xib */,
+			);
+			path = "Nutrition+Module";
+			sourceTree = "<group>";
+		};
 		136570CF2491253E00BF926B /* Statistic */ = {
 			isa = PBXGroup;
 			children = (
@@ -629,6 +615,24 @@
 				1366942524B7273E00F58422 /* DTGradientLayerMaker.swift */,
 			);
 			path = "Gradient maker";
+			sourceTree = "<group>";
+		};
+		136989BF2520DEFB0039B306 /* Add+FromTrainingPaterns */ = {
+			isa = PBXGroup;
+			children = (
+				136989C02520DF650039B306 /* TrainingPaternsViewController.swift */,
+				136989C12520DF650039B306 /* TrainingPaternsViewController.xib */,
+			);
+			path = "Add+FromTrainingPaterns";
+			sourceTree = "<group>";
+		};
+		136989C42520E2DC0039B306 /* TrainingPatern+Entity */ = {
+			isa = PBXGroup;
+			children = (
+				136989C92520E3450039B306 /* TrainingPaternManagedObject+CoreDataClass.swift */,
+				136989CA2520E3450039B306 /* TrainingPaternManagedObject+CoreDataProperties.swift */,
+			);
+			path = "TrainingPatern+Entity";
 			sourceTree = "<group>";
 		};
 		136F3FFA2498D07D00C6944B /* AppDelegate */ = {
@@ -680,6 +684,7 @@
 		136F40022498D1A100C6944B /* TrainingListEntity */ = {
 			isa = PBXGroup;
 			children = (
+				136989C42520E2DC0039B306 /* TrainingPatern+Entity */,
 				13C0EEE024A52E7D00F55C54 /* Aproach entity */,
 				13C0EEDF24A52E6C00F55C54 /* Exercice entity */,
 				13C0EEDE24A52E5700F55C54 /* Training entity */,
@@ -715,15 +720,15 @@
 			path = Configurations;
 			sourceTree = "<group>";
 		};
-		136F401024990D4000C6944B /* Features */ = {
+		136F401024990D4000C6944B /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				13BA17A32461A49600DF5D7D /* StartApp */,
-				13BA179F2461A45200DF5D7D /* Profile */,
-				13BA17A02461A45D00DF5D7D /* Activities */,
-				13BA17A22461A47700DF5D7D /* TrainingList */,
+				13BA179F2461A45200DF5D7D /* Profile+Module */,
+				13BA17A22461A47700DF5D7D /* Training+Module */,
+				1361BE3C2520D7C600578DB4 /* Nutrition+Module */,
 			);
-			path = Features;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		1384BB4124DEEBCF0084705B /* Profile view controller */ = {
@@ -920,7 +925,7 @@
 			path = "Localized files";
 			sourceTree = "<group>";
 		};
-		13BA179F2461A45200DF5D7D /* Profile */ = {
+		13BA179F2461A45200DF5D7D /* Profile+Module */ = {
 			isa = PBXGroup;
 			children = (
 				1384BB4124DEEBCF0084705B /* Profile view controller */,
@@ -928,30 +933,36 @@
 				1388FFEB24E05E9700E9FD2C /* Model */,
 				132125CD2494D9C600FDCDB4 /* Features */,
 			);
-			path = Profile;
+			path = "Profile+Module";
 			sourceTree = "<group>";
 		};
-		13BA17A02461A45D00DF5D7D /* Activities */ = {
+		13BA17A02461A45D00DF5D7D /* Add+FromExerciseList */ = {
 			isa = PBXGroup;
 			children = (
-				132125D52494DBB000FDCDB4 /* Feature */,
+				132125D62494DBC500FDCDB4 /* Select muscle group */,
+				132125D82494DBE400FDCDB4 /* Select muscle subgroup */,
+				132125DA2494DC0F00FDCDB4 /* Select exercises */,
 				132125DC2494DC4F00FDCDB4 /* Cells */,
 			);
-			path = Activities;
+			path = "Add+FromExerciseList";
 			sourceTree = "<group>";
 		};
-		13BA17A22461A47700DF5D7D /* TrainingList */ = {
+		13BA17A22461A47700DF5D7D /* Training+Module */ = {
 			isa = PBXGroup;
 			children = (
-				130634442494DE76008C1ECF /* Features */,
+				130634452494DE80008C1ECF /* Training+List */,
+				130634462494DEA9008C1ECF /* Training */,
+				13BA17A02461A45D00DF5D7D /* Add+FromExerciseList */,
+				136989BF2520DEFB0039B306 /* Add+FromTrainingPaterns */,
 			);
-			path = TrainingList;
+			path = "Training+Module";
 			sourceTree = "<group>";
 		};
 		13BA17A32461A49600DF5D7D /* StartApp */ = {
 			isa = PBXGroup;
 			children = (
-				13F11584249E15B900B6B7D8 /* Features */,
+				13F11588249E160200B6B7D8 /* LogIn */,
+				13F11585249E15C800B6B7D8 /* SplashScreen */,
 			);
 			path = StartApp;
 			sourceTree = "<group>";
@@ -1011,15 +1022,6 @@
 				13D1929324DC1E150045ACF9 /* TrainingListStatisticsRouter.swift */,
 			);
 			path = "Training+list+statisctic";
-			sourceTree = "<group>";
-		};
-		13F11584249E15B900B6B7D8 /* Features */ = {
-			isa = PBXGroup;
-			children = (
-				13F11588249E160200B6B7D8 /* LogIn */,
-				13F11585249E15C800B6B7D8 /* SplashScreen */,
-			);
-			path = Features;
 			sourceTree = "<group>";
 		};
 		13F11585249E15C800B6B7D8 /* SplashScreen */ = {
@@ -1172,6 +1174,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				136989C32520DF650039B306 /* TrainingPaternsViewController.xib in Resources */,
+				1361BE402520D97600578DB4 /* MainNutritionVIewController.xib in Resources */,
 				13AF79482486D3A100F2F7F7 /* GoogleService-Info.plist in Resources */,
 				13B1E7D024BDADE800EE84E2 /* Localizable.strings in Resources */,
 				133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */,
@@ -1245,6 +1249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				136989CB2520E3450039B306 /* TrainingPaternManagedObject+CoreDataClass.swift in Sources */,
 				1343577424F82CD700BB3EE6 /* MuscleSubgropsRouter.swift in Sources */,
 				132FC7B924B79DCD00A70F7E /* DTEdgeInsets.swift in Sources */,
 				134DF5B524B4E50D007A7B8A /* ColorSetting.swift in Sources */,
@@ -1273,6 +1278,7 @@
 				1393EDFD24A634B600EBD938 /* TrainingManagedObject+CoreDataProperties.swift in Sources */,
 				13D1929424DC1E150045ACF9 /* TrainingListStatisticsRouter.swift in Sources */,
 				133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */,
+				1361BE3F2520D97600578DB4 /* MainNutritionVIewController.swift in Sources */,
 				13C0EEEC24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift in Sources */,
 				13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */,
 				1379800924733AEB00BAD87C /* SettingsSectionViewController.swift in Sources */,
@@ -1327,6 +1333,7 @@
 				1346FAC62507F0AA00734215 /* TrainingListViewModel.swift in Sources */,
 				135B8815248132360032251D /* DTAproachCell.swift in Sources */,
 				13C0EEEB24A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift in Sources */,
+				136989C22520DF650039B306 /* TrainingPaternsViewController.swift in Sources */,
 				1384BB4924DEF7E60084705B /* ProfileViewModel.swift in Sources */,
 				139D688624A223B70094E498 /* DTMenuButton.swift in Sources */,
 				134403412499123F00D21284 /* LocalizedString.swift in Sources */,
@@ -1352,6 +1359,7 @@
 				13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */,
 				1341D7A324D32900000A43A6 /* DTColors.swift in Sources */,
 				1366942624B7273E00F58422 /* DTGradientLayerMaker.swift in Sources */,
+				136989CC2520E3450039B306 /* TrainingPaternManagedObject+CoreDataProperties.swift in Sources */,
 				1343577024F829CE00BB3EE6 /* MuscleGroupsRouter.swift in Sources */,
 				132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */,
 				13D5D57524E19AE3003C82F1 /* TrainingViewModel.swift in Sources */,

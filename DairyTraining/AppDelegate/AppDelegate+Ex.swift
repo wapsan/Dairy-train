@@ -6,6 +6,7 @@ extension AppDelegate {
     func initStartViewController() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         guard let window = self.window else { return }
+        window.backgroundColor = DTColors.backgroundColor
         let navigationController = UINavigationController(rootViewController: DTSplashScreenViewController())
         if let userToken = DTSettingManager.shared.getUserToken() {
             print("User token - \(userToken).")
