@@ -14,6 +14,7 @@ final class MuscleSubgroupsViewController: UIViewController {
     //MARK: - Properties
     var viewModel: MuscleSubgropsViewModel?
     var router: MuscleSubgropsRouter?
+    private var trainingEntityTarget: TrainingEntityTarget
     
     //MARK: - GUI Properties
     private(set) lazy var tableView: UITableView = {
@@ -42,6 +43,16 @@ final class MuscleSubgroupsViewController: UIViewController {
             self.extendedLayoutIncludesOpaqueBars = true
             self.setTabBarHidden(true, animated: true, duration: 0.25)
         
+    }
+    
+    //MARK: - Initialization
+    init(trainingEntityTarget: TrainingEntityTarget) {
+        self.trainingEntityTarget = trainingEntityTarget
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -112,6 +123,8 @@ extension MuscleSubgroupsViewController: UITableViewDataSource {
 extension MuscleSubgroupsViewController: MuscleSubgroupsViewPresenter {
     
     func pushExerciseList(with exerciseList: [Exercise], and subgroupTitle: String) {
-        self.router?.pushExerciseListViewController(with: exerciseList, and: subgroupTitle)
+        self.router?.pushExerciseListViewController(with: exerciseList,
+                                                    and: subgroupTitle,
+                                                    target: trainingEntityTarget)
     }
 }

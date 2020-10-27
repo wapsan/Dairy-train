@@ -9,7 +9,7 @@
 
 import Foundation
 import CoreData
-
+import RxDataSources
 
 extension TrainingPaternManagedObject {
 
@@ -17,8 +17,20 @@ extension TrainingPaternManagedObject {
         return NSFetchRequest<TrainingPaternManagedObject>(entityName: "TrainingPatern")
     }
 
+    @NSManaged public var date: Date
     @NSManaged public var name: String
     @NSManaged public var exercises: NSSet?
+    
+    
+    var exerciseArray: [ExerciseManagedObject] {
+          get {
+              let exerciseSet = self.exercises as? Set<ExerciseManagedObject> ?? []
+            return exerciseSet.sorted(by: { $0.id < $1.id })
+          }
+          set {
+              self.exercises = NSSet(array: newValue)
+          }
+      }
 
 }
 
@@ -37,4 +49,14 @@ extension TrainingPaternManagedObject {
     @objc(removeExercises:)
     @NSManaged public func removeFromExercises(_ values: NSSet)
 
+}
+
+extension TrainingPaternManagedObject: IdentifiableType {
+    public typealias Identity = String
+    
+    public var identity: String {
+        return name
+    }
+    
+    
 }

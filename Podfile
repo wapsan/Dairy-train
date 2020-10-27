@@ -8,5 +8,9 @@ target 'Dairy Training' do
 pod 'Firebase/Auth'
 pod 'GoogleSignIn'
 pod 'Firebase/Database'
+pod 'RxSwift', '5.0'
+pod 'RxCocoa', '5.0'
+pod 'RxDataSources', '~> 4.0'
+
   # Pods for DairyTrain2.0
 end

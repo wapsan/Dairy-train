@@ -24,12 +24,12 @@ final class TrainingListViewModel {
 //MARK: - TrainingListViewModelIteracting
 extension TrainingListViewModel: TrainingListViewModelIteracting {
     
-    func goToTrainingPaterns() {
-        self.router?.pushTrainingPaternsViewController()
-    }
-    
     func goToMuscularList() {
         self.router?.pushExerciseListViewController()
+    }
+
+    func goToTrainingPaterns() {
+        self.router?.pushTrainingPaternsViewController()
     }
     
     func goToTraining(at index: Int) {

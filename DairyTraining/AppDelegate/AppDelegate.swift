@@ -9,7 +9,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DTSettingManager.shared.activateDefaultSetting()
         AppAuthentication.shared.initAuth()
-        self.initStartViewController()
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.makeKeyAndVisible()
+        self.window?.backgroundColor = DTColors.backgroundColor
+        MainCoordinator.shared.window = self.window
+        MainCoordinator.shared.coordinate(to: MainCoordinator.Target.splashScreen)
         UINavigationBar.appearance().tintColor = .white
         return true
     }

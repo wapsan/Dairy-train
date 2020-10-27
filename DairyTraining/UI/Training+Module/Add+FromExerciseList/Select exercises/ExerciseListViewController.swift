@@ -9,6 +9,7 @@ final class ExerciseListViewController: UIViewController {
     
     //MARK: - Module propertie
     var viewModel: ExerciseListViewModel?
+    var trainingEntityTarget: TrainingEntityTarget
     
     //MARK: - Private properties
      private var cellHeight: CGFloat {
@@ -40,9 +41,19 @@ final class ExerciseListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+        print(trainingEntityTarget)
          //FIXME: - Finish setup hiden tab bar 
         self.extendedLayoutIncludesOpaqueBars = true
         self.setTabBarHidden(true, animated: true, duration: 0.25)
+    }
+    
+    init(trainingEntityTarget: TrainingEntityTarget) {
+        self.trainingEntityTarget = trainingEntityTarget
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -110,7 +121,7 @@ private extension ExerciseListViewController {
     }
     
     func addExerciseAlertCompletion() {
-        self.viewModel?.writeExerciseToTraining()
+        self.viewModel?.writeExercices(to: self.trainingEntityTarget)
     }
     
     func showExerciseWasAddedAlert() {

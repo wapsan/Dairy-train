@@ -15,7 +15,7 @@ final class TrainingListRouter: Router {
     }
     
     func pushExerciseListViewController() {
-        let muscularGroupViewController = self.configureMuscleVC()
+        let muscularGroupViewController = self.configureMuscleVC(with: .training)
         self.rootViewController?.navigationController?.pushViewController(muscularGroupViewController,
                                                                           animated: true)
     }
@@ -30,12 +30,16 @@ final class TrainingListRouter: Router {
 private extension TrainingListRouter {
     
     private func configureTrainingPaternsViewController() -> TrainingPaternsViewController {
-        let trainingPaternsViewController = TrainingPaternsViewController()
+        let trainingPaternModel = TrainingPaterModel()
+        let trainingPaternViewModel = TrainingPaternViewModel(model: trainingPaternModel)
+        let trainingPaternsViewController = TrainingPaternsViewController(viewModel: trainingPaternViewModel)
+        let trainingPaternRouter = TrainingPaternRouter(trainingPaternsViewController)
+        trainingPaternViewModel.router = trainingPaternRouter
         return trainingPaternsViewController
     }
     
-    private func configureMuscleVC() -> MuscleGroupsViewController {
-           let muscleGroupsVC = MuscleGroupsViewController()
+    private func configureMuscleVC(with trainingEntityTarget: TrainingEntityTarget) -> MuscleGroupsViewController {
+        let muscleGroupsVC = MuscleGroupsViewController(trainingEntityTarget: trainingEntityTarget)
            let muscleGroupsViewMode = MuscleGroupsViewModel()
            let muscleGroupsRouter = MuscleGroupsRouter(muscleGroupsVC)
            muscleGroupsVC.viewModel = muscleGroupsViewMode

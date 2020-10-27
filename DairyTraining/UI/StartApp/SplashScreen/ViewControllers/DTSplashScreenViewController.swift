@@ -21,8 +21,8 @@ class DTSplashScreenViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpMainView()
-        self.pushStartViewController()
+        setUpMainView()
+        presentInitialViewController()
     }
     
     //MARK: - Private methods
@@ -35,9 +35,14 @@ class DTSplashScreenViewController: UIViewController {
         self.activateConstraints()
     }
     
-    private func pushStartViewController() {
-        let profileViewController = MainTabBarViewController()
-        self.navigationController?.pushViewController(profileViewController, animated: true)
+    private func presentInitialViewController() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
+            if let _ = DTSettingManager.shared.getUserToken() {
+                MainCoordinator.shared.coordinate(to: MainCoordinator.Target.mainFlow)
+            } else {
+                MainCoordinator.shared.coordinate(to: MainCoordinator.Target.loginFlow)
+            }
+        })
     }
    
     //MARK: - Constraints

@@ -5,21 +5,6 @@ class MainTabBarViewController: UITabBarController {
     //MARK: - Private properties
     private lazy var profileViewControllerIndex = 2
     
-    //MARK: - GUI Properties
-    private lazy var leftSwipe: UISwipeGestureRecognizer = {
-        let swipe = UISwipeGestureRecognizer(target: self,
-                                             action: #selector(self.swipeControllers(_:)))
-        swipe.direction = .left
-        return swipe
-    }()
-    
-    private lazy var rightSwipe: UISwipeGestureRecognizer = {
-        let swipe = UISwipeGestureRecognizer(target: self,
-                                             action: #selector(self.swipeControllers(_:)))
-        swipe.direction = .right
-        return swipe
-    }()
-    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +13,11 @@ class MainTabBarViewController: UITabBarController {
         self.setUpTabBarItems()
         self.setUpSelectedTabBarItem()
       //  self.addObserverForAddingExerciceToTrain()
-        self.setUpSwipes()
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     //MARK: - Private methods
-    private func setUpSwipes() {
-        self.view.addGestureRecognizer(self.leftSwipe)
-        self.view.addGestureRecognizer(self.rightSwipe)
-    }
+
     
 //    private func addObserverForAddingExerciceToTrain() {
 //        NotificationCenter.default.addObserver(self,
@@ -64,17 +45,17 @@ class MainTabBarViewController: UITabBarController {
 //        return profileVC
 //    }
     
-    func configureMuscleVC() -> MuscleGroupsViewController {
-        let muscleGroupsVC = MuscleGroupsViewController()
-        let muscleGroupsViewMode = MuscleGroupsViewModel()
-        let muscleGroupsRouter = MuscleGroupsRouter(muscleGroupsVC)
-        muscleGroupsVC.viewModel = muscleGroupsViewMode
-        muscleGroupsVC.router = muscleGroupsRouter
-        muscleGroupsViewMode.viewPresenter = muscleGroupsVC
-        return muscleGroupsVC
-        
-    }
-    
+//    func configureMuscleVC() -> MuscleGroupsViewController {
+//        let muscleGroupsVC = MuscleGroupsViewController()
+//        let muscleGroupsViewMode = MuscleGroupsViewModel()
+//        let muscleGroupsRouter = MuscleGroupsRouter(muscleGroupsVC)
+//        muscleGroupsVC.viewModel = muscleGroupsViewMode
+//        muscleGroupsVC.router = muscleGroupsRouter
+//        muscleGroupsViewMode.viewPresenter = muscleGroupsVC
+//        return muscleGroupsVC
+//        
+//    }
+//    
     func configureTestPVC() -> ProfileViewController {
         let testPVC = ProfileViewController()
         let testPVM = ProfileViewModel()

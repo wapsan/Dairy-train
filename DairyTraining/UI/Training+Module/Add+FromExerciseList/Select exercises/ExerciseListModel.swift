@@ -5,6 +5,7 @@ protocol ExerciseListModelIterator: AnyObject {
     func addChoosenExerciseToList(_ exercise: Exercise)
     func removeChossenExerciseFromList(_ exercise: Exercise)
     func writeExerciseToTraining()
+    func writeExerciseToTrainingPatern()
 }
 
 protocol ExerciseListModelOutput: AnyObject {
@@ -17,10 +18,26 @@ final class ExerciseListModel {
     weak var output: ExerciseListModelOutput?
     
     private var exerciseListForAddingToTraining: [Exercise] = []
+    private var trainingPatern: TrainingPaternManagedObject?
+    
+    init(trainingPatern: TrainingPaternManagedObject?) {
+        self.trainingPatern = trainingPatern
+    }
 }
 
 //MARK: - ExerciseListModelIterator
 extension ExerciseListModel: ExerciseListModelIterator {
+    
+    func writeExerciseToTrainingPatern() {
+        if let trainingPatern = self.trainingPatern {
+            CoreDataManager.shared.addExercicese(self.exerciseListForAddingToTraining,
+                                                 to: trainingPatern)
+        }
+//        } else {
+//            CoreDataManager.shared.createTrainingPattern(with: "Hello",
+//                                                         and: self.exerciseListForAddingToTraining)
+//        }
+    }
     
     func writeExerciseToTraining() {
         if CoreDataManager.shared.addExercisesToTrain(self.exerciseListForAddingToTraining) {

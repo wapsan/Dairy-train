@@ -5,7 +5,8 @@ protocol MuscleGroupsViewPresenter: AnyObject {
                                      and groups: MuscleGroup.Group)
 }
 
-class MuscleGroupsViewController: DTBackgroundedViewController {
+
+final class MuscleGroupsViewController: DTBackgroundedViewController {
     
     //MARK: - Private properties
     private var cellHeight: CGFloat {
@@ -15,6 +16,7 @@ class MuscleGroupsViewController: DTBackgroundedViewController {
     //MARK: - Properties
     var viewModel: MuscleGroupsViewModel?
     var router: MuscleGroupsRouter?
+    private var trainingEntityTarget: TrainingEntityTarget
     
     //MARK: - GUI Properties
     private(set) lazy var tableView: UITableView = {
@@ -44,7 +46,16 @@ class MuscleGroupsViewController: DTBackgroundedViewController {
         self.setTabBarHidden(true, animated: true, duration: 0.25)
     }
     
-
+    //MARK: - Initialization
+    init(trainingEntityTarget: TrainingEntityTarget) {
+        self.trainingEntityTarget = trainingEntityTarget
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //MARK: - Private methods
     private func setUpTableView() {
         self.view.addSubview(self.tableView)
@@ -102,6 +113,8 @@ extension MuscleGroupsViewController: MuscleGroupsViewPresenter {
     
     func pushSubgroupsViewController(with subgroups: [MuscleSubgroup.Subgroup],
                                      and groups: MuscleGroup.Group) {
-        self.router?.pushMuscleSubgroupsGroupViewController(with: subgroups, and: groups.name)
+        self.router?.pushMuscleSubgroupsGroupViewController(with: subgroups,
+                                                            and: groups.name,
+                                                            target: trainingEntityTarget)
     }
 }

@@ -1,5 +1,6 @@
 import Foundation
 import CoreData
+import RxSwift
 
 struct CoreDataModelName {
     static let userMainInfo = "UserMainInfo"
@@ -114,7 +115,7 @@ class CoreDataManager {
             self.updateMainInfoContext()
         } else {
             let newUserMainInfo = MainInfoManagedObject(context: self.mainInfoContext)
-             newUserMainInfo.height = heigth
+            newUserMainInfo.height = heigth
             newUserMainInfo.heightMode = MeteringSetting.shared.heightMode.rawValue
             self.updateMainInfoContext()
         }
@@ -141,7 +142,7 @@ class CoreDataManager {
             self.updateMainInfoContext()
         }
     }
-
+    
     func updateUserMainInfo(to userMainInfo: UserMainInfoCodableModel) {
         if let mainUserInfo = self.readUserMainInfo() {
             mainUserInfo.age = Int64(userMainInfo.age ?? 0)
@@ -181,15 +182,6 @@ class CoreDataManager {
         let fetchRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
         if let trainingList = try? self.trainInfoContext.fetch(fetchRequest) {
             return trainingList.sorted(by: { $0.date > $1.date })
-        } else {
-            return []
-        }
-    }
-    
-    func fetchTrainingPaterns() -> [TrainingPaternManagedObject] {
-        let fetchRequest: NSFetchRequest<TrainingPaternManagedObject> = TrainingPaternManagedObject.fetchRequest()
-        if let trainingPaterns = try? self.trainInfoContext.fetch(fetchRequest) {
-            return trainingPaterns.sorted(by: {$0.name < $1.name})
         } else {
             return []
         }
@@ -336,6 +328,83 @@ class CoreDataManager {
             }
         }
         self.updateTrainInfoContext()
+    }
+    
+    //MARK: - Training paterns
+    var trainingPatern: BehaviorSubject<[TrainingPaternManagedObject]> = BehaviorSubject(value: [])
+    var curentPatern: BehaviorSubject<TrainingPaternManagedObject?> = BehaviorSubject(value: nil)
+    
+    func updateTrainingPaterns() {
+        let fetchRequest: NSFetchRequest<TrainingPaternManagedObject> = TrainingPaternManagedObject.fetchRequest()
+        if let trainingPaterns = try? self.trainInfoContext.fetch(fetchRequest) {
+            trainingPatern.onNext(trainingPaterns.sorted(by: {$0.date < $1.date}))
+        } else {
+            trainingPatern.onNext([])
+        }
+    }
+    
+    func fetchTrainingPaterns() -> [TrainingPaternManagedObject] {
+        let fetchRequest: NSFetchRequest<TrainingPaternManagedObject> = TrainingPaternManagedObject.fetchRequest()
+        if let trainingPaterns = try? self.trainInfoContext.fetch(fetchRequest) {
+            return trainingPaterns.sorted(by: {$0.date < $1.date})
+        } else {
+            return []
+        }
+    }
+    
+    func creteTrainingPatern(with name: String) {
+        let newTrainingPatern = TrainingPaternManagedObject(context: trainInfoContext)
+        newTrainingPatern.name = name
+        newTrainingPatern.date = Date()
+        self.updateTrainInfoContext()
+        self.updateTrainingPaterns()
+    }
+ 
+    func loadPatern(with date: Date) {
+        let fetchRequest: NSFetchRequest<TrainingPaternManagedObject> = TrainingPaternManagedObject.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", date as CVarArg)
+        if let patern = try? trainInfoContext.fetch(fetchRequest).first {
+            self.curentPatern.onNext(patern)
+        }
+    }
+    
+    func addExercicese(_ exercises: [Exercise], to trainingPatern: TrainingPaternManagedObject) {
+        var exerciseList: [ExerciseManagedObject] = []
+        exercises.forEach({
+            let newExercise = ExerciseManagedObject(context: trainInfoContext)
+            newExercise.name = $0.name
+            newExercise.groupName = $0.group.rawValue
+            newExercise.subgroupName = $0.subgroub.rawValue
+            exerciseList.append(newExercise)
+        })
+        exerciseList.forEach({ trainingPatern.addToExercises($0) })
+        curentPatern.onNext(trainingPatern)
+        updateTrainInfoContext()
+    }
+    
+    func renameTrainingPatern(with date: Date, with name: String) {
+        let fetchRequest: NSFetchRequest<TrainingPaternManagedObject> = TrainingPaternManagedObject.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", date as CVarArg)
+        if let patern = try? trainInfoContext.fetch(fetchRequest).first {
+            patern.name = name
+            updateTrainInfoContext()
+            trainingPatern.onNext([])
+            curentPatern.onNext(patern)
+            self.updateTrainingPaterns()
+        }
+    }
+
+    func renameTrainingPatern(at index: Int, with name: String) {
+        fetchTrainingPaterns()[index].name = name
+        updateTrainInfoContext()
+        trainingPatern.onNext([])
+        self.updateTrainingPaterns()
+    }
+
+    func removeTrainingPatern(at index: Int) {
+        self.trainInfoContext.delete(fetchTrainingPaterns()[index])
+        self.updateTrainInfoContext()
+        self.updateTrainingPaterns()
     }
     
     func removeAllUserData(_ completionHandler: @escaping () -> Void) {

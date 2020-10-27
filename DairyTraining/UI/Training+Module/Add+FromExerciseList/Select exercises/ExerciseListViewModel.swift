@@ -27,8 +27,17 @@ final class ExerciseListViewModel {
         self.model?.removeChossenExerciseFromList(deselectedExercise)
     }
     
-    func writeExerciseToTraining() {
-        self.model?.writeExerciseToTraining()
+//    func writeExerciseToTraining() {
+//        self.model?.writeExerciseToTraining()
+//    }
+    
+    func writeExercices(to trainingEntityTarget: TrainingEntityTarget) {
+        switch trainingEntityTarget {
+        case .training:
+            self.model?.writeExerciseToTraining()
+        case .trainingPatern:
+            self.model?.writeExerciseToTrainingPatern()
+        }
     }
 }
 

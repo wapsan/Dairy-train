@@ -9,10 +9,12 @@ final class MuscleGroupsRouter: Router {
     }
     
     func pushMuscleSubgroupsGroupViewController(with subgroup: [MuscleSubgroup.Subgroup],
-                                       and groupTitle: String) {
+                                       and groupTitle: String,
+                                       target: TrainingEntityTarget) {
         let muscleSubgroupsViewController = self.configureMuscleSubgroupViewController(
             with: subgroup,
-            and: groupTitle)
+            and: groupTitle,
+            target: target)
         self.rootViewController?.navigationController?.pushViewController(muscleSubgroupsViewController,
                                                                           animated: true)
     }
@@ -22,8 +24,9 @@ final class MuscleGroupsRouter: Router {
 private extension MuscleGroupsRouter {
     
     func configureMuscleSubgroupViewController(with subgroup: [MuscleSubgroup.Subgroup],
-                                               and groupTitle: String) -> MuscleSubgroupsViewController {
-        let subgroupListViewController = MuscleSubgroupsViewController()
+                                               and groupTitle: String,
+                                               target: TrainingEntityTarget) -> MuscleSubgroupsViewController {
+        let subgroupListViewController = MuscleSubgroupsViewController(trainingEntityTarget: target)
         let subgroupListViewModel = MuscleSubgropsViewModel(with: subgroup, and: groupTitle)
         let subgroupListRouter = MuscleSubgropsRouter(subgroupListViewController)
         subgroupListViewModel.view = subgroupListViewController

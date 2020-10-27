@@ -13,21 +13,7 @@ final class ProfileRouter: Router {
     init(_ viewController: UIViewController) {
         self.rootViewController = viewController as? ProfileViewController
     }
-    
-    private func configureLoginViewController() -> LoginViewController {
-        let loginViewController = LoginViewController()
-        let loginViewModel = LoginViewModel()
-        let loginModel = LoginModel()
-        let loginRouter = LoginRouter(loginViewController)
         
-        loginViewController.router = loginRouter
-        loginViewController.viewModel = loginViewModel
-        loginViewModel.view = loginViewController
-        loginViewModel.model = loginModel
-        loginModel.output = loginViewModel
-        return loginViewController
-    }
-    
     private func configureMenuController() -> MenuViewController {
         let menuStackViewController = MenuViewController()
         menuStackViewController.modalPresentationStyle = .custom
@@ -41,9 +27,7 @@ final class ProfileRouter: Router {
 extension ProfileRouter: ProfileRouterOutputt {
     
     func presentLoginViewController() {
-        let loginVC = self.configureLoginViewController()
-               loginVC.modalPresentationStyle = .overFullScreen
-               self.rootViewController?.present(loginVC, animated: true, completion: nil)
+        MainCoordinator.shared.coordinate(to: MainCoordinator.Target.loginFlow)
     }
     
     func pushViewControllerFromMenu(_ viewController: UIViewController) {
