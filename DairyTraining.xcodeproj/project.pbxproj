@@ -40,7 +40,6 @@
 		133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5B0246163E7009EBF8E /* LaunchScreen.storyboard */; };
 		13416FA22485345100EC6590 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13416FA12485345100EC6590 /* GoogleSignInButton.swift */; };
 		1341D7A324D32900000A43A6 /* DTColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1341D7A224D32900000A43A6 /* DTColors.swift */; };
-		1343577024F829CE00BB3EE6 /* MuscleGroupsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343576F24F829CE00BB3EE6 /* MuscleGroupsRouter.swift */; };
 		1343577224F82ADC00BB3EE6 /* MuscleSubgropsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343577124F82ADC00BB3EE6 /* MuscleSubgropsViewModel.swift */; };
 		1343577424F82CD700BB3EE6 /* MuscleSubgropsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343577324F82CD700BB3EE6 /* MuscleSubgropsRouter.swift */; };
 		134403412499123F00D21284 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134403402499123F00D21284 /* LocalizedString.swift */; };
@@ -58,7 +57,6 @@
 		134AD82D24C763EE00E651C3 /* DTTabBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134AD82C24C763EE00E651C3 /* DTTabBarItems.swift */; };
 		134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */; };
 		134DF5B524B4E50D007A7B8A /* ColorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DF5B424B4E50D007A7B8A /* ColorSetting.swift */; };
-		1359690E25376BE0009819CA /* ChoosenPaternRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359690D25376BE0009819CA /* ChoosenPaternRouter.swift */; };
 		135B8815248132360032251D /* DTAproachCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B8814248132360032251D /* DTAproachCell.swift */; };
 		135BF56424DDAAB000E1E120 /* DTValueAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135BF56324DDAAB000E1E120 /* DTValueAlert.swift */; };
 		135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F22892494296F00EEE140 /* StatisticsModel.swift */; };
@@ -155,6 +153,7 @@
 		13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */; };
 		13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */; };
 		46DB6E6E46ED03D80B962509 /* Pods_Dairy_Training.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BB67FC86381D6904D71F4C /* Pods_Dairy_Training.framework */; };
+		7AA6AA56254978C600A88D4B /* MuscleGroupsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6AA55254978C600A88D4B /* MuscleGroupsCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -193,7 +192,6 @@
 		133AA5B3246163E7009EBF8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13416FA12485345100EC6590 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		1341D7A224D32900000A43A6 /* DTColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTColors.swift; sourceTree = "<group>"; };
-		1343576F24F829CE00BB3EE6 /* MuscleGroupsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsRouter.swift; sourceTree = "<group>"; };
 		1343577124F82ADC00BB3EE6 /* MuscleSubgropsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgropsViewModel.swift; sourceTree = "<group>"; };
 		1343577324F82CD700BB3EE6 /* MuscleSubgropsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgropsRouter.swift; sourceTree = "<group>"; };
 		134403402499123F00D21284 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
@@ -211,7 +209,6 @@
 		134AD82C24C763EE00E651C3 /* DTTabBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTabBarItems.swift; sourceTree = "<group>"; };
 		134DA00A246ECE3800B2FBDE /* RecomendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationsViewController.swift; sourceTree = "<group>"; };
 		134DF5B424B4E50D007A7B8A /* ColorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetting.swift; sourceTree = "<group>"; };
-		1359690D25376BE0009819CA /* ChoosenPaternRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosenPaternRouter.swift; sourceTree = "<group>"; };
 		135B8814248132360032251D /* DTAproachCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAproachCell.swift; sourceTree = "<group>"; };
 		135BF56324DDAAB000E1E120 /* DTValueAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTValueAlert.swift; sourceTree = "<group>"; };
 		135F22892494296F00EEE140 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
@@ -310,6 +307,7 @@
 		13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCodableModel.swift; sourceTree = "<group>"; };
 		13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCodableModel.swift; sourceTree = "<group>"; };
 		603CE1CD603B1EE61B433EA4 /* Pods-Dairy Training.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.release.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.release.xcconfig"; sourceTree = "<group>"; };
+		7AA6AA55254978C600A88D4B /* MuscleGroupsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsCoordinator.swift; sourceTree = "<group>"; };
 		B043EADE251C05242DA1CC87 /* Pods-Dairy Training.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.debug.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.debug.xcconfig"; sourceTree = "<group>"; };
 		C3BB67FC86381D6904D71F4C /* Pods_Dairy_Training.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dairy_Training.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -445,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				1320D314253B0E6400A4C99F /* MainCoordinator.swift */,
+				7AA6AA55254978C600A88D4B /* MuscleGroupsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -517,7 +516,6 @@
 			children = (
 				13479F38247BD82C002FFB4E /* MuscleGroupsViewController.swift */,
 				133705BD24D17B3100E023CC /* MuscleGroupsViewModel.swift */,
-				1343576F24F829CE00BB3EE6 /* MuscleGroupsRouter.swift */,
 			);
 			path = "Select muscle group";
 			sourceTree = "<group>";
@@ -627,7 +625,6 @@
 				134AA983253615AD00C8BDD1 /* ChoosenPaternViewController.swift */,
 				134AA9872536167200C8BDD1 /* ChoosenPaternViewModel.swift */,
 				134AA9892536168300C8BDD1 /* ChoosenPaternModel.swift */,
-				1359690D25376BE0009819CA /* ChoosenPaternRouter.swift */,
 				134AA984253615AD00C8BDD1 /* ChoosenPaternViewController.xib */,
 			);
 			path = CurrentTrainingPatern;
@@ -1438,6 +1435,7 @@
 				13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */,
 				136F40092498D44B00C6944B /* CoreDataManager.swift in Sources */,
 				13C0EEE724A5E3EB00F55C54 /* ExerciceManagedObject+CoreDataClass.swift in Sources */,
+				7AA6AA56254978C600A88D4B /* MuscleGroupsCoordinator.swift in Sources */,
 				13416FA22485345100EC6590 /* GoogleSignInButton.swift in Sources */,
 				136F400D2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift in Sources */,
 				1373219F253A08A300F8FA23 /* UIAplication+Ex.swift in Sources */,
@@ -1452,7 +1450,6 @@
 				1384BB4F24DF157F0084705B /* DTSelectionListAlert.swift in Sources */,
 				136E363825288015002FA439 /* TrainingPaternRouter.swift in Sources */,
 				1384BB4324DEEBE60084705B /* ProfileViewController.swift in Sources */,
-				1359690E25376BE0009819CA /* ChoosenPaternRouter.swift in Sources */,
 				13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */,
 				1388FFE524E00C7900E9FD2C /* ChoosenTrainingStatisticsViewModel.swift in Sources */,
 				1306E01924CF3DC1003AEBA7 /* LoginModel.swift in Sources */,
@@ -1501,7 +1498,6 @@
 				1366942624B7273E00F58422 /* DTGradientLayerMaker.swift in Sources */,
 				137321A4253A098100F8FA23 /* PaternNamingAlert.swift in Sources */,
 				136989CC2520E3450039B306 /* TrainingPaternManagedObject+CoreDataProperties.swift in Sources */,
-				1343577024F829CE00BB3EE6 /* MuscleGroupsRouter.swift in Sources */,
 				134AA98A2536168300C8BDD1 /* ChoosenPaternModel.swift in Sources */,
 				132D958C2485809B006E5A41 /* AppAuthentication.swift in Sources */,
 				13D5D57524E19AE3003C82F1 /* TrainingViewModel.swift in Sources */,

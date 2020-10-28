@@ -1,13 +1,6 @@
 import Foundation
 
-protocol MuscleGroupsViewModelInput {
-    func selectRow(at index: Int)
-    
-}
-
-class MuscleGroupsViewModel {
-    
-    weak var viewPresenter: MuscleGroupsViewPresenter?
+final class MuscleGroupsViewModel {
     
     var muscleGroups: [MuscleGroup.Group]
     
@@ -18,14 +11,9 @@ class MuscleGroupsViewModel {
     func getChoosenMuscularGroup(by index: Int) -> MuscleGroup.Group {
         return self.muscleGroups[index]
     }
-}
-
-//MARK: - MuscleGroupsViewModelInput
-extension MuscleGroupsViewModel: MuscleGroupsViewModelInput {
     
-    func selectRow(at index: Int) {
+    func selectRow(at index: Int, with trainingEntityTarget: TrainingEntityTarget) {
         let selectedGroup = self.muscleGroups[index]
-        let subGroupList = MuscleSubgroup(for: selectedGroup).listOfSubgroups
-        self.viewPresenter?.pushSubgroupsViewController(with: subGroupList, and: selectedGroup)
+        MainCoordinator.shared.coordinateс(to: MuscleGroupsCoordinator.Target.muscularSubgroups(patern: trainingEntityTarget, muscleGroup: selectedGroup))
     }
 }

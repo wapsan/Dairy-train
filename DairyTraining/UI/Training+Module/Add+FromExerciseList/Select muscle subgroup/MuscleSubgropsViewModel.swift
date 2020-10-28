@@ -2,7 +2,7 @@ import Foundation
 
 final class MuscleSubgropsViewModel {
     
-    weak var view: MuscleSubgroupsViewPresenter?
+  //  weak var view: MuscleSubgroupsViewPresenter?
     
     private(set) var subgroupList: [MuscleSubgroup.Subgroup]
     private(set) var groupTitle: String
@@ -12,9 +12,11 @@ final class MuscleSubgropsViewModel {
         self.groupTitle = groupTitle
     }
     
-    func selectRow(at index: Int) {
+    func selectRow(at index: Int, with trainingEntityTarget: TrainingEntityTarget) {
         let selectSubgroup = self.subgroupList[index]
-        let exerciseList = ExersiceModel(for: selectSubgroup).listOfExercices
-        self.view?.pushExerciseList(with: exerciseList, and: selectSubgroup.name)
+        MainCoordinator.shared.coordinateс(to: MuscleGroupsCoordinator.Target.exercises(patern: trainingEntityTarget, miscleSubgroups: selectSubgroup))
+    //    let exerciseList = ExersiceModel(for: selectSubgroup).listOfExercices
+        
+     //   self.view?.pushExerciseList(with: exerciseList, and: selectSubgroup.name)
     }
 }

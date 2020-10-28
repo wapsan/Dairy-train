@@ -45,6 +45,7 @@ final class ExerciseListViewController: UIViewController {
          //FIXME: - Finish setup hiden tab bar 
         self.extendedLayoutIncludesOpaqueBars = true
         self.setTabBarHidden(true, animated: true, duration: 0.25)
+       // self.setAddExercicesButton(isActive: <#T##Bool#>)
     }
     
     init(trainingEntityTarget: TrainingEntityTarget) {

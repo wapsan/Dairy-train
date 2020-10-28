@@ -1,8 +1,8 @@
 import UIKit
 
-protocol MuscleSubgroupsViewPresenter: AnyObject {
-    func pushExerciseList(with exerciseList: [Exercise], and subgroupTitle: String)
-}
+//protocol MuscleSubgroupsViewPresenter: AnyObject {
+//    func pushExerciseList(with exerciseList: [Exercise], and subgroupTitle: String)
+//}
 
 final class MuscleSubgroupsViewController: UIViewController {
     
@@ -12,7 +12,7 @@ final class MuscleSubgroupsViewController: UIViewController {
     }
     
     //MARK: - Properties
-    var viewModel: MuscleSubgropsViewModel?
+    var viewModel: MuscleSubgropsViewModel
     var router: MuscleSubgropsRouter?
     private var trainingEntityTarget: TrainingEntityTarget
     
@@ -46,8 +46,9 @@ final class MuscleSubgroupsViewController: UIViewController {
     }
     
     //MARK: - Initialization
-    init(trainingEntityTarget: TrainingEntityTarget) {
+    init(viewModel: MuscleSubgropsViewModel, trainingEntityTarget: TrainingEntityTarget) {
         self.trainingEntityTarget = trainingEntityTarget
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -62,7 +63,7 @@ private extension MuscleSubgroupsViewController {
     func setup() {
         self.setUpTableView()
         self.view.backgroundColor = DTColors.backgroundColor
-        self.title = self.viewModel?.groupTitle
+        self.title = self.viewModel.groupTitle
         self.headerView.setTitle(to: LocalizedString.selectMuscularSubgroup)
     }
     
@@ -95,7 +96,7 @@ private extension MuscleSubgroupsViewController {
 extension MuscleSubgroupsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel?.selectRow(at: indexPath.row)
+        self.viewModel.selectRow(at: indexPath.row, with: trainingEntityTarget)
     }
 }
 
@@ -107,24 +108,24 @@ extension MuscleSubgroupsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel?.subgroupList.count ?? 0
+        return self.viewModel.subgroupList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
                                                  for: indexPath)
-        guard let subgroup = self.viewModel?.subgroupList[indexPath.row] else { return UITableViewCell() }
+        let subgroup = self.viewModel.subgroupList[indexPath.row] 
         (cell as? DTActivitiesCell)?.renderCellFor(subgroup)
         return cell
     }
 }
 
-//MARK: - MuscleSubgroupsViewPresenter
-extension MuscleSubgroupsViewController: MuscleSubgroupsViewPresenter {
-    
-    func pushExerciseList(with exerciseList: [Exercise], and subgroupTitle: String) {
-        self.router?.pushExerciseListViewController(with: exerciseList,
-                                                    and: subgroupTitle,
-                                                    target: trainingEntityTarget)
-    }
-}
+////MARK: - MuscleSubgroupsViewPresenter
+//extension MuscleSubgroupsViewController: MuscleSubgroupsViewPresenter {
+//    
+//    func pushExerciseList(with exerciseList: [Exercise], and subgroupTitle: String) {
+//        self.router?.pushExerciseListViewController(with: exerciseList,
+//                                                    and: subgroupTitle,
+//                                                    target: trainingEntityTarget)
+//    }
+//}

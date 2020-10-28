@@ -5,7 +5,7 @@ final class ChoosenPaternViewModel {
     
     //MARK: - Properties
     var model: ChoosenPaternModel
-    var router: ChoosenPaternRouter?
+  //  var router: ChoosenPaternRouter?
     var paternNameo: BehaviorRelay<String> = BehaviorRelay(value: "")
     var paternsExercise: BehaviorRelay<[Exercise]> = BehaviorRelay(value: [])
     
@@ -32,7 +32,7 @@ final class ChoosenPaternViewModel {
     }
     
     func addExerciseToCurrnetPatern() {
-        router?.pushMuscleGroupViewController(with: model.trainingPatern)
+        MainCoordinator.shared.coordinateс(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: .trainingPatern(trainingPatern: model.trainingPatern)))
     }
 }
 

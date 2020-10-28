@@ -1,11 +1,5 @@
 import UIKit
 
-protocol MuscleGroupsViewPresenter: AnyObject {
-    func pushSubgroupsViewController(with subgroups: [MuscleSubgroup.Subgroup],
-                                     and groups: MuscleGroup.Group)
-}
-
-
 final class MuscleGroupsViewController: DTBackgroundedViewController {
     
     //MARK: - Private properties
@@ -15,7 +9,6 @@ final class MuscleGroupsViewController: DTBackgroundedViewController {
     
     //MARK: - Properties
     var viewModel: MuscleGroupsViewModel?
-    var router: MuscleGroupsRouter?
     private var trainingEntityTarget: TrainingEntityTarget
     
     //MARK: - GUI Properties
@@ -89,8 +82,8 @@ final class MuscleGroupsViewController: DTBackgroundedViewController {
     }
 }
 
-//MARK: -  UITableViewDataSourse, UITableViewDelegate
-extension MuscleGroupsViewController: UITableViewDataSource, UITableViewDelegate {
+//MARK: -  UITableViewDataSourse
+extension MuscleGroupsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel?.muscleGroups.count ?? 0
@@ -104,23 +97,16 @@ extension MuscleGroupsViewController: UITableViewDataSource, UITableViewDelegate
         }
         return cell
     }
+}
+
+// MARK: - UITableViewDelegate
+extension  MuscleGroupsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.cellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel?.selectRow(at: indexPath.row)
-    }
-}
-
-//MARK: - MuscleGroupsViewPresenter
-extension MuscleGroupsViewController: MuscleGroupsViewPresenter {
-    
-    func pushSubgroupsViewController(with subgroups: [MuscleSubgroup.Subgroup],
-                                     and groups: MuscleGroup.Group) {
-        self.router?.pushMuscleSubgroupsGroupViewController(with: subgroups,
-                                                            and: groups.name,
-                                                            target: trainingEntityTarget)
+        self.viewModel?.selectRow(at: indexPath.row, with: trainingEntityTarget)
     }
 }

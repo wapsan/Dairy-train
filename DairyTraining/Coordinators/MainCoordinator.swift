@@ -148,10 +148,18 @@ final class MainCoordinator: Coordinator {
         }
         return true
     }
+    
+    @discardableResult func coordinateс(to target: CoordinatorTarget) -> Bool {
+          for coordinator in childCoordinators {
+              if coordinator.coordinate(to: target) { return true }
+          }
+          
+          return false
+      }
 
     // MARK: - Private
 
     private func createChildCoordinators(for window: UIWindow?) -> [Coordinator] {
-        return []
+        return [MuscleGroupsCoordinator(window: window)]
     }
 }

@@ -81,7 +81,7 @@ final class TrainingPaternViewModel {
     }
     
     func goToMuscularGroupsList() {
-        self.router?.pushMuscleGroupViewController(with: nil)
+      //  self.router?.pushMuscleGroupViewController(with: nil)
     }
     
     func createTrainingPatern(with name: String) {

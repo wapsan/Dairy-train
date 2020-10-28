@@ -56,7 +56,7 @@ class MainTabBarViewController: UITabBarController {
 //        
 //    }
 //    
-    func configureTestPVC() -> ProfileViewController {
+    func configureTestPVC() -> UINavigationController {
         let testPVC = ProfileViewController()
         let testPVM = ProfileViewModel()
         let testPM = ProfileModel()
@@ -66,10 +66,10 @@ class MainTabBarViewController: UITabBarController {
         testPVM.view = testPVC
         testPVM.model = testPM
         testPM.output = testPVM
-        return testPVC
+        return UINavigationController(rootViewController: testPVC)
     }
     
-    func configureTrainigListViewController() -> TrainingListViewController {
+    func configureTrainigListViewController() -> UINavigationController {
         let trainingListVC = TrainingListViewController()
         let trainingListVM = TrainingListViewModel()
         let trainingListM = TrainingListModel()
@@ -79,7 +79,9 @@ class MainTabBarViewController: UITabBarController {
         trainingListVM.view = trainingListVC
         trainingListVM.model = trainingListM
         trainingListM.output = trainingListVM
-        return trainingListVC
+        let trainingNavigationController = UINavigationController(rootViewController: trainingListVC)
+      //  MuscleGroupsCoordinator(rootViewController: trainingNavigationController)
+        return trainingNavigationController
     }
     
     private func setUpTabBarViewControllers() {
@@ -94,7 +96,6 @@ class MainTabBarViewController: UITabBarController {
         self.viewControllers = [activitiesViewController,
                                 trainingListViewController,
                                 profileViewController]
-            .map({ UINavigationController(rootViewController: $0) })
         
         
     }
