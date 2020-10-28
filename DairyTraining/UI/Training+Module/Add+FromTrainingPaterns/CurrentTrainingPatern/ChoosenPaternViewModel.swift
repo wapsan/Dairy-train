@@ -6,17 +6,12 @@ final class ChoosenPaternViewModel {
     //MARK: - Properties
     var model: ChoosenPaternModel
     var router: ChoosenPaternRouter?
-    
-//    var exercisesOfPatern: [Exercise] {
-//        self.convertTrainingModel(from: model.trainingPatern.exerciseArray)
-//    }
-//    
-//    var paternName: String {
-//        model.paternName
-//    }
-    var disposeBag = DisposeBag()
     var paternNameo: BehaviorRelay<String> = BehaviorRelay(value: "")
     var paternsExercise: BehaviorRelay<[Exercise]> = BehaviorRelay(value: [])
+    
+    // MARK: - Private properties
+    private var disposeBag = DisposeBag()
+    
     //MARK: - Initialization
     init(model: ChoosenPaternModel) {
         self.model = model
@@ -29,9 +24,9 @@ final class ChoosenPaternViewModel {
             .map({ self.convertTrainingModel(from: $0) })
             .bind(to: paternsExercise)
             .disposed(by: disposeBag)
-    
     }
     
+    // MARK: - Public methods
     func createTraining() {
         model.createTrainingWithCurrentpatern(exercise: paternsExercise.value)
     }
@@ -44,8 +39,6 @@ final class ChoosenPaternViewModel {
 //MARK: - Private
 private extension ChoosenPaternViewModel {
     
-
-    
     func convertTrainingModel(from exerciseArray: [ExerciseManagedObject]) -> [Exercise] {
         var exerciseList: [Exercise] = []
         exerciseArray.forEach({
@@ -57,6 +50,7 @@ private extension ChoosenPaternViewModel {
     }
 }
 
+// MARK: - PaternNamingAlertDelegate
 extension ChoosenPaternViewModel: PaternNamingAlertDelegate {
     
     func patrnNamingAlertOkPressedToRenamePatern(name: String) {
@@ -64,6 +58,6 @@ extension ChoosenPaternViewModel: PaternNamingAlertDelegate {
     }
 
     func paternNamingAlertOkPressedToCreatePatern(name: String) {
-        
+        return
     }
 }

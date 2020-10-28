@@ -18,14 +18,10 @@ final class ChoosenPaternModel {
         CDM.shared.loadPatern(with: patern.date)
         CDM.shared.curentPatern
             .asObservable()
-            .map({ $0?.name ?? "" })
-            .bind(to: self.paternNameo.asObserver())
-            .disposed(by: disposeBag)
-        CDM.shared.curentPatern
-            .asObservable()
             .map({ $0?.exerciseArray ?? [] })
             .bind(to: paternExercises.asObserver())
             .disposed(by: disposeBag)
+        paternNameo.onNext(patern.name)
     }
     
     func createTrainingWithCurrentpatern(exercise: [Exercise]) {
@@ -37,7 +33,7 @@ final class ChoosenPaternModel {
     }
     
     func renameTrainingPaternAlert(for name: String) {
-        //CDM.shared.renameTrainingPatern(at: index, with: name)
+        paternNameo.onNext(name)
         CDM.shared.renameTrainingPatern(with: trainingPatern.date, with: name)
     }
 }

@@ -35,7 +35,7 @@ extension UIViewController {
       if self.tabBarController?.tabBar.isHidden != hidden{
           if animated {
               //Show the tabbar before the animation in case it has to appear
-              if (self.tabBarController?.tabBar.isHidden)!{
+              if (self.tabBarController?.tabBar.isHidden) ?? false {
                   self.tabBarController?.tabBar.isHidden = hidden
               }
               if let frame = self.tabBarController?.tabBar.frame {
@@ -45,7 +45,7 @@ extension UIViewController {
                       self.tabBarController?.tabBar.frame = CGRect(x: frame.origin.x, y: y, width: frame.width, height: frame.height)
                   }) { (bool) in
                       //hide the tabbar after the animation in case ti has to be hidden
-                      if (!(self.tabBarController?.tabBar.isHidden)!){
+                    if (!(self.tabBarController?.tabBar.isHidden ?? true)) {
                           self.tabBarController?.tabBar.isHidden = hidden
                       }
                   }

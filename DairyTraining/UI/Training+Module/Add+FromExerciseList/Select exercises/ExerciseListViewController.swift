@@ -117,6 +117,7 @@ private extension ExerciseListViewController {
             style: .alert,
             completion: { [weak self] in
                 self?.addExerciseAlertCompletion()
+                self?.navigationController?.dismiss(animated: true, completion: nil)
             })
     }
     
@@ -185,7 +186,7 @@ extension ExerciseListViewController: ExerciseListViewPresenter {
     func apdateUIAfterExerciseAdding() {
         self.deselectAllRows()
         self.setAddExercicesButton(isActive: false)
-        self.showExerciseWasAddedAlert()
+      //  self.showExerciseWasAddedAlert()
     }
     
     func updateAddButton(isActive: Bool) {

@@ -60,6 +60,8 @@ final class MuscleGroupsViewController: DTBackgroundedViewController {
     private func setUpTableView() {
         self.view.addSubview(self.tableView)
         self.view.addSubview(self.headerView)
+        let backBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(backAction))
+        self.navigationItem.leftBarButtonItem = backBarButton
         self.setTableConstraints()
     }
     
@@ -81,6 +83,10 @@ final class MuscleGroupsViewController: DTBackgroundedViewController {
         ])
     }
     
+    // MARK: - Actions
+    @objc private func backAction() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
 }
 
 //MARK: -  UITableViewDataSourse, UITableViewDelegate

@@ -14,8 +14,11 @@ final class ChoosenPaternRouter: Router {
     //MARK: - Interface
     func pushMuscleGroupViewController(with currentPatern: TrainingPaternManagedObject) {
         let muscleGroupViewControllr = configureMuscleGroupViewController(with: currentPatern)
-        rootViewController?.navigationController?.pushViewController(muscleGroupViewControllr,
-                                                                     animated: true)
+        let nav = UINavigationController(rootViewController: muscleGroupViewControllr)
+        nav.modalPresentationStyle = .fullScreen
+        rootViewController?.present(nav, animated: true, completion: nil)
+//        rootViewController?.navigationController?.pushViewController(muscleGroupViewControllr,
+//                                                                     animated: true)
     }
 }
  

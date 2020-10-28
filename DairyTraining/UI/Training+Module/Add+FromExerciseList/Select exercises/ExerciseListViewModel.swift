@@ -30,6 +30,9 @@ final class ExerciseListViewModel {
 //    func writeExerciseToTraining() {
 //        self.model?.writeExerciseToTraining()
 //    }
+    func hideExerciseViewController() {
+        
+    }
     
     func writeExercices(to trainingEntityTarget: TrainingEntityTarget) {
         switch trainingEntityTarget {

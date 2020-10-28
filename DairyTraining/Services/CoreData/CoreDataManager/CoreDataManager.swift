@@ -389,7 +389,6 @@ class CoreDataManager {
             patern.name = name
             updateTrainInfoContext()
             trainingPatern.onNext([])
-            curentPatern.onNext(patern)
             self.updateTrainingPaterns()
         }
     }

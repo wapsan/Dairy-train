@@ -154,7 +154,7 @@
 		13FAF17A246FCAA600537408 /* CaloriesCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FAF179246FCAA600537408 /* CaloriesCalculator.swift */; };
 		13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */; };
 		13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */; };
-		40D3C29E33D6E870B13FD3C7 /* Pods_Dairy_Training.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C807F01EEFABF547173E9D80 /* Pods_Dairy_Training.framework */; };
+		46DB6E6E46ED03D80B962509 /* Pods_Dairy_Training.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BB67FC86381D6904D71F4C /* Pods_Dairy_Training.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -309,9 +309,9 @@
 		13FAF179246FCAA600537408 /* CaloriesCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculator.swift; sourceTree = "<group>"; };
 		13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCodableModel.swift; sourceTree = "<group>"; };
 		13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCodableModel.swift; sourceTree = "<group>"; };
-		8E87858F1D9FD5A64EA84D5E /* Pods-Dairy Training.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.release.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.release.xcconfig"; sourceTree = "<group>"; };
-		9D0A2E216E098AC6FBAA2A23 /* Pods-Dairy Training.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.debug.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.debug.xcconfig"; sourceTree = "<group>"; };
-		C807F01EEFABF547173E9D80 /* Pods_Dairy_Training.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dairy_Training.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		603CE1CD603B1EE61B433EA4 /* Pods-Dairy Training.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.release.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.release.xcconfig"; sourceTree = "<group>"; };
+		B043EADE251C05242DA1CC87 /* Pods-Dairy Training.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.debug.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.debug.xcconfig"; sourceTree = "<group>"; };
+		C3BB67FC86381D6904D71F4C /* Pods_Dairy_Training.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dairy_Training.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,13 +319,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40D3C29E33D6E870B13FD3C7 /* Pods_Dairy_Training.framework in Frameworks */,
+				46DB6E6E46ED03D80B962509 /* Pods_Dairy_Training.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08BCDDF4C8068040ADA85E0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3BB67FC86381D6904D71F4C /* Pods_Dairy_Training.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		130634452494DE80008C1ECF /* Training+List */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,7 +583,7 @@
 				133AA5A4246163E5009EBF8E /* DairyTraining */,
 				133AA5A3246163E5009EBF8E /* Products */,
 				498B8DAC8926C90BF31635DE /* Pods */,
-				C346C03B4B599FB6A4FD7008 /* Frameworks */,
+				08BCDDF4C8068040ADA85E0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1222,18 +1230,10 @@
 		498B8DAC8926C90BF31635DE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9D0A2E216E098AC6FBAA2A23 /* Pods-Dairy Training.debug.xcconfig */,
-				8E87858F1D9FD5A64EA84D5E /* Pods-Dairy Training.release.xcconfig */,
+				B043EADE251C05242DA1CC87 /* Pods-Dairy Training.debug.xcconfig */,
+				603CE1CD603B1EE61B433EA4 /* Pods-Dairy Training.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		C346C03B4B599FB6A4FD7008 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C807F01EEFABF547173E9D80 /* Pods_Dairy_Training.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1243,12 +1243,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 133AA5B6246163E7009EBF8E /* Build configuration list for PBXNativeTarget "Dairy Training" */;
 			buildPhases = (
-				47D3DA2F9FF6F94DAD30A78B /* [CP] Check Pods Manifest.lock */,
+				2C8624A00F3B5F8DC9D184E3 /* [CP] Check Pods Manifest.lock */,
 				133AA59E246163E5009EBF8E /* Sources */,
 				133AA59F246163E5009EBF8E /* Frameworks */,
 				133AA5A0246163E5009EBF8E /* Resources */,
-				15D79B60F906A9BAF441165D /* [CP] Embed Pods Frameworks */,
-				9D9B21E361C7ABF11D336502 /* [CP] Copy Pods Resources */,
+				B05328D2DE9DD881C8F81C15 /* [CP] Embed Pods Frameworks */,
+				342DC578735FDB8A04CD5A89 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1315,24 +1315,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		15D79B60F906A9BAF441165D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		47D3DA2F9FF6F94DAD30A78B /* [CP] Check Pods Manifest.lock */ = {
+		2C8624A00F3B5F8DC9D184E3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1354,7 +1337,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9D9B21E361C7ABF11D336502 /* [CP] Copy Pods Resources */ = {
+		342DC578735FDB8A04CD5A89 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1369,6 +1352,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B05328D2DE9DD881C8F81C15 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dairy Training/Pods-Dairy Training-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1660,7 +1660,7 @@
 		};
 		133AA5B7246163E7009EBF8E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D0A2E216E098AC6FBAA2A23 /* Pods-Dairy Training.debug.xcconfig */;
+			baseConfigurationReference = B043EADE251C05242DA1CC87 /* Pods-Dairy Training.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1681,7 +1681,7 @@
 		};
 		133AA5B8246163E7009EBF8E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E87858F1D9FD5A64EA84D5E /* Pods-Dairy Training.release.xcconfig */;
+			baseConfigurationReference = 603CE1CD603B1EE61B433EA4 /* Pods-Dairy Training.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

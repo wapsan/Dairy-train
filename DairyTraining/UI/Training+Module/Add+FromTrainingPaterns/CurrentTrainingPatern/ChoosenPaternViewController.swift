@@ -38,7 +38,6 @@ private extension ChoosenPaternViewController {
         extendedLayoutIncludesOpaqueBars = true
         tableView.register(DTActivitiesCell.self,
                            forCellReuseIdentifier: DTActivitiesCell.cellID)
-        
         namingAlert?.delegate = viewModel
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add,
                                            target: self,
@@ -47,13 +46,13 @@ private extension ChoosenPaternViewController {
     }
     
     func setupRX() {
-        viewModel.paternsExercise.bind(to: tableView.rx.items(cellIdentifier: DTActivitiesCell.cellID)) {
-            (index, exercise, cell) in
-            (cell as? DTActivitiesCell)?.renderCellFor(exercise)
-        }
-        .disposed(by: self.disposeBag)
+        viewModel.paternsExercise
+            .bind(to: tableView.rx.items(cellIdentifier: DTActivitiesCell.cellID)) {
+                (index, exercise, cell) in
+                (cell as? DTActivitiesCell)?.renderCellFor(exercise)
+            }
+            .disposed(by: self.disposeBag)
     }
-    
     
     func animatableChangePaternName(to name: String) {
         UIView.animate(withDuration: 0.25,
