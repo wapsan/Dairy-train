@@ -13,8 +13,8 @@ final class TrainingPaternHeaderView: UIView {
     //MARK: - @IBOutlets
     @IBOutlet var createTrainingButton: UIButton!
     @IBOutlet var addExerciseButton: UIButton!
-    
     @IBOutlet var titleLabel: UILabel!
+    
     //MARK: - Properties
     var createTrainingAction: (() -> Void)?
     var changePaternAction: (() -> Void)?
@@ -35,7 +35,7 @@ final class TrainingPaternHeaderView: UIView {
     private func setup() {
         setAppereance(for: createTrainingButton)
         setAppereance(for: addExerciseButton)
-        
+        titleLabel.text = ""
     }
     
     private func setAppereance(for button: UIButton) {

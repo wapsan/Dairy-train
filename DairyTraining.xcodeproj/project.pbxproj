@@ -39,6 +39,8 @@
 		133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5AE246163E7009EBF8E /* Assets.xcassets */; };
 		133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5B0246163E7009EBF8E /* LaunchScreen.storyboard */; };
 		13416FA22485345100EC6590 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13416FA12485345100EC6590 /* GoogleSignInButton.swift */; };
+		1341727F254B38C2004C6262 /* CurrentPaternSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1341727D254B38C2004C6262 /* CurrentPaternSideMenu.swift */; };
+		13417280254B38C2004C6262 /* CurrentPaternSideMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1341727E254B38C2004C6262 /* CurrentPaternSideMenu.xib */; };
 		1341D7A324D32900000A43A6 /* DTColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1341D7A224D32900000A43A6 /* DTColors.swift */; };
 		1343577224F82ADC00BB3EE6 /* MuscleSubgropsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343577124F82ADC00BB3EE6 /* MuscleSubgropsViewModel.swift */; };
 		1343577424F82CD700BB3EE6 /* MuscleSubgropsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343577324F82CD700BB3EE6 /* MuscleSubgropsRouter.swift */; };
@@ -191,6 +193,8 @@
 		133AA5B1246163E7009EBF8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		133AA5B3246163E7009EBF8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13416FA12485345100EC6590 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
+		1341727D254B38C2004C6262 /* CurrentPaternSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPaternSideMenu.swift; sourceTree = "<group>"; };
+		1341727E254B38C2004C6262 /* CurrentPaternSideMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentPaternSideMenu.xib; sourceTree = "<group>"; };
 		1341D7A224D32900000A43A6 /* DTColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTColors.swift; sourceTree = "<group>"; };
 		1343577124F82ADC00BB3EE6 /* MuscleSubgropsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgropsViewModel.swift; sourceTree = "<group>"; };
 		1343577324F82CD700BB3EE6 /* MuscleSubgropsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleSubgropsRouter.swift; sourceTree = "<group>"; };
@@ -610,6 +614,15 @@
 			path = DairyTraining;
 			sourceTree = "<group>";
 		};
+		1341727C254B388D004C6262 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1341727D254B38C2004C6262 /* CurrentPaternSideMenu.swift */,
+				1341727E254B38C2004C6262 /* CurrentPaternSideMenu.xib */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		1341D7A124D328EA000A43A6 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
@@ -621,6 +634,7 @@
 		134AA9802536149100C8BDD1 /* CurrentTrainingPatern */ = {
 			isa = PBXGroup;
 			children = (
+				1341727C254B388D004C6262 /* SideMenu */,
 				134AA98B25361DFA00C8BDD1 /* ChoosenPaternHeaderView */,
 				134AA983253615AD00C8BDD1 /* ChoosenPaternViewController.swift */,
 				134AA9872536167200C8BDD1 /* ChoosenPaternViewModel.swift */,
@@ -1304,6 +1318,7 @@
 				133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */,
 				137321A8253A098D00F8FA23 /* PaternNamingAlert.xib in Resources */,
 				133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */,
+				13417280254B38C2004C6262 /* CurrentPaternSideMenu.xib in Resources */,
 				13D8CEBF25239CCF0091AA6B /* TrainingPaternCell.xib in Resources */,
 				134AA98F25361E7E00C8BDD1 /* TrainingPaternHeaderView.xib in Resources */,
 			);
@@ -1388,6 +1403,7 @@
 				1384BB4524DEEE7A0084705B /* DTMainInfoCell.swift in Sources */,
 				139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */,
 				136F3FFE2498D0DE00C6944B /* UserMainInfo.xcdatamodeld in Sources */,
+				1341727F254B38C2004C6262 /* CurrentPaternSideMenu.swift in Sources */,
 				131D3081251BBA83000AC70B /* DTAddExerciseSupportButton.swift in Sources */,
 				134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */,
 				131B671124DB1E1C0029C456 /* RecomendationModel.swift in Sources */,
