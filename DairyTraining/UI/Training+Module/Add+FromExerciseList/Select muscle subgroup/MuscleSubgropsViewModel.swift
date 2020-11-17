@@ -14,7 +14,7 @@ final class MuscleSubgropsViewModel {
     
     func selectRow(at index: Int, with trainingEntityTarget: TrainingEntityTarget) {
         let selectSubgroup = self.subgroupList[index]
-        MainCoordinator.shared.coordinateс(to: MuscleGroupsCoordinator.Target.exercises(patern: trainingEntityTarget, miscleSubgroups: selectSubgroup))
+        MainCoordinator.shared.coordinateChild(to: MuscleGroupsCoordinator.Target.exercises(patern: trainingEntityTarget, miscleSubgroups: selectSubgroup))
     //    let exerciseList = ExersiceModel(for: selectSubgroup).listOfExercices
         
      //   self.view?.pushExerciseList(with: exerciseList, and: selectSubgroup.name)

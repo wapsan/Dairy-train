@@ -1,4 +1,5 @@
 import UIKit
+import SideMenu
 
 class ProfileViewController: DTBackgroundedViewController {
  
@@ -38,6 +39,12 @@ class ProfileViewController: DTBackgroundedViewController {
     }()
     
     //MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        extendedLayoutIncludesOpaqueBars = false
+        MainCoordinator.shared.setTabBarHidden(false, duration: 0.25)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpCollectionView()
@@ -46,13 +53,18 @@ class ProfileViewController: DTBackgroundedViewController {
         self.selectionListAlert.delegate = self.viewModel
         self.view.backgroundColor = DTColors.backgroundColor
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        extendedLayoutIncludesOpaqueBars = true
+//    }
 }
 
 //MARK: - Private extension
 private extension ProfileViewController {
     
     @objc func menuButtonPressed() {
-        self.viewModel?.showMenu()
+        MainCoordinator.shared.coordinateChild(to: ProfileMenuCoordinator.Target.sideMenu)
     }
     
     func setUpMenuButtonBar() {

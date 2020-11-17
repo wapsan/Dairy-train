@@ -11,16 +11,15 @@ class SettingsSectionViewController: UITableViewController {
     private lazy var lastSynhronizeDate = CoreDataManager.shared.readUserMainInfo()?.dateOfLastUpdate
         ?? LocalizedString.dataDontUpdate
     
-//    private lazy var a: DTDownloadHud = {
-//        let a = DTDownloadHud(frame: .zero)
-//        a.translatesAutoresizingMaskIntoConstraints = false
-//        return a
-//    }()
-    
     //MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        extendedLayoutIncludesOpaqueBars = true
+        MainCoordinator.shared.setTabBarHidden(true, duration: 0.25)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     //MARK: - Initialization
@@ -45,8 +44,6 @@ class SettingsSectionViewController: UITableViewController {
         self.tableView?.rowHeight = 50
         self.tableView?.sectionFooterHeight = 0
         self.tableView?.sectionHeaderHeight = 50
-        
-        
         self.tableView.bounces = false
     }
     

@@ -178,6 +178,7 @@ class CoreDataManager {
     }
     
     //MARK: - Train info block
+    
     func fetchTrainingList() -> [TrainingManagedObject] {
         let fetchRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
         if let trainingList = try? self.trainInfoContext.fetch(fetchRequest) {
@@ -189,6 +190,7 @@ class CoreDataManager {
     
     func removeChoosenTrainings(_ trainingListForRemoving: [TrainingManagedObject]) {
         for train in trainingListForRemoving {
+            train.exercicesArray.forEach({ trainInfoContext.delete($0) })
             self.trainInfoContext.delete(train)
         }
         self.updateTrainInfoContext()
@@ -196,6 +198,19 @@ class CoreDataManager {
     
     func fetchExercisesFor(_ choosenTrain: TrainingManagedObject) -> [ExerciseManagedObject] {
         return choosenTrain.exercicesArray
+    }
+    
+    func fetchAllExerciseForStatistics(with name: String) -> [ExerciseManagedObject] {
+        let fetchRequest: NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Exercise")
+        let predicate = NSPredicate(format: "name == %@", name)
+        let descriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.predicate = predicate
+        fetchRequest.sortDescriptors = [descriptor]
+        if let exerciseWithName = try? trainInfoContext.fetch(fetchRequest) as? [ExerciseManagedObject] {
+            return exerciseWithName
+        } else {
+            return []
+        }
     }
     
     func addExercisesToTrain(_ exercises: [Exercise]) -> Bool {
@@ -212,6 +227,7 @@ class CoreDataManager {
                 newExercice.groupName = exercise.group.rawValue
                 newExercice.subgroupName = exercise.subgroub.rawValue
                 newExercice.training = newTrain
+                newExercice.date = Date()
                 newExercises.append(newExercice)
             }
             newTrain.date = Date()
@@ -236,6 +252,7 @@ class CoreDataManager {
                                 newEx.groupName = newExercise.group.rawValue
                                 newEx.subgroupName = newExercise.subgroub.rawValue
                                 newEx.training = todayTrain
+                                newEx.date = Date()
                                 newExercises.append(newEx)
                             }
                         }
@@ -256,6 +273,7 @@ class CoreDataManager {
                     newEx.groupName = newExercise.group.rawValue
                     newEx.subgroupName = newExercise.subgroub.rawValue
                     newEx.training = newTrain
+                    newEx.date = Date()
                     newExercises.append(newEx)
                 }
             }
@@ -315,6 +333,7 @@ class CoreDataManager {
                 newExercice.groupName = exercice.groupName
                 newExercice.id = Int64(exercice.id)
                 newExercice.training = newTrain
+                newExercice.date = training.date
                 newTrain.addToExercises(newExercice)
                 for aproach in exercice.aproachlist {
                     let newAproah = AproachManagedObject(context: self.trainInfoContext)
@@ -327,6 +346,7 @@ class CoreDataManager {
                 }
             }
         }
+        NotificationCenter.default.post(name: .trainingListWasChanged, object: nil)
         self.updateTrainInfoContext()
     }
     
@@ -375,6 +395,7 @@ class CoreDataManager {
             newExercise.name = $0.name
             newExercise.groupName = $0.group.rawValue
             newExercise.subgroupName = $0.subgroub.rawValue
+            newExercise.date = Date()
             exerciseList.append(newExercise)
         })
         exerciseList.forEach({ trainingPatern.addToExercises($0) })

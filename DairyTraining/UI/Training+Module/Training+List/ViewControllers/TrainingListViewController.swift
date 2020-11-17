@@ -93,7 +93,7 @@ final class TrainingListViewController: MainTabBarItemVC {
     
     private lazy var addExerciseFromListButton: DTAddExerciseSupportButton = {
         let addButton = DTAddExerciseSupportButton(type: .exercoseList)
-        addButton.action = { self.viewModel?.goToMuscularList() }
+        addButton.action = { self.viewModel?.goToMuscularList(with: .training) }
         addButton.translatesAutoresizingMaskIntoConstraints = false
         return addButton
     }()
@@ -128,6 +128,16 @@ final class TrainingListViewController: MainTabBarItemVC {
         super.viewWillAppear(animated)
         self.setTabBarHidden(false, animated: true, duration: 0.25)
         self.setUpViewController()
+    }
+    
+    //MARK: - Initialization
+    init(viewModel: TrainingListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 

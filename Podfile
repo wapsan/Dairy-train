@@ -12,6 +12,7 @@ pod 'RxSwift', '5.0'
 pod 'RxCocoa', '5.0'
 pod 'RxDataSources', '~> 4.0'
 pod 'SideMenu'
+pod 'Charts'
 
   # Pods for DairyTrain2.0
 end

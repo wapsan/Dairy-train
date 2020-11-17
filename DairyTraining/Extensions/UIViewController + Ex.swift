@@ -55,3 +55,28 @@ extension UIViewController {
 
     }
 }
+
+extension UITabBar {
+    
+    func hide(_ hidden: Bool, animated: Bool, duration: TimeInterval) {
+        if isHidden != hidden {
+            if animated {
+                if isHidden {
+                    isHidden = hidden
+                }
+                
+                let factor: CGFloat = hidden ? 1 : -1
+                let y  = frame.origin.y + (frame.size.height * factor)
+                UIView.animate(withDuration: duration, animations: {
+                    self.frame = CGRect(x: self.frame.origin.x, y: y, width: self.frame.width, height: self.frame.height)
+                }) { (bool) in
+                    //hide the tabbar after the animation in case ti has to be hidden
+                    if !self.isHidden {
+                        self.isHidden = hidden
+                    }
+                }
+            }
+        }
+    }
+    
+}

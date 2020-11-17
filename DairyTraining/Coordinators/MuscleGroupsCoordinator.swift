@@ -3,19 +3,13 @@ import UIKit
 
 final class MuscleGroupsCoordinator: Coordinator {
 
-    // MARK: - Constants
-
-    private struct Constants {
-       // static let navigationBarColor = Asset.Colors.lightNavigationBarColor.color
-        //static let titleColor = Asset.Colors.titleColor.color
-    }
-
     // MARK: - Types
 
     enum Target: CoordinatorTarget {
         case muscularGrops(patern: TrainingEntityTarget)
         case muscularSubgroups(patern: TrainingEntityTarget, muscleGroup: MuscleGroup.Group)
         case exercises(patern: TrainingEntityTarget, miscleSubgroups: MuscleSubgroup.Subgroup)
+        case choosenExercise(name: String)
     }
     
     // MARK: - Properties
@@ -47,6 +41,10 @@ final class MuscleGroupsCoordinator: Coordinator {
         case .exercises(let patern, let muscleSubgroups):
             let exerciseListViewController = configureExerciseViewController(with: muscleSubgroups, target: patern)
             navigationController?.pushViewController(exerciseListViewController, animated: true)
+        case .choosenExercise(let name):
+            let choosenExerciseForStatisticViewModel = ChoosenExerciseStatisticsViewModel(exersiceName: name)
+            let choosenExerciseForStatisticViewController = ChoosenExerciseStatisticsViewController(viewModel: choosenExerciseForStatisticViewModel)
+            navigationController?.pushViewController(choosenExerciseForStatisticViewController, animated: true)
         }
         return true
     }
@@ -77,6 +75,8 @@ final class MuscleGroupsCoordinator: Coordinator {
             exerciseListModel = ExerciseListModel(trainingPatern: nil)
         case .trainingPatern(let patern):
             exerciseListModel = ExerciseListModel(trainingPatern: patern)
+        case .showStatistics:
+            exerciseListModel = ExerciseListModel(trainingPatern: nil)
         }
         let exerciseListViewController = ExerciseListViewController(trainingEntityTarget: target)
         let exerciseListViewModel = ExerciseListViewModel(with: exerciseList, and: muscleSubgroups.name)

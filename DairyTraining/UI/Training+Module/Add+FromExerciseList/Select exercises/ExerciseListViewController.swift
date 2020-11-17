@@ -163,16 +163,26 @@ extension ExerciseListViewController: UITableViewDataSource {
 extension ExerciseListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel?.exerciseWasSelected(at: indexPath.row)
-        if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
-            cell.setSelectedBackgroundColor()
+        switch trainingEntityTarget {
+        case .training, .trainingPatern:
+            self.viewModel?.exerciseWasSelected(at: indexPath.row)
+            if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
+                cell.setSelectedBackgroundColor()
+            }
+        case .showStatistics:
+            self.viewModel?.exerciseWasSelectedForShowStatistics(at: indexPath.row)
         }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        self.viewModel?.exerciseWasDeselect(at: indexPath.row)
-        if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
-            cell.setUnselectedBackgroundColor()
+        switch trainingEntityTarget {
+        case .training, .trainingPatern:
+            self.viewModel?.exerciseWasDeselect(at: indexPath.row)
+            if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
+                cell.setUnselectedBackgroundColor()
+            }
+        case .showStatistics:
+            return
         }
     }
     

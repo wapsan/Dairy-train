@@ -34,15 +34,15 @@ class MainTabBarItemVC: UIViewController {
         self.navigationItem.backBarButtonItem = backBarButtonItem
         self.navigationController?.navigationBar.barStyle = .black
         
-        switch self.tabBarItem.tag {
-        case 0:
-            self.navigationItem.title = LocalizedString.activities
-        case 1:
-            self.navigationItem.title = LocalizedString.training
-        case 2:
-            self.navigationItem.title = LocalizedString.profile
-        default:
-            break
-        }
+//        switch self.tabBarItem.tag {
+//        case 0:
+//            self.navigationItem.title = LocalizedString.activities
+//        case 1:
+//            self.navigationItem.title = LocalizedString.training
+//        case 2:
+//            self.navigationItem.title = LocalizedString.profile
+//        default:
+//            break
+//        }
     }
 }

@@ -32,7 +32,7 @@ final class ChoosenPaternViewModel {
     }
     
     func addExerciseToCurrnetPatern() {
-        MainCoordinator.shared.coordinateс(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: .trainingPatern(trainingPatern: model.trainingPatern)))
+        MainCoordinator.shared.coordinateChild(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: .trainingPatern(trainingPatern: model.trainingPatern)))
     }
 }
 

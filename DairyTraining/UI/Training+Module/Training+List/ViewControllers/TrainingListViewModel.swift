@@ -10,7 +10,7 @@ protocol TrainingListViewModelIteracting: AnyObject {
     func deselectAllTraining()
     func deleteChoosenTraining()
     func goToTraining(at index: Int)
-    func goToMuscularList()
+    func goToMuscularList(with trainingEntityTarget: TrainingEntityTarget)
     func goToTrainingPaterns()
 }
 
@@ -18,23 +18,31 @@ final class TrainingListViewModel {
     
     weak var view: TraininglistViewControllerIteractin?
     var model: TrainingListModel?
-    var router: TrainingListRouter?
+   // var router: TrainingListRouter?
+    
+    init(model: TrainingListModel) {
+        self.model = model
+    }
 }
 
 //MARK: - TrainingListViewModelIteracting
 extension TrainingListViewModel: TrainingListViewModelIteracting {
     
-    func goToMuscularList() {
-        self.router?.pushExerciseListViewController()
+    func goToMuscularList(with trainingEntityTarget: TrainingEntityTarget) {
+        MainCoordinator.shared.coordinateChild(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: trainingEntityTarget))
+        //self.router?.pushExerciseListViewController()
     }
 
     func goToTrainingPaterns() {
-        self.router?.pushTrainingPaternsViewController()
+        MainCoordinator.shared.coordinateChild(to: TrainingModuleCoordinator.Target.trainingPaternsList)
+        //self.router?.pushTrainingPaternsViewController()
     }
     
     func goToTraining(at index: Int) {
         guard let choosenTraining = self.model?.trainingList[index] else { return }
-        self.router?.pushTrainingViewController(for: choosenTraining)
+        MainCoordinator.shared.coordinateChild(
+            to:TrainingModuleCoordinator.Target.choosenTraining(training: choosenTraining))
+        //self.router?.pushTrainingViewController(for: choosenTraining)
     }
     
     func deleteChoosenTraining() {

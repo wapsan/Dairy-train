@@ -78,25 +78,25 @@ private extension ChoosenPaternViewController {
                         UIView.animate(withDuration: 0.23, animations: {
                             self?.tableHeaderView?.titleLabel.text = name
                             self?.tableHeaderView?.titleLabel.alpha = 1
-                            
                         })
                        })
     }
     
     @objc private func addBarButtonAction() {
-        let curentPaternSideMenu = CurrentPaternSideMenu()
-        let menu = SideMenuNavigationController(rootViewController: curentPaternSideMenu)
-        menu.leftSide = false
-        menu.menuWidth = UIScreen.main.bounds.width * 0.7
-        menu.statusBarEndAlpha = 0.0
-                   
-                    menu.presentationStyle = .menuSlideIn
-                    
-                  
-        menu.presentationStyle.presentingEndAlpha = 0.4
-                    menu.navigationBar.isHidden = true
-                    menu.modalPresentationStyle = .overCurrentContext
-        present(menu, animated: true, completion: nil)
+        namingAlert?.show(with: viewModel.paternNameo.value)
+//        let curentPaternSideMenu = CurrentPaternSideMenu()
+//        let menu = SideMenuNavigationController(rootViewController: curentPaternSideMenu)
+//        menu.leftSide = false
+//        menu.menuWidth = UIScreen.main.bounds.width * 0.7
+//        menu.statusBarEndAlpha = 0.0
+//                   
+//                    menu.presentationStyle = .menuSlideIn
+//                    
+//                  
+//        menu.presentationStyle.presentingEndAlpha = 0.4
+//                    menu.navigationBar.isHidden = true
+//                    menu.modalPresentationStyle = .overCurrentContext
+//        present(menu, animated: true, completion: nil)
     }
     
     func showCreateTrainingAlert() {
@@ -123,24 +123,3 @@ private extension ChoosenPaternViewController {
     }
 }
 
-//MARK: - UITableViewDelegate
-//extension ChoosenPaternViewController: UITableViewDelegate {
-//    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        guard section == 0 else { return nil }
-//        self.viewModel.paternNameo.asObservable().subscribe(onNext: {
-//            self.animatableChangePaternName(to: $0)
-//        }).disposed(by: disposeBag)
-//        tableHeaderView?.createTrainingAction = { [unowned self] in
-//            self.showCreateTrainingAlert()
-//        }
-//        tableHeaderView?.changePaternAction = { [unowned self] in
-//            self.viewModel.addExerciseToCurrnetPatern()
-//        }
-//        return tableHeaderView
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return UITableView.automaticDimension//section == 0 ? 100 : 0
-//    }
-//}

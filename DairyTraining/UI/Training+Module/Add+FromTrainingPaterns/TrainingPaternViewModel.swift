@@ -77,7 +77,9 @@ final class TrainingPaternViewModel {
     //MARK: - Public methods
     func goToChoosenTrainingPatern(with trainingPaternIndex: Int) {
         guard let choosenTrainingPatern = model.getTrainingPatern(at: trainingPaternIndex) else { return }
-        self.router?.pushChoosenPaternViewController(with: choosenTrainingPatern)
+       // self.router?.pushChoosenPaternViewController(with: choosenTrainingPatern)
+        MainCoordinator.shared.coordinateChild(
+            to: TrainingModuleCoordinator.Target.choosenTrainingPatern(patern: choosenTrainingPatern))
     }
     
     func goToMuscularGroupsList() {

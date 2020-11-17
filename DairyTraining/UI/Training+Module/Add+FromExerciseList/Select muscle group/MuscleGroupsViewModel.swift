@@ -14,6 +14,6 @@ final class MuscleGroupsViewModel {
     
     func selectRow(at index: Int, with trainingEntityTarget: TrainingEntityTarget) {
         let selectedGroup = self.muscleGroups[index]
-        MainCoordinator.shared.coordinateс(to: MuscleGroupsCoordinator.Target.muscularSubgroups(patern: trainingEntityTarget, muscleGroup: selectedGroup))
+        MainCoordinator.shared.coordinateChild(to: MuscleGroupsCoordinator.Target.muscularSubgroups(patern: trainingEntityTarget, muscleGroup: selectedGroup))
     }
 }

@@ -4,6 +4,9 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - Differentiator (4.0.1)
   - Firebase/Auth (6.27.1):
     - Firebase/CoreOnly
@@ -81,6 +84,7 @@ PODS:
   - SideMenu (6.5.0)
 
 DEPENDENCIES:
+  - Charts
   - Firebase/Auth
   - Firebase/Database
   - GoogleSignIn
@@ -92,6 +96,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AppAuth
+    - Charts
     - Differentiator
     - Firebase
     - FirebaseAuth
@@ -115,6 +120,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Firebase: 919186c8e119dd9372a45fd1dd17a8a942bc1892
   FirebaseAuth: b85c064e0ac60f82486728d50a4803f235687302
@@ -136,6 +142,6 @@ SPEC CHECKSUMS:
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 53276c957dde33301d6f9fa6329310ac74034dbe
+PODFILE CHECKSUM: b51b54218e9b5057fba208a66380c17a1e2f5b68
 
 COCOAPODS: 1.9.3

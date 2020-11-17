@@ -22,6 +22,12 @@ final class RecomendationsViewController: UIViewController {
     }()
     
     //MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        extendedLayoutIncludesOpaqueBars = true
+        MainCoordinator.shared.setTabBarHidden(true, duration: 0.25)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = LocalizedString.recomendations
@@ -38,21 +44,12 @@ final class RecomendationsViewController: UIViewController {
     
     //MARK: - Constraints
     private func setUpTableConstraints() {
-        
-        //self.view.frame = UIScreen.main.bounds
-     //   let safeArea = self.view.safeAreaLayoutGuide
-          NSLayoutConstraint.activate([
-                    self.tableView.topAnchor.constraint(equalTo:  self.view.topAnchor),
-                    self.tableView.leftAnchor.constraint(equalTo:  self.view.leftAnchor),
-                    self.tableView.rightAnchor.constraint(equalTo:  self.view.rightAnchor),
-                    self.tableView.bottomAnchor.constraint(equalTo:  self.view.bottomAnchor)
-                ])
-//        NSLayoutConstraint.activate([
-//            self.tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-//            self.tableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
-//            self.tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
-//            self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
-//        ])
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo:  self.view.topAnchor),
+            self.tableView.leftAnchor.constraint(equalTo:  self.view.leftAnchor),
+            self.tableView.rightAnchor.constraint(equalTo:  self.view.rightAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo:  self.view.bottomAnchor)
+        ])
     }
 }
 

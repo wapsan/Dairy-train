@@ -30,6 +30,9 @@ private extension MuscleSubgropsRouter {
             exerciseListModel = ExerciseListModel(trainingPatern: nil)
         case .trainingPatern(trainingPatern: let trainingPatern):
             exerciseListModel = ExerciseListModel(trainingPatern: trainingPatern)
+        default:
+            exerciseListModel = ExerciseListModel(trainingPatern: nil)
+            //break
         }
         let exerciseListViewController = ExerciseListViewController(trainingEntityTarget: target)
         let exerciseViewModel = ExerciseListViewModel(with: exerciseList,

@@ -113,12 +113,21 @@ final class MainCoordinator: Coordinator {
         }
     }
 
+    private var rootTabBarController: UITabBarController?
     private var rootNavigationController: UINavigationController?
     private var childCoordinators: [Coordinator] = []
 
+    private(set) var profileNavigationController: UINavigationController
+    private(set) var trainingBlockNavigationController: UINavigationController
+    private(set) var nutritionBlockNavigationController: UINavigationController
+    
     // MARK: - Init
 
-    private init() {}
+    private init() {
+        self.profileNavigationController = TabBarItemController.profile.navigationController
+        self.trainingBlockNavigationController = TabBarItemController.trainingBlock.navigationController
+        self.nutritionBlockNavigationController = TabBarItemController.supplyBlock.navigationController
+    }
 
     // MARK: - Coordinator API
 
@@ -130,7 +139,9 @@ final class MainCoordinator: Coordinator {
             window?.rootViewController = splashScreen
         case .mainFlow:
             let mainFlow = MainTabBarViewController()
-            window?.setRootViewController(mainFlow)
+            rootTabBarController = mainFlow
+            guard let a = rootTabBarController else { return false }
+            window?.setRootViewController(a)
         case .loginFlow:
             let loginViewController = LoginViewController()
             let loginViewModel = LoginViewModel()
@@ -149,7 +160,11 @@ final class MainCoordinator: Coordinator {
         return true
     }
     
-    @discardableResult func coordinateс(to target: CoordinatorTarget) -> Bool {
+    func setTabBarHidden(_ isHiden: Bool, duration: TimeInterval) {
+        rootTabBarController?.tabBar.hide(isHiden, animated: true, duration: duration)
+    }
+    
+    @discardableResult func coordinateChild(to target: CoordinatorTarget) -> Bool {
           for coordinator in childCoordinators {
               if coordinator.coordinate(to: target) { return true }
           }
@@ -160,6 +175,8 @@ final class MainCoordinator: Coordinator {
     // MARK: - Private
 
     private func createChildCoordinators(for window: UIWindow?) -> [Coordinator] {
-        return [MuscleGroupsCoordinator(window: window)]
+        return [MuscleGroupsCoordinator(window: window),
+                ProfileMenuCoordinator(rootViewController: self.profileNavigationController),
+                TrainingModuleCoordinator(rootViewController: self.trainingBlockNavigationController)]
     }
 }

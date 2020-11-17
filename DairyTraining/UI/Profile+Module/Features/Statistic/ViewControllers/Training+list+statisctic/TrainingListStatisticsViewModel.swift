@@ -1,37 +1,30 @@
 import Foundation
 
 protocol TrainingListStatisticsViewModelInput: AnyObject {
-    func loadStatisticsList()
-    var trainigList: [TrainingManagedObject] { get set }
+    func trainigWasSelected(at index: Int)
+    
+    var trainigList: [TrainingManagedObject] { get }
 }
 
 final class TrainingListStatisticsViewModel {
     
-    var model: TrainingListStatisticsModelIteracting?
+    var model: TrainingListStatisticsModel
     private var _trainigList: [TrainingManagedObject] = []
+    
+    init(model: TrainingListStatisticsModel) {
+        self.model = model
+    }
 }
 
 //MARK: - TrainingListStatisticsViewModelInput
 extension TrainingListStatisticsViewModel: TrainingListStatisticsViewModelInput {
+   
+    func trainigWasSelected(at index: Int) {
+        let trainingStatistics = Statistics(for: trainigList[index])
+        MainCoordinator.shared.coordinateChild(to: ProfileMenuCoordinator.Target.statisticForChoosenTraining(statistics: trainingStatistics))
+    }
     
     var trainigList: [TrainingManagedObject] {
-        get {
-            return self._trainigList
-        }
-        set {
-            self._trainigList = newValue
-        }
-    }
-    
-    func loadStatisticsList() {
-        self.model?.getStatisticsModel()
-    }
-}
-
-//MARK: - TrainingListStatisticsModelOutput
-extension TrainingListStatisticsViewModel: TrainingListStatisticsModelOutput {
-    
-    func setTrainingList(to trainingList: [TrainingManagedObject]) {
-        self.trainigList = trainingList
+        model.traingList
     }
 }
