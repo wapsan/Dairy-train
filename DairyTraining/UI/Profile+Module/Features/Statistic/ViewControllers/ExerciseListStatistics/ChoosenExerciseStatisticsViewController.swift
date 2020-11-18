@@ -29,6 +29,7 @@ class ChoosenExerciseStatisticsViewController: UIViewController {
 private extension ChoosenExerciseStatisticsViewController {
     
     func setup() {
+        title = viewModel.exerciseTitle
         view.backgroundColor = DTColors.backgroundColor
         tableView.register(UINib(nibName: ExerciseStatisticsCell.xibName, bundle: nil),
                            forCellReuseIdentifier: ExerciseStatisticsCell.cellID)
@@ -39,7 +40,7 @@ private extension ChoosenExerciseStatisticsViewController {
 extension ChoosenExerciseStatisticsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 3
+       return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,6 +56,6 @@ extension ChoosenExerciseStatisticsViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension ChoosenExerciseStatisticsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.height / 2.5
+        return 300
     }
 }
