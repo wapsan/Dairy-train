@@ -73,7 +73,7 @@ final class ExerciseStatisticsCell: UITableViewCell {
             fillDataEntries(&entries, with: data)
         }
         guard !entries.isEmpty else { return }
-        let lineChartDataSet = createLineChartDataSet(with: entries)
+        let lineChartDataSet = setupLineChartDataSet(with: entries)
         setUpChartView(with: lineChartDataSet)
     }
     
@@ -86,7 +86,7 @@ final class ExerciseStatisticsCell: UITableViewCell {
         })
     }
     
-    private func createLineChartDataSet(with entries: [ChartDataEntry]) -> LineChartDataSet {
+    private func setupLineChartDataSet(with entries: [ChartDataEntry]) -> LineChartDataSet {
         let lineChartDataSet = LineChartDataSet(entries: entries, label: legendTitle)
         lineChartDataSet.axisDependency = .left
         lineChartDataSet.formSize = 20
@@ -106,53 +106,54 @@ final class ExerciseStatisticsCell: UITableViewCell {
         return lineChartDataSet
     }
     
-    private func createLineChartData(with lineChartDataSet: LineChartDataSet) -> LineChartData {
-        let lineChartData = LineChartData(dataSet: lineChartDataSet)
-        return lineChartData
+    private func setUpChartView(with lineChartDataSet: LineChartDataSet) {
+        setupChartViewLayout()
+        setupChartViewXAxis()
+        setupChartViewYAxis()
+        setupChartViewAppereance()
+        chartView.xAxis.labelCount =  lineChartDataSet.entries.count
+        chartView.leftAxis.axisMaximum = (lineChartDataSet.entries.map({ $0.y}).max() ?? 0) * 1.2
+        chartView.data = LineChartData(dataSet: lineChartDataSet)
+        chartView.setVisibleXRangeMaximum(5)
     }
     
-    private func setUpChartView(with lineChartDataSet: LineChartDataSet) {
-        chartView.leftAxis.drawGridLinesEnabled = false
-        chartView.rightAxis.drawGridLinesEnabled = false
-        chartView.xAxis.drawGridLinesEnabled = false
-
-        chartView.backgroundColor = DTColors.backgroundColor
-        chartView.legend.textColor = .white
-        
-        chartView.scaleXEnabled = false
-        chartView.scaleYEnabled = false
-        
+    private func setupChartViewLayout() {
         chartView.minOffset = 0
-        
-        chartView.leftAxis.enabled = false
-        chartView.rightAxis.enabled = false
-        
         chartView.extraLeftOffset = 16
         chartView.extraRightOffset = 16
         chartView.extraBottomOffset = 8
         chartView.borderLineWidth = 0
-        
-        chartView.xAxis.labelTextColor = .white
-        chartView.xAxis.labelFont = .systemFont(ofSize: 15)
-        
-        chartView.legend.font = .systemFont(ofSize: 17)
-        
-        chartView.leftAxis.drawLabelsEnabled = false
-        chartView.rightAxis.drawLabelsEnabled = false
-
-        chartView.extraRightOffset = 20
-        chartView.extraLeftOffset = 20
-        chartView.xAxis.labelCount =  lineChartDataSet.entries.count
-        
+    }
+    
+    private func setupChartViewXAxis() {
+        chartView.scaleXEnabled = false
+        chartView.xAxis.drawGridLinesEnabled = false
         chartView.xAxis.drawLimitLinesBehindDataEnabled = true
         chartView.xAxis.avoidFirstLastClippingEnabled = true
         chartView.xAxis.drawLabelsEnabled = true
         chartView.xAxis.granularity = 1
-        chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dates.map({ DateHelper.shared.getFormatedDateFrom($0,with: .dateForStatisticsFromat)}))
-        
-        chartView.leftAxis.axisMaximum = (lineChartDataSet.entries.map({ $0.y}).max() ?? 0) * 1.2
+        chartView.xAxis.valueFormatter = IndexAxisValueFormatter(
+            values: dates.map({ DateHelper.shared.getFormatedDateFrom($0,with: .dateForStatisticsFromat)}))
         chartView.xAxis.avoidFirstLastClippingEnabled = false
-        chartView.data = createLineChartData(with: lineChartDataSet)
-        chartView.setVisibleXRangeMaximum(5)
+    }
+    
+    private func setupChartViewYAxis() {
+        chartView.scaleYEnabled = false
+        chartView.leftAxis.drawGridLinesEnabled = false
+        chartView.rightAxis.drawGridLinesEnabled = false
+        chartView.leftAxis.enabled = false
+        chartView.rightAxis.enabled = false
+        chartView.leftAxis.drawLabelsEnabled = false
+        chartView.rightAxis.drawLabelsEnabled = false
+        chartView.extraRightOffset = 20
+        chartView.extraLeftOffset = 20
+    }
+    
+    private func setupChartViewAppereance() {
+        chartView.backgroundColor = DTColors.backgroundColor
+        chartView.legend.textColor = .white
+        chartView.xAxis.labelTextColor = .white
+        chartView.xAxis.labelFont = .systemFont(ofSize: 15)
+        chartView.legend.font = .systemFont(ofSize: 17)
     }
 }
