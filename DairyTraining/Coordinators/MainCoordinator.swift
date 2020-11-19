@@ -143,19 +143,20 @@ final class MainCoordinator: Coordinator {
             guard let a = rootTabBarController else { return false }
             window?.setRootViewController(a)
         case .loginFlow:
-            let loginViewController = LoginViewController()
+           // let loginViewController = LoginViewController()
+            let authViewController = AuthorizationViewController()
             let loginViewModel = LoginViewModel()
             let loginModel = LoginModel()
-            let loginRouter = LoginRouter(loginViewController)
+          //  let loginRouter = LoginRouter(authViewController)
             
-            loginViewController.viewModel = loginViewModel
-            loginViewController.router = loginRouter
-            loginViewModel.view = loginViewController
+            authViewController.viewModel = loginViewModel
+           // authViewController.router = loginRouter
+            loginViewModel.view = authViewController
             loginViewModel.model = loginModel
             loginModel.output = loginViewModel
             var transitionOption = UIWindow.TransitionOptions(direction: .toRight, style: .linear)
             transitionOption.background = UIWindow.TransitionOptions.Background.solidColor(DTColors.backgroundColor)
-            window?.setRootViewController(loginViewController, options: transitionOption)
+            window?.setRootViewController(authViewController, options: transitionOption)
         }
         return true
     }

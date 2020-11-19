@@ -1,10 +1,10 @@
 import Firebase
 import GoogleSignIn
 
-class AppAuthentication: NSObject, GIDSignInDelegate {
+class GoogleAuthorizationManager: NSObject, GIDSignInDelegate {
     
     //MARK: - Singletone propertie
-    static let shared = AppAuthentication()
+    static let shared = GoogleAuthorizationManager()
     
     //MARK: - Initialization
     private override init() {

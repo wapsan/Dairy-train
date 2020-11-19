@@ -4,6 +4,8 @@ protocol LoginViewModelInput {
     func signIn(with email: String?, and password: String?)
     func signUp(with email: String?, and password: String?)
     func signInWithGoogle()
+    func signInWithFacebook()
+    func signInWithApple()
     func setUpGooglePresentingViewController()
 }
 
@@ -16,6 +18,14 @@ final class LoginViewModel {
 
 //MARK: - LoginViewModelInput
 extension LoginViewModel: LoginViewModelInput {
+    
+    func signInWithFacebook() {
+        //
+    }
+    
+    func signInWithApple() {
+        //
+    }
     
     func signIn(with email: String?, and password: String?) {
         self.model?.signIn(with: email, and: password)
@@ -30,7 +40,7 @@ extension LoginViewModel: LoginViewModelInput {
     }
     
     func setUpGooglePresentingViewController() {
-        guard let loginViewController = self.view as? LoginViewController else { return }
+        guard let loginViewController = self.view as? UIViewController else { return }
         self.model?.setUpGooglePresentingViewController(to: loginViewController)
     }
 }

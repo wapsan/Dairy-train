@@ -8,7 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DTSettingManager.shared.activateDefaultSetting()
-        AppAuthentication.shared.initAuth()
+        GoogleAuthorizationManager.shared.initAuth()
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.makeKeyAndVisible()
         self.window?.backgroundColor = DTColors.backgroundColor
@@ -21,6 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return AppAuthentication.shared.handle(url: url)
+        return GoogleAuthorizationManager.shared.handle(url: url)
     }
 }

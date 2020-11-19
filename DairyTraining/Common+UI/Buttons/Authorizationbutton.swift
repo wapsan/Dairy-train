@@ -1,7 +1,8 @@
 import UIKit
 
-class GoogleSignInButton: DTSystemButton {
+final class Authorizationbutton: DTSystemButton {
     
+    // MARK: - Overrided properties
     override var unpressedBackgroundColor: UIColor {
         return UIColor.white
     }
@@ -10,9 +11,60 @@ class GoogleSignInButton: DTSystemButton {
         return UIColor.lightGray
     }
     
+    // MARK: - Types
+    enum AuthorizationButtonType {
+        case google
+        case facebook
+        case apple
+        
+        var title: String {
+            switch self {
+            case .google:
+                return LocalizedString.signInWithGoogle
+            case .facebook:
+                return "Login with Facebook"
+            case .apple:
+                return "Login with Apple"
+            }
+        }
+        
+        var textColor: UIColor {
+            switch self {
+            case .google, .apple:
+                return .black
+            case .facebook:
+                return .black
+            }
+        }
+        
+        var backgroundColor: UIColor {
+            switch self {
+            case .google:
+                return .white
+            case .facebook:
+                return .white
+            case .apple:
+                return .white
+            }
+        }
+        
+        var image: UIImage? {
+            switch self {
+            case .google:
+                return UIImage(named: "googleCustom")
+            case .facebook:
+                return UIImage(named: "facebookAuthorizationIcon")
+            case .apple:
+                return UIImage(named: "appleAuthorizationIcon")
+            }
+        }
+    }
+    
+    private var type: AuthorizationButtonType
+    
     //MARK: - GUI Properties
     private lazy var googleImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage.googleImage)
+        let imageView = UIImageView(image: type.image)
         imageView.backgroundColor = .clear
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -20,13 +72,13 @@ class GoogleSignInButton: DTSystemButton {
     
     private lazy var googleButtonTittle: UILabel = {
         let label = UILabel()
-        label.text = LocalizedString.signInWithGoogle
+        label.text = type.title
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 20)
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.2
         label.numberOfLines = 1
-        label.textColor = .black
+        label.textColor = type.textColor
         return label
     }()
     
@@ -34,7 +86,7 @@ class GoogleSignInButton: DTSystemButton {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 8
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fill
         stackView.alignment = .center
         stackView.addArrangedSubview(self.googleImage)
         stackView.addArrangedSubview(self.googleButtonTittle)
@@ -44,9 +96,10 @@ class GoogleSignInButton: DTSystemButton {
     }()
     
     //MARK: - Initialization
-    init() {
+    init(type: AuthorizationButtonType) {
+        self.type = type
         super.init(tittle: "")
-        self.backgroundColor = .white
+        self.backgroundColor = type.backgroundColor
         self.addSubview(self.googleStackView)
         self.setConstraints()
     }

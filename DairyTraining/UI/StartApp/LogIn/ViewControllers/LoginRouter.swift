@@ -7,11 +7,11 @@ protocol LoginRouterOutput: AnyObject {
 class LoginRouter: Router {
     
     //MARK: - Private properties
-    private weak var rootViewController: LoginViewController?
+    //private weak var rootViewController: LoginViewController?
     
     //MARK: - Initialization
     required init(_ viewController: UIViewController) {
-        self.rootViewController = viewController as? LoginViewController
+       // self.rootViewController = viewController as? LoginViewController
     }
 }
 
