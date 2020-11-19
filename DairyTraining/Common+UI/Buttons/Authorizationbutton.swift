@@ -113,16 +113,21 @@ final class Authorizationbutton: DTSystemButton {
         NSLayoutConstraint.activate([
             self.googleStackView.topAnchor.constraint(equalTo: self.topAnchor,
                                                       constant: DTEdgeInsets.small.top),
-            self.googleStackView.leftAnchor.constraint(equalTo: self.leftAnchor,
-                                                       constant: DTEdgeInsets.small.left),
-            self.googleStackView.rightAnchor.constraint(equalTo: self.rightAnchor,
-                                                        constant: DTEdgeInsets.medium.right),
+//            self.googleStackView.leftAnchor.constraint(equalTo: self.leftAnchor,
+//                                                       constant: DTEdgeInsets.small.left),
+//            self.googleStackView.rightAnchor.constraint(equalTo: self.rightAnchor,
+//                                                        constant: DTEdgeInsets.medium.right),
             self.googleStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
                                                          constant: DTEdgeInsets.small.bottom),
+          //  googleStackView.leftAnchor.constraint(greaterThanOrEqualTo: leftAnchor, constant: 8),
+           // googleStackView.rightAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: -8),
+            googleStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.googleImage.heightAnchor.constraint(equalTo: self.googleImage.widthAnchor)
+           // self.googleImage.heightAnchor.constraint(equalTo: self.googleImage.widthAnchor)
+            googleImage.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5),
+            googleImage.widthAnchor.constraint(equalTo: googleImage.heightAnchor, multiplier: 1)
         ])
     }
 }
