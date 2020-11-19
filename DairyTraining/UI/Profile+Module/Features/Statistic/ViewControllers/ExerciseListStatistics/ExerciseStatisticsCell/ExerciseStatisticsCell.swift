@@ -28,18 +28,15 @@ enum ExerciseSatisticType {
 
 final class ExerciseStatisticsCell: UITableViewCell {
 
-    //MARK: - Types
-    
-    
     //MARK: - Properties
     static let cellID = "ExerciseStatisticsCell"
     static let xibName = "ExerciseStatisticsCell"
-    private var dates: [Date] = []
-    
+    private lazy var dates: [Date] = []
+    private lazy var legendTitle = ""
     
     //MARK: - @IBOutlets
-    @IBOutlet var chartView: LineChartView!
-    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet private var chartView: LineChartView!
+    @IBOutlet private var titleLabel: UILabel!
     
     //MARK: - Initialization
     override func awakeFromNib() {
@@ -47,46 +44,33 @@ final class ExerciseStatisticsCell: UITableViewCell {
         configure()
     }
 
-    //MARK: - Setter
+    //MARK: - Configure cell
     private func configure() {
         titleLabel.font = .boldSystemFont(ofSize: 17)
         selectionStyle = .none
         contentView.backgroundColor = DTColors.backgroundColor
     }
     
+    // MARK: - Setter
     func setupCell(for exerciseStatisticsType: ExerciseSatisticType) {
         titleLabel.text = exerciseStatisticsType.title
         var entries: [ChartDataEntry] = []
         dates = []
+        legendTitle = "Weight, kg"
         switch exerciseStatisticsType {
         case .avarageReps(let data):
-            data.enumerated().forEach({
-                dates.append($1.date)
-                let dataEntry = ChartDataEntry(x: Double($0), y: $1.value )
-                entries.append(dataEntry)
-            })
+            guard !data.isEmpty else { return }
+            fillDataEntries(&entries, with: data)
+            legendTitle = "Reps, count"
         case .maxProjectileWeight(data: let data):
             guard !data.isEmpty else { return }
-            data.enumerated().forEach({
-                dates.append($1.date)
-                let dataEntry = ChartDataEntry(x: Double($0), y: $1.value)
-                entries.append(dataEntry)
-            })
+            fillDataEntries(&entries, with: data)
         case .avarageProjectileWeight(data: let data):
             guard !data.isEmpty else { return }
-            data.enumerated().forEach({
-                dates.append($1.date)
-                let dataEntry = ChartDataEntry(x: Double($0), y: $1.value )
-                entries.append(dataEntry)
-            })
+            fillDataEntries(&entries, with: data)
         case .summProjectileWeight(data: let data):
             guard !data.isEmpty else { return }
-            data.enumerated().forEach({
-                dates.append($1.date)
-                let dataEntry = ChartDataEntry(x: Double($0), y: $1.value )
-                print($1.date)
-                entries.append(dataEntry)
-            })
+            fillDataEntries(&entries, with: data)
         }
         guard !entries.isEmpty else { return }
         let lineChartDataSet = createLineChartDataSet(with: entries)
@@ -94,10 +78,19 @@ final class ExerciseStatisticsCell: UITableViewCell {
     }
     
     // MARK: - Private methods
+    private func fillDataEntries(_ dataEnties: inout [ChartDataEntry], with data: [ExerciseStatisticsData]) {
+        data.enumerated().forEach({
+            dates.append($1.date)
+            let dataEntry = ChartDataEntry(x: Double($0), y: $1.value)
+            dataEnties.append(dataEntry)
+        })
+    }
+    
     private func createLineChartDataSet(with entries: [ChartDataEntry]) -> LineChartDataSet {
-        let lineChartDataSet = LineChartDataSet(entries: entries, label: "Weight, Kg")
+        let lineChartDataSet = LineChartDataSet(entries: entries, label: legendTitle)
         lineChartDataSet.axisDependency = .left
         lineChartDataSet.formSize = 20
+        lineChartDataSet.form = .circle
         lineChartDataSet.mode = .cubicBezier
         lineChartDataSet.lineWidth = 2
         lineChartDataSet.drawFilledEnabled = true
@@ -125,7 +118,7 @@ final class ExerciseStatisticsCell: UITableViewCell {
 
         chartView.backgroundColor = DTColors.backgroundColor
         chartView.legend.textColor = .white
-        chartView.setVisibleXRangeMaximum(7)
+        
         chartView.scaleXEnabled = false
         chartView.scaleYEnabled = false
         
@@ -147,15 +140,19 @@ final class ExerciseStatisticsCell: UITableViewCell {
         chartView.leftAxis.drawLabelsEnabled = false
         chartView.rightAxis.drawLabelsEnabled = false
 
-        chartView.xAxis.labelCount =  lineChartDataSet.entries.count//entries.count
+        chartView.extraRightOffset = 20
+        chartView.extraLeftOffset = 20
+        chartView.xAxis.labelCount =  lineChartDataSet.entries.count
+        
         chartView.xAxis.drawLimitLinesBehindDataEnabled = true
         chartView.xAxis.avoidFirstLastClippingEnabled = true
         chartView.xAxis.drawLabelsEnabled = true
         chartView.xAxis.granularity = 1
         chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dates.map({ DateHelper.shared.getFormatedDateFrom($0,with: .dateForStatisticsFromat)}))
-
+        
         chartView.leftAxis.axisMaximum = (lineChartDataSet.entries.map({ $0.y}).max() ?? 0) * 1.2
-   
+        chartView.xAxis.avoidFirstLastClippingEnabled = false
         chartView.data = createLineChartData(with: lineChartDataSet)
+        chartView.setVisibleXRangeMaximum(5)
     }
 }

@@ -6,7 +6,7 @@ class DateHelper {
     enum DateFormatTypes: String {
         case trainingDateFromat = "dd/MM/yyyy"
         case synhronizationDateFromat = "MM-dd-yyyy HH:mm"
-        case dateForStatisticsFromat = "dd.MM.yy"
+        case dateForStatisticsFromat = "dd.MM"
     }
     
     //MARK: - Static properties

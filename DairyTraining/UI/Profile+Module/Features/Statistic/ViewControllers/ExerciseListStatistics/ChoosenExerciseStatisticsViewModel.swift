@@ -47,23 +47,25 @@ extension ExerciseManagedObject: ExerciseStatistics {
 final class ChoosenExerciseStatisticsViewModel  {
     
     // MARK: - Properties
-   private(set) var exerciseTitle: String
+    private(set) var exerciseTitle: String
+    private(set) var numberOfChartCell = 4
     private var exercises: [ExerciseStatistics]
+    
     private var maxWeightData: [ExerciseStatisticsData] {
         return exercises.sorted(by: { $0.exerciseDate < $1.exerciseDate })
-                        .map({ ExerciseStatisticsData(date: $0.exerciseDate, value: $0.maxProjectileWeight) })
+            .map({ ExerciseStatisticsData(date: $0.exerciseDate, value: $0.maxProjectileWeight) })
     }
     private var avarageProjectileWeightData: [ExerciseStatisticsData] {
         return exercises.sorted(by: { $0.exerciseDate < $1.exerciseDate })
-                        .map({ ExerciseStatisticsData(date: $0.exerciseDate, value: $0.avarageProjectileWeight) })
+            .map({ ExerciseStatisticsData(date: $0.exerciseDate, value: $0.avarageProjectileWeight) })
     }
     private var sumProjectileWeightData: [ExerciseStatisticsData] {
         return exercises.sorted(by: { $0.exerciseDate < $1.exerciseDate })
-                        .map({ ExerciseStatisticsData(date: $0.exerciseDate, value: $0.totalLiftingWeight) })
+            .map({ ExerciseStatisticsData(date: $0.exerciseDate, value: $0.totalLiftingWeight) })
     }
     private var avarageRepsData: [ExerciseStatisticsData] {
         return exercises.sorted(by: { $0.exerciseDate < $1.exerciseDate })
-                        .map({ ExerciseStatisticsData(date: $0.exerciseDate, value: $0.avarageReps) })
+            .map({ ExerciseStatisticsData(date: $0.exerciseDate, value: $0.avarageReps) })
     }
     
     // MARK: - Initialization

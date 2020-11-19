@@ -1804,7 +1804,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sl.slavik.DairyTrain2-0r";
+				PRODUCT_BUNDLE_IDENTIFIER = "sl.slavik.DairyTrain2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1825,7 +1825,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sl.slavik.DairyTrain2-0r";
+				PRODUCT_BUNDLE_IDENTIFIER = "sl.slavik.DairyTrain2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

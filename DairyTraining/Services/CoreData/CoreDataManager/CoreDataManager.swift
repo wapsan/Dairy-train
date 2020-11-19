@@ -190,7 +190,7 @@ class CoreDataManager {
     
     func removeChoosenTrainings(_ trainingListForRemoving: [TrainingManagedObject]) {
         for train in trainingListForRemoving {
-            train.exercicesArray.forEach({ trainInfoContext.delete($0) })
+            //train.exercicesArray.forEach({ trainInfoContext.delete($0) })
             self.trainInfoContext.delete(train)
         }
         self.updateTrainInfoContext()
