@@ -1,6 +1,6 @@
 import UIKit
 
-class DTSplashScreenViewController: UIViewController {
+final class DTSplashScreenViewController: UIViewController {
 
     //MARK: - GUI Properties
     private lazy var mainLogo: UIImageView = {

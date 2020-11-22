@@ -14,13 +14,6 @@ final class ProfileRouter: Router {
         self.rootViewController = viewController as? ProfileViewController
     }
         
-    private func configureMenuController() -> MenuViewController {
-        let menuStackViewController = MenuViewController()
-        menuStackViewController.modalPresentationStyle = .custom
-        menuStackViewController.transitioningDelegate = self.rootViewController 
-        menuStackViewController.delegate = self.rootViewController?.viewModel 
-        return menuStackViewController
-    }
 }
 
 //MARK: - ProfileRouterOutputt
@@ -36,7 +29,6 @@ extension ProfileRouter: ProfileRouterOutputt {
     }
     
     func showMenuController() {
-        let menuVC = self.configureMenuController()
-        self.rootViewController?.present(menuVC, animated: true, completion: nil)
+
     }
 }

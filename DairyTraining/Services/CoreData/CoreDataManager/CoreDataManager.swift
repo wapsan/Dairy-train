@@ -2,12 +2,12 @@ import Foundation
 import CoreData
 import RxSwift
 
-struct CoreDataModelName {
-    static let userMainInfo = "UserMainInfo"
-    static let userTrainInfo = "UserTrainingInfo"
-}
-
 class CoreDataManager {
+    
+    private struct CoreDataModelName {
+        static let userMainInfo = "UserMainInfo"
+        static let userTrainInfo = "UserTrainingInfo"
+    }
     
     //MARK: - Singletone propertie
     static let shared = CoreDataManager()
@@ -190,7 +190,6 @@ class CoreDataManager {
     
     func removeChoosenTrainings(_ trainingListForRemoving: [TrainingManagedObject]) {
         for train in trainingListForRemoving {
-            //train.exercicesArray.forEach({ trainInfoContext.delete($0) })
             self.trainInfoContext.delete(train)
         }
         self.updateTrainInfoContext()

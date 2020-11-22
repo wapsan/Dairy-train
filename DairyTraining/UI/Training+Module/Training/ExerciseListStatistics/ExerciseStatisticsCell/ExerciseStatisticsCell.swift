@@ -33,6 +33,8 @@ final class ExerciseStatisticsCell: UITableViewCell {
     static let xibName = "ExerciseStatisticsCell"
     private lazy var dates: [Date] = []
     private lazy var legendTitle = ""
+    private var currentExrciseDate: Date?
+    private var todaysXValue: Double = 0
     
     //MARK: - @IBOutlets
     @IBOutlet private var chartView: LineChartView!
@@ -52,8 +54,9 @@ final class ExerciseStatisticsCell: UITableViewCell {
     }
     
     // MARK: - Setter
-    func setupCell(for exerciseStatisticsType: ExerciseSatisticType) {
+    func setupCell(for exerciseStatisticsType: ExerciseSatisticType, and currentExerciseDate: Date?) {
         titleLabel.text = exerciseStatisticsType.title
+        self.currentExrciseDate = currentExerciseDate
         var entries: [ChartDataEntry] = []
         dates = []
         legendTitle = "Weight, kg"
@@ -96,14 +99,29 @@ final class ExerciseStatisticsCell: UITableViewCell {
         lineChartDataSet.drawFilledEnabled = true
         lineChartDataSet.circleRadius = 5
         lineChartDataSet.circleHoleRadius = 2
+        let entriesColors = createColorsFor(entries: entries)
+        lineChartDataSet.circleColors =  entriesColors
         lineChartDataSet.fillColor = DTColors.controllSelectedColor
         lineChartDataSet.circleHoleColor = DTColors.backgroundColor
-        lineChartDataSet.circleColors = .init(repeating: DTColors.controllSelectedColor, count: entries.count)
         lineChartDataSet.colors = .init(repeating: DTColors.controllSelectedColor, count: 1)
         lineChartDataSet.valueColors = .init(repeating: .white, count: entries.count)
         lineChartDataSet.valueFont = .systemFont(ofSize: 14)
         lineChartDataSet.highlightEnabled = false
         return lineChartDataSet
+    }
+    
+    private func createColorsFor(entries: [ChartDataEntry]) -> [NSUIColor] {
+        var colors: [NSUIColor] = []
+        entries.enumerated().forEach({ index, value in
+            guard let currentExerciseDate = currentExrciseDate else { return }
+            if dates[index] == currentExerciseDate {
+                todaysXValue = entries[index].x
+                colors.append(.yellow)
+            } else {
+                colors.append(DTColors.controllSelectedColor)
+            }
+        })
+        return colors
     }
     
     private func setUpChartView(with lineChartDataSet: LineChartDataSet) {
@@ -112,9 +130,14 @@ final class ExerciseStatisticsCell: UITableViewCell {
         setupChartViewYAxis()
         setupChartViewAppereance()
         chartView.xAxis.labelCount =  lineChartDataSet.entries.count
-        chartView.leftAxis.axisMaximum = (lineChartDataSet.entries.map({ $0.y}).max() ?? 0) * 1.2
+        if lineChartDataSet.entries.map({$0.y}).max() == 0 {
+            chartView.leftAxis.axisMaximum = 10
+        } else {
+            chartView.leftAxis.axisMaximum = (lineChartDataSet.entries.map({ $0.y}).max() ?? 0) * 1.2
+        }
         chartView.data = LineChartData(dataSet: lineChartDataSet)
         chartView.setVisibleXRangeMaximum(5)
+        chartView.moveViewToX(todaysXValue)
     }
     
     private func setupChartViewLayout() {

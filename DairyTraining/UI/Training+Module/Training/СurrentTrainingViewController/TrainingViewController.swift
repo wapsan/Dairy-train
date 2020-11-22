@@ -41,6 +41,12 @@ final class TrainingViewController: UIViewController {
     }()
     
     //MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        extendedLayoutIncludesOpaqueBars = true
+        MainCoordinator.shared.setTabBarHidden(true, duration: 0.25)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadTraining()
@@ -128,6 +134,19 @@ extension TrainingViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension TrainingViewController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
+            tableView.performBatchUpdates({ [weak self] in
+                self?.viewModel?.showStatisticsForExercise(at: indexPath.row)
+                }, completion: nil)
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(systemName: "info")
+        deleteAction.backgroundColor = DTColors.backgroundColor
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
             tableView.performBatchUpdates({ [weak self] in

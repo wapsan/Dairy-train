@@ -9,10 +9,10 @@ final class TrainingModuleCoordinator: Coordinator {
     // MARK: - Types
     enum Target: CoordinatorTarget {
         case choosenTraining(training: TrainingManagedObject)
-        case muscleGroups
         case trainingPaternsList
         case choosenTrainingPatern(patern: TrainingPaternManagedObject)
         case muscularGrops(target: TrainingEntityTarget)
+        case statisticsForChosenExercise(name: String, exerciseDate: Date?)
     }
     
     // MARK: - Properties
@@ -35,9 +35,6 @@ final class TrainingModuleCoordinator: Coordinator {
         case .choosenTraining(training: let training):
             let choosenTrainingViewController = configureTrainingViewController(for: training)
             navigationController?.pushViewController(choosenTrainingViewController, animated: true)
-        case .muscleGroups:
-            return false
-            //let muscleGroupsViewController = configureMuscleVC(with: <#T##TrainingEntityTarget#>)
         case .trainingPaternsList:
             let trainingPaternsList = configureTrainingPaternsViewController()
             navigationController?.pushViewController(trainingPaternsList, animated: true)
@@ -47,6 +44,9 @@ final class TrainingModuleCoordinator: Coordinator {
         case .muscularGrops(target: let target):
             let muscleGroupViewController = configureMuscleVC(with: target)
             topViewController?.present(muscleGroupViewController, animated: true, completion: nil)
+        case .statisticsForChosenExercise(name: let name, exerciseDate: let exerciseDate):
+            let choosenExerciseForStatisticViewController = configureStatisticsViewController(with: name, and: exerciseDate)
+            topViewController?.present(choosenExerciseForStatisticViewController, animated: true, completion: nil)
         }
         return true
     }
@@ -79,10 +79,18 @@ final class TrainingModuleCoordinator: Coordinator {
            return muscleGroupsVC
        }
     
-    func configureChoosenPaternViewController(with choosenPatern: TrainingPaternManagedObject) -> ChoosenPaternViewController {
+    private func configureChoosenPaternViewController(with choosenPatern: TrainingPaternManagedObject) -> ChoosenPaternViewController {
         let choosenPaternModel = ChoosenPaternModel(patern: choosenPatern)
         let choosenPaternViewModel = ChoosenPaternViewModel(model: choosenPaternModel)
         let choosenPaternViewController = ChoosenPaternViewController(viewModel: choosenPaternViewModel)
         return choosenPaternViewController
+    }
+    
+    private func configureStatisticsViewController(with exerciseName: String,
+                                                   and exerciseDate: Date?) -> ChoosenExerciseStatisticsViewController {
+        let choosenExerciseForStatisticViewModel = ChoosenExerciseStatisticsViewModel(exersiceName: exerciseName,
+                                                                                      currentExerciseDate: exerciseDate)
+        let choosenExerciseForStatisticViewController = ChoosenExerciseStatisticsViewController(viewModel: choosenExerciseForStatisticViewModel)
+        return choosenExerciseForStatisticViewController
     }
 }

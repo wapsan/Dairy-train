@@ -88,30 +88,6 @@ extension ProfileViewModel: DTSelectionListAlertDelegate {
     }
 }
 
-//MARK: - MenuControllerDelegate
-extension ProfileViewModel: MenuControllerDelegate {
-    
-    func pushStatisticsFlow(statisticsViewController: UIViewController) {
-        self.view?.pushViewControllerFromMenu(statisticsViewController)
-    }
-    
-    func pushSettingFlow(settingviewController: UIViewController) {
-        self.view?.pushViewControllerFromMenu(settingviewController)
-    }
-    
-    func pushRecomendationFlow(recomendationViewController: UIViewController) {
-        if self.isMainInfoSet {
-            self.view?.pushViewControllerFromMenu(recomendationViewController)
-        } else {
-            self.view?.showRecomendationAlert()
-        }
-    }
-
-    func menuSignOutPressed() {
-        self.view?.showSignOutAlert()
-    }
-}
-
 //MARK: - TestPMOutput
 extension ProfileViewModel: ProfileModelOutput {
    

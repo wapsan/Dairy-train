@@ -72,7 +72,6 @@
 		135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F22892494296F00EEE140 /* StatisticsModel.swift */; };
 		1361BE3F2520D97600578DB4 /* MainNutritionVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1361BE3D2520D97600578DB4 /* MainNutritionVIewController.swift */; };
 		1361BE402520D97600578DB4 /* MainNutritionVIewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1361BE3E2520D97600578DB4 /* MainNutritionVIewController.xib */; };
-		1366942624B7273E00F58422 /* DTGradientLayerMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1366942524B7273E00F58422 /* DTGradientLayerMaker.swift */; };
 		136989C22520DF650039B306 /* TrainingPaternsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136989C02520DF650039B306 /* TrainingPaternsViewController.swift */; };
 		136989C32520DF650039B306 /* TrainingPaternsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136989C12520DF650039B306 /* TrainingPaternsViewController.xib */; };
 		136989CB2520E3450039B306 /* TrainingPaternManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136989C92520E3450039B306 /* TrainingPaternManagedObject+CoreDataClass.swift */; };
@@ -104,7 +103,6 @@
 		1388FFE924E050D800E9FD2C /* DTTrainedSubGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1388FFE824E050D800E9FD2C /* DTTrainedSubGroupCell.swift */; };
 		138BDB78248665330033F378 /* DTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BDB77248665330033F378 /* DTTextField.swift */; };
 		138E5C0324D6B9360053D76B /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E5C0224D6B9360053D76B /* LoginRouter.swift */; };
-		138E8224249F9BBB00A60885 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E8223249F9BBB00A60885 /* MenuViewController.swift */; };
 		13902AB4249411ED00963A07 /* DTMuscleSubgroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */; };
 		1390520B24993F5E0070D0EB /* RecomendationInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390520A24993F5E0070D0EB /* RecomendationInfoModel.swift */; };
 		1393EDFC24A634B600EBD938 /* TrainingManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393EDFA24A634B600EBD938 /* TrainingManagedObject+CoreDataClass.swift */; };
@@ -119,8 +117,6 @@
 		139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D53102474035C0028AE6A /* DTSettingCell.swift */; };
 		139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531224740BCE0028AE6A /* SettingViewController.swift */; };
 		139D531B24753D060028AE6A /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531A24753D060028AE6A /* SettingModel.swift */; };
-		139D688424A220800094E498 /* MenuPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D688324A220800094E498 /* MenuPresentationViewController.swift */; };
-		139D688624A223B70094E498 /* DTMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D688524A223B70094E498 /* DTMenuButton.swift */; };
 		139FE9D3247838EF00B22C40 /* DTActivitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */; };
 		139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D624783CAA00B22C40 /* DTHeaderView.swift */; };
 		13A8CA3F24B6312E00624AA3 /* CALayer+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A8CA3E24B6312E00624AA3 /* CALayer+Ex.swift */; };
@@ -158,6 +154,8 @@
 		13D8CEBA25239A8C0091AA6B /* TrainingPaterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D8CEB925239A8C0091AA6B /* TrainingPaterModel.swift */; };
 		13D8CEBE25239CCF0091AA6B /* TrainingPaternCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D8CEBC25239CCF0091AA6B /* TrainingPaternCell.swift */; };
 		13D8CEBF25239CCF0091AA6B /* TrainingPaternCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D8CEBD25239CCF0091AA6B /* TrainingPaternCell.xib */; };
+		13DE174F2569060500B2EDD0 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE174D2569060500B2EDD0 /* TimerViewController.swift */; };
+		13DE17502569060500B2EDD0 /* TimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13DE174E2569060500B2EDD0 /* TimerViewController.xib */; };
 		13E4F60C254F09E500A42ACB /* ProfileMenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4F60B254F09E500A42ACB /* ProfileMenuCoordinator.swift */; };
 		13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */; };
 		13EB774024E2B097000E6D87 /* DTNewAproachAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EB773F24E2B097000E6D87 /* DTNewAproachAlert.swift */; };
@@ -244,7 +242,6 @@
 		135F22892494296F00EEE140 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
 		1361BE3D2520D97600578DB4 /* MainNutritionVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNutritionVIewController.swift; sourceTree = "<group>"; };
 		1361BE3E2520D97600578DB4 /* MainNutritionVIewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNutritionVIewController.xib; sourceTree = "<group>"; };
-		1366942524B7273E00F58422 /* DTGradientLayerMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTGradientLayerMaker.swift; sourceTree = "<group>"; };
 		136989C02520DF650039B306 /* TrainingPaternsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPaternsViewController.swift; sourceTree = "<group>"; };
 		136989C12520DF650039B306 /* TrainingPaternsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingPaternsViewController.xib; sourceTree = "<group>"; };
 		136989C92520E3450039B306 /* TrainingPaternManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainingPaternManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -276,7 +273,6 @@
 		1388FFE824E050D800E9FD2C /* DTTrainedSubGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainedSubGroupCell.swift; sourceTree = "<group>"; };
 		138BDB77248665330033F378 /* DTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTextField.swift; sourceTree = "<group>"; };
 		138E5C0224D6B9360053D76B /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
-		138E8223249F9BBB00A60885 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMuscleSubgroupsCell.swift; sourceTree = "<group>"; };
 		1390520A24993F5E0070D0EB /* RecomendationInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationInfoModel.swift; sourceTree = "<group>"; };
 		1393EDFA24A634B600EBD938 /* TrainingManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainingManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -291,8 +287,6 @@
 		139D53102474035C0028AE6A /* DTSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSettingCell.swift; sourceTree = "<group>"; };
 		139D531224740BCE0028AE6A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		139D531A24753D060028AE6A /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
-		139D688324A220800094E498 /* MenuPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresentationViewController.swift; sourceTree = "<group>"; };
-		139D688524A223B70094E498 /* DTMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMenuButton.swift; sourceTree = "<group>"; };
 		139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTActivitiesCell.swift; sourceTree = "<group>"; };
 		139FE9D624783CAA00B22C40 /* DTHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTHeaderView.swift; sourceTree = "<group>"; };
 		13A8CA3E24B6312E00624AA3 /* CALayer+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Ex.swift"; sourceTree = "<group>"; };
@@ -332,6 +326,8 @@
 		13D8CEB925239A8C0091AA6B /* TrainingPaterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPaterModel.swift; sourceTree = "<group>"; };
 		13D8CEBC25239CCF0091AA6B /* TrainingPaternCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPaternCell.swift; sourceTree = "<group>"; };
 		13D8CEBD25239CCF0091AA6B /* TrainingPaternCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingPaternCell.xib; sourceTree = "<group>"; };
+		13DE174D2569060500B2EDD0 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		13DE174E2569060500B2EDD0 /* TimerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerViewController.xib; sourceTree = "<group>"; };
 		13E4F60B254F09E500A42ACB /* ProfileMenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuCoordinator.swift; sourceTree = "<group>"; };
 		13E6D1402487F4E200645E88 /* DTInfoAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTInfoAlertButton.swift; sourceTree = "<group>"; };
 		13EB773F24E2B097000E6D87 /* DTNewAproachAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTNewAproachAlert.swift; sourceTree = "<group>"; };
@@ -384,8 +380,9 @@
 		130634462494DEA9008C1ECF /* Training */ = {
 			isa = PBXGroup;
 			children = (
-				1306344A2494DFC5008C1ECF /* Cells */,
-				130634482494DEEB008C1ECF /* ViewControllers */,
+				1398F6D8255C5183009BE856 /* ExerciseListStatistics */,
+				13DE1747256905A700B2EDD0 /* TimerViewController */,
+				130634482494DEEB008C1ECF /* СurrentTrainingViewController */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -400,15 +397,16 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		130634482494DEEB008C1ECF /* ViewControllers */ = {
+		130634482494DEEB008C1ECF /* СurrentTrainingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1306344A2494DFC5008C1ECF /* Cells */,
 				13D5D57824E19D36003C82F1 /* TrainingViewController.swift */,
 				13D5D57424E19AE3003C82F1 /* TrainingViewModel.swift */,
 				13D5D57624E19AFD003C82F1 /* TrainingModel.swift */,
 				131D307925175874000AC70B /* TrainingRouter.swift */,
 			);
-			path = ViewControllers;
+			path = "СurrentTrainingViewController";
 			sourceTree = "<group>";
 		};
 		130634492494DF8D008C1ECF /* Cells */ = {
@@ -493,7 +491,6 @@
 		132125CD2494D9C600FDCDB4 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				139D688724A27B890094E498 /* Menu */,
 				134DA009246ECE1F00B2FBDE /* Recomendations */,
 				136570CF2491253E00BF926B /* Statistic */,
 				13151D4B247169D9002C15AA /* Setting */,
@@ -588,14 +585,6 @@
 				139FE9D2247838EF00B22C40 /* DTActivitiesCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		13243A3F247E765500AB7419 /* Date helper */ = {
-			isa = PBXGroup;
-			children = (
-				13243A40247E768B00AB7419 /* DateHelper.swift */,
-			);
-			path = "Date helper";
 			sourceTree = "<group>";
 		};
 		132FC7BC24B7CD2F00A70F7E /* EdgeInsets */ = {
@@ -766,14 +755,6 @@
 				135F22882494293300EEE140 /* Model */,
 			);
 			path = Statistic;
-			sourceTree = "<group>";
-		};
-		1366942424B7271A00F58422 /* Gradient maker */ = {
-			isa = PBXGroup;
-			children = (
-				1366942524B7273E00F58422 /* DTGradientLayerMaker.swift */,
-			);
-			path = "Gradient maker";
 			sourceTree = "<group>";
 		};
 		136989BF2520DEFB0039B306 /* Add+FromTrainingPaterns */ = {
@@ -984,7 +965,6 @@
 			isa = PBXGroup;
 			children = (
 				1353CA41255AFB9300E7B5DD /* StatisticsMainScreen */,
-				1398F6D8255C5183009BE856 /* ExerciseListStatistics */,
 				13D1928E24DC15CC0045ACF9 /* Training+list+statisctic */,
 			);
 			path = ViewControllers;
@@ -1009,48 +989,13 @@
 			path = ExerciseListStatistics;
 			sourceTree = "<group>";
 		};
-		139D530A2473DF3F0028AE6A /* AlertHelper */ = {
-			isa = PBXGroup;
-			children = (
-				139D530C2473DF790028AE6A /* AlertHelper.swift */,
-			);
-			path = AlertHelper;
-			sourceTree = "<group>";
-		};
 		139D530B2473DF560028AE6A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				1366942424B7271A00F58422 /* Gradient maker */,
-				13243A3F247E765500AB7419 /* Date helper */,
-				139D530A2473DF3F0028AE6A /* AlertHelper */,
+				13243A40247E768B00AB7419 /* DateHelper.swift */,
+				139D530C2473DF790028AE6A /* AlertHelper.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		139D688724A27B890094E498 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				139D688824A27B8F0094E498 /* ViewControllers */,
-				139D688924A27BA00094E498 /* Buttons */,
-			);
-			path = Menu;
-			sourceTree = "<group>";
-		};
-		139D688824A27B8F0094E498 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				138E8223249F9BBB00A60885 /* MenuViewController.swift */,
-				139D688324A220800094E498 /* MenuPresentationViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		139D688924A27BA00094E498 /* Buttons */ = {
-			isa = PBXGroup;
-			children = (
-				139D688524A223B70094E498 /* DTMenuButton.swift */,
-			);
-			path = Buttons;
 			sourceTree = "<group>";
 		};
 		139FE9DC247859FD00B22C40 /* Views */ = {
@@ -1276,6 +1221,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		13DE1747256905A700B2EDD0 /* TimerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13DE174D2569060500B2EDD0 /* TimerViewController.swift */,
+				13DE174E2569060500B2EDD0 /* TimerViewController.xib */,
+			);
+			path = TimerViewController;
+			sourceTree = "<group>";
+		};
 		13F11585249E15C800B6B7D8 /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1435,6 +1389,7 @@
 				1353CA3F255AF7C800E7B5DD /* TrainingListStatisticViewController.xib in Resources */,
 				1361BE402520D97600578DB4 /* MainNutritionVIewController.xib in Resources */,
 				13AF79482486D3A100F2F7F7 /* GoogleService-Info.plist in Resources */,
+				13DE17502569060500B2EDD0 /* TimerViewController.xib in Resources */,
 				133364AC2561793C00EAC6F6 /* ExerciseStatisticsCell.xib in Resources */,
 				13B1E7D024BDADE800EE84E2 /* Localizable.strings in Resources */,
 				134AA986253615AD00C8BDD1 /* ChoosenPaternViewController.xib in Resources */,
@@ -1524,7 +1479,6 @@
 				13BEF99C255701470025E978 /* TabBarControllerModel.swift in Sources */,
 				1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */,
 				13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */,
-				138E8224249F9BBB00A60885 /* MenuViewController.swift in Sources */,
 				13C0EEDD24A529DD00F55C54 /* UserTrainingInfo.xcdatamodeld in Sources */,
 				13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */,
 				1384BB4524DEEE7A0084705B /* DTMainInfoCell.swift in Sources */,
@@ -1553,7 +1507,6 @@
 				13D1929224DC1A550045ACF9 /* TrainingListStatisticsModel.swift in Sources */,
 				1390520B24993F5E0070D0EB /* RecomendationInfoModel.swift in Sources */,
 				139B827524D5CAA1008C3DF4 /* RouterProtocol.swift in Sources */,
-				139D688424A220800094E498 /* MenuPresentationViewController.swift in Sources */,
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
 				139D530D2473DF790028AE6A /* AlertHelper.swift in Sources */,
 				131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */,
@@ -1562,6 +1515,7 @@
 				13D8CEB825239A7B0091AA6B /* TrainingPaternViewModel.swift in Sources */,
 				1343577224F82ADC00BB3EE6 /* MuscleSubgropsViewModel.swift in Sources */,
 				1388FFE724E00CA900E9FD2C /* ChoosenTrainingStatisticsModel.swift in Sources */,
+				13DE174F2569060500B2EDD0 /* TimerViewController.swift in Sources */,
 				1384BB4D24DF0D250084705B /* ProfileRouter.swift in Sources */,
 				1388FFDF24E0067100E9FD2C /* DTStatisticInfoCellType.swift in Sources */,
 				13A9E7C22494E22200DEDCBE /* UserMainInfoCodableModel.swift in Sources */,
@@ -1617,7 +1571,6 @@
 				13C0EEEB24A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift in Sources */,
 				136989C22520DF650039B306 /* TrainingPaternsViewController.swift in Sources */,
 				1384BB4924DEF7E60084705B /* ProfileViewModel.swift in Sources */,
-				139D688624A223B70094E498 /* DTMenuButton.swift in Sources */,
 				134403412499123F00D21284 /* LocalizedString.swift in Sources */,
 				134AA985253615AD00C8BDD1 /* ChoosenPaternViewController.swift in Sources */,
 				137D55B624897B6300EFBAB6 /* DTSettingManager.swift in Sources */,
@@ -1648,7 +1601,6 @@
 				13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */,
 				1341D7A324D32900000A43A6 /* DTColors.swift in Sources */,
 				1353CA48255AFBE000E7B5DD /* MainStatisticViewModel.swift in Sources */,
-				1366942624B7273E00F58422 /* DTGradientLayerMaker.swift in Sources */,
 				137321A4253A098100F8FA23 /* PaternNamingAlert.swift in Sources */,
 				136989CC2520E3450039B306 /* TrainingPaternManagedObject+CoreDataProperties.swift in Sources */,
 				134AA98A2536168300C8BDD1 /* ChoosenPaternModel.swift in Sources */,

@@ -209,13 +209,3 @@ extension ProfileViewController: ProfileViewModelPresenter {
     }
 }
 
-//MARK: - UIViewControllerTransitioningDelegate
-extension ProfileViewController: UIViewControllerTransitioningDelegate {
-    
-    func presentationController(forPresented presented: UIViewController,
-                                presenting: UIViewController?,
-                                source: UIViewController) -> UIPresentationController? {
-        return MenuPresentationViewController(presentedViewController: presented,
-                                              presenting: presenting)
-    }
-}

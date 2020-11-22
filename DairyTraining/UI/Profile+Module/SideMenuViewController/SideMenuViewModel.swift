@@ -1,13 +1,14 @@
 import Foundation
 
+protocol SideMenuViewModelProtocol {
+    var sideMenuItems: [SideMenuItem] { get }
+    func menuItemSelected(at index: Int)
+}
+
 final class SideMenuViewModel {
     
     //MARK: - Properties
     private var model: SideMenuModel
-    
-    var sideMenuItems: [SideMenuItem] {
-        SideMenuItem.allCases
-    }
     
     //MARK: - Initialization
     init(model: SideMenuModel) {
@@ -19,8 +20,15 @@ final class SideMenuViewModel {
             print($0)
         }
     }
+}
+
+//MARK: - SideMenuProtocol
+extension SideMenuViewModel: SideMenuViewModelProtocol {
     
-    //MARK: - Public methods
+    var sideMenuItems: [SideMenuItem] {
+        SideMenuItem.allCases
+    }
+    
     func menuItemSelected(at index: Int) {
         let menuItem = sideMenuItems[index]
         switch menuItem {
@@ -32,6 +40,10 @@ final class SideMenuViewModel {
             MainCoordinator.shared.coordinateChild(to: ProfileMenuCoordinator.Target.setting)
         case .logOut:
             MainCoordinator.shared.coordinateChild(to: ProfileMenuCoordinator.Target.signOut(completion: model.signOut))
+        case .premium:
+            break
+        case .termAndConditions:
+            break
         }
     }
 }

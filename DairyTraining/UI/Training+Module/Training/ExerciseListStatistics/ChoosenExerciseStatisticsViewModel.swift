@@ -50,6 +50,7 @@ final class ChoosenExerciseStatisticsViewModel  {
     private(set) var exerciseTitle: String
     private(set) var numberOfChartCell = 4
     private var exercises: [ExerciseStatistics]
+    private(set) var currentExerciseDate: Date?
     
     private var maxWeightData: [ExerciseStatisticsData] {
         return exercises.sorted(by: { $0.exerciseDate < $1.exerciseDate })
@@ -69,9 +70,10 @@ final class ChoosenExerciseStatisticsViewModel  {
     }
     
     // MARK: - Initialization
-    init(exersiceName: String) {
+    init(exersiceName: String, currentExerciseDate: Date?) {
         self.exercises = CoreDataManager.shared.fetchAllExerciseForStatistics(with: exersiceName) as [ExerciseStatistics]
         self.exerciseTitle = exersiceName
+        self.currentExerciseDate = currentExerciseDate
     }
     
     // MARK: - Public methods

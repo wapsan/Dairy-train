@@ -3,6 +3,7 @@ import Foundation
 protocol TrainingViewModeInput: AnyObject {
     func loadTrain()
     func tryDeleteExercice(at index: Int)
+    func showStatisticsForExercise(at index: Int)
     func deleteExercice(at index: Int)
     func removeLatsAproach(at exericeIndex: Int)
     func aproachWillChanged(in exerciceIndex: Int, and aproachIndex: Int)
@@ -78,6 +79,12 @@ extension TrainingViewModel: TrainingModelOutput {
 
 //MARK: - TrainingViewModeIteracting
 extension TrainingViewModel: TrainingViewModeInput {
+    
+    func showStatisticsForExercise(at index: Int) {
+        let choosenExerciseName = exerciceList[index].name
+        let choosenExerciseDate = exerciceList[index].date
+        MainCoordinator.shared.coordinateChild(to: TrainingModuleCoordinator.Target.statisticsForChosenExercise(name: choosenExerciseName, exerciseDate: choosenExerciseDate))
+    }
     
     func aproachWillChanged(in exerciceIndex: Int, and aproachIndex: Int) {
         self.model?.getAproachInfo(in: exerciceIndex, and: aproachIndex)

@@ -47,7 +47,7 @@ extension ChoosenExerciseStatisticsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseStatisticsCell.cellID, for: indexPath)
         guard let data = viewModel.generateExerciseDataType(for: indexPath.row) else { return cell }
-        (cell as? ExerciseStatisticsCell)?.setupCell(for: data)
+        (cell as? ExerciseStatisticsCell)?.setupCell(for: data, and: viewModel.currentExerciseDate)
         return cell
     }
 }

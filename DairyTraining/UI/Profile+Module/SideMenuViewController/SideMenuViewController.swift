@@ -6,7 +6,7 @@ final class SideMenuViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
     
     //MARK: - Properties
-    private var viewModel: SideMenuViewModel
+    private var viewModel: SideMenuViewModelProtocol
     
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {

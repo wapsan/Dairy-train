@@ -27,16 +27,6 @@ final class ExerciseListViewModel {
         self.model?.removeChossenExerciseFromList(deselectedExercise)
     }
     
-    func exerciseWasSelectedForShowStatistics(at index: Int) {
-        let selectedExercise = exerciseList[index]
-        
-        MainCoordinator.shared.coordinateChild(
-            to: MuscleGroupsCoordinator.Target.choosenExercise(name: selectedExercise.name))
-    }
-    
-//    func writeExerciseToTraining() {
-//        self.model?.writeExerciseToTraining()
-//    }
     func hideExerciseViewController() {
         
     }
@@ -47,8 +37,6 @@ final class ExerciseListViewModel {
             self.model?.writeExerciseToTraining()
         case .trainingPatern:
             self.model?.writeExerciseToTrainingPatern()
-        case .showStatistics:
-            break
         }
     }
 }
