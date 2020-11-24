@@ -2,11 +2,27 @@ import Foundation
 import CoreData
 import RxSwift
 
+protocol CoreDataTrainingManager {
+    func fetachTraining() -> [TrainingManagedObject]
+}
+extension CoreDataManager: CoreDataTrainingManager {
+    func fetachTraining() -> [TrainingManagedObject] {
+        return []
+    }
+    
+    
+}
+
 class CoreDataManager {
+    
+    var trainingManager: CoreDataTrainingManager {
+        return self as CoreDataTrainingManager
+    }
     
     private struct CoreDataModelName {
         static let userMainInfo = "UserMainInfo"
         static let userTrainInfo = "UserTrainingInfo"
+        static let exerciseDataInfo = "ExercisesDataModel"
     }
     
     //MARK: - Singletone propertie
@@ -38,6 +54,22 @@ class CoreDataManager {
     }()
     
     private var trainInfoContext: NSManagedObjectContext {
+        return self.trainInfoContainer.viewContext
+    }
+    
+    private lazy var exerciseDataInfoContainer: NSPersistentContainer = {
+    
+        let container = NSPersistentContainer(name: CoreDataModelName.exerciseDataInfo)
+        
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    private var exerciseDataInfoContext: NSManagedObjectContext {
         return self.trainInfoContainer.viewContext
     }
     

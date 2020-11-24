@@ -3,9 +3,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    //MARK: - Window propertie
+    //MARK: - Window property
     var window: UIWindow?
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DTSettingManager.shared.activateDefaultSetting()
         GoogleAuthorizationManager.shared.initAuth()
@@ -15,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MainCoordinator.shared.window = self.window
         MainCoordinator.shared.coordinate(to: MainCoordinator.Target.splashScreen)
         UINavigationBar.appearance().tintColor = .white
+        CoreDataManager.shared.saveCSV()
         return true
     }
     

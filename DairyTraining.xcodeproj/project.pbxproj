@@ -138,6 +138,9 @@
 		13C0EEEB24A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0EEE924A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift */; };
 		13C0EEEC24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0EEEA24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift */; };
 		13C0F4FF24B4E24A0005A011 /* SettingSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0F4FE24B4E24A0005A011 /* SettingSectionModel.swift */; };
+		13C78146256ABC6100A55482 /* ExerciseDataBaseENG.csv in Resources */ = {isa = PBXBuildFile; fileRef = 13C78145256ABC6100A55482 /* ExerciseDataBaseENG.csv */; };
+		13C7814A256ABCBC00A55482 /* ExercisesDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13C78148256ABCBC00A55482 /* ExercisesDataModel.xcdatamodeld */; };
+		13C7814D256AC3A700A55482 /* CoreDataExerciseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C7814C256AC3A700A55482 /* CoreDataExerciseDataManager.swift */; };
 		13C89D22247046D2008AEF18 /* DTRecomendationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D21247046D2008AEF18 /* DTRecomendationHeaderView.swift */; };
 		13C89D282470A3E5008AEF18 /* TDRecomendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */; };
 		13CCD91D254EB0E100E8FFEB /* SIdeMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCD91C254EB0E100E8FFEB /* SIdeMenuItem.swift */; };
@@ -310,6 +313,9 @@
 		13C0EEE924A5E4AC00F55C54 /* AproachManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AproachManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		13C0EEEA24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AproachManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13C0F4FE24B4E24A0005A011 /* SettingSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionModel.swift; sourceTree = "<group>"; };
+		13C78145256ABC6100A55482 /* ExerciseDataBaseENG.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ExerciseDataBaseENG.csv; sourceTree = "<group>"; };
+		13C78149256ABCBC00A55482 /* ExercisesDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExercisesDataModel.xcdatamodel; sourceTree = "<group>"; };
+		13C7814C256AC3A700A55482 /* CoreDataExerciseDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExerciseDataManager.swift; sourceTree = "<group>"; };
 		13C89D21247046D2008AEF18 /* DTRecomendationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTRecomendationHeaderView.swift; sourceTree = "<group>"; };
 		13C89D272470A3E5008AEF18 /* TDRecomendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDRecomendationCell.swift; sourceTree = "<group>"; };
 		13CCD91C254EB0E100E8FFEB /* SIdeMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIdeMenuItem.swift; sourceTree = "<group>"; };
@@ -812,6 +818,7 @@
 			children = (
 				136F3FFC2498D0DE00C6944B /* UserMainInfo.xcdatamodeld */,
 				13C0EEDB24A529DC00F55C54 /* UserTrainingInfo.xcdatamodeld */,
+				13C78148256ABCBC00A55482 /* ExercisesDataModel.xcdatamodeld */,
 			);
 			path = CoreDataModel;
 			sourceTree = "<group>";
@@ -849,6 +856,7 @@
 			isa = PBXGroup;
 			children = (
 				136F40082498D44B00C6944B /* CoreDataManager.swift */,
+				13C7814C256AC3A700A55482 /* CoreDataExerciseDataManager.swift */,
 			);
 			path = CoreDataManager;
 			sourceTree = "<group>";
@@ -856,6 +864,7 @@
 		136F400E24990D0C00C6944B /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				13C78144256ABC0500A55482 /* ExerciseDataBase */,
 				1341D7A124D328EA000A43A6 /* Colors */,
 				13B1E7CC24BDAD5B00EE84E2 /* Localized files */,
 				134403402499123F00D21284 /* LocalizedString.swift */,
@@ -1170,6 +1179,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		13C78144256ABC0500A55482 /* ExerciseDataBase */ = {
+			isa = PBXGroup;
+			children = (
+				13C78145256ABC6100A55482 /* ExerciseDataBaseENG.csv */,
+			);
+			path = ExerciseDataBase;
+			sourceTree = "<group>";
+		};
 		13CCD91F254EB1C200E8FFEB /* SideMenuViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1383,6 +1400,7 @@
 			files = (
 				1353CA45255AFBB800E7B5DD /* MainStatisticsViewController.xib in Resources */,
 				13B9FE8C2540AB7A00E5542E /* TrainingPaternsHeaderView.xib in Resources */,
+				13C78146256ABC6100A55482 /* ExerciseDataBaseENG.csv in Resources */,
 				13CCD92B254EB35000E8FFEB /* SideMenuCell.xib in Resources */,
 				1398F6DF255C54D5009BE856 /* ChoosenExerciseStatisticsViewController.xib in Resources */,
 				136989C32520DF650039B306 /* TrainingPaternsViewController.xib in Resources */,
@@ -1487,6 +1505,7 @@
 				1341727F254B38C2004C6262 /* CurrentPaternSideMenu.swift in Sources */,
 				131D3081251BBA83000AC70B /* DTAddExerciseSupportButton.swift in Sources */,
 				134DA00B246ECE3800B2FBDE /* RecomendationsViewController.swift in Sources */,
+				13C7814A256ABCBC00A55482 /* ExercisesDataModel.xcdatamodeld in Sources */,
 				131B671124DB1E1C0029C456 /* RecomendationModel.swift in Sources */,
 				13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */,
 				1384BB4B24DEF9520084705B /* ProfileModel.swift in Sources */,
@@ -1585,6 +1604,7 @@
 				13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */,
 				133705BE24D17B3100E023CC /* MuscleGroupsViewModel.swift in Sources */,
 				1307F0DA2505414400949B97 /* ExerciseListModel.swift in Sources */,
+				13C7814D256AC3A700A55482 /* CoreDataExerciseDataManager.swift in Sources */,
 				135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */,
 				13344E5324B3619500BE3D65 /* DTBackgroundedViewController.swift in Sources */,
 				139FE9D3247838EF00B22C40 /* DTActivitiesCell.swift in Sources */,
@@ -1841,6 +1861,16 @@
 			);
 			currentVersion = 13C0EEDC24A529DC00F55C54 /* UserTrainInfo.xcdatamodel */;
 			path = UserTrainingInfo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		13C78148256ABCBC00A55482 /* ExercisesDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				13C78149256ABCBC00A55482 /* ExercisesDataModel.xcdatamodel */,
+			);
+			currentVersion = 13C78149256ABCBC00A55482 /* ExercisesDataModel.xcdatamodel */;
+			path = ExercisesDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

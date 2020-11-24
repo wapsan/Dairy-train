@@ -28,7 +28,7 @@ struct MuscleGroup: Codable {
         }
         
         var name: String {
-            return self.rawValue//NSLocalizedString(self.rawValue, comment: "")
+            return self.rawValue
         }
 
     }
