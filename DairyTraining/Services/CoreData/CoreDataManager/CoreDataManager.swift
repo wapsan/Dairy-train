@@ -2,23 +2,8 @@ import Foundation
 import CoreData
 import RxSwift
 
-protocol CoreDataTrainingManager {
-    func fetachTraining() -> [TrainingManagedObject]
-}
-extension CoreDataManager: CoreDataTrainingManager {
-    func fetachTraining() -> [TrainingManagedObject] {
-        return []
-    }
-    
-    
-}
-
 class CoreDataManager {
-    
-    var trainingManager: CoreDataTrainingManager {
-        return self as CoreDataTrainingManager
-    }
-    
+  
     private struct CoreDataModelName {
         static let userMainInfo = "UserMainInfo"
         static let userTrainInfo = "UserTrainingInfo"

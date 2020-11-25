@@ -2,6 +2,7 @@ import UIKit
 
 final class TrainingPaternsHeaderView: UIView {
     
+    @IBOutlet var tittle: UILabel!
     //MARK: - Initialization
     override func awakeFromNib() {
         super.awakeFromNib()

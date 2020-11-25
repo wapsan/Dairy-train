@@ -15,10 +15,10 @@ extension CoreDataManager {
               else { return }
         let csvURL = URL(fileURLWithPath: path)
         guard let a = parseCSV(contentsOfURL: csvURL, encoding: .utf8) else { return }
-        a.enumerated().forEach({
-            if $0 != 0 {
-                print("Descriptopn: \($1.description)")
-            }
+        a.enumerated().forEach({ (index,exercise) in
+            if index != 0 {
+                print("Descriptopn: \(exercise.description)")
+            } 
         })
     }
     

@@ -30,7 +30,6 @@ final class ChoosenExerciseStatisticsViewController: UIViewController {
 private extension ChoosenExerciseStatisticsViewController {
     
     func setup() {
-        title = viewModel.exerciseTitle
         view.backgroundColor = DTColors.backgroundColor
         tableView.register(UINib(nibName: ExerciseStatisticsCell.xibName, bundle: nil),
                            forCellReuseIdentifier: ExerciseStatisticsCell.cellID)
@@ -57,5 +56,15 @@ extension ChoosenExerciseStatisticsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = TrainingPaternsHeaderView.view()
+        view?.tittle.text = viewModel.exerciseTitle
+        return view
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 70
     }
 }
