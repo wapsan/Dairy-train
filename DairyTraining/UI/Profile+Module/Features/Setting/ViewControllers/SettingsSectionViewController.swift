@@ -8,7 +8,7 @@ class SettingsSectionViewController: UITableViewController {
                                      SettingSectionModel(type: .synchronization)]
     
     private lazy var navigationTittle = LocalizedString.setting
-    private lazy var lastSynhronizeDate = CoreDataManager.shared.readUserMainInfo()?.dateOfLastUpdate
+    private lazy var lastSynhronizeDate = UserDataManager.shared.readUserMainInfo()?.dateOfLastUpdate
         ?? LocalizedString.dataDontUpdate
     
     //MARK: - Lifecycle
@@ -62,7 +62,7 @@ class SettingsSectionViewController: UITableViewController {
     }
     
     private func synhronizeData() {
-        CoreDataManager.shared.updateDateOfLastUpdateTo(DateHelper.shared.currentDateForSynhronize)
+        UserDataManager.shared.updateDateOfLastUpdateTo(DateHelper.shared.currentDateForSynhronize)
         self.lastSynhronizeDate = DateHelper.shared.currentDateForSynhronize
         DispatchQueue.global(qos: .background).async {
             DTFirebaseFileManager.shared.synhronizeDataToServer(completion: {

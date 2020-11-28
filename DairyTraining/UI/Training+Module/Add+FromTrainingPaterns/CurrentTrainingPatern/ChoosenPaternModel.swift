@@ -3,7 +3,7 @@ import RxSwift
 
 final class ChoosenPaternModel {
     
-    typealias CDM = CoreDataManager
+    typealias CDM = TrainingDataManager
     
     private(set) var trainingPatern: TrainingPaternManagedObject
     private(set) var paternName: String
@@ -25,7 +25,7 @@ final class ChoosenPaternModel {
     }
     
     func createTrainingWithCurrentpatern(exercise: [Exercise]) {
-        if CoreDataManager.shared.addExercisesToTrain(exercise) {
+        if TrainingDataManager.shared.addExercisesToTrain(exercise) {
             NotificationCenter.default.post(name: .trainingListWasChanged, object: nil)
         } else {
             NotificationCenter.default.post(name: .trainingWasChanged, object: nil)

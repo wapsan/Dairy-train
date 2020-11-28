@@ -85,7 +85,7 @@ class DTFirebaseFileManager {
     //MARK: - Private methods
     private func synhronizeMainUserInfoToServer() {
         guard let userUid = Auth.auth().currentUser?.uid,
-            let userMainInfo = UserMainInfoCodableModel(from: CoreDataManager.shared.readUserMainInfo()) else { return }
+            let userMainInfo = UserMainInfoCodableModel(from: UserDataManager.shared.readUserMainInfo()) else { return }
         let userMainInfoJSON = userMainInfo.convertToJSONString()
         self.firebaseRef
             .child(self.userKeyPath)
@@ -96,7 +96,7 @@ class DTFirebaseFileManager {
     
     private func synhronizeTrainingUserInfoToServer() {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
-        let trainingListFromLocalBase = CoreDataManager.shared.fetchTrainingList()
+        let trainingListFromLocalBase = TrainingDataManager.shared.getTraingList()
         var trainingInfoDictionary: [String: String] = [:]
         trainingListFromLocalBase.enumerated().forEach( {(index, train) in
             let trainingData = TrainingCodableModel(with: train)

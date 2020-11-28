@@ -71,7 +71,8 @@ final class ChoosenExerciseStatisticsViewModel  {
     
     // MARK: - Initialization
     init(exersiceName: String, currentExerciseDate: Date?) {
-        self.exercises = CoreDataManager.shared.fetchAllExerciseForStatistics(with: exersiceName) as [ExerciseStatistics]
+        self.exercises = TrainingDataManager.shared.getAllExerciseForStatistics(with: exersiceName) as [ExerciseStatistics]
+        exercises.forEach({ print($0.exerciseDate) })
         self.exerciseTitle = exersiceName
         self.currentExerciseDate = currentExerciseDate
     }

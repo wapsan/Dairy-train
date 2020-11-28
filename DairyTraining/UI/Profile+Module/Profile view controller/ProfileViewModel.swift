@@ -22,6 +22,7 @@ protocol ProfileViewModelPresenter: AnyObject {
     func presentLoginViewController()
     func showErrorSignOutAlert(with error: Error)
     func pushViewControllerFromMenu(_ viewController: UIViewController)
+    func trainingCountWasChanged(to count: Int)
 }
 
 final class ProfileViewModel {
@@ -90,7 +91,11 @@ extension ProfileViewModel: DTSelectionListAlertDelegate {
 
 //MARK: - TestPMOutput
 extension ProfileViewModel: ProfileModelOutput {
-   
+    
+    func trainingCountWasChanfed(to count: Int) {
+        view?.trainingCountWasChanged(to: count)
+    }
+
     func succesSignedOut() {
         self.view?.presentLoginViewController()
     }

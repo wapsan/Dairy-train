@@ -47,7 +47,7 @@ final class TrainingModel {
     }
     
     @objc private func trainingWasChanged() {
-        guard let training = CoreDataManager.shared.fetchTrainingList().first else { return }
+        guard let training = TrainingDataManager.shared.getTraingList().first else { return }
         self.exerciceList = training.exercicesArray
         self.output?.setExerciceList(for: self.exerciceList)
         self.output?.trainingWasChange()
@@ -59,7 +59,7 @@ extension TrainingModel: TrainingModelIteracting {
     
     func changeAproach(in exerciseIndex: Int, at aproachIndex: Int, weight: Float, reps: Int) {
         let exercise = self.exerciceList[exerciseIndex]
-        CoreDataManager.shared.changeAproachAt(aproachIndex, in: exercise, with: weight, and: reps)
+        TrainingDataManager.shared.changeAproachAt(aproachIndex, in: exercise, with: weight, and: reps)
         self.output?.aproachWasChanged(in: exerciseIndex,
                                        at: aproachIndex,
                                        weight: weight,
@@ -68,12 +68,12 @@ extension TrainingModel: TrainingModelIteracting {
     }
     
     func removeLatsAproach(at exerciseIndex: Int) {
-        CoreDataManager.shared.removeAproachIn(self.training.exercicesArray[exerciseIndex])
+        TrainingDataManager.shared.removeAproachIn(self.training.exercicesArray[exerciseIndex])
         self.output?.aproachWasDeleted(from: self.exerciceList, atExrcise: exerciseIndex)
     }
     
     func addAproach(with weight: Float, and reps: Int, to exerciseAtIndex: Int) {
-       CoreDataManager.shared.addAproachWith(weight,
+        TrainingDataManager.shared.addAproachWith(weight,
                                              and: reps,
                                              to: self.training.exercicesArray[exerciseAtIndex])
         self.output?.aproachWasAded(to: self.exerciceList, at: exerciseAtIndex)
@@ -81,7 +81,7 @@ extension TrainingModel: TrainingModelIteracting {
     
     func deleteExercice(at index: Int) {
         let exercise = self.exerciceList[index]
-        CoreDataManager.shared.removeExercise(exercise, from: self.training)
+        TrainingDataManager.shared.removeExercise(exercise, from: self.training)
         self.exerciceList.remove(at: index)
         if self.exerciceList.isEmpty {
             self.output?.trainingIsEmpty()

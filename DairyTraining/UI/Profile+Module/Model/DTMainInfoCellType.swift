@@ -26,8 +26,8 @@ enum ProfileInfoCellType: Int, CaseIterable {
     }
     
     var value: String {
-        guard let userMainInfo = CoreDataManager.shared.readUserMainInfo() else { return "-" }
-        let trainingCount = CoreDataManager.shared.fetchTrainingList().count
+        guard let userMainInfo = UserDataManager.shared.readUserMainInfo() else { return "-" }
+        let trainingCount = TrainingDataManager.shared.getTraingList().count
         switch self {
         case .totalTrain:
             return String(trainingCount)

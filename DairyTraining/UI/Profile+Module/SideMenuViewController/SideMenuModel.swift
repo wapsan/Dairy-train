@@ -11,7 +11,7 @@ final class SideMenuModel {
         do {
             try Auth.auth().signOut()
             DTSettingManager.shared.deleteUserToken()
-            CoreDataManager.shared.removeAllUserData { [weak self] in
+            UserDataManager.shared.removeAllUserData { [weak self] in
                 self?.succesLogOut?()
             }
         } catch let signOutError {

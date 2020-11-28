@@ -1,14 +1,25 @@
-//
-//  CoreDataExerciseDataManager.swift
-//  Dairy Training
-//
-//  Created by Вячеслав on 22.11.2020.
-//  Copyright © 2020 Вячеслав. All rights reserved.
-//
-
 import Foundation
+import CoreData
 
-extension CoreDataManager {
+final class ExerciseDataBaseManager {
+    
+    private let dataModelName = "ExercisesDataModel"
+    
+    private lazy var persistantContainer: NSPersistentContainer = {
+    
+        let container = NSPersistentContainer(name: self.dataModelName)
+        
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    private lazy var context: NSManagedObjectContext = {
+        return persistantContainer.viewContext
+    }()
     
     func saveCSV() {
         guard let path = Bundle.main.path(forResource: "ExerciseDataBaseENG", ofType: "csv")

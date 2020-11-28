@@ -31,7 +31,7 @@ final class TrainingListModel {
     
     //MARK: - Initialization
     init() {
-        self.trainingList = CoreDataManager.shared.fetchTrainingList()
+        self.trainingList = TrainingDataManager.shared.getTraingList()
         self.addObserversForTrainingChanging()
     }
     
@@ -49,11 +49,11 @@ final class TrainingListModel {
     
     //MARK: - Actions
     @objc private func trainingListWasChanged() {
-        self.trainingList = CoreDataManager.shared.fetchTrainingList()
+        self.trainingList = TrainingDataManager.shared.getTraingList()
     }
     
     @objc private func trainingWasChanged() {
-        self.trainingList[0] = CoreDataManager.shared.fetchTrainingList()[0]
+        self.trainingList[0] = TrainingDataManager.shared.getTraingList()[0]
         self.output?.trainingWasChanged()
     }
 }
@@ -66,9 +66,10 @@ extension TrainingListModel: TrainingListModelIteracting {
     }
     
     func deleteSelectedTraining() {
-        CoreDataManager.shared.removeChoosenTrainings(self.trainingListForDeleting)
-        self.trainingList = CoreDataManager.shared.fetchTrainingList()
+        TrainingDataManager.shared.removeChoosenTrainings(self.trainingListForDeleting)
+        self.trainingList = TrainingDataManager.shared.getTraingList()
         self.trainingListForDeleting = []
+        NotificationCenter.default.post(name: .trainingListWasChanged, object: nil, userInfo: nil)
     }
     
     func selectTraining(at index: Int) {

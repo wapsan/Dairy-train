@@ -30,17 +30,13 @@ extension ExerciseListModel: ExerciseListModelIterator {
     
     func writeExerciseToTrainingPatern() {
         if let trainingPatern = self.trainingPatern {
-            CoreDataManager.shared.addExercicese(self.exerciseListForAddingToTraining,
+            TrainingDataManager.shared.addExercicese(self.exerciseListForAddingToTraining,
                                                  to: trainingPatern)
         }
-//        } else {
-//            CoreDataManager.shared.createTrainingPattern(with: "Hello",
-//                                                         and: self.exerciseListForAddingToTraining)
-//        }
     }
     
     func writeExerciseToTraining() {
-        if CoreDataManager.shared.addExercisesToTrain(self.exerciseListForAddingToTraining) {
+        if TrainingDataManager.shared.addExercisesToTrain(self.exerciseListForAddingToTraining) {
             NotificationCenter.default.post(
                 name: .trainingListWasChanged,
                 object: nil,

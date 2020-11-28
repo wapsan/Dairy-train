@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13004EC125702F7E00AFC1B3 /* TrainingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13004EC025702F7E00AFC1B3 /* TrainingDataManager.swift */; };
 		1306E01524CF293B003AEBA7 /* UIViewController + Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306E01424CF293B003AEBA7 /* UIViewController + Ex.swift */; };
 		1306E01724CF3DAB003AEBA7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306E01624CF3DAB003AEBA7 /* LoginViewModel.swift */; };
 		1306E01924CF3DC1003AEBA7 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306E01824CF3DC1003AEBA7 /* LoginModel.swift */; };
@@ -79,7 +80,7 @@
 		136E363625287E39002FA439 /* TrainingEntityTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136E363525287E39002FA439 /* TrainingEntityTarget.swift */; };
 		136E363825288015002FA439 /* TrainingPaternRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136E363725288015002FA439 /* TrainingPaternRouter.swift */; };
 		136F3FFE2498D0DE00C6944B /* UserMainInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 136F3FFC2498D0DE00C6944B /* UserMainInfo.xcdatamodeld */; };
-		136F40092498D44B00C6944B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F40082498D44B00C6944B /* CoreDataManager.swift */; };
+		136F40092498D44B00C6944B /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F40082498D44B00C6944B /* UserDataManager.swift */; };
 		136F400C2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F400A2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift */; };
 		136F400D2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F400B2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift */; };
 		1373219F253A08A300F8FA23 /* UIAplication+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1373219E253A08A300F8FA23 /* UIAplication+Ex.swift */; };
@@ -172,13 +173,13 @@
 		13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */; };
 		13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */; };
 		46DB6E6E46ED03D80B962509 /* Pods_Dairy_Training.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BB67FC86381D6904D71F4C /* Pods_Dairy_Training.framework */; };
-		7A5E7AE6256ED0170021B0CD /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5E7AE5256ED0170021B0CD /* UserInfoManager.swift */; };
 		7AA6AA56254978C600A88D4B /* MuscleGroupsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6AA55254978C600A88D4B /* MuscleGroupsCoordinator.swift */; };
 		7AF7BD4E256698B9003F4038 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */; };
 		7AF7BD4F256698B9003F4038 /* AuthorizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF7BD4D256698B9003F4038 /* AuthorizationViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13004EC025702F7E00AFC1B3 /* TrainingDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDataManager.swift; sourceTree = "<group>"; };
 		1306E01424CF293B003AEBA7 /* UIViewController + Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ex.swift"; sourceTree = "<group>"; };
 		1306E01624CF3DAB003AEBA7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1306E01824CF3DC1003AEBA7 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -253,7 +254,7 @@
 		136E363525287E39002FA439 /* TrainingEntityTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingEntityTarget.swift; sourceTree = "<group>"; };
 		136E363725288015002FA439 /* TrainingPaternRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPaternRouter.swift; sourceTree = "<group>"; };
 		136F3FFD2498D0DE00C6944B /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
-		136F40082498D44B00C6944B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		136F40082498D44B00C6944B /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		136F400A2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MainInfoManagedObject+CoreDataClass.swift"; path = "DairyTraining/Services/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		136F400B2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MainInfoManagedObject+CoreDataProperties.swift"; path = "DairyTraining/Services/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1373219E253A08A300F8FA23 /* UIAplication+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication+Ex.swift"; sourceTree = "<group>"; };
@@ -348,7 +349,6 @@
 		13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCodableModel.swift; sourceTree = "<group>"; };
 		13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCodableModel.swift; sourceTree = "<group>"; };
 		603CE1CD603B1EE61B433EA4 /* Pods-Dairy Training.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.release.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.release.xcconfig"; sourceTree = "<group>"; };
-		7A5E7AE5256ED0170021B0CD /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
 		7AA6AA55254978C600A88D4B /* MuscleGroupsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsCoordinator.swift; sourceTree = "<group>"; };
 		7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		7AF7BD4D256698B9003F4038 /* AuthorizationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizationViewController.xib; sourceTree = "<group>"; };
@@ -857,9 +857,9 @@
 		136F40072498D43600C6944B /* CoreDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				136F40082498D44B00C6944B /* CoreDataManager.swift */,
+				136F40082498D44B00C6944B /* UserDataManager.swift */,
 				13C7814C256AC3A700A55482 /* CoreDataExerciseDataManager.swift */,
-				7A5E7AE5256ED0170021B0CD /* UserInfoManager.swift */,
+				13004EC025702F7E00AFC1B3 /* TrainingDataManager.swift */,
 			);
 			path = CoreDataManager;
 			sourceTree = "<group>";
@@ -1520,7 +1520,6 @@
 				135BF56424DDAAB000E1E120 /* DTValueAlert.swift in Sources */,
 				1306E01724CF3DAB003AEBA7 /* LoginViewModel.swift in Sources */,
 				13D5D57724E19AFD003C82F1 /* TrainingModel.swift in Sources */,
-				7A5E7AE6256ED0170021B0CD /* UserInfoManager.swift in Sources */,
 				1393EDFD24A634B600EBD938 /* TrainingManagedObject+CoreDataProperties.swift in Sources */,
 				133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */,
 				1361BE3F2520D97600578DB4 /* MainNutritionVIewController.swift in Sources */,
@@ -1553,7 +1552,7 @@
 				13CCD92A254EB35000E8FFEB /* SideMenuCell.swift in Sources */,
 				1388FFE324E00A2000E9FD2C /* ChoosenTrainingStatisticsViewController.swift in Sources */,
 				13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */,
-				136F40092498D44B00C6944B /* CoreDataManager.swift in Sources */,
+				136F40092498D44B00C6944B /* UserDataManager.swift in Sources */,
 				133364A4256126F700EAC6F6 /* ChoosenExerciseStatisticsViewModel.swift in Sources */,
 				13C0EEE724A5E3EB00F55C54 /* ExerciceManagedObject+CoreDataClass.swift in Sources */,
 				7AA6AA56254978C600A88D4B /* MuscleGroupsCoordinator.swift in Sources */,
@@ -1630,6 +1629,7 @@
 				134AA98A2536168300C8BDD1 /* ChoosenPaternModel.swift in Sources */,
 				132D958C2485809B006E5A41 /* GoogleAuthorizationManager.swift in Sources */,
 				13D5D57524E19AE3003C82F1 /* TrainingViewModel.swift in Sources */,
+				13004EC125702F7E00AFC1B3 /* TrainingDataManager.swift in Sources */,
 				13B9FE892540AB3300E5542E /* TrainingPaternsHeaderView.swift in Sources */,
 				139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */,
 				13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */,

@@ -3,7 +3,7 @@ import RxSwift
 
 final class TrainingPaterModel {
     
-    typealias CDM = CoreDataManager
+    typealias CDM = TrainingDataManager
     
     private var disposeBag = DisposeBag()
     

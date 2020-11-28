@@ -20,7 +20,7 @@ final class RecomendationModel {
 
 extension RecomendationModel: RecomendationModelIteracting {
     func calculateRecomendation() {
-        guard let mainInfo = CoreDataManager.shared.readUserMainInfo(),
+        guard let mainInfo = UserDataManager.shared.readUserMainInfo(),
         let mainInfoCodableModel = UserMainInfoCodableModel(from: mainInfo) else { return }
         let recomendationInfo  = self.caloriesCalculator.getUserParameters(from: mainInfoCodableModel)
         self.ouptup?.setRecomendationInfo(to: recomendationInfo)

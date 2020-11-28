@@ -22,7 +22,7 @@ final class LoginModel {
     //MARK: - Private properties
     private let googleSignIn: GIDSignIn?
     private let firebaseManager: DTFirebaseFileManager
-    private let coreDataManager: CoreDataManager
+    private let coreDataManager: UserDataManager
     private let firebaseAuth: Auth
     
     //MARK: - Properties
@@ -31,7 +31,7 @@ final class LoginModel {
     //MARK: - Initialization
     init(googleSignIn: GIDSignIn? = GIDSignIn.sharedInstance(),
          firebaseManager: DTFirebaseFileManager = DTFirebaseFileManager.shared,
-         coreDataManager: CoreDataManager = CoreDataManager.shared,
+         coreDataManager: UserDataManager = UserDataManager.shared,
          firebaseAuth: Auth = Auth.auth()) {
         self.googleSignIn = googleSignIn
         self.firebaseManager = firebaseManager
@@ -61,7 +61,7 @@ final class LoginModel {
                 self.coreDataManager.updateUserMainInfo(to: mainData)
             }
             self.coreDataManager.updateDateOfLastUpdateTo(dateOfUpdate)
-            self.coreDataManager.updateUserTrainInfoFrom(trainingList)
+            TrainingDataManager.shared.updateUserTrainInfoFrom(trainingList)
             self.output?.succesSignIn()
         }
     }

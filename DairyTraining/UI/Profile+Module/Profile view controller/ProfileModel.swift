@@ -13,6 +13,7 @@ protocol ProfileModelOutput: AnyObject {
     func weightModeWasChanged(for cellAtIndex: Int)
     func succesSignedOut()
     func errorSignedOut(error: Error)
+    func trainingCountWasChanfed(to count: Int)
 }
 
 final class ProfileModel {
@@ -20,8 +21,9 @@ final class ProfileModel {
     weak var output: ProfileModelOutput?
     
     init() {
-        self.addObserverForHeightModeChanged()
-        self.addObserverForWeightSettingChanged()
+        addObserverForHeightModeChanged()
+        addObserverForWeightSettingChanged()
+        addObserverForTrainingCountChanged()
     }
     
     private func addObserverForHeightModeChanged() {
@@ -38,12 +40,24 @@ final class ProfileModel {
                                                object: nil)
     }
     
+    private func addObserverForTrainingCountChanged() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.trainingCountWasChanged),
+                                               name: .trainingListWasChanged,
+                                               object: nil)
+    }
+    
+    
     @objc private func weightMetricWasChanged() {
         self.output?.weightModeWasChanged(for: ProfileInfoCellType.weight.rawValue) 
     }
     
     @objc private func heightMetricChanged() {
         self.output?.heightModeWasChanged(for: ProfileInfoCellType.hight.rawValue)
+    }
+    
+    @objc private func trainingCountWasChanged() {
+        output?.trainingCountWasChanfed(to: TrainingDataManager.shared.getTraingList().count)
     }
 }
 
@@ -54,7 +68,7 @@ extension ProfileModel: ProfileModelIteracting {
         do {
             try Auth.auth().signOut()
             DTSettingManager.shared.deleteUserToken()
-            CoreDataManager.shared.removeAllUserData { [weak self] in
+            UserDataManager.shared.removeAllUserData { [weak self] in
                 guard let self = self else { return }
                 self.output?.succesSignedOut()
             }
@@ -64,7 +78,7 @@ extension ProfileModel: ProfileModelIteracting {
     }
     
     var isMainInfoSet: Bool {
-        guard let userMainInfo = CoreDataManager.shared.readUserMainInfo() else {
+        guard let userMainInfo = UserDataManager.shared.readUserMainInfo() else {
             return false
         }
         return userMainInfo.isSet
@@ -76,23 +90,23 @@ extension ProfileModel: ProfileModelIteracting {
             break
         case .activityLevel:
             if let activityLevel = UserMainInfoCodableModel.ActivityLevel.init(rawValue: value) {
-                CoreDataManager.shared.updateActivityLevel(to: activityLevel)
+                UserDataManager.shared.updateActivityLevel(to: activityLevel)
             }
         case .gender:
             if let gender = UserMainInfoCodableModel.Gender.init(rawValue: value) {
-                CoreDataManager.shared.updateGender(to: gender)
+                UserDataManager.shared.updateGender(to: gender)
             }
         case .age:
             if let age = Int(value) {
-               CoreDataManager.shared.updateAge(to: age)
+               UserDataManager.shared.updateAge(to: age)
             }
         case .hight:
             if let height = Float(value) {
-                CoreDataManager.shared.updateHeight(to: height)
+                UserDataManager.shared.updateHeight(to: height)
             }
         case .weight:
             if let weight = Float(value) {
-                CoreDataManager.shared.updateWeight(to: weight)
+                UserDataManager.shared.updateWeight(to: weight)
             }
         }
         self.output?.valueWasUpdatedForCell(at: type.rawValue)

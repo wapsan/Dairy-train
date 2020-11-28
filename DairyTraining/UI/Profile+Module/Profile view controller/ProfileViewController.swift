@@ -131,6 +131,11 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - TestPVCPresenter
 extension ProfileViewController: ProfileViewModelPresenter {
     
+    func trainingCountWasChanged(to count: Int) {
+        guard let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? DTMainInfoCell else { return }
+        cell.valueLabel.text = String(count)
+    }
+    
     func showSelectionlistAlert(for selectedIndex: Int, and value: String?) {
         self.selectionListAlert.present(on: self, for: selectedIndex, and: value)
     }

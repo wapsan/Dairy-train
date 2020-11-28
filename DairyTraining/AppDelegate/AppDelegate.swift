@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MainCoordinator.shared.window = self.window
         MainCoordinator.shared.coordinate(to: MainCoordinator.Target.splashScreen)
         UINavigationBar.appearance().tintColor = .white
-        CoreDataManager.shared.saveCSV()
         return true
     }
     
