@@ -7,8 +7,7 @@ final class MuscleGroupsCoordinator: Coordinator {
 
     enum Target: CoordinatorTarget {
         case muscularGrops(patern: TrainingEntityTarget)
-        case muscularSubgroups(patern: TrainingEntityTarget, muscleGroup: MuscleGroup.Group)
-        case exercises(patern: TrainingEntityTarget, miscleSubgroups: MuscleSubgroup.Subgroup)
+        case new(muscularGroup: MuscleGroup.Group, trainingEntityTarget: TrainingEntityTarget)
     }
     
     // MARK: - Properties
@@ -34,12 +33,14 @@ final class MuscleGroupsCoordinator: Coordinator {
             navigationController.modalPresentationStyle = .fullScreen
             window?.rootViewController?.present(navigationController, animated: true, completion: nil)
             self.navigationController = navigationController
-        case .muscularSubgroups(let trainingTartget, let muscleGroup):
-            let muscleSubgroupViewController = configureMuscleSubgroupsViewController(with: muscleGroup, target: trainingTartget)
-            navigationController?.pushViewController(muscleSubgroupViewController, animated: true)
-        case .exercises(let patern, let muscleSubgroups):
-            let exerciseListViewController = configureExerciseViewController(with: muscleSubgroups, target: patern)
-            navigationController?.pushViewController(exerciseListViewController, animated: true)
+        case .new(muscularGroup: let muscularGroup, trainingEntityTarget: let trainingEntityTarget):
+            let exerciseNewModel = SelectExerciseNewModel(muscularGroup: muscularGroup,
+                                                              trainingEntityTarget: trainingEntityTarget)
+            let exerciseNewViewModel = SelectExerciseNewViewModel(model: exerciseNewModel)
+            let exerciseNewViewController = SelectExerciseNewViewController(viewModel: exerciseNewViewModel)
+            exerciseNewModel.viewModel = exerciseNewViewModel
+            exerciseNewViewModel.view = exerciseNewViewController
+            navigationController?.pushViewController(exerciseNewViewController, animated: true)
         }
         return true
     }
@@ -51,32 +52,5 @@ final class MuscleGroupsCoordinator: Coordinator {
         let muscleGroupViewModel = MuscleGroupsViewModel()
         muscleGroupViewController.viewModel = muscleGroupViewModel
         return muscleGroupViewController
-    }
-    
-    
-    
-    private func configureMuscleSubgroupsViewController(with muscleGroup: MuscleGroup.Group, target: TrainingEntityTarget) -> MuscleSubgroupsViewController {
-        let subgroup = MuscleSubgroup(for: muscleGroup)
-        let subGroupViewModel = MuscleSubgropsViewModel(with: subgroup.listOfSubgroups, and: muscleGroup.name)
-        let subgroupViewController = MuscleSubgroupsViewController(viewModel: subGroupViewModel, trainingEntityTarget: target)
-        return subgroupViewController
-    }
-    
-    private func configureExerciseViewController(with muscleSubgroups: MuscleSubgroup.Subgroup, target: TrainingEntityTarget) -> ExerciseListViewController {
-        let exerciseList = ExersiceModel(for: muscleSubgroups).listOfExercices
-        let exerciseListModel: ExerciseListModel
-        switch target {
-        case .training:
-            exerciseListModel = ExerciseListModel(trainingPatern: nil)
-        case .trainingPatern(let patern):
-            exerciseListModel = ExerciseListModel(trainingPatern: patern)
-        }
-        let exerciseListViewController = ExerciseListViewController(trainingEntityTarget: target)
-        let exerciseListViewModel = ExerciseListViewModel(with: exerciseList, and: muscleSubgroups.name)
-        exerciseListViewController.viewModel = exerciseListViewModel
-        exerciseListViewModel.model = exerciseListModel
-        exerciseListViewModel.view = exerciseListViewController
-        exerciseListModel.output = exerciseListViewModel
-        return exerciseListViewController
     }
 }

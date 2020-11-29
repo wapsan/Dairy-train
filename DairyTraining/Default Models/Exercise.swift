@@ -1,20 +1,13 @@
 import UIKit
 
-struct Exercise { //: //Groupable {
+struct Exercise {
 
     //MARK: - Properties
     private var _name: String
+    
+    //MARK: - Public properties
     var group: MuscleGroup.Group
     var subgroub: MuscleSubgroup.Subgroup
-    var isSelected: Bool = false
-    
-    //MARK: - Compudet properties
-//    var muscleGroupImage: UIImage? {
-//        return self.group.image
-//    }
-//    var image: UIImage? {
-//        return self.subgroub.image
-//    }
     
     //MARK: - Initialization
     init(name: String, subgroup: MuscleSubgroup.Subgroup) {
@@ -55,6 +48,7 @@ struct Exercise { //: //Groupable {
     }
 }
 
+//MARK: - Groupable
 extension Exercise: Groupable  {
     
     var name: String {
@@ -64,6 +58,12 @@ extension Exercise: Groupable  {
     var image: UIImage? {
         return self.subgroub.image
     }
+}
+
+//MARK: - Equatable
+extension Exercise: Equatable {
     
-    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.name == rhs.name
+    }
 }

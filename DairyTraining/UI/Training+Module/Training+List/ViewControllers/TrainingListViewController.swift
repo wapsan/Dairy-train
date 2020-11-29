@@ -34,6 +34,10 @@ final class TrainingListViewController: MainTabBarItemVC {
     }
     
     //MARK: - GUI Properties
+    private let addExerciseFromExerciseButton = AddExerciseSupportButton.view()
+    private let addExerciseFromTrainingPaternButton = AddExerciseSupportButton.view()
+    private let addExerciseFromReadyTtrainingButton = AddExerciseSupportButton.view()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -83,21 +87,7 @@ final class TrainingListViewController: MainTabBarItemVC {
         addButton.translatesAutoresizingMaskIntoConstraints = false
         return addButton
     }()
-    
-    private lazy var addExerciseFromPaternsButton: DTAddExerciseSupportButton = {
-        let addButton = DTAddExerciseSupportButton(type: .pattern)
-        addButton.action = { self.viewModel?.goToTrainingPaterns() }
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        return addButton
-    }()
-    
-    private lazy var addExerciseFromListButton: DTAddExerciseSupportButton = {
-        let addButton = DTAddExerciseSupportButton(type: .exercoseList)
-        addButton.action = { self.viewModel?.goToMuscularList(with: .training) }
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        return addButton
-    }()
-    
+        
     private lazy var backView: UIView = {
         let view = UIView()
         let tap = UITapGestureRecognizer(target: self,
@@ -145,23 +135,36 @@ final class TrainingListViewController: MainTabBarItemVC {
 private extension TrainingListViewController {
     
     func setUpAddExerciseButton() {
-        addExerciseButton.openAction = { isOpen in
+        addExerciseFromExerciseButton?.supportButtonType = .exercoseList
+        addExerciseFromTrainingPaternButton?.supportButtonType = .pattern
+        addExerciseFromReadyTtrainingButton?.supportButtonType = .training
+        guard let addExerciseFromExerciseButton = addExerciseFromExerciseButton,
+              let addExerciseFromTrainingPaternButton =  addExerciseFromTrainingPaternButton,
+              let addExerciseFromReadyTtrainingButton = addExerciseFromReadyTtrainingButton else {
+            return
+        }
+        
+        addExerciseButton.openAction = { [weak self] isOpen in
+            guard let self = self else { return }
             switch isOpen {
             case true:
                 self.backView.isHidden = true
-                self.addExerciseFromListButton.close()
-                self.addExerciseFromPaternsButton.close()
+                addExerciseFromExerciseButton.close()
+                addExerciseFromTrainingPaternButton.close()
+                addExerciseFromReadyTtrainingButton.close()
             case false:
                 self.backView.isHidden = false
-                self.addExerciseFromListButton.open()
-                self.addExerciseFromPaternsButton.open()
+                addExerciseFromExerciseButton.open()
+                addExerciseFromTrainingPaternButton.open()
+                addExerciseFromReadyTtrainingButton.open()
             }
         }
         self.backView.isHidden = true
         self.view.addSubview(self.backView)
-        self.view.addSubview(self.addExerciseFromPaternsButton)
-        self.view.addSubview(self.addExerciseFromListButton)
         self.view.addSubview(self.addExerciseButton)
+        self.view.addSubview(self.addExerciseFromExerciseButton ?? UIView())
+        self.view.addSubview(self.addExerciseFromTrainingPaternButton ?? UIView())
+        self.view.addSubview(self.addExerciseFromReadyTtrainingButton ?? UIView())
         NSLayoutConstraint.activate([
             self.backView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.backView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
@@ -171,7 +174,7 @@ private extension TrainingListViewController {
         
         NSLayoutConstraint.activate([
             self.addExerciseButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor,
-                                                          constant: -32),
+                                                          constant: -16),
             self.addExerciseButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
                                                            constant: -32),
             self.addExerciseButton.widthAnchor.constraint(equalTo: self.view.widthAnchor,
@@ -180,24 +183,28 @@ private extension TrainingListViewController {
                                                            multiplier: 1)
         ])
         NSLayoutConstraint.activate([
-            self.addExerciseFromPaternsButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor,
-                                                                     constant: -32),
-            self.addExerciseFromPaternsButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
+            addExerciseFromTrainingPaternButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor,
+                                                                     constant: -16),
+            addExerciseFromTrainingPaternButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
                                                                       constant: -32),
-            self.addExerciseFromPaternsButton.widthAnchor.constraint(equalTo: self.view.widthAnchor,
-                                                                     multiplier: 1/7),
-            self.addExerciseFromPaternsButton.heightAnchor.constraint(equalTo: self.addExerciseButton.widthAnchor,
-                                                                      multiplier: 1)
+            addExerciseFromTrainingPaternButton.heightAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                                     multiplier: 1/7)
         ])
         NSLayoutConstraint.activate([
-            self.addExerciseFromListButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor,
-                                                                  constant: -32),
-            self.addExerciseFromListButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
+            addExerciseFromExerciseButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor,
+                                                                  constant: -16),
+            addExerciseFromExerciseButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
                                                                    constant: -32),
-            self.addExerciseFromListButton.widthAnchor.constraint(equalTo: self.view.widthAnchor,
-                                                                  multiplier: 1/7),
-            self.addExerciseFromListButton.heightAnchor.constraint(equalTo: self.addExerciseButton.widthAnchor,
-                                                                   multiplier: 1)
+            addExerciseFromExerciseButton.heightAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                                  multiplier: 1/7)
+        ])
+        NSLayoutConstraint.activate([
+            addExerciseFromReadyTtrainingButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor,
+                                                                  constant: -16),
+            addExerciseFromReadyTtrainingButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
+                                                                   constant: -32),
+         addExerciseFromReadyTtrainingButton.heightAnchor.constraint(equalTo: self.view.widthAnchor,
+                                                                  multiplier: 1/7)
         ])
     }
     
@@ -219,10 +226,11 @@ private extension TrainingListViewController {
             self.emptyTainingListLabel.removeFromSuperview()
             self.collectionView.reloadData()
         }
-        self.view.bringSubviewToFront(self.backView)
-               self.view.bringSubviewToFront(self.addExerciseFromListButton)
-               self.view.bringSubviewToFront(self.addExerciseFromPaternsButton)
-               self.view.bringSubviewToFront(self.addExerciseButton)
+        view.bringSubviewToFront(self.backView)
+        view.bringSubviewToFront(addExerciseFromExerciseButton ?? UIView())
+        view.bringSubviewToFront(addExerciseFromTrainingPaternButton ?? UIView())
+        view.bringSubviewToFront(addExerciseFromReadyTtrainingButton ?? UIView())
+        view.bringSubviewToFront(self.addExerciseButton)
     }
     
     func setHeaderView() {
@@ -359,14 +367,16 @@ private extension TrainingListViewController {
 extension TrainingListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.addExerciseFromListButton.alpha = 0
-        self.addExerciseFromPaternsButton.alpha = 0
+        addExerciseFromTrainingPaternButton?.alpha = 0
+        addExerciseFromExerciseButton?.alpha = 0
+        addExerciseFromReadyTtrainingButton?.alpha = 0
         UIView.animate(withDuration: 0.25, animations:{
             self.addExerciseButton.alpha = 0
         })
         if scrollView.contentOffset.y <= 0 {
-            self.addExerciseFromListButton.alpha = 1
-            self.addExerciseFromPaternsButton.alpha = 1
+            addExerciseFromTrainingPaternButton?.alpha = 1
+            addExerciseFromExerciseButton?.alpha = 1
+            addExerciseFromReadyTtrainingButton?.alpha = 1
             self.addExerciseButton.alpha = 1
         }
     }

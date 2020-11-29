@@ -4,7 +4,7 @@ final class DTActivitiesCell: UITableViewCell {
     
     //MARK: - Static cellID
     static let cellID: String = "DTActivitiesCell"
-    
+
     //MARK: - GUI Properties
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -64,7 +64,7 @@ final class DTActivitiesCell: UITableViewCell {
         self.exerciceNameLabel.text = NSLocalizedString(groupable.name, comment: "")
         self.muscleGroupImage.image = groupable.image
     }
-    
+        
     func setUnselectedBackgroundColor() {
         self.containerView.backgroundColor = DTColors.controllUnselectedColor
     }
@@ -75,10 +75,11 @@ final class DTActivitiesCell: UITableViewCell {
     
     //MARK: - Publick methods
     override func layoutSubviews() {
+        super.layoutSubviews()
         self.containerView.layer.cornerRadius = self.containerView.bounds.height / 4
         self.containerView.layer.borderWidth = 1
         self.containerView.layer.borderColor = DTColors.controllBorderColor.cgColor
-        super.layoutSubviews()
+        
     }
     
     //MARK: - Constraints
