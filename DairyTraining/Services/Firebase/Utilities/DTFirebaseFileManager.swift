@@ -36,9 +36,6 @@ class DTFirebaseFileManager {
             .setValue(self.currentDateWithUpdatingFromat) { [weak self] _,_  in
                 self?.dispatchGroup.leave()
             }
-            
-        //    .setValue(self.currentDateWithUpdatingFromat)
-        
     }
     
     func synhronizeDataToServer(completion: @escaping () -> Void) {
@@ -51,7 +48,6 @@ class DTFirebaseFileManager {
         self.upDateDateOfLastUpdate()
         self.sunhronizeTrainingPaternsToServer()
         dispatchGroup.notify(queue: .main, execute: completion)
-      ///  completion()
     }
     
     func synhronizeDataFromServer(completion: @escaping (_ mainInfo: UserMainInfoCodableModel?,
@@ -99,7 +95,7 @@ class DTFirebaseFileManager {
     private func synhronizeMainUserInfoToServer() {
         guard let userUid = Auth.auth().currentUser?.uid,
             let userMainInfo = UserMainInfoCodableModel(from: UserDataManager.shared.readUserMainInfo()) else { return }
-        let userMainInfoJSON = userMainInfo.convertToJSONString()
+        let userMainInfoJSON = userMainInfo.mapToJSON()
         self.firebaseRef
             .child(self.userKeyPath)
             .child(userUid)
@@ -115,7 +111,7 @@ class DTFirebaseFileManager {
         var trainingInfoDictionary: [String: String] = [:]
         trainingListFromLocalBase.enumerated().forEach( {(index, train) in
             let trainingData = TrainingCodableModel(with: train)
-            guard let trainingInfoJSON = trainingData.toJSONString() else { return }
+            guard let trainingInfoJSON = trainingData.mapToJSON() else { return }
             trainingInfoDictionary["Train \(index + 1)"] = trainingInfoJSON
         })
         self.firebaseRef

@@ -1,6 +1,6 @@
 import Foundation
 
-struct AproachCodableModel: Codable {
+struct AproachCodableModel: Mapable {
 
     //MARK: - Properties
     var weightMode: String

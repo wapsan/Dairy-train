@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol MapableProtocol: Codable {
+protocol Mapable: Codable {
      func mapToJSON() -> String?
 }
 
-extension MapableProtocol {
+extension Mapable {
     
     func mapToJSON() -> String? {
         do {

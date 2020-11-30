@@ -3,7 +3,7 @@ import Foundation
 /**
 Class created to fetch data model from UserMainInfoManagedObject for make encoding to JSON file.
 */
-struct UserMainInfoCodableModel: Codable {
+struct UserMainInfoCodableModel: Mapable {
         
     //MARK: - Enums
     enum Gender: String, Codable {
@@ -50,17 +50,6 @@ struct UserMainInfoCodableModel: Codable {
         }
         if let heightMode = mainInfoManagedObject.heightMode {
             self.heightMode = MeteringSetting.HeightMode.init(rawValue: heightMode)
-        }
-    }
-    
-    //MARK: - Public methods
-    func convertToJSONString() -> String? {
-        do {
-            let data = try JSONEncoder().encode(self)
-            let localJSONString = String(data: data, encoding: .utf8)
-            return localJSONString
-        } catch {
-            return nil
         }
     }
 }

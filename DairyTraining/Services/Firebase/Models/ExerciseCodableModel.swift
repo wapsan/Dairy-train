@@ -1,6 +1,6 @@
 import Foundation
 
-struct ExerciseCodableModel: Codable {
+struct ExerciseCodableModel: Mapable {
     
     //MARK: - Properties
     var date: Date

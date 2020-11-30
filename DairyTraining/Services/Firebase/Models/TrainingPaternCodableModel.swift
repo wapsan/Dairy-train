@@ -1,6 +1,6 @@
 import Foundation
 
-struct TrainingPaternCodableModel: MapableProtocol {
+struct TrainingPaternCodableModel: Mapable {
     
     // MARK: - Properties
     var name: String
