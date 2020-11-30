@@ -1,8 +1,9 @@
 import Foundation
 
-class ExerciseCodableModel: NSObject, Codable {
+struct ExerciseCodableModel: Codable {
     
     //MARK: - Properties
+    var date: Date
     var name: String
     var id: Int
     var subgroupName: String
@@ -11,6 +12,7 @@ class ExerciseCodableModel: NSObject, Codable {
     
     //MARK: - Initialization
     init(with exerciceManagedobject: ExerciseManagedObject) {
+        self.date = exerciceManagedobject.date ?? Date()
         self.name = exerciceManagedobject.name
         self.id = Int(exerciceManagedobject.id)
         self.subgroupName = exerciceManagedobject.subgroupName

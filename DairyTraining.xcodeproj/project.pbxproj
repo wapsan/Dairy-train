@@ -172,6 +172,8 @@
 		13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */; };
 		13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */; };
 		46DB6E6E46ED03D80B962509 /* Pods_Dairy_Training.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BB67FC86381D6904D71F4C /* Pods_Dairy_Training.framework */; };
+		7A7D288125753BEA00FDD212 /* TrainingPaternCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D288025753BEA00FDD212 /* TrainingPaternCodableModel.swift */; };
+		7A7D288425753DF800FDD212 /* MapableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D288325753DF800FDD212 /* MapableProtocol.swift */; };
 		7AA6AA56254978C600A88D4B /* MuscleGroupsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6AA55254978C600A88D4B /* MuscleGroupsCoordinator.swift */; };
 		7AF7BD4E256698B9003F4038 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */; };
 		7AF7BD4F256698B9003F4038 /* AuthorizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF7BD4D256698B9003F4038 /* AuthorizationViewController.xib */; };
@@ -347,6 +349,8 @@
 		13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCodableModel.swift; sourceTree = "<group>"; };
 		13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCodableModel.swift; sourceTree = "<group>"; };
 		603CE1CD603B1EE61B433EA4 /* Pods-Dairy Training.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.release.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.release.xcconfig"; sourceTree = "<group>"; };
+		7A7D288025753BEA00FDD212 /* TrainingPaternCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPaternCodableModel.swift; sourceTree = "<group>"; };
+		7A7D288325753DF800FDD212 /* MapableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapableProtocol.swift; sourceTree = "<group>"; };
 		7AA6AA55254978C600A88D4B /* MuscleGroupsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsCoordinator.swift; sourceTree = "<group>"; };
 		7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		7AF7BD4D256698B9003F4038 /* AuthorizationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizationViewController.xib; sourceTree = "<group>"; };
@@ -609,6 +613,8 @@
 				13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */,
 				13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */,
 				13A9E7C12494E22200DEDCBE /* UserMainInfoCodableModel.swift */,
+				7A7D288025753BEA00FDD212 /* TrainingPaternCodableModel.swift */,
+				7A7D288325753DF800FDD212 /* MapableProtocol.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1502,6 +1508,7 @@
 				13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */,
 				1384BB4B24DEF9520084705B /* ProfileModel.swift in Sources */,
 				13243A41247E768B00AB7419 /* DateHelper.swift in Sources */,
+				7A7D288425753DF800FDD212 /* MapableProtocol.swift in Sources */,
 				13479F3B247BD84A002FFB4E /* TrainingListViewController.swift in Sources */,
 				13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */,
 				139D531B24753D060028AE6A /* SettingModel.swift in Sources */,
@@ -1555,6 +1562,7 @@
 				13FAF17A246FCAA600537408 /* CaloriesCalculator.swift in Sources */,
 				1335CBB02465AC03009C2E20 /* DTStyledTextField.swift in Sources */,
 				13786E1D2478271C0084E48C /* NotificationName+Ex.swift in Sources */,
+				7A7D288125753BEA00FDD212 /* TrainingPaternCodableModel.swift in Sources */,
 				139285CB2573AC2500F4FB0C /* AddExerciseSupportButton.swift in Sources */,
 				136F400C2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift in Sources */,
 				1384BB4F24DF157F0084705B /* DTSelectionListAlert.swift in Sources */,

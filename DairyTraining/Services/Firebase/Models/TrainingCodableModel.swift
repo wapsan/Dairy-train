@@ -1,6 +1,6 @@
 import Foundation
 
-class TrainingCodableModel: NSObject, Codable {
+struct TrainingCodableModel: Codable {
     
     //MARK: - Properties
     var formatedDate: String?

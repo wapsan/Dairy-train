@@ -13,8 +13,11 @@ class DTFirebaseFileManager {
     
     private lazy var userMainInfoKey = "userMainInfo"
     private lazy var userTrainInfoKey = "userTrainingList"
+    private lazy var userTraininigPaternsInfoKey = "traininPaterns"
     private lazy var userKeyPath = "users"
     private lazy var updateDateKeyPatth = "lastUpdateDate"
+    
+    private lazy var dispatchGroup = DispatchGroup()
     
     private var currentDateWithUpdatingFromat: String {
         return DateHelper.shared.currentDateForSynhronize
@@ -30,15 +33,25 @@ class DTFirebaseFileManager {
             .child(self.userKeyPath)
             .child(userUid)
             .child(self.updateDateKeyPatth)
-            .setValue(self.currentDateWithUpdatingFromat)
+            .setValue(self.currentDateWithUpdatingFromat) { [weak self] _,_  in
+                self?.dispatchGroup.leave()
+            }
+            
+        //    .setValue(self.currentDateWithUpdatingFromat)
         
     }
     
     func synhronizeDataToServer(completion: @escaping () -> Void) {
+        dispatchGroup.enter()
+        dispatchGroup.enter()
+        dispatchGroup.enter()
+        dispatchGroup.enter()
         self.synhronizeMainUserInfoToServer()
         self.synhronizeTrainingUserInfoToServer()
         self.upDateDateOfLastUpdate()
-        completion()
+        self.sunhronizeTrainingPaternsToServer()
+        dispatchGroup.notify(queue: .main, execute: completion)
+      ///  completion()
     }
     
     func synhronizeDataFromServer(completion: @escaping (_ mainInfo: UserMainInfoCodableModel?,
@@ -91,7 +104,9 @@ class DTFirebaseFileManager {
             .child(self.userKeyPath)
             .child(userUid)
             .child(self.userMainInfoKey)
-            .setValue(userMainInfoJSON)
+            .setValue(userMainInfoJSON) { [weak self] (error, data) in
+                self?.dispatchGroup.leave()
+            }
     }
     
     private func synhronizeTrainingUserInfoToServer() {
@@ -107,6 +122,26 @@ class DTFirebaseFileManager {
             .child(self.userKeyPath)
             .child(userUid)
             .child(self.userTrainInfoKey)
-            .setValue(trainingInfoDictionary)
+            .setValue(trainingInfoDictionary) { [weak self] (error, data) in
+                self?.dispatchGroup.leave()
+            }
+    }
+    
+    private func sunhronizeTrainingPaternsToServer() {
+        guard let userUID = Auth.auth().currentUser?.uid else { return }
+        let localTrainingPaterns = TrainingDataManager.shared.fetchTrainingPaterns()
+        var parameters: [String: String] = [:]
+        localTrainingPaterns.enumerated().forEach({
+            let patern = TrainingPaternCodableModel(for: $1)
+            guard let paternJSON = patern.mapToJSON() else { return }
+            parameters["Patern №\($0)"] = paternJSON
+        })
+        self.firebaseRef
+            .child(userKeyPath)
+            .child(userUID)
+            .child(userTraininigPaternsInfoKey)
+            .setValue(parameters) { [weak self] (error, data) in
+                self?.dispatchGroup.leave()
+            }
     }
 }

@@ -66,9 +66,10 @@ class SettingsSectionViewController: UITableViewController {
         self.lastSynhronizeDate = DateHelper.shared.currentDateForSynhronize
         DispatchQueue.global(qos: .background).async {
             DTFirebaseFileManager.shared.synhronizeDataToServer(completion: {
-                DispatchQueue.main.async {
+              //  DispatchQueue.main.async {
+                print("Data was synhronized")
                     NotificationCenter.default.post(name: .dataWasSynhronize, object: nil)
-                }
+              //  }
             })
         }
     }

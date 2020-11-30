@@ -3,7 +3,7 @@ import Foundation
 /**
 Class created to fetch data model from UserMainInfoManagedObject for make encoding to JSON file.
 */
-class UserMainInfoCodableModel: NSObject, Codable {
+struct UserMainInfoCodableModel: Codable {
         
     //MARK: - Enums
     enum Gender: String, Codable {
