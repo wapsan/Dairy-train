@@ -1,6 +1,6 @@
 import Foundation
 
-class TrainingCodableModel: NSObject, Codable {
+struct TrainingCodableModel: Mapable {
     
     //MARK: - Properties
     var formatedDate: String?
@@ -16,16 +16,5 @@ class TrainingCodableModel: NSObject, Codable {
             initExercisesArray.append(ExerciseCodableModel(with: exercise))
         }
         self.exerciceArray = initExercisesArray
-    }
-    
-    //MARK: - Public methods
-    func toJSONString() -> String? {
-        do {
-            let data = try JSONEncoder().encode(self)
-            let localJSONString = String(data: data, encoding: .utf8)
-            return localJSONString
-        } catch {
-            return nil
-        }
     }
 }
