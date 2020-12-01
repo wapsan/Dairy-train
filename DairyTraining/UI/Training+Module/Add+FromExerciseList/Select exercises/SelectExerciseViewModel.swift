@@ -1,6 +1,6 @@
 import Foundation
 
-protocol SelectExerciseNewViewModelOutput {
+protocol SelectExerciseViewModelOutput {
     var muscularSubgroupsTitles: [String] { get }
     var exerciseList: [Exercise] { get }
     var selectedExercise: [Exercise] { get }
@@ -11,16 +11,16 @@ protocol SelectExerciseNewViewModelOutput {
     func addSelectesExercisesToTraining()
 }
 
-protocol SelectesExerciseNewViewModelIteractor: AnyObject {
+protocol SelectesExerciseViewModelIteractor: AnyObject {
     func updateSelectedExercise(to exercise: [Exercise])
     func exerciseWasAdded()
 }
 
-final class SelectExerciseNewViewModel {
+final class SelectExerciseViewModel {
     
     //MARK: - Module properties
-    weak var view: SelectExerciseNewViewControllerIteractor?
-    private let model: SelectExerciseNewModelOutput
+    weak var view: SelectExerciseViewIteractor?
+    private let model: SelectExerciseModelOutput
     
     //MARK: - Private properties
     private var _selectedExercises: [Exercise] = [] {
@@ -35,13 +35,13 @@ final class SelectExerciseNewViewModel {
     }
     
     //MARK: - Initialization
-    init(model:SelectExerciseNewModelOutput ) {
+    init(model:SelectExerciseModelOutput ) {
         self.model = model
     }
 }
 
 //MARK: - SelectExerciseViewModelOutput
-extension SelectExerciseNewViewModel: SelectExerciseNewViewModelOutput {
+extension SelectExerciseViewModel: SelectExerciseViewModelOutput {
     
     func addSelectesExercisesToTraining() {
         model.addSelectedExerciseToEntityTarget()
@@ -79,7 +79,7 @@ extension SelectExerciseNewViewModel: SelectExerciseNewViewModelOutput {
 }
 
 //MARK: - SelectesExerciseViewModelInput
-extension SelectExerciseNewViewModel: SelectesExerciseNewViewModelIteractor {
+extension SelectExerciseViewModel: SelectesExerciseViewModelIteractor {
     
     func exerciseWasAdded() {
         view?.exerciseWasAdded()

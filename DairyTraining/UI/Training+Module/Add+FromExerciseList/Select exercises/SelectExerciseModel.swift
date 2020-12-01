@@ -1,6 +1,6 @@
 import Foundation
 
-protocol SelectExerciseNewModelOutput {
+protocol SelectExerciseModelOutput {
     var muscularGroupName: String { get }
     var muscularSubfroupList: [MuscleSubgroup.Subgroup] { get }
     var selectedExercises: [Exercise] { get }
@@ -9,10 +9,10 @@ protocol SelectExerciseNewModelOutput {
     func addSelectedExerciseToEntityTarget()
 }
 
-final class SelectExerciseNewModel {
+final class SelectExerciseModel {
     
     //MARK: - Module properties
-    weak var viewModel: SelectesExerciseNewViewModelIteractor?
+    weak var viewModel: SelectesExerciseViewModelIteractor?
     
     //MARK: - Private properties
     private var exerciseListToAdd: [Exercise] = [] {
@@ -47,7 +47,7 @@ final class SelectExerciseNewModel {
 }
 
 //MARK: - SelectExerciseModelOutput
-extension SelectExerciseNewModel: SelectExerciseNewModelOutput {
+extension SelectExerciseModel: SelectExerciseModelOutput {
     
     var muscularGroupName: String {
         return _muscularGroupName

@@ -38,8 +38,8 @@ private extension ChoosenPaternViewController {
     
     func setup() {
         extendedLayoutIncludesOpaqueBars = true
-        tableView.register(DTActivitiesCell.self,
-                           forCellReuseIdentifier: DTActivitiesCell.cellID)
+        tableView.register(ExerciseCell.self,
+                           forCellReuseIdentifier: ExerciseCell.cellID)
         namingAlert?.delegate = viewModel
         tableView.tableHeaderView = tableHeaderView
         self.viewModel.paternNameo.asObservable()
@@ -63,9 +63,9 @@ private extension ChoosenPaternViewController {
     
     func setupRX() {
         viewModel.paternsExercise
-            .bind(to: tableView.rx.items(cellIdentifier: DTActivitiesCell.cellID)) {
+            .bind(to: tableView.rx.items(cellIdentifier: ExerciseCell.cellID)) {
                 (index, exercise, cell) in
-                (cell as? DTActivitiesCell)?.renderCellFor(exercise)
+                (cell as? ExerciseCell)?.renderCellFor(exercise)
             }
             .disposed(by: self.disposeBag)
     }

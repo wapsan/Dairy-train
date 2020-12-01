@@ -1,10 +1,10 @@
 import UIKit
 
-final class DTActivitiesCell: UITableViewCell {
+final class ExerciseCell: UITableViewCell {
     
     //MARK: - Static cellID
     static let cellID: String = "DTActivitiesCell"
-
+    
     //MARK: - GUI Properties
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -40,7 +40,7 @@ final class DTActivitiesCell: UITableViewCell {
     
     //MARK: - Initialization
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: DTActivitiesCell.cellID)
+        super.init(style: style, reuseIdentifier: ExerciseCell.cellID)
         self.initCell()
     }
     

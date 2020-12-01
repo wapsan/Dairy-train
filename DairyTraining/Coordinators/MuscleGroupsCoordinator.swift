@@ -34,10 +34,10 @@ final class MuscleGroupsCoordinator: Coordinator {
             window?.rootViewController?.present(navigationController, animated: true, completion: nil)
             self.navigationController = navigationController
         case .new(muscularGroup: let muscularGroup, trainingEntityTarget: let trainingEntityTarget):
-            let exerciseNewModel = SelectExerciseNewModel(muscularGroup: muscularGroup,
+            let exerciseNewModel = SelectExerciseModel(muscularGroup: muscularGroup,
                                                               trainingEntityTarget: trainingEntityTarget)
-            let exerciseNewViewModel = SelectExerciseNewViewModel(model: exerciseNewModel)
-            let exerciseNewViewController = SelectExerciseNewViewController(viewModel: exerciseNewViewModel)
+            let exerciseNewViewModel = SelectExerciseViewModel(model: exerciseNewModel)
+            let exerciseNewViewController = SelectExerciseViewController(viewModel: exerciseNewViewModel)
             exerciseNewModel.viewModel = exerciseNewViewModel
             exerciseNewViewModel.view = exerciseNewViewController
             navigationController?.pushViewController(exerciseNewViewController, animated: true)

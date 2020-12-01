@@ -1,19 +1,19 @@
 import UIKit
 
-protocol  SelectExerciseNewViewControllerIteractor: AnyObject {
+protocol  SelectExerciseViewIteractor: AnyObject {
     func muscularSubgroupWasChanged()
     func updateAddButtonState(to isActive: Bool)
     func exerciseWasAdded()
 }
 
-final class SelectExerciseNewViewController: MainTabBarItemVC {
+final class SelectExerciseViewController: MainTabBarItemVC {
     
     //MARK: - @IBOutlets
     @IBOutlet var subgroupSegmentControll: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
     
     //MARK: - Properties
-    private var viewModel: SelectExerciseNewViewModelOutput
+    private var viewModel: SelectExerciseViewModelOutput
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ final class SelectExerciseNewViewController: MainTabBarItemVC {
     }
     
     //MARK: - Initialization
-    init(viewModel: SelectExerciseNewViewModelOutput) {
+    init(viewModel: SelectExerciseViewModelOutput) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -49,11 +49,11 @@ final class SelectExerciseNewViewController: MainTabBarItemVC {
 }
  
 //MARK: - Private extension
-private extension SelectExerciseNewViewController {
+private extension SelectExerciseViewController {
 
     func setupTableView() {
-        tableView.register(DTActivitiesCell.self,
-                           forCellReuseIdentifier: DTActivitiesCell.cellID)
+        tableView.register(ExerciseCell.self,
+                           forCellReuseIdentifier: ExerciseCell.cellID)
     }
     
     func setupNavigationBar() {
@@ -70,7 +70,7 @@ private extension SelectExerciseNewViewController {
         viewModel.muscularSubgroupsTitles.forEach({
             subgroupSegmentControll.insertSegment(withTitle: $0,
                                                   at: viewModel.muscularSubgroupsTitles.count,
-                                                  animated: true)
+                                                  animated: false)
         })
         subgroupSegmentControll.selectedSegmentIndex = 0
         viewModel.muscularSubgtoupWacChanged(to: 0)
@@ -93,48 +93,46 @@ private extension SelectExerciseNewViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension SelectExerciseNewViewController: UITableViewDataSource {
+extension SelectExerciseViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.exerciseList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
+        let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseCell.cellID,
                                                  for: indexPath)
-        (cell as? DTActivitiesCell)?.renderCellFor(viewModel.exerciseList[indexPath.row])
+        (cell as? ExerciseCell)?.renderCellFor(viewModel.exerciseList[indexPath.row])
         if viewModel.selectedExercise.contains(viewModel.exerciseList[indexPath.row]) {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-            (cell as? DTActivitiesCell)?.setSelectedBackgroundColor()
+            (cell as? ExerciseCell)?.setSelectedBackgroundColor()
             return cell
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
-            (cell as? DTActivitiesCell)?.setUnselectedBackgroundColor()
+            (cell as? ExerciseCell)?.setUnselectedBackgroundColor()
             return cell
         }
     }
 }
 
 //MARK: - UITableViewDelegate
-extension SelectExerciseNewViewController: UITableViewDelegate {
+extension SelectExerciseViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.viewModel.exerciseWasSelected(at: indexPath.row)
-        if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
-            cell.setSelectedBackgroundColor()
-        }
+        guard let cell = tableView.cellForRow(at: indexPath) as? ExerciseCell else { return }
+        cell.setSelectedBackgroundColor()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         self.viewModel.exerciseWasDeselected(at: indexPath.row)
-        if let cell = tableView.cellForRow(at: indexPath) as? DTActivitiesCell {
-            cell.setUnselectedBackgroundColor()
-        }
+        guard let cell = tableView.cellForRow(at: indexPath) as? ExerciseCell else { return }
+        cell.setUnselectedBackgroundColor()
     }
 }
 
 //MARK: - SelectExerciseNewViewControllerIteractor
-extension SelectExerciseNewViewController: SelectExerciseNewViewControllerIteractor {
+extension SelectExerciseViewController: SelectExerciseViewIteractor {
     
     func exerciseWasAdded() {
         dismiss(animated: true, completion: nil)

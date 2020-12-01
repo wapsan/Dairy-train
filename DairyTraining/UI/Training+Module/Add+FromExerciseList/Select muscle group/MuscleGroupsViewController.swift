@@ -16,7 +16,7 @@ final class MuscleGroupsViewController: DTBackgroundedViewController {
         let table = UITableView()
         table.delegate = self
         table.dataSource = self
-        table.register(DTActivitiesCell.self, forCellReuseIdentifier: DTActivitiesCell.cellID)
+        table.register(ExerciseCell.self, forCellReuseIdentifier: ExerciseCell.cellID)
         table.backgroundColor = .clear
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
@@ -90,10 +90,10 @@ extension MuscleGroupsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DTActivitiesCell.cellID,
+        let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseCell.cellID,
                                                  for: indexPath)
         if let choosenMuscularGroup = self.viewModel?.getChoosenMuscularGroup(by: indexPath.row) {
-            (cell as? DTActivitiesCell)?.renderCellFor(choosenMuscularGroup)
+            (cell as? ExerciseCell)?.renderCellFor(choosenMuscularGroup)
         }
         return cell
     }
