@@ -65,7 +65,7 @@ class SettingsSectionViewController: UITableViewController {
         UserDataManager.shared.updateDateOfLastUpdateTo(DateHelper.shared.currentDateForSynhronize)
         self.lastSynhronizeDate = DateHelper.shared.currentDateForSynhronize
         DispatchQueue.global(qos: .background).async {
-            DTFirebaseFileManager.shared.synhronizeDataToServer(completion: {
+            FirebaseDataManager.shared.synhronizeDataToServer(completion: {
               //  DispatchQueue.main.async {
                 print("Data was synhronized")
                     NotificationCenter.default.post(name: .dataWasSynhronize, object: nil)

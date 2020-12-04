@@ -12,4 +12,5 @@ extension Notification.Name {
     static var startGoogleSignIn = Notification.Name("startGoogleSignIn")
     static var dataWasSynhronize = Notification.Name("dataWasSynhronize")
     static var customAlerOkPressed = Notification.Name("customAlerOkPressed")
+    static let mainInfoWasUpdated = Notification.Name("mainInfoWasUpdated")
 }

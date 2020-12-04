@@ -23,6 +23,7 @@ protocol ProfileViewModelPresenter: AnyObject {
     func showErrorSignOutAlert(with error: Error)
     func pushViewControllerFromMenu(_ viewController: UIViewController)
     func trainingCountWasChanged(to count: Int)
+    func reloadData()
 }
 
 final class ProfileViewModel {
@@ -91,6 +92,10 @@ extension ProfileViewModel: DTSelectionListAlertDelegate {
 
 //MARK: - TestPMOutput
 extension ProfileViewModel: ProfileModelOutput {
+    
+    func mainInfoWasUpdated() {
+        view?.reloadData()
+    }
     
     func trainingCountWasChanfed(to count: Int) {
         view?.trainingCountWasChanged(to: count)

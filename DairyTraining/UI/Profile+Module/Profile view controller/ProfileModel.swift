@@ -14,6 +14,7 @@ protocol ProfileModelOutput: AnyObject {
     func succesSignedOut()
     func errorSignedOut(error: Error)
     func trainingCountWasChanfed(to count: Int)
+    func mainInfoWasUpdated()
 }
 
 final class ProfileModel {
@@ -24,6 +25,7 @@ final class ProfileModel {
         addObserverForHeightModeChanged()
         addObserverForWeightSettingChanged()
         addObserverForTrainingCountChanged()
+       // addObserverForMainInfo()
     }
     
     private func addObserverForHeightModeChanged() {
@@ -47,6 +49,17 @@ final class ProfileModel {
                                                object: nil)
     }
     
+    private func addObserverForMainInfo() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(mainInfoWasUpdateAction),
+                                               name: .mainInfoWasUpdated,
+                                               object: nil)
+    }
+    
+    
+    @objc private func mainInfoWasUpdateAction() {
+        self.output?.mainInfoWasUpdated()
+    }
     
     @objc private func weightMetricWasChanged() {
         self.output?.weightModeWasChanged(for: ProfileInfoCellType.weight.rawValue) 

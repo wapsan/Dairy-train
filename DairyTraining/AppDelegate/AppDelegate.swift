@@ -25,6 +25,9 @@ private extension AppDelegate {
     func applyAppSetting() {
         DTSettingManager.shared.activateDefaultSetting()
         GoogleAuthorizationManager.shared.initAuth()
+        guard UserDataManager.shared.isSettingSaved() else { return }
+        UserDataManager.shared.updateUserWeightMode(to: MeteringSetting.shared.weightMode)
+        UserDataManager.shared.updateUserHeightMode(to: MeteringSetting.shared.heightMode)
     }
     
     func setRootViewController() {

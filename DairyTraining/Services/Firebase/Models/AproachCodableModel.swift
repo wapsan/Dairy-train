@@ -1,4 +1,3 @@
-import Foundation
 
 struct AproachCodableModel: Mapable {
 
@@ -7,7 +6,7 @@ struct AproachCodableModel: Mapable {
     var number: Int
     var reps: Int
     var weight: Float
-    
+
     //MARK: - Initialization
     init(with aproachManagedObject: AproachManagedObject) {
         self.weightMode = aproachManagedObject.weightMode

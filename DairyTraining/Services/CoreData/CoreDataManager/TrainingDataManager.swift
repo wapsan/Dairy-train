@@ -242,6 +242,25 @@ final class TrainingDataManager {
         self.updateTrainingPaterns()
     }
     
+    func updateTrainingPaternList(to paternList: [TrainingPaternCodableModel]) {
+        paternList.forEach({ patern in
+            let newPatern = TrainingPaternManagedObject(context: self.trainInfoContext)
+            newPatern.name = patern.name
+            newPatern.date = patern.date
+            patern.exerciseArray.forEach({ exercise in
+                let newExercise = ExerciseManagedObject(context: self.trainInfoContext)
+                newExercise.name = exercise.name
+                newExercise.subgroupName = exercise.subgroupName
+                newExercise.groupName = exercise.groupName
+                newExercise.id = Int64(exercise.id)
+                newExercise.trainingPatern = newPatern
+                newExercise.date = newPatern.date
+                newPatern.addToExercises(newExercise)
+            })
+        })
+        updateContext()
+    }
+    
     //MARK: - Backup methods
     func updateUserTrainInfoFrom(_ trainingArray: [TrainingCodableModel]) {
         for training in trainingArray {
@@ -273,6 +292,7 @@ final class TrainingDataManager {
     }
     
     func removeAllData() {
+        fetchTrainingPaterns().forEach({ trainInfoContext.delete($0) })
         getTraingList().forEach({ trainInfoContext.delete($0)})
     }
 }

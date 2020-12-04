@@ -131,6 +131,10 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - TestPVCPresenter
 extension ProfileViewController: ProfileViewModelPresenter {
     
+    func reloadData() {
+        collectionView.reloadSections([0], animationStyle: .fade)
+    }
+    
     func trainingCountWasChanged(to count: Int) {
         guard let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? DTMainInfoCell else { return }
         cell.valueLabel.text = String(count)

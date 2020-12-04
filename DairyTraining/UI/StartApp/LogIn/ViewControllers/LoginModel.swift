@@ -21,7 +21,7 @@ final class LoginModel {
     
     //MARK: - Private properties
     private let googleSignIn: GIDSignIn?
-    private let firebaseManager: DTFirebaseFileManager
+    private let firebaseManager: FirebaseDataManager
     private let coreDataManager: UserDataManager
     private let firebaseAuth: Auth
     
@@ -30,7 +30,7 @@ final class LoginModel {
     
     //MARK: - Initialization
     init(googleSignIn: GIDSignIn? = GIDSignIn.sharedInstance(),
-         firebaseManager: DTFirebaseFileManager = DTFirebaseFileManager.shared,
+         firebaseManager: FirebaseDataManager = FirebaseDataManager.shared,
          coreDataManager: UserDataManager = UserDataManager.shared,
          firebaseAuth: Auth = Auth.auth()) {
         self.googleSignIn = googleSignIn
@@ -48,21 +48,27 @@ final class LoginModel {
     }
     
     @objc private func googelSignedIn() {
-        print("Google signed in")
         self.synhronizeDataFreomServer()
         NotificationCenter.default.removeObserver(self, name: .googleSignIn, object: nil)
     }
     
     //MARK: - Private methods
     private func synhronizeDataFreomServer() {
-        self.firebaseManager.synhronizeDataFromServer { [weak self] (mainData, trainingList, dateOfUpdate) in
+        firebaseManager.fetchDataFromFirebase { [weak self] (result) in
             guard let self = self else { return }
-            if let mainData = mainData {
-                self.coreDataManager.updateUserMainInfo(to: mainData)
+            switch result {
+            case .success(let dataModel):
+                if let userMainInfo = dataModel.userMainInfo {
+                    self.coreDataManager.updateUserMainInfo(to: userMainInfo)
+                    NotificationCenter.default.post(name: .mainInfoWasUpdated, object: nil)
+                }
+                self.coreDataManager.updateDateOfLastUpdateTo(dataModel.dateOfUpdate)
+                TrainingDataManager.shared.updateUserTrainInfoFrom(dataModel.trainingList)
+                TrainingDataManager.shared.updateTrainingPaternList(to: dataModel.trainingPaternList)
+                self.output?.succesSignIn()
+            case .failure(_):
+                break
             }
-            self.coreDataManager.updateDateOfLastUpdateTo(dateOfUpdate)
-            TrainingDataManager.shared.updateUserTrainInfoFrom(trainingList)
-            self.output?.succesSignIn()
         }
     }
     

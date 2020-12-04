@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Aproach" representedClassName=".AproachManagedObject" syncable="YES">
         <attribute name="number" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="reps" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -15,7 +15,7 @@
         <attribute name="subgroupName" attributeType="String"/>
         <relationship name="aproaches" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Aproach" inverseName="exercise" inverseEntity="Aproach"/>
         <relationship name="training" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Training" inverseName="exercises" inverseEntity="Training"/>
-        <relationship name="trainingPatern" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrainingPatern" inverseName="exercises" inverseEntity="TrainingPatern"/>
+        <relationship name="trainingPatern" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TrainingPatern" inverseName="exercises" inverseEntity="TrainingPatern"/>
     </entity>
     <entity name="Training" representedClassName=".TrainingManagedObject" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
@@ -29,7 +29,7 @@
     </entity>
     <elements>
         <element name="Aproach" positionX="148.76171875" positionY="134.1484375" width="128" height="118"/>
-        <element name="Exercise" positionX="-105.65625" positionY="53.09765625" width="128" height="163"/>
+        <element name="Exercise" positionX="-105.65625" positionY="53.09765625" width="128" height="149"/>
         <element name="Training" positionX="-347.9921875" positionY="-191.46484375" width="128" height="88"/>
         <element name="TrainingPatern" positionX="-153" positionY="-45" width="128" height="88"/>
     </elements>

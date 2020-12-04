@@ -13,6 +13,7 @@ extension ExerciseManagedObject {
     @NSManaged public var groupName: String
     @NSManaged public var date: Date?
     @NSManaged public var training: TrainingManagedObject?
+    @NSManaged public var trainingPatern: TrainingPaternManagedObject?
     @NSManaged public var aproaches: NSSet
 }
 

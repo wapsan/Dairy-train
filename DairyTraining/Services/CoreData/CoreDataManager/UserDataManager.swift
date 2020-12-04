@@ -114,6 +114,37 @@ final class UserDataManager {
         }
     }
     
+    func updateUserHeightMode(to userHeightMode: MeteringSetting.HeightMode) {
+        if let mainUserInfo = self.readUserMainInfo() {
+            mainUserInfo.heightMode = userHeightMode.rawValue
+        } else {
+            let newMainInfo = MainInfoManagedObject(context: self.context)
+            newMainInfo.heightMode = userHeightMode.rawValue
+        }
+    }
+    
+    func updateUserWeightMode(to userWeightMode: MeteringSetting.WeightMode) {
+        if let mainUserInfo = self.readUserMainInfo()  {
+            mainUserInfo.weightMode = userWeightMode.rawValue
+        } else {
+            let newMainInfo = MainInfoManagedObject(context: self.context)
+        }
+    }
+    
+    func isSettingSaved() -> Bool {
+         if let mainUserInfo = self.readUserMainInfo() {
+            if let userWeightMode = mainUserInfo.weightMode,
+               let userHeightMode = mainUserInfo.heightMode {
+                return true
+            } else {
+              return false
+            }
+        } else {
+            return false
+        }
+    }
+    
+    
     func updateUserMainInfo(to userMainInfo: UserMainInfoCodableModel) {
         if let mainUserInfo = self.readUserMainInfo() {
             mainUserInfo.age = Int64(userMainInfo.age ?? 0)

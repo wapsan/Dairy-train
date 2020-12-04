@@ -34,7 +34,7 @@
 		133364AB2561793C00EAC6F6 /* ExerciseStatisticsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133364A92561793C00EAC6F6 /* ExerciseStatisticsCell.swift */; };
 		133364AC2561793C00EAC6F6 /* ExerciseStatisticsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133364AA2561793C00EAC6F6 /* ExerciseStatisticsCell.xib */; };
 		13344E5324B3619500BE3D65 /* DTBackgroundedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13344E5224B3619500BE3D65 /* DTBackgroundedViewController.swift */; };
-		1335B2692495183300D8276F /* DTFirebaseFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335B2682495183300D8276F /* DTFirebaseFileManager.swift */; };
+		1335B2692495183300D8276F /* FirebaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335B2682495183300D8276F /* FirebaseDataManager.swift */; };
 		1335CBB02465AC03009C2E20 /* DTStyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */; };
 		133705BC24D14D1400E023CC /* DTActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133705BB24D14D1400E023CC /* DTActivityIndicator.swift */; };
 		133705BE24D17B3100E023CC /* MuscleGroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133705BD24D17B3100E023CC /* MuscleGroupsViewModel.swift */; };
@@ -68,6 +68,7 @@
 		1353CA48255AFBE000E7B5DD /* MainStatisticViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1353CA47255AFBE000E7B5DD /* MainStatisticViewModel.swift */; };
 		135B8815248132360032251D /* DTAproachCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B8814248132360032251D /* DTAproachCell.swift */; };
 		135BF56424DDAAB000E1E120 /* DTValueAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135BF56324DDAAB000E1E120 /* DTValueAlert.swift */; };
+		135F167A2576B4DA0065B9FA /* FrebaseServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F16792576B4DA0065B9FA /* FrebaseServerModel.swift */; };
 		135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F22892494296F00EEE140 /* StatisticsModel.swift */; };
 		1361BE3F2520D97600578DB4 /* MainNutritionVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1361BE3D2520D97600578DB4 /* MainNutritionVIewController.swift */; };
 		1361BE402520D97600578DB4 /* MainNutritionVIewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1361BE3E2520D97600578DB4 /* MainNutritionVIewController.xib */; };
@@ -207,7 +208,7 @@
 		133364A92561793C00EAC6F6 /* ExerciseStatisticsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStatisticsCell.swift; sourceTree = "<group>"; };
 		133364AA2561793C00EAC6F6 /* ExerciseStatisticsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseStatisticsCell.xib; sourceTree = "<group>"; };
 		13344E5224B3619500BE3D65 /* DTBackgroundedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTBackgroundedViewController.swift; sourceTree = "<group>"; };
-		1335B2682495183300D8276F /* DTFirebaseFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTFirebaseFileManager.swift; sourceTree = "<group>"; };
+		1335B2682495183300D8276F /* FirebaseDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataManager.swift; sourceTree = "<group>"; };
 		1335CBAF2465AC03009C2E20 /* DTStyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTStyledTextField.swift; sourceTree = "<group>"; };
 		133705BB24D14D1400E023CC /* DTActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTActivityIndicator.swift; sourceTree = "<group>"; };
 		133705BD24D17B3100E023CC /* MuscleGroupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsViewModel.swift; sourceTree = "<group>"; };
@@ -243,6 +244,7 @@
 		1353CA47255AFBE000E7B5DD /* MainStatisticViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStatisticViewModel.swift; sourceTree = "<group>"; };
 		135B8814248132360032251D /* DTAproachCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAproachCell.swift; sourceTree = "<group>"; };
 		135BF56324DDAAB000E1E120 /* DTValueAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTValueAlert.swift; sourceTree = "<group>"; };
+		135F16792576B4DA0065B9FA /* FrebaseServerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrebaseServerModel.swift; sourceTree = "<group>"; };
 		135F22892494296F00EEE140 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
 		1361BE3D2520D97600578DB4 /* MainNutritionVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNutritionVIewController.swift; sourceTree = "<group>"; };
 		1361BE3E2520D97600578DB4 /* MainNutritionVIewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNutritionVIewController.xib; sourceTree = "<group>"; };
@@ -614,7 +616,7 @@
 				13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */,
 				13A9E7C12494E22200DEDCBE /* UserMainInfoCodableModel.swift */,
 				7A7D288025753BEA00FDD212 /* TrainingPaternCodableModel.swift */,
-				7A7D288325753DF800FDD212 /* MapableProtocol.swift */,
+				135F16792576B4DA0065B9FA /* FrebaseServerModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -957,6 +959,14 @@
 				1384BB4624DEF73E0084705B /* DTMainInfoCellType.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		138F250B257AA79900621704 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7A7D288325753DF800FDD212 /* MapableProtocol.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		13902AB2249411BB00963A07 /* Cells */ = {
@@ -1304,6 +1314,7 @@
 		13F1158C249E168700B6B7D8 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				138F250B257AA79900621704 /* Helpers */,
 				133A7BE024AE13B800409D3F /* Models */,
 				13F1158D249E169000B6B7D8 /* Utilities */,
 			);
@@ -1313,7 +1324,7 @@
 		13F1158D249E169000B6B7D8 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				1335B2682495183300D8276F /* DTFirebaseFileManager.swift */,
+				1335B2682495183300D8276F /* FirebaseDataManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1519,6 +1530,7 @@
 				1393EDFD24A634B600EBD938 /* TrainingManagedObject+CoreDataProperties.swift in Sources */,
 				133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */,
 				1361BE3F2520D97600578DB4 /* MainNutritionVIewController.swift in Sources */,
+				135F167A2576B4DA0065B9FA /* FrebaseServerModel.swift in Sources */,
 				13C0EEEC24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift in Sources */,
 				13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */,
 				1379800924733AEB00BAD87C /* SettingsSectionViewController.swift in Sources */,
@@ -1542,7 +1554,7 @@
 				13902AB4249411ED00963A07 /* DTMuscleSubgroupsCell.swift in Sources */,
 				13BF82BD247C2E54005C5494 /* MainTabBarItemVC.swift in Sources */,
 				131B9F9D24ADF2AC004FE9AD /* DTSynhronizeCell.swift in Sources */,
-				1335B2692495183300D8276F /* DTFirebaseFileManager.swift in Sources */,
+				1335B2692495183300D8276F /* FirebaseDataManager.swift in Sources */,
 				13D5D57924E19D36003C82F1 /* TrainingViewController.swift in Sources */,
 				1384BB4724DEF73E0084705B /* DTMainInfoCellType.swift in Sources */,
 				13CCD92A254EB35000E8FFEB /* SideMenuCell.swift in Sources */,

@@ -622,8 +622,8 @@
             filePath = "DairyTraining/UI/Profile+Module/Profile view controller/ProfileModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "trainingCountWasChanged()"
             landmarkType = "7">
          </BreakpointContent>
@@ -657,6 +657,22 @@
             startingLineNumber = "45"
             endingLineNumber = "45"
             landmarkName = "writeExerciseToTraining()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A8C30112-DE27-41F0-BC80-A3B198B0C81F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DairyTraining/UI/StartApp/LogIn/ViewControllers/LoginModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "synhronizeDataFreomServer()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
