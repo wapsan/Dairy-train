@@ -45,7 +45,7 @@ struct UserMainInfoCodableModel: Mapable {
     init?(from dictionary: [String: Any]) {
         self.age = dictionary[Key.age] as? Int
         self.weight = dictionary[Key.weight] as? Float
-        self.height = dictionary[Key.weight] as? Float
+        self.height = dictionary[Key.height] as? Float
         self.gender = Gender.init(rawValue: dictionary[Key.gender] as? String ?? "_" )
         self.activityLevel = ActivityLevel.init(rawValue: dictionary[Key.activityLevel] as? String ?? "_")
         self.heightMode = MeteringSetting.HeightMode.init(rawValue: dictionary[Key.heightMode] as? String ?? "_")

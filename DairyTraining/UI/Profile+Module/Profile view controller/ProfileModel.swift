@@ -25,7 +25,7 @@ final class ProfileModel {
         addObserverForHeightModeChanged()
         addObserverForWeightSettingChanged()
         addObserverForTrainingCountChanged()
-       // addObserverForMainInfo()
+        addObserverForMainInfo()
     }
     
     private func addObserverForHeightModeChanged() {

@@ -60,7 +60,7 @@ enum TabBarItemController {
         case .trainingBlock:
             return configureTrainingBlockNabigationController()
         case .supplyBlock:
-            return configureSupplyBlockNavigationController()
+           return configureSupplyBlockNavigationController()
         }
     }
     
@@ -85,14 +85,7 @@ enum TabBarItemController {
         let trainingListModel = TrainingListModel()
         let trainingListViewModel = TrainingListViewModel(model: trainingListModel)
         let trainingListViewController = TrainingListViewController(viewModel: trainingListViewModel)
-       // let trainingListVC = TrainingListViewController()
-        //let trainingListVM = TrainingListViewModel()
-        //let trainingListM = TrainingListModel()
-      //  let trainingListR = TrainingListRouter(trainingListVC)
-      //  trainingListVC.viewModel = trainingListVM
-       // trainingListViewModel.router = trainingListR
         trainingListViewModel.view = trainingListViewController
-      //  trainingListVM.model = trainingListM
         trainingListModel.output = trainingListViewModel
         let navigationController = UINavigationController(rootViewController: trainingListViewController)
         navigationController.tabBarItem = DTTabBarItems.training.item

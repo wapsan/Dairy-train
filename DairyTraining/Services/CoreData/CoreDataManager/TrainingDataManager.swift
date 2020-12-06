@@ -117,9 +117,11 @@ final class TrainingDataManager {
     
     func getAllExerciseForStatistics(with name: String) -> [ExerciseManagedObject] {
         let fetchRequest: NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Exercise")
-        let predicate = NSPredicate(format: "name == %@", name)
+        let namePredicate = NSPredicate(format: "name == %@", name)
+        let trainingExitingPredicate = NSPredicate(format: "training != nil")
+        let finish = NSCompoundPredicate(type: .and, subpredicates: [namePredicate, trainingExitingPredicate])
         let descriptor = NSSortDescriptor(key: "date", ascending: true)
-        fetchRequest.predicate = predicate
+        fetchRequest.predicate = finish
         fetchRequest.sortDescriptors = [descriptor]
         guard let exercisesWithName = try? trainInfoContext.fetch(fetchRequest) as? [ExerciseManagedObject] else {
             return []

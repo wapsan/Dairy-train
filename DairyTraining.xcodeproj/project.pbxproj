@@ -729,6 +729,7 @@
 		1361BE3B2520D6BF00578DB4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				13733611257AC5FF00A018F2 /* Networking */,
 				136F3FFB2498D0BB00C6944B /* CoreData */,
 				13F1158C249E168700B6B7D8 /* Firebase */,
 			);
@@ -910,6 +911,13 @@
 				137321A7253A098D00F8FA23 /* PaternNamingAlert.xib */,
 			);
 			path = PaternNamingAlert;
+			sourceTree = "<group>";
+		};
+		13733611257AC5FF00A018F2 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		1384BB4124DEEBCF0084705B /* Profile view controller */ = {
