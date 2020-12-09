@@ -77,13 +77,8 @@ final class TrainingPaternViewModel {
     //MARK: - Public methods
     func goToChoosenTrainingPatern(with trainingPaternIndex: Int) {
         guard let choosenTrainingPatern = model.getTrainingPatern(at: trainingPaternIndex) else { return }
-       // self.router?.pushChoosenPaternViewController(with: choosenTrainingPatern)
         MainCoordinator.shared.coordinateChild(
             to: TrainingModuleCoordinator.Target.choosenTrainingPatern(patern: choosenTrainingPatern))
-    }
-    
-    func goToMuscularGroupsList() {
-      //  self.router?.pushMuscleGroupViewController(with: nil)
     }
     
     func createTrainingPatern(with name: String) {
@@ -104,10 +99,10 @@ final class TrainingPaternViewModel {
 
 //MARK: - PaternNamingAlertDelegate
 extension TrainingPaternViewModel: PaternNamingAlertDelegate {
+    
     func patrnNamingAlertOkPressedToRenamePatern(name: String) {
         return
     }
-    
     
     func paternNamingAlertOkPressedToCreatePatern(name: String) {
         createTrainingPatern(with: name)

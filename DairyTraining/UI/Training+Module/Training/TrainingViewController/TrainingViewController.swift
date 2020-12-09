@@ -1,6 +1,6 @@
 import UIKit
 
-protocol TrainingViewControllerIteracting: AnyObject {
+protocol TrainingView: AnyObject {
     func showDeleteTrainingAlert(for trainigAtIndex: Int, with exerciseName: String)
     func updateTraining(with deletingExerciceIndex: Int)
     func hideAproachAlert()
@@ -9,37 +9,25 @@ protocol TrainingViewControllerIteracting: AnyObject {
     func showChangeAproachAlert(in exerciseIndex: Int, with weight: Float, reps: Int, at aproachIndex: Int)
     func aproachWasChanged(in exersiceIndex: Int, and aptoachIndex: Int)
     func trainingWasChanged()
+    func markCellAsDone(at index: Int)
+    func showAlertForDoneExercise()
 }
 
 final class TrainingViewController: UIViewController {
+
+
+    //MARK: - @IBOutlets
+    @IBOutlet private var tableView: UITableView!
     
-    //MARK: - Properties
-    var viewModel: TrainingViewModel?
+    //MARK: - Module property
+    var viewModel: TrainingViewModeProtocol?
+    
     private lazy var aproachAlert = DTNewAproachAlert()
+    
     private var cellHeight: CGFloat {
         return self.view.safeAreaLayoutGuide.layoutFrame.height / 3.5
     }
-    
-    //MARK: - GUI Properties
-    private(set) lazy var tableView: UITableView = {
-        let table = UITableView()
-        table.delegate = self
-        table.dataSource = self
-        table.register(DTEditingExerciceCell.self,
-                       forCellReuseIdentifier: DTEditingExerciceCell.cellID)
-        table.backgroundColor = .clear
-        table.separatorStyle = .none
-        table.showsVerticalScrollIndicator = false
-        table.translatesAutoresizingMaskIntoConstraints = false
-        return table
-    }()
-    
-    private lazy var headerView: DTHeaderView = {
-        let view = DTHeaderView(title: self.viewModel?.trainingDate ?? "")
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
+
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -49,10 +37,9 @@ final class TrainingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadTraining()
-        self.aproachAlert.delegate = self.viewModel
-        self.setUpView()
-        self.setUpContraints()
+        loadTraining()
+        aproachAlert.delegate = viewModel as? NewAproachAlertDelegate
+        setUpView()
     }
 }
 
@@ -74,58 +61,41 @@ private extension TrainingViewController {
     }
     
     func setUpView() {
+        tableView.register(DTEditingExerciceCell.self,
+                               forCellReuseIdentifier: DTEditingExerciceCell.cellID)
         self.view.backgroundColor = DTColors.backgroundColor
         self.navigationItem.title = LocalizedString.training
-        self.view.addSubview(self.tableView)
-        self.view.addSubview(self.headerView)
-    }
-    
-    func setUpContraints() {
-        let safeArea = self.view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor,
-                                                constant: DTEdgeInsets.small.top),
-            self.tableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
-            self.tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            self.headerView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
-            self.headerView.rightAnchor.constraint(equalTo: safeArea.rightAnchor)
-        ])
     }
 }
 
 //MARK: - UITableViewDataSource
 extension TrainingViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.cellHeight
+        return cellHeight
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel?.numberOfExercice ?? 0
+        return self.viewModel?.exerciseCount ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DTEditingExerciceCell.cellID,
                                                  for: indexPath)
-        guard let exercise = self.viewModel?.exerciceList[indexPath.row] else { return UITableViewCell() }
+        guard let exercise = self.viewModel?.exerciseList[indexPath.row] else { return UITableViewCell() }
         (cell as? DTEditingExerciceCell)?.setUpFor(exercise)
         (cell as? DTEditingExerciceCell)?.addAproachButtonAction = { [weak self] in
             guard let self = self else { return }
             self.aproachAlert.present(on: self, with: exercise.aproachesArray.count, and: indexPath.row)
         }
         (cell as? DTEditingExerciceCell)?.removeAproachButtonAction = { [weak self] in
-            guard let self = self else { return }
-            self.showDeletenigAproachAlert(forExerciceAt: indexPath.row)
+            self?.showDeletenigAproachAlert(forExerciceAt: indexPath.row)
         }
         (cell as? DTEditingExerciceCell)?.changeAproachAction = { [weak self] (aproachIndex, weight, reps) in
-             guard let self = self else { return }
-             self.viewModel?.aproachWillChanged(in: indexPath.row,
-                                                and: aproachIndex)
+             self?.viewModel?.aproachWillChanged(in: indexPath.row, and: aproachIndex)
+        }
+        (cell as? DTEditingExerciceCell)?.doneButtonPressedAction = { [weak self] in
+            self?.viewModel?.exerciseDone(at: indexPath.row)
         }
         return cell
     }
@@ -134,6 +104,16 @@ extension TrainingViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension TrainingViewController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = TrainingPaternsHeaderView.view()
+        view?.tittle.text = viewModel?.trainingDate
+        return view
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 70
+    }
+    
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
             tableView.performBatchUpdates({ [weak self] in
@@ -148,6 +128,7 @@ extension TrainingViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard !((tableView.cellForRow(at: indexPath) as? DTEditingExerciceCell)?.isDone ?? false) else { return nil }
         let deleteAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
             tableView.performBatchUpdates({ [weak self] in
                 self?.viewModel?.tryDeleteExercice(at: indexPath.row)
@@ -166,12 +147,24 @@ extension TrainingViewController: UITableViewDelegate {
 }
 
 //MARK: - TestTrainingViewControllerIteracting
-extension TrainingViewController: TrainingViewControllerIteracting {
+extension TrainingViewController: TrainingView {
     
-    func allExercisesWasDeleted() {
-     //  self.navigationController?.popViewController(animated: true)
+    func showAlertForDoneExercise() {
+        showDefaultAlert(title: "Finish this exercise?",
+                         message: "Are you sure?",
+                         preffedStyle: .alert,
+                         okTitle: LocalizedString.ok,
+                         cancelTitle: LocalizedString.cancel,
+                         completion: { [weak self] in
+                            self?.viewModel?.doneExercise()
+                         })
     }
     
+    func markCellAsDone(at index: Int) {
+        let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? DTEditingExerciceCell
+        cell?.markAsDone(isDone: true)
+    }
+ 
     func trainingWasChanged() {
         self.tableView.reloadData()
     }
@@ -222,9 +215,7 @@ extension TrainingViewController: TrainingViewControllerIteracting {
     }
     
     func updateTraining(with deletingExerciceIndex: Int) {
-        let indexPath = IndexPath(row: deletingExerciceIndex, section: 0)
-        self.tableView.beginUpdates()
-        self.tableView.deleteRows(at: [indexPath], with: .fade)
-        self.tableView.endUpdates()
+        tableView.deleteRows(at: [IndexPath(row: deletingExerciceIndex, section: 0)], with: .fade)
+        tableView.reloadData()
     }
 }

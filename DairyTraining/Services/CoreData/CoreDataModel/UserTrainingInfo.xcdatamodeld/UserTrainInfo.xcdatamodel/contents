@@ -11,6 +11,7 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="groupName" attributeType="String"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isDone" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="subgroupName" attributeType="String"/>
         <relationship name="aproaches" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Aproach" inverseName="exercise" inverseEntity="Aproach"/>
@@ -29,7 +30,7 @@
     </entity>
     <elements>
         <element name="Aproach" positionX="148.76171875" positionY="134.1484375" width="128" height="118"/>
-        <element name="Exercise" positionX="-105.65625" positionY="53.09765625" width="128" height="149"/>
+        <element name="Exercise" positionX="-105.65625" positionY="53.09765625" width="128" height="164"/>
         <element name="Training" positionX="-347.9921875" positionY="-191.46484375" width="128" height="88"/>
         <element name="TrainingPatern" positionX="-153" positionY="-45" width="128" height="88"/>
     </elements>

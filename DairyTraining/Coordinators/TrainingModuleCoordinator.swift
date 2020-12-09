@@ -56,9 +56,7 @@ final class TrainingModuleCoordinator: Coordinator {
         let trainingViewController = TrainingViewController()
         let trainingViewModel = TrainingViewModel()
         let trainingModel = TrainingModel(with: train)
-        let trainingRouter = TrainingRouter(trainingViewController)
         trainingViewController.viewModel = trainingViewModel
-        trainingViewModel.router = trainingRouter
         trainingViewModel.view = trainingViewController
         trainingViewModel.model = trainingModel
         trainingModel.output = trainingViewModel

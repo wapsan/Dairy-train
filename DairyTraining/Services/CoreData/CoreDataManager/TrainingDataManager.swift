@@ -138,6 +138,10 @@ final class TrainingDataManager {
         self.updateContext()
     }
     
+    func markExercise(_ exercise: ExerciseManagedObject, as isDone: Bool) {
+        exercise.isDone = isDone
+        updateContext()
+    }
     
     //MARK: - Aproach publick methods
     func addAproachWith(_ weight: Float, and reps: Int, to exercise: ExerciseManagedObject) {
@@ -272,6 +276,7 @@ final class TrainingDataManager {
             for exercice in training.exerciceArray {
                 let newExercice = ExerciseManagedObject(context: self.trainInfoContext)
                 newExercice.name = exercice.name
+                newExercice.isDone = exercice.isDone ?? false
                 newExercice.subgroupName = exercice.subgroupName
                 newExercice.groupName = exercice.groupName
                 newExercice.id = Int64(exercice.id)

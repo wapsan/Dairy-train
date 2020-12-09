@@ -57,15 +57,10 @@ extension Coordinator {
     }
 
     @discardableResult func popViewController(_ transition: CATransition? = nil) -> Bool {
-        guard let topNavigationController = topNavigationController else {
+        guard let topNavigationController = UIApplication.topViewController() else {
             return false
         }
-        if let transition = transition {
-            topNavigationController.view.layer.add(transition, forKey: nil)
-            topNavigationController.popViewController(animated: false)
-        } else {
-            topNavigationController.popViewController(animated: true)
-        }
+        topNavigationController.navigationController?.popViewController(animated: true)
         return true
     }
 

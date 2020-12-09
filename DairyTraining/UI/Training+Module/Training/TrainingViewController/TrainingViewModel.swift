@@ -1,32 +1,39 @@
 import Foundation
 
-protocol TrainingViewModeInput: AnyObject {
+protocol TrainingViewModeProtocol: AnyObject {
+    var trainingDate: String? { get }
+    var exerciseCount: Int { get }
+    var exerciseList: [ExerciseManagedObject] { get }
+    
     func loadTrain()
     func tryDeleteExercice(at index: Int)
     func showStatisticsForExercise(at index: Int)
     func deleteExercice(at index: Int)
     func removeLatsAproach(at exericeIndex: Int)
     func aproachWillChanged(in exerciceIndex: Int, and aproachIndex: Int)
+    func exerciseDone(at index: Int)
+    func doneExercise()
 }
 
 final class TrainingViewModel {
     
     var model: TrainingModelIteracting?
-    weak var view: TrainingViewControllerIteracting?
-    var router: TrainingRouter?
+    weak var view: TrainingView?
     
-    var numberOfExercice: Int {
-        self.exerciceList.count
-    }
-    var exerciceList: [ExerciseManagedObject] = []
-    var trainingDate: String?
+    private var exerciseDoneIndex: Int?
+    private var _exerciceList: [ExerciseManagedObject] = []
+    private var _trainingDate: String?
 }
 
 //MARK: - TrainingModelOutput
 extension TrainingViewModel: TrainingModelOutput {
     
+    func exerciseWasMarkedDone(at index: Int) {
+        view?.markCellAsDone(at: index)
+    }
+    
     func trainingIsEmpty() {
-        self.router?.rootViewController?.navigationController?.popViewController(animated: true)
+        MainCoordinator.shared.popViewController()
     }
     
     func trainingWasChange() {
@@ -40,7 +47,7 @@ extension TrainingViewModel: TrainingModelOutput {
     }
     
     func aproachWasChanged(in exerciseIndex: Int, at aproachIndex: Int, weight: Float, reps: Int, in exerciseList: [ExerciseManagedObject]) {
-        self.exerciceList = exerciseList
+        self._exerciceList = exerciseList
         self.view?.aproachWasChanged(in: exerciseIndex, and: aproachIndex)
         self.view?.hideAproachAlert()
     }
@@ -55,13 +62,13 @@ extension TrainingViewModel: TrainingModelOutput {
     }
     
     func aproachWasAded(to exerciseList: [ExerciseManagedObject], at index: Int) {
-        self.exerciceList = exerciseList
+        self._exerciceList = exerciseList
         self.view?.addAproach(inExerciseAt: index)
         self.view?.hideAproachAlert()
     }
     
     func setExerciceList(for training: [ExerciseManagedObject]) {
-        self.exerciceList = training
+        self._exerciceList = training
     }
     
     func setDeletetingTrainingName(to name: String, at index: Int) {
@@ -73,16 +80,39 @@ extension TrainingViewModel: TrainingModelOutput {
     }
   
     func setTrainingDate(for training: TrainingManagedObject) {
-        self.trainingDate = training.formatedDate
+        self._trainingDate = training.formatedDate
     }
 }
 
 //MARK: - TrainingViewModeIteracting
-extension TrainingViewModel: TrainingViewModeInput {
+extension TrainingViewModel: TrainingViewModeProtocol {
+    
+    var exerciseList: [ExerciseManagedObject] {
+        return _exerciceList
+    }
+    
+    var exerciseCount: Int {
+        return _exerciceList.count
+    }
+
+    var trainingDate: String? {
+        return _trainingDate
+    }
+    
+    func doneExercise() {
+        guard let exerciseIndexToMark = self.exerciseDoneIndex else { return }
+        model?.exerciseDone(at: exerciseIndexToMark)
+    }
+    
+    
+    func exerciseDone(at index: Int) {
+        exerciseDoneIndex = index
+        view?.showAlertForDoneExercise()
+    }
     
     func showStatisticsForExercise(at index: Int) {
-        let choosenExerciseName = exerciceList[index].name
-        let choosenExerciseDate = exerciceList[index].date
+        let choosenExerciseName = _exerciceList[index].name
+        let choosenExerciseDate = _exerciceList[index].date
         MainCoordinator.shared.coordinateChild(to: TrainingModuleCoordinator.Target.statisticsForChosenExercise(name: choosenExerciseName, exerciseDate: choosenExerciseDate))
     }
     

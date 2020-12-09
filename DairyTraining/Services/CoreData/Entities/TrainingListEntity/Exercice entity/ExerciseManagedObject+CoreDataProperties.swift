@@ -6,7 +6,7 @@ extension ExerciseManagedObject {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ExerciseManagedObject> {
         return NSFetchRequest<ExerciseManagedObject>(entityName: "Exercice")
     }
-    
+    @NSManaged public var isDone: Bool
     @NSManaged public var name: String
     @NSManaged public var id: Int64
     @NSManaged public var subgroupName: String

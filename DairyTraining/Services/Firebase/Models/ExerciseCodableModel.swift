@@ -6,6 +6,7 @@ struct ExerciseCodableModel: Mapable {
     var date: Date
     var name: String
     var id: Int
+    var isDone: Bool?
     var subgroupName: String
     var groupName: String
     var aproachlist: [AproachCodableModel]
@@ -13,6 +14,7 @@ struct ExerciseCodableModel: Mapable {
     //MARK: - Initialization
     init(with exerciceManagedobject: ExerciseManagedObject) {
         self.date = exerciceManagedobject.date ?? Date()
+        self.isDone = exerciceManagedobject.isDone
         self.name = exerciceManagedobject.name
         self.id = Int(exerciceManagedobject.id)
         self.subgroupName = exerciceManagedobject.subgroupName

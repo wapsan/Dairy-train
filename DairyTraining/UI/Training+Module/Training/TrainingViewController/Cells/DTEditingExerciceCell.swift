@@ -17,6 +17,8 @@ final class DTEditingExerciceCell: UITableViewCell {
     var addAproachButtonAction: (() -> Void)?
     var removeAproachButtonAction: (() -> Void)?
     var changeAproachAction: ((_ index: Int, _ weight: String, _ reps: String) -> Void)?
+    var doneButtonPressedAction: (() -> Void)?
+    private(set) var isDone: Bool = false
     
     //MARK: - GUI Properties
     private var containerView: UIView = {
@@ -61,6 +63,7 @@ final class DTEditingExerciceCell: UITableViewCell {
     private lazy var addAproachButton: UIButton = {
         let button = UIButton()
         let addImage = UIImage.dtAdd
+        button.imageView?.contentMode = .scaleAspectFit
         button.setImage(addImage, for: .normal)
         button.addTarget(self,
                          action: #selector(self.addButtonTouched),
@@ -69,9 +72,21 @@ final class DTEditingExerciceCell: UITableViewCell {
         return button
     }()
     
+    private lazy var doneButton: UIButton = {
+       let button = UIButton()
+        //button.setImage(UIImage(named: "checkmark_training")?.withTintColor(.white), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        button.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var removeLastAproachButton: UIButton = {
         let button = UIButton()
         let removeImage = UIImage.dtRemove
+        button.imageView?.contentMode = .scaleAspectFit
         button.setImage(removeImage, for: .normal)
         button.addTarget(self,
                          action: #selector(self.removeLastAproachesButtonPressed),
@@ -83,8 +98,9 @@ final class DTEditingExerciceCell: UITableViewCell {
     private lazy var aproachesButtonStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = 8
         stackView.distribution = .fillEqually
+        stackView.addArrangedSubview(self.doneButton)
         stackView.addArrangedSubview(self.removeLastAproachButton)
         stackView.addArrangedSubview(self.addAproachButton)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -111,10 +127,12 @@ final class DTEditingExerciceCell: UITableViewCell {
     
     //MARK: - Interface
      func setUpFor(_ exercise: ExerciseManagedObject) {
-         self.exercise = exercise
-         self.exerciceNameLabel.text = NSLocalizedString(exercise.name, comment: "")
-         self.muscleSubGroupImage.image = exercise.image
-         self.aproachCollectionList.reloadData()
+        self.exercise = exercise
+        exerciceNameLabel.text = NSLocalizedString(exercise.name, comment: "")
+        muscleSubGroupImage.image = exercise.image
+        aproachCollectionList.reloadData()
+        markAsDone(isDone: exercise.isDone)
+        self.isDone = exercise.isDone
      }
      
     func removeLastAproach() {
@@ -136,10 +154,22 @@ final class DTEditingExerciceCell: UITableViewCell {
         let indexPath = IndexPath(row: index, section: 0)
         self.aproachCollectionList.reloadItems(at: [indexPath])
     }
+    func markAsDone(isDone: Bool) {
+        //containerView.backgroundColor = isDone ? .systemBlue : DTColors.controllUnselectedColor
+        if isDone {
+            doneButton.setImage(UIImage(named: "checkmark_training")?.withTintColor(.green), for: .normal)
+            doneButton.isUserInteractionEnabled = false
+        } else {
+            doneButton.setImage(UIImage(named: "checkmark_training")?.withTintColor(.white), for: .normal)
+        }
+        isUserInteractionEnabled = !isDone
+    }
 }
 
 //MARK: - Private methods
 private extension DTEditingExerciceCell {
+    
+    
     
     func initCell() {
         self.backgroundColor = .clear
@@ -185,12 +215,14 @@ private extension DTEditingExerciceCell {
         ])
         
         NSLayoutConstraint.activate([
-            self.aproachesButtonStack.topAnchor.constraint(equalTo: self.containerView.topAnchor),
+           // aproachesButtonStack.heightAnchor.constraint(equalTo: aproachCollectionList.heightAnchor, multiplier: 1),
+            self.aproachesButtonStack.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 16),
             self.aproachesButtonStack.leftAnchor.constraint(equalTo: self.aproachCollectionList.rightAnchor,
                                                             constant: DTEdgeInsets.small.left),
             self.aproachesButtonStack.rightAnchor.constraint(equalTo: self.containerView.rightAnchor,
                                                              constant: DTEdgeInsets.small.right),
-            self.aproachesButtonStack.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor),
+            //aproachesButtonStack.centerYAnchor.constraint(equalTo: aproachCollectionList.centerYAnchor)
+            self.aproachesButtonStack.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: -16),
         ])
         
         
@@ -214,6 +246,10 @@ private extension DTEditingExerciceCell {
     
     @objc  func removeLastAproachesButtonPressed() {
         self.removeAproachButtonAction?()
+    }
+    
+    @objc func doneButtonAction() {
+        doneButtonPressedAction?()
     }
 }
 

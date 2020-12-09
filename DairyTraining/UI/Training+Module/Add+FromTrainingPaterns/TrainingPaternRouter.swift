@@ -1,11 +1,3 @@
-//
-//  TrainingPaternRouter.swift
-//  Dairy Training
-//
-//  Created by Вячеслав on 03.10.2020.
-//  Copyright © 2020 Вячеслав. All rights reserved.
-//
-
 import UIKit
 
 final class TrainingPaternRouter: Router {

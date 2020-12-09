@@ -14,6 +14,7 @@ final class SelectExerciseViewController: MainTabBarItemVC {
     
     //MARK: - Properties
     private var viewModel: SelectExerciseViewModelOutput
+    private var currentSegmentIndex: Int = 0
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -143,6 +144,12 @@ extension SelectExerciseViewController: SelectExerciseViewIteractor {
     }
     
     func muscularSubgroupWasChanged() {
-        tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+        if currentSegmentIndex > subgroupSegmentControll.selectedSegmentIndex {
+            tableView.reloadSections(IndexSet(integer: 0), with: .right)
+        } else {
+            tableView.reloadSections(IndexSet(integer: 0), with: .left)
+        }
+        currentSegmentIndex = subgroupSegmentControll.selectedSegmentIndex
+        
     }
 }

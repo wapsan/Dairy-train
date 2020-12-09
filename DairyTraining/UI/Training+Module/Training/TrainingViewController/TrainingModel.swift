@@ -8,6 +8,7 @@ protocol TrainingModelIteracting: AnyObject {
     func removeLatsAproach(at exerciseIndex: Int)
     func getAproachInfo(in exerciseIndex: Int, and aproachIndex: Int)
     func changeAproach(in exerciseIndex: Int, at aproachIndex: Int, weight: Float, reps: Int)
+    func exerciseDone(at index: Int)
 }
 
 protocol TrainingModelOutput: AnyObject {
@@ -25,6 +26,7 @@ protocol TrainingModelOutput: AnyObject {
                            in exerciseList: [ExerciseManagedObject])
     func trainingWasChange()
     func trainingIsEmpty()
+    func exerciseWasMarkedDone(at index: Int)
 }
 
 final class TrainingModel {
@@ -56,6 +58,11 @@ final class TrainingModel {
 
 //MARK: - TrainingModelIteracting
 extension TrainingModel: TrainingModelIteracting {
+    
+    func exerciseDone(at index: Int) {
+        TrainingDataManager.shared.markExercise(exerciceList[index], as: true)
+        output?.exerciseWasMarkedDone(at: index)
+    }
     
     func changeAproach(in exerciseIndex: Int, at aproachIndex: Int, weight: Float, reps: Int) {
         let exercise = self.exerciceList[exerciseIndex]
