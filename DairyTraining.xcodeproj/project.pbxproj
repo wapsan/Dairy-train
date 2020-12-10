@@ -380,13 +380,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		130634452494DE80008C1ECF /* Training+List */ = {
+		130634452494DE80008C1ECF /* TrainingList */ = {
 			isa = PBXGroup;
 			children = (
 				130634472494DEE0008C1ECF /* ViewControllers */,
 				130634492494DF8D008C1ECF /* Cells */,
 			);
-			path = "Training+List";
+			path = TrainingList;
 			sourceTree = "<group>";
 		};
 		130634462494DEA9008C1ECF /* Training */ = {
@@ -764,7 +764,7 @@
 			path = Statistic;
 			sourceTree = "<group>";
 		};
-		136989BF2520DEFB0039B306 /* Add+FromTrainingPaterns */ = {
+		136989BF2520DEFB0039B306 /* AddFromTrainingPaterns */ = {
 			isa = PBXGroup;
 			children = (
 				137321A1253A093F00F8FA23 /* Views */,
@@ -776,7 +776,7 @@
 				136E363725288015002FA439 /* TrainingPaternRouter.swift */,
 				136989C12520DF650039B306 /* TrainingPaternsViewController.xib */,
 			);
-			path = "Add+FromTrainingPaterns";
+			path = AddFromTrainingPaterns;
 			sourceTree = "<group>";
 		};
 		136989C42520E2DC0039B306 /* TrainingPatern+Entity */ = {
@@ -889,7 +889,7 @@
 			children = (
 				13BA17A32461A49600DF5D7D /* StartApp */,
 				13BA179F2461A45200DF5D7D /* Profile+Module */,
-				13BA17A22461A47700DF5D7D /* Training+Module */,
+				13BA17A22461A47700DF5D7D /* TrainingModule */,
 				1361BE3C2520D7C600578DB4 /* Nutrition+Module */,
 			);
 			path = UI;
@@ -1118,7 +1118,7 @@
 			path = "Profile+Module";
 			sourceTree = "<group>";
 		};
-		13BA17A02461A45D00DF5D7D /* Add+FromExerciseList */ = {
+		13BA17A02461A45D00DF5D7D /* AddFromExerciseList */ = {
 			isa = PBXGroup;
 			children = (
 				136E363425287E0A002FA439 /* Model */,
@@ -1126,18 +1126,18 @@
 				132125DA2494DC0F00FDCDB4 /* Select exercises */,
 				132125DC2494DC4F00FDCDB4 /* Cells */,
 			);
-			path = "Add+FromExerciseList";
+			path = AddFromExerciseList;
 			sourceTree = "<group>";
 		};
-		13BA17A22461A47700DF5D7D /* Training+Module */ = {
+		13BA17A22461A47700DF5D7D /* TrainingModule */ = {
 			isa = PBXGroup;
 			children = (
-				130634452494DE80008C1ECF /* Training+List */,
+				130634452494DE80008C1ECF /* TrainingList */,
 				130634462494DEA9008C1ECF /* Training */,
-				13BA17A02461A45D00DF5D7D /* Add+FromExerciseList */,
-				136989BF2520DEFB0039B306 /* Add+FromTrainingPaterns */,
+				13BA17A02461A45D00DF5D7D /* AddFromExerciseList */,
+				136989BF2520DEFB0039B306 /* AddFromTrainingPaterns */,
 			);
-			path = "Training+Module";
+			path = TrainingModule;
 			sourceTree = "<group>";
 		};
 		13BA17A32461A49600DF5D7D /* StartApp */ = {

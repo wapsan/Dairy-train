@@ -112,7 +112,7 @@ final class TrainingDataManager {
     
     //MARK: - Exercises public methods
     func getExercices(for choosenTraining: TrainingManagedObject) -> [ExerciseManagedObject] {
-        return choosenTraining.exercicesArray
+        return choosenTraining.exercicesArray.sorted(by: { $0.id < $1.id })
     }
     
     func getAllExerciseForStatistics(with name: String) -> [ExerciseManagedObject] {
@@ -211,13 +211,16 @@ final class TrainingDataManager {
     
     func addExercicese(_ exercises: [Exercise], to trainingPatern: TrainingPaternManagedObject) {
         var exerciseList: [ExerciseManagedObject] = []
+        var exerciseID: Int64 = 0
         exercises.forEach({
             let newExercise = ExerciseManagedObject(context: trainInfoContext)
+            newExercise.id = exerciseID
             newExercise.name = $0.name
             newExercise.groupName = $0.group.rawValue
             newExercise.subgroupName = $0.subgroub.rawValue
             newExercise.date = Date()
             exerciseList.append(newExercise)
+            exerciseID += 1
         })
         exerciseList.forEach({ trainingPatern.addToExercises($0) })
         curentPatern.onNext(trainingPatern)

@@ -13,6 +13,7 @@ protocol TrainingViewModeProtocol: AnyObject {
     func aproachWillChanged(in exerciceIndex: Int, and aproachIndex: Int)
     func exerciseDone(at index: Int)
     func doneExercise()
+    func isExerciseEditable(at index: Int) -> Bool
 }
 
 final class TrainingViewModel {
@@ -29,7 +30,7 @@ final class TrainingViewModel {
 extension TrainingViewModel: TrainingModelOutput {
     
     func exerciseWasMarkedDone(at index: Int) {
-        view?.markCellAsDone(at: index)
+        view?.exerciseMarkAsDone(at: index)
     }
     
     func trainingIsEmpty() {
@@ -76,7 +77,7 @@ extension TrainingViewModel: TrainingModelOutput {
     }
     
     func exerciceWasDeleted(at index: Int) {
-        self.view?.updateTraining(with: index)
+        view?.exerciseWasDeleted(at: index)
     }
   
     func setTrainingDate(for training: TrainingManagedObject) {
@@ -86,6 +87,10 @@ extension TrainingViewModel: TrainingModelOutput {
 
 //MARK: - TrainingViewModeIteracting
 extension TrainingViewModel: TrainingViewModeProtocol {
+    
+    func isExerciseEditable(at index: Int) -> Bool {
+        return !_exerciceList[index].isDone
+    }
     
     var exerciseList: [ExerciseManagedObject] {
         return _exerciceList
