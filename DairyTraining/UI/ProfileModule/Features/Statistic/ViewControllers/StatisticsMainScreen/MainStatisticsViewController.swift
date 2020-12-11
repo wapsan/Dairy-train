@@ -1,6 +1,6 @@
 import UIKit
 
-final class MainStatisticsViewController: MainTabBarItemVC {
+final class MainStatisticsViewController: BaseViewController {
 
     //MARK: - @IBOutlets
     @IBOutlet var tableView: UITableView!

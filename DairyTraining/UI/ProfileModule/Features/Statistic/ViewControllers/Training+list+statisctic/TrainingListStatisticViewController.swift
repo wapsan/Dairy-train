@@ -1,6 +1,6 @@
 import UIKit
 
-final class TrainingListStatisticViewController: MainTabBarItemVC {
+final class TrainingListStatisticViewController: BaseViewController {
     
     //MARK: - @IBOutlets
     @IBOutlet var collectionView: UICollectionView!

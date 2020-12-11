@@ -6,7 +6,7 @@ protocol  SelectExerciseViewIteractor: AnyObject {
     func exerciseWasAdded()
 }
 
-final class SelectExerciseViewController: MainTabBarItemVC {
+final class SelectExerciseViewController: BaseViewController {
     
     //MARK: - @IBOutlets
     @IBOutlet var subgroupSegmentControll: UISegmentedControl!

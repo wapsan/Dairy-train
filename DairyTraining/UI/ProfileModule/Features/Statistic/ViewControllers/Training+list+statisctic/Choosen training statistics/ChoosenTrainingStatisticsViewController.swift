@@ -1,6 +1,6 @@
 import UIKit
 
-final class ChoosenTrainingStatisticsViewController: MainTabBarItemVC {
+final class ChoosenTrainingStatisticsViewController: BaseViewController {
     
     //MARK: - Properties
     private lazy var safeArea = self.view.safeAreaLayoutGuide

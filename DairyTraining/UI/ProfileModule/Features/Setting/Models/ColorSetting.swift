@@ -16,9 +16,9 @@ class ColorSetting {
         willSet {
             switch newValue {
             case .dark:
-                DTSettingManager.shared.setColorTheme(to: newValue)
+                SettingManager.shared.setColorTheme(to: newValue)
             case .light:
-                DTSettingManager.shared.setColorTheme(to: newValue)
+                SettingManager.shared.setColorTheme(to: newValue)
             }
         }
     }

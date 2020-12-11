@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 private extension AppDelegate {
     
     func applyAppSetting() {
-        DTSettingManager.shared.activateDefaultSetting()
+        SettingManager.shared.activateDefaultSetting()
         GoogleAuthorizationManager.shared.initAuth()
         guard !UserDataManager.shared.isSettingSaved() else { return }
         UserDataManager.shared.updateUserWeightMode(to: MeteringSetting.shared.weightMode)

@@ -37,7 +37,7 @@ final class DTSplashScreenViewController: UIViewController {
     
     private func presentInitialViewController() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
-            if let _ = DTSettingManager.shared.getUserToken() {
+            if let _ = SettingManager.shared.getUserToken() {
                 MainCoordinator.shared.coordinate(to: MainCoordinator.Target.mainFlow)
             } else {
                 MainCoordinator.shared.coordinate(to: MainCoordinator.Target.loginFlow)

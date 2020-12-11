@@ -49,7 +49,7 @@ class MeteringSetting {
     
     private(set) var weightMode: WeightMode = .kg {
         willSet {
-            DTSettingManager.shared.setWeightMode(to: newValue)
+            SettingManager.shared.setWeightMode(to: newValue)
         }
     }
     
@@ -73,7 +73,7 @@ class MeteringSetting {
     
     private(set) var heightMode: HeightMode = .cm {
         willSet {
-            DTSettingManager.shared.setHeightMode(to: newValue)
+            SettingManager.shared.setHeightMode(to: newValue)
         }
     }
     

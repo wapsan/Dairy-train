@@ -1,9 +1,9 @@
 import Foundation
 
-class DTSettingManager {
+final class SettingManager {
     
     //MARK: - Singletone propetie
-    static let shared = DTSettingManager()
+    static let shared = SettingManager()
     
     //MARK: - Private properties
     private lazy var userDefaults = UserDefaults.standard
@@ -61,7 +61,6 @@ class DTSettingManager {
     }
     
     func setWeightMode(to mode: MeteringSetting.WeightMode) {
-        print("Weight mode set to \(mode).")
         switch mode {
         case .kg:
             self.userDefaults.set(true, forKey: UserSettingKeys.weighMetricKey)
@@ -71,7 +70,6 @@ class DTSettingManager {
     }
     
     func setHeightMode(to mode: MeteringSetting.HeightMode) {
-        print("Height mode set to \(mode).")
         switch mode {
         case .cm:
             self.userDefaults.set(true, forKey: UserSettingKeys.heightMetricKey)
@@ -81,7 +79,6 @@ class DTSettingManager {
     }
     
     func setColorTheme(to theme: ColorSetting.ColorTheme) {
-        print("Color theme set to \(theme).")
         switch theme {
         case .dark:
             self.userDefaults.set(true, forKey: UserSettingKeys.colorThemeKey)
@@ -92,7 +89,6 @@ class DTSettingManager {
     
     func setUserToken(to token: String) {
         self.userDefaults.set(token, forKey: UserSettingKeys.tokenKey)
-        print("User tokent was set to - \(token)")
     }
     
     func deleteUserToken() {

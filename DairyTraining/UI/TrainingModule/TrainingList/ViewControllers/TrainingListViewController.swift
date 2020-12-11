@@ -6,7 +6,7 @@ protocol TraininglistViewControllerIteractin: AnyObject {
     func setTrashButton(isActive: Bool)
 }
 
-final class TrainingListViewController: MainTabBarItemVC {
+final class TrainingListViewController: BaseViewController {
     
     //MARK: - Module properties
     var viewModel: TrainingListViewModelIteracting?
@@ -264,31 +264,26 @@ private extension TrainingListViewController {
     }
     
     func showDeletingTrainAlert() {
-        AlertHelper.shared.showDefaultAlert(
-            on: self,
+        showDefaultAlert(
             title: LocalizedString.deleltingTrainAlertTitle,
             message: LocalizedString.deleltingTrainAlertMessage,
-            cancelTitle: LocalizedString.cancel,
+            preffedStyle: .alert,
             okTitle: LocalizedString.ok,
-            style: .alert,
+            cancelTitle: LocalizedString.cancel,
             completion: { [weak self] in
                 guard let self = self else { return }
                 self.viewModel?.deleteChoosenTraining()
-                NotificationCenter.default.post(name: .trainingListWasChanged,
-                                                object: nil)
+                NotificationCenter.default.post(name: .trainingListWasChanged, object: nil)
                 self.showDeletedTrainAlert()
-        })
+            })
     }
     
     func showDeletedTrainAlert() {
-        AlertHelper.shared.showDefaultAlert(
-            on: self,
-            title: LocalizedString.deletedTrainAlertTitle,
-            message: "",
-            cancelTitle: nil,
-            okTitle: LocalizedString.ok,
-            style: .alert,
-            completion: nil)
+        showDefaultAlert(title: LocalizedString.deletedTrainAlertTitle,
+                         message: nil,
+                         preffedStyle: .alert,
+                         okTitle: LocalizedString.ok,
+                         cancelTitle: nil, completion: nil)
     }
     
     //MARK: - Constraint

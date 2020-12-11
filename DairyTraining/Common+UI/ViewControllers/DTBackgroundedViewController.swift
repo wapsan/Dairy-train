@@ -1,6 +1,6 @@
 import UIKit
 
-class DTBackgroundedViewController: MainTabBarItemVC {
+class DTBackgroundedViewController: BaseViewController {
     
     //MARK: - GUI Properties
     private lazy var backgroundImage: UIImageView = {

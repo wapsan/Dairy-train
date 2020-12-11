@@ -80,7 +80,7 @@ extension ProfileModel: ProfileModelIteracting {
     func signOut() {
         do {
             try Auth.auth().signOut()
-            DTSettingManager.shared.deleteUserToken()
+            SettingManager.shared.deleteUserToken()
             UserDataManager.shared.removeAllUserData { [weak self] in
                 guard let self = self else { return }
                 self.output?.succesSignedOut()
