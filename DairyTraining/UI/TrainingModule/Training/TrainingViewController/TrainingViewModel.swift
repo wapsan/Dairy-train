@@ -14,6 +14,11 @@ protocol TrainingViewModeProtocol: AnyObject {
     func exerciseDone(at index: Int)
     func doneExercise()
     func isExerciseEditable(at index: Int) -> Bool
+    func timerButtonWasPressed()
+}
+
+protocol TimerDelegate: AnyObject {
+    func timerFinished()
 }
 
 final class TrainingViewModel {
@@ -87,6 +92,10 @@ extension TrainingViewModel: TrainingModelOutput {
 
 //MARK: - TrainingViewModeIteracting
 extension TrainingViewModel: TrainingViewModeProtocol {
+    
+    func timerButtonWasPressed() {
+        MainCoordinator.shared.coordinateChild(to: TrainingModuleCoordinator.Target.timerViewController(delegate: self))
+    }
     
     func isExerciseEditable(at index: Int) -> Bool {
         return !_exerciceList[index].isDone
@@ -162,5 +171,13 @@ extension TrainingViewModel: NewAproachAlertDelegate {
     
     func newAproachAlertCancelPressed(newAproachAlert: DTNewAproachAlert) {
         self.view?.hideAproachAlert()
+    }
+}
+
+
+extension TrainingViewModel: TimerDelegate {
+    
+    func timerFinished() {
+        view?.showTimerFinishedAlert()
     }
 }

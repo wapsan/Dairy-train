@@ -55,6 +55,13 @@ extension Coordinator {
         }
         return true
     }
+    
+    func dismiss() {
+        guard let topNavigationController = UIApplication.topViewController() else {
+            return
+        }
+        topNavigationController.dismiss(animated: true, completion: nil)
+    }
 
     @discardableResult func popViewController(_ transition: CATransition? = nil) -> Bool {
         guard let topNavigationController = UIApplication.topViewController() else {

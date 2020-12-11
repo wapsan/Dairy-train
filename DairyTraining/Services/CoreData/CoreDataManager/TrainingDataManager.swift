@@ -39,15 +39,17 @@ final class TrainingDataManager {
     private func createTraing(with exercises: [Exercise]) {
         let newTraining = TrainingManagedObject(context: trainInfoContext)
         var newExercises: [ExerciseManagedObject] = []
+        var displayID: Int64 = 0
         exercises.forEach({ exercise in
             let newExercice = ExerciseManagedObject(context: self.trainInfoContext)
-            newExercice.id = Int64(newExercises.count + 1)
+            newExercice.id = displayID
             newExercice.name = exercise.name
             newExercice.groupName = exercise.group.rawValue
             newExercice.subgroupName = exercise.subgroub.rawValue
             newExercice.training = newTraining
             newExercice.date = Date()
             newExercises.append(newExercice)
+            displayID += 1
         })
         newTraining.date = Date()
         newTraining.formatedDate = DateHelper.shared.currnetDate
@@ -64,7 +66,7 @@ final class TrainingDataManager {
         newExercises.forEach({ newExercise in
             guard exetingExerciseNameSet.insert(newExercise.name).inserted else { return }
                 let newManagedEexercise = ExerciseManagedObject(context: self.trainInfoContext)
-                newManagedEexercise.id = Int64(exitingTraining.exercicesArray.count + 1)
+                newManagedEexercise.id = Int64(exitingTraining.exercicesArray.count)
                 newManagedEexercise.name = newExercise.name
                 newManagedEexercise.groupName = newExercise.group.rawValue
                 newManagedEexercise.subgroupName = newExercise.subgroub.rawValue

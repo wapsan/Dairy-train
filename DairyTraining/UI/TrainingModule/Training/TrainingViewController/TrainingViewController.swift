@@ -1,5 +1,4 @@
 import UIKit
-import TableViewDragger
 
 protocol TrainingView: AnyObject {
     func showDeleteTrainingAlert(for trainigAtIndex: Int, with exerciseName: String)
@@ -12,16 +11,17 @@ protocol TrainingView: AnyObject {
     func trainingWasChanged()
     func exerciseMarkAsDone(at index: Int)
     func showAlertForDoneExercise()
+    func showTimerFinishedAlert()
 }
 
 final class TrainingViewController: UIViewController {
 
     //MARK: - @IBOutlets
     @IBOutlet private var tableView: UITableView!
-    //weak var draggerDelegate: TableViewDraggerDelegate?
+    @IBOutlet private var timerButton: UIButton!
+    
     //MARK: - Module property
     var viewModel: TrainingViewModeProtocol?
-    var tableDragget: TableViewDragger?
     private lazy var aproachAlert = DTNewAproachAlert()
     
     private var cellHeight: CGFloat {
@@ -41,8 +41,8 @@ final class TrainingViewController: UIViewController {
     }
     
     //MARK: - Action
-    @objc private func editButtonPressed() {
-        tableView.isEditing = !tableView.isEditing
+    @IBAction func timerButtonAction(_ sender: Any) {
+        viewModel?.timerButtonWasPressed()
     }
 }
 
@@ -70,36 +70,14 @@ private extension TrainingViewController {
         tableView.register(DTEditingExerciceCell.self, forCellReuseIdentifier: DTEditingExerciceCell.cellID)
         view.backgroundColor = DTColors.backgroundColor
         navigationItem.title = LocalizedString.training
-        
-        tableDragget = TableViewDragger(tableView: tableView)
-        tableDragget?.delegate = self
-        tableDragget?.availableHorizontalScroll = false
-        tableDragget?.alphaForCell = 0.8
-        tableDragget?.isHiddenOriginCell = true
-        tableDragget?.scrollVelocity = 0.5
+        timerButton.layer.shadowPath = CGPath.init(rect: CGRect.init(x: 0, y: 0, width: timerButton.bounds.width,
+                                                                     height: timerButton.bounds.width), transform: nil)
+        timerButton.layer.cornerRadius = timerButton.bounds.height / 2
+        timerButton.backgroundColor = DTColors.controllSelectedColor
+        timerButton.contentEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8 )
     }
 }
 
-extension TrainingViewController: TableViewDraggerDelegate {
-    
-    func dragger(_ dragger: TableViewDragger, didBeginDraggingAt indexPath: IndexPath) {
-        print("Beging draggin")
-        allowEdit = false
-    }
-    
-    func dragger(_ dragger: TableViewDragger, didEndDraggingAt indexPath: IndexPath) {
-        print("End draggin")
-        allowEdit = true
-    }
-    
-    func dragger(_ dragger: TableViewDragger, moveDraggingAt indexPath: IndexPath, newIndexPath: IndexPath) -> Bool {
-    //    tableView.allo
-        tableView.moveRow(at: indexPath, to: newIndexPath)
-        print("Cell drag from \(indexPath.row), to \(newIndexPath)")
-        return true
-    }
-    
-}
 
 //MARK: - UITableViewDataSource
 extension TrainingViewController: UITableViewDataSource {
@@ -186,6 +164,15 @@ extension TrainingViewController: UITableViewDelegate {
 
 //MARK: - TestTrainingViewControllerIteracting
 extension TrainingViewController: TrainingView {
+    
+    func showTimerFinishedAlert() {
+        showDefaultAlert(title: "Next Aproach!",
+                         message: nil,
+                         preffedStyle: .alert,
+                         okTitle: LocalizedString.ok,
+                         cancelTitle: nil,
+                         completion: nil)
+    }
     
     func exerciseWasDeleted(at index: Int) {
         tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)

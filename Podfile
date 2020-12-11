@@ -13,7 +13,7 @@ pod 'RxCocoa', '5.0'
 pod 'RxDataSources', '~> 4.0'
 pod 'SideMenu'
 pod 'Charts'
-pod 'TableViewDragger'
+
 
   # Pods for DairyTrain2.0
 end
