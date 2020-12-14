@@ -145,14 +145,11 @@ final class MainCoordinator: Coordinator {
             guard let a = rootTabBarController else { return false }
             window?.setRootViewController(a)
         case .loginFlow:
-           // let loginViewController = LoginViewController()
             let authViewController = AuthorizationViewController()
             let loginViewModel = LoginViewModel()
             let loginModel = LoginModel()
-          //  let loginRouter = LoginRouter(authViewController)
             
             authViewController.viewModel = loginViewModel
-           // authViewController.router = loginRouter
             loginViewModel.view = authViewController
             loginViewModel.model = loginModel
             loginModel.output = loginViewModel
@@ -179,7 +176,8 @@ final class MainCoordinator: Coordinator {
 
     private func createChildCoordinators(for window: UIWindow?) -> [Coordinator] {
         return [MuscleGroupsCoordinator(window: window),
-                ProfileMenuCoordinator(rootViewController: self.profileNavigationController),
-                TrainingModuleCoordinator(rootViewController: self.trainingBlockNavigationController)]
+                ProfileMenuCoordinator(rootViewController: profileNavigationController),
+                TrainingModuleCoordinator(rootViewController: trainingBlockNavigationController),
+                NutritionModuleCoordinator(rootViewController: nutritionBlockNavigationController)]
     }
 }

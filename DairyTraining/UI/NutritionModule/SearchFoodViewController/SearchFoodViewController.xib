@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchFoodViewController" customModule="Dairy_Training" customModuleProvider="target">
+            <connections>
+                <outlet property="searchBar" destination="IBC-Cm-Nra" id="fww-Zq-agc"/>
+                <outlet property="tableView" destination="7kn-Ng-ZiA" id="vfO-Ev-atG"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7kn-Ng-ZiA">
+                    <rect key="frame" x="0.0" y="128" width="414" height="608"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="fsQ-T2-sPn"/>
+                        <outlet property="delegate" destination="-1" id="Qo0-Nn-m1J"/>
+                    </connections>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your meal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Lbm-oE-YQO">
+                    <rect key="frame" x="16" y="16" width="382" height="24"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="IBC-Cm-Nra">
+                    <rect key="frame" x="8" y="56" width="331.33333333333331" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Vh4-lQ-Hsk"/>
+                    </connections>
+                </searchBar>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgM-E0-8Wf">
+                    <rect key="frame" x="347.33333333333331" y="69" width="58.666666666666686" height="30"/>
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="oRS-5d-F06"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="backgroundColor"/>
+            <constraints>
+                <constraint firstItem="IBC-Cm-Nra" firstAttribute="top" secondItem="Lbm-oE-YQO" secondAttribute="bottom" constant="16" id="31P-bf-cXB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7kn-Ng-ZiA" secondAttribute="bottom" id="8eP-dg-nvx"/>
+                <constraint firstItem="Lbm-oE-YQO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="E5T-EF-juA"/>
+                <constraint firstItem="Lbm-oE-YQO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="O0V-9e-gHo"/>
+                <constraint firstItem="7kn-Ng-ZiA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QWN-Oq-uWQ"/>
+                <constraint firstItem="IBC-Cm-Nra" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="SvO-hg-jfh"/>
+                <constraint firstItem="ZgM-E0-8Wf" firstAttribute="centerY" secondItem="IBC-Cm-Nra" secondAttribute="centerY" id="bwS-nU-VMu"/>
+                <constraint firstItem="IBC-Cm-Nra" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="dTG-Sj-8DL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Lbm-oE-YQO" secondAttribute="trailing" constant="16" id="fVX-BJ-VU2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7kn-Ng-ZiA" secondAttribute="trailing" id="lIP-Au-T1v"/>
+                <constraint firstItem="ZgM-E0-8Wf" firstAttribute="leading" secondItem="IBC-Cm-Nra" secondAttribute="trailing" constant="8" id="nux-Fo-n86"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZgM-E0-8Wf" secondAttribute="trailing" constant="8" id="oQr-2N-oyz"/>
+                <constraint firstItem="7kn-Ng-ZiA" firstAttribute="top" secondItem="IBC-Cm-Nra" secondAttribute="bottom" constant="16" id="sE5-rN-ub2"/>
+                <constraint firstItem="Lbm-oE-YQO" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="sVN-cu-KaF"/>
+            </constraints>
+            <point key="canvasLocation" x="140.57971014492756" y="97.826086956521749"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="backgroundColor">
+            <color red="0.1289999932050705" green="0.14900000393390656" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

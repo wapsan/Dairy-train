@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,11 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainNutritionVIewController" customModule="Dairy_Training" customModuleProvider="target">
             <connections>
-                <outlet property="searcViewHeightConstraint" destination="8VP-Nk-XAT" id="vk8-EB-g5Q"/>
-                <outlet property="searchBar" destination="NEI-w4-2C5" id="GXo-Ei-ipj"/>
-                <outlet property="searchButton" destination="a2U-jl-JDo" id="RCx-hB-7XN"/>
-                <outlet property="searchContainerView" destination="my7-gB-OvN" id="EPo-zp-HnA"/>
-                <outlet property="tableView" destination="3D2-nH-a8U" id="SyL-cR-JPy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,76 +18,12 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3D2-nH-a8U">
-                    <rect key="frame" x="0.0" y="410" width="414" height="452"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="OQe-hP-c9u"/>
-                        <outlet property="delegate" destination="-1" id="7cW-pm-I7e"/>
-                    </connections>
-                </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Do5-eE-rcG">
-                    <rect key="frame" x="8" y="125" width="398" height="269"/>
-                    <color key="backgroundColor" name="lightBackgoundColor"/>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="my7-gB-OvN">
-                    <rect key="frame" x="8" y="44" width="398" height="65"/>
-                    <subviews>
-                        <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="NEI-w4-2C5">
-                            <rect key="frame" x="0.0" y="5" width="342" height="55"/>
-                            <color key="backgroundColor" name="backgroundColor"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2U-jl-JDo">
-                            <rect key="frame" x="350" y="17.5" width="48" height="30"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="Search"/>
-                            <connections>
-                                <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="lJ3-pD-b7v"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="a2U-jl-JDo" firstAttribute="leading" secondItem="NEI-w4-2C5" secondAttribute="trailing" constant="8" id="1oa-3a-i2f"/>
-                        <constraint firstItem="NEI-w4-2C5" firstAttribute="top" secondItem="my7-gB-OvN" secondAttribute="top" constant="5" id="6eL-DK-sAg"/>
-                        <constraint firstAttribute="bottom" secondItem="NEI-w4-2C5" secondAttribute="bottom" constant="5" id="7Kg-5l-lqv"/>
-                        <constraint firstAttribute="height" constant="65" id="8VP-Nk-XAT"/>
-                        <constraint firstItem="NEI-w4-2C5" firstAttribute="centerY" secondItem="my7-gB-OvN" secondAttribute="centerY" id="999-89-Q8I"/>
-                        <constraint firstItem="NEI-w4-2C5" firstAttribute="leading" secondItem="my7-gB-OvN" secondAttribute="leading" id="EGV-uS-oAU"/>
-                        <constraint firstItem="a2U-jl-JDo" firstAttribute="centerY" secondItem="my7-gB-OvN" secondAttribute="centerY" id="FjD-se-0vd"/>
-                        <constraint firstAttribute="trailing" secondItem="a2U-jl-JDo" secondAttribute="trailing" id="bKL-cA-Q6x"/>
-                        <constraint firstAttribute="bottom" secondItem="a2U-jl-JDo" secondAttribute="bottom" constant="17.5" id="vw5-8v-2hL"/>
-                        <constraint firstItem="a2U-jl-JDo" firstAttribute="top" secondItem="my7-gB-OvN" secondAttribute="top" constant="17.5" id="xUc-91-K9d"/>
-                    </constraints>
-                </view>
-            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="Do5-eE-rcG" firstAttribute="top" secondItem="my7-gB-OvN" secondAttribute="bottom" constant="16" id="0Qs-Kv-KGm"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3D2-nH-a8U" secondAttribute="bottom" id="6mf-30-Fm3"/>
-                <constraint firstItem="3D2-nH-a8U" firstAttribute="top" secondItem="Do5-eE-rcG" secondAttribute="bottom" constant="16" id="H0J-F4-aQE"/>
-                <constraint firstItem="Do5-eE-rcG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="Llt-8Z-UuZ"/>
-                <constraint firstItem="my7-gB-OvN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="RYB-uf-uhA"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="my7-gB-OvN" secondAttribute="trailing" constant="8" id="WO3-iF-Vv4"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3D2-nH-a8U" secondAttribute="trailing" id="dhw-Ta-rQB"/>
-                <constraint firstItem="my7-gB-OvN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="pM9-Oh-cYT"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Do5-eE-rcG" secondAttribute="trailing" constant="8" id="tUU-Gy-xJU"/>
-                <constraint firstItem="Do5-eE-rcG" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="thL-mE-uU4"/>
-                <constraint firstItem="3D2-nH-a8U" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zGV-Rs-Yeu"/>
-            </constraints>
             <point key="canvasLocation" x="140.57971014492756" y="106.47321428571428"/>
         </view>
     </objects>
     <resources>
-        <namedColor name="backgroundColor">
-            <color red="0.1289999932050705" green="0.14900000393390656" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="lightBackgoundColor">
-            <color red="0.16862745098039217" green="0.20000000000000001" blue="0.35294117647058826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

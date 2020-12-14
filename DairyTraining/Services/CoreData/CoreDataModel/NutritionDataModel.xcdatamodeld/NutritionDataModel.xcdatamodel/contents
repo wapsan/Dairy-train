@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="NutritionDataMO" representedClassName="NutritionDataMO" syncable="YES">
+        <attribute name="calories" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="catbohidrates" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="fats" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="proteins" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="NutritionDataMO" positionX="-63" positionY="-18" width="128" height="118"/>
+    </elements>
+</model>

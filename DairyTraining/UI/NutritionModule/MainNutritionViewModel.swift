@@ -1,12 +1,10 @@
 import Foundation
 
 protocol NutritionViewModelProtocol {
-    var foodList: [Food] { get }
-    func requestFood(for text: String)
+ 
 }
 
 protocol NutritionViewModelInput: AnyObject {
-    func foodListWasUpdated(to foodList: [Food])
 }
 
 final class NutritionViewModel {
@@ -15,12 +13,7 @@ final class NutritionViewModel {
     weak var view: MainNutritionView?
     
     // MARK: - Private Properties
-    private var model: NutritionModelProtocol
-    private var _foodList: [Food] = [] {
-        didSet {
-            view?.updateFoodList()
-        }
-    }
+    private let model: NutritionModelProtocol
     
     // MARK: - Initialization
     init(model: NutritionModelProtocol) {
@@ -30,20 +23,11 @@ final class NutritionViewModel {
 
 // MARK: - NutritionViewModelProtocol
 extension NutritionViewModel: NutritionViewModelProtocol {
-    
-    var foodList: [Food] {
-        return _foodList
-    }
-    
-    func requestFood(for text: String) {
-        model.requestFood(for: text)
-    }
+
 }
 
 // MARK: - NutritionViewModelInput
 extension NutritionViewModel: NutritionViewModelInput {
     
-    func foodListWasUpdated(to foodList: [Food]) {
-        self._foodList = foodList
-    }
+
 }
