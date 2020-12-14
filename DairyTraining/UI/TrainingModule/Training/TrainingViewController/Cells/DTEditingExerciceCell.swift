@@ -109,10 +109,10 @@ final class DTEditingExerciceCell: UITableViewCell {
     
     //MARK: - Layout subviews
     override func layoutSubviews() {
+        super.layoutSubviews()
         self.containerView.layer.cornerRadius = 20
         self.containerView.layer.borderColor = DTColors.controllBorderColor.cgColor
         self.containerView.layer.borderWidth = 1
-        super.layoutSubviews()
     }
     
     //MARK: - Initialization

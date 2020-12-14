@@ -13,6 +13,7 @@ pod 'RxCocoa', '5.0'
 pod 'RxDataSources', '~> 4.0'
 pod 'SideMenu'
 pod 'Charts'
+pod 'Alamofire', '~> 5.2'
 
 
   # Pods for DairyTrain2.0

@@ -94,7 +94,11 @@ enum TabBarItemController {
     }
     
     private func configureSupplyBlockNavigationController() -> UINavigationController {
-        let nutritionViewController = MainNutritionVIewController()
+        let nutritionModel = NutritionModel()
+        let nutritionViewModel = NutritionViewModel(model: nutritionModel)
+        let nutritionViewController = MainNutritionVIewController(viewModel: nutritionViewModel)
+        nutritionModel.output = nutritionViewModel
+        nutritionViewModel.view = nutritionViewController
         let navigationController = UINavigationController(rootViewController: nutritionViewController)
         navigationController.tabBarItem = DTTabBarItems.nutrition.item
         nutritionViewController.navigationItem.title = DTTabBarItems.nutrition.title
