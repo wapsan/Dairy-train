@@ -14,6 +14,7 @@ pod 'RxDataSources', '~> 4.0'
 pod 'SideMenu'
 pod 'Charts'
 pod 'Alamofire', '~> 5.2'
+pod 'ZKProgressHUD', '5.0.1'
 
 
   # Pods for DairyTrain2.0

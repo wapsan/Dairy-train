@@ -1,4 +1,16 @@
 import UIKit
+import ZKProgressHUD
+
+extension UIViewController {
+    
+    func showLoader() {
+        ZKProgressHUD.show()
+    }
+    
+    func hideLoader() {
+        ZKProgressHUD.dismiss()
+    }
+}
 
 extension UIViewController {
 

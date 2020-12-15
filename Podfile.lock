@@ -83,6 +83,7 @@ PODS:
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
   - SideMenu (6.5.0)
+  - ZKProgressHUD (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
@@ -94,6 +95,7 @@ DEPENDENCIES:
   - RxDataSources (~> 4.0)
   - RxSwift (= 5.0)
   - SideMenu
+  - ZKProgressHUD (= 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -120,6 +122,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SideMenu
+    - ZKProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
@@ -145,7 +148,8 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+  ZKProgressHUD: f1833e23655834d4459c711e94e924e49bc77442
 
-PODFILE CHECKSUM: fb40d915af72112e35e58ce76d7d24893a62d912
+PODFILE CHECKSUM: efbc9a47cf4ed2e6f73490431c6382ab2f33685f
 
 COCOAPODS: 1.10.0

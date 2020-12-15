@@ -76,6 +76,7 @@ extension SearchFoodViewController: UITableViewDelegate {
 extension SearchFoodViewController: SearchFoodView {
     
     func reloadFoodList() {
+        hideLoader()
         tableView.reloadSections([0], with: .fade)
     }
 }
@@ -85,6 +86,7 @@ extension SearchFoodViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchingText = searchBar.text, !searchingText.isBlank() else { return }
+        showLoader()
         viewModel.requestFood(for: searchingText)
         searchBar.resignFirstResponder()
     }
