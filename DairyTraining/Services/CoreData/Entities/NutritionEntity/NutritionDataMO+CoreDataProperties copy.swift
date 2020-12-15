@@ -2,7 +2,7 @@
 //  NutritionDataMO+CoreDataProperties.swift
 //  
 //
-//  Created by cogniteq on 14.12.2020.
+//  Created by cogniteq on 15.12.2020.
 //
 //
 
@@ -17,9 +17,23 @@ extension NutritionDataMO {
     }
 
     @NSManaged public var date: Date?
-    @NSManaged public var calories: Float
-    @NSManaged public var proteins: Float
-    @NSManaged public var catbohidrates: Float
-    @NSManaged public var fats: Float
+    @NSManaged public var meals: NSSet?
+
+}
+
+// MARK: Generated accessors for meals
+extension NutritionDataMO {
+
+    @objc(addMealsObject:)
+    @NSManaged public func addToMeals(_ value: MealMO)
+
+    @objc(removeMealsObject:)
+    @NSManaged public func removeFromMeals(_ value: MealMO)
+
+    @objc(addMeals:)
+    @NSManaged public func addToMeals(_ values: NSSet)
+
+    @objc(removeMeals:)
+    @NSManaged public func removeFromMeals(_ values: NSSet)
 
 }

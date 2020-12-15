@@ -2,7 +2,7 @@
 //  NutritionDataMO+CoreDataClass.swift
 //  
 //
-//  Created by cogniteq on 14.12.2020.
+//  Created by cogniteq on 15.12.2020.
 //
 //
 
