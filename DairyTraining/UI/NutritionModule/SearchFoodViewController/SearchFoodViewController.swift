@@ -19,11 +19,6 @@ final class SearchFoodViewController: UIViewController {
         setup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        searchBar.becomeFirstResponder()
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         searchBar.resignFirstResponder()
@@ -44,7 +39,6 @@ final class SearchFoodViewController: UIViewController {
         searchBar.searchTextField.textColor = .white
         tableView.register(UINib(nibName: NutritionSearchingCell.xibName, bundle: nil),
                            forCellReuseIdentifier: NutritionSearchingCell.cellID)
-        tableView.rowHeight = 120
     }
     
     // MARK: - Actions
@@ -64,6 +58,17 @@ extension SearchFoodViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: NutritionSearchingCell.cellID, for: indexPath)
         (cell as? NutritionSearchingCell)?.setupCell(for: viewModel.foodList[indexPath.row])
         return cell
+    }
+}
+
+extension SearchFoodViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+
     }
 }
 

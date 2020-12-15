@@ -54,7 +54,7 @@
             <color key="backgroundColor" name="backgroundColor"/>
             <constraints>
                 <constraint firstItem="IBC-Cm-Nra" firstAttribute="top" secondItem="Lbm-oE-YQO" secondAttribute="bottom" constant="16" id="31P-bf-cXB"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7kn-Ng-ZiA" secondAttribute="bottom" id="8eP-dg-nvx"/>
+                <constraint firstAttribute="bottom" secondItem="7kn-Ng-ZiA" secondAttribute="bottom" id="8eP-dg-nvx"/>
                 <constraint firstItem="Lbm-oE-YQO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="E5T-EF-juA"/>
                 <constraint firstItem="Lbm-oE-YQO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="O0V-9e-gHo"/>
                 <constraint firstItem="7kn-Ng-ZiA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QWN-Oq-uWQ"/>

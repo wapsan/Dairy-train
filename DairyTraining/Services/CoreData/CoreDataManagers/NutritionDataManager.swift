@@ -35,49 +35,47 @@ final class NutritionDataManager {
         }
     }
     
-    private func createNutritionData(with food: Food) {
-        let nutritionData = NutritionDataMO(context: context)
-        nutritionData.calories = food.nutrients.kkal
-        nutritionData.catbohidrates = food.nutrients.carbohydrates
-        nutritionData.fats = food.nutrients.fat
-        nutritionData.proteins = food.nutrients.proteins
-        nutritionData.date = Date()
-        updateContext()
+    private func createTodayNutritionData() -> NutritionDataMO {
+        let todayNutritionData = NutritionDataMO.init(context: context)
+        todayNutritionData.date = Date()
+        return todayNutritionData
     }
     
-    private func addFoodToExitingNutritionData(_ food: Food) {
-        guard let todaysNutritiontData = nutritionData.first else { return }
-        todaysNutritiontData.calories += food.nutrients.kkal
-        todaysNutritiontData.fats += food.nutrients.fat
-        todaysNutritiontData.catbohidrates += food.nutrients.carbohydrates
-        todaysNutritiontData.proteins += food.nutrients.proteins
-        updateContext()
-    }
-    
-    // MARK: - Properties
-    var nutritionData: [NutritionDataMO] {
+    private func fetchTodayNutritionData() -> NutritionDataMO? {
         let fetchRequest: NSFetchRequest<NutritionDataMO> = NutritionDataMO.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        guard let nutritionData = try? context.fetch(fetchRequest) else { return [] }
-        return nutritionData
+        return try? context.fetch(fetchRequest).first
+    }
+    
+    
+    // MARK: - Public properties
+    var todayNutritionData: NutritionDataMO {
+        guard let todayNutritionData = fetchTodayNutritionData() else {
+            return createTodayNutritionData()
+        }
+        return todayNutritionData
+    }
+    
+    private func convertToManagedObject(from meal: MealModel) -> MealMO {
+        let newMeal = MealMO.init(context: context)
+        newMeal.calories = meal.kkal
+        newMeal.name = meal.mealName
+        newMeal.proteins = meal.proteins
+        newMeal.carbohydrates = meal.carbohydrates
+        newMeal.fats = meal.fats
+        return newMeal
     }
     
     // MARK: - Public methods
-    func addMeal(_ food: Food) {
-        guard nutritionData.isEmpty else {
-            addFoodToExitingNutritionData(food)
-            return
-        }
-        createNutritionData(with: food)
+    func addMeal(_ meal: MealModel) {
+        let newMeal = convertToManagedObject(from: meal)
+        newMeal.nutritionData = todayNutritionData
+        todayNutritionData.addToMeals(newMeal)
+        updateContext()
     }
     
-    func deleteMeal(_ food: Food) {
-        guard let todaysNutritiontData = nutritionData.first else { return }
-        todaysNutritiontData.calories -= food.nutrients.kkal
-        todaysNutritiontData.fats -= food.nutrients.fat
-        todaysNutritiontData.catbohidrates -= food.nutrients.carbohydrates
-        todaysNutritiontData.proteins -= food.nutrients.proteins
+    func removeMeal(_ food: MealModel, at index: Int) {
+        let mealForDeleting = todayNutritionData.mealsArray[index]
+        todayNutritionData.removeFromMeals(mealForDeleting)
         updateContext()
     }
 }

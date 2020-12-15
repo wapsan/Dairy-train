@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="NutritionDataMO" representedClassName="NutritionDataMO" syncable="YES">
+    <entity name="MealMO" representedClassName="MealMO" syncable="YES">
         <attribute name="calories" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="catbohidrates" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="carbohydrates" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="fats" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="proteins" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="weight" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="nutritionData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NutritionDataMO" inverseName="meals" inverseEntity="NutritionDataMO"/>
+    </entity>
+    <entity name="NutritionDataMO" representedClassName="NutritionDataMO" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="meals" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MealMO" inverseName="nutritionData" inverseEntity="MealMO"/>
     </entity>
     <elements>
-        <element name="NutritionDataMO" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="NutritionDataMO" positionX="317.9921875" positionY="-129.5625" width="128" height="73"/>
+        <element name="MealMO" positionX="-63" positionY="18" width="128" height="163"/>
     </elements>
 </model>

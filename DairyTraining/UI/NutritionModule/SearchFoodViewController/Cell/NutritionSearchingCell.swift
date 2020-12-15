@@ -14,7 +14,7 @@ extension Food: FoodPresentable {
     }
     
     var kkal: String {
-        return String(format: "Kkal: %@", String(nutrients.kkal)).capitalized
+        return String(format: "Kkal: %.02f", nutrients.kkal).capitalized
     }
     
     var proteins: String {
@@ -49,18 +49,13 @@ final class NutritionSearchingCell: UITableViewCell {
         super.awakeFromNib()
         setup()
     }
-    
+  
     // MARK: - Setup
     private func setup() {
         self.containerView.layer.cornerRadius = 20
         self.containerView.layer.borderWidth = 1
         self.containerView.layer.borderColor = DTColors.controllBorderColor.cgColor
         selectionStyle = .none
-    }
-    
-    //MARK: - Layout subviews
-    override func layoutSubviews() {
-        super.layoutSubviews()
     }
     
     // MARK: - Setter

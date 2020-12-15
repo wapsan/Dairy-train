@@ -37,3 +37,12 @@ extension NutritionDataMO {
     @NSManaged public func removeFromMeals(_ values: NSSet)
 
 }
+
+extension NutritionDataMO {
+    
+    var mealsArray: [MealMO] {
+        let mealsSet = self.meals as? Set<MealMO> ?? []
+        return mealsSet.sorted(by: { $0.date < $1.date })
+    }
+    
+}

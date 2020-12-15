@@ -5,6 +5,7 @@ protocol NutritionViewModelProtocol {
 }
 
 protocol NutritionViewModelInput: AnyObject {
+    
 }
 
 final class NutritionViewModel {

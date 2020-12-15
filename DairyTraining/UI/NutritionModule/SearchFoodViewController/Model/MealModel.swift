@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+struct MealModel {
+    
+    let mealName: String
+    let weight: Float
+    let kkal: Float
+    let proteins: Float
+    let carbohydrates: Float
+    let fats: Float
+}
