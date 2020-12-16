@@ -22,12 +22,12 @@ final class SearchFoodModel {
 extension SearchFoodModel: SearchFoodModelProtocol {
     
     func requestFood(for text: String) {
-        NetworkManager.shared.requestNutritionInfo(for: text) { (response) in
+        NetworkManager.shared.requestNutritionInfo(for: text) { [weak self] (response) in
             switch response {
             case .success(let responseModel):
-                self.output?.foodListWasUpdated(to: responseModel.hints.map({ $0.food }))
-            case .failure(_):
-                print("Here")
+                self?.output?.foodListWasUpdated(to: responseModel.hints.map({ $0.food }))
+            case .failure(let error):
+                self?.output?.updateError(with: error.message)
             }
         }
     }

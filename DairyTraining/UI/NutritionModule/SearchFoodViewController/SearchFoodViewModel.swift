@@ -14,6 +14,7 @@ protocol SearchFoodViewModelProtocol {
 
 protocol SearchFoodViewModellInput: AnyObject {
     func foodListWasUpdated(to foodList: [Food])
+    func updateError(with message: String)
 }
 
 final class SearchFoodViewModel {
@@ -25,7 +26,7 @@ final class SearchFoodViewModel {
     private var model: SearchFoodModelProtocol
     private var _foodList: [Food] = [] {
         didSet {
-            view?.reloadFoodList()
+            view?.foodListWasUpdated()
         }
     }
     
@@ -49,6 +50,10 @@ extension SearchFoodViewModel: SearchFoodViewModelProtocol {
 
 // MARK: - NutritionViewModelInput
 extension SearchFoodViewModel: SearchFoodViewModellInput {
+    
+    func updateError(with message: String) {
+        view?.errorWasUpdated(with: message)
+    }
     
     func foodListWasUpdated(to foodList: [Food]) {
         self._foodList = foodList

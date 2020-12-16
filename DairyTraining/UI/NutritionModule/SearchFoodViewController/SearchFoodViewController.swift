@@ -1,7 +1,8 @@
 import UIKit
 
 protocol SearchFoodView: AnyObject {
-    func reloadFoodList()
+    func foodListWasUpdated()
+    func errorWasUpdated(with massage: String)
 }
 
 final class SearchFoodViewController: UIViewController {
@@ -9,6 +10,7 @@ final class SearchFoodViewController: UIViewController {
     // MARK: - @IBOutlets
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var errorLabel: UILabel!
     
     // MARK: - Module properties
     private let viewModel: SearchFoodViewModelProtocol
@@ -75,8 +77,17 @@ extension SearchFoodViewController: UITableViewDelegate {
 // MARK: - SearchFoodView
 extension SearchFoodViewController: SearchFoodView {
     
-    func reloadFoodList() {
+    func errorWasUpdated(with massage: String) {
         hideLoader()
+        errorLabel.isHidden = false
+        tableView.isHidden = true
+        errorLabel.text = massage
+    }
+    
+    func foodListWasUpdated() {
+        hideLoader()
+        errorLabel.isHidden = true
+        tableView.isHidden = false
         tableView.reloadSections([0], with: .fade)
     }
 }

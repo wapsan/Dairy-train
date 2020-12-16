@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchFoodViewController" customModule="Dairy_Training" customModuleProvider="target">
             <connections>
+                <outlet property="errorLabel" destination="yu6-WK-lzo" id="LtI-eP-iLR"/>
                 <outlet property="searchBar" destination="IBC-Cm-Nra" id="fww-Zq-agc"/>
                 <outlet property="tableView" destination="7kn-Ng-ZiA" id="vfO-Ev-atG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,6 +22,12 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yu6-WK-lzo">
+                    <rect key="frame" x="168" y="357.66666666666669" width="78" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7kn-Ng-ZiA">
                     <rect key="frame" x="0.0" y="128" width="414" height="608"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,6 +62,7 @@
             <constraints>
                 <constraint firstItem="IBC-Cm-Nra" firstAttribute="top" secondItem="Lbm-oE-YQO" secondAttribute="bottom" constant="16" id="31P-bf-cXB"/>
                 <constraint firstAttribute="bottom" secondItem="7kn-Ng-ZiA" secondAttribute="bottom" id="8eP-dg-nvx"/>
+                <constraint firstItem="yu6-WK-lzo" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="DSB-Ck-pCa"/>
                 <constraint firstItem="Lbm-oE-YQO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="E5T-EF-juA"/>
                 <constraint firstItem="Lbm-oE-YQO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="O0V-9e-gHo"/>
                 <constraint firstItem="7kn-Ng-ZiA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QWN-Oq-uWQ"/>
@@ -62,6 +70,7 @@
                 <constraint firstItem="ZgM-E0-8Wf" firstAttribute="centerY" secondItem="IBC-Cm-Nra" secondAttribute="centerY" id="bwS-nU-VMu"/>
                 <constraint firstItem="IBC-Cm-Nra" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="dTG-Sj-8DL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Lbm-oE-YQO" secondAttribute="trailing" constant="16" id="fVX-BJ-VU2"/>
+                <constraint firstItem="yu6-WK-lzo" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="gb3-qc-WLU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7kn-Ng-ZiA" secondAttribute="trailing" id="lIP-Au-T1v"/>
                 <constraint firstItem="ZgM-E0-8Wf" firstAttribute="leading" secondItem="IBC-Cm-Nra" secondAttribute="trailing" constant="8" id="nux-Fo-n86"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZgM-E0-8Wf" secondAttribute="trailing" constant="8" id="oQr-2N-oyz"/>
@@ -70,6 +79,14 @@
             </constraints>
             <point key="canvasLocation" x="140.57971014492756" y="97.826086956521749"/>
         </view>
+        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zd3-0B-gg9">
+            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+            <nil key="textColor"/>
+            <nil key="highlightedColor"/>
+            <point key="canvasLocation" x="-625" y="-79"/>
+        </label>
     </objects>
     <resources>
         <namedColor name="backgroundColor">

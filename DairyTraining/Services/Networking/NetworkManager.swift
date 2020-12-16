@@ -14,6 +14,15 @@ fileprivate struct ParameterKey {
  
 final class NetworkManager {
     
+    enum NetWorkError: String, Error {
+        case parseError = "Parse error"
+        case noResponse = "No data"
+        
+        var message: String {
+            return self.rawValue
+        }
+    }
+    
     // MARK: - Singletone fields
     static let shared = NetworkManager()
     private init() { }
@@ -24,16 +33,16 @@ final class NetworkManager {
                                    ParameterKey.appKey: ParameterValue.appKey]
     
     // MARK: - Public methods
-    func requestNutritionInfo(for ingridiend: String, comletion: @escaping  ((Result<NutritionResponseModel, Error>)-> Void)) {
+    func requestNutritionInfo(for ingridiend: String, comletion: @escaping  ((Result<NutritionResponseModel, NetWorkError>)-> Void)) {
         parameters[ParameterKey.ingridients] = convertSearchingText(text: ingridiend)
         AF.request(baseURL, parameters: parameters).responseJSON { (response) in
             print(response)
             guard let responseData = response.data else {
-                print("No data in response")
-                  return
+                comletion(.failure(.noResponse))
+                return
             }
             guard let responseModle = try? JSONDecoder().decode(NutritionResponseModel.self, from: responseData) else {
-                print("Parsing error")
+                comletion(.failure(.parseError))
                 return
             }
             comletion(.success(responseModle))
