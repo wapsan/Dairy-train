@@ -86,28 +86,20 @@ final class NutritionMainCell: UITableViewCell {
     private func setup() {
         selectionStyle = .none
     }
-    
+     
     private func drawCaloriesProgress(for value: Float) {
-        let defaultLayer = CAShapeLayer()
-        let progressLayer = CAShapeLayer()
-        ProgressDrawer.drawProgress(progressLayer: progressLayer, defaultLayer: defaultLayer, for: caloriesProgressView, with: value)
+        ProgressDrawer.drawProgress(for: caloriesProgressView, with: value)
     }
     
     private func drawProteinsProgress(for value: Float) {
-        let defaultLayer = CAShapeLayer()
-        let progressLayer = CAShapeLayer()
-        ProgressDrawer.drawProgress(progressLayer: progressLayer, defaultLayer: defaultLayer, for: proteinsProgressView, with: value)
+        ProgressDrawer.drawProgress(for: proteinsProgressView, with: value)
     }
     
     private func drawCarbohydratesProgress(for value: Float) {
-        let defaultLayer = CAShapeLayer()
-        let progressLayer = CAShapeLayer()
-        ProgressDrawer.drawProgress(progressLayer: progressLayer, defaultLayer: defaultLayer, for: carbohydratesProgressView, with: value)
+        ProgressDrawer.drawProgress(for: carbohydratesProgressView, with: value)
     }
     
     private func drawFatsProgrees(for value: Float) {
-        let defaultLayer = CAShapeLayer()
-        let progressLayer = CAShapeLayer()
-        ProgressDrawer.drawProgress(progressLayer: progressLayer, defaultLayer: defaultLayer, for: fatsProgressView, with: value)
+        ProgressDrawer.drawProgress(for: fatsProgressView, with: value)
     }
 }

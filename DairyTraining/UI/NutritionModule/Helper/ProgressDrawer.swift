@@ -1,15 +1,6 @@
-//
-//  ProgressDrawer.swift
-//  Dairy Training
-//
-//  Created by cogniteq on 16.12.2020.
-//  Copyright © 2020 Вячеслав. All rights reserved.
-//
-
 import UIKit
 
 struct ProgressDrawer {
-    
     
     private static func getCircularPath(for view: UIView) -> UIBezierPath {
         let centerY = view.bounds.origin.x + view.bounds.width / 2
@@ -24,7 +15,13 @@ struct ProgressDrawer {
         return circularPath
     }
     
-    static func drawProgress(progressLayer: CAShapeLayer, defaultLayer: CAShapeLayer, for view: UIView, with value: Float) {
+    /// Method draw circle proggres line for  bounds of special view
+    /// - Parameters:
+    ///   - view: View wich bounds drawer use for drawing line
+    ///   - value: Value from 0-1 to show progress
+    static func drawProgress(for view: UIView, with value: Float) {
+        let progressLayer = CAShapeLayer()
+        let defaultLayer = CAShapeLayer()
         
         defaultLayer.path = ProgressDrawer.getCircularPath(for: view).cgPath
         defaultLayer.strokeColor = DTColors.controllSelectedColor.cgColor
@@ -52,6 +49,4 @@ struct ProgressDrawer {
         basicAnimation.isRemovedOnCompletion = false
         progressLayer.add(basicAnimation, forKey: "uorSoBasic")
     }
-    
-    
 }
