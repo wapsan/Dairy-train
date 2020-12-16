@@ -4,6 +4,7 @@ protocol NutritionettingModelProtocol {
     func getSelectednutritionMode()
     func markNutritionModeAsSelected(_ mode: NutritionMode)
     func saveMode()
+    func changeSelectedNutritionMode(to mode: NutritionMode)
 }
 
 final class NutritionSettingModel {
@@ -14,7 +15,7 @@ final class NutritionSettingModel {
     private var nutritionSettingManager = NutritionSettingManager.shared
     private var _selectedMode = NutritionMode.balanceWeight {
         didSet {
-            output?.updateCurrentNutritionMode(to: self._selectedMode)
+            
         }
     }
     
@@ -22,16 +23,22 @@ final class NutritionSettingModel {
 
 extension NutritionSettingModel: NutritionettingModelProtocol {
     
+    func changeSelectedNutritionMode(to mode: NutritionMode) {
+        _selectedMode = mode
+        output?.changeNutritionSelection(to: _selectedMode)
+    }
+    
     func saveMode() {
         nutritionSettingManager.setNutritionMode(to: _selectedMode)
     }
     
     func markNutritionModeAsSelected(_ mode: NutritionMode) {
-        _selectedMode = mode
+       // _selectedMode = mode
     }
     
     func getSelectednutritionMode() {
         let selectedMode = nutritionSettingManager.getCurrentNutritionMode()
         _selectedMode = selectedMode
+        output?.loadCurrentNutritionMode(to: self._selectedMode)
     }
 }

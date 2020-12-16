@@ -181,6 +181,8 @@
 		7A2A75592588B81D0091FD22 /* NutritionMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A75572588B81D0091FD22 /* NutritionMainCell.swift */; };
 		7A2A755A2588B81D0091FD22 /* NutritionMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2A75582588B81D0091FD22 /* NutritionMainCell.xib */; };
 		7A2A75612588CE400091FD22 /* CaloriesRecomendationCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A75602588CE400091FD22 /* CaloriesRecomendationCalculator.swift */; };
+		7A2D5CD5258A3D3A0045749C /* NutritionModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D5CD3258A3D3A0045749C /* NutritionModeCell.swift */; };
+		7A2D5CD6258A3D3A0045749C /* NutritionModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2D5CD4258A3D3A0045749C /* NutritionModeCell.xib */; };
 		7A4452DC258A1C0300A808D1 /* NutritionSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4452DA258A1C0200A808D1 /* NutritionSettingViewController.swift */; };
 		7A4452DD258A1C0300A808D1 /* NutritionSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A4452DB258A1C0200A808D1 /* NutritionSettingViewController.xib */; };
 		7A4452E3258A1C9D00A808D1 /* NutritionSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4452E2258A1C9D00A808D1 /* NutritionSettingManager.swift */; };
@@ -389,6 +391,8 @@
 		7A2A75572588B81D0091FD22 /* NutritionMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionMainCell.swift; sourceTree = "<group>"; };
 		7A2A75582588B81D0091FD22 /* NutritionMainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionMainCell.xib; sourceTree = "<group>"; };
 		7A2A75602588CE400091FD22 /* CaloriesRecomendationCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesRecomendationCalculator.swift; sourceTree = "<group>"; };
+		7A2D5CD3258A3D3A0045749C /* NutritionModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionModeCell.swift; sourceTree = "<group>"; };
+		7A2D5CD4258A3D3A0045749C /* NutritionModeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionModeCell.xib; sourceTree = "<group>"; };
 		7A4452DA258A1C0200A808D1 /* NutritionSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionSettingViewController.swift; sourceTree = "<group>"; };
 		7A4452DB258A1C0200A808D1 /* NutritionSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionSettingViewController.xib; sourceTree = "<group>"; };
 		7A4452E2258A1C9D00A808D1 /* NutritionSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionSettingManager.swift; sourceTree = "<group>"; };
@@ -1446,9 +1450,19 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		7A2D5CCB258A3CCA0045749C /*  Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7A2D5CD3258A3D3A0045749C /* NutritionModeCell.swift */,
+				7A2D5CD4258A3D3A0045749C /* NutritionModeCell.xib */,
+			);
+			path = " Cell";
+			sourceTree = "<group>";
+		};
 		7A4452D9258A1BD700A808D1 /* NutritionSettingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7A2D5CCB258A3CCA0045749C /*  Cell */,
 				7A4452E1258A1C8400A808D1 /* NutritionSetting */,
 				7A4452DA258A1C0200A808D1 /* NutritionSettingViewController.swift */,
 				7A4452E6258A205900A808D1 /* NutritionSettingViewModel.swift */,
@@ -1606,6 +1620,7 @@
 				13B9FE8C2540AB7A00E5542E /* TrainingPaternsHeaderView.xib in Resources */,
 				13C78146256ABC6100A55482 /* ExerciseDataBaseENG.csv in Resources */,
 				13CCD92B254EB35000E8FFEB /* SideMenuCell.xib in Resources */,
+				7A2D5CD6258A3D3A0045749C /* NutritionModeCell.xib in Resources */,
 				1398F6DF255C54D5009BE856 /* ChoosenExerciseStatisticsViewController.xib in Resources */,
 				136989C32520DF650039B306 /* TrainingPaternsViewController.xib in Resources */,
 				139285CE2573AC3000F4FB0C /* AddExerciseSupportButton.xib in Resources */,
@@ -1726,6 +1741,7 @@
 				13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */,
 				139D531B24753D060028AE6A /* SettingModel.swift in Sources */,
 				7A4452EA258A210100A808D1 /* NutritionSettingModel.swift in Sources */,
+				7A2D5CD5258A3D3A0045749C /* NutritionModeCell.swift in Sources */,
 				13B3C2EF25531C08000D4FA2 /* SideMenuModel.swift in Sources */,
 				7A69DBF025877A67003EECD8 /* NutritionDataManager.swift in Sources */,
 				135BF56424DDAAB000E1E120 /* DTValueAlert.swift in Sources */,

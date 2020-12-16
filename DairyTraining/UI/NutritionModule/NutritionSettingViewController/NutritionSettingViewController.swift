@@ -2,12 +2,14 @@ import UIKit
 
 protocol NutritionSettingView: AnyObject {
     func selectMode(at index: Int)
+    func deselectMode(at index: Int)
 }
 
 final class NutritionSettingViewController: BaseViewController {
 
     // MARK: - @IBOutlets
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var customNutritionSettingView: UIView!
     
     private let viewModel: NutritionSettingViewModelProtocol
     
@@ -15,7 +17,8 @@ final class NutritionSettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UINib(nibName: NutritionModeCell.xibName, bundle: nil),
+                           forCellReuseIdentifier: NutritionModeCell.cellID)
     }
     
     init(viewModel: NutritionSettingViewModelProtocol) {
@@ -34,8 +37,13 @@ extension NutritionSettingViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = viewModel.settingModel[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: NutritionModeCell.cellID, for: indexPath)
+        (cell as? NutritionModeCell)?.setCellName(viewModel.settingModel[indexPath.row].title)
+        if viewModel.selectedIndex == indexPath.row {
+            (cell as? NutritionModeCell)?.showCheckMark()
+        } else {
+            (cell as? NutritionModeCell)?.hideCheckMark()
+        }
         return cell
     }
 }
@@ -46,14 +54,25 @@ extension NutritionSettingViewController: UITableViewDelegate {
         viewModel.selectRow(at: indexPath.row)
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        viewModel.deseloctRow(at: indexPath.row)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
 }
 
 extension NutritionSettingViewController: NutritionSettingView {
     
+    func deselectMode(at index: Int) {
+        
+    }
+    
     func selectMode(at index: Int) {
-        print("Select mode at \(index)")
+        let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? NutritionModeCell
+        cell?.showCheckMark()
+        if index == 3 {
+            customNutritionSettingView.isHidden = false
+        } else {
+            customNutritionSettingView.isHidden = true
+        }
+        tableView.reloadData()
     }
 }

@@ -2,23 +2,25 @@ import Foundation
 
 protocol NutritionSettingViewModelProtocol {
     var settingModel: [NutritionMode] { get }
+    var selectedIndex: Int { get }
     
     func viewDidLoad()
     func selectRow(at index: Int)
-    func deseloctRow(at index: Int)
     
     func saveButtonPressed()
 }
 
 protocol NutritionSettingViewModelInput: AnyObject {
-    func updateCurrentNutritionMode(to nutritionMode: NutritionMode)
+    func loadCurrentNutritionMode(to nutritionMode: NutritionMode)
+    func changeNutritionSelection(to nutritionMode: NutritionMode)
+    
 }
 
 final class NutritionSettingViewModel {
     
     weak var view: NutritionSettingView?
     private var model: NutritionettingModelProtocol
-    
+    private var _selectedModeIndex: Int = 0
     
     init(model: NutritionettingModelProtocol) {
         self.model = model
@@ -28,11 +30,7 @@ final class NutritionSettingViewModel {
 extension NutritionSettingViewModel: NutritionSettingViewModelProtocol {
     
     func selectRow(at index: Int) {
-        model.markNutritionModeAsSelected(settingModel[index])
-    }
-    
-    func deseloctRow(at index: Int) {
-        
+        model.changeSelectedNutritionMode(to: settingModel[index])
     }
     
     func saveButtonPressed() {
@@ -46,12 +44,22 @@ extension NutritionSettingViewModel: NutritionSettingViewModelProtocol {
     var settingModel: [NutritionMode] {
         return [.loseWeight, .balanceWeight, .weightGain, .custom]
     }
+    
+    var selectedIndex: Int {
+        _selectedModeIndex
+    }
 }
 
 extension NutritionSettingViewModel: NutritionSettingViewModelInput {
     
-    func updateCurrentNutritionMode(to nutritionMode: NutritionMode) {
+    func changeNutritionSelection(to nutritionMode: NutritionMode) {
         guard let indexOfSelectedMode = settingModel.firstIndex(of: nutritionMode) else { return }
+        _selectedModeIndex = indexOfSelectedMode
         view?.selectMode(at: indexOfSelectedMode)
+    }
+    
+    func loadCurrentNutritionMode(to nutritionMode: NutritionMode) {
+        guard let indexOfSelectedMode = settingModel.firstIndex(of: nutritionMode) else { return }
+        _selectedModeIndex = indexOfSelectedMode
     }
 }
