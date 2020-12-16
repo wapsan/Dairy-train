@@ -14,19 +14,19 @@ extension Food: FoodPresentable {
     }
     
     var kkal: String {
-        return String(format: "Kkal: %.02f", nutrients.kkal).capitalized
+        return String(format: "Kkal: %.02f", nutrients.kkal ?? 0).capitalized
     }
     
     var proteins: String {
-        return String(format: "Proteins: %.02f", nutrients.proteins).capitalized
+        return String(format: "Proteins: %.02f", nutrients.proteins ?? 0).capitalized
     }
     
     var carbohydrate: String {
-        return String(format: "Carbohydrates: %.02f", nutrients.carbohydrates).capitalized
+        return String(format: "Carbohydrates: %.02f", nutrients.carbohydrates ?? 0).capitalized
     }
     
     var fat: String {
-        return String(format: "Fats: %.02f", nutrients.fat).capitalized
+        return String(format: "Fats: %.02f", nutrients.fat ?? 0).capitalized
     }
 }
 

@@ -21,8 +21,8 @@ struct Nutrients: Decodable {
         case kkal = "ENERC_KCAL"
     }
     
-    let proteins: Float
-    let fat: Float
-    let carbohydrates: Float
-    let kkal: Float
+    let proteins: Float?
+    let fat: Float?
+    let carbohydrates: Float?
+    let kkal: Float?
 }
