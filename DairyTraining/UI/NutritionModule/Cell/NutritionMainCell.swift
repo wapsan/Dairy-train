@@ -57,17 +57,29 @@ final class NutritionMainCell: UITableViewCell {
         proteinProgressLabel.setUpdateBlock { (value, label) in
             label.text = String(format: "%.0f%%", value)
         }
-        proteinProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.proteins / recomendation.proteins * 100)), withDuration: 1)
+        if nutritionData.proteins == 0 {
+            proteinProgressLabel.countFrom(0, to: 0, withDuration: 1)
+        } else {
+            proteinProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.proteins / recomendation.proteins * 100)), withDuration: 1)
+        }
         
         carbohydratesProgressLabel.setUpdateBlock { (value, label) in
             label.text = String(format: "%.0f%%", value)
         }
-        carbohydratesProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.carbohydrates / recomendation.carbohydtrates * 100)), withDuration: 1)
+        if nutritionData.carbohydrates == 0 {
+            carbohydratesProgressLabel.countFrom(0, to: 0, withDuration: 1)
+        } else {
+            carbohydratesProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.proteins / recomendation.proteins * 100)), withDuration: 1)
+        }
         
         fatsProgressLabel.setUpdateBlock { (value, label) in
             label.text = String(format: "%.0f%%", value)
         }
-        fatsProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.fats / recomendation.fats * 100)), withDuration: 1)
+        if nutritionData.fats == 0 {
+            fatsProgressLabel.countFrom(0, to: 0, withDuration: 1)
+        } else {
+            fatsProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.proteins / recomendation.proteins * 100)), withDuration: 1)
+        }
     }
 
     // MARK: - Private methods
