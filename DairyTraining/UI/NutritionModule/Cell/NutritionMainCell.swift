@@ -24,6 +24,9 @@ final class NutritionMainCell: UITableViewCell {
     @IBOutlet private var carbohydratesProgressLabel: EFCountingLabel!
     @IBOutlet private var fatsProgressLabel: EFCountingLabel!
     
+    // MARK: - Properties
+    var settingButtonPressedAction: (() -> Void)?
+    
     // MARK: - Initialization
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -101,5 +104,10 @@ final class NutritionMainCell: UITableViewCell {
     
     private func drawFatsProgrees(for value: Float) {
         ProgressDrawer.drawProgress(for: fatsProgressView, with: value)
+    }
+    
+    // MARK: - Actions
+    @IBAction func settingButtonPressed(_ sender: Any) {
+        settingButtonPressedAction?()
     }
 }

@@ -15,13 +15,18 @@ struct NutritionRecomendation {
     let carbohydtrates: Float
 }
 
-struct CaloriesRecomendationCalculator {
+enum NutritionMode: String {
+    case loseWeight = "Lose weight"
+    case balanceWeight = "Balance Weight"
+    case weightGain = "Weight Gain"
+    case custom = "Custom"
     
-    enum RecomendationType {
-        case loseWeight
-        case balanceWeight
-        case weightGain
+    var title: String {
+        return self.rawValue
     }
+}
+
+struct CaloriesRecomendationCalculator {
     
     //MARK: - Private roperties
     private lazy var maleAgeMultiplier: Float = 5.7
@@ -121,7 +126,7 @@ struct CaloriesRecomendationCalculator {
     
     }
     
-    mutating func getRecomendation(for type: RecomendationType) -> NutritionRecomendation {
+    mutating func getRecomendation(for type: NutritionMode) -> NutritionRecomendation {
         switch type {
         case .loseWeight:
             return getLoseWeightRecomendatins()
@@ -129,6 +134,9 @@ struct CaloriesRecomendationCalculator {
             return getBalanceSupplyRecomendation()
         case .weightGain:
             return getWeighGainRecomendations()
+        case .custom:
+            return getWeighGainRecomendations()
+          //  return nutritionRecomendation
         }
     }
     

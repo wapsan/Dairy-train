@@ -16,7 +16,7 @@ final class NutritionModuleCoordinator: Coordinator {
     // MARK: - Types
     enum Target: CoordinatorTarget {
         case searchFood
-       
+        case nutritionSetting
     }
     
     // MARK: - Properties
@@ -39,6 +39,9 @@ final class NutritionModuleCoordinator: Coordinator {
         case .searchFood:
             let searchFoodViewController = configureSearchFoodViewController()
             topViewController?.present(searchFoodViewController, animated: true, completion: nil)
+        case .nutritionSetting:
+            let nutritionSettingViewController = congigureNutritionSettingViewController()
+            navigationController?.pushViewController(nutritionSettingViewController, animated: true)
         }
         return true
     }
@@ -51,5 +54,14 @@ final class NutritionModuleCoordinator: Coordinator {
         searchFoodModel.output = searchFoodViewModel
         searchFoodViewModel.view = searchFoodViewController
         return searchFoodViewController 
+    }
+    
+    private func congigureNutritionSettingViewController() -> NutritionSettingViewController {
+        let nutritionSettingModel = NutritionSettingModel()
+        let nutritionSettingViewModel = NutritionSettingViewModel(model: nutritionSettingModel)
+        let nutritionSettingViewController = NutritionSettingViewController(viewModel: nutritionSettingViewModel)
+        nutritionSettingViewModel.view = nutritionSettingViewController
+        nutritionSettingModel.output = nutritionSettingViewModel
+        return nutritionSettingViewController
     }
 }

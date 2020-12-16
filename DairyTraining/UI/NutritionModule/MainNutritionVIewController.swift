@@ -64,6 +64,9 @@ extension MainNutritionVIewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NutritionMainCell.cellID, for: indexPath)
         (cell as? NutritionMainCell)?.setCell(for: viewModel.nutritionRecomendation, and: viewModel.USERnutritionData)
+        (cell as? NutritionMainCell)?.settingButtonPressedAction = { [unowned self] in
+            MainCoordinator.shared.coordinateChild(to: NutritionModuleCoordinator.Target.nutritionSetting)
+        }
         return cell
     }
 }
