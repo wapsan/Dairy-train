@@ -7,6 +7,7 @@ final class DateHelper {
         case trainingDateFromat = "dd/MM/yyyy"
         case synhronizationDateFromat = "MM-dd-yyyy HH:mm"
         case dateForStatisticsFromat = "dd.MM"
+        case dateForDailyCaloriessIntakeFormat = "EEEE, MMM d, yyyy"
     }
     
     //MARK: - Static properties
@@ -35,6 +36,13 @@ final class DateHelper {
         return dateFormater.string(from: date)
     }
     
+    func hours(for date: Date) -> Int {
+        let calendar = Calendar.current
+        let hours = calendar.component(.hour, from: date)
+        return hours
+    }
+    
+    // MARK: - Private methods
     private func getFormatedDateFrom(_ date: Date) -> String {
         return dateFormater.string(from: date)
     }

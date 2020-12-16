@@ -15,6 +15,7 @@ pod 'SideMenu'
 pod 'Charts'
 pod 'Alamofire', '~> 5.2'
 pod 'ZKProgressHUD', '5.0.1'
+pod 'EFCountingLabel'
 
 
   # Pods for DairyTrain2.0

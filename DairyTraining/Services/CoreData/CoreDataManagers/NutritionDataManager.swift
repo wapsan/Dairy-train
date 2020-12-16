@@ -65,6 +65,15 @@ final class NutritionDataManager {
         return newMeal
     }
     
+    private func convertToMealModel(from mealMO: MealMO) -> MealModel {
+        return MealModel(mealName: mealMO.name ?? "",
+                         weight: mealMO.weight,
+                         kkal: mealMO.calories,
+                         proteins: mealMO.proteins,
+                         carbohydrates: mealMO.carbohydrates,
+                         fats: mealMO.fats)
+    }
+    
     // MARK: - Public methods
     func addMeal(_ meal: MealModel) {
         let newMeal = convertToManagedObject(from: meal)
@@ -77,5 +86,35 @@ final class NutritionDataManager {
         let mealForDeleting = todayNutritionData.mealsArray[index]
         todayNutritionData.removeFromMeals(mealForDeleting)
         updateContext()
+    }
+    
+    func getMealsForBreakfast() -> [MealModel] {
+        var mealModel: [MealModel] = []
+        todayNutritionData.mealsArray.forEach({
+            if DateHelper.shared.hours(for: $0.date) < 12 {
+                mealModel.append(convertToMealModel(from: $0))
+            }
+        })
+        return mealModel
+    }
+    
+    func getMealForLunsh() -> [MealModel] {
+        var mealModel: [MealModel] = []
+        todayNutritionData.mealsArray.forEach({
+            if DateHelper.shared.hours(for: $0.date) > 12 || DateHelper.shared.hours(for: $0.date) < 17 {
+                mealModel.append(convertToMealModel(from: $0))
+            }
+        })
+        return mealModel
+    }
+    
+    func getMealForDinner() -> [MealModel] {
+        var mealModel: [MealModel] = []
+        todayNutritionData.mealsArray.forEach({
+            if DateHelper.shared.hours(for: $0.date) > 17 {
+                mealModel.append(convertToMealModel(from: $0))
+            }
+        })
+        return mealModel
     }
 }

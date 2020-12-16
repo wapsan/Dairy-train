@@ -9,6 +9,7 @@ PODS:
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
   - Differentiator (4.0.1)
+  - EFCountingLabel (5.1.2)
   - Firebase/Auth (6.27.1):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.6.0)
@@ -88,6 +89,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - Charts
+  - EFCountingLabel
   - Firebase/Auth
   - Firebase/Database
   - GoogleSignIn
@@ -103,6 +105,7 @@ SPEC REPOS:
     - AppAuth
     - Charts
     - Differentiator
+    - EFCountingLabel
     - Firebase
     - FirebaseAuth
     - FirebaseCore
@@ -129,6 +132,7 @@ SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  EFCountingLabel: fb9119eff4bb20bf42538665cab8e8419083e486
   Firebase: 919186c8e119dd9372a45fd1dd17a8a942bc1892
   FirebaseAuth: b85c064e0ac60f82486728d50a4803f235687302
   FirebaseCore: 8cd4f8ea22075e0ee582849b1cf79d8816506085
@@ -150,6 +154,6 @@ SPEC CHECKSUMS:
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   ZKProgressHUD: f1833e23655834d4459c711e94e924e49bc77442
 
-PODFILE CHECKSUM: efbc9a47cf4ed2e6f73490431c6382ab2f33685f
+PODFILE CHECKSUM: 8a31d168e95ab88e493b2502786eb3f9bd69ebb1
 
 COCOAPODS: 1.10.0

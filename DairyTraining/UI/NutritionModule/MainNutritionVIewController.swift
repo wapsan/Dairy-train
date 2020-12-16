@@ -7,7 +7,7 @@ protocol MainNutritionView: AnyObject {
 final class MainNutritionVIewController: DTBackgroundedViewController {
 
     // MARK: - @IBOutlets
-    
+    @IBOutlet var tableView: UITableView!
     
     // MARK: - Properties
     private let viewModel: NutritionViewModelProtocol
@@ -30,6 +30,7 @@ final class MainNutritionVIewController: DTBackgroundedViewController {
     
     // MARK: - Private methods
     private func setup() {
+        tableView.register(UINib(nibName: NutritionMainCell.xibName, bundle: nil), forCellReuseIdentifier: NutritionMainCell.cellID)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(addButtonPressed))
@@ -44,4 +45,25 @@ final class MainNutritionVIewController: DTBackgroundedViewController {
 // MARK: - MainNutritionView
 extension MainNutritionVIewController: MainNutritionView {
   
+}
+
+extension MainNutritionVIewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.todayMealNutitionModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 {
+            return 1
+        } else {
+            return viewModel.todayMealNutitionModel[section].meals.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: NutritionMainCell.cellID, for: indexPath)
+        (cell as? NutritionMainCell)?.setCell(for: viewModel.nutritionRecomendation, and: viewModel.USERnutritionData)
+        return cell
+    }
 }
