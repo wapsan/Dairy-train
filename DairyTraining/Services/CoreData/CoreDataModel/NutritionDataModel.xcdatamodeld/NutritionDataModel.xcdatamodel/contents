@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CustomNutritionModeMO" representedClassName="CustomNutritionModeMO" syncable="YES">
+        <attribute name="calories" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="carbohydrates" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="fats" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="proteins" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="MealMO" representedClassName="MealMO" syncable="YES">
         <attribute name="calories" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="carbohydrates" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -15,7 +21,8 @@
         <relationship name="meals" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MealMO" inverseName="nutritionData" inverseEntity="MealMO"/>
     </entity>
     <elements>
-        <element name="NutritionDataMO" positionX="317.9921875" positionY="-129.5625" width="128" height="73"/>
         <element name="MealMO" positionX="-63" positionY="18" width="128" height="163"/>
+        <element name="NutritionDataMO" positionX="317.9921875" positionY="-129.5625" width="128" height="73"/>
+        <element name="CustomNutritionModeMO" positionX="126" positionY="9" width="128" height="103"/>
     </elements>
 </model>

@@ -1,7 +1,7 @@
 import UIKit
 
 protocol MainNutritionView: AnyObject {
-    
+    func updateMainInfoCell(for nutritionRecomendation: NutritionRecomendation)
 }
  
 final class MainNutritionVIewController: DTBackgroundedViewController {
@@ -44,7 +44,13 @@ final class MainNutritionVIewController: DTBackgroundedViewController {
 
 // MARK: - MainNutritionView
 extension MainNutritionVIewController: MainNutritionView {
-  
+    
+    func updateMainInfoCell(for nutritionRecomendation: NutritionRecomendation) {
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NutritionMainCell
+        cell?.setCell(for: nutritionRecomendation, and: viewModel.USERnutritionData)
+      //  tableView.reloadData()
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+    }
 }
 
 extension MainNutritionVIewController: UITableViewDataSource {
@@ -54,7 +60,7 @@ extension MainNutritionVIewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 {
+        if section == 0 {
             return 1
         } else {
             return viewModel.todayMealNutitionModel[section].meals.count

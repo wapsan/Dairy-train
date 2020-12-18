@@ -13,6 +13,32 @@ struct NutritionRecomendation {
     let calories: Float
     let fats: Float
     let carbohydtrates: Float
+    
+    private(set) var proteinsPercentage: Float
+    private(set) var fatsPercentage: Float
+    private(set) var carbohydratesPercentage: Float
+    
+    init(proteins: Float, calories: Float, fats: Float, carbohydtrates: Float) {
+        self.calories = calories
+        self.proteins = proteins
+        self.fats = fats
+        self.carbohydtrates = carbohydtrates
+        let summ = carbohydtrates + proteins + fats
+        self.carbohydratesPercentage = (carbohydtrates / summ) * 100
+        self.fatsPercentage = (fats / summ) * 100
+        self.proteinsPercentage = (proteins / summ) * 100
+    }
+    
+    init(calories: Float, proteinsPercentage: Float, carbohydratesPercentage: Float, fatsPercentage: Float) {
+        self.calories = calories
+        self.fatsPercentage = fatsPercentage
+        self.proteinsPercentage = proteinsPercentage
+        self.carbohydratesPercentage = carbohydratesPercentage
+
+        self.proteins = (calories / 100) * proteinsPercentage
+        self.carbohydtrates = (calories / 100) * carbohydratesPercentage
+        self.fats = (calories / 100) * fatsPercentage
+    }
 }
 
 enum NutritionMode: String {
@@ -101,14 +127,16 @@ struct CaloriesRecomendationCalculator {
     }
     
     
-    init(userInfo: MainInfoManagedObject) {
-        self.weight = userInfo.weight 
-        self.height = userInfo.height 
-        self.age = Int(userInfo.age)
-        if let gender = userInfo.gender {
+    init?(userInfo: MainInfoManagedObject?) {
+        self.weight = userInfo?.weight ?? 0
+        self.height = userInfo?.height ?? 0
+        self.age = Int(userInfo?.age ?? 0)
+        if let gender = userInfo?.gender {
             self.gender = UserMainInfoCodableModel.Gender.init(rawValue: gender)
+        } else {
+            return nil
         }
-        if let activityLevel = userInfo.activitylevel {
+        if let activityLevel = userInfo?.activitylevel {
             self.activityLevel = UserMainInfoCodableModel.ActivityLevel.init(rawValue: activityLevel)
             if let activityleve = self.activityLevel {
                 switch activityleve {
@@ -122,6 +150,8 @@ struct CaloriesRecomendationCalculator {
                     break
                 }
             }
+        } else {
+            return nil
         }
     
     }

@@ -128,13 +128,14 @@ final class UserDataManager {
             mainUserInfo.weightMode = userWeightMode.rawValue
         } else {
             let newMainInfo = MainInfoManagedObject(context: self.context)
+            newMainInfo.weightMode = userWeightMode.rawValue
         }
     }
     
     func isSettingSaved() -> Bool {
          if let mainUserInfo = self.readUserMainInfo() {
-            if let userWeightMode = mainUserInfo.weightMode,
-               let userHeightMode = mainUserInfo.heightMode {
+            if let _ = mainUserInfo.weightMode,
+               let _ = mainUserInfo.heightMode {
                 return true
             } else {
               return false
@@ -144,6 +145,21 @@ final class UserDataManager {
         }
     }
     
+    func getNutritionMode() -> NutritionMode {
+        guard let user = readUserMainInfo() else {
+            return .balanceWeight
+        }
+        guard let nutritionMode = NutritionMode(rawValue: user.nutritionMode) else {
+            return .balanceWeight
+        }
+        return nutritionMode
+    }
+    
+    func updateNutritionMode(to nutritionMode: NutritionMode) {
+        guard let user = readUserMainInfo() else { return }
+        user.nutritionMode = nutritionMode.rawValue
+        updateContext()
+    }
     
     func updateUserMainInfo(to userMainInfo: UserMainInfoCodableModel) {
         if let mainUserInfo = self.readUserMainInfo() {

@@ -13,4 +13,5 @@ extension Notification.Name {
     static var dataWasSynhronize = Notification.Name("dataWasSynhronize")
     static var customAlerOkPressed = Notification.Name("customAlerOkPressed")
     static let mainInfoWasUpdated = Notification.Name("mainInfoWasUpdated")
+    static let nutritionmodeWasChanged = Notification.Name("nutrition_mode_was_changed")
 }

@@ -8,7 +8,7 @@ extension MainInfoManagedObject {
     }
 
     
-    
+    @NSManaged public var nutritionMode: String
     @NSManaged public var age: Int64
     @NSManaged public var weight: Float
     @NSManaged public var height: Float

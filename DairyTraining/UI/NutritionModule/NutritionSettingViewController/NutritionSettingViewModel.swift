@@ -14,6 +14,9 @@ protocol NutritionSettingViewModelInput: AnyObject {
     func loadCurrentNutritionMode(to nutritionMode: NutritionMode)
     func changeNutritionSelection(to nutritionMode: NutritionMode)
     
+    func updateNutritionRecomandation(to nutritionRecomendation: NutritionRecomendation)
+    func userInfoNotSet()
+    
 }
 
 final class NutritionSettingViewModel {
@@ -34,7 +37,8 @@ extension NutritionSettingViewModel: NutritionSettingViewModelProtocol {
     }
     
     func saveButtonPressed() {
-        
+        model.saveNewNutritionMode()
+        MainCoordinator.shared.popViewController()
     }
     
     func viewDidLoad() {
@@ -52,10 +56,24 @@ extension NutritionSettingViewModel: NutritionSettingViewModelProtocol {
 
 extension NutritionSettingViewModel: NutritionSettingViewModelInput {
     
+    func updateNutritionRecomandation(to nutritionRecomendation: NutritionRecomendation) {
+        let calories = String(Int(nutritionRecomendation.calories.rounded())) + " kkal."
+        let proteins = String(Int(nutritionRecomendation.proteinsPercentage.rounded())) + " %"
+        let fats = String(Int(nutritionRecomendation.fatsPercentage.rounded())) + " %"
+        let carbohydrates = String(Int(nutritionRecomendation.carbohydratesPercentage.rounded())) + " %"
+        view?.updateNutritionInfo(for: calories, proteins: proteins, fats: fats, carbohydrates: carbohydrates)
+    }
+    
+    func userInfoNotSet() {
+        
+    }
+    
     func changeNutritionSelection(to nutritionMode: NutritionMode) {
         guard let indexOfSelectedMode = settingModel.firstIndex(of: nutritionMode) else { return }
         _selectedModeIndex = indexOfSelectedMode
+        nutritionMode == .custom ? view?.activateCustomEditingMode() : view?.deactivateCustomEditingmode()
         view?.selectMode(at: indexOfSelectedMode)
+        
     }
     
     func loadCurrentNutritionMode(to nutritionMode: NutritionMode) {

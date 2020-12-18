@@ -46,6 +46,18 @@ final class NutritionDataManager {
         return try? context.fetch(fetchRequest).first
     }
     
+    private func createCustomNutritionMode() -> CustomNutritionModeMO {
+        let todayNutritionData = CustomNutritionModeMO.init(context: context)
+        return todayNutritionData
+    }
+    
+    private func fetchCustomNutritionMode() -> CustomNutritionModeMO? {
+        let fetchRequest: NSFetchRequest<CustomNutritionModeMO> = CustomNutritionModeMO.fetchRequest()
+        return try? context.fetch(fetchRequest).first
+    }
+    
+    
+    
     
     // MARK: - Public properties
     var todayNutritionData: NutritionDataMO {
@@ -53,6 +65,13 @@ final class NutritionDataManager {
             return createTodayNutritionData()
         }
         return todayNutritionData
+    }
+    
+    var customNutritionMode: CustomNutritionModeMO {
+        guard let customnutritionMode = fetchCustomNutritionMode() else {
+            return createCustomNutritionMode()
+        }
+        return customnutritionMode
     }
     
     private func convertToManagedObject(from meal: MealModel) -> MealMO {
@@ -116,5 +135,13 @@ final class NutritionDataManager {
             }
         })
         return mealModel
+    }
+    
+    func updateCustomNutritionMode(from cutomRecomendation: NutritionRecomendation) {
+        customNutritionMode.calories = cutomRecomendation.calories
+        customNutritionMode.proteins = cutomRecomendation.proteinsPercentage
+        customNutritionMode.carbohydrates = cutomRecomendation.carbohydratesPercentage
+        customNutritionMode.fats = cutomRecomendation.fatsPercentage
+        updateContext()
     }
 }

@@ -60,7 +60,7 @@ protocol NutritionViewModelProtocol {
 }
 
 protocol NutritionViewModelInput: AnyObject {
-    
+    func recomendationWasChanged(to recomendation: NutritionRecomendation?)
 }
 
 final class NutritionViewModel {
@@ -96,5 +96,8 @@ extension NutritionViewModel: NutritionViewModelProtocol {
 // MARK: - NutritionViewModelInput
 extension NutritionViewModel: NutritionViewModelInput {
     
-  
+    func recomendationWasChanged(to recomendation: NutritionRecomendation?) {
+        guard let recomendation = recomendation else { return }
+        view?.updateMainInfoCell(for: recomendation)
+    }
 }
