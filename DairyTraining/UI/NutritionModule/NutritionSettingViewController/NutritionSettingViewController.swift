@@ -5,11 +5,13 @@ protocol NutritionSettingView: AnyObject {
     func activateCustomEditingMode()
     func deactivateCustomEditingmode()
     func updateNutritionInfo(for calories: String, proteins: String, fats: String, carbohydrates: String)
+    func updateCustomCaloriesLabel(to calories: String)
 }
 
 final class NutritionSettingViewController: BaseViewController {
 
     // MARK: - @IBOutlets
+    @IBOutlet private var saveButton: UIButton!
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var customNutritionSettingView: UIView!
     @IBOutlet private var fatsPercentageLabel: UILabel!
@@ -26,8 +28,7 @@ final class NutritionSettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
-        tableView.register(UINib(nibName: NutritionModeCell.xibName, bundle: nil),
-                           forCellReuseIdentifier: NutritionModeCell.cellID)
+        setup()
     }
     
     init(viewModel: NutritionSettingViewModelProtocol) {
@@ -40,15 +41,37 @@ final class NutritionSettingViewController: BaseViewController {
     }
     
     // MARK: - Private methods
+    private func setup() {
+        caloriesTextFields.keyboardType = .asciiCapableNumberPad
+        addDoneButtonOnKeyboard()
+        saveButton.layer.cornerRadius = 20
+        tableView.register(UINib(nibName: NutritionModeCell.xibName, bundle: nil),
+                           forCellReuseIdentifier: NutritionModeCell.cellID)
+    }
+    
     private func updateLabelWithAnimation(_ label: UILabel, with text: String) {
         UIView.transition(with: label, duration: 0.4, options: .transitionCrossDissolve, animations: {
              label.text = text
         }, completion: nil)
     }
     
+    private func addDoneButtonOnKeyboard(){
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(keyboardDoneButtonPressed))
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        caloriesTextFields.inputAccessoryView = doneToolbar
+    }
+    
     // MARK: - Actions
+    @objc private func keyboardDoneButtonPressed() {
+        viewModel.saveCustomCalories(calories: caloriesTextFields.text)
+    }
+    
     @IBAction func saveButtonPressed(_ sender: Any) {
-        print("gdfgdf")
         viewModel.saveButtonPressed()
     }
     
@@ -69,11 +92,7 @@ extension NutritionSettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NutritionModeCell.cellID, for: indexPath)
         (cell as? NutritionModeCell)?.setCellName(viewModel.settingModel[indexPath.row].title)
-        if viewModel.selectedIndex == indexPath.row {
-            (cell as? NutritionModeCell)?.showCheckMark()
-        } else {
-            (cell as? NutritionModeCell)?.hideCheckMark()
-        }
+        viewModel.selectedIndex == indexPath.row ? (cell as? NutritionModeCell)?.showCheckMark() : (cell as? NutritionModeCell)?.hideCheckMark()
         return cell
     }
 }
@@ -93,6 +112,12 @@ extension NutritionSettingViewController: UITableViewDelegate {
 // MARK: - NutritionSettingView
 extension NutritionSettingViewController: NutritionSettingView {
     
+    func updateCustomCaloriesLabel(to calories: String) {
+        caloriesTextFields.resignFirstResponder()
+        caloriesLabel.isHidden = false
+        caloriesTextFields.isHidden = true
+        caloriesLabel.text = calories
+    }
     
     func updateNutritionInfo(for calories: String, proteins: String, fats: String, carbohydrates: String) {
         updateLabelWithAnimation(caloriesLabel, with: calories)
@@ -102,6 +127,7 @@ extension NutritionSettingViewController: NutritionSettingView {
     }
     
     func activateCustomEditingMode() {
+        caloriesLabel.isUserInteractionEnabled = true
         tableView.isUserInteractionEnabled = false
         nutritionsInfoLabels.forEach({ label in
             UIView.transition(with: label, duration: 0.4, options: .transitionCrossDissolve, animations: {

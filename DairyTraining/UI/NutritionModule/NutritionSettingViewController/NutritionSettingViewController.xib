@@ -18,6 +18,7 @@
                 <outlet property="customNutritionSettingView" destination="rb5-je-QE9" id="1ed-im-1N6"/>
                 <outlet property="fatsPercentageLabel" destination="wte-yn-wbY" id="dn4-FI-zcS"/>
                 <outlet property="proteinsPercentageLabel" destination="mUQ-Nn-e83" id="fxv-K8-THT"/>
+                <outlet property="saveButton" destination="uoi-eN-SUu" id="rFv-Wv-Yws"/>
                 <outlet property="tableView" destination="iA5-h4-TtJ" id="zXv-7p-BST"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="nutritionsInfoLabels" destination="4CC-pA-DLo" collectionClass="NSMutableArray" id="Uuo-pZ-Xlz"/>

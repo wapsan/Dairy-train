@@ -28,5 +28,4 @@ final class NutritionModeCell: UITableViewCell {
     func hideCheckMark() {
         checkmarkImageView.isHidden = true
     }
-    
 }

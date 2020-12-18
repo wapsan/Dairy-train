@@ -39,6 +39,24 @@ struct NutritionRecomendation {
         self.carbohydtrates = (calories / 100) * carbohydratesPercentage
         self.fats = (calories / 100) * fatsPercentage
     }
+    
+    init(customNutritionRecomendation: CustomNutritionModeMO) {
+        self.calories = customNutritionRecomendation.calories
+        
+        self.fats = customNutritionRecomendation.fats
+        self.proteins = customNutritionRecomendation.proteins
+        self.carbohydtrates = customNutritionRecomendation.carbohydrates
+        let summ = carbohydtrates + proteins + fats
+        guard summ > 0 else {
+            self.carbohydratesPercentage = 0
+            self.fatsPercentage = 0
+            self.proteinsPercentage = 0
+            return
+        }
+        self.carbohydratesPercentage = (carbohydtrates / summ) * 100
+        self.fatsPercentage = (fats / summ) * 100
+        self.proteinsPercentage = (proteins / summ) * 100
+    }
 }
 
 enum NutritionMode: String {

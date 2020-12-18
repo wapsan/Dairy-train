@@ -137,6 +137,11 @@ final class NutritionDataManager {
         return mealModel
     }
     
+    func updateCustomCalories(to calories: Int) {
+        customNutritionMode.calories = Float(calories)
+        updateContext()
+    }
+    
     func updateCustomNutritionMode(from cutomRecomendation: NutritionRecomendation) {
         customNutritionMode.calories = cutomRecomendation.calories
         customNutritionMode.proteins = cutomRecomendation.proteinsPercentage

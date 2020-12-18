@@ -185,7 +185,6 @@
 		7A2D5CD6258A3D3A0045749C /* NutritionModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2D5CD4258A3D3A0045749C /* NutritionModeCell.xib */; };
 		7A4452DC258A1C0300A808D1 /* NutritionSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4452DA258A1C0200A808D1 /* NutritionSettingViewController.swift */; };
 		7A4452DD258A1C0300A808D1 /* NutritionSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A4452DB258A1C0200A808D1 /* NutritionSettingViewController.xib */; };
-		7A4452E3258A1C9D00A808D1 /* NutritionSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4452E2258A1C9D00A808D1 /* NutritionSettingManager.swift */; };
 		7A4452E7258A205900A808D1 /* NutritionSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4452E6258A205900A808D1 /* NutritionSettingViewModel.swift */; };
 		7A4452EA258A210100A808D1 /* NutritionSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4452E9258A210100A808D1 /* NutritionSettingModel.swift */; };
 		7A69DB7125836C17003EECD8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A69DB7025836C17003EECD8 /* Colors.xcassets */; };
@@ -397,7 +396,6 @@
 		7A2D5CD4258A3D3A0045749C /* NutritionModeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionModeCell.xib; sourceTree = "<group>"; };
 		7A4452DA258A1C0200A808D1 /* NutritionSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionSettingViewController.swift; sourceTree = "<group>"; };
 		7A4452DB258A1C0200A808D1 /* NutritionSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionSettingViewController.xib; sourceTree = "<group>"; };
-		7A4452E2258A1C9D00A808D1 /* NutritionSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionSettingManager.swift; sourceTree = "<group>"; };
 		7A4452E6258A205900A808D1 /* NutritionSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionSettingViewModel.swift; sourceTree = "<group>"; };
 		7A4452E9258A210100A808D1 /* NutritionSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionSettingModel.swift; sourceTree = "<group>"; };
 		7A69DB7025836C17003EECD8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -1479,7 +1477,6 @@
 		7A4452E1258A1C8400A808D1 /* NutritionSetting */ = {
 			isa = PBXGroup;
 			children = (
-				7A4452E2258A1C9D00A808D1 /* NutritionSettingManager.swift */,
 			);
 			path = NutritionSetting;
 			sourceTree = "<group>";
@@ -1799,7 +1796,6 @@
 				7AA6AA56254978C600A88D4B /* MuscleGroupsCoordinator.swift in Sources */,
 				13416FA22485345100EC6590 /* Authorizationbutton.swift in Sources */,
 				136F400D2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift in Sources */,
-				7A4452E3258A1C9D00A808D1 /* NutritionSettingManager.swift in Sources */,
 				7A2A754D2588AFF00091FD22 /* TodayMealNutrition.swift in Sources */,
 				1373219F253A08A300F8FA23 /* UIAplication+Ex.swift in Sources */,
 				13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */,
