@@ -41,7 +41,9 @@ class ProfileViewController: DTBackgroundedViewController {
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        showTabBar()
+        if tabBarController?.tabBar.isHidden ?? false {
+            showTabBar()
+        }
     }
     
     override func viewDidLoad() {

@@ -28,11 +28,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-3M-rMb">
-                                <rect key="frame" x="312" y="19" width="15" height="15"/>
+                                <rect key="frame" x="302" y="14" width="25" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="dF6-Xj-jXU"/>
-                                    <constraint firstAttribute="width" constant="15" id="gdX-YI-tZZ"/>
+                                    <constraint firstAttribute="height" constant="25" id="dF6-Xj-jXU"/>
+                                    <constraint firstAttribute="width" constant="25" id="gdX-YI-tZZ"/>
                                 </constraints>
                                 <state key="normal" image="icon_setting">
                                     <color key="titleColor" red="0.29803921570000003" green="0.54901960780000003" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>

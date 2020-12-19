@@ -38,7 +38,7 @@ final class NutritionModuleCoordinator: Coordinator {
         switch target {
         case .searchFood:
             let searchFoodViewController = configureSearchFoodViewController()
-            topViewController?.present(searchFoodViewController, animated: true, completion: nil)
+            navigationController?.pushViewController(searchFoodViewController, animated: true)
         case .nutritionSetting:
             let nutritionSettingViewController = congigureNutritionSettingViewController()
             navigationController?.pushViewController(nutritionSettingViewController, animated: true)

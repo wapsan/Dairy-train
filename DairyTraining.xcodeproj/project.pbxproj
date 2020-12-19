@@ -210,6 +210,8 @@
 		7AA7911C258C93940090CFED /* CustomNutritionModeMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7911A258C93930090CFED /* CustomNutritionModeMO+CoreDataProperties.swift */; };
 		7AA7911D258C93940090CFED /* CustomNutritionModeMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7911B258C93930090CFED /* CustomNutritionModeMO+CoreDataClass.swift */; };
 		7AC19841258DF55C0023ADE2 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC19840258DF55B0023ADE2 /* Loadable.swift */; };
+		7AC19874258E37350023ADE2 /* EnterFoodDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC19873258E37350023ADE2 /* EnterFoodDetailAlert.swift */; };
+		7AC19878258E37BC0023ADE2 /* EnterFoodDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC19877258E37BC0023ADE2 /* EnterFoodDetailAlert.xib */; };
 		7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */; };
 		7AD9DA3A258CDCA2006BF647 /* NutrientPercentagePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */; };
 		7AF7BD4E256698B9003F4038 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */; };
@@ -424,6 +426,8 @@
 		7AA7911A258C93930090CFED /* CustomNutritionModeMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CustomNutritionModeMO+CoreDataProperties.swift"; path = "/Users/cogniteq/Downloads/Train/DairyTraining/Services/CoreData/Entities/NutritionEntity/CustomNutritionModeMO+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		7AA7911B258C93930090CFED /* CustomNutritionModeMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CustomNutritionModeMO+CoreDataClass.swift"; path = "/Users/cogniteq/Downloads/Train/DairyTraining/Services/CoreData/Entities/NutritionEntity/CustomNutritionModeMO+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		7AC19840258DF55B0023ADE2 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		7AC19873258E37350023ADE2 /* EnterFoodDetailAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterFoodDetailAlert.swift; sourceTree = "<group>"; };
+		7AC19877258E37BC0023ADE2 /* EnterFoodDetailAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterFoodDetailAlert.xib; sourceTree = "<group>"; };
 		7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientPercentagePickerView.swift; sourceTree = "<group>"; };
 		7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutrientPercentagePickerView.xib; sourceTree = "<group>"; };
 		7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -1547,6 +1551,7 @@
 		7A69DBF22587802F003EECD8 /* SearchFoodViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7AC19872258E37080023ADE2 /* EnterFoodDetailAlert */,
 				7A2A752D25889B4C0091FD22 /* Model */,
 				7A69DBD125875784003EECD8 /* Cell */,
 				7A69DBF825878063003EECD8 /* SearchFoodViewController.swift */,
@@ -1563,6 +1568,15 @@
 				7AC19840258DF55B0023ADE2 /* Loadable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7AC19872258E37080023ADE2 /* EnterFoodDetailAlert */ = {
+			isa = PBXGroup;
+			children = (
+				7AC19873258E37350023ADE2 /* EnterFoodDetailAlert.swift */,
+				7AC19877258E37BC0023ADE2 /* EnterFoodDetailAlert.xib */,
+			);
+			path = EnterFoodDetailAlert;
 			sourceTree = "<group>";
 		};
 		7AD9DA38258CDC7C006BF647 /* View */ = {
@@ -1669,6 +1683,7 @@
 				133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */,
 				7AF7BD4F256698B9003F4038 /* AuthorizationViewController.xib in Resources */,
 				13417280254B38C2004C6262 /* CurrentPaternSideMenu.xib in Resources */,
+				7AC19878258E37BC0023ADE2 /* EnterFoodDetailAlert.xib in Resources */,
 				13D8CEBF25239CCF0091AA6B /* TrainingPaternCell.xib in Resources */,
 				13CCD923254EB1DF00E8FFEB /* SideMenuViewController.xib in Resources */,
 				134AA98F25361E7E00C8BDD1 /* TrainingPaternHeaderView.xib in Resources */,
@@ -1765,6 +1780,7 @@
 				1384BB4B24DEF9520084705B /* ProfileModel.swift in Sources */,
 				13243A41247E768B00AB7419 /* DateHelper.swift in Sources */,
 				7A69DB7F25837675003EECD8 /* TimerViewPresenter.swift in Sources */,
+				7AC19874258E37350023ADE2 /* EnterFoodDetailAlert.swift in Sources */,
 				7A7D288425753DF800FDD212 /* MapableProtocol.swift in Sources */,
 				13479F3B247BD84A002FFB4E /* TrainingListViewController.swift in Sources */,
 				13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */,

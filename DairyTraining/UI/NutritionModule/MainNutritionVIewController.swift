@@ -21,6 +21,7 @@ final class MainNutritionVIewController: DTBackgroundedViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.viewDidLoad()
         setup()
     }
     

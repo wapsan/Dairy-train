@@ -96,6 +96,7 @@ class DTMainInfoCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.gradient.frame = self.containerView.bounds
+        
     }
     
     private func initView() {

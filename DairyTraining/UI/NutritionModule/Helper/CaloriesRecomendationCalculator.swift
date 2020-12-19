@@ -23,7 +23,13 @@ struct NutritionRecomendation {
         self.proteins = proteins
         self.fats = fats
         self.carbohydtrates = carbohydtrates
-        //let summ = carbohydtrates + proteins + fats
+        guard carbohydtrates > 0, proteins > 0, fats > 0 else {
+            self.carbohydratesPercentage = 0
+            self.fatsPercentage = 0
+            self.proteinsPercentage = 0
+            return
+        }
+        
         self.carbohydratesPercentage = (carbohydtrates * 4 / calories) * 100 //(carbohydtrates / summ) * 100
         self.fatsPercentage = (fats * 9 / calories) * 100  //(fats / summ) * 100
         self.proteinsPercentage = (proteins * 4 / calories) * 100 //(proteins / summ) * 100

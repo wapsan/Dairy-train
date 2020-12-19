@@ -58,6 +58,7 @@ protocol NutritionViewModelProtocol {
     var todayMealNutitionModel: [TodayMealNutritionModel] { get }
     var USERnutritionData: NutritionDataPresentable { get }
     var mealPlane: String { get }
+    func viewDidLoad()
 }
 
 protocol NutritionViewModelInput: AnyObject {
@@ -81,6 +82,10 @@ final class NutritionViewModel {
 
 // MARK: - NutritionViewModelProtocol
 extension NutritionViewModel: NutritionViewModelProtocol {
+    
+    func viewDidLoad() {
+        model.loadData()
+    }
     
     var mealPlane: String {
         return model.nutritionMode.presentationTitle

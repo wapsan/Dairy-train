@@ -12,10 +12,18 @@ final class SearchFoodViewController: UIViewController, Loadable {
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var errorLabel: UILabel!
     
+    // MARK: - GUI Properties
+    private lazy var foodDetailAlert = EnterFoodDetailAlert.view()
+    
     // MARK: - Module properties
     private let viewModel: SearchFoodViewModelProtocol
     
     // MARK: - Lyfecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideTabBar()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -66,7 +74,7 @@ extension SearchFoodViewController: UITableViewDataSource {
 extension SearchFoodViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        foodDetailAlert?.showWith(for: viewModel.foodList[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
