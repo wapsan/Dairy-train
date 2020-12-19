@@ -13,6 +13,11 @@ final class MainNutritionVIewController: DTBackgroundedViewController {
     private let viewModel: NutritionViewModelProtocol
     
     // MARK: - Lyfecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showTabBar()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

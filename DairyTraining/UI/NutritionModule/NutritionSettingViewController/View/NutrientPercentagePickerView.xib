@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NutrientPercentagePickerView" customModule="Dairy_Training" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcY-oI-h8n">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" systemColor="labelColor"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="PlY-73-kTz" appends="YES" id="3uX-Hz-3gd"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAo-X5-tU4">
+                    <rect key="frame" x="0.0" y="533.33333333333337" width="414" height="362.66666666666663"/>
+                    <subviews>
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nn7-Ui-Zms">
+                            <rect key="frame" x="0.0" y="72.666666666666629" width="414" height="216"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </pickerView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRb-Eq-zxJ">
+                            <rect key="frame" x="310" y="298.66666666666663" width="88" height="30"/>
+                            <color key="backgroundColor" name="selectedColor"/>
+                            <state key="normal" title="Save">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="EY8-tt-SEv"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyk-8W-WR0">
+                            <rect key="frame" x="16" y="298.66666666666663" width="88.333333333333329" height="30"/>
+                            <color key="backgroundColor" name="selectedColor"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="RGo-T0-ZFI"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Sum must be 100% of ypur day calories" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VwA-sg-6H4">
+                            <rect key="frame" x="112.33333333333333" y="296.66666666666663" width="189.66666666666669" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="0tm-lo-fvJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="udL-6o-9DX">
+                            <rect key="frame" x="32" y="52.333333333333258" width="350" height="20.333333333333329"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Proteins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mj4-Lz-Z3K">
+                                    <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="20.333333333333332"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carbohytrates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWa-OM-spJ">
+                                    <rect key="frame" x="128.33333333333334" y="0.0" width="108.66666666666666" height="20.333333333333332"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g75-Ve-Oho">
+                                    <rect key="frame" x="318" y="0.0" width="32" height="20.333333333333332"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrs-xh-u5X">
+                            <rect key="frame" x="191" y="15.999999999999998" width="32.333333333333343" height="20.333333333333329"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Nn7-Ui-Zms" secondAttribute="trailing" id="1qN-cR-Xk6"/>
+                        <constraint firstAttribute="trailing" secondItem="hRb-Eq-zxJ" secondAttribute="trailing" constant="16" id="53f-TN-QOg"/>
+                        <constraint firstItem="Nn7-Ui-Zms" firstAttribute="top" secondItem="udL-6o-9DX" secondAttribute="bottom" id="7VJ-UA-yPo"/>
+                        <constraint firstItem="udL-6o-9DX" firstAttribute="leading" secondItem="PAo-X5-tU4" secondAttribute="leading" constant="32" id="APO-Sm-Dx7"/>
+                        <constraint firstItem="hRb-Eq-zxJ" firstAttribute="leading" secondItem="VwA-sg-6H4" secondAttribute="trailing" constant="8" id="DU5-fH-FeI"/>
+                        <constraint firstItem="VwA-sg-6H4" firstAttribute="centerX" secondItem="PAo-X5-tU4" secondAttribute="centerX" id="IE9-Ge-QMf"/>
+                        <constraint firstItem="yyk-8W-WR0" firstAttribute="centerY" secondItem="hRb-Eq-zxJ" secondAttribute="centerY" id="J0l-ac-Veg"/>
+                        <constraint firstItem="yyk-8W-WR0" firstAttribute="leading" secondItem="PAo-X5-tU4" secondAttribute="leading" constant="16" id="Kw7-hs-wDv"/>
+                        <constraint firstItem="VwA-sg-6H4" firstAttribute="leading" secondItem="yyk-8W-WR0" secondAttribute="trailing" constant="8" id="L9Q-eT-CLb"/>
+                        <constraint firstItem="hrs-xh-u5X" firstAttribute="centerX" secondItem="PAo-X5-tU4" secondAttribute="centerX" id="P9u-3v-Cja"/>
+                        <constraint firstAttribute="bottom" secondItem="VwA-sg-6H4" secondAttribute="bottom" constant="32" id="Ubz-I6-lCX"/>
+                        <constraint firstItem="Nn7-Ui-Zms" firstAttribute="leading" secondItem="PAo-X5-tU4" secondAttribute="leading" id="Uss-io-5fe"/>
+                        <constraint firstItem="VwA-sg-6H4" firstAttribute="centerY" secondItem="hRb-Eq-zxJ" secondAttribute="centerY" id="baB-f1-47h"/>
+                        <constraint firstItem="hrs-xh-u5X" firstAttribute="top" secondItem="PAo-X5-tU4" secondAttribute="top" constant="16" id="e6Q-L6-Ryg"/>
+                        <constraint firstItem="udL-6o-9DX" firstAttribute="top" secondItem="hrs-xh-u5X" secondAttribute="bottom" constant="16" id="ig8-1X-CvQ"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hrs-xh-u5X" secondAttribute="trailing" constant="8" id="mLB-Lt-4GA"/>
+                        <constraint firstAttribute="trailing" secondItem="udL-6o-9DX" secondAttribute="trailing" constant="32" id="pQF-kX-Ou7"/>
+                        <constraint firstItem="hrs-xh-u5X" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PAo-X5-tU4" secondAttribute="leading" constant="8" id="q46-f6-xQJ"/>
+                        <constraint firstItem="VwA-sg-6H4" firstAttribute="top" secondItem="Nn7-Ui-Zms" secondAttribute="bottom" constant="8" id="rjC-8w-Heg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VcY-oI-h8n" secondAttribute="trailing" id="0P0-Tc-uVa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PAo-X5-tU4" secondAttribute="trailing" id="1hH-BZ-Lb4"/>
+                <constraint firstItem="PAo-X5-tU4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9rF-sR-XlJ"/>
+                <constraint firstAttribute="bottom" secondItem="VcY-oI-h8n" secondAttribute="bottom" id="F2O-Ss-jfM"/>
+                <constraint firstItem="VcY-oI-h8n" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VCa-2E-mJe"/>
+                <constraint firstItem="VcY-oI-h8n" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="WRY-0Z-1aq"/>
+                <constraint firstAttribute="bottom" secondItem="PAo-X5-tU4" secondAttribute="bottom" id="l4h-un-Y0K"/>
+            </constraints>
+            <connections>
+                <outlet property="backgroundView" destination="VcY-oI-h8n" id="qHx-sr-3OR"/>
+                <outlet property="caloriesPercenatgePicker" destination="Nn7-Ui-Zms" id="7fM-Nj-gUm"/>
+                <outlet property="cancelButton" destination="yyk-8W-WR0" id="4q6-Il-qV0"/>
+                <outlet property="containerView" destination="PAo-X5-tU4" id="1iu-DZ-AeF"/>
+                <outlet property="percentageSumLabel" destination="hrs-xh-u5X" id="hkL-NA-5VV"/>
+                <outlet property="saveButton" destination="hRb-Eq-zxJ" id="UEZ-7O-Z9Y"/>
+            </connections>
+            <point key="canvasLocation" x="-142.02898550724638" y="75.815217391304358"/>
+        </view>
+        <tapGestureRecognizer id="PlY-73-kTz">
+            <connections>
+                <action selector="backgroundViewTapped:" destination="iN0-l3-epB" id="dBW-1P-eOc"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <namedColor name="selectedColor">
+            <color red="0.9137254901960784" green="0.29803921568627451" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -6,6 +6,7 @@ protocol NutritionSettingView: AnyObject {
     func deactivateCustomEditingmode()
     func updateNutritionInfo(for calories: String, proteins: String, fats: String, carbohydrates: String)
     func updateCustomCaloriesLabel(to calories: String)
+    func showNutrientsPickerWithPercentageFor(proteins: Int, carbohydrates: Int, fats: Int)
 }
 
 final class NutritionSettingViewController: BaseViewController {
@@ -18,13 +19,22 @@ final class NutritionSettingViewController: BaseViewController {
     @IBOutlet private var carbohydratesPercentageLabel: UILabel!
     @IBOutlet private var proteinsPercentageLabel: UILabel!
     @IBOutlet private var caloriesLabel: UILabel!
+    
     @IBOutlet private var nutritionsInfoLabels: [UILabel]!
     @IBOutlet private var caloriesTextFields: UITextField!
+    
+    // MARK: - GUI Properties
+    private lazy var nutrientPercentagePicker = NutrientPercentagePickerView.view()
     
     // MARK: - Module propertie
     private let viewModel: NutritionSettingViewModelProtocol
     
     // MARK: - Lyfecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideTabBar()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
@@ -44,6 +54,7 @@ final class NutritionSettingViewController: BaseViewController {
     private func setup() {
         caloriesTextFields.keyboardType = .asciiCapableNumberPad
         addDoneButtonOnKeyboard()
+        funetupNutrientPicker()
         saveButton.layer.cornerRadius = 20
         tableView.register(UINib(nibName: NutritionModeCell.xibName, bundle: nil),
                            forCellReuseIdentifier: NutritionModeCell.cellID)
@@ -66,6 +77,12 @@ final class NutritionSettingViewController: BaseViewController {
         caloriesTextFields.inputAccessoryView = doneToolbar
     }
     
+    private func funetupNutrientPicker() {
+        nutrientPercentagePicker?.saveNutrientsWithpercentage = { [unowned self] (proteins, carbohydrates, fats) in
+            viewModel.saveCustomNutrientsPercentageFor(proteins: proteins, carbohydrates: carbohydrates, fats: fats)
+        }
+    }
+    
     // MARK: - Actions
     @objc private func keyboardDoneButtonPressed() {
         viewModel.saveCustomCalories(calories: caloriesTextFields.text)
@@ -73,6 +90,18 @@ final class NutritionSettingViewController: BaseViewController {
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         viewModel.saveButtonPressed()
+    }
+    
+    @IBAction func fatLabelTapped(_ sender: Any) {
+        viewModel.makronutrientsPercentageLabelTapped()
+    }
+    
+    @IBAction func proteinLabelTapped(_ sender: Any) {
+        viewModel.makronutrientsPercentageLabelTapped()
+    }
+    
+    @IBAction func carbohydratesLabelTapped(_ sender: Any) {
+        viewModel.makronutrientsPercentageLabelTapped()
     }
     
     @IBAction func caloriesLabelTouched(_ sender: Any) {
@@ -112,6 +141,10 @@ extension NutritionSettingViewController: UITableViewDelegate {
 // MARK: - NutritionSettingView
 extension NutritionSettingViewController: NutritionSettingView {
     
+    func showNutrientsPickerWithPercentageFor(proteins: Int, carbohydrates: Int, fats: Int) {
+        nutrientPercentagePicker?.showWith(proteinPercentage: proteins, carbohydratesPercentage: carbohydrates, fatsPercentage: fats)
+    }
+    
     func updateCustomCaloriesLabel(to calories: String) {
         caloriesTextFields.resignFirstResponder()
         caloriesLabel.isHidden = false
@@ -149,7 +182,7 @@ extension NutritionSettingViewController: NutritionSettingView {
             UIView.transition(with: label, duration: 0.4, options: .transitionCrossDissolve, animations: {
                 label.textColor = .lightGray
             }, completion: { _ in
-                self.caloriesLabel.isUserInteractionEnabled = false
+                self.customNutritionSettingView.isUserInteractionEnabled = false
                 self.tableView.isUserInteractionEnabled = true
             })
         })

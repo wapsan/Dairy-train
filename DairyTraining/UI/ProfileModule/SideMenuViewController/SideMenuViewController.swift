@@ -11,18 +11,12 @@ final class SideMenuViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.extendedLayoutIncludesOpaqueBars = true
-        self.setTabBarHidden(true, animated: true, duration: 0.25)
+        hideTabBar()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        MainCoordinator.shared.setTabBarHidden(false, duration: 0.25)
     }
     
     //MARK: - Initialization

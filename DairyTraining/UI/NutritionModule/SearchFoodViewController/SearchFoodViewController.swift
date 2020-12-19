@@ -5,7 +5,7 @@ protocol SearchFoodView: AnyObject {
     func errorWasUpdated(with massage: String)
 }
 
-final class SearchFoodViewController: UIViewController {
+final class SearchFoodViewController: UIViewController, Loadable {
 
     // MARK: - @IBOutlets
     @IBOutlet private var searchBar: UISearchBar!

@@ -116,7 +116,8 @@ final class TrainingListViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setTabBarHidden(false, animated: true, duration: 0.25)
+        showTabBar()
+//        self.setTabBarHidden(false, animated: true, duration: 0.25)
         self.setUpViewController()
     }
     

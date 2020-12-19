@@ -24,8 +24,7 @@ final class RecomendationsViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        extendedLayoutIncludesOpaqueBars = true
-        MainCoordinator.shared.setTabBarHidden(true, duration: 0.25)
+        hideTabBar()
     }
     
     override func viewDidLoad() {

@@ -34,9 +34,10 @@ final class MuscleGroupsViewController: DTBackgroundedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpTableView()
+        hideTabBar()
         //FIXME: - Finish setup hiden tab bar 
-        self.extendedLayoutIncludesOpaqueBars = true
-        self.setTabBarHidden(true, animated: true, duration: 0.25)
+//        self.extendedLayoutIncludesOpaqueBars = true
+//        self.setTabBarHidden(true, animated: true, duration: 0.25)
     }
     
     //MARK: - Initialization

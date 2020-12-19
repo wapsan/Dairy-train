@@ -160,9 +160,9 @@ final class MainCoordinator: Coordinator {
         return true
     }
     
-    func setTabBarHidden(_ isHiden: Bool, duration: TimeInterval) {
-        rootTabBarController?.tabBar.hide(isHiden, animated: true, duration: duration)
-    }
+//    func setTabBarHidden(_ isHiden: Bool, duration: TimeInterval) {
+//        rootTabBarController?.tabBar.hide(isHiden, animated: true, duration: duration)
+//    }
     
     @discardableResult func coordinateChild(to target: CoordinatorTarget) -> Bool {
           for coordinator in childCoordinators {

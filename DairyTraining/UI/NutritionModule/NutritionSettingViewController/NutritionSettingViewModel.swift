@@ -10,7 +10,8 @@ protocol NutritionSettingViewModelProtocol {
     func saveButtonPressed()
     
     func saveCustomCalories(calories: String?)
-    
+    func makronutrientsPercentageLabelTapped()
+    func saveCustomNutrientsPercentageFor(proteins: Int, carbohydrates: Int, fats: Int)
 }
 
 protocol NutritionSettingViewModelInput: AnyObject {
@@ -19,8 +20,8 @@ protocol NutritionSettingViewModelInput: AnyObject {
     func changeNutritionSelection(to nutritionMode: NutritionMode)
     
     func updateNutritionRecomandation(to nutritionRecomendation: NutritionRecomendation)
-    func userInfoNotSet()
     func customCaloriesWasSet(to calories: Int)
+    func updateCutomNutritionInfo(for nutritionInfo: NutritionRecomendation)
     
 }
 
@@ -35,7 +36,16 @@ final class NutritionSettingViewModel {
     }
 }
 
+// MARK: - NutritionSettingViewModelProtocol
 extension NutritionSettingViewModel: NutritionSettingViewModelProtocol {
+    
+    func makronutrientsPercentageLabelTapped() {
+        model.getNutritionInfoForCustomMode()
+    }
+    
+    func saveCustomNutrientsPercentageFor(proteins: Int, carbohydrates: Int, fats: Int) {
+        model.saveCustomnutritionPercentageFor(proteins: proteins, carbohydrates: carbohydrates, fats: fats)
+    }
 
     func saveCustomCalories(calories: String?) {
         guard let numericCalories = Int(calories ?? "0") else { return }
@@ -64,8 +74,15 @@ extension NutritionSettingViewModel: NutritionSettingViewModelProtocol {
     }
 }
 
+// MARK: - NutritionSettingViewModelInput
 extension NutritionSettingViewModel: NutritionSettingViewModelInput {
     
+    func updateCutomNutritionInfo(for nutritionInfo: NutritionRecomendation) {
+        view?.showNutrientsPickerWithPercentageFor(proteins: Int(nutritionInfo.proteinsPercentage),
+                                                   carbohydrates:  Int(nutritionInfo.carbohydratesPercentage),
+                                                   fats:  Int(nutritionInfo.fatsPercentage))
+    }
+
     func customCaloriesWasSet(to calories: Int) {
         view?.updateCustomCaloriesLabel(to: String(calories) + " kkal.")
     }
@@ -77,11 +94,7 @@ extension NutritionSettingViewModel: NutritionSettingViewModelInput {
         let carbohydrates = String(Int(nutritionRecomendation.carbohydratesPercentage.rounded())) + " %"
         view?.updateNutritionInfo(for: calories, proteins: proteins, fats: fats, carbohydrates: carbohydrates)
     }
-    
-    func userInfoNotSet() {
-        
-    }
-    
+  
     func changeNutritionSelection(to nutritionMode: NutritionMode) {
         guard let indexOfSelectedMode = settingModel.firstIndex(of: nutritionMode) else { return }
         _selectedModeIndex = indexOfSelectedMode

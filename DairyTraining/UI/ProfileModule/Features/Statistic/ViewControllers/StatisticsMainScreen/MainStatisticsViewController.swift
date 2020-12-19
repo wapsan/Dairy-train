@@ -11,8 +11,7 @@ final class MainStatisticsViewController: BaseViewController {
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        MainCoordinator.shared.setTabBarHidden(true, duration: 0.25)
-        extendedLayoutIncludesOpaqueBars = true
+        hideTabBar()
     }
     
     override func viewDidLoad() {

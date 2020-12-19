@@ -22,8 +22,7 @@ final class TrainingPaternsViewController: DTBackgroundedViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.extendedLayoutIncludesOpaqueBars = true
-        self.setTabBarHidden(true, animated: true, duration: 0.25)
+        hideTabBar()
     }
 
     //MARK: - Initialization

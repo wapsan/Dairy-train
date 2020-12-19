@@ -41,8 +41,7 @@ class ProfileViewController: DTBackgroundedViewController {
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        extendedLayoutIncludesOpaqueBars = false
-        MainCoordinator.shared.setTabBarHidden(false, duration: 0.25)
+        showTabBar()
     }
     
     override func viewDidLoad() {
@@ -53,11 +52,6 @@ class ProfileViewController: DTBackgroundedViewController {
         self.selectionListAlert.delegate = self.viewModel
         self.view.backgroundColor = DTColors.backgroundColor
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        extendedLayoutIncludesOpaqueBars = true
-//    }
 }
 
 //MARK: - Private extension

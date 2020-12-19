@@ -209,6 +209,9 @@
 		7AA6AA56254978C600A88D4B /* MuscleGroupsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6AA55254978C600A88D4B /* MuscleGroupsCoordinator.swift */; };
 		7AA7911C258C93940090CFED /* CustomNutritionModeMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7911A258C93930090CFED /* CustomNutritionModeMO+CoreDataProperties.swift */; };
 		7AA7911D258C93940090CFED /* CustomNutritionModeMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7911B258C93930090CFED /* CustomNutritionModeMO+CoreDataClass.swift */; };
+		7AC19841258DF55C0023ADE2 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC19840258DF55B0023ADE2 /* Loadable.swift */; };
+		7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */; };
+		7AD9DA3A258CDCA2006BF647 /* NutrientPercentagePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */; };
 		7AF7BD4E256698B9003F4038 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */; };
 		7AF7BD4F256698B9003F4038 /* AuthorizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF7BD4D256698B9003F4038 /* AuthorizationViewController.xib */; };
 /* End PBXBuildFile section */
@@ -420,6 +423,9 @@
 		7AA6AA55254978C600A88D4B /* MuscleGroupsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsCoordinator.swift; sourceTree = "<group>"; };
 		7AA7911A258C93930090CFED /* CustomNutritionModeMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CustomNutritionModeMO+CoreDataProperties.swift"; path = "/Users/cogniteq/Downloads/Train/DairyTraining/Services/CoreData/Entities/NutritionEntity/CustomNutritionModeMO+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		7AA7911B258C93930090CFED /* CustomNutritionModeMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CustomNutritionModeMO+CoreDataClass.swift"; path = "/Users/cogniteq/Downloads/Train/DairyTraining/Services/CoreData/Entities/NutritionEntity/CustomNutritionModeMO+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		7AC19840258DF55B0023ADE2 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientPercentagePickerView.swift; sourceTree = "<group>"; };
+		7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutrientPercentagePickerView.xib; sourceTree = "<group>"; };
 		7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		7AF7BD4D256698B9003F4038 /* AuthorizationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizationViewController.xib; sourceTree = "<group>"; };
 		B043EADE251C05242DA1CC87 /* Pods-Dairy Training.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.debug.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.debug.xcconfig"; sourceTree = "<group>"; };
@@ -716,6 +722,7 @@
 				136F401024990D4000C6944B /* UI */,
 				131107C7246582C30023A29A /* Common+UI */,
 				1386AA1E246C15260016A757 /* Default Models */,
+				7AC1983F258DF5410023ADE2 /* Protocols */,
 				131107C1246581FC0023A29A /* Extensions */,
 				136F400E24990D0C00C6944B /* Resourses */,
 				136F400F24990D2100C6944B /* Configurations */,
@@ -1464,6 +1471,7 @@
 		7A4452D9258A1BD700A808D1 /* NutritionSettingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7AD9DA38258CDC7C006BF647 /* View */,
 				7A2D5CCB258A3CCA0045749C /*  Cell */,
 				7A4452E1258A1C8400A808D1 /* NutritionSetting */,
 				7A4452DA258A1C0200A808D1 /* NutritionSettingViewController.swift */,
@@ -1549,6 +1557,23 @@
 			path = SearchFoodViewController;
 			sourceTree = "<group>";
 		};
+		7AC1983F258DF5410023ADE2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7AC19840258DF55B0023ADE2 /* Loadable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7AD9DA38258CDC7C006BF647 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */,
+				7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		7AF7BD5125669EDF003F4038 /* AuthorizationButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -1631,6 +1656,7 @@
 				7A69DBD5258757A7003EECD8 /* NutritionSearchingCell.xib in Resources */,
 				7A4452DD258A1C0300A808D1 /* NutritionSettingViewController.xib in Resources */,
 				1361BE402520D97600578DB4 /* MainNutritionVIewController.xib in Resources */,
+				7AD9DA3A258CDCA2006BF647 /* NutrientPercentagePickerView.xib in Resources */,
 				13AF79482486D3A100F2F7F7 /* GoogleService-Info.plist in Resources */,
 				13DE17502569060500B2EDD0 /* TimerViewController.xib in Resources */,
 				133364AC2561793C00EAC6F6 /* ExerciseStatisticsCell.xib in Resources */,
@@ -1763,6 +1789,7 @@
 				1379800924733AEB00BAD87C /* SettingsSectionViewController.swift in Sources */,
 				13D1929224DC1A550045ACF9 /* TrainingListStatisticsModel.swift in Sources */,
 				1390520B24993F5E0070D0EB /* RecomendationInfoModel.swift in Sources */,
+				7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */,
 				139B827524D5CAA1008C3DF4 /* RouterProtocol.swift in Sources */,
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
 				132A6A452572569C00EB3AE0 /* SelectExerciseModel.swift in Sources */,
@@ -1850,6 +1877,7 @@
 				1388FFE124E0081000E9FD2C /* DTStatisticInfoCell.swift in Sources */,
 				139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */,
 				1353CA44255AFBB800E7B5DD /* MainStatisticsViewController.swift in Sources */,
+				7AC19841258DF55C0023ADE2 /* Loadable.swift in Sources */,
 				13B1E7D524BDD22A00EE84E2 /* DTAlertSelectionButton.swift in Sources */,
 				134AA9882536167200C8BDD1 /* ChoosenPaternViewModel.swift in Sources */,
 				7A2A752F25889B5C0091FD22 /* MealModel.swift in Sources */,

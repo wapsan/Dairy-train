@@ -14,8 +14,9 @@ class SettingsSectionViewController: UITableViewController {
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        extendedLayoutIncludesOpaqueBars = true
-        MainCoordinator.shared.setTabBarHidden(true, duration: 0.25)
+        hideTabBar()
+//        extendedLayoutIncludesOpaqueBars = true
+//        MainCoordinator.shared.setTabBarHidden(true, duration: 0.25)
     }
     
     override func viewDidLoad() {

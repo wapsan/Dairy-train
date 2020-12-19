@@ -9,6 +9,9 @@ protocol NutritionettingModelProtocol {
     func saveNewNutritionMode()
     
     func saveCustomCalories(calories: Int)
+    
+    func saveCustomnutritionPercentageFor(proteins: Int, carbohydrates: Int, fats: Int)
+    func getNutritionInfoForCustomMode()
 }
 
 final class NutritionSettingModel {
@@ -19,22 +22,39 @@ final class NutritionSettingModel {
     private var caloriesCalculator = CaloriesRecomendationCalculator(userInfo: UserDataManager.shared.readUserMainInfo())
     private var _selectedMode = UserDataManager.shared.getNutritionMode() {
         didSet {
-            guard var caloriesCalculator = self.caloriesCalculator else {
-                output?.userInfoNotSet()
-                return
-            }
             if _selectedMode == .custom {
-                let nutritionRecomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
-                output?.updateNutritionRecomandation(to: nutritionRecomendation)
+                updateCustomNutritionRecomendation()
             } else {
-                output?.updateNutritionRecomandation(to: caloriesCalculator.getRecomendation(for: _selectedMode))
+                updateNutritionRecomendation()
             }
         }
     }
     
+    private func updateCustomNutritionRecomendation() {
+        let nutritionRecomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
+        output?.updateNutritionRecomandation(to: nutritionRecomendation)
+    }
+    
+    private func updateNutritionRecomendation() {
+        guard var caloriesCalculator = self.caloriesCalculator else { return }
+        output?.updateNutritionRecomandation(to: caloriesCalculator.getRecomendation(for: _selectedMode))
+    }
 }
 
 extension NutritionSettingModel: NutritionettingModelProtocol {
+    
+    func getNutritionInfoForCustomMode() {
+        let nutritionRecomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
+        output?.updateCutomNutritionInfo(for: nutritionRecomendation)
+    }
+    
+    func saveCustomnutritionPercentageFor(proteins: Int, carbohydrates: Int, fats: Int) {
+        NutritionDataManager.shared.updateCustomPercentageFor(proteins: Float(proteins) / 100,
+                                                              carbohydrates: Float(carbohydrates) / 100,
+                                                              fats: Float(fats) / 100)
+        let nutritionRecomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
+        output?.updateNutritionRecomandation(to: nutritionRecomendation)
+    }
     
     func saveCustomCalories(calories: Int) {
         NutritionDataManager.shared.updateCustomCalories(to: calories)

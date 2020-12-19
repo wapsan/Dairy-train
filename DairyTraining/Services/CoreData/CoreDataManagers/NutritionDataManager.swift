@@ -142,6 +142,13 @@ final class NutritionDataManager {
         updateContext()
     }
     
+    func updateCustomPercentageFor(proteins: Float, carbohydrates: Float, fats: Float) {
+        customNutritionMode.proteins = proteins
+        customNutritionMode.carbohydrates = carbohydrates
+        customNutritionMode.fats = fats
+        updateContext()
+    }
+    
     func updateCustomNutritionMode(from cutomRecomendation: NutritionRecomendation) {
         customNutritionMode.calories = cutomRecomendation.calories
         customNutritionMode.proteins = cutomRecomendation.proteinsPercentage
