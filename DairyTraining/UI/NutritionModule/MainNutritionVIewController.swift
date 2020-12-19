@@ -2,6 +2,7 @@ import UIKit
 
 protocol MainNutritionView: AnyObject {
     func updateMainInfoCell(for nutritionRecomendation: NutritionRecomendation)
+    func updateMealPlaneLabelText(to text: String)
 }
  
 final class MainNutritionVIewController: DTBackgroundedViewController {
@@ -49,11 +50,15 @@ final class MainNutritionVIewController: DTBackgroundedViewController {
 
 // MARK: - MainNutritionView
 extension MainNutritionVIewController: MainNutritionView {
+    func updateMealPlaneLabelText(to text: String) {
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NutritionMainCell
+        cell?.setMealPlane(to: text)
+    }
+    
     
     func updateMainInfoCell(for nutritionRecomendation: NutritionRecomendation) {
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NutritionMainCell
         cell?.setCell(for: nutritionRecomendation, and: viewModel.USERnutritionData)
-      //  tableView.reloadData()
         tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
     }
 }
@@ -75,6 +80,7 @@ extension MainNutritionVIewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NutritionMainCell.cellID, for: indexPath)
         (cell as? NutritionMainCell)?.setCell(for: viewModel.nutritionRecomendation, and: viewModel.USERnutritionData)
+        (cell as? NutritionMainCell)?.setMealPlane(to: viewModel.mealPlane)
         (cell as? NutritionMainCell)?.settingButtonPressedAction = { [unowned self] in
             MainCoordinator.shared.coordinateChild(to: NutritionModuleCoordinator.Target.nutritionSetting)
         }

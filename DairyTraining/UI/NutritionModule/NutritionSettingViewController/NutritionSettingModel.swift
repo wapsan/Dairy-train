@@ -49,9 +49,9 @@ extension NutritionSettingModel: NutritionettingModelProtocol {
     }
     
     func saveCustomnutritionPercentageFor(proteins: Int, carbohydrates: Int, fats: Int) {
-        NutritionDataManager.shared.updateCustomPercentageFor(proteins: Float(proteins) / 100,
-                                                              carbohydrates: Float(carbohydrates) / 100,
-                                                              fats: Float(fats) / 100)
+        NutritionDataManager.shared.updateCustomPercentageFor(proteinsPercentage: Float(proteins),
+                                                              carbohydratesPercentage: Float(carbohydrates),
+                                                              fatsPercentage: Float(fats))
         let nutritionRecomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
         output?.updateNutritionRecomandation(to: nutritionRecomendation)
     }

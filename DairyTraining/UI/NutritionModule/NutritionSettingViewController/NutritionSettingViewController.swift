@@ -120,7 +120,7 @@ extension NutritionSettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NutritionModeCell.cellID, for: indexPath)
-        (cell as? NutritionModeCell)?.setCellName(viewModel.settingModel[indexPath.row].title)
+        (cell as? NutritionModeCell)?.setCellName(viewModel.settingModel[indexPath.row].rawValue)
         viewModel.selectedIndex == indexPath.row ? (cell as? NutritionModeCell)?.showCheckMark() : (cell as? NutritionModeCell)?.hideCheckMark()
         return cell
     }

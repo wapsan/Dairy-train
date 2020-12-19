@@ -24,6 +24,7 @@ final class NutritionMainCell: UITableViewCell {
     @IBOutlet private var carbohydratesProgressLabel: EFCountingLabel!
     @IBOutlet private var fatsProgressLabel: EFCountingLabel!
     
+    @IBOutlet var mealPlaneLabel: UILabel!
     // MARK: - Properties
     var settingButtonPressedAction: (() -> Void)?
     
@@ -83,6 +84,10 @@ final class NutritionMainCell: UITableViewCell {
         } else {
             fatsProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.proteins / recomendation.proteins * 100)), withDuration: 1)
         }
+    }
+    
+    func setMealPlane(to plane: String) {
+        mealPlaneLabel.text = plane
     }
 
     // MARK: - Private methods

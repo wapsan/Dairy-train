@@ -138,11 +138,27 @@ final class NutritionDataManager {
     }
     
     func updateCustomCalories(to calories: Int) {
+        //customNutritionMode.calories = Float(calories)
+        let proteinPercentage = (customNutritionMode.proteins * 4) / customNutritionMode.calories
+        let fatsPercentage = (customNutritionMode.fats * 9) / customNutritionMode.calories
+        let carbohydratesPercentage = (customNutritionMode.carbohydrates * 4) / customNutritionMode.calories
+        
+        let proteins = (Float(proteinPercentage) * Float(calories)) / 4
+        let carbohydrates = (Float(carbohydratesPercentage) * Float(calories)) / 4
+        let fats = (Float(fatsPercentage) * Float(calories)) / 9
+        
         customNutritionMode.calories = Float(calories)
+        customNutritionMode.proteins = proteins
+        customNutritionMode.carbohydrates = carbohydrates
+        customNutritionMode.fats = fats
         updateContext()
     }
     
-    func updateCustomPercentageFor(proteins: Float, carbohydrates: Float, fats: Float) {
+    func updateCustomPercentageFor(proteinsPercentage: Float, carbohydratesPercentage: Float, fatsPercentage: Float) {
+    //    let sum =
+        let proteins = (Float(proteinsPercentage / 100) * customNutritionMode.calories) / 4
+        let carbohydrates = (Float(carbohydratesPercentage / 100) * customNutritionMode.calories) / 4
+        let fats = (Float(fatsPercentage / 100) * customNutritionMode.calories) / 9
         customNutritionMode.proteins = proteins
         customNutritionMode.carbohydrates = carbohydrates
         customNutritionMode.fats = fats

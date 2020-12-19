@@ -57,10 +57,12 @@ protocol NutritionViewModelProtocol {
     var nutritionRecomendation: NutritionRecomendation? { get }
     var todayMealNutitionModel: [TodayMealNutritionModel] { get }
     var USERnutritionData: NutritionDataPresentable { get }
+    var mealPlane: String { get }
 }
 
 protocol NutritionViewModelInput: AnyObject {
     func recomendationWasChanged(to recomendation: NutritionRecomendation?)
+    func updateMealPlaneMode(to nutritionMode: NutritionMode)
 }
 
 final class NutritionViewModel {
@@ -80,6 +82,10 @@ final class NutritionViewModel {
 // MARK: - NutritionViewModelProtocol
 extension NutritionViewModel: NutritionViewModelProtocol {
     
+    var mealPlane: String {
+        return model.nutritionMode.presentationTitle
+    }
+    
     var USERnutritionData: NutritionDataPresentable {
         return NutritionDataPresentable(nutritionDataMO: model.nutritionData)
     }
@@ -95,6 +101,10 @@ extension NutritionViewModel: NutritionViewModelProtocol {
 
 // MARK: - NutritionViewModelInput
 extension NutritionViewModel: NutritionViewModelInput {
+    
+    func updateMealPlaneMode(to nutritionMode: NutritionMode) {
+        view?.updateMealPlaneLabelText(to: nutritionMode.presentationTitle)
+    }
     
     func recomendationWasChanged(to recomendation: NutritionRecomendation?) {
         guard let recomendation = recomendation else { return }

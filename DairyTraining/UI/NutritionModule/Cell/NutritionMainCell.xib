@@ -236,6 +236,7 @@
                 <outlet property="fatsGrammsLabel" destination="nY6-MG-Sib" id="dJy-Yi-kDp"/>
                 <outlet property="fatsProgressLabel" destination="fbW-HN-EJT" id="Dx9-dJ-MGp"/>
                 <outlet property="fatsProgressView" destination="8Sw-WY-CvY" id="w3f-b7-QZN"/>
+                <outlet property="mealPlaneLabel" destination="ntb-TQ-lal" id="5do-u9-HnB"/>
                 <outlet property="proteinProgressLabel" destination="hzn-id-km3" id="5lB-hS-50e"/>
                 <outlet property="proteinsGrammsLabel" destination="tlf-82-GkA" id="DgC-00-mB6"/>
                 <outlet property="proteinsProgressView" destination="IQI-9I-L5a" id="lbf-6f-KGk"/>

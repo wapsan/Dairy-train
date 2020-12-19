@@ -3,6 +3,7 @@ import Foundation
 protocol NutritionModelProtocol {
     var recomendation: NutritionRecomendation? { get }
     var nutritionData: NutritionDataMO { get }
+    var nutritionMode: NutritionMode { get }
 }
 
 final class NutritionModel {
@@ -21,8 +22,12 @@ final class NutritionModel {
         _nutritionData = NutritionDataManager.shared.todayNutritionData
         if let a = userInfo {
             calculator = CaloriesRecomendationCalculator(userInfo: a)
-            _recomendation = calculator?.getRecomendation(for: UserDataManager.shared.getNutritionMode())
-           // output?.updateRecomendations(recomendation: calore.getRecomendation(for: .balanceWeight))
+            if UserDataManager.shared.getNutritionMode() == .custom {
+                _recomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
+            } else {
+                _recomendation = calculator?.getRecomendation(for: UserDataManager.shared.getNutritionMode())
+            }
+            
         }
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(nuutritionModeChanged),
@@ -31,7 +36,12 @@ final class NutritionModel {
     }
     
     @objc private func nuutritionModeChanged() {
-        _recomendation = calculator?.getRecomendation(for: UserDataManager.shared.getNutritionMode())
+        if UserDataManager.shared.getNutritionMode() == .custom {
+            _recomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
+        } else {
+            _recomendation = calculator?.getRecomendation(for: UserDataManager.shared.getNutritionMode())
+        }
+        output?.updateMealPlaneMode(to: UserDataManager.shared.getNutritionMode())
     }
 }
 
@@ -42,6 +52,9 @@ extension NutritionModel: NutritionModelProtocol {
         _nutritionData
     }
     
+    var nutritionMode: NutritionMode {
+        UserDataManager.shared.getNutritionMode()
+    }
     var recomendation: NutritionRecomendation? {
         _recomendation
     }

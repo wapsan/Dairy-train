@@ -23,10 +23,20 @@ struct NutritionRecomendation {
         self.proteins = proteins
         self.fats = fats
         self.carbohydtrates = carbohydtrates
-        let summ = carbohydtrates + proteins + fats
-        self.carbohydratesPercentage = (carbohydtrates / summ) * 100
-        self.fatsPercentage = (fats / summ) * 100
-        self.proteinsPercentage = (proteins / summ) * 100
+        //let summ = carbohydtrates + proteins + fats
+        self.carbohydratesPercentage = (carbohydtrates * 4 / calories) * 100 //(carbohydtrates / summ) * 100
+        self.fatsPercentage = (fats * 9 / calories) * 100  //(fats / summ) * 100
+        self.proteinsPercentage = (proteins * 4 / calories) * 100 //(proteins / summ) * 100
+//        guard summ > 0 else {
+//            self.carbohydratesPercentage = 0
+//            self.fatsPercentage = 0
+//            self.proteinsPercentage = 0
+//            return
+//        }
+//
+//        self.carbohydratesPercentage = (carbohydtrates / summ) * 100
+//        self.fatsPercentage = (fats / summ) * 100
+//        self.proteinsPercentage = (proteins / summ) * 100
     }
     
     init(calories: Float, proteinsPercentage: Float, carbohydratesPercentage: Float, fatsPercentage: Float) {
@@ -41,21 +51,24 @@ struct NutritionRecomendation {
     }
     
     init(customNutritionRecomendation: CustomNutritionModeMO) {
-        self.calories = customNutritionRecomendation.calories
-        
-        self.fats = customNutritionRecomendation.fats
-        self.proteins = customNutritionRecomendation.proteins
-        self.carbohydtrates = customNutritionRecomendation.carbohydrates
-        let summ = carbohydtrates + proteins + fats
-        guard summ > 0 else {
-            self.carbohydratesPercentage = 0
-            self.fatsPercentage = 0
-            self.proteinsPercentage = 0
-            return
-        }
-        self.carbohydratesPercentage = (carbohydtrates / summ) * 100
-        self.fatsPercentage = (fats / summ) * 100
-        self.proteinsPercentage = (proteins / summ) * 100
+        self.init(proteins: customNutritionRecomendation.proteins,
+                  calories: customNutritionRecomendation.calories,
+                  fats: customNutritionRecomendation.fats,
+                  carbohydtrates: customNutritionRecomendation.carbohydrates)
+//        self.calories = customNutritionRecomendation.calories
+//        self.fats = customNutritionRecomendation.fats
+//        self.proteins = customNutritionRecomendation.proteins
+//        self.carbohydtrates = customNutritionRecomendation.carbohydrates
+//        let summ = carbohydtrates + proteins + fats
+//        guard summ > 0 else {
+//            self.carbohydratesPercentage = 0
+//            self.fatsPercentage = 0
+//            self.proteinsPercentage = 0
+//            return
+//        }
+//        self.carbohydratesPercentage = customNutritionRecomendation.carbohydrates * 4 / calories //(carbohydtrates / summ) * 100
+//        self.fatsPercentage = customNutritionRecomendation.fats * 9 / calories  //(fats / summ) * 100
+//        self.proteinsPercentage = customNutritionRecomendation.proteins * 4 / calories //(proteins / summ) * 100
     }
 }
 
@@ -65,8 +78,8 @@ enum NutritionMode: String {
     case weightGain = "Weight Gain"
     case custom = "Custom"
     
-    var title: String {
-        return self.rawValue
+    var presentationTitle: String {
+        return "Meal plane: " + rawValue
     }
 }
 
@@ -85,17 +98,17 @@ struct CaloriesRecomendationCalculator {
     
     private lazy var neutralCaloriesMultiplier: Float = 1.2
     
-    private lazy var balanceProteinsMultiplier: Float = 10
-    private lazy var balanceCarbohydratesMultiplier: Float = 10
-    private lazy var balanceFatsMultiplier: Float = 22.2
+    private lazy var balanceProteinsMultiplier: Float = 0.4
+    private lazy var balanceCarbohydratesMultiplier: Float = 0.3
+    private lazy var balanceFatsMultiplier: Float = 0.3
     
-    private lazy var loseWeightProteinsMultiplier: Float = 8.75
-    private lazy var loseWeightCarbohydratesMultiplier: Float = 10
-    private lazy var loseWeightFatsMultiplier: Float = 27.7
+    private lazy var loseWeightProteinsMultiplier: Float = 0.45
+    private lazy var loseWeightCarbohydratesMultiplier: Float = 0.2
+    private lazy var loseWeightFatsMultiplier: Float = 0.35
     
-    private lazy var gainWeightProteinsMultiplier: Float = 7.5
-    private lazy var gainWeightCarbohydratesMultiplier: Float = 12.5
-    private lazy var gainWeightFatsMultipliers: Float = 22.2
+    private lazy var gainWeightProteinsMultiplier: Float = 0.40
+    private lazy var gainWeightCarbohydratesMultiplier: Float = 0.35
+    private lazy var gainWeightFatsMultipliers: Float = 0.25
     
     private lazy var gainWeightCalories: Int = 0
     private lazy var loseWeightCalories: Int = 0
@@ -214,9 +227,9 @@ struct CaloriesRecomendationCalculator {
     private mutating func getBalanceSupplyRecomendation() -> NutritionRecomendation {
         calculateCalories()
         let balanceCalories = Float(self.neutralCalories)
-        let balanceProteins = Float(self.neutralCalories) / Float(self.balanceProteinsMultiplier)
-        let balanceCarbohydrates = Float(self.neutralCalories) / Float(self.balanceCarbohydratesMultiplier)
-        let balanceFats = Float(self.neutralCalories) / Float(self.balanceFatsMultiplier)
+        let balanceProteins = (Float(self.neutralCalories) * Float(self.balanceProteinsMultiplier)) / 4
+        let balanceCarbohydrates = (Float(self.neutralCalories) * Float(self.balanceCarbohydratesMultiplier) ) / 4
+        let balanceFats = (Float(self.neutralCalories) * Float(self.balanceFatsMultiplier)) / 9
         let balanceSupply = NutritionRecomendation(proteins: balanceProteins,
                                                    calories: balanceCalories,
                                                    fats: balanceFats,
@@ -227,9 +240,9 @@ struct CaloriesRecomendationCalculator {
     private mutating func getLoseWeightRecomendatins() -> NutritionRecomendation {
         calculateCalories()
         let loseWeightCalories = Float(self.loseWeightCalories)
-        let loseWeightProteins = Float(self.loseWeightCalories) / Float(self.loseWeightProteinsMultiplier)
-        let loseWeightCarbohydrates = Float(self.loseWeightCalories) / Float(self.loseWeightCarbohydratesMultiplier)
-        let loseWeightFats = Float(self.loseWeightCalories) / Float(self.loseWeightFatsMultiplier)
+        let loseWeightProteins = (Float(self.loseWeightCalories) * Float(self.loseWeightProteinsMultiplier)) / 4
+        let loseWeightCarbohydrates = (Float(self.loseWeightCalories) * Float(self.loseWeightCarbohydratesMultiplier)) / 4
+        let loseWeightFats = (Float(self.loseWeightCalories) * Float(self.loseWeightFatsMultiplier)) / 9
         let loseWeightSupply = NutritionRecomendation(proteins: loseWeightProteins,
                                                       calories: loseWeightCalories,
                                                       fats: loseWeightFats,
@@ -242,9 +255,9 @@ struct CaloriesRecomendationCalculator {
     private mutating func getWeighGainRecomendations() -> NutritionRecomendation {
         calculateCalories()
         let gainWeightCalories = Float(self.gainWeightCalories)
-        let gainWeightProteins = Float(self.gainWeightCalories) / Float(self.gainWeightProteinsMultiplier)
-        let gainWeightCarbohydrates = Float(self.gainWeightCalories) / Float(self.gainWeightCarbohydratesMultiplier)
-        let gainWeightFats = Float(self.gainWeightCalories) / Float(self.gainWeightFatsMultipliers)
+        let gainWeightProteins = (Float(self.gainWeightCalories) * Float(self.gainWeightProteinsMultiplier)) / 4
+        let gainWeightCarbohydrates = (Float(self.gainWeightCalories) * Float(self.gainWeightCarbohydratesMultiplier)) / 4
+        let gainWeightFats = (Float(self.gainWeightCalories) * Float(self.gainWeightFatsMultipliers)) / 9
         let gainWeightSupply = NutritionRecomendation(proteins: gainWeightProteins,
                                                       calories: gainWeightCalories,
                                                       fats: gainWeightFats,
