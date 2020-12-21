@@ -73,7 +73,7 @@ final class NutritionMainCell: UITableViewCell {
         if nutritionData.carbohydrates == 0 {
             carbohydratesProgressLabel.countFrom(0, to: 0, withDuration: 1)
         } else {
-            carbohydratesProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.proteins / recomendation.proteins * 100)), withDuration: 1)
+            carbohydratesProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.carbohydrates / recomendation.carbohydtrates * 100)), withDuration: 1)
         }
         
         fatsProgressLabel.setUpdateBlock { (value, label) in
@@ -82,7 +82,7 @@ final class NutritionMainCell: UITableViewCell {
         if nutritionData.fats == 0 {
             fatsProgressLabel.countFrom(0, to: 0, withDuration: 1)
         } else {
-            fatsProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.proteins / recomendation.proteins * 100)), withDuration: 1)
+            fatsProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.fats / recomendation.fats * 100)), withDuration: 1)
         }
     }
     
