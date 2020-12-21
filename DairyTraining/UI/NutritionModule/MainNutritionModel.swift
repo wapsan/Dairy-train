@@ -11,6 +11,8 @@ final class NutritionModel {
     
     // MARK: - Module Properties
     weak var output: NutritionViewModelInput?
+    
+    // MARK: - Properties
     private var _recomendation: NutritionRecomendation? {
         didSet {
             output?.recomendationWasChanged(to: _recomendation)
@@ -19,55 +21,46 @@ final class NutritionModel {
     private var _nutritionData: NutritionDataMO?
     private var calculator: CaloriesRecomendationCalculator?
     private var userInfo: MainInfoManagedObject?
-    init(userInfo: MainInfoManagedObject?) {
-//        _nutritionData = NutritionDataManager.shared.todayNutritionData
-//        if let a = userInfo {
-//            calculator = CaloriesRecomendationCalculator(userInfo: a)
-//            if UserDataManager.shared.getNutritionMode() == .custom {
-//                _recomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
-//            } else {
-//                _recomendation = calculator?.getRecomendation(for: UserDataManager.shared.getNutritionMode())
-//            }
-//          //  output?.updateMealPlaneMode(to: UserDataManager.shared.getNutritionMode())
-//        }
     
+    // MARK: - Initialization
+    init(userInfo: MainInfoManagedObject?) {
+        addObserverForChangingNutritionMode()
+    }
+    
+    // MARK: - Private methods
+    private func addObserverForChangingNutritionMode() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(nutritionModeChanged),
                                                name: .nutritionmodeWasChanged,
                                                object: nil)
-        
     }
     
-    @objc private func nutritionModeChanged() {
+    private func updateRecomendation() {
         if UserDataManager.shared.getNutritionMode() == .custom {
             _recomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
         } else {
             _recomendation = calculator?.getRecomendation(for: UserDataManager.shared.getNutritionMode())
         }
+    }
+    
+    @objc private func nutritionModeChanged() {
+        updateRecomendation()
         output?.updateMealPlaneMode(to: UserDataManager.shared.getNutritionMode())
     }
 }
 
 // MARK: - NutritionModelProtocol
 extension NutritionModel: NutritionModelProtocol {
+    
     func loadData() {
         _nutritionData = NutritionDataManager.shared.todayNutritionData
-        userInfo = UserDataManager.shared.readUserMainInfo()
-        _nutritionData = NutritionDataManager.shared.todayNutritionData
-        if let a = userInfo {
-            calculator = CaloriesRecomendationCalculator(userInfo: a)
-            if UserDataManager.shared.getNutritionMode() == .custom {
-                _recomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
-            } else {
-                _recomendation = calculator?.getRecomendation(for: UserDataManager.shared.getNutritionMode())
-            }
-          //  output?.updateMealPlaneMode(to: UserDataManager.shared.getNutritionMode())
-        }
+        guard let user = UserDataManager.shared.readUserMainInfo() else { return }
+        calculator = CaloriesRecomendationCalculator(userInfo: user)
+        updateRecomendation()
     }
     
-    
     var nutritionData: NutritionDataMO {
-        NutritionDataManager.shared.todayNutritionData//_nutritionData!
+        NutritionDataManager.shared.todayNutritionData
     }
     
     var nutritionMode: NutritionMode {
