@@ -13,7 +13,13 @@ final class SearchFoodViewController: UIViewController, Loadable {
     @IBOutlet private var errorLabel: UILabel!
     
     // MARK: - GUI Properties
-    private lazy var foodDetailAlert = EnterFoodDetailAlert.view()
+    private lazy var foodDetailAlert = MealDetailAlert.view()
+    private lazy var refreshSpinner: UIActivityIndicatorView = {
+        let indicatoor = UIActivityIndicatorView(style: .large)
+        indicatoor.color = UIColor.white
+        indicatoor.hidesWhenStopped = true
+        return indicatoor
+    }()
     
     // MARK: - Module properties
     private let viewModel: SearchFoodViewModelProtocol
@@ -47,15 +53,33 @@ final class SearchFoodViewController: UIViewController, Loadable {
     // MARK: - Private methods
     private func setup() {
         searchBar.searchTextField.textColor = .white
+        tableView.tableFooterView = refreshSpinner
         tableView.register(UINib(nibName: NutritionSearchingCell.xibName, bundle: nil),
                            forCellReuseIdentifier: NutritionSearchingCell.cellID)
+        foodDetailAlert?.delegate = viewModel
     }
     
     // MARK: - Actions
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        viewModel.cancelButtonPressed()
     }
 }
+
+// MARK: - UIScrollViewDelegate
+extension SearchFoodViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) else { return }
+        refreshSpinner.startAnimating()
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let endScrolling = scrollView.contentOffset.y + scrollView.frame.size.height
+        guard endScrolling >= scrollView.contentSize.height else { return }
+        viewModel.activatePaginationRequest()
+    }
+}
+
 
 // MARK: - UITableViewDataSource
 extension SearchFoodViewController: UITableViewDataSource {
@@ -71,14 +95,11 @@ extension SearchFoodViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension SearchFoodViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         foodDetailAlert?.showWith(for: viewModel.foodList[indexPath.row])
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-
     }
 }
 
@@ -94,9 +115,10 @@ extension SearchFoodViewController: SearchFoodView {
     
     func foodListWasUpdated() {
         hideLoader()
+        refreshSpinner.stopAnimating()
         errorLabel.isHidden = true
         tableView.isHidden = false
-        tableView.reloadSections([0], with: .fade)
+        tableView.reloadData()
     }
 }
 

@@ -25,6 +25,7 @@ final class NutritionModel {
     // MARK: - Initialization
     init(userInfo: MainInfoManagedObject?) {
         addObserverForChangingNutritionMode()
+        addObserverForMealAdded()
     }
     
     // MARK: - Private methods
@@ -32,6 +33,13 @@ final class NutritionModel {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(nutritionModeChanged),
                                                name: .nutritionmodeWasChanged,
+                                               object: nil)
+    }
+    
+    private func addObserverForMealAdded() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(mealWasAdded),
+                                               name: .mealWasAddedToDaily,
                                                object: nil)
     }
     
@@ -46,6 +54,10 @@ final class NutritionModel {
     @objc private func nutritionModeChanged() {
         updateRecomendation()
         output?.updateMealPlaneMode(to: UserDataManager.shared.getNutritionMode())
+    }
+    
+    @objc private func mealWasAdded() {
+        output?.updateMeals()
     }
 }
 

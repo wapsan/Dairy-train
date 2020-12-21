@@ -14,4 +14,5 @@ extension Notification.Name {
     static var customAlerOkPressed = Notification.Name("customAlerOkPressed")
     static let mainInfoWasUpdated = Notification.Name("mainInfoWasUpdated")
     static let nutritionmodeWasChanged = Notification.Name("nutrition_mode_was_changed")
+    static let mealWasAddedToDaily = Notification.Name("meal_was_added_to_daily")
 }

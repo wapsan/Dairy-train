@@ -12,8 +12,30 @@ struct MealModel {
     
     let mealName: String
     let weight: Float
-    let kkal: Float
+    let calories: Float
     let proteins: Float
     let carbohydrates: Float
     let fats: Float
+}
+
+extension MealModel: FoodPresentable {
+    var foodName: String {
+        return mealName.capitalized
+    }
+    
+    var kkal: String {
+        return String(format: "Kkal: %.02f", calories).capitalized
+    }
+    
+    var displayProteins: String {
+        return String(format: "Proteins: %.02f", proteins).capitalized
+    }
+    
+    var displayCarbohydrate: String {
+        return String(format: "Carbohydrates: %.02f", carbohydrates).capitalized
+    }
+    
+    var displayFat: String {
+        return String(format: "Fats: %.02f", fats).capitalized
+    }
 }

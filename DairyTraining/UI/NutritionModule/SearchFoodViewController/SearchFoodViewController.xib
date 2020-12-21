@@ -30,7 +30,7 @@
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7kn-Ng-ZiA">
                     <rect key="frame" x="0.0" y="128" width="414" height="608"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="backgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="fsQ-T2-sPn"/>
                         <outlet property="delegate" destination="-1" id="Qo0-Nn-m1J"/>

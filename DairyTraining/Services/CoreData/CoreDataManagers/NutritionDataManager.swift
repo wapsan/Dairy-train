@@ -76,7 +76,7 @@ final class NutritionDataManager {
     
     private func convertToManagedObject(from meal: MealModel) -> MealMO {
         let newMeal = MealMO.init(context: context)
-        newMeal.calories = meal.kkal
+        newMeal.calories = meal.calories
         newMeal.name = meal.mealName
         newMeal.proteins = meal.proteins
         newMeal.carbohydrates = meal.carbohydrates
@@ -87,7 +87,7 @@ final class NutritionDataManager {
     private func convertToMealModel(from mealMO: MealMO) -> MealModel {
         return MealModel(mealName: mealMO.name ?? "",
                          weight: mealMO.weight,
-                         kkal: mealMO.calories,
+                         calories: mealMO.calories,
                          proteins: mealMO.proteins,
                          carbohydrates: mealMO.carbohydrates,
                          fats: mealMO.fats)
@@ -97,6 +97,7 @@ final class NutritionDataManager {
     func addMeal(_ meal: MealModel) {
         let newMeal = convertToManagedObject(from: meal)
         newMeal.nutritionData = todayNutritionData
+        newMeal.date = Date()
         todayNutritionData.addToMeals(newMeal)
         updateContext()
     }

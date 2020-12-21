@@ -1,19 +1,15 @@
-//
-//  SearchFoodViewModel.swift
-//  Dairy Training
-//
-//  Created by cogniteq on 14.12.2020.
-//  Copyright © 2020 Вячеслав. All rights reserved.
-//
 import Foundation
 
-protocol SearchFoodViewModelProtocol {
+protocol SearchFoodViewModelProtocol: MealDetailAlertDelegate {
     var foodList: [Food] { get }
     func requestFood(for text: String)
+    func activatePaginationRequest()
+    func cancelButtonPressed()
 }
 
 protocol SearchFoodViewModellInput: AnyObject {
     func foodListWasUpdated(to foodList: [Food])
+    func foodListWasUpdatedAfterPagination(to foodList: [Food])
     func updateError(with message: String)
 }
 
@@ -24,6 +20,7 @@ final class SearchFoodViewModel {
     
     // MARK: - Private Properties
     private var model: SearchFoodModelProtocol
+    private var searchingText: String?
     private var _foodList: [Food] = [] {
         didSet {
             view?.foodListWasUpdated()
@@ -39,17 +36,35 @@ final class SearchFoodViewModel {
 // MARK: - NutritionViewModelProtocol
 extension SearchFoodViewModel: SearchFoodViewModelProtocol {
     
+    func foodDetailAlert(mealDetailAlert: MealDetailAlert, mealWasAdded meal: MealModel) {
+        model.addMealToDaily(meal: meal)
+    }
+    
+    func cancelButtonPressed() {
+        MainCoordinator.shared.popViewController()
+    }
+    
+    func activatePaginationRequest() {
+        guard let searchingText = self.searchingText else { return }
+        model.paginationRequest(for: searchingText)
+    }
+    
     var foodList: [Food] {
         return _foodList
     }
     
     func requestFood(for text: String) {
+        searchingText = text
         model.requestFood(for: text)
     }
 }
 
 // MARK: - NutritionViewModelInput
 extension SearchFoodViewModel: SearchFoodViewModellInput {
+    
+    func foodListWasUpdatedAfterPagination(to foodList: [Food]) {
+        self._foodList += foodList
+    }
     
     func updateError(with message: String) {
         view?.errorWasUpdated(with: message)

@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum TodayMealNutritionModel: CaseIterable {
+enum TodayMealNutritionModel: String, CaseIterable {
     case mainCell
-    case breakfast
-    case lunch
-    case dinner
+    case breakfast = "Breakfast"
+    case lunch = "Lunch"
+    case dinner = "Dinner"
     
     var meals: [MealModel] {
         switch self {

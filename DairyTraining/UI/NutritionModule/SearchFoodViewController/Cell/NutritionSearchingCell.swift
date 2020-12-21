@@ -3,30 +3,52 @@ import UIKit
 protocol FoodPresentable {
     var foodName: String { get }
     var kkal: String { get }
-    var proteins: String { get }
-    var carbohydrate: String { get }
-    var fat: String { get }
+    var displayProteins: String { get }
+    var displayCarbohydrate: String { get }
+    var displayFat: String { get }
 }
 
 extension Food: FoodPresentable {
+    
+    var proteins: Double {
+        guard let protein = foodNutrients.first(where: {$0.nutrientId == 1003}) else { return 0 }
+        return protein.value ?? 0
+    }
+    
+    var carbohydrates: Double {
+        guard let carbohydrates = foodNutrients.first(where: {$0.nutrientId == 1005}) else { return 0 }
+        return carbohydrates.value ?? 0
+    }
+    
+    var fats: Double {
+        guard let fats = foodNutrients.first(where: {$0.nutrientId == 1004}) else { return 0 }
+        return fats.value ?? 0
+    }
+    
+    var calories: Double {
+        guard let calories = foodNutrients.first(where: {$0.nutrientId == 1008}) else { return 0 }
+        return calories.value ?? 0
+    }
+    
+    
     var foodName: String {
-        return label.capitalized
+        return lowercaseDescription?.capitalized ?? ""
     }
     
     var kkal: String {
-        return String(format: "Kkal: %.02f", nutrients.kkal ?? 0).capitalized
+        return String(format: "Kkal: %.02f", calories).capitalized
     }
     
-    var proteins: String {
-        return String(format: "Proteins: %.02f", nutrients.proteins ?? 0).capitalized
+    var displayProteins: String {
+        return String(format: "Proteins: %.02f", proteins).capitalized
     }
     
-    var carbohydrate: String {
-        return String(format: "Carbohydrates: %.02f", nutrients.carbohydrates ?? 0).capitalized
+    var displayCarbohydrate: String {
+        return String(format: "Carbohydrates: %.02f", carbohydrates).capitalized
     }
     
-    var fat: String {
-        return String(format: "Fats: %.02f", nutrients.fat ?? 0).capitalized
+    var displayFat: String {
+        return String(format: "Fats: %.02f", fats).capitalized
     }
 }
 
@@ -62,8 +84,8 @@ final class NutritionSearchingCell: UITableViewCell {
     func setupCell(for food: FoodPresentable) {
         foodNameLabel.text = food.foodName
         kkalLabel.text = food.kkal
-        proteinLabel.text = food.proteins
-        carbohydratesLabel.text = food.carbohydrate
-        fatLabel.text = food.fat
+        proteinLabel.text = food.displayProteins
+        carbohydratesLabel.text = food.displayCarbohydrate
+        fatLabel.text = food.displayFat
     }
 }
