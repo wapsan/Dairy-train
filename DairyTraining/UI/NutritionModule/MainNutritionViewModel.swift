@@ -58,8 +58,10 @@ protocol NutritionViewModelProtocol {
     var todayMealNutitionModel: [TodayMealNutritionModel] { get }
     var USERnutritionData: NutritionDataPresentable { get }
     var mealPlane: String { get }
+    
     func viewDidLoad()
-   
+    func addMealButtonPressed()
+    func settinButtonPressed()
 }
 
 protocol NutritionViewModelInput: AnyObject {
@@ -84,8 +86,14 @@ final class NutritionViewModel {
 
 // MARK: - NutritionViewModelProtocol
 extension NutritionViewModel: NutritionViewModelProtocol {
-   
+
+    func settinButtonPressed() {
+        model.coordinateToNutritionSettingScreen()
+    }
     
+    func addMealButtonPressed() {
+        model.coordinatuToSearchFoodsScreen()
+    }
     
     func viewDidLoad() {
         model.loadData()

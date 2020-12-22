@@ -24,7 +24,6 @@ final class NutritionDataManager {
         return self.container.viewContext
     }()
     
-    
     //MARK: - Private methods
     private func updateContext() {
         guard context.hasChanges else { return }
@@ -38,11 +37,16 @@ final class NutritionDataManager {
     private func createTodayNutritionData() -> NutritionDataMO {
         let todayNutritionData = NutritionDataMO.init(context: context)
         todayNutritionData.date = Date()
+        todayNutritionData.formatedDate = DateHelper.shared.getFormatedDateFrom(Date(), with: .chekingCurrentDayDateFormat)
         return todayNutritionData
     }
     
     private func fetchTodayNutritionData() -> NutritionDataMO? {
         let fetchRequest: NSFetchRequest<NutritionDataMO> = NutritionDataMO.fetchRequest()
+        let predicate = NSPredicate(
+            format: "formatedDate == %@",
+            DateHelper.shared.getFormatedDateFrom(Date(), with: .chekingCurrentDayDateFormat))
+        fetchRequest.predicate = predicate
         return try? context.fetch(fetchRequest).first
     }
     
@@ -55,9 +59,6 @@ final class NutritionDataManager {
         let fetchRequest: NSFetchRequest<CustomNutritionModeMO> = CustomNutritionModeMO.fetchRequest()
         return try? context.fetch(fetchRequest).first
     }
-    
-    
-    
     
     // MARK: - Public properties
     var todayNutritionData: NutritionDataMO {
@@ -76,6 +77,7 @@ final class NutritionDataManager {
     
     private func convertToManagedObject(from meal: MealModel) -> MealMO {
         let newMeal = MealMO.init(context: context)
+        newMeal.weight = meal.weight
         newMeal.calories = meal.calories
         newMeal.name = meal.mealName
         newMeal.proteins = meal.proteins
@@ -121,7 +123,7 @@ final class NutritionDataManager {
     func getMealForLunsh() -> [MealModel] {
         var mealModel: [MealModel] = []
         todayNutritionData.mealsArray.forEach({
-            if DateHelper.shared.hours(for: $0.date) > 12 || DateHelper.shared.hours(for: $0.date) < 17 {
+            if DateHelper.shared.hours(for: $0.date) > 12 && DateHelper.shared.hours(for: $0.date) < 17 {
                 mealModel.append(convertToMealModel(from: $0))
             }
         })
@@ -131,7 +133,7 @@ final class NutritionDataManager {
     func getMealForDinner() -> [MealModel] {
         var mealModel: [MealModel] = []
         todayNutritionData.mealsArray.forEach({
-            if DateHelper.shared.hours(for: $0.date) > 17 {
+            if DateHelper.shared.hours(for: $0.date) >= 17 {
                 mealModel.append(convertToMealModel(from: $0))
             }
         })
@@ -139,7 +141,6 @@ final class NutritionDataManager {
     }
     
     func updateCustomCalories(to calories: Int) {
-        //customNutritionMode.calories = Float(calories)
         let proteinPercentage = (customNutritionMode.proteins * 4) / customNutritionMode.calories
         let fatsPercentage = (customNutritionMode.fats * 9) / customNutritionMode.calories
         let carbohydratesPercentage = (customNutritionMode.carbohydrates * 4) / customNutritionMode.calories

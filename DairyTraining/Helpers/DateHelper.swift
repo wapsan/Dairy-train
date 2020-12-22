@@ -5,6 +5,7 @@ final class DateHelper {
     // MARK: - Types
     enum DateFormatTypes: String {
         case trainingDateFromat = "dd/MM/yyyy"
+        case chekingCurrentDayDateFormat = "dd.MM.yyyy"
         case synhronizationDateFromat = "MM-dd-yyyy HH:mm"
         case dateForStatisticsFromat = "dd.MM"
         case dateForDailyCaloriessIntakeFormat = "EEEE, MMM d, yyyy"

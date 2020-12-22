@@ -15,7 +15,8 @@ extension NutritionDataMO {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<NutritionDataMO> {
         return NSFetchRequest<NutritionDataMO>(entityName: "NutritionDataMO")
     }
-
+    
+    @NSManaged public var formatedDate: String?
     @NSManaged public var date: Date?
     @NSManaged public var meals: NSSet?
 

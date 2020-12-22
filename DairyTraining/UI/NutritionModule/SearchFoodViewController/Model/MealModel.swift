@@ -19,6 +19,11 @@ struct MealModel {
 }
 
 extension MealModel: FoodPresentable {
+    
+    var foodWeight: String? {
+        return String(format: "%.02fg", weight)
+    }
+    
     var foodName: String {
         return mealName.capitalized
     }

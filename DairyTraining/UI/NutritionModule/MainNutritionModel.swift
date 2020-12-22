@@ -4,7 +4,11 @@ protocol NutritionModelProtocol {
     var recomendation: NutritionRecomendation? { get }
     var nutritionData: NutritionDataMO { get }
     var nutritionMode: NutritionMode { get }
+    
     func loadData()
+    
+    func coordinatuToSearchFoodsScreen()
+    func coordinateToNutritionSettingScreen()
 }
 
 final class NutritionModel {
@@ -64,6 +68,14 @@ final class NutritionModel {
 // MARK: - NutritionModelProtocol
 extension NutritionModel: NutritionModelProtocol {
     
+    func coordinateToNutritionSettingScreen() {
+        MainCoordinator.shared.coordinateChild(to: NutritionModuleCoordinator.Target.nutritionSetting)
+    }
+    
+    func coordinatuToSearchFoodsScreen() {
+        MainCoordinator.shared.coordinateChild(to: NutritionModuleCoordinator.Target.searchFood)
+    }
+
     func loadData() {
         _nutritionData = NutritionDataManager.shared.todayNutritionData
         guard let user = UserDataManager.shared.readUserMainInfo() else { return }

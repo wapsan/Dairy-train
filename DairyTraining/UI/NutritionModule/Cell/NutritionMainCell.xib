@@ -34,11 +34,11 @@
                                     <constraint firstAttribute="height" constant="25" id="dF6-Xj-jXU"/>
                                     <constraint firstAttribute="width" constant="25" id="gdX-YI-tZZ"/>
                                 </constraints>
-                                <state key="normal" image="icon_setting">
+                                <state key="normal" image="icon_statistics">
                                     <color key="titleColor" red="0.29803921570000003" green="0.54901960780000003" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="settingButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Uck-7c-Hbt"/>
+                                    <action selector="statisticsButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MMC-GL-i7J"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQG-gU-eKk">
@@ -173,8 +173,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Meal plane: balance weight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntb-TQ-lal">
-                                <rect key="frame" x="16" y="479.5" width="303" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" text="Meal plane: balance weight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ntb-TQ-lal">
+                                <rect key="frame" x="16" y="479.5" width="205" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -185,19 +185,31 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zp-o9-K7m">
+                                <rect key="frame" x="229" y="473.5" width="90" height="33"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="add meal +">
+                                    <color key="titleColor" name="selectedColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="addMealButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UdR-xH-vZQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ntb-TQ-lal" secondAttribute="trailing" constant="16" id="0As-Qi-Mqv"/>
                             <constraint firstItem="W64-Gx-p08" firstAttribute="centerX" secondItem="iPY-YD-NF4" secondAttribute="centerX" id="8O2-hB-C3e"/>
                             <constraint firstItem="xBS-TR-1yw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uGq-1Z-5xM" secondAttribute="leading" constant="8" id="8eU-Ta-qAp"/>
                             <constraint firstItem="iPY-YD-NF4" firstAttribute="centerY" secondItem="rQG-gU-eKk" secondAttribute="centerY" id="P1R-cA-ejK"/>
+                            <constraint firstItem="3Zp-o9-K7m" firstAttribute="centerY" secondItem="ntb-TQ-lal" secondAttribute="centerY" id="RvD-nE-Y5z"/>
                             <constraint firstItem="ntb-TQ-lal" firstAttribute="leading" secondItem="uGq-1Z-5xM" secondAttribute="leading" constant="16" id="SVS-ir-CAd"/>
                             <constraint firstItem="iPY-YD-NF4" firstAttribute="centerX" secondItem="rQG-gU-eKk" secondAttribute="centerX" id="TrI-bB-2bI"/>
                             <constraint firstItem="pMw-z8-8Ne" firstAttribute="top" secondItem="uGq-1Z-5xM" secondAttribute="top" constant="16" id="XCP-dh-b1u"/>
                             <constraint firstItem="o7T-yH-2T4" firstAttribute="top" secondItem="rQG-gU-eKk" secondAttribute="bottom" constant="32" id="XIL-2d-mGO"/>
                             <constraint firstItem="ntb-TQ-lal" firstAttribute="top" secondItem="o7T-yH-2T4" secondAttribute="bottom" constant="32" id="aDz-uB-g8l"/>
+                            <constraint firstAttribute="trailing" secondItem="3Zp-o9-K7m" secondAttribute="trailing" constant="16" id="dGf-k5-HLg"/>
                             <constraint firstAttribute="bottom" secondItem="ntb-TQ-lal" secondAttribute="bottom" constant="16" id="dJA-4l-1Xe"/>
+                            <constraint firstItem="3Zp-o9-K7m" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ntb-TQ-lal" secondAttribute="trailing" constant="8" id="eoj-lz-91e"/>
                             <constraint firstAttribute="trailing" secondItem="o7T-yH-2T4" secondAttribute="trailing" constant="16" id="fC4-1q-n7f"/>
                             <constraint firstItem="pMw-z8-8Ne" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uGq-1Z-5xM" secondAttribute="leading" constant="8" id="fLH-Tw-MkE"/>
                             <constraint firstItem="rQG-gU-eKk" firstAttribute="top" secondItem="xBS-TR-1yw" secondAttribute="bottom" constant="32" id="gv1-gt-2bu"/>
@@ -207,7 +219,6 @@
                             <constraint firstItem="rQG-gU-eKk" firstAttribute="centerX" secondItem="uGq-1Z-5xM" secondAttribute="centerX" id="qlz-o9-XIV"/>
                             <constraint firstItem="dUM-3M-rMb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pMw-z8-8Ne" secondAttribute="trailing" constant="8" id="r1E-0A-VMU"/>
                             <constraint firstItem="xBS-TR-1yw" firstAttribute="centerX" secondItem="uGq-1Z-5xM" secondAttribute="centerX" id="r8x-of-Y4v"/>
-                            <constraint firstItem="ntb-TQ-lal" firstAttribute="centerX" secondItem="uGq-1Z-5xM" secondAttribute="centerX" id="rum-VV-aGD"/>
                             <constraint firstAttribute="trailing" secondItem="dUM-3M-rMb" secondAttribute="trailing" constant="8" id="sDJ-Fs-FDE"/>
                             <constraint firstItem="W64-Gx-p08" firstAttribute="top" secondItem="iPY-YD-NF4" secondAttribute="bottom" constant="8" id="tV2-9P-MGG"/>
                             <constraint firstItem="o7T-yH-2T4" firstAttribute="centerX" secondItem="uGq-1Z-5xM" secondAttribute="centerX" id="uWc-e4-N1N"/>
@@ -241,13 +252,16 @@
                 <outlet property="proteinsGrammsLabel" destination="tlf-82-GkA" id="DgC-00-mB6"/>
                 <outlet property="proteinsProgressView" destination="IQI-9I-L5a" id="lbf-6f-KGk"/>
             </connections>
-            <point key="canvasLocation" x="-174.63768115942031" y="-32.8125"/>
+            <point key="canvasLocation" x="-314" y="-18"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_setting" width="64" height="64"/>
+        <image name="icon_statistics" width="64" height="64"/>
         <namedColor name="backgroundColor">
             <color red="0.1289999932050705" green="0.14900000393390656" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="selectedColor">
+            <color red="0.9137254901960784" green="0.29803921568627451" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

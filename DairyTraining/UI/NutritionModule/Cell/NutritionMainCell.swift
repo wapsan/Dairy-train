@@ -25,8 +25,9 @@ final class NutritionMainCell: UITableViewCell {
     @IBOutlet private var fatsProgressLabel: EFCountingLabel!
     
     @IBOutlet var mealPlaneLabel: UILabel!
+    
     // MARK: - Properties
-    var settingButtonPressedAction: (() -> Void)?
+    var addMealButtonAction: (() -> Void)?
     
     // MARK: - Initialization
     override func awakeFromNib() {
@@ -112,7 +113,11 @@ final class NutritionMainCell: UITableViewCell {
     }
     
     // MARK: - Actions
-    @IBAction func settingButtonPressed(_ sender: Any) {
-        settingButtonPressedAction?()
+    @IBAction func addMealButtonPressed(_ sender: Any) {
+        addMealButtonAction?()
+    }
+    
+    @IBAction func statisticsButtonPressed(_ sender: Any) {
+        print("Statistics button pressed")
     }
 }

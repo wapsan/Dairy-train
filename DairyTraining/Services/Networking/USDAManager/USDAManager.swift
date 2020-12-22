@@ -34,7 +34,9 @@ final class USDAManager {
     }
     
     // MARK: - Public methods
-    func searchFoodWithName(_ foodName: String, pageNumber: Int = 1, completion: @escaping (Result<FoodResponseModel, NetWorkError>) -> Void) {
+    func searchFoodWithName(_ foodName: String,
+                            pageNumber: Int = 1,
+                            completion: @escaping (Result<FoodResponseModel, NetWorkError>) -> Void) {
         parameters[Key.searchignText] = convertSearchingText(text: foodName)
         parameters[Key.pageNumber] = String(pageNumber)
         

@@ -18,11 +18,12 @@
     </entity>
     <entity name="NutritionDataMO" representedClassName="NutritionDataMO" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="formatedDate" optional="YES" attributeType="String"/>
         <relationship name="meals" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MealMO" inverseName="nutritionData" inverseEntity="MealMO"/>
     </entity>
     <elements>
-        <element name="MealMO" positionX="-63" positionY="18" width="128" height="163"/>
-        <element name="NutritionDataMO" positionX="317.9921875" positionY="-129.5625" width="128" height="73"/>
         <element name="CustomNutritionModeMO" positionX="126" positionY="9" width="128" height="103"/>
+        <element name="MealMO" positionX="-63" positionY="18" width="128" height="163"/>
+        <element name="NutritionDataMO" positionX="317.9921875" positionY="-129.5625" width="128" height="88"/>
     </elements>
 </model>

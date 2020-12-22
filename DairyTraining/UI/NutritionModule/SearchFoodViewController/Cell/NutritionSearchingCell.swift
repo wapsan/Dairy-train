@@ -6,10 +6,15 @@ protocol FoodPresentable {
     var displayProteins: String { get }
     var displayCarbohydrate: String { get }
     var displayFat: String { get }
+    var foodWeight: String? { get }
 }
 
 extension Food: FoodPresentable {
     
+    var foodWeight: String? {
+        return nil
+    }
+
     var proteins: Double {
         guard let protein = foodNutrients.first(where: {$0.nutrientId == 1003}) else { return 0 }
         return protein.value ?? 0
@@ -65,6 +70,7 @@ final class NutritionSearchingCell: UITableViewCell {
     @IBOutlet private var proteinLabel: UILabel!
     @IBOutlet private var fatLabel: UILabel!
     @IBOutlet private var carbohydratesLabel: UILabel!
+    @IBOutlet private var weightLabel: UILabel!
     
     // MARK: - Initialization
     override func awakeFromNib() {
@@ -82,6 +88,8 @@ final class NutritionSearchingCell: UITableViewCell {
     
     // MARK: - Setter
     func setupCell(for food: FoodPresentable) {
+        weightLabel.isHidden = food.foodWeight == nil
+        weightLabel.text = food.foodWeight
         foodNameLabel.text = food.foodName
         kkalLabel.text = food.kkal
         proteinLabel.text = food.displayProteins
