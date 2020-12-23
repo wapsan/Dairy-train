@@ -77,6 +77,8 @@ final class NutritionDataManager {
     
     private func convertToManagedObject(from meal: MealModel) -> MealMO {
         let newMeal = MealMO.init(context: context)
+        newMeal.date = Date()
+        newMeal.hour = Int32(DateHelper.shared.hours(for: Date()))
         newMeal.weight = meal.weight
         newMeal.calories = meal.calories
         newMeal.name = meal.mealName
@@ -99,43 +101,73 @@ final class NutritionDataManager {
     func addMeal(_ meal: MealModel) {
         let newMeal = convertToManagedObject(from: meal)
         newMeal.nutritionData = todayNutritionData
-        newMeal.date = Date()
         todayNutritionData.addToMeals(newMeal)
         updateContext()
     }
     
-    func removeMeal(_ food: MealModel, at index: Int) {
-        let mealForDeleting = todayNutritionData.mealsArray[index]
-        todayNutritionData.removeFromMeals(mealForDeleting)
+    func removeMealFromBreakfast(at index: Int) {
+        let mealForDeleting = getBreakfastMealMO()[index]
+        context.delete(mealForDeleting)
         updateContext()
     }
     
+    func removeMealFrombLunch(at index: Int) {
+        let mealForDeleting = getLunchMealMO()[index]
+        context.delete(mealForDeleting)
+        updateContext()
+    }
+    
+    func removeMealFromDinner(at index: Int) {
+        let mealForDeleting = getDinnerMealMO()[index]
+        context.delete(mealForDeleting)
+        updateContext()
+    }
+    
+    private func getBreakfastMealMO() -> [MealMO] {
+        let fetchRequest: NSFetchRequest<MealMO> = MealMO.fetchRequest()
+        let predicate = NSPredicate(format: "hour < 12")
+        fetchRequest.predicate = predicate
+        guard let breakfastMeals = try? context.fetch(fetchRequest) else { return [] }
+        return breakfastMeals
+    }
+    
+    private func getLunchMealMO() -> [MealMO] {
+        let fetchRequest: NSFetchRequest<MealMO> = MealMO.fetchRequest()
+        let predicate = NSPredicate(format: "hour >= 12 AND hour <= 17")
+        fetchRequest.predicate = predicate
+        guard let breakfastMeals = try? context.fetch(fetchRequest) else { return [] }
+        return breakfastMeals
+    }
+    
+    private func getDinnerMealMO() -> [MealMO] {
+        let fetchRequest: NSFetchRequest<MealMO> = MealMO.fetchRequest()
+        let predicate = NSPredicate(format: "hour > 17")
+        fetchRequest.predicate = predicate
+        guard let breakfastMeals = try? context.fetch(fetchRequest) else { return [] }
+        return breakfastMeals
+    }
+    
+    
     func getMealsForBreakfast() -> [MealModel] {
         var mealModel: [MealModel] = []
-        todayNutritionData.mealsArray.forEach({
-            if DateHelper.shared.hours(for: $0.date) < 12 {
-                mealModel.append(convertToMealModel(from: $0))
-            }
+        getBreakfastMealMO().forEach({
+            mealModel.append(convertToMealModel(from: $0))
         })
         return mealModel
     }
     
     func getMealForLunsh() -> [MealModel] {
         var mealModel: [MealModel] = []
-        todayNutritionData.mealsArray.forEach({
-            if DateHelper.shared.hours(for: $0.date) > 12 && DateHelper.shared.hours(for: $0.date) < 17 {
-                mealModel.append(convertToMealModel(from: $0))
-            }
+        getLunchMealMO().forEach({
+            mealModel.append(convertToMealModel(from: $0))
         })
         return mealModel
     }
     
     func getMealForDinner() -> [MealModel] {
         var mealModel: [MealModel] = []
-        todayNutritionData.mealsArray.forEach({
-            if DateHelper.shared.hours(for: $0.date) >= 17 {
-                mealModel.append(convertToMealModel(from: $0))
-            }
+        getDinnerMealMO().forEach({
+            mealModel.append(convertToMealModel(from: $0))
         })
         return mealModel
     }
@@ -157,7 +189,6 @@ final class NutritionDataManager {
     }
     
     func updateCustomPercentageFor(proteinsPercentage: Float, carbohydratesPercentage: Float, fatsPercentage: Float) {
-    //    let sum =
         let proteins = (Float(proteinsPercentage / 100) * customNutritionMode.calories) / 4
         let carbohydrates = (Float(carbohydratesPercentage / 100) * customNutritionMode.calories) / 4
         let fats = (Float(fatsPercentage / 100) * customNutritionMode.calories) / 9

@@ -15,7 +15,8 @@ extension MealMO {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<MealMO> {
         return NSFetchRequest<MealMO>(entityName: "MealMO")
     }
-
+    
+    @NSManaged public var hour: Int32
     @NSManaged public var date: Date
     @NSManaged public var calories: Float
     @NSManaged public var proteins: Float

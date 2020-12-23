@@ -3,7 +3,9 @@ import UIKit
 protocol MainNutritionView: AnyObject {
     func updateMainInfoCell(for nutritionRecomendation: NutritionRecomendation)
     func updateMealPlaneLabelText(to text: String)
-    func updateMeals()
+    func reloadTableView()
+    func deleteCell(section: Int, row: Int)
+    func updateMainCell()
 }
  
 final class MainNutritionVIewController: DTBackgroundedViewController {
@@ -57,7 +59,17 @@ final class MainNutritionVIewController: DTBackgroundedViewController {
 // MARK: - MainNutritionView
 extension MainNutritionVIewController: MainNutritionView {
     
-    func updateMeals() {
+    func updateMainCell() {
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+    }
+    
+    func deleteCell(section: Int, row: Int) {
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [IndexPath(row: row, section: section)], with: .left)
+        tableView.endUpdates()
+    }
+    
+    func reloadTableView() {
         tableView.reloadData()
     }
     
@@ -109,6 +121,20 @@ extension MainNutritionVIewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension MainNutritionVIewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard indexPath.section != 0 else { return nil }
+        let deleteAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
+            tableView.performBatchUpdates({ [weak self] in
+                self?.viewModel.cellWasSwiped(at: indexPath.section, and: indexPath.row)
+            }, completion: nil)
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.backgroundColor = DTColors.backgroundColor
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard section != 0 else { return 0 }

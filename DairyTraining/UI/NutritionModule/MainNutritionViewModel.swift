@@ -62,12 +62,14 @@ protocol NutritionViewModelProtocol {
     func viewDidLoad()
     func addMealButtonPressed()
     func settinButtonPressed()
+    func cellWasSwiped(at mealTimeIndex: Int, and mealIndex: Int)
 }
 
 protocol NutritionViewModelInput: AnyObject {
     func recomendationWasChanged(to recomendation: NutritionRecomendation?)
     func updateMealPlaneMode(to nutritionMode: NutritionMode)
     func updateMeals()
+    func mealWasDeleteAt(mealTimeIndex: Int, and mealIndex: Int)
 }
 
 final class NutritionViewModel {
@@ -86,7 +88,11 @@ final class NutritionViewModel {
 
 // MARK: - NutritionViewModelProtocol
 extension NutritionViewModel: NutritionViewModelProtocol {
-
+    
+    func cellWasSwiped(at mealTimeIndex: Int, and mealIndex: Int) {
+        model.deleteMeal(at: mealTimeIndex, mealIndex: mealIndex)
+    }
+    
     func settinButtonPressed() {
         model.coordinateToNutritionSettingScreen()
     }
@@ -119,12 +125,17 @@ extension NutritionViewModel: NutritionViewModelProtocol {
 // MARK: - NutritionViewModelInput
 extension NutritionViewModel: NutritionViewModelInput {
     
+    func mealWasDeleteAt(mealTimeIndex: Int, and mealIndex: Int) {
+        view?.deleteCell(section: mealTimeIndex, row: mealIndex)
+        view?.updateMainCell()
+    }
+    
     func updateMealPlaneMode(to nutritionMode: NutritionMode) {
         view?.updateMealPlaneLabelText(to: nutritionMode.presentationTitle)
     }
     
     func updateMeals() {
-        view?.updateMeals()
+        view?.reloadTableView()
     }
     
     func recomendationWasChanged(to recomendation: NutritionRecomendation?) {

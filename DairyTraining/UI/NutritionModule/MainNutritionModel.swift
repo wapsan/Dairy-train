@@ -9,6 +9,7 @@ protocol NutritionModelProtocol {
     
     func coordinatuToSearchFoodsScreen()
     func coordinateToNutritionSettingScreen()
+    func deleteMeal(at mealTimeIndex: Int, mealIndex: Int)
 }
 
 final class NutritionModel {
@@ -25,6 +26,7 @@ final class NutritionModel {
     private var _nutritionData: NutritionDataMO?
     private var calculator: CaloriesRecomendationCalculator?
     private var userInfo: MainInfoManagedObject?
+    private var nutritionManager = NutritionDataManager.shared
     
     // MARK: - Initialization
     init(userInfo: MainInfoManagedObject?) {
@@ -67,6 +69,21 @@ final class NutritionModel {
 
 // MARK: - NutritionModelProtocol
 extension NutritionModel: NutritionModelProtocol {
+    
+    func deleteMeal(at mealTimeIndex: Int, mealIndex: Int) {
+        let mealTime = TodayMealNutritionModel.allCases[mealTimeIndex]
+        switch mealTime {
+        case .mainCell:
+            break
+        case .breakfast:
+            nutritionManager.removeMealFromBreakfast(at: mealIndex)
+        case .lunch:
+            nutritionManager.removeMealFrombLunch(at: mealIndex)
+        case .dinner:
+            nutritionManager.removeMealFromDinner(at: mealIndex)
+        }
+        output?.mealWasDeleteAt(mealTimeIndex: mealTimeIndex, and: mealIndex)
+    }
     
     func coordinateToNutritionSettingScreen() {
         MainCoordinator.shared.coordinateChild(to: NutritionModuleCoordinator.Target.nutritionSetting)
