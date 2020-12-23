@@ -20,6 +20,7 @@ extension SearchFoodModel: SearchFoodModelProtocol {
     func addMealToDaily(meal: MealModel) {
         NutritionDataManager.shared.addMeal(meal)
         NotificationCenter.default.post(name: .mealWasAddedToDaily, object: nil)
+        output?.mealWasAdedToDaily(with: "\(meal.mealName) with weight of \(meal.weight) gramms.")
     }
     
     func paginationRequest(for text: String) {

@@ -40,6 +40,7 @@ final class MainNutritionVIewController: DTBackgroundedViewController {
     
     // MARK: - Private methods
     private func setup() {
+        tableView.contentInset.bottom = 32
         tableView.register(UINib(nibName: NutritionMainCell.xibName, bundle: nil),
                            forCellReuseIdentifier: NutritionMainCell.cellID)
         tableView.register(UINib(nibName: NutritionSearchingCell.xibName, bundle: nil),

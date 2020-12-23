@@ -1,8 +1,10 @@
 import UIKit
 
 protocol SearchFoodView: AnyObject {
-    func foodListWasUpdated()
-    func errorWasUpdated(with massage: String)
+    func showErrorLabel(with massage: String)
+    func showInfoAlert(with title: String, and sescription: String)
+    func reloadTable()
+    func loadMoreItems()
 }
 
 final class SearchFoodViewController: UIViewController, Loadable {
@@ -106,19 +108,29 @@ extension SearchFoodViewController: UITableViewDelegate {
 // MARK: - SearchFoodView
 extension SearchFoodViewController: SearchFoodView {
     
-    func errorWasUpdated(with massage: String) {
-        hideLoader()
-        errorLabel.isHidden = false
-        tableView.isHidden = true
-        errorLabel.text = massage
+    func reloadTable() {
+        refreshSpinner.stopAnimating()
+        errorLabel.isHidden = true
+        tableView.isHidden = false
+        tableView.reloadSections([0], with: .fade)
     }
     
-    func foodListWasUpdated() {
-        hideLoader()
+    func loadMoreItems() {
         refreshSpinner.stopAnimating()
         errorLabel.isHidden = true
         tableView.isHidden = false
         tableView.reloadData()
+    }
+    
+    func showInfoAlert(with title: String, and sescription: String) {
+        InfoAlert.view()?.show(with: title, and: sescription)
+    }
+    
+    func showErrorLabel(with massage: String) {
+        refreshSpinner.stopAnimating()
+        errorLabel.isHidden = false
+        tableView.isHidden = true
+        errorLabel.text = massage
     }
 }
 
@@ -127,7 +139,7 @@ extension SearchFoodViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchingText = searchBar.text, !searchingText.isBlank() else { return }
-        showLoader()
+        refreshSpinner.startAnimating()
         viewModel.requestFood(for: searchingText)
         searchBar.resignFirstResponder()
     }

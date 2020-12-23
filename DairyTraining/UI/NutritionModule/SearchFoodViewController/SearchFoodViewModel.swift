@@ -11,6 +11,7 @@ protocol SearchFoodViewModellInput: AnyObject {
     func foodListWasUpdated(to foodList: [Food])
     func foodListWasUpdatedAfterPagination(to foodList: [Food])
     func updateError(with message: String)
+    func mealWasAdedToDaily(with description: String)
 }
 
 final class SearchFoodViewModel {
@@ -21,11 +22,7 @@ final class SearchFoodViewModel {
     // MARK: - Private Properties
     private var model: SearchFoodModelProtocol
     private var searchingText: String?
-    private var _foodList: [Food] = [] {
-        didSet {
-            view?.foodListWasUpdated()
-        }
-    }
+    private var _foodList: [Food] = []
     
     // MARK: - Initialization
     init(model: SearchFoodModelProtocol) {
@@ -62,15 +59,21 @@ extension SearchFoodViewModel: SearchFoodViewModelProtocol {
 // MARK: - NutritionViewModelInput
 extension SearchFoodViewModel: SearchFoodViewModellInput {
     
+    func mealWasAdedToDaily(with description: String) {
+        view?.showInfoAlert(with: "Meal aded", and: description)
+    }
+
     func foodListWasUpdatedAfterPagination(to foodList: [Food]) {
         self._foodList += foodList
+        view?.loadMoreItems()
     }
     
     func updateError(with message: String) {
-        view?.errorWasUpdated(with: message)
+        view?.showErrorLabel(with: message)
     }
     
     func foodListWasUpdated(to foodList: [Food]) {
         self._foodList = foodList
+        view?.reloadTable()
     }
 }
