@@ -17,9 +17,10 @@ final class USDAManager {
     
     // MARK: - Error types
     enum NetWorkError: String, Error {
-        case parseError = "Parse error"
-        case noResponse = "No data"
+        case parseError = "Parse error" //Debug error type
+        case noResponse = "Sorry, we could not find what you are looking for."
         case noInternetConnection = "Please, check your interntet connection."
+        case unknownError = "Something went wrong."
         
         var message: String {
             return self.rawValue
@@ -43,26 +44,31 @@ final class USDAManager {
         AF.request(baseURL, parameters: parameters).responseJSON { [weak self] (response) in
             guard let self = self else { return }
             
-            guard self.isConnectedToInternet else {
-                completion(.failure(.noInternetConnection))
-                return
+            do {
+                let responseModel = try self.excludeErrors(for: response)
+                completion(.success(responseModel))
+            } catch {
+                guard let error = error as? NetWorkError else { completion(.failure(.unknownError)); return }
+                completion(.failure(error))
             }
-            
-            guard let data = response.data else {
-                completion(.failure(.noResponse))
-                return
-            }
-            
-            guard let responseModel = try? JSONDecoder().decode(FoodResponseModel.self, from: data) else {
-                completion(.failure(.parseError))
-                return
-            }
-            
-            completion(.success(responseModel))
         }
     }
     
     // MARK: - Private helpers methods
+    private func excludeErrors(for response: AFDataResponse<Any>) throws -> FoodResponseModel {
+        guard self.isConnectedToInternet else { throw NetWorkError.noInternetConnection }
+        
+        guard let data = response.data else { throw NetWorkError.noResponse }
+        
+        guard let responseModel = try? JSONDecoder().decode(FoodResponseModel.self, from: data) else {
+            throw NetWorkError.parseError
+        }
+        
+        guard !responseModel.foods.isEmpty else { throw NetWorkError.noResponse }
+        
+        return responseModel
+    }
+    
     private func convertSearchingText(text: String) -> String {
         return text.replacingOccurrences(of: " ", with: "%20")
     }
