@@ -11,8 +11,7 @@ final class ProfileMenuCoordinator: Coordinator {
     // MARK: - Types
     enum Target: CoordinatorTarget {
         case sideMenu
-        case recomendation
-        case statisticsModule
+        //case statisticsModule
         case statisticsByTraining
         case statisticForChoosenTraining(statistics: Statistics)
         case setting
@@ -41,15 +40,10 @@ final class ProfileMenuCoordinator: Coordinator {
             let sideMenu = self.configurateSideMenu()
             self.sideMenu = sideMenu
             topViewController?.present(sideMenu, animated: true, completion: nil)
-        case .recomendation:
-            let recomendationViewController = configureRecomendationViewController()
-            navigationController?.pushViewController(recomendationViewController, animated: true)
-            sideMenu?.dismiss(animated: true, completion: nil)
         case .statisticsByTraining:
             let trainingListStatistics = configureTrainingListStatistics()
             navigationController?.pushViewController(trainingListStatistics, animated: true)
-         //   sideMenu?.dismiss(animated: true, completion: nil)
-            break
+            sideMenu?.dismiss(animated: true, completion: nil)
         case .setting:
             let settingViewController = SettingsSectionViewController(with: LocalizedString.setting)
             navigationController?.pushViewController(settingViewController, animated: true)
@@ -61,10 +55,10 @@ final class ProfileMenuCoordinator: Coordinator {
                                                okTitle: LocalizedString.ok,
                                                cancelTitle: LocalizedString.cancel,
                                                completion: completion)
-        case .statisticsModule:
-            let mainStatisticsViewController = configureStatisticsModuleScreen()
-            navigationController?.pushViewController(mainStatisticsViewController, animated: true)
-            sideMenu?.dismiss(animated: true, completion: nil)
+//        case .statisticsModule:
+//            let mainStatisticsViewController = configureStatisticsModuleScreen()
+//            navigationController?.pushViewController(mainStatisticsViewController, animated: true)
+//            sideMenu?.dismiss(animated: true, completion: nil)
         case .statisticForChoosenTraining(statistics: let statistics):
             let choosenStatisticsViewController = configureTVSModule(for: statistics)
             navigationController?.pushViewController(choosenStatisticsViewController, animated: true)
@@ -88,17 +82,7 @@ final class ProfileMenuCoordinator: Coordinator {
         menu.view.backgroundColor = .red
         return menu
     }
-    
-    private func configureRecomendationViewController() -> RecomendationsViewController {
-        let recomendationVC = RecomendationsViewController()
-        let recomendationViewModel = RecomendationViewModel()
-        let recomendationModel = RecomendationModel()
-        recomendationVC.viewModel = recomendationViewModel
-        recomendationViewModel.model = recomendationModel
-        recomendationModel.ouptup = recomendationViewModel
-        return recomendationVC
-    }
-    
+
     private func configureTrainingListStatistics() -> TrainingListStatisticViewController {
         let trainingListStatisticsModel = TrainingListStatisticsModel()
         let trainingListStatisticsViewModel = TrainingListStatisticsViewModel(model: trainingListStatisticsModel)
@@ -106,11 +90,11 @@ final class ProfileMenuCoordinator: Coordinator {
         return trainingListStatisticsVC
     }
     
-    private func configureStatisticsModuleScreen() -> MainStatisticsViewController {
-        let mainStatisticsViewModel = MainStatisticViewModel()
-        let mainStatisticsViewController = MainStatisticsViewController(viewModel: mainStatisticsViewModel)
-        return mainStatisticsViewController
-    }
+//    private func configureStatisticsModuleScreen() -> MainStatisticsViewController {
+//        let mainStatisticsViewModel = MainStatisticViewModel()
+//        let mainStatisticsViewController = MainStatisticsViewController(viewModel: mainStatisticsViewModel)
+//        return mainStatisticsViewController
+//    }
     
     func configureTVSModule(for train: Statistics) -> ChoosenTrainingStatisticsViewController {
         let choosenStatisticsViewModel = ChoosenTrainingStatisticsViewModel(statistics: train)

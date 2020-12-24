@@ -123,13 +123,6 @@ final class MainCoordinator: Coordinator {
     private(set) lazy var trainingBlockNavigationController: UINavigationController = TabBarItemController.trainingBlock.navigationController
     private(set) lazy var nutritionBlockNavigationController: UINavigationController = TabBarItemController.supplyBlock.navigationController
     
-    // MARK: - Init
-
-    private init() {
-//        self.profileNavigationController = TabBarItemController.profile.navigationController
-//        self.trainingBlockNavigationController = TabBarItemController.trainingBlock.navigationController
-//        self.nutritionBlockNavigationController = TabBarItemController.supplyBlock.navigationController
-    }
 
     // MARK: - Coordinator API
 
@@ -159,10 +152,6 @@ final class MainCoordinator: Coordinator {
         }
         return true
     }
-    
-//    func setTabBarHidden(_ isHiden: Bool, duration: TimeInterval) {
-//        rootTabBarController?.tabBar.hide(isHiden, animated: true, duration: duration)
-//    }
     
     @discardableResult func coordinateChild(to target: CoordinatorTarget) -> Bool {
           for coordinator in childCoordinators {

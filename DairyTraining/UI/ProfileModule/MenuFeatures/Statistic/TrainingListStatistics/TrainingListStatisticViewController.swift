@@ -19,7 +19,7 @@ final class TrainingListStatisticViewController: BaseViewController {
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        extendedLayoutIncludesOpaqueBars = true
+        hideTabBar()
     }
     
     override func viewDidLoad() {

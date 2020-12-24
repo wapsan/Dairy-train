@@ -1,7 +1,6 @@
 import UIKit
 
 enum SideMenuItem: CaseIterable {
-    case supplyRecomendation
     case statistics
     case premium
     case setting
@@ -10,8 +9,6 @@ enum SideMenuItem: CaseIterable {
     
     var image: UIImage? {
         switch self {
-        case .supplyRecomendation:
-            return nil
         case .statistics:
             return nil
         case .setting:
@@ -27,8 +24,6 @@ enum SideMenuItem: CaseIterable {
     
     var title: String {
         switch self {
-        case .supplyRecomendation:
-            return LocalizedString.recomendations
         case .statistics:
             return LocalizedString.statistics
         case .setting:
