@@ -186,6 +186,7 @@
 		7A4452DD258A1C0300A808D1 /* NutritionSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A4452DB258A1C0200A808D1 /* NutritionSettingViewController.xib */; };
 		7A4452E7258A205900A808D1 /* NutritionSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4452E6258A205900A808D1 /* NutritionSettingViewModel.swift */; };
 		7A4452EA258A210100A808D1 /* NutritionSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4452E9258A210100A808D1 /* NutritionSettingModel.swift */; };
+		7A6673AB25949D500086E238 /* NutritionDataCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6673AA25949D500086E238 /* NutritionDataCodableModel.swift */; };
 		7A69DB7125836C17003EECD8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A69DB7025836C17003EECD8 /* Colors.xcassets */; };
 		7A69DB7525836D87003EECD8 /* TimerControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69DB7425836D87003EECD8 /* TimerControllView.swift */; };
 		7A69DB7A258374BF003EECD8 /* SelectionTimeRangeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69DB79258374BF003EECD8 /* SelectionTimeRangeModel.swift */; };
@@ -406,6 +407,7 @@
 		7A4452DB258A1C0200A808D1 /* NutritionSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionSettingViewController.xib; sourceTree = "<group>"; };
 		7A4452E6258A205900A808D1 /* NutritionSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionSettingViewModel.swift; sourceTree = "<group>"; };
 		7A4452E9258A210100A808D1 /* NutritionSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionSettingModel.swift; sourceTree = "<group>"; };
+		7A6673AA25949D500086E238 /* NutritionDataCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionDataCodableModel.swift; sourceTree = "<group>"; };
 		7A69DB7025836C17003EECD8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		7A69DB7425836D87003EECD8 /* TimerControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControllView.swift; sourceTree = "<group>"; };
 		7A69DB79258374BF003EECD8 /* SelectionTimeRangeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTimeRangeModel.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 				13A9E7C12494E22200DEDCBE /* UserMainInfoCodableModel.swift */,
 				7A7D288025753BEA00FDD212 /* TrainingPaternCodableModel.swift */,
 				135F16792576B4DA0065B9FA /* FrebaseServerModel.swift */,
+				7A6673AA25949D500086E238 /* NutritionDataCodableModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1808,6 +1811,7 @@
 				7A2A75592588B81D0091FD22 /* NutritionMainCell.swift in Sources */,
 				132FC7B924B79DCD00A70F7E /* DTEdgeInsets.swift in Sources */,
 				7AC19091259361C400D855E6 /* TranslatorManager.swift in Sources */,
+				7A6673AB25949D500086E238 /* NutritionDataCodableModel.swift in Sources */,
 				134DF5B524B4E50D007A7B8A /* ColorSetting.swift in Sources */,
 				13B3C2EB255318D3000D4FA2 /* SideMenuViewModel.swift in Sources */,
 				1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */,

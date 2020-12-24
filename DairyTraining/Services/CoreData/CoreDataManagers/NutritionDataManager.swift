@@ -68,11 +68,65 @@ final class NutritionDataManager {
         return todayNutritionData
     }
     
+    var allNutritionData: [NutritionDataMO] {
+        let fetchRequest: NSFetchRequest<NutritionDataMO> = NutritionDataMO.fetchRequest()
+        do {
+            return try context.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+    }
+    
     var customNutritionMode: CustomNutritionModeMO {
         guard let customnutritionMode = fetchCustomNutritionMode() else {
             return createCustomNutritionMode()
         }
         return customnutritionMode
+    }
+    
+    func updateCustomNutritionMode(from mode: CustomNutritionCodableModel?) {
+        guard let mode = mode else { return }
+        let newMode = CustomNutritionModeMO(context: context)
+        newMode.calories = mode.calories
+        newMode.proteins = mode.proteins
+        newMode.carbohydrates = mode.carbohydrates
+        newMode.fats = mode.fats
+        updateContext()
+    }
+    
+    func convertMeal(from codableMeal: MealCodableModel, and nutritionData: NutritionDataMO) {
+        let newMeal = MealMO(context: context)
+        newMeal.calories = codableMeal.calories
+        newMeal.proteins = codableMeal.proteins
+        newMeal.fats = codableMeal.fats
+        newMeal.weight = codableMeal.weigght
+        newMeal.hour = codableMeal.hour
+        newMeal.name = codableMeal.name
+        newMeal.nutritionData = nutritionData
+        newMeal.carbohydrates = codableMeal.carbohydrates
+        newMeal.date = codableMeal.date
+    }
+    
+    func updateHistoryNutritionData(from data: [DayNutritionCodableModel]) {
+        data.forEach({ day in
+            let newDay = NutritionDataMO(context: context)
+            newDay.date = day.date
+            newDay.formatedDate = day.formattedDate
+            for meal in day.meals {
+                let newMeal = MealMO(context: context)
+                newMeal.calories = meal.calories
+                newMeal.proteins = meal.proteins
+                newMeal.fats = meal.fats
+                newMeal.weight = meal.weigght
+                newMeal.hour = meal.hour
+                newMeal.name = meal.name
+                newMeal.nutritionData = newDay
+                newMeal.carbohydrates = meal.carbohydrates
+                newMeal.date = meal.date
+                newDay.addToMeals(newMeal)
+            }
+        })
+        updateContext()
     }
     
     private func convertToManagedObject(from meal: MealModel) -> MealMO {
@@ -170,6 +224,12 @@ final class NutritionDataManager {
             mealModel.append(convertToMealModel(from: $0))
         })
         return mealModel
+    }
+    
+    func removeNutritionData() {
+        allNutritionData.forEach({ context.delete($0) })
+        context.delete(customNutritionMode)
+        updateContext()
     }
     
     func updateCustomCalories(to calories: Int) {

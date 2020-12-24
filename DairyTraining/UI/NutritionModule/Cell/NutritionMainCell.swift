@@ -62,7 +62,7 @@ final class NutritionMainCell: UITableViewCell {
         proteinProgressLabel.setUpdateBlock { (value, label) in
             label.text = String(format: "%.0f%%", value)
         }
-        if nutritionData.proteins == 0 {
+        if nutritionData.proteins == 0 || recomendation.proteins == 0  {
             proteinProgressLabel.countFrom(0, to: 0, withDuration: 1)
         } else {
             proteinProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.proteins / recomendation.proteins * 100)), withDuration: 1)
@@ -71,7 +71,7 @@ final class NutritionMainCell: UITableViewCell {
         carbohydratesProgressLabel.setUpdateBlock { (value, label) in
             label.text = String(format: "%.0f%%", value)
         }
-        if nutritionData.carbohydrates == 0 {
+        if nutritionData.carbohydrates == 0 || recomendation.proteins == 0 {
             carbohydratesProgressLabel.countFrom(0, to: 0, withDuration: 1)
         } else {
             carbohydratesProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.carbohydrates / recomendation.carbohydtrates * 100)), withDuration: 1)
@@ -80,7 +80,7 @@ final class NutritionMainCell: UITableViewCell {
         fatsProgressLabel.setUpdateBlock { (value, label) in
             label.text = String(format: "%.0f%%", value)
         }
-        if nutritionData.fats == 0 {
+        if nutritionData.fats == 0 || recomendation.proteins == 0 {
             fatsProgressLabel.countFrom(0, to: 0, withDuration: 1)
         } else {
             fatsProgressLabel.countFrom(0, to: CGFloat( Int(nutritionData.fats / recomendation.fats * 100)), withDuration: 1)

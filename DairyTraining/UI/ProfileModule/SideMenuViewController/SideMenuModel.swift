@@ -11,9 +11,11 @@ final class SideMenuModel {
         do {
             try Auth.auth().signOut()
             SettingManager.shared.deleteUserToken()
+            NutritionDataManager.shared.removeNutritionData()
             UserDataManager.shared.removeAllUserData { [weak self] in
                 self?.succesLogOut?()
             }
+            
         } catch let signOutError {
             self.errorLogOut?(signOutError)
         }

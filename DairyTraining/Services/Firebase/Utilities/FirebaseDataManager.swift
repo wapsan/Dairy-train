@@ -16,6 +16,9 @@ final class FirebaseDataManager {
     private lazy var userTraininigPaternsInfoKey = "user_trainin_paterns"
     private lazy var userKeyPath = "users"
     private lazy var updateDateKeyPatth = "last_update"
+    private lazy var nutritionDataInfoKey = "user_nutrition_data"
+    private lazy var customNutritionModeDataInfoKey = "custom_nutrition_mode"
+    private lazy var historyNutritionData = "history_nutrition_data"
     
     private lazy var dispatchGroup = DispatchGroup()
     
@@ -40,13 +43,17 @@ final class FirebaseDataManager {
     
     func synhronizeDataToServer(completion: @escaping () -> Void) {
         dispatchGroup.enter()
-        self.synhronizeMainUserInfoToServer()
+        synhronizeMainUserInfoToServer()
         dispatchGroup.enter()
-        self.synhronizeTrainingUserInfoToServer()
+        synhronizeTrainingUserInfoToServer()
         dispatchGroup.enter()
-        self.upDateDateOfLastUpdate()
+        upDateDateOfLastUpdate()
         dispatchGroup.enter()
-        self.sunhronizeTrainingPaternsToServer()
+        sunhronizeTrainingPaternsToServer()
+        dispatchGroup.enter()
+        synhronizeNutritionDataToServer()
+        dispatchGroup.enter()
+        synchronizeCustomnutritionToServer()
         dispatchGroup.notify(queue: .main, execute: completion)
     }
     
@@ -56,6 +63,8 @@ final class FirebaseDataManager {
         var trainingPaterns: [TrainingPaternCodableModel] = []
         var mainInfo: UserMainInfoCodableModel?
         var dateOfUpdate: String?
+        var customnutritionData: CustomNutritionCodableModel?
+        var daynutritonData: [DayNutritionCodableModel] = []
         self.firebaseRef
             .child(self.userKeyPath)
             .child(userUid)
@@ -86,10 +95,27 @@ final class FirebaseDataManager {
                         }
                     }
                 }
+                if let nutritionData = dictionaryValue[self.nutritionDataInfoKey] as? [String: Any] {
+                    if let dict = nutritionData[self.customNutritionModeDataInfoKey] as? [String: Any] {
+                        customnutritionData = CustomNutritionCodableModel(from: dict)
+                    }
+                    if let dict = nutritionData[self.historyNutritionData] as? [String: String] {
+                        for elemnt in dict {
+                            if let data = elemnt.value.data(using: .utf8),
+                               let nutritionData = try? JSONDecoder().decode(DayNutritionCodableModel.self, from: data) {
+                                daynutritonData.append(nutritionData)
+                            }
+                        }
+                    }
+                }
+                
+                
                 let fireBaseServerModel = FrebaseServerModel(dateOfUpdate: dateOfUpdate,
                                                              userMainInfoModel: mainInfo,
                                                              trainingLis: traingArray,
-                                                             trainingPaternList: trainingPaterns)
+                                                             trainingPaternList: trainingPaterns,
+                                                             customNutritonData: customnutritionData,
+                                                             dayNutritionCodableModel: daynutritonData)
                 completion(.success(fireBaseServerModel))
             }
     }
@@ -140,6 +166,40 @@ final class FirebaseDataManager {
             .child(userUID)
             .child(userTraininigPaternsInfoKey)
             .setValue(parameters) { [weak self] (error, data) in
+                self?.dispatchGroup.leave()
+            }
+    }
+    
+    private func synhronizeNutritionDataToServer() {
+        guard let userUID = Auth.auth().currentUser?.uid else { return }
+        let localNutritionData = NutritionDataManager.shared.allNutritionData
+        var parameteres: [String: String] = [:]
+        localNutritionData.enumerated().forEach({
+            let historyData = DayNutritionCodableModel(from: $1)
+            guard let paternJSON = historyData.mapToJSON() else { return }
+            parameteres["day_\($0 + 1)"] = paternJSON
+        })
+        firebaseRef
+            .child(userKeyPath)
+            .child(userUID)
+            .child(nutritionDataInfoKey)
+            .child(historyNutritionData)
+            .setValue(parameteres) { [weak self] (error, data) in
+                self?.dispatchGroup.leave()
+            }
+    }
+    
+    private func synchronizeCustomnutritionToServer() {
+        guard let userUID = Auth.auth().currentUser?.uid else { return }
+        let localNutritionData = NutritionDataManager.shared.customNutritionMode
+        let a = CustomNutritionCodableModel(from: localNutritionData)
+        let parameteres: [String: Any] = a.toDictionary()
+        firebaseRef
+            .child(userKeyPath)
+            .child(userUID)
+            .child(nutritionDataInfoKey)
+            .child(customNutritionModeDataInfoKey)
+            .setValue(parameteres) { [weak self] (error, data) in
                 self?.dispatchGroup.leave()
             }
     }

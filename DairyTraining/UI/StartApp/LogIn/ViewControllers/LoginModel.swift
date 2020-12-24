@@ -65,6 +65,8 @@ final class LoginModel {
                 self.coreDataManager.updateDateOfLastUpdateTo(dataModel.dateOfUpdate)
                 TrainingDataManager.shared.updateUserTrainInfoFrom(dataModel.trainingList)
                 TrainingDataManager.shared.updateTrainingPaternList(to: dataModel.trainingPaternList)
+                NutritionDataManager.shared.updateHistoryNutritionData(from: dataModel.dayNutritionCodableModel)
+                NutritionDataManager.shared.updateCustomNutritionMode(from: dataModel.customnutritionMode)
                 self.output?.succesSignIn()
             case .failure(_):
                 break

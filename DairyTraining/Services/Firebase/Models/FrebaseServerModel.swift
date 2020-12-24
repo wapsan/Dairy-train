@@ -4,14 +4,20 @@ struct FrebaseServerModel: Encodable {
     let userMainInfo: UserMainInfoCodableModel?
     let trainingList: [TrainingCodableModel]
     let trainingPaternList: [TrainingPaternCodableModel]
+    let customnutritionMode: CustomNutritionCodableModel?
+    let dayNutritionCodableModel: [DayNutritionCodableModel]
     
     init(dateOfUpdate: String?,
          userMainInfoModel: UserMainInfoCodableModel?,
          trainingLis: [TrainingCodableModel],
-         trainingPaternList: [TrainingPaternCodableModel]) {
+         trainingPaternList: [TrainingPaternCodableModel],
+         customNutritonData: CustomNutritionCodableModel?,
+         dayNutritionCodableModel: [DayNutritionCodableModel]) {
         self.dateOfUpdate = dateOfUpdate
         self.userMainInfo = userMainInfoModel
         self.trainingList = trainingLis
         self.trainingPaternList = trainingPaternList
+        self.customnutritionMode = customNutritonData
+        self.dayNutritionCodableModel = dayNutritionCodableModel
     }
 }

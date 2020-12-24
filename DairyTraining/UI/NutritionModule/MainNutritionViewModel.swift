@@ -81,6 +81,7 @@ final class NutritionViewModel {
     // MARK: - Private Properties
     private let model: NutritionModelProtocol
     private var _nutritionRecomendation: NutritionRecomendation?
+    
     // MARK: - Initialization
     init(model: NutritionModelProtocol) {
         self.model = model
