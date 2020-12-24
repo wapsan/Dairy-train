@@ -13,7 +13,6 @@ final class TrainingModuleCoordinator: Coordinator {
         case choosenTrainingPatern(patern: TrainingPaternManagedObject)
         case muscularGrops(target: TrainingEntityTarget)
         case statisticsForChosenExercise(name: String, exerciseDate: Date?)
-        case timerViewController(delegate: TimerDelegate)
     }
     
     // MARK: - Properties
@@ -48,23 +47,16 @@ final class TrainingModuleCoordinator: Coordinator {
         case .statisticsForChosenExercise(name: let name, exerciseDate: let exerciseDate):
             let choosenExerciseForStatisticViewController = configureStatisticsViewController(with: name, and: exerciseDate)
             topViewController?.present(choosenExerciseForStatisticViewController, animated: true, completion: nil)
-        case .timerViewController(let delegate):
-            let timeViewPresenter = TimerViewPresenter(timerDeleggate: delegate)
-            let timerViewController = TimerViewController(presenter: timeViewPresenter)
-            timeViewPresenter.view = timerViewController
-            topViewController?.present(timerViewController, animated: true, completion: nil)
         }
         return true
     }
 
     // MARK: - Configuration methods
     private func configureTrainingViewController(for train: TrainingManagedObject) -> TrainingViewController {
-        let trainingViewController = TrainingViewController()
-        let trainingViewModel = TrainingViewModel()
         let trainingModel = TrainingModel(with: train)
-        trainingViewController.viewModel = trainingViewModel
+        let trainingViewModel = TrainingViewModel(model: trainingModel)
+        let trainingViewController = TrainingViewController(viewModel: trainingViewModel)
         trainingViewModel.view = trainingViewController
-        trainingViewModel.model = trainingModel
         trainingModel.output = trainingViewModel
         return trainingViewController
     }

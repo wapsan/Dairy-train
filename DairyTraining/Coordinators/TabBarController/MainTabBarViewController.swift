@@ -41,7 +41,7 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
 class TabBarTransitionAnimation: NSObject, UIViewControllerAnimatedTransitioning {
     
     let viewControllers: [UIViewController]?
-    let transitionDuration: Double = 0.25
+    let transitionDuration: Double = 0.2
     
     init(viewControllers: [UIViewController]?) {
         self.viewControllers = viewControllers
@@ -73,13 +73,13 @@ class TabBarTransitionAnimation: NSObject, UIViewControllerAnimatedTransitioning
         
         DispatchQueue.main.async {
             transitionContext.containerView.addSubview(toView)
-            UIView.animate(withDuration: self.transitionDuration, animations: {
+            UIView.animate(withDuration: self.transitionDuration, delay: 0, options: .curveEaseInOut) {
                 fromView.frame = fromFrameEnd
                 toView.frame = frame
-            }, completion: {success in
+            } completion: { (success) in
                 fromView.removeFromSuperview()
                 transitionContext.completeTransition(success)
-            })
+            }
         }
     }
     

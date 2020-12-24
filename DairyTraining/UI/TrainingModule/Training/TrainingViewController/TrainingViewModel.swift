@@ -4,6 +4,7 @@ protocol TrainingViewModeProtocol: AnyObject {
     var trainingDate: String? { get }
     var exerciseCount: Int { get }
     var exerciseList: [ExerciseManagedObject] { get }
+    var isTrainingEditable: Bool { get }
     
     func loadTrain()
     func tryDeleteExercice(at index: Int)
@@ -14,28 +15,31 @@ protocol TrainingViewModeProtocol: AnyObject {
     func exerciseDone(at index: Int)
     func doneExercise()
     func isExerciseEditable(at index: Int) -> Bool
-    func timerButtonWasPressed()
-}
-
-protocol TimerDelegate: AnyObject {
-    func timerFinished()
+    func footerButtonPressed()
 }
 
 final class TrainingViewModel {
     
-    var model: TrainingModelIteracting?
+    // MARK: - Module Properties
+    private var model: TrainingModelIteracting
     weak var view: TrainingView?
     
+    // MARK: - Properties
     private var exerciseDoneIndex: Int?
     private var _exerciceList: [ExerciseManagedObject] = []
     private var _trainingDate: String?
+    
+    // MARK: - Initialization
+    init(model: TrainingModelIteracting) {
+        self.model = model
+    }
 }
 
 //MARK: - TrainingModelOutput
 extension TrainingViewModel: TrainingModelOutput {
     
     func exerciseWasMarkedDone(at index: Int) {
-        view?.exerciseMarkAsDone(at: index)
+        view?.reloadCell(at: index)
     }
     
     func trainingIsEmpty() {
@@ -43,13 +47,11 @@ extension TrainingViewModel: TrainingModelOutput {
     }
     
     func trainingWasChange() {
-        self.view?.trainingWasChanged()
+        self.view?.reloadTable()
     }
     
-    
     func aproachWillChange(in exerciseIndex: Int, with weight: Float, and reps: Int, at aproachIndex: Int) {
-    self.view?.showChangeAproachAlert(in: exerciseIndex, with: weight, reps: reps, at: aproachIndex)
-
+        self.view?.showChangeAproachAlert(in: exerciseIndex, with: weight, reps: reps, at: aproachIndex)
     }
     
     func aproachWasChanged(in exerciseIndex: Int, at aproachIndex: Int, weight: Float, reps: Int, in exerciseList: [ExerciseManagedObject]) {
@@ -82,7 +84,7 @@ extension TrainingViewModel: TrainingModelOutput {
     }
     
     func exerciceWasDeleted(at index: Int) {
-        view?.exerciseWasDeleted(at: index)
+        view?.deleteCell(at: index)
     }
   
     func setTrainingDate(for training: TrainingManagedObject) {
@@ -93,8 +95,12 @@ extension TrainingViewModel: TrainingModelOutput {
 //MARK: - TrainingViewModeIteracting
 extension TrainingViewModel: TrainingViewModeProtocol {
     
-    func timerButtonWasPressed() {
-        MainCoordinator.shared.coordinateChild(to: TrainingModuleCoordinator.Target.timerViewController(delegate: self))
+    var isTrainingEditable: Bool {
+        return model.isTrainingEditable
+    }
+    
+    func footerButtonPressed() {
+        model.coordinateToMuscularGroupsScreen()
     }
     
     func isExerciseEditable(at index: Int) -> Bool {
@@ -115,7 +121,7 @@ extension TrainingViewModel: TrainingViewModeProtocol {
     
     func doneExercise() {
         guard let exerciseIndexToMark = self.exerciseDoneIndex else { return }
-        model?.exerciseDone(at: exerciseIndexToMark)
+        model.exerciseDone(at: exerciseIndexToMark)
     }
     
     
@@ -131,23 +137,23 @@ extension TrainingViewModel: TrainingViewModeProtocol {
     }
     
     func aproachWillChanged(in exerciceIndex: Int, and aproachIndex: Int) {
-        self.model?.getAproachInfo(in: exerciceIndex, and: aproachIndex)
+        self.model.getAproachInfo(in: exerciceIndex, and: aproachIndex)
     }
     
     func removeLatsAproach(at exericeIndex: Int) {
-        self.model?.removeLatsAproach(at: exericeIndex)
+        self.model.removeLatsAproach(at: exericeIndex)
     }
 
     func deleteExercice(at index: Int) {
-        self.model?.deleteExercice(at: index)
+        self.model.deleteExercice(at: index)
     }
 
     func tryDeleteExercice(at index: Int) {
-        self.model?.getNameForExercice(at: index)
+        self.model.getNameForExercice(at: index)
     }
     
     func loadTrain() {
-        self.model?.loadTraininig()
+        self.model.loadTraininig()
     }
 }
  
@@ -159,25 +165,17 @@ extension TrainingViewModel: NewAproachAlertDelegate {
                                      and exerciseIndex: Int,
                                      with weight: Float,
                                      and reps: Int) {
-        self.model?.changeAproach(in: exerciseIndex, at: aproachIndex, weight: weight, reps: reps)
+        self.model.changeAproach(in: exerciseIndex, at: aproachIndex, weight: weight, reps: reps)
     }
     
     func newAproachAlertOkPressed(newAproachAlert: DTNewAproachAlert,
                                   with weight: Float,
                                   and reps: Int,
                                   and exerciceIndex: Int) {
-        self.model?.addAproach(with: weight, and: reps, to: exerciceIndex)
+        self.model.addAproach(with: weight, and: reps, to: exerciceIndex)
     }
     
     func newAproachAlertCancelPressed(newAproachAlert: DTNewAproachAlert) {
         self.view?.hideAproachAlert()
-    }
-}
-
-
-extension TrainingViewModel: TimerDelegate {
-    
-    func timerFinished() {
-        view?.showTimerFinishedAlert()
     }
 }

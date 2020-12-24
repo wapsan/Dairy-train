@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrainingViewController" customModule="Dairy_Training" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="Trz-aA-nk2" id="7SV-cR-bcg"/>
-                <outlet property="timerButton" destination="SZY-Dy-Ok6" id="82m-GP-fz4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,34 +28,19 @@
                         <outlet property="delegate" destination="-1" id="QEB-Vh-Vmc"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZY-Dy-Ok6">
-                    <rect key="frame" x="172" y="742" width="70" height="70"/>
-                    <color key="backgroundColor" red="0.29803921570000003" green="0.54901960780000003" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="70" id="73j-jm-5rR"/>
-                        <constraint firstAttribute="height" constant="70" id="PxB-Vb-a7h"/>
-                    </constraints>
-                    <state key="normal" image="timer_button_image"/>
-                    <connections>
-                        <action selector="timerButtonAction:" destination="-1" eventType="touchUpInside" id="XfI-yG-W5V"/>
-                    </connections>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Trz-aA-nk2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="W3s-zJ-lYM"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SZY-Dy-Ok6" secondAttribute="bottom" constant="50" id="WsM-w5-fXH"/>
-                <constraint firstItem="SZY-Dy-Ok6" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="a7o-QG-ONj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Trz-aA-nk2" secondAttribute="trailing" id="arh-Ka-IxK"/>
                 <constraint firstItem="Trz-aA-nk2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="iCi-1B-UGc"/>
                 <constraint firstAttribute="bottom" secondItem="Trz-aA-nk2" secondAttribute="bottom" id="lb1-4v-Nfb"/>
             </constraints>
-            <point key="canvasLocation" x="-609" y="27"/>
+            <point key="canvasLocation" x="-9" y="108"/>
         </view>
     </objects>
     <resources>
-        <image name="timer_button_image" width="80" height="80"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

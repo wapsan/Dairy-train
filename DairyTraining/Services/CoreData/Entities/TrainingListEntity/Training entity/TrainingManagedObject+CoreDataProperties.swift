@@ -32,6 +32,12 @@ extension TrainingManagedObject {
 //MARK: - Custom properties
 extension TrainingManagedObject {
     
+    var isEditable: Bool {
+        let todayDate = DateHelper.shared.getFormatedDateFrom(Date(), with: .chekingCurrentDayDateFormat)
+        let trainingDay = DateHelper.shared.getFormatedDateFrom(date, with: .chekingCurrentDayDateFormat)
+        return todayDate == trainingDay
+    }
+    
     var exercicesArray: [ExerciseManagedObject] {
         let exerciseSet = self.exercises as? Set<ExerciseManagedObject> ?? []
         return exerciseSet.sorted(by: { $0.id < $1.id })
