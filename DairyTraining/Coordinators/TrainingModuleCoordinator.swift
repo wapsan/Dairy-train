@@ -73,8 +73,8 @@ final class TrainingModuleCoordinator: Coordinator {
         let trainingPaternModel = TrainingPaterModel()
         let trainingPaternViewModel = TrainingPaternViewModel(model: trainingPaternModel)
         let trainingPaternsViewController = TrainingPaternsViewController(viewModel: trainingPaternViewModel)
-        let trainingPaternRouter = TrainingPaternRouter(trainingPaternsViewController)
-        trainingPaternViewModel.router = trainingPaternRouter
+        trainingPaternViewModel.view = trainingPaternsViewController
+        trainingPaternModel.output = trainingPaternViewModel
         return trainingPaternsViewController
     }
     
@@ -87,6 +87,8 @@ final class TrainingModuleCoordinator: Coordinator {
         let choosenPaternModel = ChoosenPaternModel(patern: choosenPatern)
         let choosenPaternViewModel = ChoosenPaternViewModel(model: choosenPaternModel)
         let choosenPaternViewController = ChoosenPaternViewController(viewModel: choosenPaternViewModel)
+        choosenPaternViewModel.view = choosenPaternViewController
+        choosenPaternModel.output = choosenPaternViewModel
         return choosenPaternViewController
     }
     

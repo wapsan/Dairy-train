@@ -1,7 +1,9 @@
 import UIKit
-import RxCocoa
-import RxSwift
-import SideMenu
+
+protocol ChoosenPaternView: AnyObject {
+    func reloadTable()
+    func changePaternName(to name: String)
+}
 
 final class ChoosenPaternViewController: DTBackgroundedViewController {
     
@@ -9,21 +11,24 @@ final class ChoosenPaternViewController: DTBackgroundedViewController {
     @IBOutlet private var tableView: UITableView!
     
     //MARK: - Private properties
-    private var viewModel: ChoosenPaternViewModel
+    private var viewModel: ChoosenPaternViewModelProtocol
     private var namingAlert = PaternNamingAlert.view()
     private let tableHeaderView = TrainingPaternHeaderView.view()
-    private var disposeBag = DisposeBag()
     private var firstOpen = true
     
     //MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideTabBar()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        setupRX()
     }
     
     //MARK: - Initialization
-    init(viewModel: ChoosenPaternViewModel) {
+    init(viewModel: ChoosenPaternViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -37,16 +42,11 @@ final class ChoosenPaternViewController: DTBackgroundedViewController {
 private extension ChoosenPaternViewController {
     
     func setup() {
-        extendedLayoutIncludesOpaqueBars = true
         tableView.register(ExerciseCell.self,
                            forCellReuseIdentifier: ExerciseCell.cellID)
         namingAlert?.delegate = viewModel
         tableView.tableHeaderView = tableHeaderView
-        self.viewModel.paternNameo.asObservable()
-        .subscribe(onNext: {
-            self.firstOpen ? self.tableHeaderView?.titleLabel.text = $0 : self.animatableChangePaternName(to: $0)
-            self.firstOpen = false
-        }).disposed(by: disposeBag)
+        tableHeaderView?.titleLabel.text = viewModel.patenrName
         tableHeaderView?.createTrainingAction = { [weak self] in
             self?.showCreateTrainingAlert()
         }
@@ -59,15 +59,6 @@ private extension ChoosenPaternViewController {
                                             action: #selector(addBarButtonAction))
         navigationItem.rightBarButtonItem = menuBarButton
         navigationController?.navigationBar.tintColor = .white
-    }
-    
-    func setupRX() {
-        viewModel.paternsExercise
-            .bind(to: tableView.rx.items(cellIdentifier: ExerciseCell.cellID)) {
-                (index, exercise, cell) in
-                (cell as? ExerciseCell)?.renderCellFor(exercise)
-            }
-            .disposed(by: self.disposeBag)
     }
     
     func animatableChangePaternName(to name: String) {
@@ -83,20 +74,7 @@ private extension ChoosenPaternViewController {
     }
     
     @objc private func addBarButtonAction() {
-        namingAlert?.show(with: viewModel.paternNameo.value)
-//        let curentPaternSideMenu = CurrentPaternSideMenu()
-//        let menu = SideMenuNavigationController(rootViewController: curentPaternSideMenu)
-//        menu.leftSide = false
-//        menu.menuWidth = UIScreen.main.bounds.width * 0.7
-//        menu.statusBarEndAlpha = 0.0
-//                   
-//                    menu.presentationStyle = .menuSlideIn
-//                    
-//                  
-//        menu.presentationStyle.presentingEndAlpha = 0.4
-//                    menu.navigationBar.isHidden = true
-//                    menu.modalPresentationStyle = .overCurrentContext
-//        present(menu, animated: true, completion: nil)
+        namingAlert?.show(with: viewModel.patenrName)
     }
     
     func showCreateTrainingAlert() {
@@ -123,3 +101,26 @@ private extension ChoosenPaternViewController {
     }
 }
 
+extension ChoosenPaternViewController: ChoosenPaternView {
+    
+    func changePaternName(to name: String) {
+        animatableChangePaternName(to: name)
+    }
+    
+    func reloadTable() {
+        tableView.reloadData()
+    }
+}
+
+extension ChoosenPaternViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return viewModel.exercises.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseCell.cellID, for: indexPath)
+        (cell as? ExerciseCell)?.renderCellFor(viewModel.exercises[indexPath.row])
+        return cell
+    }
+}

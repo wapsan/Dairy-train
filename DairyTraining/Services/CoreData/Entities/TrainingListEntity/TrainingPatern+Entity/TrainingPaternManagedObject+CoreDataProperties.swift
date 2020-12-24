@@ -1,15 +1,5 @@
-//
-//  TrainingPaternManagedObject+CoreDataProperties.swift
-//  Dairy Training
-//
-//  Created by Вячеслав on 27.09.2020.
-//  Copyright © 2020 Вячеслав. All rights reserved.
-//
-//
-
 import Foundation
 import CoreData
-import RxDataSources
 
 extension TrainingPaternManagedObject {
 
@@ -51,12 +41,3 @@ extension TrainingPaternManagedObject {
 
 }
 
-extension TrainingPaternManagedObject: IdentifiableType {
-    public typealias Identity = String
-    
-    public var identity: String {
-        return name
-    }
-    
-    
-}

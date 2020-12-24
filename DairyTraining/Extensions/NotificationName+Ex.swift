@@ -15,4 +15,6 @@ extension Notification.Name {
     static let mainInfoWasUpdated = Notification.Name("mainInfoWasUpdated")
     static let nutritionmodeWasChanged = Notification.Name("nutrition_mode_was_changed")
     static let mealWasAddedToDaily = Notification.Name("meal_was_added_to_daily")
+    static let exerciseWasAdedToPatern = Notification.Name("exercise_was_added_to_patern")
+    static let paternNameWasChanged = Notification.Name("patern_name_was_chagned")
 }

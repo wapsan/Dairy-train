@@ -1,38 +1,24 @@
-import RxSwift
-import RxCocoa
+
+protocol ChoosenPaternViewModelProtocol: PaternNamingAlertDelegate {
+    var exercises: [Exercise] { get }
+    var patenrName: String { get }
+    func createTraining()
+    func addExerciseToCurrnetPatern()
+}
+
+protocol ChoosenPaternViewModelInput: AnyObject {
+    func exerciseWasAdedTopatern()
+    func paternNameChanged(to name: String)
+}
 
 final class ChoosenPaternViewModel {
     
     //MARK: - Properties
-    var model: ChoosenPaternModel
-  //  var router: ChoosenPaternRouter?
-    var paternNameo: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var paternsExercise: BehaviorRelay<[Exercise]> = BehaviorRelay(value: [])
-    
-    // MARK: - Private properties
-    private var disposeBag = DisposeBag()
-    
+    var model: ChoosenPaternModelProtocol
+    weak var view: ChoosenPaternView?
     //MARK: - Initialization
-    init(model: ChoosenPaternModel) {
+    init(model: ChoosenPaternModelProtocol) {
         self.model = model
-        self.model.paternNameo
-            .asObservable()
-            .bind(to: paternNameo)
-            .disposed(by: disposeBag)
-        self.model.paternExercises
-            .asObservable()
-            .map({ self.convertTrainingModel(from: $0) })
-            .bind(to: paternsExercise)
-            .disposed(by: disposeBag)
-    }
-    
-    // MARK: - Public methods
-    func createTraining() {
-        model.createTrainingWithCurrentpatern(exercise: paternsExercise.value)
-    }
-    
-    func addExerciseToCurrnetPatern() {
-        MainCoordinator.shared.coordinateChild(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: .trainingPatern(trainingPatern: model.trainingPatern)))
     }
 }
 
@@ -50,8 +36,16 @@ private extension ChoosenPaternViewModel {
     }
 }
 
-// MARK: - PaternNamingAlertDelegate
-extension ChoosenPaternViewModel: PaternNamingAlertDelegate {
+// MARK: - ChoosenPaternViewModelProtocol
+extension ChoosenPaternViewModel: ChoosenPaternViewModelProtocol {
+    
+    var patenrName: String {
+        return model.patern.name
+    }
+
+    var exercises: [Exercise] {
+        return convertTrainingModel(from: model.patern.exerciseArray)
+    }
     
     func patrnNamingAlertOkPressedToRenamePatern(name: String) {
         model.renameTrainingPaternAlert(for: name)
@@ -59,5 +53,26 @@ extension ChoosenPaternViewModel: PaternNamingAlertDelegate {
 
     func paternNamingAlertOkPressedToCreatePatern(name: String) {
         return
+    }
+    
+    func createTraining() {
+        model.createTrainingWithCurrentpatern(exercise: exercises)
+    }
+    
+    func addExerciseToCurrnetPatern() {
+        MainCoordinator.shared.coordinateChild(
+            to:MuscleGroupsCoordinator.Target.muscularGrops(patern: .trainingPatern(trainingPatern: model.patern)))
+    }
+}
+
+
+extension ChoosenPaternViewModel: ChoosenPaternViewModelInput {
+    
+    func paternNameChanged(to name: String) {
+        view?.changePaternName(to: name)
+    }
+    
+    func exerciseWasAdedTopatern() {
+        view?.reloadTable()
     }
 }

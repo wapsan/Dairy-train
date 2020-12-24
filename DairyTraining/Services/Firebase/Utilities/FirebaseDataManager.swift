@@ -128,7 +128,7 @@ final class FirebaseDataManager {
     
     private func sunhronizeTrainingPaternsToServer() {
         guard let userUID = Auth.auth().currentUser?.uid else { return }
-        let localTrainingPaterns = TrainingDataManager.shared.fetchTrainingPaterns()
+        let localTrainingPaterns = TrainingDataManager.shared.trainingPaterns
         var parameters: [String: String] = [:]
         localTrainingPaterns.enumerated().forEach({
             let patern = TrainingPaternCodableModel(for: $1)

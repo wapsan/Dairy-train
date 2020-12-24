@@ -1,39 +1,53 @@
 import Foundation
-import RxSwift
+
+protocol TrainingPaterModelProtocol {
+    var paterns: [TrainingPaternManagedObject] { get }
+    
+    func createTrainingPatern(with name: String)
+    func removeTrainingPater(at index: Int)
+    func pushTrainingPatern(at index: Int)
+}
+
 
 final class TrainingPaterModel {
     
-    typealias CDM = TrainingDataManager
+    // MARK: - Properties
+    private var dataManager = TrainingDataManager.shared
+    weak var output: TrainingPaternViewModelInput?
     
-    private var disposeBag = DisposeBag()
-    
-    var trainingPaterns: BehaviorSubject<[TrainingPaternManagedObject]> = BehaviorSubject(value: [])
-    
+    // MARK: - Initialization
     init() {
-        CDM.shared.trainingPatern
-            .asObservable()
-            .bind(to: self.trainingPaterns.asObserver())
-            .disposed(by: disposeBag)
-        CDM.shared.updateTrainingPaterns()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(trainingNameWasChanged),
+                                               name: .paternNameWasChanged,
+                                               object: nil)
+    }
+    
+    // MARK: - Actions
+    @objc private func trainingNameWasChanged() {
+        output?.paternRenamed()
+    }
+}
+
+// MARK: - TrainingPaterModelProtocol
+extension TrainingPaterModel: TrainingPaterModelProtocol {
+    
+    var paterns: [TrainingPaternManagedObject] {
+        dataManager.trainingPaterns
     }
 
-    func getTrainingPatern(at index: Int) -> TrainingPaternManagedObject? {
-        do {
-            return try trainingPaterns.value()[index]
-        } catch  {
-            return nil
-        }
+    func pushTrainingPatern(at index: Int) {
+        let choosenPatern = dataManager.trainingPaterns[index]
+        MainCoordinator.shared.coordinateChild(to: TrainingModuleCoordinator.Target.choosenTrainingPatern(patern: choosenPatern))
     }
-    
+
     func createTrainingPatern(with name: String) {
-        CDM.shared.creteTrainingPatern(with: name)
+        dataManager.addTrainingPatern(with: name)
+        output?.paternCreated()
     }
     
     func removeTrainingPater(at index: Int) {
-        CDM.shared.removeTrainingPatern(at: index)
-    }
-    
-    func renameTrainingPatern(at index: Int, with name: String) {
-        CDM.shared.renameTrainingPatern(at: index, with: name)
+        dataManager.removeTrainingPatern(at: index)
+        output?.paternRemoved(at: index)
     }
 }

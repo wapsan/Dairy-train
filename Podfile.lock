@@ -8,7 +8,6 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
-  - Differentiator (4.0.1)
   - EFCountingLabel (5.1.2)
   - Firebase/Auth (6.27.1):
     - Firebase/CoreOnly
@@ -73,16 +72,6 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
-  - RxCocoa (5.0.0):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxDataSources (4.0.1):
-    - Differentiator (~> 4.0)
-    - RxCocoa (~> 5.0)
-    - RxSwift (~> 5.0)
-  - RxRelay (5.1.1):
-    - RxSwift (~> 5)
-  - RxSwift (5.0.0)
   - SideMenu (6.5.0)
   - ZKProgressHUD (5.0.1)
 
@@ -93,9 +82,6 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
   - GoogleSignIn
-  - RxCocoa (= 5.0)
-  - RxDataSources (~> 4.0)
-  - RxSwift (= 5.0)
   - SideMenu
   - ZKProgressHUD (= 5.0.1)
 
@@ -104,7 +90,6 @@ SPEC REPOS:
     - Alamofire
     - AppAuth
     - Charts
-    - Differentiator
     - EFCountingLabel
     - Firebase
     - FirebaseAuth
@@ -120,10 +105,6 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
-    - RxCocoa
-    - RxDataSources
-    - RxRelay
-    - RxSwift
     - SideMenu
     - ZKProgressHUD
 
@@ -131,7 +112,6 @@ SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
-  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   EFCountingLabel: fb9119eff4bb20bf42538665cab8e8419083e486
   Firebase: 919186c8e119dd9372a45fd1dd17a8a942bc1892
   FirebaseAuth: b85c064e0ac60f82486728d50a4803f235687302
@@ -147,13 +127,9 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
-  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
-  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
-  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
-  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   ZKProgressHUD: f1833e23655834d4459c711e94e924e49bc77442
 
-PODFILE CHECKSUM: 8a31d168e95ab88e493b2502786eb3f9bd69ebb1
+PODFILE CHECKSUM: 444dde80ce6ee63842228f6513998634d40a5934
 
 COCOAPODS: 1.10.0

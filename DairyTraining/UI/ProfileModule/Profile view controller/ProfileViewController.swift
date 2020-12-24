@@ -128,7 +128,7 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
 extension ProfileViewController: ProfileViewModelPresenter {
     
     func reloadData() {
-        collectionView.reloadSections([0], animationStyle: .fade)
+        collectionView.reloadSections([0])
     }
     
     func trainingCountWasChanged(to count: Int) {

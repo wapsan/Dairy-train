@@ -1,23 +1,26 @@
 import UIKit
-import RxCocoa
-import RxSwift
-import RxDataSources
+
+protocol TrainingPaternsView: AnyObject {
+    func reloadTable()
+    func deleteCell(at rowIndex: Int)
+    func showEmtyLabel()
+    func showPaternsTable()
+}
 
 final class TrainingPaternsViewController: DTBackgroundedViewController {
 
     //MARK: - @IBOutlets
     @IBOutlet private var tableView: UITableView!
     @IBOutlet var emptyTrainingPaternLabel: UILabel!
-    private var disposeBag = DisposeBag()
+
     //MARK: - Properties
     private let namingPaternAlert = PaternNamingAlert.view()
-    var viewModel: TrainingPaternViewModel
+    var viewModel: TrainingPaternViewModelProtocol
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        setupRX()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,7 +29,7 @@ final class TrainingPaternsViewController: DTBackgroundedViewController {
     }
 
     //MARK: - Initialization
-    init(viewModel: TrainingPaternViewModel) {
+    init(viewModel: TrainingPaternViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,54 +42,10 @@ final class TrainingPaternsViewController: DTBackgroundedViewController {
     @objc private func addTrainingPaternAction() {
         self.namingPaternAlert?.show()
     }
-    
-    deinit {
-        print("Patern list deinit")
-    }
 }
 
 //MARK: - Private extension
 private extension TrainingPaternsViewController {
-    
-    func setupRX() {
-        
-        tableView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
-      
-        let dataSourse = RxTableViewSectionedAnimatedDataSource<SectionItem> { dataSource, tableView, indexPath, item in
-            let cell = tableView.dequeueReusableCell(withIdentifier: TrainingPaternCell.cellID, for: indexPath)
-            (cell as? TrainingPaternCell)?.setCell(for: item.name)
-            return cell
-        }
-        
-        dataSourse.animationConfiguration = AnimationConfiguration(insertAnimation: .fade,
-                                                                   reloadAnimation: .fade,
-                                                                   deleteAnimation: .fade)
-        
-        dataSourse.canEditRowAtIndexPath = { dataSource, indexPath in
-            return true
-        }
-        
-        viewModel.trainingPaterns
-            .asObservable()
-            .map({ $0.first?.items.isEmpty ?? true })
-            .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] isEmpty in
-                self?.setupUIvisibility(with: isEmpty)
-            })
-            .disposed(by: disposeBag)
-
-        viewModel.trainingPaterns
-            .asObservable()
-            .bind(to: tableView.rx.items(dataSource: dataSourse))
-            .disposed(by: disposeBag)
-
-        tableView.rx.itemSelected
-            .subscribe(onNext: { [weak self] index in
-                self?.viewModel.goToChoosenTrainingPatern(with: index.item)
-            })
-            .disposed(by: disposeBag)
-    }
 
     func setup() {
         self.title = "Training paterns"
@@ -100,24 +59,52 @@ private extension TrainingPaternsViewController {
                                                   action: #selector(self.addTrainingPaternAction))
         navigationItem.rightBarButtonItem = addPaternButtonItem
     }
+}
+
+// MARK: - TrainingPaternsView
+extension TrainingPaternsViewController: TrainingPaternsView {
+
+    func showEmtyLabel() {
+        self.emptyTrainingPaternLabel.isHidden = false
+        UIView.animate(withDuration: 0.4, animations: {
+            self.emptyTrainingPaternLabel.alpha = 1
+        })
+        self.tableView.isHidden = true
+        self.tableView.alpha = 0
+    }
     
-    func setupUIvisibility(with isEmpty: Bool) {
-        switch isEmpty {
-        case true:
-            self.emptyTrainingPaternLabel.isHidden = false
-            UIView.animate(withDuration: 0.4, animations: {
-                self.emptyTrainingPaternLabel.alpha = 1
-            })
-            self.tableView.isHidden = true
-            self.tableView.alpha = 0
-        case false:
-            self.tableView.isHidden = false
-            UIView.animate(withDuration: 0.4, animations: {
-                self.tableView.alpha = 1
-            })
-            self.emptyTrainingPaternLabel.isHidden = true
-            self.emptyTrainingPaternLabel.alpha = 0
-        }
+    func showPaternsTable() {
+        self.tableView.isHidden = false
+        UIView.animate(withDuration: 0.4, animations: {
+            self.tableView.alpha = 1
+        })
+        self.emptyTrainingPaternLabel.isHidden = true
+        self.emptyTrainingPaternLabel.alpha = 0
+    }
+    
+    
+    func deleteCell(at rowIndex: Int) {
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [IndexPath(row: rowIndex, section: 0)], with: .fade)
+        tableView.endUpdates()
+    }
+
+    func reloadTable() {
+        tableView.reloadData()
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension TrainingPaternsViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.paterns.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TrainingPaternCell.cellID, for: indexPath)
+        (cell as? TrainingPaternCell)?.setCell(for: viewModel.paterns[indexPath.row].name)
+        return cell
     }
 }
 
@@ -132,6 +119,9 @@ extension TrainingPaternsViewController: UITableViewDelegate {
         return 70
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectRow(at: indexPath.row)
+    }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: nil) { [weak self] (_, _, completionHandler) in

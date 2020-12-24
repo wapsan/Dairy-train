@@ -16,7 +16,7 @@ final class ExerciseDataBaseManager {
         })
         return container
     }()
-    
+   
     private lazy var context: NSManagedObjectContext = {
         return persistantContainer.viewContext
     }()

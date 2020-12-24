@@ -60,6 +60,7 @@ extension SelectExerciseModel: SelectExerciseModelOutput {
         case .trainingPatern(trainingPatern: let trainingPatern):
             guard let trainingPatern = trainingPatern else { return }
             addExerciseList(to: trainingPatern)
+            NotificationCenter.default.post(name: .exerciseWasAdedToPatern, object: nil)
         }
         viewModel?.exerciseWasAdded()
     }

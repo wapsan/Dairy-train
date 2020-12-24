@@ -77,7 +77,6 @@
 		136989CB2520E3450039B306 /* TrainingPaternManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136989C92520E3450039B306 /* TrainingPaternManagedObject+CoreDataClass.swift */; };
 		136989CC2520E3450039B306 /* TrainingPaternManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136989CA2520E3450039B306 /* TrainingPaternManagedObject+CoreDataProperties.swift */; };
 		136E363625287E39002FA439 /* TrainingEntityTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136E363525287E39002FA439 /* TrainingEntityTarget.swift */; };
-		136E363825288015002FA439 /* TrainingPaternRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136E363725288015002FA439 /* TrainingPaternRouter.swift */; };
 		136F3FFE2498D0DE00C6944B /* UserMainInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 136F3FFC2498D0DE00C6944B /* UserMainInfo.xcdatamodeld */; };
 		136F40092498D44B00C6944B /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F40082498D44B00C6944B /* UserDataManager.swift */; };
 		136F400C2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F400A2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift */; };
@@ -296,7 +295,6 @@
 		136989C92520E3450039B306 /* TrainingPaternManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainingPaternManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		136989CA2520E3450039B306 /* TrainingPaternManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainingPaternManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		136E363525287E39002FA439 /* TrainingEntityTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingEntityTarget.swift; sourceTree = "<group>"; };
-		136E363725288015002FA439 /* TrainingPaternRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPaternRouter.swift; sourceTree = "<group>"; };
 		136F3FFD2498D0DE00C6944B /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
 		136F40082498D44B00C6944B /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		136F400A2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MainInfoManagedObject+CoreDataClass.swift"; path = "DairyTraining/Services/CoreData/Entities/MainInfoEntity/MainInfoManagedObject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -870,7 +868,6 @@
 				136989C02520DF650039B306 /* TrainingPaternsViewController.swift */,
 				13D8CEB725239A7B0091AA6B /* TrainingPaternViewModel.swift */,
 				13D8CEB925239A8C0091AA6B /* TrainingPaterModel.swift */,
-				136E363725288015002FA439 /* TrainingPaternRouter.swift */,
 				136989C12520DF650039B306 /* TrainingPaternsViewController.xib */,
 			);
 			path = AddFromTrainingPaterns;
@@ -1910,7 +1907,6 @@
 				1353CA3E255AF7C800E7B5DD /* TrainingListStatisticViewController.swift in Sources */,
 				7A69DBE625877925003EECD8 /* NutritionDataModel.xcdatamodeld in Sources */,
 				1342E7CC2558387C00D6E369 /* TrainingModuleCoordinator.swift in Sources */,
-				136E363825288015002FA439 /* TrainingPaternRouter.swift in Sources */,
 				7A4452DC258A1C0300A808D1 /* NutritionSettingViewController.swift in Sources */,
 				1384BB4324DEEBE60084705B /* ProfileViewController.swift in Sources */,
 				13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */,
