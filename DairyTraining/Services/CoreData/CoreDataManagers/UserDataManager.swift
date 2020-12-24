@@ -171,6 +171,7 @@ final class UserDataManager {
             mainUserInfo.activitylevel = userMainInfo.activityLevel?.rawValue
             mainUserInfo.heightMode = userMainInfo.heightMode?.rawValue
             mainUserInfo.weightMode = userMainInfo.weightMode?.rawValue
+            mainUserInfo.nutritionMode = userMainInfo.nutritionMode ?? "Balance Weight"
         } else {
             let newMainInfo = MainInfoManagedObject(context: self.context)
             newMainInfo.age = Int64(userMainInfo.age ?? 0)
@@ -181,6 +182,7 @@ final class UserDataManager {
             newMainInfo.activitylevel = userMainInfo.activityLevel?.rawValue
             newMainInfo.heightMode = userMainInfo.heightMode?.rawValue
             newMainInfo.weightMode = userMainInfo.weightMode?.rawValue
+            newMainInfo.nutritionMode = userMainInfo.nutritionMode ?? "Balance Weight"
         }
         self.updateContext()
     }

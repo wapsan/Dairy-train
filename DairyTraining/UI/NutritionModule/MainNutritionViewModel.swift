@@ -70,6 +70,7 @@ protocol NutritionViewModelInput: AnyObject {
     func updateMealPlaneMode(to nutritionMode: NutritionMode)
     func updateMeals()
     func mealWasDeleteAt(mealTimeIndex: Int, and mealIndex: Int)
+    func updateMealPlane()
 }
 
 final class NutritionViewModel {
@@ -124,6 +125,10 @@ extension NutritionViewModel: NutritionViewModelProtocol {
 
 // MARK: - NutritionViewModelInput
 extension NutritionViewModel: NutritionViewModelInput {
+    
+    func updateMealPlane() {
+        view?.updateMainCell()
+    }
     
     func mealWasDeleteAt(mealTimeIndex: Int, and mealIndex: Int) {
         view?.deleteCell(section: mealTimeIndex, row: mealIndex)

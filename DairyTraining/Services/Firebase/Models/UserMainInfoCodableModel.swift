@@ -14,6 +14,7 @@ struct UserMainInfoCodableModel: Mapable {
         static let gender = "gender"
         static let heightMode = "heightMode"
         static let weightMode = "weightMode"
+        static let nutritionMode = "nutritionMode"
     }
     
     //MARK: - Enums
@@ -39,6 +40,7 @@ struct UserMainInfoCodableModel: Mapable {
         userDictionary[Key.gender] = self.gender?.rawValue
         userDictionary[Key.heightMode] = self.heightMode?.rawValue
         userDictionary[Key.weightMode] = self.weightMode?.rawValue
+        userDictionary[Key.nutritionMode] = self.nutritionMode
         return userDictionary
     }
     
@@ -50,6 +52,8 @@ struct UserMainInfoCodableModel: Mapable {
         self.activityLevel = ActivityLevel.init(rawValue: dictionary[Key.activityLevel] as? String ?? "_")
         self.heightMode = MeteringSetting.HeightMode.init(rawValue: dictionary[Key.heightMode] as? String ?? "_")
         self.weightMode = MeteringSetting.WeightMode.init(rawValue: dictionary[Key.weightMode] as? String ?? "_")
+        
+        self.nutritionMode = dictionary[Key.nutritionMode] as? String
     }
     
     //MARK: - Properties
@@ -58,6 +62,7 @@ struct UserMainInfoCodableModel: Mapable {
     var height: Float?
     var gender: Gender?
     var dateOfLastUpdate: String?
+    var nutritionMode: String?
     var activityLevel: ActivityLevel?
     var heightMode: MeteringSetting.HeightMode?
     var weightMode: MeteringSetting.WeightMode?
@@ -68,6 +73,7 @@ struct UserMainInfoCodableModel: Mapable {
         self.age = Int(mainInfoManagedObject.age)
         self.weight = mainInfoManagedObject.weight
         self.height = mainInfoManagedObject.height
+        self.nutritionMode = mainInfoManagedObject.nutritionMode
         if let gender = mainInfoManagedObject.gender {
             self.gender = Gender.init(rawValue: gender) ?? Gender.notSet
         } else {

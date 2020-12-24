@@ -98,6 +98,7 @@ extension NutritionModel: NutritionModelProtocol {
         guard let user = UserDataManager.shared.readUserMainInfo() else { return }
         calculator = CaloriesRecomendationCalculator(userInfo: user)
         updateRecomendation()
+        output?.updateMealPlane()
     }
     
     var nutritionData: NutritionDataMO {
@@ -107,6 +108,7 @@ extension NutritionModel: NutritionModelProtocol {
     var nutritionMode: NutritionMode {
         UserDataManager.shared.getNutritionMode()
     }
+    
     var recomendation: NutritionRecomendation? {
         _recomendation
     }

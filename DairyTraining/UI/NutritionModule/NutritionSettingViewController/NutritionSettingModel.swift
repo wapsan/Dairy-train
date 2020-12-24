@@ -4,6 +4,8 @@ protocol NutritionettingModelProtocol {
     
     var selectedMode: NutritionMode { get }
     
+    var nutritionMode: NutritionMode { get }
+    
     func getSelectednutritionMode()
     func changeSelectedNutritionMode(to mode: NutritionMode)
     func saveNewNutritionMode()
@@ -42,6 +44,10 @@ final class NutritionSettingModel {
 }
 
 extension NutritionSettingModel: NutritionettingModelProtocol {
+    
+    var nutritionMode: NutritionMode {
+        UserDataManager.shared.getNutritionMode()
+    }
     
     func getNutritionInfoForCustomMode() {
         let nutritionRecomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
