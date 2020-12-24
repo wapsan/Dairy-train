@@ -157,7 +157,6 @@
 		13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EDD9BC247AB145008EE212 /* MuscleGroupModel.swift */; };
 		13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */; };
 		13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */; };
-		46DB6E6E46ED03D80B962509 /* Pods_Dairy_Training.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BB67FC86381D6904D71F4C /* Pods_Dairy_Training.framework */; };
 		7A057CEC2589ECD600D6937B /* ProgressDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A057CEB2589ECD600D6937B /* ProgressDrawer.swift */; };
 		7A2A75282588990C0091FD22 /* MealMO+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A75242588990C0091FD22 /* MealMO+CoreDataProperties copy.swift */; };
 		7A2A75292588990C0091FD22 /* MealMO+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A75252588990C0091FD22 /* MealMO+CoreDataClass copy.swift */; };
@@ -191,6 +190,7 @@
 		7A69DC042587859F003EECD8 /* NutritionModuleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69DC032587859F003EECD8 /* NutritionModuleCoordinator.swift */; };
 		7A7D288125753BEA00FDD212 /* TrainingPaternCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D288025753BEA00FDD212 /* TrainingPaternCodableModel.swift */; };
 		7A7D288425753DF800FDD212 /* MapableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D288325753DF800FDD212 /* MapableProtocol.swift */; };
+		7A8409482594D67A00A65D5F /* Pods_Dairy_Training.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BB67FC86381D6904D71F4C /* Pods_Dairy_Training.framework */; };
 		7A8BED202590A8E600CDB925 /* USDAManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8BED1F2590A8E600CDB925 /* USDAManager.swift */; };
 		7A8BED252590AF7400CDB925 /* FoodResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8BED242590AF7400CDB925 /* FoodResponseModel.swift */; };
 		7A8BED2F2590D96B00CDB925 /* TodayMealsTableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8BED2E2590D96B00CDB925 /* TodayMealsTableSectionHeader.swift */; };
@@ -425,7 +425,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46DB6E6E46ED03D80B962509 /* Pods_Dairy_Training.framework in Frameworks */,
+				7A8409482594D67A00A65D5F /* Pods_Dairy_Training.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
