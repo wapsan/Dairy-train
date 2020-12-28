@@ -11,7 +11,6 @@ final class ProfileMenuCoordinator: Coordinator {
     // MARK: - Types
     enum Target: CoordinatorTarget {
         case sideMenu
-        //case statisticsModule
         case statisticsByTraining
         case statisticForChoosenTraining(statistics: Statistics)
         case setting
@@ -55,10 +54,6 @@ final class ProfileMenuCoordinator: Coordinator {
                                                okTitle: LocalizedString.ok,
                                                cancelTitle: LocalizedString.cancel,
                                                completion: completion)
-//        case .statisticsModule:
-//            let mainStatisticsViewController = configureStatisticsModuleScreen()
-//            navigationController?.pushViewController(mainStatisticsViewController, animated: true)
-//            sideMenu?.dismiss(animated: true, completion: nil)
         case .statisticForChoosenTraining(statistics: let statistics):
             let choosenStatisticsViewController = configureTVSModule(for: statistics)
             navigationController?.pushViewController(choosenStatisticsViewController, animated: true)
@@ -90,16 +85,9 @@ final class ProfileMenuCoordinator: Coordinator {
         return trainingListStatisticsVC
     }
     
-//    private func configureStatisticsModuleScreen() -> MainStatisticsViewController {
-//        let mainStatisticsViewModel = MainStatisticViewModel()
-//        let mainStatisticsViewController = MainStatisticsViewController(viewModel: mainStatisticsViewModel)
-//        return mainStatisticsViewController
-//    }
-    
     func configureTVSModule(for train: Statistics) -> ChoosenTrainingStatisticsViewController {
         let choosenStatisticsViewModel = ChoosenTrainingStatisticsViewModel(statistics: train)
         let choosenStatisticsViewController = ChoosenTrainingStatisticsViewController(viewModel: choosenStatisticsViewModel)
         return choosenStatisticsViewController
     }
-    
 }

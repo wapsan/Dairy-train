@@ -56,7 +56,7 @@ struct NutritionDataPresentable {
 protocol NutritionViewModelProtocol {
     var nutritionRecomendation: NutritionRecomendation? { get }
     var todayMealNutitionModel: [TodayMealNutritionModel] { get }
-    var USERnutritionData: NutritionDataPresentable { get }
+    var userNutritionData: NutritionDataPresentable { get }
     var mealPlane: String { get }
     
     func viewDidLoad()
@@ -111,7 +111,7 @@ extension NutritionViewModel: NutritionViewModelProtocol {
         return model.nutritionMode.presentationTitle
     }
     
-    var USERnutritionData: NutritionDataPresentable {
+    var userNutritionData: NutritionDataPresentable {
         return NutritionDataPresentable(nutritionDataMO: model.nutritionData)
     }
 

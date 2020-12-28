@@ -94,7 +94,7 @@ enum TabBarItemController {
     }
     
     private func configureSupplyBlockNavigationController() -> UINavigationController {
-        let nutritionModel = NutritionModel(userInfo: UserDataManager.shared.readUserMainInfo())
+        let nutritionModel = NutritionModel()
         let nutritionViewModel = NutritionViewModel(model: nutritionModel)
         let nutritionViewController = MainNutritionVIewController(viewModel: nutritionViewModel)
         nutritionModel.output = nutritionViewModel

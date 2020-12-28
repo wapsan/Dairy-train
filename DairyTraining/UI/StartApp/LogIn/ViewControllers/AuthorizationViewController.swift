@@ -69,7 +69,8 @@ class AuthorizationViewController: UIViewController {
 //MARK: - LoginViewControllerPresenter
 extension AuthorizationViewController: LoginViewControllerPresenter {
     func signInSuccesed() {
-        MainCoordinator.shared.coordinate(to: MainCoordinator.Target.mainFlow)
+        MainCoordinator.shared.coordinate(to: TabBarCoordinator.Target.mainTabBar)
+       // MainCoordinator.shared.coordinate(to: MainCoordinator.Target.mainFlow)
     }
     
     func signInFailed(with errorMessage: String) {

@@ -54,13 +54,13 @@ class AddExerciseSupportButton: UIView {
         switch buttonType {
         case .pattern:
             action = {
-                MainCoordinator.shared.coordinateChild(to: TrainingModuleCoordinator.Target.trainingPaternsList)
+                MainCoordinator.shared.coordinate(to: TrainingModuleCoordinator.Target.trainingPaternsList)
             }
             titleLabel.text = "Patern list"
             actionButton.setImage(UIImage(named: "paternList")?.withTintColor(.white), for: .normal)
         case .exercoseList:
             action = {
-                MainCoordinator.shared.coordinateChild(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: .training))
+                MainCoordinator.shared.coordinate(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: .training))
             }
             titleLabel.text = "Exercise list"
             

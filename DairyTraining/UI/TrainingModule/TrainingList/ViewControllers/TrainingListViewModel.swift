@@ -29,18 +29,18 @@ final class TrainingListViewModel {
 extension TrainingListViewModel: TrainingListViewModelIteracting {
     
     func goToMuscularList(with trainingEntityTarget: TrainingEntityTarget) {
-        MainCoordinator.shared.coordinateChild(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: trainingEntityTarget))
+        MainCoordinator.shared.coordinate(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: trainingEntityTarget))
         //self.router?.pushExerciseListViewController()
     }
 
     func goToTrainingPaterns() {
-        MainCoordinator.shared.coordinateChild(to: TrainingModuleCoordinator.Target.trainingPaternsList)
+        MainCoordinator.shared.coordinate(to: TrainingModuleCoordinator.Target.trainingPaternsList)
         //self.router?.pushTrainingPaternsViewController()
     }
     
     func goToTraining(at index: Int) {
         guard let choosenTraining = self.model?.trainingList[index] else { return }
-        MainCoordinator.shared.coordinateChild(
+        MainCoordinator.shared.coordinate(
             to:TrainingModuleCoordinator.Target.choosenTraining(training: choosenTraining))
         //self.router?.pushTrainingViewController(for: choosenTraining)
     }

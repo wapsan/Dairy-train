@@ -21,7 +21,7 @@ extension TrainingListStatisticsViewModel: TrainingListStatisticsViewModelInput 
    
     func trainigWasSelected(at index: Int) {
         let trainingStatistics = Statistics(for: trainigList[index])
-        MainCoordinator.shared.coordinateChild(to: ProfileMenuCoordinator.Target.statisticForChoosenTraining(statistics: trainingStatistics))
+        MainCoordinator.shared.coordinate(to: ProfileMenuCoordinator.Target.statisticForChoosenTraining(statistics: trainingStatistics))
     }
     
     var trainigList: [TrainingManagedObject] {

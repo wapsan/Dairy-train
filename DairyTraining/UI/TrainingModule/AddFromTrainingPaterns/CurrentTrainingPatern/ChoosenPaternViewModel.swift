@@ -60,7 +60,7 @@ extension ChoosenPaternViewModel: ChoosenPaternViewModelProtocol {
     }
     
     func addExerciseToCurrnetPatern() {
-        MainCoordinator.shared.coordinateChild(
+        MainCoordinator.shared.coordinate(
             to:MuscleGroupsCoordinator.Target.muscularGrops(patern: .trainingPatern(trainingPatern: model.patern)))
     }
 }

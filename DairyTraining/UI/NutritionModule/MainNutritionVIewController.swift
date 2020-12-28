@@ -82,7 +82,7 @@ extension MainNutritionVIewController: MainNutritionView {
     
     func updateMainInfoCell(for nutritionRecomendation: NutritionRecomendation) {
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NutritionMainCell
-        cell?.setCell(for: nutritionRecomendation, and: viewModel.USERnutritionData)
+        cell?.setCell(for: nutritionRecomendation, and: viewModel.userNutritionData)
         tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
     }
 }
@@ -105,7 +105,7 @@ extension MainNutritionVIewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: NutritionMainCell.cellID, for: indexPath)
-            (cell as? NutritionMainCell)?.setCell(for: viewModel.nutritionRecomendation, and: viewModel.USERnutritionData)
+            (cell as? NutritionMainCell)?.setCell(for: viewModel.nutritionRecomendation, and: viewModel.userNutritionData)
             (cell as? NutritionMainCell)?.setMealPlane(to: viewModel.mealPlane)
             (cell as? NutritionMainCell)?.addMealButtonAction = { [unowned self] in
                 self.viewModel.addMealButtonPressed()

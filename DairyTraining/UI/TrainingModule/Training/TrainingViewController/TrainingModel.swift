@@ -67,7 +67,7 @@ extension TrainingModel: TrainingModelIteracting {
     }
     
     func coordinateToMuscularGroupsScreen() {
-        MainCoordinator.shared.coordinateChild(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: .training))
+        MainCoordinator.shared.coordinate(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: .training))
     }
     
     func exerciseDone(at index: Int) {

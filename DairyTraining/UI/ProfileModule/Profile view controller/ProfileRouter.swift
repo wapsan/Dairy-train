@@ -20,7 +20,8 @@ final class ProfileRouter: Router {
 extension ProfileRouter: ProfileRouterOutputt {
     
     func presentLoginViewController() {
-        MainCoordinator.shared.coordinate(to: MainCoordinator.Target.loginFlow)
+        MainCoordinator.shared.coordinate(to: AuthorizationCoordinator.Target.authorizationScreen)
+        //MainCoordinator.shared.coordinate(to: MainCoordinator.Target.loginFlow)
     }
     
     func pushViewControllerFromMenu(_ viewController: UIViewController) {

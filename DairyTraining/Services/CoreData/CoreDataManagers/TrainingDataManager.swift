@@ -292,5 +292,6 @@ final class TrainingDataManager {
     func removeAllData() {
         trainingPaterns.forEach({ trainInfoContext.delete($0) })
         getTraingList().forEach({ trainInfoContext.delete($0)})
+        updateContext()
     }
 }

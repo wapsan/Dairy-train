@@ -14,7 +14,8 @@ final class SideMenuViewModel {
     init(model: SideMenuModel) {
         self.model = model
         model.succesLogOut = {
-            MainCoordinator.shared.coordinate(to: MainCoordinator.Target.loginFlow)
+            MainCoordinator.shared.coordinate(to: AuthorizationCoordinator.Target.authorizationScreen)
+            //MainCoordinator.shared.coordinate(to: MainCoordinator.Target.loginFlow)
         }
         model.errorLogOut = {
             print($0)
@@ -33,11 +34,11 @@ extension SideMenuViewModel: SideMenuViewModelProtocol {
         let menuItem = sideMenuItems[index]
         switch menuItem {
         case .statistics:
-            MainCoordinator.shared.coordinateChild(to: ProfileMenuCoordinator.Target.statisticsByTraining)
+            MainCoordinator.shared.coordinate(to: ProfileMenuCoordinator.Target.statisticsByTraining)
         case .setting:
-            MainCoordinator.shared.coordinateChild(to: ProfileMenuCoordinator.Target.setting)
+            MainCoordinator.shared.coordinate(to: ProfileMenuCoordinator.Target.setting)
         case .logOut:
-            MainCoordinator.shared.coordinateChild(to: ProfileMenuCoordinator.Target.signOut(completion: model.signOut))
+            MainCoordinator.shared.coordinate(to: ProfileMenuCoordinator.Target.signOut(completion: model.signOut))
         case .premium:
             break
         case .termAndConditions:

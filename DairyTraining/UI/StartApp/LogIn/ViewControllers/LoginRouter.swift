@@ -19,6 +19,7 @@ class LoginRouter: Router {
 extension LoginRouter: LoginRouterOutput {
     
     func showMainFlow() {
-        MainCoordinator.shared.coordinate(to: MainCoordinator.Target.mainFlow)
+        MainCoordinator.shared.coordinate(to: TabBarCoordinator.Target.mainTabBar)
+        //MainCoordinator.shared.coordinate(to: MainCoordinator.Target.mainFlow)
     }
 }

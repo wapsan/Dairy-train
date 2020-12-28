@@ -60,7 +60,7 @@ class ProfileViewController: DTBackgroundedViewController {
 private extension ProfileViewController {
     
     @objc func menuButtonPressed() {
-        MainCoordinator.shared.coordinateChild(to: ProfileMenuCoordinator.Target.sideMenu)
+        MainCoordinator.shared.coordinate(to: ProfileMenuCoordinator.Target.sideMenu)
     }
     
     func setUpMenuButtonBar() {

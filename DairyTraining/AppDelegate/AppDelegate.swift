@@ -35,7 +35,7 @@ private extension AppDelegate {
         self.window?.makeKeyAndVisible()
         self.window?.backgroundColor = DTColors.backgroundColor
         MainCoordinator.shared.window = self.window
-        MainCoordinator.shared.coordinate(to: MainCoordinator.Target.splashScreen)
+        MainCoordinator.shared.coordinate(to: AuthorizationCoordinator.Target.splashScreen)
         UINavigationBar.appearance().tintColor = .white
     }
 }

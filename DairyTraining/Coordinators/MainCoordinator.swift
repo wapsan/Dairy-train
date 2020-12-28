@@ -115,7 +115,6 @@ final class MainCoordinator: Coordinator {
         }
     }
 
-    private var rootTabBarController: UITabBarController?
     private var rootNavigationController: UINavigationController?
     private var childCoordinators: [Coordinator] = []
 
@@ -127,44 +126,20 @@ final class MainCoordinator: Coordinator {
     // MARK: - Coordinator API
 
     @discardableResult func coordinate(to target: CoordinatorTarget) -> Bool {
-        guard let target = target as? Target else { return false }
-        switch target {
-        case .splashScreen:
-            let splashScreen = DTSplashScreenViewController()
-            window?.rootViewController = splashScreen
-        case .mainFlow:
-            let mainFlow = MainTabBarViewController()
-            rootTabBarController = mainFlow
-            guard let a = rootTabBarController else { return false }
-            window?.setRootViewController(a)
-        case .loginFlow:
-            let authViewController = AuthorizationViewController()
-            let loginViewModel = LoginViewModel()
-            let loginModel = LoginModel()
-            
-            authViewController.viewModel = loginViewModel
-            loginViewModel.view = authViewController
-            loginViewModel.model = loginModel
-            loginModel.output = loginViewModel
-            var transitionOption = UIWindow.TransitionOptions(direction: .toRight, style: .linear)
-            transitionOption.background = UIWindow.TransitionOptions.Background.solidColor(DTColors.backgroundColor)
-            window?.setRootViewController(authViewController, options: transitionOption)
+        for coordinator in childCoordinators {
+            if coordinator.coordinate(to: target) { return true }
         }
-        return true
+        
+        return false
     }
-    
-    @discardableResult func coordinateChild(to target: CoordinatorTarget) -> Bool {
-          for coordinator in childCoordinators {
-              if coordinator.coordinate(to: target) { return true }
-          }
-          
-          return false
-      }
 
     // MARK: - Private
 
     private func createChildCoordinators(for window: UIWindow?) -> [Coordinator] {
-        return [MuscleGroupsCoordinator(window: window),
+        
+        return [AuthorizationCoordinator(window: window),
+                TabBarCoordinator(window: window),
+                MuscleGroupsCoordinator(window: window),
                 ProfileMenuCoordinator(rootViewController: profileNavigationController),
                 TrainingModuleCoordinator(rootViewController: trainingBlockNavigationController),
                 NutritionModuleCoordinator(rootViewController: nutritionBlockNavigationController)]

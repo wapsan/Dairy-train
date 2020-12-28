@@ -133,7 +133,7 @@ extension TrainingViewModel: TrainingViewModeProtocol {
     func showStatisticsForExercise(at index: Int) {
         let choosenExerciseName = _exerciceList[index].name
         let choosenExerciseDate = _exerciceList[index].date
-        MainCoordinator.shared.coordinateChild(to: TrainingModuleCoordinator.Target.statisticsForChosenExercise(name: choosenExerciseName, exerciseDate: choosenExerciseDate))
+        MainCoordinator.shared.coordinate(to: TrainingModuleCoordinator.Target.statisticsForChosenExercise(name: choosenExerciseName, exerciseDate: choosenExerciseDate))
     }
     
     func aproachWillChanged(in exerciceIndex: Int, and aproachIndex: Int) {

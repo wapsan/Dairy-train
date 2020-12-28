@@ -38,7 +38,7 @@ extension TrainingPaterModel: TrainingPaterModelProtocol {
 
     func pushTrainingPatern(at index: Int) {
         let choosenPatern = dataManager.trainingPaterns[index]
-        MainCoordinator.shared.coordinateChild(to: TrainingModuleCoordinator.Target.choosenTrainingPatern(patern: choosenPatern))
+        MainCoordinator.shared.coordinate(to: TrainingModuleCoordinator.Target.choosenTrainingPatern(patern: choosenPatern))
     }
 
     func createTrainingPatern(with name: String) {

@@ -29,7 +29,7 @@ final class NutritionModel {
     private var nutritionManager = NutritionDataManager.shared
     
     // MARK: - Initialization
-    init(userInfo: MainInfoManagedObject?) {
+    init() {
         addObserverForChangingNutritionMode()
         addObserverForMealAdded()
     }
@@ -86,11 +86,11 @@ extension NutritionModel: NutritionModelProtocol {
     }
     
     func coordinateToNutritionSettingScreen() {
-        MainCoordinator.shared.coordinateChild(to: NutritionModuleCoordinator.Target.nutritionSetting)
+        MainCoordinator.shared.coordinate(to: NutritionModuleCoordinator.Target.nutritionSetting)
     }
     
     func coordinatuToSearchFoodsScreen() {
-        MainCoordinator.shared.coordinateChild(to: NutritionModuleCoordinator.Target.searchFood)
+        MainCoordinator.shared.coordinate(to: NutritionModuleCoordinator.Target.searchFood)
     }
 
     func loadData() {

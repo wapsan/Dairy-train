@@ -101,7 +101,7 @@ extension LoginModel: LoginModelIteracting {
         self.firebaseAuth.signIn(withEmail: email, password: password) { (result, error) in
             if let _ = result {
                 self.output?.startSigninIn()
-                self.synhronizeDataFreomServer()
+               // self.synhronizeDataFreomServer()
             }
             if let error = error {
                 self.output?.failedSignIn(with: error)
