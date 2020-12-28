@@ -16,6 +16,7 @@ extension MealMO {
         return NSFetchRequest<MealMO>(entityName: "MealMO")
     }
     
+    @NSManaged public var formatedDate: String?
     @NSManaged public var hour: Int32
     @NSManaged public var date: Date
     @NSManaged public var calories: Float

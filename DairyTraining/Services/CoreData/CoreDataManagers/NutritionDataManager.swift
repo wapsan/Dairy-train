@@ -155,6 +155,7 @@ final class NutritionDataManager {
     func addMeal(_ meal: MealModel) {
         let newMeal = convertToManagedObject(from: meal)
         newMeal.nutritionData = todayNutritionData
+        newMeal.formatedDate = DateHelper.shared.getFormatedDateFrom(Date(), with: .chekingCurrentDayDateFormat)
         todayNutritionData.addToMeals(newMeal)
         updateContext()
     }
@@ -179,24 +180,30 @@ final class NutritionDataManager {
     
     private func getBreakfastMealMO() -> [MealMO] {
         let fetchRequest: NSFetchRequest<MealMO> = MealMO.fetchRequest()
-        let predicate = NSPredicate(format: "hour < 12")
-        fetchRequest.predicate = predicate
+        let hourPredicate = NSPredicate(format: "hour < 12")
+        let datePredicate = NSPredicate(format: "formatedDate == %@",
+                                        DateHelper.shared.getFormatedDateFrom(Date(), with: .chekingCurrentDayDateFormat))
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [hourPredicate, datePredicate])
         guard let breakfastMeals = try? context.fetch(fetchRequest) else { return [] }
         return breakfastMeals
     }
     
     private func getLunchMealMO() -> [MealMO] {
         let fetchRequest: NSFetchRequest<MealMO> = MealMO.fetchRequest()
-        let predicate = NSPredicate(format: "hour >= 12 AND hour <= 17")
-        fetchRequest.predicate = predicate
+        let hourPredicate = NSPredicate(format: "hour >= 12 AND hour <= 17")
+        let datePredicate = NSPredicate(format: "formatedDate == %@",
+                                        DateHelper.shared.getFormatedDateFrom(Date(), with: .chekingCurrentDayDateFormat))
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [hourPredicate, datePredicate])
         guard let breakfastMeals = try? context.fetch(fetchRequest) else { return [] }
         return breakfastMeals
     }
     
     private func getDinnerMealMO() -> [MealMO] {
         let fetchRequest: NSFetchRequest<MealMO> = MealMO.fetchRequest()
-        let predicate = NSPredicate(format: "hour > 17")
-        fetchRequest.predicate = predicate
+        let hourPredicate = NSPredicate(format: "hour > 17")
+        let datePredicate = NSPredicate(format: "formatedDate == %@",
+                                        DateHelper.shared.getFormatedDateFrom(Date(), with: .chekingCurrentDayDateFormat))
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [hourPredicate, datePredicate])
         guard let breakfastMeals = try? context.fetch(fetchRequest) else { return [] }
         return breakfastMeals
     }

@@ -11,6 +11,7 @@
         <attribute name="carbohydrates" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="fats" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="formatedDate" optional="YES" attributeType="String"/>
         <attribute name="hour" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="proteins" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -24,7 +25,7 @@
     </entity>
     <elements>
         <element name="CustomNutritionModeMO" positionX="126" positionY="9" width="128" height="103"/>
-        <element name="MealMO" positionX="-63" positionY="18" width="128" height="178"/>
+        <element name="MealMO" positionX="-63" positionY="18" width="128" height="193"/>
         <element name="NutritionDataMO" positionX="317.9921875" positionY="-129.5625" width="128" height="88"/>
     </elements>
 </model>
