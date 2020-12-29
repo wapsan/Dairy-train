@@ -10,14 +10,16 @@ protocol HomeViewModelProtocol {
 
 final class HomeViewModel {
     
+    // MARK: - Properties
     private let model: HomeModelProtocol
     
+    // MARK: - Initialization
     init(model: HomeModelProtocol) {
         self.model = model
     }
-    
 }
 
+// MARK: - HomeViewModelProtocol
 extension HomeViewModel: HomeViewModelProtocol {
     
     func menuButtonPressed() {

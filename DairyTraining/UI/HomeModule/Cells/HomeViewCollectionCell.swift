@@ -1,15 +1,11 @@
 import UIKit
 
-final class HomeViewCollectionCell: UICollectionViewCell {
+final class HomeViewCollectionCell: UICollectionViewCell, CellRegistrable {
 
-    // MARK: - Cell properties
-    static let cellID = "HomeViewCollectionCell"
-    static let xibName = "HomeViewCollectionCell"
-    
     // MARK: - @IBOutlets
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var descriptionLabel: UILabel!
-    @IBOutlet var titleLabel: UIImageView!
+    @IBOutlet private var imageView: UIImageView!
+    @IBOutlet private var descriptionLabel: UILabel!
+    @IBOutlet private var titleLabel: UIImageView!
     
     // MARK: - Properties
     var imageOnAction: (() -> Void)?
@@ -20,8 +16,8 @@ final class HomeViewCollectionCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 20
     }
     
+    // MARK: - Setter
     func setCell(for menuItem: HomeMenuItem) {
         descriptionLabel.text = menuItem.titel
     }
-    
 }
