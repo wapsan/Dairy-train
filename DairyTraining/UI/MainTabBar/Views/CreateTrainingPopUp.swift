@@ -33,15 +33,14 @@ fileprivate enum CreateTrainingOptionsModel: String, CaseIterable {
     }
 }
 
-
 final class CreateTrainingPopUp: UIView {
     
-    @IBOutlet var title: UILabel!
-    @IBOutlet var containerView: UIView!
-    @IBOutlet var decorateView: UIView!
-    @IBOutlet var tableView: UITableView!
-    
-    @IBOutlet var backgroundView: UIView!
+    // MARK: - @IBOutlets
+    @IBOutlet private var title: UILabel!
+    @IBOutlet private var containerView: UIView!
+    @IBOutlet private var decorateView: UIView!
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var backgroundView: UIView!
     
     // MARK: - Initialization
     static func view() -> CreateTrainingPopUp? {
@@ -88,9 +87,9 @@ final class CreateTrainingPopUp: UIView {
                            forCellReuseIdentifier: PopUpOptionCell.cellID)
     }
     
-    private func hideAlert(completion: @escaping () -> Void) {
+    private func hideAlert(completion: (() -> Void)?) {
         self.animateOutAlert {
-            completion()
+            completion?()
         }
     }
     
@@ -113,15 +112,17 @@ final class CreateTrainingPopUp: UIView {
             completion()
         })
     }
+    
     @IBAction func backViewTapped(_ sender: Any) {
-        hideAlert { }
+        hideAlert(completion: nil)
     }
+    
     @IBAction func containerViewDraggin(_ sender: UIPanGestureRecognizer) {
-
+        //TODO - Fix hiding with pan gesture
     }
 }
 
-
+// MARK: - UITableViewDataSource
 extension CreateTrainingPopUp: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -136,6 +137,7 @@ extension CreateTrainingPopUp: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension CreateTrainingPopUp: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -143,8 +145,8 @@ extension CreateTrainingPopUp: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        hideAlert {
+        hideAlert(completion: {
             CreateTrainingOptionsModel.allCases[indexPath.row].onAction()
-        }
+        })
     }
 }

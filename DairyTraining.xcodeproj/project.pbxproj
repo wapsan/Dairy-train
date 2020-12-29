@@ -221,6 +221,7 @@
 		7AC81F88259B330E00AC10FB /* CreateTrainingPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC81F87259B330E00AC10FB /* CreateTrainingPopUp.xib */; };
 		7AC81F8D259B377D00AC10FB /* PopUpOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F8B259B377D00AC10FB /* PopUpOptionCell.swift */; };
 		7AC81F8E259B377D00AC10FB /* PopUpOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC81F8C259B377D00AC10FB /* PopUpOptionCell.xib */; };
+		7AC81F91259B4C4200AC10FB /* CellRegistrable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F90259B4C4200AC10FB /* CellRegistrable.swift */; };
 		7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */; };
 		7AD9DA3A258CDCA2006BF647 /* NutrientPercentagePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */; };
 		7AF7BD4E256698B9003F4038 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */; };
@@ -446,6 +447,7 @@
 		7AC81F87259B330E00AC10FB /* CreateTrainingPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateTrainingPopUp.xib; sourceTree = "<group>"; };
 		7AC81F8B259B377D00AC10FB /* PopUpOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpOptionCell.swift; sourceTree = "<group>"; };
 		7AC81F8C259B377D00AC10FB /* PopUpOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpOptionCell.xib; sourceTree = "<group>"; };
+		7AC81F90259B4C4200AC10FB /* CellRegistrable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellRegistrable.swift; sourceTree = "<group>"; };
 		7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientPercentagePickerView.swift; sourceTree = "<group>"; };
 		7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutrientPercentagePickerView.xib; sourceTree = "<group>"; };
 		7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -1566,6 +1568,7 @@
 			isa = PBXGroup;
 			children = (
 				7AC19840258DF55B0023ADE2 /* Loadable.swift */,
+				7AC81F90259B4C4200AC10FB /* CellRegistrable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1843,6 +1846,7 @@
 				139B827524D5CAA1008C3DF4 /* RouterProtocol.swift in Sources */,
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
 				7AAFE8B42599D216004FF48B /* HomeViewControllerConfigurator.swift in Sources */,
+				7AC81F91259B4C4200AC10FB /* CellRegistrable.swift in Sources */,
 				132A6A452572569C00EB3AE0 /* SelectExerciseModel.swift in Sources */,
 				131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */,
 				1393EDFC24A634B600EBD938 /* TrainingManagedObject+CoreDataClass.swift in Sources */,

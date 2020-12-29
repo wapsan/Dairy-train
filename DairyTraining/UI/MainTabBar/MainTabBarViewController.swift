@@ -6,32 +6,30 @@ final class MainTabBarViewController: UITabBarController {
     private lazy var profileViewControllerIndex = 0
     
     // MARK: - GUI Properties
-    private lazy var addButton = UIButton(frame: CGRect(x: 0,
-                                                         y: 0,
-                                                         width: 50,
-                                                         height: 50))
+    private lazy var addButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    private lazy var createTrainingPopUp = CreateTrainingPopUp.view()
     
+    // MARK: - Properties
     var isAddButtonHiden: Bool = false {
         didSet {
             addButton.isHidden = isAddButtonHiden
         }
     }
-    private lazy var a = CreateTrainingPopUp.view()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        setupMiddleButton()
+        setupAddTrainingButton()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        addButton.center.y = view.frame.maxY - tabBar.frame.height + (addButton.bounds.height / 4 )// + 8
+        addButton.center.y = view.frame.maxY - tabBar.frame.height + (addButton.bounds.height / 4 )
     }
     
     //MARK: - Private methods
-    private func setupMiddleButton() {
+    private func setupAddTrainingButton() {
         addButton.center.x = tabBar.center.x
         addButton.backgroundColor = DTColors.controllSelectedColor
         addButton.layer.cornerRadius = addButton.bounds.height / 2
@@ -40,12 +38,6 @@ final class MainTabBarViewController: UITabBarController {
         addButton.addTarget(self, action: #selector(addButtonpressed), for: .touchUpInside)
         view.layoutIfNeeded()
     }
-    
-    @objc private func addButtonpressed() {
-        a?.preseent()
-       // print("Add button ressed")
-    }
-    
     
     private func setup() {
         viewControllers = [MainCoordinator.shared.homeNavigationViewController,
@@ -63,5 +55,10 @@ final class MainTabBarViewController: UITabBarController {
         tabBar.layer.shadowOpacity = 1.0
         tabBar.layer.masksToBounds = false
         tabBar.items?.enumerated().forEach({ if $0 == 2 { $1.isEnabled = false } })
+    }
+    
+    // MARK: - Actions
+    @objc private func addButtonpressed() {
+        createTrainingPopUp?.preseent()
     }
 }
