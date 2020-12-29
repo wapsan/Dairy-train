@@ -217,6 +217,10 @@
 		7AC19841258DF55C0023ADE2 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC19840258DF55B0023ADE2 /* Loadable.swift */; };
 		7AC19874258E37350023ADE2 /* MealDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC19873258E37350023ADE2 /* MealDetailAlert.swift */; };
 		7AC19878258E37BC0023ADE2 /* MealDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC19877258E37BC0023ADE2 /* MealDetailAlert.xib */; };
+		7AC81F83259B32F200AC10FB /* CreateTrainingPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F82259B32F200AC10FB /* CreateTrainingPopUp.swift */; };
+		7AC81F88259B330E00AC10FB /* CreateTrainingPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC81F87259B330E00AC10FB /* CreateTrainingPopUp.xib */; };
+		7AC81F8D259B377D00AC10FB /* PopUpOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F8B259B377D00AC10FB /* PopUpOptionCell.swift */; };
+		7AC81F8E259B377D00AC10FB /* PopUpOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC81F8C259B377D00AC10FB /* PopUpOptionCell.xib */; };
 		7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */; };
 		7AD9DA3A258CDCA2006BF647 /* NutrientPercentagePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */; };
 		7AF7BD4E256698B9003F4038 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */; };
@@ -438,6 +442,10 @@
 		7AC19840258DF55B0023ADE2 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		7AC19873258E37350023ADE2 /* MealDetailAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailAlert.swift; sourceTree = "<group>"; };
 		7AC19877258E37BC0023ADE2 /* MealDetailAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealDetailAlert.xib; sourceTree = "<group>"; };
+		7AC81F82259B32F200AC10FB /* CreateTrainingPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingPopUp.swift; sourceTree = "<group>"; };
+		7AC81F87259B330E00AC10FB /* CreateTrainingPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateTrainingPopUp.xib; sourceTree = "<group>"; };
+		7AC81F8B259B377D00AC10FB /* PopUpOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpOptionCell.swift; sourceTree = "<group>"; };
+		7AC81F8C259B377D00AC10FB /* PopUpOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpOptionCell.xib; sourceTree = "<group>"; };
 		7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientPercentagePickerView.swift; sourceTree = "<group>"; };
 		7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutrientPercentagePickerView.xib; sourceTree = "<group>"; };
 		7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -579,7 +587,6 @@
 		1320D313253B0E1800A4C99F /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				1364FB5025582CE800120B5E /* TabBarController */,
 				1320D314253B0E6400A4C99F /* MainCoordinator.swift */,
 				7AAFE8A42599BA92004FF48B /* AuthorizationCoordinator.swift */,
 				7A94DF95259B198700391DA2 /* TrainingPaternsCoordinator.swift */,
@@ -789,15 +796,6 @@
 			path = NutritionModule;
 			sourceTree = "<group>";
 		};
-		1364FB5025582CE800120B5E /* TabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */,
-				13BEF99B255701470025E978 /* TabBarControllerModel.swift */,
-			);
-			path = TabBarController;
-			sourceTree = "<group>";
-		};
 		136570CF2491253E00BF926B /* Statistic */ = {
 			isa = PBXGroup;
 			children = (
@@ -934,6 +932,7 @@
 		136F401024990D4000C6944B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7A94DF98259B2F9400391DA2 /* MainTabBar */,
 				13BA17A32461A49600DF5D7D /* StartApp */,
 				7AAFE8A72599CDC7004FF48B /* HomeModule */,
 				13BA179F2461A45200DF5D7D /* ProfileModule */,
@@ -1503,6 +1502,16 @@
 			path = TableHeaders;
 			sourceTree = "<group>";
 		};
+		7A94DF98259B2F9400391DA2 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				7AC81F86259B32F600AC10FB /* Views */,
+				7AC81F81259B32CF00AC10FB /* Model */,
+				13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
 		7AAFE8A72599CDC7004FF48B /* HomeModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1568,6 +1577,33 @@
 				7AC19877258E37BC0023ADE2 /* MealDetailAlert.xib */,
 			);
 			path = EnterFoodDetailAlert;
+			sourceTree = "<group>";
+		};
+		7AC81F81259B32CF00AC10FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				13BEF99B255701470025E978 /* TabBarControllerModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7AC81F86259B32F600AC10FB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7AC81F8A259B375C00AC10FB /* Cell */,
+				7AC81F82259B32F200AC10FB /* CreateTrainingPopUp.swift */,
+				7AC81F87259B330E00AC10FB /* CreateTrainingPopUp.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7AC81F8A259B375C00AC10FB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7AC81F8B259B377D00AC10FB /* PopUpOptionCell.swift */,
+				7AC81F8C259B377D00AC10FB /* PopUpOptionCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		7AD9DA38258CDC7C006BF647 /* View */ = {
@@ -1659,6 +1695,7 @@
 				136989C32520DF650039B306 /* TrainingPaternsViewController.xib in Resources */,
 				139285CE2573AC3000F4FB0C /* AddExerciseSupportButton.xib in Resources */,
 				1353CA3F255AF7C800E7B5DD /* TrainingListStatisticViewController.xib in Resources */,
+				7AC81F88259B330E00AC10FB /* CreateTrainingPopUp.xib in Resources */,
 				7AAFE8EF259A1F45004FF48B /* HomeViewCollectionCell.xib in Resources */,
 				7A69DBD5258757A7003EECD8 /* NutritionSearchingCell.xib in Resources */,
 				7A4452DD258A1C0300A808D1 /* NutritionSettingViewController.xib in Resources */,
@@ -1678,6 +1715,7 @@
 				133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */,
 				7AF7BD4F256698B9003F4038 /* AuthorizationViewController.xib in Resources */,
 				13417280254B38C2004C6262 /* CurrentPaternSideMenu.xib in Resources */,
+				7AC81F8E259B377D00AC10FB /* PopUpOptionCell.xib in Resources */,
 				7AC19878258E37BC0023ADE2 /* MealDetailAlert.xib in Resources */,
 				13D8CEBF25239CCF0091AA6B /* TrainingPaternCell.xib in Resources */,
 				13CCD923254EB1DF00E8FFEB /* SideMenuViewController.xib in Resources */,
@@ -1796,6 +1834,7 @@
 				7A2A75292588990C0091FD22 /* MealMO+CoreDataClass copy.swift in Sources */,
 				135F167A2576B4DA0065B9FA /* FrebaseServerModel.swift in Sources */,
 				13C0EEEC24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift in Sources */,
+				7AC81F8D259B377D00AC10FB /* PopUpOptionCell.swift in Sources */,
 				13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */,
 				7A69DBFA25878063003EECD8 /* SearchFoodViewController.swift in Sources */,
 				1379800924733AEB00BAD87C /* SettingsSectionViewController.swift in Sources */,
@@ -1873,6 +1912,7 @@
 				13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */,
 				13CCD922254EB1DF00E8FFEB /* SideMenuViewController.swift in Sources */,
 				133364AB2561793C00EAC6F6 /* ExerciseStatisticsCell.swift in Sources */,
+				7AC81F83259B32F200AC10FB /* CreateTrainingPopUp.swift in Sources */,
 				1346FAC62507F0AA00734215 /* TrainingListViewModel.swift in Sources */,
 				1301DA0025814B400064326E /* TrainingViewController.swift in Sources */,
 				135B8815248132360032251D /* DTAproachCell.swift in Sources */,

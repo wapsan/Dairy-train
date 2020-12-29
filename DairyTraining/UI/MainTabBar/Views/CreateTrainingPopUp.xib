@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CreateTrainingPopUp" customModule="Dairy_Training" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4w-nb-QAK">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="1A5-wQ-AGR" appends="YES" id="A7R-CG-dq3"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1de-YJ-dB4">
+                    <rect key="frame" x="0.0" y="181.5" width="375" height="485.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create training with following options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLq-jy-Ki5">
+                            <rect key="frame" x="16" y="27" width="305" height="20.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXr-P2-mwn">
+                            <rect key="frame" x="162.5" y="8" width="50" height="3"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="3" id="b9z-Tc-uIC"/>
+                                <constraint firstAttribute="width" constant="50" id="iaA-t0-qaM"/>
+                            </constraints>
+                        </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hNx-2Q-3WU">
+                            <rect key="frame" x="0.0" y="63.5" width="375" height="390"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="390" id="unS-kD-JVk"/>
+                            </constraints>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="hNx-2Q-3WU" firstAttribute="leading" secondItem="1de-YJ-dB4" secondAttribute="leading" id="3cj-Oe-uJW"/>
+                        <constraint firstItem="hNx-2Q-3WU" firstAttribute="top" secondItem="aLq-jy-Ki5" secondAttribute="bottom" constant="16" id="Au7-1u-FRZ"/>
+                        <constraint firstAttribute="bottom" secondItem="hNx-2Q-3WU" secondAttribute="bottom" constant="32" id="MFT-ul-mlp"/>
+                        <constraint firstItem="rXr-P2-mwn" firstAttribute="top" secondItem="1de-YJ-dB4" secondAttribute="top" constant="8" id="O9Y-4C-8qF"/>
+                        <constraint firstAttribute="trailing" secondItem="hNx-2Q-3WU" secondAttribute="trailing" id="aqH-UQ-D1c"/>
+                        <constraint firstItem="aLq-jy-Ki5" firstAttribute="top" secondItem="rXr-P2-mwn" secondAttribute="bottom" constant="16" id="hss-J9-vh1"/>
+                        <constraint firstItem="aLq-jy-Ki5" firstAttribute="leading" secondItem="1de-YJ-dB4" secondAttribute="leading" constant="16" id="iie-lZ-tdk"/>
+                        <constraint firstItem="rXr-P2-mwn" firstAttribute="centerX" secondItem="1de-YJ-dB4" secondAttribute="centerX" id="loU-8a-ebz"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aLq-jy-Ki5" secondAttribute="trailing" constant="16" id="nIb-kh-rYq"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="u2D-6P-V9R" appends="YES" id="YBr-7k-vGD"/>
+                    </connections>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="1de-YJ-dB4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7sr-eK-XAE"/>
+                <constraint firstAttribute="trailing" secondItem="d4w-nb-QAK" secondAttribute="trailing" id="FlD-OS-hso"/>
+                <constraint firstItem="d4w-nb-QAK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="MH1-Ts-hys"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1de-YJ-dB4" secondAttribute="trailing" id="Rp0-Fe-i4u"/>
+                <constraint firstAttribute="bottom" secondItem="1de-YJ-dB4" secondAttribute="bottom" id="dxK-GM-Fa0"/>
+                <constraint firstItem="d4w-nb-QAK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fmA-Dy-Tii"/>
+                <constraint firstAttribute="bottom" secondItem="d4w-nb-QAK" secondAttribute="bottom" id="wUD-hl-LRj"/>
+            </constraints>
+            <connections>
+                <outlet property="backgroundView" destination="d4w-nb-QAK" id="Xbb-9g-Ddr"/>
+                <outlet property="containerView" destination="1de-YJ-dB4" id="yM7-Ta-1XQ"/>
+                <outlet property="decorateView" destination="rXr-P2-mwn" id="v32-pl-uAq"/>
+                <outlet property="tableView" destination="hNx-2Q-3WU" id="pB6-6R-4w1"/>
+                <outlet property="title" destination="aLq-jy-Ki5" id="eLY-s5-khJ"/>
+            </connections>
+            <point key="canvasLocation" x="-246" y="92"/>
+        </view>
+        <tapGestureRecognizer id="1A5-wQ-AGR">
+            <connections>
+                <action selector="backViewTapped:" destination="iN0-l3-epB" id="Td9-8B-Taj"/>
+            </connections>
+        </tapGestureRecognizer>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="u2D-6P-V9R">
+            <connections>
+                <action selector="containerViewDraggin:" destination="iN0-l3-epB" id="atJ-Pk-hrg"/>
+            </connections>
+        </panGestureRecognizer>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

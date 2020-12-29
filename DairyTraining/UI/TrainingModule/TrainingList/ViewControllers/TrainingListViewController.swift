@@ -103,7 +103,7 @@ final class TrainingListViewController: BaseViewController {
         super.viewDidLoad()
         self.setUpViewController()
         self.setUpEditingButton()
-        self.setUpAddExerciseButton()
+      //  self.setUpAddExerciseButton()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
