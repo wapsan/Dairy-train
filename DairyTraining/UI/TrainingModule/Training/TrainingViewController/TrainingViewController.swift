@@ -72,6 +72,13 @@ private extension TrainingViewController {
         tableView.register(DTEditingExerciceCell.self, forCellReuseIdentifier: DTEditingExerciceCell.cellID)
         view.backgroundColor = DTColors.backgroundColor
         navigationItem.title = LocalizedString.training
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
+                                                            target: self,
+                                                            action: #selector(statisticsButtonPressed))
+    }
+    
+    @objc private func statisticsButtonPressed() {
+        viewModel.statisticsButtonPressed()
     }
 }
 

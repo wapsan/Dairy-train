@@ -33,12 +33,10 @@ extension SideMenuViewModel: SideMenuViewModelProtocol {
     func menuItemSelected(at index: Int) {
         let menuItem = sideMenuItems[index]
         switch menuItem {
-        case .statistics:
-            MainCoordinator.shared.coordinate(to: ProfileMenuCoordinator.Target.statisticsByTraining)
         case .setting:
-            MainCoordinator.shared.coordinate(to: ProfileMenuCoordinator.Target.setting)
+            MainCoordinator.shared.coordinate(to: HomeCoordinator.Target.setting)
         case .logOut:
-            MainCoordinator.shared.coordinate(to: ProfileMenuCoordinator.Target.signOut(completion: model.signOut))
+            MainCoordinator.shared.coordinate(to: HomeCoordinator.Target.signOut(completion: model.signOut))
         case .premium:
             break
         case .termAndConditions:

@@ -16,6 +16,7 @@ protocol TrainingViewModeProtocol: AnyObject {
     func doneExercise()
     func isExerciseEditable(at index: Int) -> Bool
     func footerButtonPressed()
+    func statisticsButtonPressed()
 }
 
 final class TrainingViewModel {
@@ -94,6 +95,10 @@ extension TrainingViewModel: TrainingModelOutput {
 
 //MARK: - TrainingViewModeIteracting
 extension TrainingViewModel: TrainingViewModeProtocol {
+    
+    func statisticsButtonPressed() {
+        model.showStatisticForCurrentTraining()
+    }
     
     var isTrainingEditable: Bool {
         return model.isTrainingEditable

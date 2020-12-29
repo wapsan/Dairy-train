@@ -9,6 +9,7 @@ final class TrainingModuleCoordinator: Coordinator {
     // MARK: - Types
     enum Target: CoordinatorTarget {
         case choosenTraining(training: TrainingManagedObject)
+        case statisticForCurrentTraining(training: TrainingManagedObject)
         case statisticsForChosenExercise(name: String, exerciseDate: Date?)
     }
     
@@ -35,6 +36,9 @@ final class TrainingModuleCoordinator: Coordinator {
         case .statisticsForChosenExercise(name: let name, exerciseDate: let exerciseDate):
             let choosenExerciseForStatisticViewController = configureStatisticsViewController(with: name, and: exerciseDate)
             topViewController?.present(choosenExerciseForStatisticViewController, animated: true, completion: nil)
+        case .statisticForCurrentTraining(training: let training):
+            let a = configureTVSModule(for: training)
+            navigationController?.pushViewController(a, animated: true)
         }
         return true
     }
@@ -47,6 +51,13 @@ final class TrainingModuleCoordinator: Coordinator {
         trainingViewModel.view = trainingViewController
         trainingModel.output = trainingViewModel
         return trainingViewController
+    }
+    
+    func configureTVSModule(for train: TrainingManagedObject) -> ChoosenTrainingStatisticsViewController {
+        let statistics = Statistics(for: train)
+        let choosenStatisticsViewModel = ChoosenTrainingStatisticsViewModel(statistics: statistics)
+        let choosenStatisticsViewController = ChoosenTrainingStatisticsViewController(viewModel: choosenStatisticsViewModel)
+        return choosenStatisticsViewController
     }
 
     private func configureStatisticsViewController(with exerciseName: String,

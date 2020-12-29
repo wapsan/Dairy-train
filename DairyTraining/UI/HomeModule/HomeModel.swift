@@ -17,7 +17,7 @@ final class HomeModel {
 extension HomeModel: HomeModelProtocol {
     
     func showSideMenu() {
-        MainCoordinator.shared.coordinate(to: ProfileMenuCoordinator.Target.sideMenu)
+        MainCoordinator.shared.coordinate(to: HomeCoordinator.Target.sideMenu)
     }
     
     var menuItems: [HomeMenuItem] {

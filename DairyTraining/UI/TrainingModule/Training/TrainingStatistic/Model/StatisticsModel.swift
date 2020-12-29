@@ -1,6 +1,6 @@
 import Foundation
 
-class Statistics {
+struct Statistics {
     
     //MARK: - Properties
     private lazy var weightDescription = MeteringSetting.shared.weightDescription
@@ -25,17 +25,17 @@ class Statistics {
     
     var averageProjectileWeight: String {
         if self._averageProjectileWeight.truncatingRemainder(dividingBy: 1) == 0 {
-            return String(format: "%.0f", self._averageProjectileWeight) + self.weightDescription
+            return String(format: "%.0f", self._averageProjectileWeight) + MeteringSetting.shared.weightDescription//self.weightDescription
         } else {
-            return String(format: "%.1f", self._averageProjectileWeight) + self.weightDescription
+            return String(format: "%.1f", self._averageProjectileWeight) + MeteringSetting.shared.weightDescription//self.weightDescription
         }
     }
     
     var totalWorkoutWeight: String {
         if self._totalWorkoutWeight.truncatingRemainder(dividingBy: 1) == 0 {
-            return String(format: "%.0f", self._totalWorkoutWeight) + self.weightDescription
+            return String(format: "%.0f", self._totalWorkoutWeight) + MeteringSetting.shared.weightDescription//self.weightDescription
         } else {
-            return String(format: "%.1f", self._totalWorkoutWeight) + self.weightDescription
+            return String(format: "%.1f", self._totalWorkoutWeight) + MeteringSetting.shared.weightDescription//self.weightDescription
         }
     }
     

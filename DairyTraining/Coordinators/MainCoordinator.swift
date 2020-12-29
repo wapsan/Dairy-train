@@ -144,7 +144,7 @@ final class MainCoordinator: Coordinator {
         return [AuthorizationCoordinator(window: window),
                 TabBarCoordinator(window: window),
                 MuscleGroupsCoordinator(window: window),
-                ProfileMenuCoordinator(rootViewController: profileNavigationController),
+                HomeCoordinator(rootViewController: homeNavigationViewController),
                 TrainingModuleCoordinator(rootViewController: trainingBlockNavigationController),
                 NutritionModuleCoordinator(rootViewController: nutritionBlockNavigationController),
                 TrainingPaternsCoordinator(window: window)]

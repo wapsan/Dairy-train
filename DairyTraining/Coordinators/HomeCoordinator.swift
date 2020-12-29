@@ -1,7 +1,7 @@
 import UIKit
 import SideMenu
 
-final class ProfileMenuCoordinator: Coordinator {
+final class HomeCoordinator: Coordinator {
 
     //MARK: - Constants
     private struct Constants {
@@ -11,8 +11,6 @@ final class ProfileMenuCoordinator: Coordinator {
     // MARK: - Types
     enum Target: CoordinatorTarget {
         case sideMenu
-        case statisticsByTraining
-        case statisticForChoosenTraining(statistics: Statistics)
         case setting
         case signOut(completion: (() -> Void)?)
     }
@@ -39,10 +37,6 @@ final class ProfileMenuCoordinator: Coordinator {
             let sideMenu = self.configurateSideMenu()
             self.sideMenu = sideMenu
             topViewController?.present(sideMenu, animated: true, completion: nil)
-        case .statisticsByTraining:
-            let trainingListStatistics = configureTrainingListStatistics()
-            navigationController?.pushViewController(trainingListStatistics, animated: true)
-            sideMenu?.dismiss(animated: true, completion: nil)
         case .setting:
             let settingViewController = SettingsSectionViewController(with: LocalizedString.setting)
             navigationController?.pushViewController(settingViewController, animated: true)
@@ -54,9 +48,6 @@ final class ProfileMenuCoordinator: Coordinator {
                                                okTitle: LocalizedString.ok,
                                                cancelTitle: LocalizedString.cancel,
                                                completion: completion)
-        case .statisticForChoosenTraining(statistics: let statistics):
-            let choosenStatisticsViewController = configureTVSModule(for: statistics)
-            navigationController?.pushViewController(choosenStatisticsViewController, animated: true)
         }
         return true
     }
@@ -76,18 +67,5 @@ final class ProfileMenuCoordinator: Coordinator {
         menu.modalPresentationStyle = .overCurrentContext
         menu.view.backgroundColor = .red
         return menu
-    }
-
-    private func configureTrainingListStatistics() -> TrainingListStatisticViewController {
-        let trainingListStatisticsModel = TrainingListStatisticsModel()
-        let trainingListStatisticsViewModel = TrainingListStatisticsViewModel(model: trainingListStatisticsModel)
-        let trainingListStatisticsVC = TrainingListStatisticViewController(viewModel: trainingListStatisticsViewModel)
-        return trainingListStatisticsVC
-    }
-    
-    func configureTVSModule(for train: Statistics) -> ChoosenTrainingStatisticsViewController {
-        let choosenStatisticsViewModel = ChoosenTrainingStatisticsViewModel(statistics: train)
-        let choosenStatisticsViewController = ChoosenTrainingStatisticsViewController(viewModel: choosenStatisticsViewModel)
-        return choosenStatisticsViewController
     }
 }

@@ -11,6 +11,7 @@ protocol TrainingModelIteracting: AnyObject {
     func changeAproach(in exerciseIndex: Int, at aproachIndex: Int, weight: Float, reps: Int)
     func exerciseDone(at index: Int)
     func coordinateToMuscularGroupsScreen()
+    func showStatisticForCurrentTraining()
 }
 
 protocol TrainingModelOutput: AnyObject {
@@ -61,6 +62,10 @@ final class TrainingModel {
 
 //MARK: - TrainingModelIteracting
 extension TrainingModel: TrainingModelIteracting {
+    
+    func showStatisticForCurrentTraining() {
+        MainCoordinator.shared.coordinate(to: TrainingModuleCoordinator.Target.statisticForCurrentTraining(training: training))
+    }
     
     var isTrainingEditable: Bool {
         return training.isEditable

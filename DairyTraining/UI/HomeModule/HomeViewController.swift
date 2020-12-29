@@ -24,6 +24,11 @@ final class HomeViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if tabBarController?.tabBar.isHidden ?? false { showTabBar() }
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)

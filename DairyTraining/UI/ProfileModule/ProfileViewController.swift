@@ -1,7 +1,6 @@
 import UIKit
-import SideMenu
 
-class ProfileViewController: DTBackgroundedViewController {
+final class ProfileViewController: DTBackgroundedViewController {
  
     //MARK: - Private properties
     private lazy var safeArea = self.view.safeAreaLayoutGuide
@@ -49,7 +48,6 @@ class ProfileViewController: DTBackgroundedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpCollectionView()
-        self.setUpMenuButtonBar()
         self.valueAlert.delegate = self.viewModel
         self.selectionListAlert.delegate = self.viewModel
         self.view.backgroundColor = DTColors.backgroundColor
@@ -58,19 +56,7 @@ class ProfileViewController: DTBackgroundedViewController {
 
 //MARK: - Private extension
 private extension ProfileViewController {
-    
-    @objc func menuButtonPressed() {
-        MainCoordinator.shared.coordinate(to: ProfileMenuCoordinator.Target.sideMenu)
-    }
-    
-    func setUpMenuButtonBar() {
-        let menuButton = UIBarButtonItem(image: UIImage(named: "menu"),
-                                         style: .plain,
-                                         target: self,
-                                         action: #selector(self.menuButtonPressed))
-        self.navigationItem.rightBarButtonItem = menuButton
-    }
-    
+ 
     func setUpCollectionView() {
         self.view.addSubview(self.collectionView)
         self.collectionView.backgroundColor = .clear
