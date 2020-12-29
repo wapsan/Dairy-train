@@ -31,7 +31,7 @@ final class MuscleGroupsCoordinator: Coordinator {
         case .muscularGrops(let trainingEntityTarget):
             let navigationController = UINavigationController(rootViewController: configureMuscleGroupViewController(with: trainingEntityTarget))
             navigationController.modalPresentationStyle = .fullScreen
-            window?.rootViewController?.present(navigationController, animated: true, completion: nil)
+            topViewController?.present(navigationController, animated: true, completion: nil)
             self.navigationController = navigationController
         case .new(muscularGroup: let muscularGroup, trainingEntityTarget: let trainingEntityTarget):
             let exerciseNewModel = SelectExerciseModel(muscularGroup: muscularGroup,

@@ -54,7 +54,7 @@ class AddExerciseSupportButton: UIView {
         switch buttonType {
         case .pattern:
             action = {
-                MainCoordinator.shared.coordinate(to: TrainingModuleCoordinator.Target.trainingPaternsList)
+                MainCoordinator.shared.coordinate(to: TrainingPaternsCoordinator.Target.trainingPaternsList)
             }
             titleLabel.text = "Patern list"
             actionButton.setImage(UIImage(named: "paternList")?.withTintColor(.white), for: .normal)

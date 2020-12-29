@@ -74,14 +74,14 @@ PODS:
   - ZKProgressHUD (5.0.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.2)
+  - Alamofire
   - Charts
   - EFCountingLabel
   - Firebase/Auth
   - Firebase/Database
   - GoogleSignIn
   - SideMenu
-  - ZKProgressHUD (= 5.0.1)
+  - ZKProgressHUD
 
 SPEC REPOS:
   trunk:
@@ -126,6 +126,6 @@ SPEC CHECKSUMS:
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   ZKProgressHUD: f1833e23655834d4459c711e94e924e49bc77442
 
-PODFILE CHECKSUM: 55c75dbf34bd1eb0ed9ca2389d15aaf87322fe07
+PODFILE CHECKSUM: 83245d95aced71abeaa25f1047ca53771b545e20
 
 COCOAPODS: 1.10.0

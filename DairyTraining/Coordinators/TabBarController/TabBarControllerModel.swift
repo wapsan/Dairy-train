@@ -1,19 +1,24 @@
 import UIKit
 
-
-fileprivate enum DTTabBarItems {
+enum DTTabBarItems {
+    case home
     case nutrition
+    case addButton
     case profile
     case training
     
     private var tag: Int {
         switch self {
         case .nutrition:
-            return 0
-        case .profile:
-            return 2
-        case .training:
             return 1
+        case .profile:
+            return 3
+        case .training:
+            return 2
+        case .home:
+            return 0
+        case .addButton:
+            return 4
         }
     }
     
@@ -25,6 +30,10 @@ fileprivate enum DTTabBarItems {
             return UIImage.tabBarProfile
         case .training:
             return UIImage.tabBarTrains
+        case .home:
+            return UIImage(named: "iconhome")
+        case .addButton:
+            return nil
         }
     }
     
@@ -36,6 +45,10 @@ fileprivate enum DTTabBarItems {
             return LocalizedString.profile
         case .training:
             return LocalizedString.training
+        case .home:
+            return "Home"
+        case .addButton:
+            return ""
         }
     }
     
@@ -43,13 +56,15 @@ fileprivate enum DTTabBarItems {
         let item = UITabBarItem(title: nil,
                                 image: image,
                                 tag: tag)
-        item.imageInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
+        item.imageInsets = .init(top: 12, left: 12, bottom: 12, right: 12)
         return item
     }
 }
 
 enum TabBarItemController {
+    case home
     case profile
+    case addButton
     case trainingBlock
     case supplyBlock
     
@@ -61,6 +76,10 @@ enum TabBarItemController {
             return configureTrainingBlockNabigationController()
         case .supplyBlock:
            return configureSupplyBlockNavigationController()
+        case .home:
+            return HomeViewControllerConfigurator.configureHomeNavigationControllet()
+        case .addButton:
+            return UINavigationController(rootViewController: UIViewController())
         }
     }
     

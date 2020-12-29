@@ -38,7 +38,8 @@ extension SearchFoodViewModel: SearchFoodViewModelProtocol {
     }
     
     func cancelButtonPressed() {
-        MainCoordinator.shared.popViewController()
+        MainCoordinator.shared.dismiss()
+      //  MainCoordinator.shared.popViewController()
     }
     
     func activatePaginationRequest() {

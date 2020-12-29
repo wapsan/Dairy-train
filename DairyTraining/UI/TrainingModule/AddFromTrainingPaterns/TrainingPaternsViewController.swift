@@ -42,6 +42,10 @@ final class TrainingPaternsViewController: DTBackgroundedViewController {
     @objc private func addTrainingPaternAction() {
         self.namingPaternAlert?.show()
     }
+    
+    @objc private func cancelButtonAction() {
+        MainCoordinator.shared.dismiss()
+    }
 }
 
 //MARK: - Private extension
@@ -58,6 +62,9 @@ private extension TrainingPaternsViewController {
                                                   target: self,
                                                   action: #selector(self.addTrainingPaternAction))
         navigationItem.rightBarButtonItem = addPaternButtonItem
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                           target: self,
+                                                           action: #selector(cancelButtonAction))
     }
 }
 

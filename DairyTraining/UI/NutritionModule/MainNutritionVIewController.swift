@@ -71,7 +71,7 @@ extension MainNutritionVIewController: MainNutritionView {
     }
     
     func reloadTableView() {
-        tableView.reloadData()
+        if tableView != nil { tableView.reloadData() }
     }
     
     func updateMealPlaneLabelText(to text: String) {

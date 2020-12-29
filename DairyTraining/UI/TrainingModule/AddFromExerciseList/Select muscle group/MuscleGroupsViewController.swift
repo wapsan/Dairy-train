@@ -76,7 +76,7 @@ final class MuscleGroupsViewController: DTBackgroundedViewController {
     
     // MARK: - Actions
     @objc private func backAction() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        MainCoordinator.shared.dismiss()
     }
 }
 

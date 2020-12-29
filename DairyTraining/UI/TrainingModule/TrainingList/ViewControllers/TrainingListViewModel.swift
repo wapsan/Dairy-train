@@ -34,7 +34,7 @@ extension TrainingListViewModel: TrainingListViewModelIteracting {
     }
 
     func goToTrainingPaterns() {
-        MainCoordinator.shared.coordinate(to: TrainingModuleCoordinator.Target.trainingPaternsList)
+        MainCoordinator.shared.coordinate(to: TrainingPaternsCoordinator.Target.trainingPaternsList)
         //self.router?.pushTrainingPaternsViewController()
     }
     

@@ -48,16 +48,16 @@ final class MealDetailAlert: UIView {
         setupNutrientsLabelsFor(weight: foodWeight)
         guard let topViewController = UIApplication.topViewController() else { return }
         self.translatesAutoresizingMaskIntoConstraints = false
-        guard let tabbarController = topViewController.tabBarController,
-              let tabbarviee = tabbarController.view else {
-            return
-        }
-        tabbarviee.addSubview(self)
+//        guard let tabbarController = topViewController.tabBarController,
+//              let tabbarviee = tabbarController.view else {
+//            return
+//        }
+        topViewController.view.addSubview(self)
         NSLayoutConstraint.activate([
-            self.topAnchor.constraint(equalTo: tabbarviee.topAnchor),
-            self.leftAnchor.constraint(equalTo: tabbarviee.leftAnchor),
-            self.rightAnchor.constraint(equalTo: tabbarviee.rightAnchor),
-            self.bottomAnchor.constraint(equalTo: tabbarviee.bottomAnchor)
+            self.topAnchor.constraint(equalTo: topViewController.view.topAnchor),
+            self.leftAnchor.constraint(equalTo: topViewController.view.leftAnchor),
+            self.rightAnchor.constraint(equalTo: topViewController.view.rightAnchor),
+            self.bottomAnchor.constraint(equalTo: topViewController.view.bottomAnchor)
         ])
         animatiInAlert()
     }

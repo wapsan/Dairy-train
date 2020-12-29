@@ -3,18 +3,49 @@ import UIKit
 final class MainTabBarViewController: UITabBarController {
         
     //MARK: - Private properties
-    private lazy var profileViewControllerIndex = 2
+    private lazy var profileViewControllerIndex = 0
+    
+    // MARK: - GUI Properties
+    private lazy var menuButton = UIButton(frame: CGRect(x: 0,
+                                                         y: 0,
+                                                         width: tabBar.bounds.height / 1.8 ,
+                                                         height: tabBar.bounds.height / 1.8))
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setup()
+        setup()
+        setupMiddleButton()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        menuButton.center.y = view.frame.maxY - tabBar.frame.height + (menuButton.bounds.height / 2 ) + 8
     }
     
     //MARK: - Private methods
+
+    
+    
+    func setupMiddleButton() {
+        menuButton.center.x = tabBar.center.x
+        menuButton.backgroundColor = DTColors.controllSelectedColor
+        menuButton.layer.cornerRadius = 5
+        self.view.addSubview(menuButton)
+        menuButton.setImage(UIImage(named: "add"), for: UIControl.State.normal)
+        menuButton.addTarget(self, action: #selector(addButtonpressed), for: .touchUpInside)
+        view.layoutIfNeeded()
+    }
+    
+    @objc private func addButtonpressed() {
+        print("Add button ressed")
+    }
+    
+    
     private func setup() {
-        delegate = self
-        viewControllers = [MainCoordinator.shared.nutritionBlockNavigationController,
+        viewControllers = [MainCoordinator.shared.homeNavigationViewController,
+                           MainCoordinator.shared.nutritionBlockNavigationController,
+                           TabBarItemController.addButton.navigationController,
                            MainCoordinator.shared.trainingBlockNavigationController,
                            MainCoordinator.shared.profileNavigationController]
         selectedIndex = profileViewControllerIndex
@@ -26,16 +57,19 @@ final class MainTabBarViewController: UITabBarController {
         tabBar.layer.shadowOffset = CGSize(width: 0.0, height: -1.0)
         tabBar.layer.shadowOpacity = 1.0
         tabBar.layer.masksToBounds = false
+        tabBar.items?.enumerated().forEach({
+            if $0 == 2 { $1.isEnabled = false }
+        })
     }
 }
 
 //MARK: - UITabBarControllerDelegate
-extension MainTabBarViewController: UITabBarControllerDelegate {
-    
-    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return TabBarTransitionAnimation(viewControllers: self.viewControllers)
-    }
-}
+//extension MainTabBarViewController: UITabBarControllerDelegate {
+//
+//    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return TabBarTransitionAnimation(viewControllers: self.viewControllers)
+//    }
+//}
 
 //MARK: - Transition viewcontrollers in TabBarViewController with animation
 class TabBarTransitionAnimation: NSObject, UIViewControllerAnimatedTransitioning {

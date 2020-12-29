@@ -60,7 +60,12 @@ extension Coordinator {
         guard let topNavigationController = UIApplication.topViewController() else {
             return
         }
-        topNavigationController.dismiss(animated: true, completion: nil)
+        if let navVC = topNavigationController.navigationController {
+            navVC.dismiss(animated: true, completion: nil)
+        } else {
+            topNavigationController.dismiss(animated: true, completion: nil)
+        }
+        
     }
 
     @discardableResult func popViewController(_ transition: CATransition? = nil) -> Bool {
@@ -121,6 +126,7 @@ final class MainCoordinator: Coordinator {
     private(set) lazy var profileNavigationController: UINavigationController = TabBarItemController.profile.navigationController
     private(set) lazy var trainingBlockNavigationController: UINavigationController = TabBarItemController.trainingBlock.navigationController
     private(set) lazy var nutritionBlockNavigationController: UINavigationController = TabBarItemController.supplyBlock.navigationController
+    private(set) lazy var homeNavigationViewController: UINavigationController = TabBarItemController.home.navigationController
     
 
     // MARK: - Coordinator API
@@ -142,6 +148,7 @@ final class MainCoordinator: Coordinator {
                 MuscleGroupsCoordinator(window: window),
                 ProfileMenuCoordinator(rootViewController: profileNavigationController),
                 TrainingModuleCoordinator(rootViewController: trainingBlockNavigationController),
-                NutritionModuleCoordinator(rootViewController: nutritionBlockNavigationController)]
+                NutritionModuleCoordinator(rootViewController: nutritionBlockNavigationController),
+                TrainingPaternsCoordinator(window: window)]
     }
 }
