@@ -2,43 +2,31 @@ import GoogleSignIn
 import Firebase
 
 protocol LoginModelOutput: AnyObject {
-    func startSigninIn()
     func succesSignIn()
-    func failedSignIn(with error: Error)
-    func succesSignUp()
-    func failedSignUp(with error: Error)
     func googleStartSignIn()
 }
 
-protocol LoginModelIteracting {
-    func setUpGooglePresentingViewController(to viewController: UIViewController)
-    func signIn(with email: String?, and password: String?)
-    func signUp(with email: String?, and password: String?)
+protocol AuthorizationModelProtocol {
     func signInWithGoogle()
+    func signInWithApple()
+    func signInWithFacebook()
 }
 
-final class LoginModel {
+final class AuthorizationModel {
     
     //MARK: - Private properties
-    private let googleSignIn: GIDSignIn?
-    private let firebaseManager: FirebaseDataManager
-    private let coreDataManager: UserDataManager
-    private let firebaseAuth: Auth
+    private let googleSignIn: GIDSignIn = GIDSignIn.sharedInstance()
+    private let firebaseManager: FirebaseDataManager = FirebaseDataManager.shared
+    private let coreDataManager: UserDataManager = UserDataManager.shared
+    private let firebaseAuth: Auth = Auth.auth()
     
     //MARK: - Properties
     weak var output: LoginModelOutput?
     
     //MARK: - Initialization
-    init(googleSignIn: GIDSignIn? = GIDSignIn.sharedInstance(),
-         firebaseManager: FirebaseDataManager = FirebaseDataManager.shared,
-         coreDataManager: UserDataManager = UserDataManager.shared,
-         firebaseAuth: Auth = Auth.auth()) {
-        self.googleSignIn = googleSignIn
-        self.firebaseManager = firebaseManager
-        self.coreDataManager = coreDataManager
-        self.firebaseAuth = firebaseAuth
-        self.addObserveForGoogleSignedIn()
-        self.addObserverForStartGoogleSignIn()
+    init() {
+        addObserveForGoogleSignedIn()
+        addObserverForStartGoogleSignIn()
     }
     
     //MARK: - Actions
@@ -90,38 +78,17 @@ final class LoginModel {
 }
 
 //MARK: - LoginModelIteracting
-extension LoginModel: LoginModelIteracting {
+extension AuthorizationModel: AuthorizationModelProtocol {
     
-    func setUpGooglePresentingViewController(to viewController: UIViewController) {
-        self.googleSignIn?.presentingViewController = viewController
+    func signInWithApple() {
+        //add realization
     }
     
-    func signIn(with email: String?, and password: String?) {
-        guard let email = email, let password = password else { return }
-        self.firebaseAuth.signIn(withEmail: email, password: password) { (result, error) in
-            if let _ = result {
-                self.output?.startSigninIn()
-               // self.synhronizeDataFreomServer()
-            }
-            if let error = error {
-                self.output?.failedSignIn(with: error)
-            }
-        }
-    }
-    
-    func signUp(with email: String?, and password: String?) {
-        guard let email = email, let password = password else { return }
-        self.firebaseAuth.createUser(withEmail: email, password: password) { (result, error) in
-            if let _ = result {
-                self.output?.succesSignUp()
-            }
-            if let error = error {
-                self.output?.failedSignUp(with: error)
-            }
-        }
+    func signInWithFacebook() {
+        //add realization
     }
     
     func signInWithGoogle() {
-        self.googleSignIn?.signIn()
+        self.googleSignIn.signIn()
     }
 }

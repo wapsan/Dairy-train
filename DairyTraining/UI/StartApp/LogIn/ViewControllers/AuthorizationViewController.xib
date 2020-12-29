@@ -20,10 +20,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Mr9-K3-bxo">
-                    <rect key="frame" x="16" y="580" width="382" height="250"/>
+                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mr9-K3-bxo">
+                    <rect key="frame" x="16" y="650" width="382" height="180"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="250" id="pPR-ug-qOz"/>
+                        <constraint firstAttribute="height" constant="180" id="pPR-ug-qOz"/>
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mq7-xu-3UA">

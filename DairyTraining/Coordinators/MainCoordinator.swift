@@ -105,9 +105,7 @@ final class MainCoordinator: Coordinator {
     // MARK: - Inner types
 
     enum Target: CoordinatorTarget {
-        case splashScreen
-        case mainFlow
-        case loginFlow
+   
     }
 
     // MARK: - Properties

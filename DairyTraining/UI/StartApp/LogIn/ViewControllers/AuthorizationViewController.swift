@@ -1,9 +1,15 @@
 import UIKit
+import GoogleSignIn
 
-class AuthorizationViewController: UIViewController {
+protocol AuthorizationViewProtocol: AnyObject {
+    func signInSuccesed()
+    func googleSignInStart()
+}
+
+final class AuthorizationViewController: UIViewController, Loadable {
 
     // MARK: - @IBOutlets
-    @IBOutlet var authorizationButtonsStackView: UIStackView!
+    @IBOutlet private var authorizationButtonsStackView: UIStackView!
     
     // MARK: - GUI Properties
     private lazy var googleSignInButton: Authorizationbutton = {
@@ -30,9 +36,8 @@ class AuthorizationViewController: UIViewController {
         return button
     }()
     
-    
     // MARK: - Properties
-    var viewModel: LoginViewModelInput?
+    private let viewModel: LoginViewModelProtocol
     
     // MARK: - Lyfecycle
     override func viewDidLoad() {
@@ -40,13 +45,23 @@ class AuthorizationViewController: UIViewController {
         setup()
     }
     
-    // MARK: - Setup
-    private func setup() {
-        viewModel?.setUpGooglePresentingViewController()
-        fillButtonStackView()
+    // MARK: - Initialization
+    init(viewModel: LoginViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
     
-    private func fillButtonStackView() {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Setup
+    private func setup() {
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        fillAuthorizationButtonStackView()
+    }
+    
+    private func fillAuthorizationButtonStackView() {
         authorizationButtonsStackView.addArrangedSubview(googleSignInButton)
         authorizationButtonsStackView.addArrangedSubview(facebookLoginButton)
         authorizationButtonsStackView.addArrangedSubview(appleLoginButton)
@@ -54,42 +69,27 @@ class AuthorizationViewController: UIViewController {
     
     // MARK: - Action
     @objc private func googleSignInButtonAction() {
-        viewModel?.signInWithGoogle()
+        viewModel.signInWithGoogle()
     }
     
     @objc private func facebookLoginButtonAction() {
-        viewModel?.signInWithFacebook()
+        viewModel.signInWithFacebook()
     }
     
     @objc private func appleLoginButtonAction() {
-        viewModel?.signInWithApple()
+        viewModel.signInWithApple()
     }
 }
 
 //MARK: - LoginViewControllerPresenter
-extension AuthorizationViewController: LoginViewControllerPresenter {
+extension AuthorizationViewController: AuthorizationViewProtocol {
+    
     func signInSuccesed() {
-        MainCoordinator.shared.coordinate(to: TabBarCoordinator.Target.mainTabBar)
-       // MainCoordinator.shared.coordinate(to: MainCoordinator.Target.mainFlow)
-    }
-    
-    func signInFailed(with errorMessage: String) {
-        
-    }
-    
-    func startSigninIn() {
-        
-    }
-    
-    func failedSignUp(with errorMessage: String) {
-        
-    }
-    
-    func succesSignUp() {
-        
+        hideLoader()
+        viewModel.navigateToMainFlow()
     }
     
     func googleSignInStart() {
-        
+        showLoader()
     }
 }
