@@ -13,7 +13,7 @@ final class GoogleAuthorizationManager: NSObject, GIDSignInDelegate {
     
     //MARK: - Publick methods
     func initAuth() {
-        FirebaseApp.configure()
+        //FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
     }

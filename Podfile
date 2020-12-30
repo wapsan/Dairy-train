@@ -14,5 +14,11 @@ pod 'Alamofire'
 pod 'ZKProgressHUD'
 pod 'EFCountingLabel'
 
+pod 'Firebase/Firestore'
+pod 'Firebase/Storage'
+
+pod "GSKStretchyHeaderView"
+
+
   # Pods for DairyTrain2.0
 end

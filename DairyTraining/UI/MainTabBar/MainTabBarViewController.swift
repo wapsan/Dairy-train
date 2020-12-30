@@ -60,5 +60,10 @@ final class MainTabBarViewController: UITabBarController {
     // MARK: - Actions
     @objc private func addButtonpressed() {
         createTrainingPopUp?.preseent()
+     //   let a = CreteTrainingModalViewController()
+     //   a.modalPresentationStyle = .overFullScreen
+       // present(a, animated: true, completion: nil)
+        
+        
     }
 }

@@ -28,7 +28,7 @@ fileprivate enum CreateTrainingOptionsModel: String, CaseIterable {
         case .fromTrainingPatern:
             MainCoordinator.shared.coordinate(to: TrainingPaternsCoordinator.Target.trainingPaternsList)
         case .fromSpecialTraining:
-            return
+            MainCoordinator.shared.coordinate(to: TrainingProgramsCoordinator.Target.trainingLevels)
         }
     }
 }

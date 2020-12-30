@@ -162,6 +162,22 @@
 		7A2A75612588CE400091FD22 /* CaloriesRecomendationCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A75602588CE400091FD22 /* CaloriesRecomendationCalculator.swift */; };
 		7A2D5CD5258A3D3A0045749C /* NutritionModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D5CD3258A3D3A0045749C /* NutritionModeCell.swift */; };
 		7A2D5CD6258A3D3A0045749C /* NutritionModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2D5CD4258A3D3A0045749C /* NutritionModeCell.xib */; };
+		7A36C33F259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C33D259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.swift */; };
+		7A36C340259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A36C33E259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.xib */; };
+		7A36C344259C8C5000DFFA6E /* TrainingProgramsLevelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C343259C8C5000DFFA6E /* TrainingProgramsLevelsViewModel.swift */; };
+		7A36C347259C8C7F00DFFA6E /* TrainingProgramsLevelsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C346259C8C7F00DFFA6E /* TrainingProgramsLevelsModel.swift */; };
+		7A36C34A259C8D3500DFFA6E /* TrainingProgramsLevelsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C349259C8D3500DFFA6E /* TrainingProgramsLevelsConfigurator.swift */; };
+		7A36C34E259C8E1D00DFFA6E /* TrainingProgramsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C34D259C8E1D00DFFA6E /* TrainingProgramsCoordinator.swift */; };
+		7A36C371259CB24300DFFA6E /* StretchableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C370259CB24300DFFA6E /* StretchableHeader.swift */; };
+		7A36C377259CB98C00DFFA6E /* LevelOfTrainingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C375259CB98C00DFFA6E /* LevelOfTrainingCell.swift */; };
+		7A36C378259CB98C00DFFA6E /* LevelOfTrainingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A36C376259CB98C00DFFA6E /* LevelOfTrainingCell.xib */; };
+		7A36C37B259CB9C100DFFA6E /* UITableView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C37A259CB9C100DFFA6E /* UITableView+Ex.swift */; };
+		7A36C37E259CBB1C00DFFA6E /* LevelOfTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C37D259CBB1C00DFFA6E /* LevelOfTrainingModel.swift */; };
+		7A36C384259CBFF100DFFA6E /* TrainingProgramsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C382259CBFF100DFFA6E /* TrainingProgramsViewController.swift */; };
+		7A36C385259CBFF100DFFA6E /* TrainingProgramsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A36C383259CBFF100DFFA6E /* TrainingProgramsViewController.xib */; };
+		7A36C388259CC0E000DFFA6E /* TrainingProgramsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C387259CC0E000DFFA6E /* TrainingProgramsViewModel.swift */; };
+		7A36C38B259CC11800DFFA6E /* TrainingProgramsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C38A259CC11800DFFA6E /* TrainingProgramsModel.swift */; };
+		7A36C38E259CC3D100DFFA6E /* TrainingProgramsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36C38D259CC3D100DFFA6E /* TrainingProgramsConfigurator.swift */; };
 		7A4452DC258A1C0300A808D1 /* NutritionSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4452DA258A1C0200A808D1 /* NutritionSettingViewController.swift */; };
 		7A4452DD258A1C0300A808D1 /* NutritionSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A4452DB258A1C0200A808D1 /* NutritionSettingViewController.xib */; };
 		7A4452E7258A205900A808D1 /* NutritionSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4452E6258A205900A808D1 /* NutritionSettingViewModel.swift */; };
@@ -216,6 +232,9 @@
 		7AC81F8E259B377D00AC10FB /* PopUpOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC81F8C259B377D00AC10FB /* PopUpOptionCell.xib */; };
 		7AC81F91259B4C4200AC10FB /* CellRegistrable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F90259B4C4200AC10FB /* CellRegistrable.swift */; };
 		7AC81F99259B552100AC10FB /* AuthorizationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F98259B552100AC10FB /* AuthorizationConfigurator.swift */; };
+		7AC81FB9259C5ABC00AC10FB /* CreteTrainingModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81FB7259C5ABC00AC10FB /* CreteTrainingModalViewController.swift */; };
+		7AC81FBA259C5ABC00AC10FB /* CreteTrainingModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC81FB8259C5ABC00AC10FB /* CreteTrainingModalViewController.xib */; };
+		7AC81FD9259C832900AC10FB /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81FD8259C832800AC10FB /* FirebaseStorageManager.swift */; };
 		7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */; };
 		7AD9DA3A258CDCA2006BF647 /* NutrientPercentagePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */; };
 		7AF7BD4E256698B9003F4038 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */; };
@@ -383,6 +402,22 @@
 		7A2A75602588CE400091FD22 /* CaloriesRecomendationCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesRecomendationCalculator.swift; sourceTree = "<group>"; };
 		7A2D5CD3258A3D3A0045749C /* NutritionModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionModeCell.swift; sourceTree = "<group>"; };
 		7A2D5CD4258A3D3A0045749C /* NutritionModeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionModeCell.xib; sourceTree = "<group>"; };
+		7A36C33D259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsLevelsViewController.swift; sourceTree = "<group>"; };
+		7A36C33E259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingProgramsLevelsViewController.xib; sourceTree = "<group>"; };
+		7A36C343259C8C5000DFFA6E /* TrainingProgramsLevelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsLevelsViewModel.swift; sourceTree = "<group>"; };
+		7A36C346259C8C7F00DFFA6E /* TrainingProgramsLevelsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsLevelsModel.swift; sourceTree = "<group>"; };
+		7A36C349259C8D3500DFFA6E /* TrainingProgramsLevelsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsLevelsConfigurator.swift; sourceTree = "<group>"; };
+		7A36C34D259C8E1D00DFFA6E /* TrainingProgramsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsCoordinator.swift; sourceTree = "<group>"; };
+		7A36C370259CB24300DFFA6E /* StretchableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchableHeader.swift; sourceTree = "<group>"; };
+		7A36C375259CB98C00DFFA6E /* LevelOfTrainingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfTrainingCell.swift; sourceTree = "<group>"; };
+		7A36C376259CB98C00DFFA6E /* LevelOfTrainingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelOfTrainingCell.xib; sourceTree = "<group>"; };
+		7A36C37A259CB9C100DFFA6E /* UITableView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ex.swift"; sourceTree = "<group>"; };
+		7A36C37D259CBB1C00DFFA6E /* LevelOfTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfTrainingModel.swift; sourceTree = "<group>"; };
+		7A36C382259CBFF100DFFA6E /* TrainingProgramsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsViewController.swift; sourceTree = "<group>"; };
+		7A36C383259CBFF100DFFA6E /* TrainingProgramsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingProgramsViewController.xib; sourceTree = "<group>"; };
+		7A36C387259CC0E000DFFA6E /* TrainingProgramsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsViewModel.swift; sourceTree = "<group>"; };
+		7A36C38A259CC11800DFFA6E /* TrainingProgramsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsModel.swift; sourceTree = "<group>"; };
+		7A36C38D259CC3D100DFFA6E /* TrainingProgramsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsConfigurator.swift; sourceTree = "<group>"; };
 		7A4452DA258A1C0200A808D1 /* NutritionSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionSettingViewController.swift; sourceTree = "<group>"; };
 		7A4452DB258A1C0200A808D1 /* NutritionSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionSettingViewController.xib; sourceTree = "<group>"; };
 		7A4452E6258A205900A808D1 /* NutritionSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionSettingViewModel.swift; sourceTree = "<group>"; };
@@ -436,6 +471,9 @@
 		7AC81F8C259B377D00AC10FB /* PopUpOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpOptionCell.xib; sourceTree = "<group>"; };
 		7AC81F90259B4C4200AC10FB /* CellRegistrable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellRegistrable.swift; sourceTree = "<group>"; };
 		7AC81F98259B552100AC10FB /* AuthorizationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationConfigurator.swift; sourceTree = "<group>"; };
+		7AC81FB7259C5ABC00AC10FB /* CreteTrainingModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreteTrainingModalViewController.swift; sourceTree = "<group>"; };
+		7AC81FB8259C5ABC00AC10FB /* CreteTrainingModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreteTrainingModalViewController.xib; sourceTree = "<group>"; };
+		7AC81FD8259C832800AC10FB /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientPercentagePickerView.swift; sourceTree = "<group>"; };
 		7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutrientPercentagePickerView.xib; sourceTree = "<group>"; };
 		7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -535,6 +573,7 @@
 				1373219E253A08A300F8FA23 /* UIAplication+Ex.swift */,
 				1320D318253B0FFB00A4C99F /* UIWindow+Ex.swift */,
 				1320D31C253B1AB900A4C99F /* String+Ex.swift */,
+				7A36C37A259CB9C100DFFA6E /* UITableView+Ex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -581,6 +620,7 @@
 				1320D314253B0E6400A4C99F /* MainCoordinator.swift */,
 				7AAFE8A42599BA92004FF48B /* AuthorizationCoordinator.swift */,
 				7A94DF95259B198700391DA2 /* TrainingPaternsCoordinator.swift */,
+				7A36C34D259C8E1D00DFFA6E /* TrainingProgramsCoordinator.swift */,
 				7AA6AA55254978C600A88D4B /* MuscleGroupsCoordinator.swift */,
 				13E4F60B254F09E500A42ACB /* HomeCoordinator.swift */,
 				7AAFE8A02599B8AE004FF48B /* TabBarCoordinator.swift */,
@@ -1133,6 +1173,7 @@
 		13BA17A22461A47700DF5D7D /* TrainingModule */ = {
 			isa = PBXGroup;
 			children = (
+				7A36C33B259C8B2A00DFFA6E /* TrainingPrograms */,
 				130634452494DE80008C1ECF /* TrainingList */,
 				130634462494DEA9008C1ECF /* Training */,
 				13BA17A02461A45D00DF5D7D /* AddFromExerciseList */,
@@ -1303,6 +1344,7 @@
 			isa = PBXGroup;
 			children = (
 				1335B2682495183300D8276F /* FirebaseDataManager.swift */,
+				7AC81FD8259C832800AC10FB /* FirebaseStorageManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1357,6 +1399,67 @@
 				7A2D5CD4258A3D3A0045749C /* NutritionModeCell.xib */,
 			);
 			path = " Cell";
+			sourceTree = "<group>";
+		};
+		7A36C33B259C8B2A00DFFA6E /* TrainingPrograms */ = {
+			isa = PBXGroup;
+			children = (
+				7A36C380259CBF6100DFFA6E /* TrainingProgramms */,
+				7A36C33C259C8B4F00DFFA6E /* TrainingProgramLevels */,
+			);
+			path = TrainingPrograms;
+			sourceTree = "<group>";
+		};
+		7A36C33C259C8B4F00DFFA6E /* TrainingProgramLevels */ = {
+			isa = PBXGroup;
+			children = (
+				7A36C374259CB96F00DFFA6E /* Cell */,
+				7A36C373259CB96B00DFFA6E /* Model */,
+				7A36C351259C96B400DFFA6E /* Headers */,
+				7A36C33D259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.swift */,
+				7A36C343259C8C5000DFFA6E /* TrainingProgramsLevelsViewModel.swift */,
+				7A36C346259C8C7F00DFFA6E /* TrainingProgramsLevelsModel.swift */,
+				7A36C349259C8D3500DFFA6E /* TrainingProgramsLevelsConfigurator.swift */,
+				7A36C33E259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.xib */,
+			);
+			path = TrainingProgramLevels;
+			sourceTree = "<group>";
+		};
+		7A36C351259C96B400DFFA6E /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				7A36C370259CB24300DFFA6E /* StretchableHeader.swift */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		7A36C373259CB96B00DFFA6E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A36C37D259CBB1C00DFFA6E /* LevelOfTrainingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7A36C374259CB96F00DFFA6E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7A36C375259CB98C00DFFA6E /* LevelOfTrainingCell.swift */,
+				7A36C376259CB98C00DFFA6E /* LevelOfTrainingCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7A36C380259CBF6100DFFA6E /* TrainingProgramms */ = {
+			isa = PBXGroup;
+			children = (
+				7A36C382259CBFF100DFFA6E /* TrainingProgramsViewController.swift */,
+				7A36C387259CC0E000DFFA6E /* TrainingProgramsViewModel.swift */,
+				7A36C38A259CC11800DFFA6E /* TrainingProgramsModel.swift */,
+				7A36C38D259CC3D100DFFA6E /* TrainingProgramsConfigurator.swift */,
+				7A36C383259CBFF100DFFA6E /* TrainingProgramsViewController.xib */,
+			);
+			path = TrainingProgramms;
 			sourceTree = "<group>";
 		};
 		7A4452D9258A1BD700A808D1 /* NutritionSettingViewController */ = {
@@ -1463,6 +1566,7 @@
 		7A94DF98259B2F9400391DA2 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				7AC81FB6259C5A7700AC10FB /* CreateTrainingModalViewController */,
 				7AC81F86259B32F600AC10FB /* Views */,
 				7AC81F81259B32CF00AC10FB /* Model */,
 				13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */,
@@ -1567,6 +1671,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		7AC81FB6259C5A7700AC10FB /* CreateTrainingModalViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7AC81FB7259C5ABC00AC10FB /* CreteTrainingModalViewController.swift */,
+				7AC81FB8259C5ABC00AC10FB /* CreteTrainingModalViewController.xib */,
+			);
+			path = CreateTrainingModalViewController;
+			sourceTree = "<group>";
+		};
 		7AD9DA38258CDC7C006BF647 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1645,6 +1758,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A36C385259CBFF100DFFA6E /* TrainingProgramsViewController.xib in Resources */,
 				1301DA0125814B400064326E /* TrainingViewController.xib in Resources */,
 				13B9FE8C2540AB7A00E5542E /* TrainingPaternsHeaderView.xib in Resources */,
 				13C78146256ABC6100A55482 /* ExerciseDataBaseENG.csv in Resources */,
@@ -1661,6 +1775,7 @@
 				7A4452DD258A1C0300A808D1 /* NutritionSettingViewController.xib in Resources */,
 				7AAFE8B12599CE24004FF48B /* HomeViewController.xib in Resources */,
 				1361BE402520D97600578DB4 /* MainNutritionVIewController.xib in Resources */,
+				7AC81FBA259C5ABC00AC10FB /* CreteTrainingModalViewController.xib in Resources */,
 				7AD9DA3A258CDCA2006BF647 /* NutrientPercentagePickerView.xib in Resources */,
 				13AF79482486D3A100F2F7F7 /* GoogleService-Info.plist in Resources */,
 				133364AC2561793C00EAC6F6 /* ExerciseStatisticsCell.xib in Resources */,
@@ -1669,6 +1784,8 @@
 				7AAFE8BF2599E877004FF48B /* NavigationViewCell.xib in Resources */,
 				7A2A755A2588B81D0091FD22 /* NutritionMainCell.xib in Resources */,
 				134AA986253615AD00C8BDD1 /* ChoosenPaternViewController.xib in Resources */,
+				7A36C378259CB98C00DFFA6E /* LevelOfTrainingCell.xib in Resources */,
+				7A36C340259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.xib in Resources */,
 				7A69DB7125836C17003EECD8 /* Colors.xcassets in Resources */,
 				133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */,
 				137321A8253A098D00F8FA23 /* PaternNamingAlert.xib in Resources */,
@@ -1772,6 +1889,7 @@
 				13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */,
 				1384BB4B24DEF9520084705B /* ProfileModel.swift in Sources */,
 				13243A41247E768B00AB7419 /* DateHelper.swift in Sources */,
+				7A36C388259CC0E000DFFA6E /* TrainingProgramsViewModel.swift in Sources */,
 				7AC19874258E37350023ADE2 /* MealDetailAlert.swift in Sources */,
 				7A7D288425753DF800FDD212 /* MapableProtocol.swift in Sources */,
 				13479F3B247BD84A002FFB4E /* TrainingListViewController.swift in Sources */,
@@ -1788,6 +1906,7 @@
 				7AA7911D258C93940090CFED /* CustomNutritionModeMO+CoreDataClass.swift in Sources */,
 				13D5D57724E19AFD003C82F1 /* TrainingModel.swift in Sources */,
 				1393EDFD24A634B600EBD938 /* TrainingManagedObject+CoreDataProperties.swift in Sources */,
+				7A36C347259C8C7F00DFFA6E /* TrainingProgramsLevelsModel.swift in Sources */,
 				133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */,
 				7AAFE8EE259A1F45004FF48B /* HomeViewCollectionCell.swift in Sources */,
 				1361BE3F2520D97600578DB4 /* MainNutritionVIewController.swift in Sources */,
@@ -1805,12 +1924,15 @@
 				7AC81F91259B4C4200AC10FB /* CellRegistrable.swift in Sources */,
 				132A6A452572569C00EB3AE0 /* SelectExerciseModel.swift in Sources */,
 				131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */,
+				7A36C38B259CC11800DFFA6E /* TrainingProgramsModel.swift in Sources */,
+				7A36C37E259CBB1C00DFFA6E /* LevelOfTrainingModel.swift in Sources */,
 				1393EDFC24A634B600EBD938 /* TrainingManagedObject+CoreDataClass.swift in Sources */,
 				7AC81F99259B552100AC10FB /* AuthorizationConfigurator.swift in Sources */,
 				13D8CEB825239A7B0091AA6B /* TrainingPaternViewModel.swift in Sources */,
 				7AAFE8BE2599E877004FF48B /* NavigationViewCell.swift in Sources */,
 				1388FFE724E00CA900E9FD2C /* ChoosenTrainingStatisticsModel.swift in Sources */,
 				1384BB4D24DF0D250084705B /* ProfileRouter.swift in Sources */,
+				7A36C344259C8C5000DFFA6E /* TrainingProgramsLevelsViewModel.swift in Sources */,
 				1388FFDF24E0067100E9FD2C /* DTStatisticInfoCellType.swift in Sources */,
 				13A9E7C22494E22200DEDCBE /* UserMainInfoCodableModel.swift in Sources */,
 				132F588F249A87F00089FA09 /* DTSplashScreenViewController.swift in Sources */,
@@ -1827,12 +1949,15 @@
 				7A69DBFE25878233003EECD8 /* SearchFoodViewModel.swift in Sources */,
 				13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */,
 				136F40092498D44B00C6944B /* UserDataManager.swift in Sources */,
+				7A36C38E259CC3D100DFFA6E /* TrainingProgramsConfigurator.swift in Sources */,
 				7AAFE8F7259A2765004FF48B /* HomeModel.swift in Sources */,
+				7A36C384259CBFF100DFFA6E /* TrainingProgramsViewController.swift in Sources */,
 				7A69DBCF25875040003EECD8 /* MainNutritionModel.swift in Sources */,
 				133364A4256126F700EAC6F6 /* ChoosenExerciseStatisticsViewModel.swift in Sources */,
 				7A6673C92594C36B0086E238 /* TrainingTableFooterView.swift in Sources */,
 				13C0EEE724A5E3EB00F55C54 /* ExerciceManagedObject+CoreDataClass.swift in Sources */,
 				7AA6AA56254978C600A88D4B /* MuscleGroupsCoordinator.swift in Sources */,
+				7AC81FD9259C832900AC10FB /* FirebaseStorageManager.swift in Sources */,
 				13416FA22485345100EC6590 /* Authorizationbutton.swift in Sources */,
 				136F400D2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift in Sources */,
 				7A2A754D2588AFF00091FD22 /* TodayMealNutrition.swift in Sources */,
@@ -1843,6 +1968,7 @@
 				7A057CEC2589ECD600D6937B /* ProgressDrawer.swift in Sources */,
 				134AA98D25361E2300C8BDD1 /* TrainingPaternHeaderView.swift in Sources */,
 				131D307C25175D02000AC70B /* DTMainAddExerciseButton.swift in Sources */,
+				7AC81FB9259C5ABC00AC10FB /* CreteTrainingModalViewController.swift in Sources */,
 				7A2A75282588990C0091FD22 /* MealMO+CoreDataProperties copy.swift in Sources */,
 				13786E1D2478271C0084E48C /* NotificationName+Ex.swift in Sources */,
 				7A2A75612588CE400091FD22 /* CaloriesRecomendationCalculator.swift in Sources */,
@@ -1852,7 +1978,9 @@
 				7AA7911C258C93940090CFED /* CustomNutritionModeMO+CoreDataProperties.swift in Sources */,
 				1384BB4F24DF157F0084705B /* DTSelectionListAlert.swift in Sources */,
 				7A69DBCC25875030003EECD8 /* MainNutritionViewModel.swift in Sources */,
+				7A36C34E259C8E1D00DFFA6E /* TrainingProgramsCoordinator.swift in Sources */,
 				7A69DBE625877925003EECD8 /* NutritionDataModel.xcdatamodeld in Sources */,
+				7A36C34A259C8D3500DFFA6E /* TrainingProgramsLevelsConfigurator.swift in Sources */,
 				1342E7CC2558387C00D6E369 /* TrainingModuleCoordinator.swift in Sources */,
 				7A4452DC258A1C0300A808D1 /* NutritionSettingViewController.swift in Sources */,
 				1384BB4324DEEBE60084705B /* ProfileViewController.swift in Sources */,
@@ -1869,6 +1997,7 @@
 				13D8CEBA25239A8C0091AA6B /* TrainingPaterModel.swift in Sources */,
 				13D8CEBE25239CCF0091AA6B /* TrainingPaternCell.swift in Sources */,
 				13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */,
+				7A36C33F259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.swift in Sources */,
 				13CCD922254EB1DF00E8FFEB /* SideMenuViewController.swift in Sources */,
 				133364AB2561793C00EAC6F6 /* ExerciseStatisticsCell.swift in Sources */,
 				7AC81F83259B32F200AC10FB /* CreateTrainingPopUp.swift in Sources */,
@@ -1886,6 +2015,7 @@
 				7A94DF96259B198700391DA2 /* TrainingPaternsCoordinator.swift in Sources */,
 				13A8CA3F24B6312E00624AA3 /* CALayer+Ex.swift in Sources */,
 				1320D319253B0FFB00A4C99F /* UIWindow+Ex.swift in Sources */,
+				7A36C37B259CB9C100DFFA6E /* UITableView+Ex.swift in Sources */,
 				7A4452E7258A205900A808D1 /* NutritionSettingViewModel.swift in Sources */,
 				1388FFE124E0081000E9FD2C /* DTStatisticInfoCell.swift in Sources */,
 				139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */,
@@ -1894,6 +2024,7 @@
 				134AA9882536167200C8BDD1 /* ChoosenPaternViewModel.swift in Sources */,
 				7A2A752F25889B5C0091FD22 /* MealModel.swift in Sources */,
 				13243A3E247E4A6300AB7419 /* DTTrainCell.swift in Sources */,
+				7A36C371259CB24300DFFA6E /* StretchableHeader.swift in Sources */,
 				133705BE24D17B3100E023CC /* MuscleGroupsViewModel.swift in Sources */,
 				13C7814D256AC3A700A55482 /* CoreDataExerciseDataManager.swift in Sources */,
 				135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */,
@@ -1908,6 +2039,7 @@
 				13479F37247BD55D002FFB4E /* MainTabBarViewController.swift in Sources */,
 				132A6A3E257254A200EB3AE0 /* SelectExerciseViewController.swift in Sources */,
 				13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */,
+				7A36C377259CB98C00DFFA6E /* LevelOfTrainingCell.swift in Sources */,
 				1341D7A324D32900000A43A6 /* DTColors.swift in Sources */,
 				7A69DBD4258757A7003EECD8 /* NutritionSearchingCell.swift in Sources */,
 				137321A4253A098100F8FA23 /* PaternNamingAlert.swift in Sources */,

@@ -1,4 +1,5 @@
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 private extension AppDelegate {
     
     func applyAppSetting() {
+        FirebaseApp.configure()
         SettingManager.shared.activateDefaultSetting()
         GoogleAuthorizationManager.shared.initAuth()
         guard !UserDataManager.shared.isSettingSaved() else { return }
@@ -33,7 +35,6 @@ private extension AppDelegate {
     func setRootViewController() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.makeKeyAndVisible()
-        self.window?.backgroundColor = DTColors.backgroundColor
         MainCoordinator.shared.window = self.window
         MainCoordinator.shared.coordinate(to: AuthorizationCoordinator.Target.splashScreen)
         UINavigationBar.appearance().tintColor = .white
