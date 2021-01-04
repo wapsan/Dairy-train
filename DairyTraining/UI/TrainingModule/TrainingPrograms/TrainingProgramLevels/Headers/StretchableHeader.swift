@@ -127,9 +127,9 @@ final class StretchableHeader: GSKStretchyHeaderView {
             image.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+            backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 9),
             backButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
-            backButton.heightAnchor.constraint(equalToConstant: 36),
+            backButton.heightAnchor.constraint(equalToConstant: 26),
             backButton.widthAnchor.constraint(equalTo: backButton.heightAnchor)
             
         ])
