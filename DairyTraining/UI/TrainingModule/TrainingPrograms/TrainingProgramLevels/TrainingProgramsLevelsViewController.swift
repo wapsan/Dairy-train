@@ -37,7 +37,7 @@ final class TrainingProgramsLevelsViewController: UIViewController {
         tableView.register(cell: LevelOfTrainingCell.self)
         setupHeader()
     }
-    
+
     private func setupHeader() {
         let headerSize = CGSize(width: tableView.frame.size.width, height: 250)
         stretchableHeader = StretchableHeader(frame: CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height))

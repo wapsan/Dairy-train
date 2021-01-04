@@ -1,7 +1,10 @@
 import Foundation
 
 protocol TrainingProgramsModelProtocol {
+    var levelOfTraining: LevelOfTrainingModel { get }
+    
     func loadData()
+    func popViewController()
 }
 
 protocol TrainingProgramsModelOutput: AnyObject {
@@ -26,6 +29,14 @@ final class TrainingProgramsModel {
 
 // MARK: - TrainingProgramsModelProtocol
 extension TrainingProgramsModel: TrainingProgramsModelProtocol {
+    
+    func popViewController() {
+        MainCoordinator.shared.popViewController()
+    }
+    
+    var levelOfTraining: LevelOfTrainingModel {
+        return _levelOfTraining
+    }
     
     func loadData() {
         dataBaseService.getListOfTraining(for: _levelOfTraining) { [unowned self] (result) in

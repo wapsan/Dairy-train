@@ -21,7 +21,7 @@ final class TrainingProgramsViewController: UIViewController {
         setup()
         viewModel.viewDidLoad()
     }
-    
+
     // MARK: - Initialization
     init(viewModel: TrainingProgramsViewModelProtocol) {
         self.viewModel = viewModel
@@ -35,12 +35,24 @@ final class TrainingProgramsViewController: UIViewController {
     // MARK: - Private methods
     private func setup() {
         navigationController?.navigationBar.isHidden = true
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(cell: ReadyTrainingCell.self)
+        tableView.contentInset.top = 8
         setupHeader()
     }
     
     private func setupHeader() {
-        
+        let headerSize = CGSize(width: tableView.frame.size.width, height: 250)
+        strechableHeader = StretchableHeader(frame: CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height))
+        strechableHeader?.backgroundColor = .black
+        strechableHeader?.backButtonImageType = .goBack
+        strechableHeader?.minimumContentHeight = 44
+        strechableHeader?.onBackButtonAction = { [unowned self] in
+            self.viewModel.backButtonPressed()
+        }
+        strechableHeader?.title = viewModel.levelTitle
+        strechableHeader?.customDescription = viewModel.levelDescription
+        guard let header = strechableHeader else { return }
+        tableView.addSubview(header)
     }
 }
 
@@ -52,14 +64,18 @@ extension TrainingProgramsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = viewModel.trainings[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReadyTrainingCell.cellID, for: indexPath)
+        (cell as? ReadyTrainingCell)?.setCell(for: viewModel.getTraining(for: indexPath.row))
         return cell
     }
 }
 
 // MARK: - UITableViewDelegate
 extension TrainingProgramsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
     
 }
 

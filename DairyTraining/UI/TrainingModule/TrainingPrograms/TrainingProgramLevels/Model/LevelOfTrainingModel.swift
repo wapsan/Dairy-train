@@ -23,4 +23,15 @@ enum LevelOfTrainingModel: String, CaseIterable {
     var title: String {
         return self.rawValue
     }
+    
+    var description: String {
+        switch self {
+        case .beginner:
+            return "Beginner description"
+        case .amateur:
+            return "Amateur description"
+        case .pro:
+            return "Pro description"
+        }
+    }
 }

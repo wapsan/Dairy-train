@@ -18,7 +18,7 @@ pod 'Firebase/Firestore'
 pod 'Firebase/Storage'
 
 pod "GSKStretchyHeaderView"
-
+pod "Kingfisher"
 
   # Pods for DairyTrain2.0
 end

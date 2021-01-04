@@ -2,7 +2,12 @@ import Foundation
 
 protocol TrainingProgramsViewModelProtocol {
     var trainings: [TrainingProgramms] { get }
+    var levelTitle: String { get }
+    var levelDescription: String { get }
+    
     func viewDidLoad()
+    func getTraining(for index: Int) -> TrainingProgramms
+    func backButtonPressed()
 }
 
 final class TrainingProgramsViewModel {
@@ -22,6 +27,22 @@ final class TrainingProgramsViewModel {
 
 // MARK: - TrainingProgramsViewModelProtocol
 extension TrainingProgramsViewModel: TrainingProgramsViewModelProtocol {
+    
+    func getTraining(for index: Int) -> TrainingProgramms {
+        return _trainings[index]
+    }
+    
+    func backButtonPressed() {
+        model.popViewController()
+    }
+    
+    var levelDescription: String {
+        return model.levelOfTraining.description
+    }
+    
+    var levelTitle: String {
+        return model.levelOfTraining.title
+    }
     
     func viewDidLoad() {
         view?.showLoader()

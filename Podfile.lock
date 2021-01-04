@@ -328,6 +328,9 @@ PODS:
   - GTMSessionFetcher/Core (1.5.0)
   - GTMSessionFetcher/Full (1.5.0):
     - GTMSessionFetcher/Core (= 1.5.0)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
   - leveldb-library (1.22)
   - nanopb (2.30906.0):
     - nanopb/decode (= 2.30906.0)
@@ -348,6 +351,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - GoogleSignIn
   - GSKStretchyHeaderView
+  - Kingfisher
   - SideMenu
   - ZKProgressHUD
 
@@ -374,6 +378,7 @@ SPEC REPOS:
     - GSKStretchyHeaderView
     - GTMAppAuth
     - GTMSessionFetcher
+    - Kingfisher
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -402,12 +407,13 @@ SPEC CHECKSUMS:
   GSKStretchyHeaderView: 9743704c12bdc9cf7c7947bad3af8bf24f7061e3
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   ZKProgressHUD: f1833e23655834d4459c711e94e924e49bc77442
 
-PODFILE CHECKSUM: 9a6dabee5ce4291757db44a7ef55c119af062583
+PODFILE CHECKSUM: bf5630b29f9d0ae884ed86fafd98e0b473680e7e
 
 COCOAPODS: 1.10.0

@@ -113,11 +113,11 @@ final class StretchableHeader: GSKStretchyHeaderView {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -8),
-            titleLabel.leftAnchor.constraint(equalTo: image.leftAnchor, constant: 8),
+            titleLabel.leftAnchor.constraint(equalTo: image.leftAnchor, constant: 16),
             
             descriptionLabel.bottomAnchor.constraint(equalTo: image.bottomAnchor, constant: -8),
-            descriptionLabel.leftAnchor.constraint(equalTo: image.leftAnchor, constant: 8),
-            descriptionLabel.rightAnchor.constraint(lessThanOrEqualTo: image.rightAnchor, constant: -8),
+            descriptionLabel.leftAnchor.constraint(equalTo: image.leftAnchor, constant: 16),
+            descriptionLabel.rightAnchor.constraint(lessThanOrEqualTo: image.rightAnchor, constant: -16),
             
             dublicateTitleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             dublicateTitleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),

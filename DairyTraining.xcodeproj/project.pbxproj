@@ -235,6 +235,8 @@
 		7AC81FD9259C832900AC10FB /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81FD8259C832800AC10FB /* FirebaseStorageManager.swift */; };
 		7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */; };
 		7AD9DA3A258CDCA2006BF647 /* NutrientPercentagePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */; };
+		7AECC65725A33FBE00AE1768 /* ReadyTrainingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AECC65525A33FBE00AE1768 /* ReadyTrainingCell.swift */; };
+		7AECC65825A33FBE00AE1768 /* ReadyTrainingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AECC65625A33FBE00AE1768 /* ReadyTrainingCell.xib */; };
 		7AF7BD4E256698B9003F4038 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */; };
 		7AF7BD4F256698B9003F4038 /* AuthorizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF7BD4D256698B9003F4038 /* AuthorizationViewController.xib */; };
 /* End PBXBuildFile section */
@@ -472,6 +474,8 @@
 		7AC81FD8259C832800AC10FB /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientPercentagePickerView.swift; sourceTree = "<group>"; };
 		7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutrientPercentagePickerView.xib; sourceTree = "<group>"; };
+		7AECC65525A33FBE00AE1768 /* ReadyTrainingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyTrainingCell.swift; sourceTree = "<group>"; };
+		7AECC65625A33FBE00AE1768 /* ReadyTrainingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadyTrainingCell.xib; sourceTree = "<group>"; };
 		7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		7AF7BD4D256698B9003F4038 /* AuthorizationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizationViewController.xib; sourceTree = "<group>"; };
 		B043EADE251C05242DA1CC87 /* Pods-Dairy Training.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.debug.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1449,6 +1453,7 @@
 		7A36C380259CBF6100DFFA6E /* TrainingProgramms */ = {
 			isa = PBXGroup;
 			children = (
+				7AECC65425A33F9700AE1768 /* ReadyTrainingCell */,
 				7A36C382259CBFF100DFFA6E /* TrainingProgramsViewController.swift */,
 				7A36C387259CC0E000DFFA6E /* TrainingProgramsViewModel.swift */,
 				7A36C38A259CC11800DFFA6E /* TrainingProgramsModel.swift */,
@@ -1675,6 +1680,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7AECC65425A33F9700AE1768 /* ReadyTrainingCell */ = {
+			isa = PBXGroup;
+			children = (
+				7AECC65525A33FBE00AE1768 /* ReadyTrainingCell.swift */,
+				7AECC65625A33FBE00AE1768 /* ReadyTrainingCell.xib */,
+			);
+			path = ReadyTrainingCell;
+			sourceTree = "<group>";
+		};
 		7AF7BD5125669EDF003F4038 /* AuthorizationButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -1770,6 +1784,7 @@
 				7A2A755A2588B81D0091FD22 /* NutritionMainCell.xib in Resources */,
 				134AA986253615AD00C8BDD1 /* ChoosenPaternViewController.xib in Resources */,
 				7A36C378259CB98C00DFFA6E /* LevelOfTrainingCell.xib in Resources */,
+				7AECC65825A33FBE00AE1768 /* ReadyTrainingCell.xib in Resources */,
 				7A36C340259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.xib in Resources */,
 				7A69DB7125836C17003EECD8 /* Colors.xcassets in Resources */,
 				133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */,
@@ -1898,6 +1913,7 @@
 				7A2A75292588990C0091FD22 /* MealMO+CoreDataClass copy.swift in Sources */,
 				135F167A2576B4DA0065B9FA /* FrebaseServerModel.swift in Sources */,
 				13C0EEEC24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift in Sources */,
+				7AECC65725A33FBE00AE1768 /* ReadyTrainingCell.swift in Sources */,
 				7AC81F8D259B377D00AC10FB /* PopUpOptionCell.swift in Sources */,
 				13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */,
 				7A69DBFA25878063003EECD8 /* SearchFoodViewController.swift in Sources */,
