@@ -1,10 +1,7 @@
 import UIKit
 
 class DTStatisticInfoCell: UICollectionViewCell {
-    
-    //MARK: - Static cellID
-    static let cellID = "DTStatisticInfoCell"
-    
+
     //MARK: - GUI Properties
     private(set) lazy var valueLabel: DTAdaptiveLabel = {
         let label = DTAdaptiveLabel()

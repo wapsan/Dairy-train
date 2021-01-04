@@ -29,8 +29,6 @@ enum ExerciseSatisticType {
 final class ExerciseStatisticsCell: UITableViewCell {
 
     //MARK: - Properties
-    static let cellID = "ExerciseStatisticsCell"
-    static let xibName = "ExerciseStatisticsCell"
     private lazy var dates: [Date] = []
     private lazy var legendTitle = ""
     private var currentExrciseDate: Date?

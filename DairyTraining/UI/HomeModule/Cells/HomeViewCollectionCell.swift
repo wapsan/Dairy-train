@@ -1,6 +1,6 @@
 import UIKit
 
-final class HomeViewCollectionCell: UICollectionViewCell, CellRegistrable {
+final class HomeViewCollectionCell: UICollectionViewCell {
 
     // MARK: - @IBOutlets
     @IBOutlet private var imageView: UIImageView!

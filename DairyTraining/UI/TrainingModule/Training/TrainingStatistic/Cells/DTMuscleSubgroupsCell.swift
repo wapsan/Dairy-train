@@ -2,9 +2,6 @@ import UIKit
 
 class DTMuscleSubgroupsCell: UICollectionViewCell {
     
-    //MARK: - Static cellID
-    static let cellID = "DTMuscleSubgroupsCell"
-    
     //MARK: - GUI Properties
     private lazy var muscleSubgropImageView: UIImageView  = {
         let imageView = UIImageView()

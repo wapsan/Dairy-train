@@ -3,10 +3,6 @@ import EFCountingLabel
 
 final class NutritionMainCell: UITableViewCell {
 
-    // MARK: - Cell properties
-    static let cellID = "NutritionMainCell"
-    static let xibName = "NutritionMainCell"
-    
     // MARK: - @IBOutlets
     @IBOutlet private var dateLabel: UILabel!
     @IBOutlet private var caloriesProgressView: UIView!

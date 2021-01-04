@@ -7,7 +7,6 @@ final class MainTabBarViewController: UITabBarController {
     
     // MARK: - GUI Properties
     private lazy var addButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-    private lazy var createTrainingPopUp = CreateTrainingPopUp.view()
     
     // MARK: - Properties
     var isAddButtonHiden: Bool = false {
@@ -59,11 +58,20 @@ final class MainTabBarViewController: UITabBarController {
     
     // MARK: - Actions
     @objc private func addButtonpressed() {
-        createTrainingPopUp?.preseent()
-     //   let a = CreteTrainingModalViewController()
-     //   a.modalPresentationStyle = .overFullScreen
-       // present(a, animated: true, completion: nil)
+      //  createTrainingPopUp?.preseent()
+        let a = CreteTrainingModalViewController()
+        a.modalPresentationStyle = .custom
+        a.transitioningDelegate = self
+        present(a, animated: true, completion: nil)
         
         
     }
+}
+
+extension MainTabBarViewController: UIViewControllerTransitioningDelegate {
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        CreatinTrainingPresentationViewController(presentedViewController: presented, presenting: presenting)
+    }
+    
 }

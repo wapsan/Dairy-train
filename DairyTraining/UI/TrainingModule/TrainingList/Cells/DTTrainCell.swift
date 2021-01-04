@@ -2,9 +2,6 @@ import UIKit
 
 class DTTrainCell: UICollectionViewCell {
     
-    //MARK: - Static cellID
-    static let cellID = "TESTDTTrainCollectionCell"
-    
     //MARK: - GUI Properties
     private lazy var containerView: UIView = {
         let view = UIView()

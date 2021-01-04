@@ -1,6 +1,6 @@
 import UIKit
 
-final class NavigationViewCell: UICollectionViewCell, CellRegistrable {
+final class NavigationViewCell: UICollectionViewCell {
 
     // MARK: - @IBOutlets
     @IBOutlet private var menuButton: UIButton!

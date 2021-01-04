@@ -2,8 +2,7 @@ import UIKit
 
 final class ExerciseCell: UITableViewCell {
     
-    //MARK: - Static cellID
-    static let cellID: String = "DTActivitiesCell"
+ 
     
     //MARK: - GUI Properties
     private lazy var containerView: UIView = {

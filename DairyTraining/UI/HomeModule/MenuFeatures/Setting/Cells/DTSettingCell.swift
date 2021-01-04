@@ -2,8 +2,7 @@ import UIKit
 
 class DTSettingCell: UITableViewCell {
     
-    //MARK: - Static cellID
-    static let cellID = "TESTDTSettignCell"
+   
     
     //MARK: - GUI Properties
     private lazy var markImage: UIImageView = {

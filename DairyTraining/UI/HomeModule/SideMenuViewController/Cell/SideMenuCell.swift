@@ -2,9 +2,6 @@ import UIKit
 
 class SideMenuCell: UITableViewCell {
 
-    //MARK: - Properties
-    static let cellID = "SideMenuCell"
-    static let xibName = "SideMenuCell"
     
     //MARK: - @IBOutlets
     @IBOutlet var menuItemTitleLabel: UILabel!

@@ -2,8 +2,6 @@ import UIKit
 
 class DTSynhronizeCell: UITableViewCell {
     
-    //MARK: - Static cellID
-    static let cellID = "DTSynhronizeCell"
     
     //MARK: - GUI Properties
     private lazy var titleLabel: DTAdaptiveLabel = {

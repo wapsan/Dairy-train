@@ -1,6 +1,6 @@
 import UIKit
 
-final class LevelOfTrainingCell: UITableViewCell, CellRegistrable {
+final class LevelOfTrainingCell: UITableViewCell {
 
     // MARK: - @IBOutlets
     @IBOutlet private var titleLabel: UILabel!

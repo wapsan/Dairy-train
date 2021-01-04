@@ -2,9 +2,6 @@ import UIKit
 
 class DTAproachCell: UICollectionViewCell {
     
-    //MARK: - Static properties
-    static let cellID = "TestAproachCell"
-    
     //MARK: - Private properties
     private var aproach: AproachManagedObject?
     var tapAction: ((_ weight: String, _ reps: String) -> Void)?

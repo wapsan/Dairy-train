@@ -21,7 +21,7 @@ final class FirebaseStorageMnager {
     func getListOfTraining(for levelOfTraining: LevelOfTrainingModel,
                            completion: @escaping (Result<[TrainingProgramms], Error>) -> Void) {
         var info: [TrainingProgramms] = []
-        dataBase.collection("beginner_en").getDocuments { (snapshot, error) in
+        dataBase.collection(levelOfTraining.id).getDocuments { (snapshot, error) in
             if let error = error { completion(.failure(error)) }
             guard let documents = snapshot?.documents else { return }
             documents.forEach({

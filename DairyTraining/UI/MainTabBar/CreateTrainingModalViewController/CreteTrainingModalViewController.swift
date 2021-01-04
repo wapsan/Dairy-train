@@ -1,44 +1,94 @@
-//
-//  CreteTrainingModalViewController.swift
-//  Dairy Training
-//
-//  Created by cogniteq on 30.12.2020.
-//  Copyright © 2020 Вячеслав. All rights reserved.
-//
-
 import UIKit
+
+fileprivate enum CreateTrainingOptionsModel: String, CaseIterable {
+    case fromExerciseList = "Exercise"
+    case fromTrainingPatern = "Paterns"
+    case fromSpecialTraining = "Special training"
+    
+    var title: String {
+        return self.rawValue
+    }
+    
+    var image: UIImage? {
+        switch self {
+        case .fromExerciseList:
+            return UIImage(named: "avareProjectileWeightBackground")
+        case .fromTrainingPatern:
+            return UIImage(named: "avareProjectileWeightBackground")
+        case .fromSpecialTraining:
+            return UIImage(named: "avareProjectileWeightBackground")
+        }
+    }
+    
+    func onAction() {
+        switch self {
+        case .fromExerciseList:
+            MainCoordinator.shared.coordinate(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: .training))
+        case .fromTrainingPatern:
+            MainCoordinator.shared.coordinate(to: TrainingPaternsCoordinator.Target.trainingPaternsList)
+        case .fromSpecialTraining:
+            MainCoordinator.shared.coordinate(to: TrainingProgramsCoordinator.Target.trainingLevels)
+        }
+    }
+}
 
 final class CreteTrainingModalViewController: UIViewController {
 
-    @IBOutlet private var modalView: UIView!
+    // MARK: - @IBOutlets
+    @IBOutlet private var backgroundView: UIView!
+    @IBOutlet private var decorateView: UIView!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var containerView: UIView!
     
+    // MARK: - Lyfecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
- 
+        setup()
     }
 
-
-    @IBAction func viewDragging(_ sender: UIPanGestureRecognizer) {
-      //  guard sender.state == .began || sender.state == .changed else { return }
-        let translationY = sender.translation(in: view).y
-        guard translationY > 0 else { return }
-        
-        let bottomEdgeToDismiss = view.bounds.size.height - (view.bounds.size.height * 0.2)
-        modalView.transform = .init(translationX: 0, y: translationY)
-        
-        if sender.state == .ended {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.modalView.transform = .identity
-            })
-        }
-        
-        if modalView.frame.origin.y >= bottomEdgeToDismiss {
-            dismiss(animated: true, completion: nil)
-        }
-        
-        
-        
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        decorateView.layer.cornerRadius = decorateView.bounds.height / 2
     }
     
+    // MARK: - Setter
+    private func setup() {
+        tableView.register(cell: PopUpOptionCell.self)
+        containerView.layer.cornerRadius = 20
+        containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
+    // MARK: - Actions
+    @IBAction func backgroundViewTap(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension CreteTrainingModalViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return CreateTrainingOptionsModel.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PopUpOptionCell.cellID, for: indexPath)
+        let popUpMenuItem = CreateTrainingOptionsModel.allCases[indexPath.row]
+        (cell as? PopUpOptionCell)?.setCell(title: popUpMenuItem.title, and: popUpMenuItem.image)
+        (cell as? PopUpOptionCell)?.action = { [unowned self] in
+            self.dismiss(animated: true, completion: {
+                CreateTrainingOptionsModel.allCases[indexPath.row].onAction()
+            })
+        }
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension CreteTrainingModalViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.bounds.height / CGFloat(CreateTrainingOptionsModel.allCases.count)
+    }
 }

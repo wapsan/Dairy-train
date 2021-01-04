@@ -49,7 +49,7 @@ enum HomeMenuItem: CaseIterable {
         case .createTrainingFromTrainingPatern:
             MainCoordinator.shared.coordinate(to: TrainingPaternsCoordinator.Target.trainingPaternsList)
         case .createTrainingFromSpecialTraining:
-            return
+            MainCoordinator.shared.coordinate(to: TrainingProgramsCoordinator.Target.trainingLevels)
         case .addMeal:
             MainCoordinator.shared.coordinate(to: NutritionModuleCoordinator.Target.searchFood)
         case .mounthlyStatistics:

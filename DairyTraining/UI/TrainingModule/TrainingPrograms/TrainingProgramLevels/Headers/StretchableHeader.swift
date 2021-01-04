@@ -4,12 +4,27 @@ import GSKStretchyHeaderView
 final class StretchableHeader: GSKStretchyHeaderView {
     
     
+    // MARK: - Types
+    enum BackButtonType {
+        case close
+        case goBack
+        
+        var image: UIImage? {
+            switch  self {
+            case .close:
+                return UIImage(named: "icon_close")
+            case .goBack:
+                return UIImage(named: "icon_back")
+            }
+        }
+    }
+    
     // MARK: - Setable roperties
     var onBackButtonAction: (() -> Void)?
     
-    var backButtonImage: UIImage? = nil {
+    var backButtonImageType: BackButtonType = .close {
         didSet {
-            backButton.setImage(backButtonImage, for: .normal)
+            backButton.setImage(backButtonImageType.image, for: .normal)
         }
     }
     

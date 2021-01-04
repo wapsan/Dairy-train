@@ -42,6 +42,7 @@ final class TrainingProgramsLevelsViewController: UIViewController {
         let headerSize = CGSize(width: tableView.frame.size.width, height: 250)
         stretchableHeader = StretchableHeader(frame: CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height))
         stretchableHeader?.backgroundColor = .black
+        stretchableHeader?.backButtonImageType = .close
         stretchableHeader?.minimumContentHeight = 44
         stretchableHeader?.onBackButtonAction = { [unowned self] in
             self.viewModel.backButtonPressed()

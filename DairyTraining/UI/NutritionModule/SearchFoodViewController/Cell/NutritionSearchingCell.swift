@@ -59,10 +59,6 @@ extension Food: FoodPresentable {
 
 final class NutritionSearchingCell: UITableViewCell {
 
-    // MARK: - Cell properties
-    static let cellID = "NutritionSearchingCell"
-    static let xibName = "NutritionSearchingCell"
-    
     // MARK: - @IBOutlets
     @IBOutlet private var containerView: UIView!
     @IBOutlet private var foodNameLabel: UILabel!

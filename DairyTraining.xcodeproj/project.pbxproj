@@ -226,11 +226,9 @@
 		7AC19841258DF55C0023ADE2 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC19840258DF55B0023ADE2 /* Loadable.swift */; };
 		7AC19874258E37350023ADE2 /* MealDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC19873258E37350023ADE2 /* MealDetailAlert.swift */; };
 		7AC19878258E37BC0023ADE2 /* MealDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC19877258E37BC0023ADE2 /* MealDetailAlert.xib */; };
-		7AC81F83259B32F200AC10FB /* CreateTrainingPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F82259B32F200AC10FB /* CreateTrainingPopUp.swift */; };
-		7AC81F88259B330E00AC10FB /* CreateTrainingPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC81F87259B330E00AC10FB /* CreateTrainingPopUp.xib */; };
+		7AC1D08E25A32F78006049F6 /* CreatinTrainingPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC1D08D25A32F78006049F6 /* CreatinTrainingPresentationViewController.swift */; };
 		7AC81F8D259B377D00AC10FB /* PopUpOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F8B259B377D00AC10FB /* PopUpOptionCell.swift */; };
 		7AC81F8E259B377D00AC10FB /* PopUpOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC81F8C259B377D00AC10FB /* PopUpOptionCell.xib */; };
-		7AC81F91259B4C4200AC10FB /* CellRegistrable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F90259B4C4200AC10FB /* CellRegistrable.swift */; };
 		7AC81F99259B552100AC10FB /* AuthorizationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F98259B552100AC10FB /* AuthorizationConfigurator.swift */; };
 		7AC81FB9259C5ABC00AC10FB /* CreteTrainingModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81FB7259C5ABC00AC10FB /* CreteTrainingModalViewController.swift */; };
 		7AC81FBA259C5ABC00AC10FB /* CreteTrainingModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC81FB8259C5ABC00AC10FB /* CreteTrainingModalViewController.xib */; };
@@ -465,11 +463,9 @@
 		7AC19840258DF55B0023ADE2 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		7AC19873258E37350023ADE2 /* MealDetailAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailAlert.swift; sourceTree = "<group>"; };
 		7AC19877258E37BC0023ADE2 /* MealDetailAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealDetailAlert.xib; sourceTree = "<group>"; };
-		7AC81F82259B32F200AC10FB /* CreateTrainingPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingPopUp.swift; sourceTree = "<group>"; };
-		7AC81F87259B330E00AC10FB /* CreateTrainingPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateTrainingPopUp.xib; sourceTree = "<group>"; };
+		7AC1D08D25A32F78006049F6 /* CreatinTrainingPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatinTrainingPresentationViewController.swift; sourceTree = "<group>"; };
 		7AC81F8B259B377D00AC10FB /* PopUpOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpOptionCell.swift; sourceTree = "<group>"; };
 		7AC81F8C259B377D00AC10FB /* PopUpOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpOptionCell.xib; sourceTree = "<group>"; };
-		7AC81F90259B4C4200AC10FB /* CellRegistrable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellRegistrable.swift; sourceTree = "<group>"; };
 		7AC81F98259B552100AC10FB /* AuthorizationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationConfigurator.swift; sourceTree = "<group>"; };
 		7AC81FB7259C5ABC00AC10FB /* CreteTrainingModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreteTrainingModalViewController.swift; sourceTree = "<group>"; };
 		7AC81FB8259C5ABC00AC10FB /* CreteTrainingModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreteTrainingModalViewController.xib; sourceTree = "<group>"; };
@@ -1419,8 +1415,8 @@
 				7A36C33D259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.swift */,
 				7A36C343259C8C5000DFFA6E /* TrainingProgramsLevelsViewModel.swift */,
 				7A36C346259C8C7F00DFFA6E /* TrainingProgramsLevelsModel.swift */,
-				7A36C349259C8D3500DFFA6E /* TrainingProgramsLevelsConfigurator.swift */,
 				7A36C33E259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.xib */,
+				7A36C349259C8D3500DFFA6E /* TrainingProgramsLevelsConfigurator.swift */,
 			);
 			path = TrainingProgramLevels;
 			sourceTree = "<group>";
@@ -1567,7 +1563,6 @@
 			isa = PBXGroup;
 			children = (
 				7AC81FB6259C5A7700AC10FB /* CreateTrainingModalViewController */,
-				7AC81F86259B32F600AC10FB /* Views */,
 				7AC81F81259B32CF00AC10FB /* Model */,
 				13479F36247BD55D002FFB4E /* MainTabBarViewController.swift */,
 			);
@@ -1630,7 +1625,6 @@
 			isa = PBXGroup;
 			children = (
 				7AC19840258DF55B0023ADE2 /* Loadable.swift */,
-				7AC81F90259B4C4200AC10FB /* CellRegistrable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1652,16 +1646,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		7AC81F86259B32F600AC10FB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				7AC81F8A259B375C00AC10FB /* Cell */,
-				7AC81F82259B32F200AC10FB /* CreateTrainingPopUp.swift */,
-				7AC81F87259B330E00AC10FB /* CreateTrainingPopUp.xib */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		7AC81F8A259B375C00AC10FB /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1674,8 +1658,10 @@
 		7AC81FB6259C5A7700AC10FB /* CreateTrainingModalViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7AC81F8A259B375C00AC10FB /* Cell */,
 				7AC81FB7259C5ABC00AC10FB /* CreteTrainingModalViewController.swift */,
 				7AC81FB8259C5ABC00AC10FB /* CreteTrainingModalViewController.xib */,
+				7AC1D08D25A32F78006049F6 /* CreatinTrainingPresentationViewController.swift */,
 			);
 			path = CreateTrainingModalViewController;
 			sourceTree = "<group>";
@@ -1769,7 +1755,6 @@
 				1398F6DF255C54D5009BE856 /* ChoosenExerciseStatisticsViewController.xib in Resources */,
 				136989C32520DF650039B306 /* TrainingPaternsViewController.xib in Resources */,
 				139285CE2573AC3000F4FB0C /* AddExerciseSupportButton.xib in Resources */,
-				7AC81F88259B330E00AC10FB /* CreateTrainingPopUp.xib in Resources */,
 				7AAFE8EF259A1F45004FF48B /* HomeViewCollectionCell.xib in Resources */,
 				7A69DBD5258757A7003EECD8 /* NutritionSearchingCell.xib in Resources */,
 				7A4452DD258A1C0300A808D1 /* NutritionSettingViewController.xib in Resources */,
@@ -1918,10 +1903,10 @@
 				7A69DBFA25878063003EECD8 /* SearchFoodViewController.swift in Sources */,
 				1379800924733AEB00BAD87C /* SettingsSectionViewController.swift in Sources */,
 				7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */,
+				7AC1D08E25A32F78006049F6 /* CreatinTrainingPresentationViewController.swift in Sources */,
 				139B827524D5CAA1008C3DF4 /* RouterProtocol.swift in Sources */,
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
 				7AAFE8B42599D216004FF48B /* HomeViewControllerConfigurator.swift in Sources */,
-				7AC81F91259B4C4200AC10FB /* CellRegistrable.swift in Sources */,
 				132A6A452572569C00EB3AE0 /* SelectExerciseModel.swift in Sources */,
 				131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */,
 				7A36C38B259CC11800DFFA6E /* TrainingProgramsModel.swift in Sources */,
@@ -2000,7 +1985,6 @@
 				7A36C33F259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.swift in Sources */,
 				13CCD922254EB1DF00E8FFEB /* SideMenuViewController.swift in Sources */,
 				133364AB2561793C00EAC6F6 /* ExerciseStatisticsCell.swift in Sources */,
-				7AC81F83259B32F200AC10FB /* CreateTrainingPopUp.swift in Sources */,
 				1346FAC62507F0AA00734215 /* TrainingListViewModel.swift in Sources */,
 				1301DA0025814B400064326E /* TrainingViewController.swift in Sources */,
 				135B8815248132360032251D /* DTAproachCell.swift in Sources */,

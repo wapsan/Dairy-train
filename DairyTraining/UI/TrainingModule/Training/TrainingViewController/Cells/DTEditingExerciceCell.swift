@@ -2,8 +2,7 @@ import UIKit
 
 final class DTEditingExerciceCell: UITableViewCell {
     
-    //MARK: - Static properties
-    static let cellID = "TestExerciceCell"
+ 
     
     //MARK: - Private properties
     private var exercise: ExerciseManagedObject?

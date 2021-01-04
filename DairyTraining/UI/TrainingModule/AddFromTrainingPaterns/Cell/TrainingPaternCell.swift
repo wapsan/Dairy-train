@@ -6,9 +6,7 @@ class TrainingPaternCell: UITableViewCell {
     @IBOutlet private var containerView: UIView!
     @IBOutlet private var trainingPaternTittleLabel: UILabel!
     
-    //MARK: - Properties
-    static let cellID = "TrainingPaternCell"
-    static let xibName = "TrainingPaternCell"
+
     
     //MARK: - Initialization
     override func awakeFromNib() {

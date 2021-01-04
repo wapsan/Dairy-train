@@ -2,9 +2,7 @@ import UIKit
 
 final class NutritionModeCell: UITableViewCell {
 
-    // MARK: - Cell properties
-    static let cellID = "NutritionModeCell"
-    static let xibName = "NutritionModeCell"
+
     
     // MARK: - @IBOutlets
     @IBOutlet private var titleLabel: UILabel!

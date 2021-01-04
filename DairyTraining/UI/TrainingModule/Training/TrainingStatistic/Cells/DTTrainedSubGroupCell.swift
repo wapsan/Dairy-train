@@ -1,10 +1,7 @@
 import UIKit
 
 class DTTrainedSubGroupCell: UICollectionViewCell {
-    
-    //MARK: - Static cellID
-    static let cellID = "DTTrainedSubGroupCell"
-    
+
     //MARK: - GUI Properties
     private lazy var subgroupsList: [MuscleSubgroup.Subgroup] = []
     private lazy var edgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: -8, right: -8)
