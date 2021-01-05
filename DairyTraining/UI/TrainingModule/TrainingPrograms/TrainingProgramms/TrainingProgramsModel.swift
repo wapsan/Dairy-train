@@ -5,10 +5,11 @@ protocol TrainingProgramsModelProtocol {
     
     func loadData()
     func popViewController()
+    func pushSpecialWorkoutViewController(for specialWorkout: SpecialWorkout)
 }
 
 protocol TrainingProgramsModelOutput: AnyObject {
-    func updateTrainings(for trainings: [TrainingProgramms])
+    func updateTrainings(for trainings: [SpecialWorkout])
 }
 
 final class TrainingProgramsModel {
@@ -29,6 +30,18 @@ final class TrainingProgramsModel {
 
 // MARK: - TrainingProgramsModelProtocol
 extension TrainingProgramsModel: TrainingProgramsModelProtocol {
+    
+    func pushSpecialWorkoutViewController(for specialWorkout: SpecialWorkout) {
+        dataBaseService.getListOfExercise(for: specialWorkout) { (result) in
+            switch result {
+            case .success(let exercises):
+                MainCoordinator.shared.coordinate(to: TrainingProgramsCoordinator.Target.workout(workout: specialWorkout,
+                                                                                                 exercises: exercises))
+            case .failure(_):
+                break
+            }
+        }
+    }
     
     func popViewController() {
         MainCoordinator.shared.popViewController()

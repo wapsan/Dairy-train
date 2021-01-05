@@ -1,13 +1,14 @@
 import Foundation
 
 protocol TrainingProgramsViewModelProtocol {
-    var trainings: [TrainingProgramms] { get }
+    var trainings: [SpecialWorkout] { get }
     var levelTitle: String { get }
     var levelDescription: String { get }
     
     func viewDidLoad()
-    func getTraining(for index: Int) -> TrainingProgramms
+    func getTraining(for index: Int) -> SpecialWorkout
     func backButtonPressed()
+    func didSelectRow(at index: Int)
 }
 
 final class TrainingProgramsViewModel {
@@ -17,7 +18,7 @@ final class TrainingProgramsViewModel {
     private let model: TrainingProgramsModelProtocol
     
     // MARK: - Properties
-    private var _trainings: [TrainingProgramms] = []
+    private var _trainings: [SpecialWorkout] = []
     
     // MARK: - Initialization
     init(model: TrainingProgramsModelProtocol) {
@@ -28,7 +29,11 @@ final class TrainingProgramsViewModel {
 // MARK: - TrainingProgramsViewModelProtocol
 extension TrainingProgramsViewModel: TrainingProgramsViewModelProtocol {
     
-    func getTraining(for index: Int) -> TrainingProgramms {
+    func didSelectRow(at index: Int) {
+        model.pushSpecialWorkoutViewController(for: _trainings[index])
+    }
+
+    func getTraining(for index: Int) -> SpecialWorkout {
         return _trainings[index]
     }
     
@@ -49,7 +54,7 @@ extension TrainingProgramsViewModel: TrainingProgramsViewModelProtocol {
         model.loadData()
     }
     
-    var trainings: [TrainingProgramms] {
+    var trainings: [SpecialWorkout] {
         return _trainings
     }
 }
@@ -57,7 +62,7 @@ extension TrainingProgramsViewModel: TrainingProgramsViewModelProtocol {
 // MARK: - TrainingProgramsModelOutput
 extension TrainingProgramsViewModel: TrainingProgramsModelOutput {
     
-    func updateTrainings(for trainings: [TrainingProgramms]) {
+    func updateTrainings(for trainings: [SpecialWorkout]) {
         _trainings = trainings
         view?.hideLoader()
         view?.reloadTableView()

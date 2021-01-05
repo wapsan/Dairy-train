@@ -3,6 +3,13 @@ import UIKit
 protocol Groupable {
     var image: UIImage? { get }
     var name: String { get }
+    var promptDescription: String? { get }
+}
+
+extension Groupable {
+    var promptDescription: String? {
+        return nil
+    }
 }
 
 struct MuscleSubgroup: Codable {

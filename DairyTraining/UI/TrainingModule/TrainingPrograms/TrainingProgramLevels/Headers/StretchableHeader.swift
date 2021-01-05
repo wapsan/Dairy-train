@@ -41,6 +41,12 @@ final class StretchableHeader: GSKStretchyHeaderView {
         }
     }
     
+    var image: UIImage? = nil {
+        didSet {
+            imageView.image = image
+        }
+    }
+    
     // MARK: - GUI Properties
     private lazy var dublicateTitleLabel: UILabel = {
         let label = UILabel()
@@ -67,7 +73,7 @@ final class StretchableHeader: GSKStretchyHeaderView {
         return label
     }()
     
-    private lazy var image: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "totalTraininfoViewBackground")
         image.contentMode = .scaleAspectFill
@@ -103,9 +109,9 @@ final class StretchableHeader: GSKStretchyHeaderView {
     // MARK: - Private methods
     private func setup() {
         contentView.addSubview(dublicateTitleLabel)
-        contentView.addSubview(image)
-        image.addSubview(titleLabel)
-        image.addSubview(descriptionLabel)
+        contentView.addSubview(imageView)
+        imageView.addSubview(titleLabel)
+        imageView.addSubview(descriptionLabel)
         contentView.addSubview(backButton)
         setupConstraints()
     }
@@ -113,19 +119,19 @@ final class StretchableHeader: GSKStretchyHeaderView {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -8),
-            titleLabel.leftAnchor.constraint(equalTo: image.leftAnchor, constant: 16),
+            titleLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 16),
             
-            descriptionLabel.bottomAnchor.constraint(equalTo: image.bottomAnchor, constant: -8),
-            descriptionLabel.leftAnchor.constraint(equalTo: image.leftAnchor, constant: 16),
-            descriptionLabel.rightAnchor.constraint(lessThanOrEqualTo: image.rightAnchor, constant: -16),
+            descriptionLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -8),
+            descriptionLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 16),
+            descriptionLabel.rightAnchor.constraint(lessThanOrEqualTo: imageView.rightAnchor, constant: -16),
             
             dublicateTitleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             dublicateTitleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
-            image.topAnchor.constraint(equalTo: contentView.topAnchor),
-            image.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            image.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 9),
             backButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
@@ -147,13 +153,13 @@ final class StretchableHeader: GSKStretchyHeaderView {
     
     private func hideImage() {
         UIView.animate(withDuration: 0.15, animations: {
-            self.image.alpha = 0
+            self.imageView.alpha = 0
         })
     }
     
     private func showImage() {
         UIView.animate(withDuration: 0.15, animations: {
-            self.image.alpha = 1
+            self.imageView.alpha = 1
         })
     }
     

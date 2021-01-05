@@ -12,7 +12,7 @@ final class TrainingProgramsLevelsViewModel {
 
     weak var view: TrainingProgramsLevelsViewProtocol?
     private var model: TrainingProgramsLevelsModelProtocl
-    private var _data: [TrainingProgramms] = []
+    private var _data: [SpecialWorkout] = []
     
     
     init(model: TrainingProgramsLevelsModelProtocl) {

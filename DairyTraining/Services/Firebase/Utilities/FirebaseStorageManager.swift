@@ -7,10 +7,30 @@ struct TrainingProgramsLevelModel {
     let imageURL: String
 }
 
-struct TrainingProgramms {
+struct SpecialWorkout {
     let title: String
-    let imageURL: URL?
-    let exercise: [Exercise] = []
+    let description: String
+    let level: String
+    let workoutID: String
+    let image: UIImage?
+    var exercise: [Exercise] = []
+    
+    mutating func setExercises(exercises: [Exercise]) {
+        self.exercise = exercises
+    }
+}
+
+fileprivate struct WorkoutKey {
+    static let name = "name"
+    static let imagePath = "image_path"
+    static let description = "description"
+}
+
+fileprivate struct Exercisekey {
+    static let name = "name"
+    static let subgroup = "subgroup_name"
+    static let sets = "sets"
+    static let reps = "reps"
 }
 
 
@@ -19,42 +39,78 @@ final class FirebaseStorageMnager {
     
     private lazy var dataBase = Firestore.firestore()
     private lazy var storage = Storage.storage()
-    func getListOfTraining(for levelOfTraining: LevelOfTrainingModel,
-                           completion: @escaping (Result<[TrainingProgramms], Error>) -> Void) {
-        var info: [TrainingProgramms] = []
-        dataBase.collection(levelOfTraining.id).getDocuments { (snapshot, error) in
-            if let error = error { completion(.failure(error)) }
-            guard let documents = snapshot?.documents else { return }
-            documents.forEach({
-                guard let title = $0.data()["training_name"] as? String,
-                      let imageURL = $0.data()["image_url"] as? String else { return }
-           //     if imageURL != "" {
-                    let imageURLs = self.storage.reference().child(imageURL)
-                    imageURLs.downloadURL { (url, error) in
-                        info.append(TrainingProgramms(title: title, imageURL: url))
-                        completion(.success(info))
-                    }
-               // }
-              //  info.append(TrainingProgramms(title: title, imageURL: nil))
-                
-            })
-          //  completion(.success(info))
-        }
+    
+    private lazy var maxDataSize: Int64 = 4 * 1024 * 1024
+    private let workoutsPath = "ready_workouts_"
+    private let workoutsCollectionPath = "workouts"
+    
+    private var readyWorkoutsLanguagePath: String {
+        return workoutsPath + "en"//(Locale.current.languageCode ?? "en")
     }
     
-//    func getTrainingLevelsSections(completion: @escaping (Result<[TrainingProgramms], Error>) -> Void) {
-//        var info: [TrainingProgramms] = []
-//        dataBase.collection("beginner_en").getDocuments { (snapshot, error) in
-//            if let error = error { completion(.failure(error)) }
-//            guard let documents = snapshot?.documents else { return }
-//            documents.forEach({
-//                guard let title = $0.data()["training_name"] as? String else { return }
-//                info.append(TrainingProgramms(title: title))
-//            })
-//            completion(.success(info))
-//        }
-//    }
+    func getListOfTraining(for levelOfTraining: LevelOfTrainingModel,
+                           completion: @escaping (Result<[SpecialWorkout], Error>) -> Void) {
+        var info: [SpecialWorkout] = []
+        
+        dataBase
+            .collection(readyWorkoutsLanguagePath)
+            .document(levelOfTraining.documentID)
+            .collection(workoutsCollectionPath)
+            .getDocuments { (snapshot, error) in
+                guard let workouts = snapshot?.documents else { return }
+            
+                workouts.forEach({ workout in
+                    guard let workoutTitle = workout.data()[WorkoutKey.name] as? String,
+                          let imageURL = workout.data()[WorkoutKey.imagePath] as? String,
+                          let description = workout.data()[WorkoutKey.description] as? String else { return }
+                    
+                          let documentID = workout.documentID
+                    
+                    let imageStorageRef = self.storage.reference(withPath: imageURL)
+                    
+                    imageStorageRef.getData(maxSize: self.maxDataSize, completion: { data, error in
+                        if let error = error { completion(.failure(error)) }
+                        guard let data = data else { return }
+                        
+                        let image = UIImage(data: data)
+                        
+                        info.append(SpecialWorkout(title: workoutTitle,
+                                                   description: description,
+                                                   level: levelOfTraining.documentID,
+                                                   workoutID: documentID,
+                                                   image: image))
+                        completion(.success(info))
+                        
+                        
+                    })
+                })
+            }
+    }
     
+    func getListOfExercise(for workout: SpecialWorkout, completion: @escaping (Result<[Exercise], Error>) -> Void) {
+        var exercisesZ: [Exercise] = []
+        
+        dataBase
+            .collection(readyWorkoutsLanguagePath)
+            .document(workout.level)
+            .collection(workoutsCollectionPath)
+            .document(workout.workoutID)
+            .collection("exercises")
+            .getDocuments { (snapshot, erro) in
+                guard let exercises = snapshot?.documents else { return }
+                exercises.forEach({ exercise in
+                    guard let exerciseName = exercise.data()[Exercisekey.name] as? String,
+                          let exerciseSubgroupRawValue = exercise.data()[Exercisekey.subgroup] as? String,
+                          let sets = exercise.data()[Exercisekey.sets] as? Int,
+                          let reps = exercise.data()[Exercisekey.reps] as? Int,
+                          let exerciseSubgroup = MuscleSubgroup.Subgroup.init(rawValue: exerciseSubgroupRawValue) else { return }
+                    let exercisePromt = ExercisePrompt(sets: sets, reps: reps)
+                    exercisesZ.append(Exercise(name: exerciseName, subgroup: exerciseSubgroup, exercisePrompt: exercisePromt))
+                })
+                completion(.success(exercisesZ))
+            }
+        
+    }
     
     
 }

@@ -25,11 +25,8 @@ final class ReadyTrainingCell: UITableViewCell {
         containerView.layer.masksToBounds = true
     }
     
-    func setCell(for item: TrainingProgramms) {
-        if let imageURL = item.imageURL {
-            backgroundImageView.kf.setImage(with: imageURL)
-        }
-        
+    func setCell(for item: SpecialWorkout) {
+        backgroundImageView.image = item.image
         titleLabel.text = item.title
     }
 }

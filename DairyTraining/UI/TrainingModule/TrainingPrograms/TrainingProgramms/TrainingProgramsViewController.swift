@@ -73,10 +73,13 @@ extension TrainingProgramsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension TrainingProgramsViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectRow(at: indexPath.row)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-    
 }
 
 // MARK: - TrainingProgramsViewProtocol

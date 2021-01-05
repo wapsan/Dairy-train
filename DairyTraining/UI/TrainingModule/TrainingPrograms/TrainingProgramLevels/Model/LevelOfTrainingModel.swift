@@ -9,14 +9,14 @@ enum LevelOfTrainingModel: String, CaseIterable {
         return Locale.current.languageCode ?? "en"
     }
     
-    var id: String {
+    var documentID: String {
         switch self {
         case .beginner:
-            return "beginner_" + languageCode
+            return "beginner"
         case .amateur:
-            return "amateur_" + languageCode
+            return "amateur"
         case .pro:
-            return "pro_" + languageCode
+            return "pro"
         }
     }
     

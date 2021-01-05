@@ -151,6 +151,13 @@
 		13FD8F1424B1DC43007FA451 /* ExerciseCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1324B1DC43007FA451 /* ExerciseCodableModel.swift */; };
 		13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */; };
 		7A057CEC2589ECD600D6937B /* ProgressDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A057CEB2589ECD600D6937B /* ProgressDrawer.swift */; };
+		7A24882725A49BBB00DB6D12 /* ReadyWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A24882525A49BBB00DB6D12 /* ReadyWorkoutViewController.swift */; };
+		7A24882825A49BBB00DB6D12 /* ReadyWorkoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A24882625A49BBB00DB6D12 /* ReadyWorkoutViewController.xib */; };
+		7A24882C25A49BCF00DB6D12 /* ReadyWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A24882B25A49BCF00DB6D12 /* ReadyWorkoutViewModel.swift */; };
+		7A24882F25A49BE600DB6D12 /* ReadyWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A24882E25A49BE600DB6D12 /* ReadyWorkoutModel.swift */; };
+		7A24883225A49BFA00DB6D12 /* ReadyWorkoutConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A24883125A49BFA00DB6D12 /* ReadyWorkoutConfigurator.swift */; };
+		7A24883825A4A2CC00DB6D12 /* DefaultExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A24883625A4A2CC00DB6D12 /* DefaultExerciseCell.swift */; };
+		7A24883925A4A2CC00DB6D12 /* DefaultExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A24883725A4A2CC00DB6D12 /* DefaultExerciseCell.xib */; };
 		7A2A75282588990C0091FD22 /* MealMO+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A75242588990C0091FD22 /* MealMO+CoreDataProperties copy.swift */; };
 		7A2A75292588990C0091FD22 /* MealMO+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A75252588990C0091FD22 /* MealMO+CoreDataClass copy.swift */; };
 		7A2A752A2588990C0091FD22 /* NutritionDataMO+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A75262588990C0091FD22 /* NutritionDataMO+CoreDataProperties copy.swift */; };
@@ -391,6 +398,13 @@
 		13FD8F1524B1DC54007FA451 /* TrainingCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCodableModel.swift; sourceTree = "<group>"; };
 		603CE1CD603B1EE61B433EA4 /* Pods-Dairy Training.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dairy Training.release.xcconfig"; path = "Target Support Files/Pods-Dairy Training/Pods-Dairy Training.release.xcconfig"; sourceTree = "<group>"; };
 		7A057CEB2589ECD600D6937B /* ProgressDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDrawer.swift; sourceTree = "<group>"; };
+		7A24882525A49BBB00DB6D12 /* ReadyWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyWorkoutViewController.swift; sourceTree = "<group>"; };
+		7A24882625A49BBB00DB6D12 /* ReadyWorkoutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadyWorkoutViewController.xib; sourceTree = "<group>"; };
+		7A24882B25A49BCF00DB6D12 /* ReadyWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyWorkoutViewModel.swift; sourceTree = "<group>"; };
+		7A24882E25A49BE600DB6D12 /* ReadyWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyWorkoutModel.swift; sourceTree = "<group>"; };
+		7A24883125A49BFA00DB6D12 /* ReadyWorkoutConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyWorkoutConfigurator.swift; sourceTree = "<group>"; };
+		7A24883625A4A2CC00DB6D12 /* DefaultExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultExerciseCell.swift; sourceTree = "<group>"; };
+		7A24883725A4A2CC00DB6D12 /* DefaultExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultExerciseCell.xib; sourceTree = "<group>"; };
 		7A2A75242588990C0091FD22 /* MealMO+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MealMO+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
 		7A2A75252588990C0091FD22 /* MealMO+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MealMO+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		7A2A75262588990C0091FD22 /* NutritionDataMO+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NutritionDataMO+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
@@ -1358,6 +1372,28 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		7A24882425A49B8C00DB6D12 /* ReadyWorkout */ = {
+			isa = PBXGroup;
+			children = (
+				7A24883525A4A28F00DB6D12 /* Cell */,
+				7A24882525A49BBB00DB6D12 /* ReadyWorkoutViewController.swift */,
+				7A24882B25A49BCF00DB6D12 /* ReadyWorkoutViewModel.swift */,
+				7A24882E25A49BE600DB6D12 /* ReadyWorkoutModel.swift */,
+				7A24882625A49BBB00DB6D12 /* ReadyWorkoutViewController.xib */,
+				7A24883125A49BFA00DB6D12 /* ReadyWorkoutConfigurator.swift */,
+			);
+			path = ReadyWorkout;
+			sourceTree = "<group>";
+		};
+		7A24883525A4A28F00DB6D12 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7A24883625A4A2CC00DB6D12 /* DefaultExerciseCell.swift */,
+				7A24883725A4A2CC00DB6D12 /* DefaultExerciseCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		7A2A752D25889B4C0091FD22 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1404,6 +1440,7 @@
 		7A36C33B259C8B2A00DFFA6E /* TrainingPrograms */ = {
 			isa = PBXGroup;
 			children = (
+				7A24882425A49B8C00DB6D12 /* ReadyWorkout */,
 				7A36C380259CBF6100DFFA6E /* TrainingProgramms */,
 				7A36C33C259C8B4F00DFFA6E /* TrainingProgramLevels */,
 			);
@@ -1758,6 +1795,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A24882825A49BBB00DB6D12 /* ReadyWorkoutViewController.xib in Resources */,
 				7A36C385259CBFF100DFFA6E /* TrainingProgramsViewController.xib in Resources */,
 				1301DA0125814B400064326E /* TrainingViewController.xib in Resources */,
 				13B9FE8C2540AB7A00E5542E /* TrainingPaternsHeaderView.xib in Resources */,
@@ -1768,6 +1806,7 @@
 				7AC1908E25935D7700D855E6 /* InfoAlert.xib in Resources */,
 				1398F6DF255C54D5009BE856 /* ChoosenExerciseStatisticsViewController.xib in Resources */,
 				136989C32520DF650039B306 /* TrainingPaternsViewController.xib in Resources */,
+				7A24883925A4A2CC00DB6D12 /* DefaultExerciseCell.xib in Resources */,
 				139285CE2573AC3000F4FB0C /* AddExerciseSupportButton.xib in Resources */,
 				7AAFE8EF259A1F45004FF48B /* HomeViewCollectionCell.xib in Resources */,
 				7A69DBD5258757A7003EECD8 /* NutritionSearchingCell.xib in Resources */,
@@ -1892,6 +1931,7 @@
 				7A36C388259CC0E000DFFA6E /* TrainingProgramsViewModel.swift in Sources */,
 				7AC19874258E37350023ADE2 /* MealDetailAlert.swift in Sources */,
 				7A7D288425753DF800FDD212 /* MapableProtocol.swift in Sources */,
+				7A24882725A49BBB00DB6D12 /* ReadyWorkoutViewController.swift in Sources */,
 				13479F3B247BD84A002FFB4E /* TrainingListViewController.swift in Sources */,
 				7AC1908A25935D5800D855E6 /* InfoAlert.swift in Sources */,
 				13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */,
@@ -1915,8 +1955,10 @@
 				13C0EEEC24A5E4AC00F55C54 /* AproachManagedObject+CoreDataProperties.swift in Sources */,
 				7AECC65725A33FBE00AE1768 /* ReadyTrainingCell.swift in Sources */,
 				7AC81F8D259B377D00AC10FB /* PopUpOptionCell.swift in Sources */,
+				7A24883825A4A2CC00DB6D12 /* DefaultExerciseCell.swift in Sources */,
 				13EDD9BD247AB145008EE212 /* MuscleGroupModel.swift in Sources */,
 				7A69DBFA25878063003EECD8 /* SearchFoodViewController.swift in Sources */,
+				7A24882F25A49BE600DB6D12 /* ReadyWorkoutModel.swift in Sources */,
 				1379800924733AEB00BAD87C /* SettingsSectionViewController.swift in Sources */,
 				7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */,
 				7AC1D08E25A32F78006049F6 /* CreatinTrainingPresentationViewController.swift in Sources */,
@@ -1960,6 +2002,7 @@
 				7AA6AA56254978C600A88D4B /* MuscleGroupsCoordinator.swift in Sources */,
 				7AC81FD9259C832900AC10FB /* FirebaseStorageManager.swift in Sources */,
 				13416FA22485345100EC6590 /* Authorizationbutton.swift in Sources */,
+				7A24883225A49BFA00DB6D12 /* ReadyWorkoutConfigurator.swift in Sources */,
 				136F400D2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift in Sources */,
 				7A2A754D2588AFF00091FD22 /* TodayMealNutrition.swift in Sources */,
 				1373219F253A08A300F8FA23 /* UIAplication+Ex.swift in Sources */,
@@ -1981,6 +2024,7 @@
 				7A69DBCC25875030003EECD8 /* MainNutritionViewModel.swift in Sources */,
 				7A36C34E259C8E1D00DFFA6E /* TrainingProgramsCoordinator.swift in Sources */,
 				7A69DBE625877925003EECD8 /* NutritionDataModel.xcdatamodeld in Sources */,
+				7A24882C25A49BCF00DB6D12 /* ReadyWorkoutViewModel.swift in Sources */,
 				7A36C34A259C8D3500DFFA6E /* TrainingProgramsLevelsConfigurator.swift in Sources */,
 				1342E7CC2558387C00D6E369 /* TrainingModuleCoordinator.swift in Sources */,
 				7A4452DC258A1C0300A808D1 /* NutritionSettingViewController.swift in Sources */,
@@ -2121,6 +2165,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -2184,6 +2229,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

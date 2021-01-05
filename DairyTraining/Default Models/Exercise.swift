@@ -1,5 +1,10 @@
 import UIKit
 
+struct ExercisePrompt {
+    let sets: Int
+    let reps: Int
+}
+
 struct Exercise {
 
     //MARK: - Properties
@@ -8,9 +13,11 @@ struct Exercise {
     //MARK: - Public properties
     var group: MuscleGroup.Group
     var subgroub: MuscleSubgroup.Subgroup
+    var prompt: ExercisePrompt?
     
     //MARK: - Initialization
-    init(name: String, subgroup: MuscleSubgroup.Subgroup) {
+    init(name: String, subgroup: MuscleSubgroup.Subgroup, exercisePrompt: ExercisePrompt? = nil) {
+        self.prompt = exercisePrompt
         self._name = name
         self.subgroub = subgroup
         switch subgroub {
@@ -50,6 +57,11 @@ struct Exercise {
 
 //MARK: - Groupable
 extension Exercise: Groupable  {
+    
+    var promptDescription: String? {
+        guard let prompt = self.prompt else { return nil }
+        return "\(prompt.sets) x \(prompt.reps)"
+    }
     
     var name: String {
         return self._name
