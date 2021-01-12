@@ -105,7 +105,6 @@
 		139D53112474035C0028AE6A /* DTSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D53102474035C0028AE6A /* DTSettingCell.swift */; };
 		139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531224740BCE0028AE6A /* SettingViewController.swift */; };
 		139D531B24753D060028AE6A /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D531A24753D060028AE6A /* SettingModel.swift */; };
-		139FE9D3247838EF00B22C40 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D2247838EF00B22C40 /* ExerciseCell.swift */; };
 		139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139FE9D624783CAA00B22C40 /* DTHeaderView.swift */; };
 		13A8CA3F24B6312E00624AA3 /* CALayer+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A8CA3E24B6312E00624AA3 /* CALayer+Ex.swift */; };
 		13A9E7C22494E22200DEDCBE /* UserMainInfoCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A9E7C12494E22200DEDCBE /* UserMainInfoCodableModel.swift */; };
@@ -349,7 +348,6 @@
 		139D53102474035C0028AE6A /* DTSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSettingCell.swift; sourceTree = "<group>"; };
 		139D531224740BCE0028AE6A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		139D531A24753D060028AE6A /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
-		139FE9D2247838EF00B22C40 /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		139FE9D624783CAA00B22C40 /* DTHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTHeaderView.swift; sourceTree = "<group>"; };
 		13A8CA3E24B6312E00624AA3 /* CALayer+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Ex.swift"; sourceTree = "<group>"; };
 		13A9E7C12494E22200DEDCBE /* UserMainInfoCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainInfoCodableModel.swift; sourceTree = "<group>"; };
@@ -688,14 +686,6 @@
 				132A6A3D257254A200EB3AE0 /* SelectExerciseViewController.xib */,
 			);
 			path = "Select exercises";
-			sourceTree = "<group>";
-		};
-		132125DC2494DC4F00FDCDB4 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				139FE9D2247838EF00B22C40 /* ExerciseCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		132FC7BC24B7CD2F00A70F7E /* EdgeInsets */ = {
@@ -1179,7 +1169,6 @@
 				136E363425287E0A002FA439 /* Model */,
 				132125D62494DBC500FDCDB4 /* Select muscle group */,
 				132125DA2494DC0F00FDCDB4 /* Select exercises */,
-				132125DC2494DC4F00FDCDB4 /* Cells */,
 			);
 			path = AddFromExerciseList;
 			sourceTree = "<group>";
@@ -1440,6 +1429,7 @@
 		7A36C33B259C8B2A00DFFA6E /* TrainingPrograms */ = {
 			isa = PBXGroup;
 			children = (
+				7A36C351259C96B400DFFA6E /* Headers */,
 				7A24882425A49B8C00DB6D12 /* ReadyWorkout */,
 				7A36C380259CBF6100DFFA6E /* TrainingProgramms */,
 				7A36C33C259C8B4F00DFFA6E /* TrainingProgramLevels */,
@@ -1452,7 +1442,6 @@
 			children = (
 				7A36C374259CB96F00DFFA6E /* Cell */,
 				7A36C373259CB96B00DFFA6E /* Model */,
-				7A36C351259C96B400DFFA6E /* Headers */,
 				7A36C33D259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.swift */,
 				7A36C343259C8C5000DFFA6E /* TrainingProgramsLevelsViewModel.swift */,
 				7A36C346259C8C7F00DFFA6E /* TrainingProgramsLevelsModel.swift */,
@@ -2073,7 +2062,6 @@
 				13C7814D256AC3A700A55482 /* CoreDataExerciseDataManager.swift in Sources */,
 				135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */,
 				13344E5324B3619500BE3D65 /* DTBackgroundedViewController.swift in Sources */,
-				139FE9D3247838EF00B22C40 /* ExerciseCell.swift in Sources */,
 				13C0EEE824A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift in Sources */,
 				138BDB78248665330033F378 /* DTTextField.swift in Sources */,
 				1398F6DE255C54D5009BE856 /* ChoosenExerciseStatisticsViewController.swift in Sources */,

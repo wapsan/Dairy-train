@@ -42,8 +42,7 @@ final class ChoosenPaternViewController: DTBackgroundedViewController {
 private extension ChoosenPaternViewController {
     
     func setup() {
-        tableView.register(ExerciseCell.self,
-                           forCellReuseIdentifier: ExerciseCell.cellID)
+        tableView.register(cell: DefaultExerciseCell.self)
         namingAlert?.delegate = viewModel
         tableView.tableHeaderView = tableHeaderView
         tableHeaderView?.titleLabel.text = viewModel.patenrName
@@ -119,8 +118,8 @@ extension ChoosenPaternViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseCell.cellID, for: indexPath)
-        (cell as? ExerciseCell)?.renderCellFor(viewModel.exercises[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: DefaultExerciseCell.cellID, for: indexPath)
+        (cell as? DefaultExerciseCell)?.setCell(for: viewModel.exercises[indexPath.row])
         return cell
     }
 }

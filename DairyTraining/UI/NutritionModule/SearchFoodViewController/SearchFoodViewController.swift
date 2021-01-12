@@ -17,7 +17,7 @@ final class SearchFoodViewController: UIViewController, Loadable {
     // MARK: - GUI Properties
     private lazy var foodDetailAlert = MealDetailAlert.view()
     private lazy var refreshSpinner: UIActivityIndicatorView = {
-        let indicatoor = UIActivityIndicatorView(style: .large)
+        let indicatoor = UIActivityIndicatorView(style: .medium)
         indicatoor.color = UIColor.white
         indicatoor.hidesWhenStopped = true
         return indicatoor

@@ -6,7 +6,7 @@ final class TrainingProgramsCoordinator: Coordinator {
     enum Target: CoordinatorTarget {
         case trainingLevels
         case trainings(levelOfTrainings: LevelOfTrainingModel)
-        case workout(workout: SpecialWorkout, exercises: [Exercise])
+        case workout(workout: SpecialWorkout)
     }
     
     // MARK: - Properties
@@ -41,9 +41,9 @@ final class TrainingProgramsCoordinator: Coordinator {
             let trainingsScreen = TrainingProgramsConfigurator.configure(for: levelOfTrainings)
             self.navigationController?.pushViewController(trainingsScreen, animated: true)
             
-        case .workout(workout: let workout, exercises: let exercises):
+        case .workout(workout: let workout):
             let workoutScreeConfigurator = ReadyWorkoutConfigurator()
-            let workoutScreen = workoutScreeConfigurator.configureReadyWorkout(for: workout, and: exercises)
+            let workoutScreen = workoutScreeConfigurator.configureReadyWorkout(for: workout)
             self.navigationController?.pushViewController(workoutScreen, animated: true)
         }
         return true

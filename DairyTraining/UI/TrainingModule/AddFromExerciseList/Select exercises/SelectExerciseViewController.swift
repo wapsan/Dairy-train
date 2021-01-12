@@ -53,8 +53,7 @@ final class SelectExerciseViewController: BaseViewController {
 private extension SelectExerciseViewController {
 
     func setupTableView() {
-        tableView.register(ExerciseCell.self,
-                           forCellReuseIdentifier: ExerciseCell.cellID)
+        tableView.register(cell: DefaultExerciseCell.self)
     }
     
     func setupNavigationBar() {
@@ -101,16 +100,16 @@ extension SelectExerciseViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseCell.cellID,
+        let cell = tableView.dequeueReusableCell(withIdentifier: DefaultExerciseCell.cellID,
                                                  for: indexPath)
-        (cell as? ExerciseCell)?.renderCellFor(viewModel.exerciseList[indexPath.row])
+        (cell as? DefaultExerciseCell)?.setCell(for: viewModel.exerciseList[indexPath.row])
         if viewModel.selectedExercise.contains(viewModel.exerciseList[indexPath.row]) {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-            (cell as? ExerciseCell)?.setSelectedBackgroundColor()
+            (cell as? DefaultExerciseCell)?.setSelectedBackgroundColor()
             return cell
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
-            (cell as? ExerciseCell)?.setUnselectedBackgroundColor()
+            (cell as? DefaultExerciseCell)?.setUnselectedBackgroundColor()
             return cell
         }
     }
@@ -121,13 +120,13 @@ extension SelectExerciseViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.viewModel.exerciseWasSelected(at: indexPath.row)
-        guard let cell = tableView.cellForRow(at: indexPath) as? ExerciseCell else { return }
+        guard let cell = tableView.cellForRow(at: indexPath) as? DefaultExerciseCell else { return }
         cell.setSelectedBackgroundColor()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         self.viewModel.exerciseWasDeselected(at: indexPath.row)
-        guard let cell = tableView.cellForRow(at: indexPath) as? ExerciseCell else { return }
+        guard let cell = tableView.cellForRow(at: indexPath) as? DefaultExerciseCell else { return }
         cell.setUnselectedBackgroundColor()
     }
 }

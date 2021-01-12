@@ -32,15 +32,7 @@ final class TrainingProgramsModel {
 extension TrainingProgramsModel: TrainingProgramsModelProtocol {
     
     func pushSpecialWorkoutViewController(for specialWorkout: SpecialWorkout) {
-        dataBaseService.getListOfExercise(for: specialWorkout) { (result) in
-            switch result {
-            case .success(let exercises):
-                MainCoordinator.shared.coordinate(to: TrainingProgramsCoordinator.Target.workout(workout: specialWorkout,
-                                                                                                 exercises: exercises))
-            case .failure(_):
-                break
-            }
-        }
+        MainCoordinator.shared.coordinate(to: TrainingProgramsCoordinator.Target.workout(workout: specialWorkout))
     }
     
     func popViewController() {

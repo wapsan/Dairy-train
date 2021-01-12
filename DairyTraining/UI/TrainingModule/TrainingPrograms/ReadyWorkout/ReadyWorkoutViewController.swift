@@ -1,7 +1,10 @@
 import UIKit
 
 protocol ReadyWorkoutViewProtocol: AnyObject {
-    
+    func reloadData()
+    func showLoader()
+    func hideLoader()
+    func showAlert(with message: String)
 }
 
 final class ReadyWorkoutViewController: UIViewController {
@@ -11,6 +14,12 @@ final class ReadyWorkoutViewController: UIViewController {
     
     // MARK: - GUI Properties
     private var strechableHeader: StretchableHeader?
+    private lazy var refreshSpinner: UIActivityIndicatorView = {
+        let indicatoor = UIActivityIndicatorView(style: .medium)
+        indicatoor.color = UIColor.black
+        indicatoor.hidesWhenStopped = true
+        return indicatoor
+    }()
     
     // MARK: - Properties
     private var viewModel: ReadyWorkoutViewModelProtocol
@@ -19,6 +28,7 @@ final class ReadyWorkoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        viewModel.viewDidLoad()
     }
     
     // MARK: - Initialization
@@ -34,6 +44,7 @@ final class ReadyWorkoutViewController: UIViewController {
     // MARK: - Setup
     private func setup() {
         tableView.register(cell: DefaultExerciseCell.self)
+        tableView.tableFooterView = refreshSpinner
         setupHeader()
     }
     
@@ -43,9 +54,10 @@ final class ReadyWorkoutViewController: UIViewController {
         strechableHeader?.backgroundColor = .black
         strechableHeader?.backButtonImageType = .goBack
         strechableHeader?.minimumContentHeight = 44
-        strechableHeader?.onBackButtonAction = { [unowned self] in
-            
-        }
+        strechableHeader?.showButtons()
+        strechableHeader?.onBackButtonAction = { [unowned self] in self.viewModel.backButtonPressed() }
+        strechableHeader?.onCreatePaternButtonAction = { [unowned self] in self.viewModel.createPaternButtonPressed() }
+        strechableHeader?.onCreateTrainingButtonAction = { [unowned self] in self.viewModel.createTrainingButtonPressed() }
         strechableHeader?.image = viewModel.workoutImage
         strechableHeader?.title = viewModel.workoutTitle
         strechableHeader?.customDescription = viewModel.workoutDescription
@@ -57,8 +69,29 @@ final class ReadyWorkoutViewController: UIViewController {
 // MARK: - ReadyWorkoutViewpProtocol
 extension ReadyWorkoutViewController: ReadyWorkoutViewProtocol {
     
+    func showAlert(with message: String) {
+        showDefaultAlert(title: nil,
+                         message: message,
+                         preffedStyle: .alert,
+                         okTitle: LocalizedString.ok,
+                         cancelTitle: nil,
+                         completion: { [unowned self] in self.viewModel.alertCompletion() })
+    }
+
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
+    func showLoader() {
+        refreshSpinner.startAnimating()
+    }
+    
+    func hideLoader() {
+        refreshSpinner.stopAnimating()
+    }
 }
 
+// MARK: - UITableViewDataSource
 extension ReadyWorkoutViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,8 +103,4 @@ extension ReadyWorkoutViewController: UITableViewDataSource {
         (cell as? DefaultExerciseCell)?.setCell(for: viewModel.getExercise(for: indexPath.row))
         return cell
     }
-}
-
-extension ReadyWorkoutViewController: UITableViewDelegate {
-    
 }

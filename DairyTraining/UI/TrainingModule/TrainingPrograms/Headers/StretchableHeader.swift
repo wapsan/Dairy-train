@@ -2,8 +2,7 @@ import Foundation
 import GSKStretchyHeaderView
 
 final class StretchableHeader: GSKStretchyHeaderView {
-    
-    
+        
     // MARK: - Types
     enum BackButtonType {
         case close
@@ -21,6 +20,8 @@ final class StretchableHeader: GSKStretchyHeaderView {
     
     // MARK: - Setable roperties
     var onBackButtonAction: (() -> Void)?
+    var onCreateTrainingButtonAction: (() -> Void)?
+    var onCreatePaternButtonAction: (() -> Void)?
     
     var backButtonImageType: BackButtonType = .close {
         didSet {
@@ -77,6 +78,7 @@ final class StretchableHeader: GSKStretchyHeaderView {
         let image = UIImageView()
         image.image = UIImage(named: "totalTraininfoViewBackground")
         image.contentMode = .scaleAspectFill
+        image.isUserInteractionEnabled = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -88,6 +90,64 @@ final class StretchableHeader: GSKStretchyHeaderView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    private lazy var createTrainingButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "addTraining"), for: .normal)
+        button.setTitle("Create training", for: .normal)
+        button.layer.cornerRadius = 5
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 2
+        button.addTarget(self, action: #selector(createTrainingButtonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    @objc private func createTrainingButtonPressed() {
+        onCreateTrainingButtonAction?()
+    }
+    
+    private lazy var createPaternButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "addTraining"), for: .normal)
+        button.setTitle("Create patern", for: .normal)
+        button.layer.cornerRadius = 5
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 2
+        button.addTarget(self, action: #selector(createPaternButtonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    @objc private func createPaternButtonPressed() {
+        onCreatePaternButtonAction?()
+    }
+    
+    private lazy var createTrainingEntityStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 8
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.addArrangedSubview(createTrainingButton)
+        stackView.addArrangedSubview(createPaternButton)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private lazy var mainStackView: UIStackView = {
+       let stackView = UIStackView()
+        stackView.spacing = 8
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(descriptionLabel)
+        stackView.addArrangedSubview(createTrainingEntityStackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     
     // MARK: - Initialization
     override init(frame: CGRect) {
@@ -106,25 +166,29 @@ final class StretchableHeader: GSKStretchyHeaderView {
         stretchFactor == 0 ? hideImage() : showImage()
     }
     
+    func showButtons() {
+        createTrainingEntityStackView.isHidden = false
+    }
+    
+    private func hideButtons() {
+        createTrainingEntityStackView.isHidden = true
+    }
+    
     // MARK: - Private methods
     private func setup() {
         contentView.addSubview(dublicateTitleLabel)
         contentView.addSubview(imageView)
-        imageView.addSubview(titleLabel)
-        imageView.addSubview(descriptionLabel)
+        imageView.addSubview(mainStackView)
         contentView.addSubview(backButton)
         setupConstraints()
+        hideButtons()
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -8),
-            titleLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 16),
-            
-            descriptionLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -8),
-            descriptionLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 16),
-            descriptionLabel.rightAnchor.constraint(lessThanOrEqualTo: imageView.rightAnchor, constant: -16),
-            
+            mainStackView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -8),
+            mainStackView.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 16),
+            mainStackView.rightAnchor.constraint(equalTo: imageView.rightAnchor, constant: -16),
             dublicateTitleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             dublicateTitleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
@@ -136,8 +200,8 @@ final class StretchableHeader: GSKStretchyHeaderView {
             backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 9),
             backButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
             backButton.heightAnchor.constraint(equalToConstant: 26),
-            backButton.widthAnchor.constraint(equalTo: backButton.heightAnchor)
-            
+            backButton.widthAnchor.constraint(equalTo: backButton.heightAnchor),
+           createTrainingEntityStackView.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
@@ -162,6 +226,7 @@ final class StretchableHeader: GSKStretchyHeaderView {
             self.imageView.alpha = 1
         })
     }
+    
     
     // MARK: - Actions
     @objc private func backButtonPressed() {

@@ -203,6 +203,14 @@ final class TrainingDataManager {
         updateContext()
     }
     
+    func createTrainingPatern(wtih name: String, and exercise: [Exercise]) {
+        let newTrainingPatern = TrainingPaternManagedObject(context: trainInfoContext)
+        newTrainingPatern.name = name
+        newTrainingPatern.date = Date()
+        addExercicese(exercise, to: newTrainingPatern)
+        updateContext()
+    }
+    
     func removeTrainingPatern(at index: Int) {
         trainInfoContext.delete(trainingPaterns[index])
         updateContext()

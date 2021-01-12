@@ -1,6 +1,8 @@
 import UIKit
 
-protocol TrainingProgramsViewProtocol: AnyObject, Loadable {
+protocol TrainingProgramsViewProtocol: AnyObject {
+    func showLoader()
+    func hideLoader()
     func reloadTableView()
 }
 
@@ -11,6 +13,12 @@ final class TrainingProgramsViewController: UIViewController {
     
     // MARK: - GUI Properties
     private var strechableHeader: StretchableHeader?
+    private lazy var refreshSpinner: UIActivityIndicatorView = {
+        let indicatoor = UIActivityIndicatorView(style: .medium)
+        indicatoor.color = UIColor.black
+        indicatoor.hidesWhenStopped = true
+        return indicatoor
+    }()
     
     // MARK: - Properties
     private let viewModel: TrainingProgramsViewModelProtocol
@@ -37,6 +45,7 @@ final class TrainingProgramsViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         tableView.register(cell: ReadyTrainingCell.self)
         tableView.contentInset.top = 8
+        tableView.tableFooterView = refreshSpinner
         setupHeader()
     }
     
@@ -46,9 +55,7 @@ final class TrainingProgramsViewController: UIViewController {
         strechableHeader?.backgroundColor = .black
         strechableHeader?.backButtonImageType = .goBack
         strechableHeader?.minimumContentHeight = 44
-        strechableHeader?.onBackButtonAction = { [unowned self] in
-            self.viewModel.backButtonPressed()
-        }
+        strechableHeader?.onBackButtonAction = { [unowned self] in self.viewModel.backButtonPressed() }
         strechableHeader?.title = viewModel.levelTitle
         strechableHeader?.customDescription = viewModel.levelDescription
         guard let header = strechableHeader else { return }
@@ -84,6 +91,14 @@ extension TrainingProgramsViewController: UITableViewDelegate {
 
 // MARK: - TrainingProgramsViewProtocol
 extension TrainingProgramsViewController: TrainingProgramsViewProtocol {
+    
+    func showLoader() {
+        refreshSpinner.startAnimating()
+    }
+    
+    func hideLoader() {
+        refreshSpinner.stopAnimating()
+    }
     
     func reloadTableView() {
         tableView.reloadData()

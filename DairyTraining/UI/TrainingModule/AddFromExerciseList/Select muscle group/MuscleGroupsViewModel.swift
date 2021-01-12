@@ -17,6 +17,5 @@ final class MuscleGroupsViewModel {
         MainCoordinator.shared.coordinate(
             to: MuscleGroupsCoordinator.Target.new(muscularGroup: selectedGroup,
                                                    trainingEntityTarget: trainingEntityTarget))
-//        MainCoordinator.shared.coordinateChild(to: MuscleGroupsCoordinator.Target.muscularSubgroups(patern: trainingEntityTarget, muscleGroup: selectedGroup))
     }
 }

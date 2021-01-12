@@ -1,11 +1,3 @@
-//
-//  ReadyWorkoutViewModel.swift
-//  Dairy Training
-//
-//  Created by cogniteq on 05.01.2021.
-//  Copyright © 2021 Вячеслав. All rights reserved.
-//
-
 import UIKit
 
 protocol ReadyWorkoutViewModelProtocol {
@@ -14,20 +6,49 @@ protocol ReadyWorkoutViewModelProtocol {
     var workoutDescription: String { get }
     var workoutImage: UIImage? { get }
     
+    func viewDidLoad()
     func getExercise(for index: Int) -> Exercise
+    func backButtonPressed()
+    func createTrainingButtonPressed()
+    func createPaternButtonPressed()
+    func alertCompletion()
 }
 
 final class ReadyWorkoutViewModel {
     
+    // MARK: - Module properties
     weak var view: ReadyWorkoutViewProtocol?
     var model: ReadyWorkoutModelProtocol
     
+    // MARK: - Initialization
     init(model: ReadyWorkoutModelProtocol) {
         self.model =  model
     }
 }
 
+// MARK: - ReadyWorkoutViewModelProtocol
 extension ReadyWorkoutViewModel: ReadyWorkoutViewModelProtocol {
+    
+    func alertCompletion() {
+        model.dismisNavigationController()
+    }
+    
+    func backButtonPressed() {
+        model.popViewController()
+    }
+    
+    func createTrainingButtonPressed() {
+        model.createTraining()
+    }
+    
+    func createPaternButtonPressed() {
+        model.createPatern()
+    }
+    
+    func viewDidLoad() {
+        view?.showLoader()
+        model.loadExercise()
+    }
     
     var workoutImage: UIImage? {
         return model.workout.image
@@ -50,6 +71,19 @@ extension ReadyWorkoutViewModel: ReadyWorkoutViewModelProtocol {
     }
 }
 
+// MARK: - ReadyWorkoutModelOutput
 extension ReadyWorkoutViewModel: ReadyWorkoutModelOutput {
     
+    func paternCreated() {
+        view?.showAlert(with: "Workout patern created!")
+    }
+    
+    func trainingCreated() {
+        view?.showAlert(with: "Workout created!")
+    }
+    
+    func exercisesLoaded() {
+        view?.hideLoader()
+        view?.reloadData()
+    }
 }
