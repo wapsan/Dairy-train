@@ -7,6 +7,7 @@ final class StretchableHeader: GSKStretchyHeaderView {
     enum BackButtonType {
         case close
         case goBack
+        case none
         
         var image: UIImage? {
             switch  self {
@@ -14,6 +15,8 @@ final class StretchableHeader: GSKStretchyHeaderView {
                 return UIImage(named: "icon_close")
             case .goBack:
                 return UIImage(named: "icon_back")
+            case .none:
+                return nil
             }
         }
     }
@@ -25,6 +28,10 @@ final class StretchableHeader: GSKStretchyHeaderView {
     
     var backButtonImageType: BackButtonType = .close {
         didSet {
+            guard backButtonImageType != .none else {
+                backButton.isHidden = true
+                return
+            }
             backButton.setImage(backButtonImageType.image, for: .normal)
         }
     }
@@ -162,7 +169,7 @@ final class StretchableHeader: GSKStretchyHeaderView {
     // MARK: - Public methods
     override func didChangeStretchFactor(_ stretchFactor: CGFloat) {
         super.didChangeStretchFactor(stretchFactor)
-        setLabelsAlpha(for: stretchFactor)
+        setElementsAlpha(for: stretchFactor)
         stretchFactor == 0 ? hideImage() : showImage()
     }
     
@@ -205,13 +212,15 @@ final class StretchableHeader: GSKStretchyHeaderView {
         ])
     }
     
-    private func setLabelsAlpha(for stretchFactor: CGFloat) {
+    private func setElementsAlpha(for stretchFactor: CGFloat) {
         if stretchFactor < 0.5 {
             titleLabel.alpha = 0
             descriptionLabel.alpha = 0
+            createTrainingEntityStackView.alpha = 0
         } else {
             titleLabel.alpha = stretchFactor
             descriptionLabel.alpha = stretchFactor
+            createTrainingEntityStackView.alpha = stretchFactor
         }
     }
     

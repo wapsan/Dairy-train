@@ -3,20 +3,23 @@ import UIKit
 extension UIViewController {
     
     func hideTabBar() {
-        extendedLayoutIncludesOpaqueBars = true
+        
         guard let tabBarController = tabBarController as? MainTabBarViewController else {
               return
         }
         tabBarController.isAddButtonHiden = true
         tabBarController.tabBar.isHidden = true
+        extendedLayoutIncludesOpaqueBars = true
     }
     
     func showTabBar() {
+        self.extendedLayoutIncludesOpaqueBars = false
         guard let tabBarController = tabBarController as? MainTabBarViewController else {
               return
         }
         tabBarController.isAddButtonHiden = false
         tabBarController.tabBar.isHidden = false
+        
     }
     
 }

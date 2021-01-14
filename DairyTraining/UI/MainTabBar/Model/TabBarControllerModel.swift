@@ -101,14 +101,10 @@ enum TabBarItemController {
     }
     
     private func configureTrainingBlockNabigationController() -> UINavigationController {
-        let trainingListModel = TrainingListModel()
-        let trainingListViewModel = TrainingListViewModel(model: trainingListModel)
-        let trainingListViewController = TrainingListViewController(viewModel: trainingListViewModel)
-        trainingListViewModel.view = trainingListViewController
-        trainingListModel.output = trainingListViewModel
-        let navigationController = UINavigationController(rootViewController: trainingListViewController)
+        let workoutsListViewController = WorkoutListViewControllerConfigurator.configure()
+        let navigationController = UINavigationController(rootViewController: workoutsListViewController)
         navigationController.tabBarItem = DTTabBarItems.training.item
-        trainingListViewController.navigationItem.title = DTTabBarItems.training.title
+        navigationController.navigationBar.isHidden = true
         return navigationController
     }
     

@@ -1,6 +1,16 @@
 import Foundation
 import CoreData
 
+extension Date {
+   static  func weekPeriod(using calendar: Calendar = Calendar(identifier: .gregorian)) -> Date {
+        return Date() + TimeInterval(3600 * 24 * 7)
+    }
+    
+    static func mounthPeriod(using calendar: Calendar = Calendar(identifier: .gregorian)) -> Date {
+         return Date() + TimeInterval(3600 * 24 * 7 * 4)
+     }
+}
+
 final class TrainingDataManager {
     
     //MARK: - Singletone init
@@ -51,7 +61,8 @@ final class TrainingDataManager {
             displayID += 1
         })
         newTraining.date = Date()
-        newTraining.formatedDate = DateHelper.shared.currnetDate
+        newTraining.formatedDate = DateHelper.shared.getFormatedDateFrom(Date(),
+                                                                         with: .chekingCurrentDayDateFormat)
         newTraining.exercises = NSSet(array: newExercises)
     }
     
@@ -78,12 +89,51 @@ final class TrainingDataManager {
         exitingTraining.addToExercises(NSSet(array: newManagedExercises))
     }
     
+    private func fetchWorkout(with date: Date) -> TrainingManagedObject? {
+        let fetchRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
+        let predicate = NSPredicate(format: "date == %@", date as CVarArg)
+        fetchRequest.predicate = predicate
+        guard let workout = try? self.trainInfoContext.fetch(fetchRequest).first else { return nil }
+        return workout
+    }
+    
     
     //MARK: - Training publick methods
     func getTraingList() -> [TrainingManagedObject] {
         let fetchRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
         guard let trainingList = try? self.trainInfoContext.fetch(fetchRequest) else { return [] }
         return trainingList.sorted(by: { $0.date > $1.date })
+    }
+    
+    func todaysWorkout() -> [TrainingManagedObject] {
+        let fetchRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
+        let currentDay = DateHelper.shared.getFormatedDateFrom(Date(), with: .chekingCurrentDayDateFormat)
+        let predicate = NSPredicate(format: "formatedDate == %@", currentDay)
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.predicate = predicate
+        guard let trainingList = try? self.trainInfoContext.fetch(fetchRequest) else { return [] }
+        return trainingList
+    }
+    
+    func weekWorkouts() -> [TrainingManagedObject] {
+        let fetchRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
+        let predicate = NSPredicate(format: "date =< %@", Date.weekPeriod() as CVarArg)
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.predicate = predicate
+        guard let trainingList = try? self.trainInfoContext.fetch(fetchRequest) else { return [] }
+        return trainingList
+    }
+    
+    func mounthWorkouts() -> [TrainingManagedObject] {
+        let fetchRequest: NSFetchRequest<TrainingManagedObject> = TrainingManagedObject.fetchRequest()
+        let predicate = NSPredicate(format: "date =< %@", Date.mounthPeriod() as CVarArg)
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.predicate = predicate
+        guard let trainingList = try? self.trainInfoContext.fetch(fetchRequest) else { return [] }
+        return trainingList
     }
     
     func addExercisesToTrain(_ exercises: [Exercise]) -> Bool {
@@ -93,7 +143,7 @@ final class TrainingDataManager {
             updateContext()
             return true
         }
-        if var todaysTraining = trainingList.first(where: {$0.formatedDate == DateHelper.shared.currnetDate}) {
+        if var todaysTraining = trainingList.first(where: {$0.formatedDate == DateHelper.shared.getFormatedDateFrom(Date(), with: .chekingCurrentDayDateFormat)}) {
             addExerciseToExitingTraining(with: &todaysTraining, and: exercises)
             updateContext()
             return false
@@ -110,6 +160,12 @@ final class TrainingDataManager {
         }
        
         self.updateContext()
+    }
+    
+    func removeWorkout(with date: Date) {
+        guard let workoutForRemoving = fetchWorkout(with: date) else { return }
+        trainInfoContext.delete(workoutForRemoving)
+        updateContext()
     }
    
     //MARK: - Exercises public methods
