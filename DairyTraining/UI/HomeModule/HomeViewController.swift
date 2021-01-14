@@ -14,6 +14,9 @@ final class HomeViewController: UIViewController {
     // MARK: - @IBOutlets
     @IBOutlet private var collectionView: UICollectionView!
     
+    // MARK: - GUI Properties
+    private var stratchabelHeader: StretchableHeader?
+    
     // MARK: - Properties
     private let viewModel: HomeViewModelProtocol
     private var dataSource: UICollectionViewDiffableDataSource<HomeViewCollectionSection, Int>?
@@ -27,11 +30,6 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if tabBarController?.tabBar.isHidden ?? false { showTabBar() }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
     
     // MARK: - Initialization
@@ -51,8 +49,24 @@ final class HomeViewController: UIViewController {
                                 forCellWithReuseIdentifier: HomeViewCollectionCell.cellID)
         collectionView.register(UINib(nibName: NavigationViewCell.xibName, bundle: nil),
                                 forCellWithReuseIdentifier: NavigationViewCell.cellID)
+        setupHeaders()
         collectionView.collectionViewLayout = createLayout2()
         configureDataSource()
+        
+    }
+    
+    private func setupHeaders() {
+        let headerSize = CGSize(width: collectionView.frame.size.width, height: 200)
+        stratchabelHeader = StretchableHeader(frame: CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height))
+        stratchabelHeader?.title = viewModel.title
+        stratchabelHeader?.customDescription = viewModel.description
+        stratchabelHeader?.topRightButtonAction =  { [unowned self] in self.viewModel.menuButtonPressed() }
+        stratchabelHeader?.setTopRightButton(image: UIImage(named: "icon_home_menu"))
+        stratchabelHeader?.backgroundColor = .black
+        stratchabelHeader?.backButtonImageType = .none
+        stratchabelHeader?.minimumContentHeight = 44
+        guard let header = stratchabelHeader else { return }
+        collectionView.addSubview(header)
     }
     
     func createLayout2() -> UICollectionViewLayout {
@@ -85,18 +99,14 @@ final class HomeViewController: UIViewController {
                 layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                    heightDimension: .absolute(600)),
                 subitems: [leadingGroup, trailingGroup])
-            
-            let topItem = NSCollectionLayoutItem(
-                layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                   heightDimension: .estimated(50)))
-            
+
             let buttomItem = NSCollectionLayoutItem(
                 layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                    heightDimension: .absolute(200)))
             let nestedGroup = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                    heightDimension: .estimated(500)),
-                subitems: [topItem, bottomNestedGroup, buttomItem])
+                subitems: [bottomNestedGroup, buttomItem])
             let section = NSCollectionLayoutSection(group: nestedGroup)
             section.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
             return section
@@ -108,17 +118,9 @@ final class HomeViewController: UIViewController {
     private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<HomeViewCollectionSection, Int>(collectionView: collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, identifier: Int) -> UICollectionViewCell? in
-            if indexPath.row == 0 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NavigationViewCell.cellID, for: indexPath)
-                (cell as? NavigationViewCell)?.menuOnAction = { [unowned self] in
-                    self.viewModel.menuButtonPressed()
-                }
-                return cell
-            } else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeViewCollectionCell.cellID, for: indexPath)
-                (cell as? HomeViewCollectionCell)?.setCell(for: self.viewModel.menuItem(at: indexPath.row))
-                return cell
-            }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeViewCollectionCell.cellID, for: indexPath)
+            (cell as? HomeViewCollectionCell)?.setCell(for: self.viewModel.menuItem(at: indexPath.row))
+            return cell
         }
         
         var snapshot = NSDiffableDataSourceSnapshot<HomeViewCollectionSection, Int>()

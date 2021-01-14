@@ -1,10 +1,11 @@
 import Foundation
 
-protocol HomeViewModelProtocol {
+protocol HomeViewModelProtocol: TitledScreenProtocol {
     var menuItemCount: Int { get }
     
+    
     func didSelectItemAtIndex(_ index: Int)
-    func menuItem(at index: Int) -> HomeMenuItem
+    func menuItem(at index: Int) -> HomeModel.MenuItem
     func menuButtonPressed()
 }
 
@@ -22,6 +23,14 @@ final class HomeViewModel {
 // MARK: - HomeViewModelProtocol
 extension HomeViewModel: HomeViewModelProtocol {
     
+    var title: String {
+        return "Home"
+    }
+    
+    var description: String {
+        return "Welcome, improve you training progress with ghfhfgh!"
+    }
+    
     func menuButtonPressed() {
         model.showSideMenu()
     }
@@ -34,7 +43,7 @@ extension HomeViewModel: HomeViewModelProtocol {
         return model.callMenuItemAction(for: index)
     }
     
-    func menuItem(at index: Int) -> HomeMenuItem {
+    func menuItem(at index: Int) -> HomeModel.MenuItem {
         return model.getMenuItemForIndex(index: index)
     }
 }

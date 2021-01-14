@@ -17,7 +17,7 @@ final class HomeViewCollectionCell: UICollectionViewCell {
     }
     
     // MARK: - Setter
-    func setCell(for menuItem: HomeMenuItem) {
+    func setCell(for menuItem: HomeModel.MenuItem) {
         descriptionLabel.text = menuItem.titel
     }
 }

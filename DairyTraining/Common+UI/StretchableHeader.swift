@@ -25,6 +25,7 @@ final class StretchableHeader: GSKStretchyHeaderView {
     var onBackButtonAction: (() -> Void)?
     var onCreateTrainingButtonAction: (() -> Void)?
     var onCreatePaternButtonAction: (() -> Void)?
+    var topRightButtonAction: (() -> Void)?
     
     var backButtonImageType: BackButtonType = .close {
         didSet {
@@ -98,7 +99,7 @@ final class StretchableHeader: GSKStretchyHeaderView {
         return button
     }()
     
-    private lazy var createTrainingButton: UIButton = {
+    private lazy var leftDownButton: UIButton = {
        let button = UIButton()
         button.setImage(UIImage(named: "addTraining"), for: .normal)
         button.setTitle("Create training", for: .normal)
@@ -114,7 +115,7 @@ final class StretchableHeader: GSKStretchyHeaderView {
         onCreateTrainingButtonAction?()
     }
     
-    private lazy var createPaternButton: UIButton = {
+    private lazy var rightDownButton: UIButton = {
        let button = UIButton()
         button.setImage(UIImage(named: "addTraining"), for: .normal)
         button.setTitle("Create patern", for: .normal)
@@ -130,14 +131,14 @@ final class StretchableHeader: GSKStretchyHeaderView {
         onCreatePaternButtonAction?()
     }
     
-    private lazy var createTrainingEntityStackView: UIStackView = {
+    private lazy var downButtonsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = 8
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
-        stackView.addArrangedSubview(createTrainingButton)
-        stackView.addArrangedSubview(createPaternButton)
+        stackView.addArrangedSubview(leftDownButton)
+        stackView.addArrangedSubview(rightDownButton)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -150,11 +151,21 @@ final class StretchableHeader: GSKStretchyHeaderView {
         stackView.alignment = .fill
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(descriptionLabel)
-        stackView.addArrangedSubview(createTrainingEntityStackView)
+        stackView.addArrangedSubview(downButtonsStackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
+    private lazy var topRightButton: UIButton = {
+       let button = UIButton()
+        button.addTarget(self, action: #selector(topRighButtonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    @objc private func topRighButtonPressed() {
+        topRightButtonAction?()
+    }
     
     // MARK: - Initialization
     override init(frame: CGRect) {
@@ -174,11 +185,12 @@ final class StretchableHeader: GSKStretchyHeaderView {
     }
     
     func showButtons() {
-        createTrainingEntityStackView.isHidden = false
+        downButtonsStackView.isHidden = false
     }
     
     private func hideButtons() {
-        createTrainingEntityStackView.isHidden = true
+        topRightButton.isHidden = true
+        downButtonsStackView.isHidden = true
     }
     
     // MARK: - Private methods
@@ -187,6 +199,7 @@ final class StretchableHeader: GSKStretchyHeaderView {
         contentView.addSubview(imageView)
         imageView.addSubview(mainStackView)
         contentView.addSubview(backButton)
+        contentView.addSubview(topRightButton)
         setupConstraints()
         hideButtons()
     }
@@ -208,7 +221,13 @@ final class StretchableHeader: GSKStretchyHeaderView {
             backButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
             backButton.heightAnchor.constraint(equalToConstant: 26),
             backButton.widthAnchor.constraint(equalTo: backButton.heightAnchor),
-           createTrainingEntityStackView.heightAnchor.constraint(equalToConstant: 40)
+            
+            topRightButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 9),
+            topRightButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8),
+            topRightButton.heightAnchor.constraint(equalToConstant: 26),
+            topRightButton.widthAnchor.constraint(equalTo: topRightButton.heightAnchor),
+        
+           downButtonsStackView.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
@@ -216,11 +235,11 @@ final class StretchableHeader: GSKStretchyHeaderView {
         if stretchFactor < 0.5 {
             titleLabel.alpha = 0
             descriptionLabel.alpha = 0
-            createTrainingEntityStackView.alpha = 0
+            downButtonsStackView.alpha = 0
         } else {
             titleLabel.alpha = stretchFactor
             descriptionLabel.alpha = stretchFactor
-            createTrainingEntityStackView.alpha = stretchFactor
+            downButtonsStackView.alpha = stretchFactor
         }
     }
     
@@ -240,5 +259,32 @@ final class StretchableHeader: GSKStretchyHeaderView {
     // MARK: - Actions
     @objc private func backButtonPressed() {
         onBackButtonAction?()
+    }
+}
+
+//MARK: - Downbuttons set
+extension StretchableHeader {
+    
+    func setLeftDownButton(title: String? = nil, image: UIImage? = nil, isHiden: Bool = false) {
+        leftDownButton.setTitle(title, for: .normal)
+        leftDownButton.setImage(image, for: .normal)
+        leftDownButton.isHidden = isHidden
+    }
+    
+    func setRightDownButton(title: String? = nil, image: UIImage? = nil, isHiden: Bool = false) {
+        rightDownButton.setTitle(title, for: .normal)
+        rightDownButton.setImage(image, for: .normal)
+        rightDownButton.isHidden = isHidden
+    }
+    
+    func setTopRightButton(title: String? = nil,
+                           image: UIImage? = nil,
+                           isHiden: Bool = false,
+                           backgorundColor: UIColor = UIColor.white.withAlphaComponent(0.7)) {
+        topRightButton.setTitle(title, for: .normal)
+        topRightButton.setImage(image, for: .normal)
+        topRightButton.isHidden = isHidden
+        topRightButton.layer.cornerRadius = 6
+        topRightButton.backgroundColor = backgorundColor
     }
 }

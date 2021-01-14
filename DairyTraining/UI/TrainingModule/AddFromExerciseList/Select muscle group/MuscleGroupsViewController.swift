@@ -100,10 +100,6 @@ extension MuscleGroupsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension  MuscleGroupsViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.cellHeight
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.viewModel?.selectRow(at: indexPath.row, with: trainingEntityTarget)
     }
