@@ -1,31 +1,18 @@
 import UIKit
 
-final class ChoosenTrainingStatisticsViewController: BaseViewController {
+final class WorkoutStatisticsViewController: BaseViewController {
     
     //MARK: - Properties
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
-    //MARK: - GUI Properties
-    private var viewModel: ChoosenTrainingStatisticsViewModel
-    private var collectionLayout: UICollectionViewFlowLayout = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        return layout
-    }()
+    // MARK: - Module properties
+    private var viewModel: WorkoutStatisticsViewModelProtocol
     
-    private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: self.collectionLayout)
-        collectionView.register(DTStatisticInfoCell.self,
-                                forCellWithReuseIdentifier: DTStatisticInfoCell.cellID)
-        collectionView.register(DTTrainedSubGroupCell.self,
-                                forCellWithReuseIdentifier: DTTrainedSubGroupCell.cellID)
-        collectionView.bounces = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
-    }()
+    // MARK: - @IBOutlets
+    @IBOutlet var collectionView: UICollectionView!
+    
+    // MARK: - GUI Properties
+    private var stratchabelHeader: StretchableHeader?
     
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +26,7 @@ final class ChoosenTrainingStatisticsViewController: BaseViewController {
     }
     
     //MARK: - Initialization
-    init(viewModel: ChoosenTrainingStatisticsViewModel) {
+    init(viewModel: WorkoutStatisticsViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -47,23 +34,28 @@ final class ChoosenTrainingStatisticsViewController: BaseViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 //MARK: - Private extension
-private extension ChoosenTrainingStatisticsViewController {
+private extension WorkoutStatisticsViewController {
     
     func setup() {
-        self.view.addSubview(self.collectionView)
-        self.collectionView.backgroundColor = .clear
-        NSLayoutConstraint.activate([
-            self.collectionView.topAnchor.constraint(equalTo: self.safeArea.topAnchor,
-                                                     constant: DTEdgeInsets.small.top),
-            self.collectionView.leftAnchor.constraint(equalTo: self.safeArea.leftAnchor),
-            self.collectionView.rightAnchor.constraint(equalTo: self.safeArea.rightAnchor),
-            self.collectionView.bottomAnchor.constraint(equalTo: self.safeArea.bottomAnchor,
-                                                        constant: DTEdgeInsets.small.bottom)
-        ])
+        collectionView.register(DTStatisticInfoCell.self, forCellWithReuseIdentifier: DTStatisticInfoCell.cellID)
+        collectionView.register(DTTrainedSubGroupCell.self, forCellWithReuseIdentifier: DTTrainedSubGroupCell.cellID)
+        setupHeaders()
+    }
+    
+    private func setupHeaders() {
+        let headerSize = CGSize(width: collectionView.frame.size.width, height: 250)
+        stratchabelHeader = StretchableHeader(frame: CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height))
+        stratchabelHeader?.title = viewModel.title
+        stratchabelHeader?.customDescription = viewModel.description
+        stratchabelHeader?.backButtonImageType = .goBack
+        stratchabelHeader?.onBackButtonAction = { [unowned self] in self.viewModel.backButtonPressed() }
+        stratchabelHeader?.backgroundColor = .black
+        stratchabelHeader?.minimumContentHeight = 44
+        guard let header = stratchabelHeader else { return }
+        collectionView.addSubview(header)
     }
     
     func setItemSize(for index: Int) -> CGSize {
@@ -85,7 +77,7 @@ private extension ChoosenTrainingStatisticsViewController {
 }
 
 //MARK: - UICollectionViewDataSource
-extension ChoosenTrainingStatisticsViewController: UICollectionViewDataSource {
+extension WorkoutStatisticsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DTStatisticInfoCellType.allCases.count
@@ -96,7 +88,7 @@ extension ChoosenTrainingStatisticsViewController: UICollectionViewDataSource {
                                                       for: indexPath)
         let traindedSubgroupCell = collectionView.dequeueReusableCell(withReuseIdentifier: DTTrainedSubGroupCell.cellID,
                                                                       for: indexPath)
-        let statistics = self.viewModel.statistics 
+        let statistics = self.viewModel.statistics
         guard let cellType = DTStatisticInfoCellType.init(rawValue: indexPath.row) else { return UICollectionViewCell()}
         
         switch cellType {
@@ -111,7 +103,7 @@ extension ChoosenTrainingStatisticsViewController: UICollectionViewDataSource {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-extension ChoosenTrainingStatisticsViewController: UICollectionViewDelegateFlowLayout {
+extension WorkoutStatisticsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return self.setItemSize(for: indexPath.row)

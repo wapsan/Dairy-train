@@ -53,10 +53,10 @@ final class TrainingModuleCoordinator: Coordinator {
         return trainingViewController
     }
     
-    func configureTVSModule(for train: TrainingManagedObject) -> ChoosenTrainingStatisticsViewController {
+    func configureTVSModule(for train: TrainingManagedObject) -> WorkoutStatisticsViewController {
         let statistics = Statistics(for: train)
-        let choosenStatisticsViewModel = ChoosenTrainingStatisticsViewModel(statistics: statistics)
-        let choosenStatisticsViewController = ChoosenTrainingStatisticsViewController(viewModel: choosenStatisticsViewModel)
+        let choosenStatisticsViewModel = WorkoutStatisticsViewModel(statistics: statistics)
+        let choosenStatisticsViewController = WorkoutStatisticsViewController(viewModel: choosenStatisticsViewModel)
         return choosenStatisticsViewController
     }
 

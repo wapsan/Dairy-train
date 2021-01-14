@@ -1,17 +1,16 @@
 import UIKit
 
-extension UITableView {
-    
-    func register<T: UITableViewCell>(cell: T.Type) {
 
+extension UICollectionView {
+    
+    func register<T: UICollectionViewCell>(cell: T.Type) {
         let nib = UINib(nibName: cell.xibName, bundle: nil)
         let cellID = cell.cellID
-        self.register(nib, forCellReuseIdentifier: cellID)
+        self.register(nib, forCellWithReuseIdentifier: cellID)
     }
-    
 }
 
-extension UITableViewCell  {
+extension UICollectionViewCell {
     
     static var cellID: String {
         return String(describing: self)
@@ -21,4 +20,3 @@ extension UITableViewCell  {
         return String(describing: self)
     }
 }
-

@@ -83,9 +83,7 @@
 		1384BB4F24DF157F0084705B /* DTSelectionListAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1384BB4E24DF157F0084705B /* DTSelectionListAlert.swift */; };
 		1388FFDF24E0067100E9FD2C /* DTStatisticInfoCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1388FFDE24E0067100E9FD2C /* DTStatisticInfoCellType.swift */; };
 		1388FFE124E0081000E9FD2C /* DTStatisticInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1388FFE024E0081000E9FD2C /* DTStatisticInfoCell.swift */; };
-		1388FFE324E00A2000E9FD2C /* ChoosenTrainingStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1388FFE224E00A2000E9FD2C /* ChoosenTrainingStatisticsViewController.swift */; };
-		1388FFE524E00C7900E9FD2C /* ChoosenTrainingStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1388FFE424E00C7900E9FD2C /* ChoosenTrainingStatisticsViewModel.swift */; };
-		1388FFE724E00CA900E9FD2C /* ChoosenTrainingStatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1388FFE624E00CA900E9FD2C /* ChoosenTrainingStatisticsModel.swift */; };
+		1388FFE524E00C7900E9FD2C /* WorkoutStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1388FFE424E00C7900E9FD2C /* WorkoutStatisticsViewModel.swift */; };
 		1388FFE924E050D800E9FD2C /* DTTrainedSubGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1388FFE824E050D800E9FD2C /* DTTrainedSubGroupCell.swift */; };
 		138BDB78248665330033F378 /* DTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138BDB77248665330033F378 /* DTTextField.swift */; };
 		13902AB4249411ED00963A07 /* DTMuscleSubgroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */; };
@@ -211,6 +209,9 @@
 		7A69DBFE25878233003EECD8 /* SearchFoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69DBFD25878233003EECD8 /* SearchFoodViewModel.swift */; };
 		7A69DC0125878245003EECD8 /* SearchFoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69DC0025878245003EECD8 /* SearchFoodModel.swift */; };
 		7A69DC042587859F003EECD8 /* NutritionModuleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69DC032587859F003EECD8 /* NutritionModuleCoordinator.swift */; };
+		7A731B1B25B08B3600071E46 /* WorkoutStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A731B1925B08B3600071E46 /* WorkoutStatisticsViewController.swift */; };
+		7A731B1C25B08B3600071E46 /* WorkoutStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A731B1A25B08B3600071E46 /* WorkoutStatisticsViewController.xib */; };
+		7A731B2425B08FB500071E46 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A731B2325B08FB500071E46 /* UICollectionViewCell.swift */; };
 		7A7D288125753BEA00FDD212 /* TrainingPaternCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D288025753BEA00FDD212 /* TrainingPaternCodableModel.swift */; };
 		7A7D288425753DF800FDD212 /* MapableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D288325753DF800FDD212 /* MapableProtocol.swift */; };
 		7A8409482594D67A00A65D5F /* Pods_Dairy_Training.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BB67FC86381D6904D71F4C /* Pods_Dairy_Training.framework */; };
@@ -333,9 +334,7 @@
 		1384BB4E24DF157F0084705B /* DTSelectionListAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSelectionListAlert.swift; sourceTree = "<group>"; };
 		1388FFDE24E0067100E9FD2C /* DTStatisticInfoCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTStatisticInfoCellType.swift; sourceTree = "<group>"; };
 		1388FFE024E0081000E9FD2C /* DTStatisticInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTStatisticInfoCell.swift; sourceTree = "<group>"; };
-		1388FFE224E00A2000E9FD2C /* ChoosenTrainingStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosenTrainingStatisticsViewController.swift; sourceTree = "<group>"; };
-		1388FFE424E00C7900E9FD2C /* ChoosenTrainingStatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosenTrainingStatisticsViewModel.swift; sourceTree = "<group>"; };
-		1388FFE624E00CA900E9FD2C /* ChoosenTrainingStatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosenTrainingStatisticsModel.swift; sourceTree = "<group>"; };
+		1388FFE424E00C7900E9FD2C /* WorkoutStatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStatisticsViewModel.swift; sourceTree = "<group>"; };
 		1388FFE824E050D800E9FD2C /* DTTrainedSubGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTrainedSubGroupCell.swift; sourceTree = "<group>"; };
 		138BDB77248665330033F378 /* DTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTTextField.swift; sourceTree = "<group>"; };
 		13902AB3249411ED00963A07 /* DTMuscleSubgroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMuscleSubgroupsCell.swift; sourceTree = "<group>"; };
@@ -464,6 +463,9 @@
 		7A69DBFD25878233003EECD8 /* SearchFoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewModel.swift; sourceTree = "<group>"; };
 		7A69DC0025878245003EECD8 /* SearchFoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodModel.swift; sourceTree = "<group>"; };
 		7A69DC032587859F003EECD8 /* NutritionModuleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionModuleCoordinator.swift; sourceTree = "<group>"; };
+		7A731B1925B08B3600071E46 /* WorkoutStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStatisticsViewController.swift; sourceTree = "<group>"; };
+		7A731B1A25B08B3600071E46 /* WorkoutStatisticsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutStatisticsViewController.xib; sourceTree = "<group>"; };
+		7A731B2325B08FB500071E46 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		7A7D288025753BEA00FDD212 /* TrainingPaternCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPaternCodableModel.swift; sourceTree = "<group>"; };
 		7A7D288325753DF800FDD212 /* MapableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapableProtocol.swift; sourceTree = "<group>"; };
 		7A8BED1F2590A8E600CDB925 /* USDAManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDAManager.swift; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 				1320D318253B0FFB00A4C99F /* UIWindow+Ex.swift */,
 				1320D31C253B1AB900A4C99F /* String+Ex.swift */,
 				7A36C37A259CB9C100DFFA6E /* UITableView+Ex.swift */,
+				7A731B2325B08FB500071E46 /* UICollectionViewCell.swift */,
 				7A2FBC5B25B0423000FFE850 /* UIView+Ex.swift */,
 			);
 			path = Extensions;
@@ -1030,9 +1033,9 @@
 		1388FFDD24E0064400E9FD2C /* Choosen training statistics */ = {
 			isa = PBXGroup;
 			children = (
-				1388FFE224E00A2000E9FD2C /* ChoosenTrainingStatisticsViewController.swift */,
-				1388FFE424E00C7900E9FD2C /* ChoosenTrainingStatisticsViewModel.swift */,
-				1388FFE624E00CA900E9FD2C /* ChoosenTrainingStatisticsModel.swift */,
+				7A731B1925B08B3600071E46 /* WorkoutStatisticsViewController.swift */,
+				1388FFE424E00C7900E9FD2C /* WorkoutStatisticsViewModel.swift */,
+				7A731B1A25B08B3600071E46 /* WorkoutStatisticsViewController.xib */,
 			);
 			path = "Choosen training statistics";
 			sourceTree = "<group>";
@@ -1810,6 +1813,7 @@
 				1398F6DF255C54D5009BE856 /* ChoosenExerciseStatisticsViewController.xib in Resources */,
 				136989C32520DF650039B306 /* TrainingPaternsViewController.xib in Resources */,
 				7A24883925A4A2CC00DB6D12 /* DefaultExerciseCell.xib in Resources */,
+				7A731B1C25B08B3600071E46 /* WorkoutStatisticsViewController.xib in Resources */,
 				139285CE2573AC3000F4FB0C /* AddExerciseSupportButton.xib in Resources */,
 				7AAFE8EF259A1F45004FF48B /* HomeViewCollectionCell.xib in Resources */,
 				7A69DBD5258757A7003EECD8 /* NutritionSearchingCell.xib in Resources */,
@@ -1949,6 +1953,7 @@
 				7A69DBF025877A67003EECD8 /* NutritionDataManager.swift in Sources */,
 				135BF56424DDAAB000E1E120 /* DTValueAlert.swift in Sources */,
 				1306E01724CF3DAB003AEBA7 /* AuthorizationViewModel.swift in Sources */,
+				7A731B2425B08FB500071E46 /* UICollectionViewCell.swift in Sources */,
 				7AAFE8A52599BA92004FF48B /* AuthorizationCoordinator.swift in Sources */,
 				7AA7911D258C93940090CFED /* CustomNutritionModeMO+CoreDataClass.swift in Sources */,
 				13D5D57724E19AFD003C82F1 /* TrainingModel.swift in Sources */,
@@ -1980,7 +1985,6 @@
 				7AC81F99259B552100AC10FB /* AuthorizationConfigurator.swift in Sources */,
 				13D8CEB825239A7B0091AA6B /* TrainingPaternViewModel.swift in Sources */,
 				7AAFE8BE2599E877004FF48B /* NavigationViewCell.swift in Sources */,
-				1388FFE724E00CA900E9FD2C /* ChoosenTrainingStatisticsModel.swift in Sources */,
 				1384BB4D24DF0D250084705B /* ProfileRouter.swift in Sources */,
 				7A36C344259C8C5000DFFA6E /* TrainingProgramsLevelsViewModel.swift in Sources */,
 				1388FFDF24E0067100E9FD2C /* DTStatisticInfoCellType.swift in Sources */,
@@ -1994,7 +1998,6 @@
 				7AAFE8FB259A2846004FF48B /* HomeViewModel.swift in Sources */,
 				1384BB4724DEF73E0084705B /* DTMainInfoCellType.swift in Sources */,
 				13CCD92A254EB35000E8FFEB /* SideMenuCell.swift in Sources */,
-				1388FFE324E00A2000E9FD2C /* ChoosenTrainingStatisticsViewController.swift in Sources */,
 				7A69DBFE25878233003EECD8 /* SearchFoodViewModel.swift in Sources */,
 				13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */,
 				136F40092498D44B00C6944B /* UserDataManager.swift in Sources */,
@@ -2014,6 +2017,7 @@
 				7A24883225A49BFA00DB6D12 /* ReadyWorkoutConfigurator.swift in Sources */,
 				136F400D2498D4E500C6944B /* MainInfoManagedObject+CoreDataProperties.swift in Sources */,
 				7A2A754D2588AFF00091FD22 /* TodayMealNutrition.swift in Sources */,
+				7A731B1B25B08B3600071E46 /* WorkoutStatisticsViewController.swift in Sources */,
 				1373219F253A08A300F8FA23 /* UIAplication+Ex.swift in Sources */,
 				13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */,
 				1388FFE924E050D800E9FD2C /* DTTrainedSubGroupCell.swift in Sources */,
@@ -2041,7 +2045,7 @@
 				1384BB4324DEEBE60084705B /* ProfileViewController.swift in Sources */,
 				13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */,
 				132A6A422572567D00EB3AE0 /* SelectExerciseViewModel.swift in Sources */,
-				1388FFE524E00C7900E9FD2C /* ChoosenTrainingStatisticsViewModel.swift in Sources */,
+				1388FFE524E00C7900E9FD2C /* WorkoutStatisticsViewModel.swift in Sources */,
 				1306E01924CF3DC1003AEBA7 /* AuthorizationModel.swift in Sources */,
 				7AF7BD4E256698B9003F4038 /* AuthorizationViewController.swift in Sources */,
 				13EB774024E2B097000E6D87 /* DTNewAproachAlert.swift in Sources */,
