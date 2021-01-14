@@ -2,8 +2,10 @@
 protocol ChoosenPaternViewModelProtocol: PaternNamingAlertDelegate {
     var exercises: [Exercise] { get }
     var patenrName: String { get }
+    
     func createTraining()
     func addExerciseToCurrnetPatern()
+    func backButtonPressed()
 }
 
 protocol ChoosenPaternViewModelInput: AnyObject {
@@ -39,6 +41,10 @@ private extension ChoosenPaternViewModel {
 // MARK: - ChoosenPaternViewModelProtocol
 extension ChoosenPaternViewModel: ChoosenPaternViewModelProtocol {
     
+    func backButtonPressed() {
+        model.popViewController()
+    }
+
     var patenrName: String {
         return model.patern.name
     }

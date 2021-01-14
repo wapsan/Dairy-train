@@ -2,8 +2,10 @@ import Foundation
 
 protocol ChoosenPaternModelProtocol {
     var patern: TrainingPaternManagedObject { get }
+    
     func createTrainingWithCurrentpatern(exercise: [Exercise])
     func renameTrainingPaternAlert(for name: String)
+    func popViewController()
 }
 
 final class ChoosenPaternModel {
@@ -29,6 +31,10 @@ final class ChoosenPaternModel {
 
 // MARK: - ChoosenPaternModelProtocol
 extension ChoosenPaternModel: ChoosenPaternModelProtocol {
+    
+    func popViewController() {
+        MainCoordinator.shared.popViewController()
+    }
     
     var patern: TrainingPaternManagedObject {
         _trainingPatern

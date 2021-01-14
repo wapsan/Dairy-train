@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrainingPaternsViewController" customModule="Dairy_Training" customModuleProvider="target">
             <connections>
-                <outlet property="emptyTrainingPaternLabel" destination="FwI-qx-GvP" id="LG6-aT-tmG"/>
                 <outlet property="tableView" destination="gdx-rO-42f" id="DLp-bE-5eD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,12 +20,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No training paterns yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwI-qx-GvP">
-                    <rect key="frame" x="107.5" y="436" width="199" height="24"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gdx-rO-42f">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,8 +35,6 @@
                 <constraint firstItem="gdx-rO-42f" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9Py-3t-O1z"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gdx-rO-42f" secondAttribute="bottom" id="B8W-Hj-Q5s"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gdx-rO-42f" secondAttribute="trailing" id="DiL-LO-63G"/>
-                <constraint firstItem="FwI-qx-GvP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Fz2-uC-frX"/>
-                <constraint firstItem="FwI-qx-GvP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="V9R-JD-baW"/>
                 <constraint firstItem="gdx-rO-42f" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="pIA-4p-2zo"/>
             </constraints>
             <point key="canvasLocation" x="-1410" y="281"/>

@@ -80,6 +80,7 @@ extension WorkoutListViewController: WorkoutListViewProtocol {
     }
     
     func reloadData() {
+        guard tableView != nil else { return }
         tableView.reloadData()
     }
 }

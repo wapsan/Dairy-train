@@ -56,8 +56,8 @@ final class ReadyWorkoutViewController: UIViewController {
         strechableHeader?.minimumContentHeight = 44
         strechableHeader?.showButtons()
         strechableHeader?.onBackButtonAction = { [unowned self] in self.viewModel.backButtonPressed() }
-        strechableHeader?.onCreatePaternButtonAction = { [unowned self] in self.viewModel.createPaternButtonPressed() }
-        strechableHeader?.onCreateTrainingButtonAction = { [unowned self] in self.viewModel.createTrainingButtonPressed() }
+        strechableHeader?.onRightButtonAction = { [unowned self] in self.viewModel.createPaternButtonPressed() }
+        strechableHeader?.onLeftButtonAction = { [unowned self] in self.viewModel.createTrainingButtonPressed() }
         strechableHeader?.image = viewModel.workoutImage
         strechableHeader?.title = viewModel.workoutTitle
         strechableHeader?.customDescription = viewModel.workoutDescription

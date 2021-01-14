@@ -3,29 +3,24 @@ import UIKit
 protocol TrainingPaternsView: AnyObject {
     func reloadTable()
     func deleteCell(at rowIndex: Int)
-    func showEmtyLabel()
-    func showPaternsTable()
 }
 
 final class TrainingPaternsViewController: DTBackgroundedViewController {
 
     //MARK: - @IBOutlets
     @IBOutlet private var tableView: UITableView!
-    @IBOutlet var emptyTrainingPaternLabel: UILabel!
 
-    //MARK: - Properties
-    private let namingPaternAlert = PaternNamingAlert.view()
-    var viewModel: TrainingPaternViewModelProtocol
+    // MARK: - GUI Properties
+    private var strechableHeader: StretchableHeader?
+    private let namingPaternAlert = PaternNamingAlert.loadFromXib()
+    
+    // MARK: - Module properties
+     private let viewModel: TrainingPaternViewModelProtocol
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        hideTabBar()
     }
 
     //MARK: - Initialization
@@ -37,63 +32,43 @@ final class TrainingPaternsViewController: DTBackgroundedViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //MARK: - Actions
-    @objc private func addTrainingPaternAction() {
-        self.namingPaternAlert?.show()
-    }
-    
-    @objc private func cancelButtonAction() {
-        MainCoordinator.shared.dismiss()
-    }
 }
 
 //MARK: - Private extension
 private extension TrainingPaternsViewController {
 
     func setup() {
-        self.title = "Training paterns"
-        tableView.register(UINib(nibName: TrainingPaternCell.xibName, bundle: nil),
-                           forCellReuseIdentifier: TrainingPaternCell.cellID)
-        
+        tableView.register(cell: TrainingPaternCell.self)
+        tableView.register(cell: ErrorCell.self)
         namingPaternAlert?.delegate = viewModel
-        
-        let addPaternButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                  target: self,
-                                                  action: #selector(self.addTrainingPaternAction))
-        navigationItem.rightBarButtonItem = addPaternButtonItem
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
-                                                           target: self,
-                                                           action: #selector(cancelButtonAction))
+        navigationController?.navigationBar.isHidden = true
+        setupHeader()
+    }
+    
+    func setupHeader() {
+        let headerSize = CGSize(width: tableView.frame.size.width, height: 200)
+        strechableHeader = StretchableHeader(frame: CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height))
+        strechableHeader?.backgroundColor = .black
+        strechableHeader?.backButtonImageType = .close
+        strechableHeader?.minimumContentHeight = 44
+        strechableHeader?.showButtons()
+        strechableHeader?.setLeftDownButton(title: "Create patern", image: UIImage(named: "addTraining"), isHiden: false)
+        strechableHeader?.onBackButtonAction = { [unowned self] in self.viewModel.closeButtonPressed() }
+        strechableHeader?.onLeftButtonAction = { [unowned self] in self.namingPaternAlert?.show() }
+        strechableHeader?.title = viewModel.title
+        strechableHeader?.customDescription = viewModel.description
+        guard let header = strechableHeader else { return }
+        tableView.addSubview(header)
     }
 }
 
 // MARK: - TrainingPaternsView
 extension TrainingPaternsViewController: TrainingPaternsView {
-
-    func showEmtyLabel() {
-        self.emptyTrainingPaternLabel.isHidden = false
-        UIView.animate(withDuration: 0.4, animations: {
-            self.emptyTrainingPaternLabel.alpha = 1
-        })
-        self.tableView.isHidden = true
-        self.tableView.alpha = 0
-    }
-    
-    func showPaternsTable() {
-        self.tableView.isHidden = false
-        UIView.animate(withDuration: 0.4, animations: {
-            self.tableView.alpha = 1
-        })
-        self.emptyTrainingPaternLabel.isHidden = true
-        self.emptyTrainingPaternLabel.alpha = 0
-    }
-    
     
     func deleteCell(at rowIndex: Int) {
-        tableView.beginUpdates()
-        tableView.deleteRows(at: [IndexPath(row: rowIndex, section: 0)], with: .fade)
-        tableView.endUpdates()
+        tableView.performBatchUpdates({
+            tableView.deleteRows(at: [IndexPath(row: rowIndex, section: 0)], with: .fade)
+        }, completion: nil)
     }
 
     func reloadTable() {
@@ -105,34 +80,36 @@ extension TrainingPaternsViewController: TrainingPaternsView {
 extension TrainingPaternsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.paterns.count
+        return viewModel.paternsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TrainingPaternCell.cellID, for: indexPath)
-        (cell as? TrainingPaternCell)?.setCell(for: viewModel.paterns[indexPath.row].name)
-        return cell
+        if viewModel.isPaternsExisting {
+            let cell = tableView.dequeueReusableCell(withIdentifier: TrainingPaternCell.cellID, for: indexPath)
+            (cell as? TrainingPaternCell)?.setCell(for: viewModel.getPatern(for: indexPath.row).name)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ErrorCell.cellID, for: indexPath)
+            (cell as? ErrorCell)?.setCell(for: viewModel.emptyPaternErrorMessage)
+            return cell
+        }
     }
 }
 
 //MARK: - UITableViewDelegate
 extension TrainingPaternsViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return TrainingPaternsHeaderView.view()
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 70
-    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelectRow(at: indexPath.row)
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return viewModel.isPaternsExisting ? UITableView.automaticDimension : 300
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: nil) { [weak self] (_, _, completionHandler) in
-            self?.viewModel.removeTrainingPatern(at: indexPath.row)
+            self?.viewModel.swipeRow(at: indexPath.row)
             completionHandler(true)
         }
         deleteAction.image = UIImage(systemName: "trash")

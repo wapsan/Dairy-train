@@ -10,12 +10,14 @@ final class ChoosenPaternViewController: DTBackgroundedViewController {
     //MARK: - @IBOutlets
     @IBOutlet private var tableView: UITableView!
     
-    //MARK: - Private properties
-    private var viewModel: ChoosenPaternViewModelProtocol
-    private var namingAlert = PaternNamingAlert.view()
-    private let tableHeaderView = TrainingPaternHeaderView.view()
-    private var firstOpen = true
+    //MARK: - module properties
+    private let viewModel: ChoosenPaternViewModelProtocol
     
+    // MARK: - GUI Properties
+    private var strechableHeader: StretchableHeader?
+    private lazy var namingAlert = PaternNamingAlert.loadFromXib()
+    private let tableHeaderView = TrainingPaternHeaderView.view()
+
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,20 +46,8 @@ private extension ChoosenPaternViewController {
     func setup() {
         tableView.register(cell: DefaultExerciseCell.self)
         namingAlert?.delegate = viewModel
-        tableView.tableHeaderView = tableHeaderView
-        tableHeaderView?.titleLabel.text = viewModel.patenrName
-        tableHeaderView?.createTrainingAction = { [weak self] in
-            self?.showCreateTrainingAlert()
-        }
-        tableHeaderView?.changePaternAction = { [weak self] in
-            self?.viewModel.addExerciseToCurrnetPatern()
-        }
-        let menuBarButton = UIBarButtonItem(image: UIImage(named: "menu"),
-                                            style: .plain,
-                                            target: self,
-                                            action: #selector(addBarButtonAction))
-        navigationItem.rightBarButtonItem = menuBarButton
-        navigationController?.navigationBar.tintColor = .white
+        setupHeader()
+        navigationController?.navigationBar.isHidden = true
     }
     
     func animatableChangePaternName(to name: String) {
@@ -70,10 +60,6 @@ private extension ChoosenPaternViewController {
                             self?.tableHeaderView?.titleLabel.alpha = 1
                         })
                        })
-    }
-    
-    @objc private func addBarButtonAction() {
-        namingAlert?.show(with: viewModel.patenrName)
     }
     
     func showCreateTrainingAlert() {
@@ -98,12 +84,33 @@ private extension ChoosenPaternViewController {
             cancelTitle: nil,
             completion: nil)
     }
+    
+    func setupHeader() {
+        let headerSize = CGSize(width: tableView.frame.size.width, height: 150)
+        strechableHeader = StretchableHeader(frame: CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height))
+        strechableHeader?.backgroundColor = .black
+        strechableHeader?.backButtonImageType = .goBack
+        strechableHeader?.minimumContentHeight = 44
+        strechableHeader?.showButtons()
+        strechableHeader?.setLeftDownButton(title: "Add exercise")
+        strechableHeader?.setRightDownButton(title: "Create training")
+        strechableHeader?.topRightButtonAction = { [unowned self] in self.namingAlert?.show(with: viewModel.patenrName) }
+        strechableHeader?.onBackButtonAction = { [unowned self] in self.viewModel.backButtonPressed() }
+        strechableHeader?.onLeftButtonAction = { [unowned self] in self.viewModel.addExerciseToCurrnetPatern() }
+        strechableHeader?.onRightButtonAction = { [unowned self] in self.showCreateTrainingAlert() }
+        strechableHeader?.setTopRightButton( image: UIImage(named: "editPaternIcon")?.withTintColor(.black))
+        strechableHeader?.title = viewModel.patenrName
+        strechableHeader?.customDescription = nil
+        guard let header = strechableHeader else { return }
+        tableView.addSubview(header)
+    }
 }
 
 extension ChoosenPaternViewController: ChoosenPaternView {
     
     func changePaternName(to name: String) {
-        animatableChangePaternName(to: name)
+        strechableHeader?.title = name
+       // animatableChangePaternName(to: name)
     }
     
     func reloadTable() {

@@ -23,20 +23,11 @@ class PaternNamingAlert: UIView {
         setup()
     }
     
-    class func view() -> PaternNamingAlert? {
-        let nib = Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)
-        return nib?.first as? PaternNamingAlert
-    }
-    
     //MARK: - Interface
     func show(with name: String? = nil) {
         self.paternName = name
         guard let topViewController = UIApplication.topViewController() else { return }
-        print("Here")
         self.translatesAutoresizingMaskIntoConstraints = false
-//        guard let navigationController = topViewController.navigationController else {
-//            return
-//        }
         topViewController.view.addSubview(self)
         
         NSLayoutConstraint.activate([

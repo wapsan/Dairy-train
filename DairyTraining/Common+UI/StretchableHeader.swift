@@ -23,8 +23,8 @@ final class StretchableHeader: GSKStretchyHeaderView {
     
     // MARK: - Setable roperties
     var onBackButtonAction: (() -> Void)?
-    var onCreateTrainingButtonAction: (() -> Void)?
-    var onCreatePaternButtonAction: (() -> Void)?
+    var onLeftButtonAction: (() -> Void)?
+    var onRightButtonAction: (() -> Void)?
     var topRightButtonAction: (() -> Void)?
     
     var backButtonImageType: BackButtonType = .close {
@@ -107,13 +107,13 @@ final class StretchableHeader: GSKStretchyHeaderView {
         button.layer.cornerRadius = 5
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 2
-        button.addTarget(self, action: #selector(createTrainingButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(leftButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    @objc private func createTrainingButtonPressed() {
-        onCreateTrainingButtonAction?()
+    @objc private func leftButtonPressed() {
+        onLeftButtonAction?()
     }
     
     private lazy var rightDownButton: UIButton = {
@@ -123,13 +123,13 @@ final class StretchableHeader: GSKStretchyHeaderView {
         button.layer.cornerRadius = 5
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 2
-        button.addTarget(self, action: #selector(createPaternButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(rightButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    @objc private func createPaternButtonPressed() {
-        onCreatePaternButtonAction?()
+    @objc private func rightButtonPressed() {
+        onRightButtonAction?()
     }
     
     private lazy var downButtonsStackView: UIStackView = {
@@ -186,8 +186,8 @@ final class StretchableHeader: GSKStretchyHeaderView {
     }
     
     func showButtons() {
-        leftDownButton.isHidden = false
-        rightDownButton.isHidden = false
+       // leftDownButton.isHidden = false
+      //  rightDownButton.isHidden = false
         downButtonsStackView.isHidden = false
     }
     

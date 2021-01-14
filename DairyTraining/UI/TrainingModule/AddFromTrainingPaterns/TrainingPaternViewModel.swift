@@ -1,10 +1,14 @@
 import Foundation
 
-protocol TrainingPaternViewModelProtocol: PaternNamingAlertDelegate {
-    var paterns: [TrainingPaternManagedObject] { get }
+protocol TrainingPaternViewModelProtocol: PaternNamingAlertDelegate, TitledScreenProtocol {
+    var paternsCount: Int { get }
+    var isPaternsExisting: Bool { get }
+    var emptyPaternErrorMessage: String { get }
     
+    func getPatern(for index: Int) -> TrainingPaternManagedObject
+    func closeButtonPressed()
     func createTrainingPatern(with name: String)
-    func removeTrainingPatern(at index: Int)
+    func swipeRow(at index: Int)
     func didSelectRow(at index: Int)
 }
 
@@ -12,12 +16,13 @@ protocol TrainingPaternViewModelInput: AnyObject {
     func paternCreated()
     func paternRemoved(at index: Int)
     func paternRenamed()
+    func dataLoaded()
 }
 
 final class TrainingPaternViewModel {
     
     //MARK: - Private properties
-    private var model: TrainingPaterModelProtocol
+    private let model: TrainingPaterModelProtocol
     
     //MARK: - Properties
     weak var view: TrainingPaternsView?
@@ -42,12 +47,36 @@ extension TrainingPaternViewModel {
 
 // MARK: - TrainingPaternViewModelProtocol
 extension TrainingPaternViewModel: TrainingPaternViewModelProtocol {
-    
-    var paterns: [TrainingPaternManagedObject] {
-        model.paterns.isEmpty ? view?.showEmtyLabel() : view?.showPaternsTable()
-        return model.paterns
+
+    var emptyPaternErrorMessage: String {
+        return "You have no created training patern yet."
     }
     
+    func getPatern(for index: Int) -> TrainingPaternManagedObject {
+        return model.paterns[index]
+    }
+    
+    var paternsCount: Int {
+        return isPaternsExisting ? model.paterns.count : 1
+    }
+    
+    var isPaternsExisting: Bool {
+        return !model.paterns.isEmpty
+    }
+    
+    func closeButtonPressed() {
+        model.closeViewController()
+    }
+    
+    var title: String {
+        return "Workout paterns"
+    }
+    
+    var description: String {
+        return "There are your workout paterns wich contains exercises set yor created by yorself"
+    }
+    
+
     func didSelectRow(at index: Int) {
         model.pushTrainingPatern(at: index)
     }
@@ -56,13 +85,17 @@ extension TrainingPaternViewModel: TrainingPaternViewModelProtocol {
         model.createTrainingPatern(with: name)
     }
     
-    func removeTrainingPatern(at index: Int) {
+    func swipeRow(at index: Int) {
         model.removeTrainingPater(at: index)
     }
 }
 
 // MARK: - TrainingPaternViewModelInput
 extension TrainingPaternViewModel: TrainingPaternViewModelInput {
+    
+    func dataLoaded() {
+        view?.reloadTable()
+    }
     
     func paternRenamed() {
         view?.reloadTable()
