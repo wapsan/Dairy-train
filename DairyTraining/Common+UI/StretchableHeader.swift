@@ -47,6 +47,7 @@ final class StretchableHeader: GSKStretchyHeaderView {
     var customDescription: String? = nil {
         didSet {
             descriptionLabel.text = customDescription
+            descriptionLabel.isHidden = customDescription == nil
         }
     }
     
@@ -185,11 +186,15 @@ final class StretchableHeader: GSKStretchyHeaderView {
     }
     
     func showButtons() {
+        leftDownButton.isHidden = false
+        rightDownButton.isHidden = false
         downButtonsStackView.isHidden = false
     }
     
     private func hideButtons() {
         topRightButton.isHidden = true
+        leftDownButton.isHidden = true
+        rightDownButton.isHidden = true
         downButtonsStackView.isHidden = true
     }
     

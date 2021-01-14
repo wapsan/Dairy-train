@@ -1,6 +1,6 @@
 import Foundation
 
-protocol TrainingViewModeProtocol: AnyObject {
+protocol TrainingViewModeProtocol {
     var trainingDate: String? { get }
     var exerciseCount: Int { get }
     var exerciseList: [ExerciseManagedObject] { get }
@@ -17,6 +17,8 @@ protocol TrainingViewModeProtocol: AnyObject {
     func isExerciseEditable(at index: Int) -> Bool
     func footerButtonPressed()
     func statisticsButtonPressed()
+    
+    func backButtonPressed() 
 }
 
 final class TrainingViewModel {
@@ -95,6 +97,10 @@ extension TrainingViewModel: TrainingModelOutput {
 
 //MARK: - TrainingViewModeIteracting
 extension TrainingViewModel: TrainingViewModeProtocol {
+    
+    func backButtonPressed() {
+        model.popViewController()
+    }
     
     func statisticsButtonPressed() {
         model.showStatisticForCurrentTraining()

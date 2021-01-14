@@ -18,6 +18,9 @@ final class TrainingViewController: UIViewController {
     //MARK: - @IBOutlets
     @IBOutlet private var tableView: UITableView!
     
+    // MARK: - GUI Properties
+    private var stratchabelHeader: StretchableHeader?
+    
     //MARK: - Module property
     private var viewModel: TrainingViewModeProtocol
     private lazy var aproachAlert = DTNewAproachAlert()
@@ -70,15 +73,22 @@ private extension TrainingViewController {
         loadTraining()
         aproachAlert.delegate = viewModel as? NewAproachAlertDelegate
         tableView.register(DTEditingExerciceCell.self, forCellReuseIdentifier: DTEditingExerciceCell.cellID)
-        view.backgroundColor = DTColors.backgroundColor
-        navigationItem.title = LocalizedString.training
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
-                                                            target: self,
-                                                            action: #selector(statisticsButtonPressed))
+        setupHeaders()
     }
     
-    @objc private func statisticsButtonPressed() {
-        viewModel.statisticsButtonPressed()
+    private func setupHeaders() {
+        let headerSize = CGSize(width: tableView.frame.size.width, height: 150)
+        stratchabelHeader = StretchableHeader(frame: CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height))
+        stratchabelHeader?.title = viewModel.trainingDate
+        stratchabelHeader?.customDescription = nil
+        stratchabelHeader?.backButtonImageType = .goBack
+        stratchabelHeader?.onBackButtonAction = { [unowned self] in self.viewModel.backButtonPressed() }
+        stratchabelHeader?.setTopRightButton(image: UIImage(named: "icon_home_menu"))
+        stratchabelHeader?.topRightButtonAction = { [unowned self] in self.viewModel.statisticsButtonPressed() }
+        stratchabelHeader?.backgroundColor = .black
+        stratchabelHeader?.minimumContentHeight = 44
+        guard let header = stratchabelHeader else { return }
+        tableView.addSubview(header)
     }
 }
 
@@ -119,12 +129,6 @@ extension TrainingViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension TrainingViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = TrainingPaternsHeaderView.view()
-        view?.tittle.text = viewModel.trainingDate
-        return view
-    }
-
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = TrainingTableFooterView.view()
         footer?.isActive = viewModel.isTrainingEditable
@@ -133,10 +137,6 @@ extension TrainingViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 70
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 70
     }
     

@@ -12,6 +12,8 @@ protocol TrainingModelIteracting: AnyObject {
     func exerciseDone(at index: Int)
     func coordinateToMuscularGroupsScreen()
     func showStatisticForCurrentTraining()
+    
+    func popViewController()
 }
 
 protocol TrainingModelOutput: AnyObject {
@@ -62,6 +64,10 @@ final class TrainingModel {
 
 //MARK: - TrainingModelIteracting
 extension TrainingModel: TrainingModelIteracting {
+    
+    func popViewController() {
+        MainCoordinator.shared.popViewController()
+    }
     
     func showStatisticForCurrentTraining() {
         MainCoordinator.shared.coordinate(to: TrainingModuleCoordinator.Target.statisticForCurrentTraining(training: training))
