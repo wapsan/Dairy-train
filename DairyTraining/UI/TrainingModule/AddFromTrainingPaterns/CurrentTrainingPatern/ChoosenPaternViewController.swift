@@ -16,7 +16,6 @@ final class ChoosenPaternViewController: DTBackgroundedViewController {
     // MARK: - GUI Properties
     private var strechableHeader: StretchableHeader?
     private lazy var namingAlert = PaternNamingAlert.loadFromXib()
-    private let tableHeaderView = TrainingPaternHeaderView.view()
 
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -48,18 +47,6 @@ private extension ChoosenPaternViewController {
         namingAlert?.delegate = viewModel
         setupHeader()
         navigationController?.navigationBar.isHidden = true
-    }
-    
-    func animatableChangePaternName(to name: String) {
-        UIView.animate(withDuration: 0.25,
-                       animations: {
-                        self.tableHeaderView?.titleLabel.alpha = 0
-                       }, completion: { [weak self] _ in
-                        UIView.animate(withDuration: 0.23, animations: {
-                            self?.tableHeaderView?.titleLabel.text = name
-                            self?.tableHeaderView?.titleLabel.alpha = 1
-                        })
-                       })
     }
     
     func showCreateTrainingAlert() {
@@ -106,11 +93,11 @@ private extension ChoosenPaternViewController {
     }
 }
 
+// MARK: - ChoosenPaternView
 extension ChoosenPaternViewController: ChoosenPaternView {
     
     func changePaternName(to name: String) {
         strechableHeader?.title = name
-       // animatableChangePaternName(to: name)
     }
     
     func reloadTable() {
@@ -118,6 +105,7 @@ extension ChoosenPaternViewController: ChoosenPaternView {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension ChoosenPaternViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

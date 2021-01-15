@@ -16,8 +16,9 @@ protocol ChoosenPaternViewModelInput: AnyObject {
 final class ChoosenPaternViewModel {
     
     //MARK: - Properties
-    var model: ChoosenPaternModelProtocol
+    private let model: ChoosenPaternModelProtocol
     weak var view: ChoosenPaternView?
+    
     //MARK: - Initialization
     init(model: ChoosenPaternModelProtocol) {
         self.model = model
@@ -71,7 +72,7 @@ extension ChoosenPaternViewModel: ChoosenPaternViewModelProtocol {
     }
 }
 
-
+// MARK: - ChoosenPaternViewModelInput
 extension ChoosenPaternViewModel: ChoosenPaternViewModelInput {
     
     func paternNameChanged(to name: String) {
