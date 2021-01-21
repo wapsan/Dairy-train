@@ -46,20 +46,24 @@ final class AuthorizationModel {
             guard let self = self else { return }
             switch result {
             case .success(let dataModel):
-                if let userMainInfo = dataModel.userMainInfo {
-                    self.coreDataManager.updateUserMainInfo(to: userMainInfo)
-                    NotificationCenter.default.post(name: .mainInfoWasUpdated, object: nil)
-                }
-                self.coreDataManager.updateDateOfLastUpdateTo(dataModel.dateOfUpdate)
-                TrainingDataManager.shared.updateUserTrainInfoFrom(dataModel.trainingList)
-                TrainingDataManager.shared.updateTrainingPaternList(to: dataModel.trainingPaternList)
-                NutritionDataManager.shared.updateHistoryNutritionData(from: dataModel.dayNutritionCodableModel)
-                NutritionDataManager.shared.updateCustomNutritionMode(from: dataModel.customnutritionMode)
+                self.updateData(from: dataModel)
                 self.output?.succesSignIn()
             case .failure(_):
                 break
             }
         }
+    }
+    
+    private func updateData(from firebaseServerModel: FrebaseServerModel) {
+        if let userMainInfo = firebaseServerModel.userMainInfo {
+            self.coreDataManager.updateUserMainInfo(to: userMainInfo)
+            NotificationCenter.default.post(name: .mainInfoWasUpdated, object: nil)
+        }
+        self.coreDataManager.updateDateOfLastUpdateTo(firebaseServerModel.dateOfUpdate)
+        TrainingDataManager.shared.updateUserTrainInfoFrom(firebaseServerModel.trainingList)
+        TrainingDataManager.shared.updateTrainingPaternList(to: firebaseServerModel.trainingPaternList)
+        NutritionDataManager.shared.updateHistoryNutritionData(from: firebaseServerModel.dayNutritionCodableModel)
+        NutritionDataManager.shared.updateCustomNutritionMode(from: firebaseServerModel.customnutritionMode)
     }
     
     private func addObserveForGoogleSignedIn() {

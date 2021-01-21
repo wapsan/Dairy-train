@@ -8,6 +8,7 @@ protocol ProfileRouterOutputt: AnyObject {
 
 final class ProfileRouter: Router {
     
+    
     private weak var rootViewController: ProfileViewController?
     
     init(_ viewController: UIViewController) {
@@ -20,7 +21,7 @@ final class ProfileRouter: Router {
 extension ProfileRouter: ProfileRouterOutputt {
     
     func presentLoginViewController() {
-        MainCoordinator.shared.coordinate(to: AuthorizationCoordinator.Target.authorizationScreen)
+       // MainCoordinator.shared.coordinate(to: AuthorizationCoordinator.Target.authorizationScreen)
         //MainCoordinator.shared.coordinate(to: MainCoordinator.Target.loginFlow)
     }
     

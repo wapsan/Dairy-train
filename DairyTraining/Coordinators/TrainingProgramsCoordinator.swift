@@ -30,10 +30,9 @@ final class TrainingProgramsCoordinator: Coordinator {
         switch target {
         
         case .trainingLevels:
-            let trainingLevelsScreen = TrainingProgramsLevelsConfigurator.configure()
+            let trainingLevelsScreen = TrainingProgramsLevelsConfigurator().configure()
             let navigationController = UINavigationController(rootViewController: trainingLevelsScreen)
             navigationController.modalPresentationStyle = .overFullScreen
-            
             self.navigationController = navigationController
             self.topViewController?.present(navigationController, animated: true, completion: nil)
             

@@ -23,7 +23,7 @@ final class WorkoutListModel {
         case month
         case allTime
         
-        var workouts: [TrainingManagedObject] {
+        func loadWorkouts() -> [TrainingManagedObject] {
             switch self {
             case .today:
                 return TrainingDataManager.shared.todaysWorkout()
@@ -75,12 +75,12 @@ final class WorkoutListModel {
     }
     
     @objc private func workoutCreated() {
-        _workouts = WorkoutsForTimeRange.today.workouts
+        _workouts = WorkoutsForTimeRange.today.loadWorkouts()
         output?.workoutsUpdate()
     }
     
     @objc private func workoutWasChanged() {
-        _workouts = WorkoutsForTimeRange.today.workouts
+        _workouts = WorkoutsForTimeRange.today.loadWorkouts()
         output?.workoutsUpdate()
     }
 }
@@ -105,7 +105,7 @@ extension WorkoutListModel: WorkoutListModelProtocol {
     
     func loadWorkouts(for index: Int) {
         guard let timePeriod = WorkoutsForTimeRange.init(rawValue: index) else { return }
-        _workouts = timePeriod.workouts
+        _workouts = timePeriod.loadWorkouts()
         _errorMessage = timePeriod.emptyErrorMessage
     }
     

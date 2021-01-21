@@ -1,6 +1,6 @@
 import UIKit
 
-final class DTSplashScreenViewController: UIViewController {
+final class SplashScreenViewController: UIViewController {
 
     //MARK: - GUI Properties
     private lazy var mainLogo: UIImageView = {
@@ -36,13 +36,16 @@ final class DTSplashScreenViewController: UIViewController {
     }
     
     private func presentInitialViewController() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
+        Thread.sleep(forTimeInterval: 0.4)
+       // DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
             if let _ = SettingManager.shared.getUserToken() {
-                MainCoordinator.shared.coordinate(to: TabBarCoordinator.Target.mainTabBar)
+                showMainFlow()
+               // MainCoordinator.shared.coordinate(to: TabBarCoordinator.Target.mainTabBar)
             } else {
-                MainCoordinator.shared.coordinate(to: AuthorizationCoordinator.Target.authorizationScreen)
+                showAuthorizationFlow()
+                //MainCoordinator.shared.coordinate(to: AuthorizationCoordinator.Target.authorizationScreen)
             }
-        })
+        //})
     }
    
     //MARK: - Constraints
@@ -65,5 +68,15 @@ final class DTSplashScreenViewController: UIViewController {
             self.textLogo.heightAnchor.constraint(equalTo: self.mainLogo.heightAnchor,
                                                   multiplier: 0.4),
         ])
+    }
+    
+    private func showMainFlow() {
+        let mainTabBar = MainTabBarViewController()
+        (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController = mainTabBar
+    }
+    
+    private func showAuthorizationFlow() {
+        let authorizationViewxController = AuthorizationConfigurator.configureAuthorizationViewController()
+        (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController = authorizationViewxController
     }
 }

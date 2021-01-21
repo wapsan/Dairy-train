@@ -77,6 +77,7 @@ final class NutritionViewModel {
     
     // MARK: - Module properties
     weak var view: MainNutritionView?
+    var router: MainNutritionRouterProtocol?
     
     // MARK: - Private Properties
     private let model: NutritionModelProtocol
@@ -96,11 +97,11 @@ extension NutritionViewModel: NutritionViewModelProtocol {
     }
     
     func settinButtonPressed() {
-        model.coordinateToNutritionSettingScreen()
+        router?.showNutritionSettingScreen()
     }
     
     func addMealButtonPressed() {
-        model.coordinatuToSearchFoodsScreen()
+        router?.showSearchFoodScreen()
     }
     
     func viewDidLoad() {

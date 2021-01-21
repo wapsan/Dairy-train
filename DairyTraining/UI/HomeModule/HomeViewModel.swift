@@ -13,6 +13,7 @@ final class HomeViewModel {
     
     // MARK: - Properties
     private let model: HomeModelProtocol
+    var router: HomeRouterProtocol?
     
     // MARK: - Initialization
     init(model: HomeModelProtocol) {
@@ -40,7 +41,8 @@ extension HomeViewModel: HomeViewModelProtocol {
     }
     
     func didSelectItemAtIndex(_ index: Int) {
-        return model.callMenuItemAction(for: index)
+        let menuItem = HomeModel.MenuItem.allCases[index]
+        router?.showScreen(for: menuItem)
     }
     
     func menuItem(at index: Int) -> HomeModel.MenuItem {

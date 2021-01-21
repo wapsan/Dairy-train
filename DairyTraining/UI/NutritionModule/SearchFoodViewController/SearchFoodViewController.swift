@@ -10,7 +10,7 @@ protocol SearchFoodView: AnyObject {
 final class SearchFoodViewController: UIViewController, Loadable {
 
     // MARK: - @IBOutlets
-    @IBOutlet private var searchBar: UISearchBar!
+    @IBOutlet private var searchBar: UISearchBar?
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var errorLabel: UILabel!
     
@@ -39,7 +39,7 @@ final class SearchFoodViewController: UIViewController, Loadable {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        searchBar.resignFirstResponder()
+        searchBar?.resignFirstResponder()
     }
     
     // MARK: - Initialization
@@ -54,10 +54,10 @@ final class SearchFoodViewController: UIViewController, Loadable {
     
     // MARK: - Private methods
     private func setup() {
-        searchBar.searchTextField.textColor = .white
+        navigationController?.navigationBar.isHidden = true
+        searchBar?.searchTextField.textColor = .white
         tableView.tableFooterView = refreshSpinner
-        tableView.register(UINib(nibName: NutritionSearchingCell.xibName, bundle: nil),
-                           forCellReuseIdentifier: NutritionSearchingCell.cellID)
+        tableView.register(cell: NutritionSearchingCell.self)
         foodDetailAlert?.delegate = viewModel
     }
     

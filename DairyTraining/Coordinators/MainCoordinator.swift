@@ -142,7 +142,7 @@ final class MainCoordinator: Coordinator {
     private func createChildCoordinators(for window: UIWindow?) -> [Coordinator] {
         
         return [TrainingProgramsCoordinator(window: window),
-                AuthorizationCoordinator(window: window),
+              //  AuthorizationCoordinator(window: window),
                 TabBarCoordinator(window: window),
                 MuscleGroupsCoordinator(window: window),
                 HomeCoordinator(rootViewController: homeNavigationViewController),

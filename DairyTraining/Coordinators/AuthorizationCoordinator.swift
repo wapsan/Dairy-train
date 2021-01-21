@@ -14,7 +14,7 @@ final class AuthorizationCoordinator: Coordinator {
         transitionOption.background = UIWindow.TransitionOptions.Background.solidColor(DTColors.backgroundColor)
         return transitionOption
     }()
-    
+
     var window: UIWindow?
 
     private var rootTabBarController: UITabBarController?
@@ -24,17 +24,17 @@ final class AuthorizationCoordinator: Coordinator {
     init(rootViewController: UINavigationController) {
         self.rootNavigationController = rootViewController
     }
-    
+
     init(window: UIWindow?) {
         self.window = window
     }
- 
+
     // MARK: - Coordinator API
     @discardableResult func coordinate(to target: CoordinatorTarget) -> Bool {
         guard let target = target as? Target else { return false }
         switch  target {
         case .splashScreen:
-            let splashScreen = DTSplashScreenViewController()
+            let splashScreen = SplashScreenViewController()
             window?.rootViewController = splashScreen
         case .authorizationScreen:
             let authViewController = AuthorizationConfigurator.configureAuthorizationViewController()

@@ -8,10 +8,10 @@ protocol MainNutritionView: AnyObject {
     func updateMainCell()
 }
  
-final class MainNutritionVIewController: DTBackgroundedViewController {
+final class MainNutritionViewController: DTBackgroundedViewController {
 
     // MARK: - @IBOutlets
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet private var tableView: UITableView?
     
     // MARK: - Properties
     private let viewModel: NutritionViewModelProtocol
@@ -40,11 +40,10 @@ final class MainNutritionVIewController: DTBackgroundedViewController {
     
     // MARK: - Private methods
     private func setup() {
-        tableView.contentInset.bottom = 32
-        tableView.register(UINib(nibName: NutritionMainCell.xibName, bundle: nil),
-                           forCellReuseIdentifier: NutritionMainCell.cellID)
-        tableView.register(UINib(nibName: NutritionSearchingCell.xibName, bundle: nil),
-                           forCellReuseIdentifier: NutritionSearchingCell.cellID)
+        navigationController?.navigationBar.isHidden = true
+        tableView?.contentInset.bottom = 32
+        tableView?.register(cell: NutritionMainCell.self)
+        tableView?.register(cell: NutritionSearchingCell.self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Setting",
                                                             style: .plain,
                                                             target: self,
@@ -58,37 +57,37 @@ final class MainNutritionVIewController: DTBackgroundedViewController {
 }
 
 // MARK: - MainNutritionView
-extension MainNutritionVIewController: MainNutritionView {
+extension MainNutritionViewController: MainNutritionView {
     
     func updateMainCell() {
-        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+        tableView?.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
     }
     
     func deleteCell(section: Int, row: Int) {
-        tableView.beginUpdates()
-        tableView.deleteRows(at: [IndexPath(row: row, section: section)], with: .left)
-        tableView.endUpdates()
+        tableView?.beginUpdates()
+        tableView?.deleteRows(at: [IndexPath(row: row, section: section)], with: .left)
+        tableView?.endUpdates()
     }
     
     func reloadTableView() {
-        if tableView != nil { tableView.reloadData() }
+        tableView?.reloadData()
     }
     
     func updateMealPlaneLabelText(to text: String) {
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NutritionMainCell
+        let cell = tableView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? NutritionMainCell
         cell?.setMealPlane(to: text)
     }
     
     
     func updateMainInfoCell(for nutritionRecomendation: NutritionRecomendation) {
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NutritionMainCell
+        let cell = tableView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? NutritionMainCell
         cell?.setCell(for: nutritionRecomendation, and: viewModel.userNutritionData)
-        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+        tableView?.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
     }
 }
 
 // MARK: - UITableViewDataSource
-extension MainNutritionVIewController: UITableViewDataSource {
+extension MainNutritionViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.todayMealNutitionModel.count
@@ -121,7 +120,7 @@ extension MainNutritionVIewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
-extension MainNutritionVIewController: UITableViewDelegate {
+extension MainNutritionViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard indexPath.section != 0 else { return nil }

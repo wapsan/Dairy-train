@@ -7,8 +7,6 @@ protocol NutritionModelProtocol {
     
     func loadData()
     
-    func coordinatuToSearchFoodsScreen()
-    func coordinateToNutritionSettingScreen()
     func deleteMeal(at mealTimeIndex: Int, mealIndex: Int)
 }
 
@@ -85,14 +83,6 @@ extension NutritionModel: NutritionModelProtocol {
         output?.mealWasDeleteAt(mealTimeIndex: mealTimeIndex, and: mealIndex)
     }
     
-    func coordinateToNutritionSettingScreen() {
-        MainCoordinator.shared.coordinate(to: NutritionModuleCoordinator.Target.nutritionSetting)
-    }
-    
-    func coordinatuToSearchFoodsScreen() {
-        MainCoordinator.shared.coordinate(to: NutritionModuleCoordinator.Target.searchFood)
-    }
-
     func loadData() {
         _nutritionData = NutritionDataManager.shared.todayNutritionData
         guard let user = UserDataManager.shared.readUserMainInfo() else { return }

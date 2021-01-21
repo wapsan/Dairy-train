@@ -75,7 +75,7 @@ enum TabBarItemController {
         case .trainingBlock:
             return configureTrainingBlockNabigationController()
         case .supplyBlock:
-           return configureSupplyBlockNavigationController()
+            return MainNutritionConfigurator().configureMainNutritionModule()
         case .home:
             return HomeViewControllerConfigurator.configureHomeNavigationControllet()
         case .addButton:
@@ -108,15 +108,11 @@ enum TabBarItemController {
         return navigationController
     }
     
-    private func configureSupplyBlockNavigationController() -> UINavigationController {
-        let nutritionModel = NutritionModel()
-        let nutritionViewModel = NutritionViewModel(model: nutritionModel)
-        let nutritionViewController = MainNutritionVIewController(viewModel: nutritionViewModel)
-        nutritionModel.output = nutritionViewModel
-        nutritionViewModel.view = nutritionViewController
-        let navigationController = UINavigationController(rootViewController: nutritionViewController)
-        navigationController.tabBarItem = DTTabBarItems.nutrition.item
-        nutritionViewController.navigationItem.title = DTTabBarItems.nutrition.title
-        return navigationController
-    }
+//    private func configureSupplyBlockNavigationController() -> UINavigationController {
+//        let mainNutritionViewController = MainNutritionConfigurator().configure()
+//        let navigationController = UINavigationController(rootViewController: mainNutritionViewController)
+//        navigationController.tabBarItem = DTTabBarItems.nutrition.item
+//        mainNutritionViewController.navigationItem.title = DTTabBarItems.nutrition.title
+//        return navigationController
+//    }
 }

@@ -36,7 +36,7 @@ private extension AppDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.makeKeyAndVisible()
         MainCoordinator.shared.window = self.window
-        MainCoordinator.shared.coordinate(to: AuthorizationCoordinator.Target.splashScreen)
-        UINavigationBar.appearance().tintColor = .white
+        let splashScreenViewController = SplashScreenViewController()
+        window?.rootViewController = splashScreenViewController
     }
 }

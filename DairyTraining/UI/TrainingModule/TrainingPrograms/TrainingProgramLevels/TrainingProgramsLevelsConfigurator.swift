@@ -1,8 +1,8 @@
 import Foundation
 
-struct TrainingProgramsLevelsConfigurator {
+final class TrainingProgramsLevelsConfigurator {
     
-    static func configure() -> TrainingProgramsLevelsViewController {
+    func configure() -> TrainingProgramsLevelsViewController {
         let model = TrainingProgramsLevelsModel()
         let viewModel = TrainingProgramsLevelsViewModel(model: model)
         let viewController = TrainingProgramsLevelsViewController(viewModel: viewModel)

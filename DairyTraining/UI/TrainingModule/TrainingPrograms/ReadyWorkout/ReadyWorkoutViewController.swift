@@ -55,6 +55,8 @@ final class ReadyWorkoutViewController: UIViewController {
         strechableHeader?.backButtonImageType = .goBack
         strechableHeader?.minimumContentHeight = 44
         strechableHeader?.showButtons()
+        strechableHeader?.setRightDownButton(title: "Create workout", image: UIImage(named: "addTraining"))
+        strechableHeader?.setLeftDownButton(title: "Create patern", image: UIImage(named: "addTraining"))
         strechableHeader?.onBackButtonAction = { [unowned self] in self.viewModel.backButtonPressed() }
         strechableHeader?.onRightButtonAction = { [unowned self] in self.viewModel.createPaternButtonPressed() }
         strechableHeader?.onLeftButtonAction = { [unowned self] in self.viewModel.createTrainingButtonPressed() }

@@ -86,7 +86,6 @@ extension AuthorizationViewController: AuthorizationViewProtocol {
     
     func signInSuccesed() {
         hideLoader()
-        viewModel.navigateToMainFlow()
     }
     
     func googleSignInStart() {

@@ -4,13 +4,14 @@ protocol LoginViewModelProtocol {
     func signInWithGoogle()
     func signInWithFacebook()
     func signInWithApple()
-    func navigateToMainFlow()
 }
 
 final class AuthorizationViewModel {
     
     //MARK: - Properties
     weak var view: AuthorizationViewProtocol?
+    var router: AuthorizationRouterProtocol?
+    
     private let model: AuthorizationModelProtocol
     
     // MARK: - Initialization
@@ -21,10 +22,6 @@ final class AuthorizationViewModel {
 
 //MARK: - LoginViewModelInput
 extension AuthorizationViewModel: LoginViewModelProtocol {
-    
-    func navigateToMainFlow() {
-        MainCoordinator.shared.coordinate(to: TabBarCoordinator.Target.mainTabBar)
-    }
     
     func signInWithFacebook() {
         model.signInWithFacebook()
@@ -47,6 +44,7 @@ extension AuthorizationViewModel: LoginModelOutput {
     }
     
     func succesSignIn() {
-        self.view?.signInSuccesed()
+        view?.signInSuccesed()
+        router?.setMainTabBarToRootViewController()
     }
 }
