@@ -51,7 +51,7 @@ private extension WorkoutStatisticsViewController {
         stratchabelHeader?.title = viewModel.title
         stratchabelHeader?.customDescription = viewModel.description
         stratchabelHeader?.backButtonImageType = .goBack
-        stratchabelHeader?.onBackButtonAction = { [unowned self] in self.viewModel.backButtonPressed() }
+        stratchabelHeader?.onBackButtonAction = { [unowned self] in self.dismiss(animated: true, completion: nil) }
         stratchabelHeader?.backgroundColor = .black
         stratchabelHeader?.minimumContentHeight = 44
         guard let header = stratchabelHeader else { return }

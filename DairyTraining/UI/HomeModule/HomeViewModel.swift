@@ -33,7 +33,7 @@ extension HomeViewModel: HomeViewModelProtocol {
     }
     
     func menuButtonPressed() {
-        model.showSideMenu()
+        router?.showSideMenu()
     }
     
     var menuItemCount: Int {

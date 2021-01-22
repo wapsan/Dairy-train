@@ -22,6 +22,7 @@ final class WorkoutListViewModel {
     // MARK: - Module properties
     private let model: WorkoutListModelProtocol
     weak var view: WorkoutListViewProtocol?
+    var router: WorkoutListRouterProtocol?
     
     // MARK: - Initialization
     init(model: WorkoutListModelProtocol) {
@@ -58,7 +59,8 @@ extension WorkoutListViewModel: WorkoutListViewModelProtocol {
     
     func selectRow(at index: Int) {
         guard isTrainingExists else { return }
-        model.pushWorkoutScreen(for: model.workouts[index])
+        let choosenWorkout = model.workouts[index]
+        router?.showChoosenWorkoutScreen(for: choosenWorkout)
     }
     
     func changeTimePeriodIndexTo(index: Int) {

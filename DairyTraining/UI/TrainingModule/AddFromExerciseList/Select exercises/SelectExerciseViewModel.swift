@@ -19,6 +19,7 @@ protocol SelectesExerciseViewModelIteractor: AnyObject {
 final class SelectExerciseViewModel {
     
     //MARK: - Module properties
+    var router: SelectExerciseRouterProtocol?
     weak var view: SelectExerciseViewIteractor?
     private let model: SelectExerciseModelOutput
     
@@ -82,7 +83,7 @@ extension SelectExerciseViewModel: SelectExerciseViewModelOutput {
 extension SelectExerciseViewModel: SelectesExerciseViewModelIteractor {
     
     func exerciseWasAdded() {
-        view?.exerciseWasAdded()
+        router?.hideAddingExerciseFlow()
     }
 
     func updateSelectedExercise(to exercise: [Exercise]) {

@@ -43,7 +43,7 @@ final class TabBarCoordinator: Coordinator {
         case .profile:
             rootTabBarController?.selectedIndex = 2
         case .mainTabBar:
-            let mainFlow = MainTabBarViewController()
+            let mainFlow = MainTabBarConfigurator.cinfigure()
             rootTabBarController = mainFlow
             guard let a = rootTabBarController else { return false }
             window?.setRootViewController(a)

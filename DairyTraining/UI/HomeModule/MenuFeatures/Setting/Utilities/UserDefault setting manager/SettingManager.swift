@@ -19,6 +19,15 @@ final class SettingManager {
     //MARK: - Initialization
     private init() { }
     
+    // MARK: - Properties
+    var isUserAuthorized: Bool {
+        if let _ = getUserToken() {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     //MARK: - Private methods
     private func setDefaultWeightMode() {
         if UserDefaults.standard.value(forKey: UserSettingKeys.weighMetricKey) == nil {

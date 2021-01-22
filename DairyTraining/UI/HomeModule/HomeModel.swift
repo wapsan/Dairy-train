@@ -1,11 +1,10 @@
 import UIKit
+import Firebase
 
 protocol HomeModelProtocol {
     var menuItems: [HomeModel.MenuItem] { get }
     
     func getMenuItemForIndex(index: Int) -> HomeModel.MenuItem
-    func callMenuItemAction(for index: Int)
-    func showSideMenu()
 }
 
 final class HomeModel {
@@ -47,31 +46,11 @@ final class HomeModel {
                 return nil
             }
         }
-        
-        func onAction() {
-            switch self {
-            case .createTrainingFromExerciseList:
-                MainCoordinator.shared.coordinate(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: .training))
-            case .createTrainingFromTrainingPatern:
-                MainCoordinator.shared.coordinate(to: TrainingPaternsCoordinator.Target.trainingPaternsList)
-            case .createTrainingFromSpecialTraining:
-                MainCoordinator.shared.coordinate(to: TrainingProgramsCoordinator.Target.trainingLevels)
-            case .addMeal:
-                MainCoordinator.shared.coordinate(to: NutritionModuleCoordinator.Target.searchFood)
-            case .mounthlyStatistics:
-                return
-            }
-        }
     }
-    
 }
 
 // MARK: - HomeModelProtocol
 extension HomeModel: HomeModelProtocol {
-    
-    func showSideMenu() {
-        MainCoordinator.shared.coordinate(to: HomeCoordinator.Target.sideMenu)
-    }
     
     var menuItems: [MenuItem] {
         return MenuItem.allCases
@@ -79,9 +58,5 @@ extension HomeModel: HomeModelProtocol {
     
     func getMenuItemForIndex(index: Int) -> MenuItem {
         return menuItems[index]
-    }
-    
-    func callMenuItemAction(for index: Int) {
-        menuItems[index].onAction()
     }
 }

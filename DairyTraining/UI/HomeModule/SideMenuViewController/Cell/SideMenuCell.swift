@@ -14,7 +14,7 @@ class SideMenuCell: UITableViewCell {
     }
 
     //MARK: - Setup
-    func setCell(for menuItem: SideMenuItem) {
+    func setCell(for menuItem: SideMenuModel.MenuItem) {
         menuItemImageView.image = menuItem.image
         menuItemTitleLabel.text = menuItem.title
     }

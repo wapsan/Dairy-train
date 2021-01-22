@@ -3,7 +3,6 @@ import UIKit
 protocol  SelectExerciseViewIteractor: AnyObject {
     func muscularSubgroupWasChanged()
     func updateAddButtonState(to isActive: Bool)
-    func exerciseWasAdded()
 }
 
 final class SelectExerciseViewController: BaseViewController {
@@ -133,11 +132,7 @@ extension SelectExerciseViewController: UITableViewDelegate {
 
 //MARK: - SelectExerciseNewViewControllerIteractor
 extension SelectExerciseViewController: SelectExerciseViewIteractor {
-    
-    func exerciseWasAdded() {
-        dismiss(animated: true, completion: nil)
-    }
-    
+
     func updateAddButtonState(to isActive: Bool) {
         navigationItem.rightBarButtonItem?.isEnabled = isActive
     }

@@ -76,7 +76,7 @@ final class MuscleGroupsViewController: DTBackgroundedViewController {
     
     // MARK: - Actions
     @objc private func backAction() {
-        MainCoordinator.shared.dismiss()
+        viewModel?.closeButtonPressed()
     }
 }
 

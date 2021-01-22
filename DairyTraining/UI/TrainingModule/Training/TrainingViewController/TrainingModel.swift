@@ -2,6 +2,8 @@ import Foundation
 
 protocol TrainingModelIteracting: AnyObject {
     var isTrainingEditable: Bool { get }
+    var currentWorkout: TrainingManagedObject { get }
+    
     func loadTraininig()
     func getNameForExercice(at index: Int)
     func deleteExercice(at index: Int)
@@ -10,11 +12,10 @@ protocol TrainingModelIteracting: AnyObject {
     func getAproachInfo(in exerciseIndex: Int, and aproachIndex: Int)
     func changeAproach(in exerciseIndex: Int, at aproachIndex: Int, weight: Float, reps: Int)
     func exerciseDone(at index: Int)
-    func coordinateToMuscularGroupsScreen()
-    func showStatisticForCurrentTraining()
-    
-    func popViewController()
 }
+    
+    
+    
 
 protocol TrainingModelOutput: AnyObject {
     
@@ -65,20 +66,12 @@ final class TrainingModel {
 //MARK: - TrainingModelIteracting
 extension TrainingModel: TrainingModelIteracting {
     
-    func popViewController() {
-        MainCoordinator.shared.popViewController()
-    }
-    
-    func showStatisticForCurrentTraining() {
-        MainCoordinator.shared.coordinate(to: TrainingModuleCoordinator.Target.statisticForCurrentTraining(training: training))
+    var currentWorkout: TrainingManagedObject {
+        return training
     }
     
     var isTrainingEditable: Bool {
         return training.isEditable
-    }
-    
-    func coordinateToMuscularGroupsScreen() {
-        MainCoordinator.shared.coordinate(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: .training))
     }
     
     func exerciseDone(at index: Int) {

@@ -1,7 +1,14 @@
 import UIKit
 
+protocol MainTabBarViewProtocol: AnyObject {
+    
+}
+
 final class MainTabBarViewController: UITabBarController {
         
+    // MARK: - Module properties
+    private let viewModel: MainTabBarViewModelProtocol
+    
     //MARK: - Private properties
     private lazy var profileViewControllerIndex = 0
     
@@ -27,6 +34,16 @@ final class MainTabBarViewController: UITabBarController {
         addButton.center.y = view.frame.maxY - tabBar.frame.height + (addButton.bounds.height / 4 )
     }
     
+    // MARK: - Initialization
+    init(viewModel: MainTabBarViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //MARK: - Private methods
     private func setupAddTrainingButton() {
         addButton.center.x = tabBar.center.x
@@ -39,12 +56,9 @@ final class MainTabBarViewController: UITabBarController {
     }
     
     private func setup() {
-        viewControllers = [MainCoordinator.shared.homeNavigationViewController,
-                           MainCoordinator.shared.nutritionBlockNavigationController,
-                           TabBarItemController.addButton.navigationController,
-                           MainCoordinator.shared.trainingBlockNavigationController,
-                           MainCoordinator.shared.profileNavigationController]
-        selectedIndex = profileViewControllerIndex
+        viewControllers = viewModel.viewControllers
+        selectedIndex = viewModel.defaultControllerIndex
+        
         tabBar.isTranslucent = false
         tabBar.tintColor = .white
         tabBar.barTintColor = DTColors.navigationBarColor
@@ -58,20 +72,12 @@ final class MainTabBarViewController: UITabBarController {
     
     // MARK: - Actions
     @objc private func addButtonpressed() {
-      //  createTrainingPopUp?.preseent()
-        let a = CreteTrainingModalViewController()
-        a.modalPresentationStyle = .custom
-        a.transitioningDelegate = self
-        present(a, animated: true, completion: nil)
-        
-        
+        viewModel.centeredAddButtonPressed()
     }
 }
 
-extension MainTabBarViewController: UIViewControllerTransitioningDelegate {
-    
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        CreatinTrainingPresentationViewController(presentedViewController: presented, presenting: presenting)
-    }
+extension MainTabBarViewController: MainTabBarViewProtocol {
     
 }
+
+

@@ -10,7 +10,7 @@ final class TrainingModuleCoordinator: Coordinator {
     enum Target: CoordinatorTarget {
         case choosenTraining(training: TrainingManagedObject)
         case statisticForCurrentTraining(training: TrainingManagedObject)
-        case statisticsForChosenExercise(name: String, exerciseDate: Date?)
+        case statisticsForChosenExercise(exercise: ExerciseManagedObject)
     }
     
     // MARK: - Properties
@@ -33,8 +33,8 @@ final class TrainingModuleCoordinator: Coordinator {
         case .choosenTraining(training: let training):
             let choosenTrainingViewController = configureTrainingViewController(for: training)
             navigationController?.pushViewController(choosenTrainingViewController, animated: true)
-        case .statisticsForChosenExercise(name: let name, exerciseDate: let exerciseDate):
-            let choosenExerciseForStatisticViewController = configureStatisticsViewController(with: name, and: exerciseDate)
+        case .statisticsForChosenExercise(exercise: let exercise):
+            let choosenExerciseForStatisticViewController = configureStatisticsViewController(exercise: exercise)
             topViewController?.present(choosenExerciseForStatisticViewController, animated: true, completion: nil)
         case .statisticForCurrentTraining(training: let training):
             let a = configureTVSModule(for: training)
@@ -60,10 +60,8 @@ final class TrainingModuleCoordinator: Coordinator {
         return choosenStatisticsViewController
     }
 
-    private func configureStatisticsViewController(with exerciseName: String,
-                                                   and exerciseDate: Date?) -> ChoosenExerciseStatisticsViewController {
-        let choosenExerciseForStatisticViewModel = ChoosenExerciseStatisticsViewModel(exersiceName: exerciseName,
-                                                                                      currentExerciseDate: exerciseDate)
+    private func configureStatisticsViewController(exercise: ExerciseManagedObject) -> ChoosenExerciseStatisticsViewController {
+        let choosenExerciseForStatisticViewModel = ChoosenExerciseStatisticsViewModel(exercise: exercise)
         let choosenExerciseForStatisticViewController = ChoosenExerciseStatisticsViewController(viewModel: choosenExerciseForStatisticViewModel)
         return choosenExerciseForStatisticViewController
     }

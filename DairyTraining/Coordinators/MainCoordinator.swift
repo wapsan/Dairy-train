@@ -121,10 +121,10 @@ final class MainCoordinator: Coordinator {
     private var rootNavigationController: UINavigationController?
     private var childCoordinators: [Coordinator] = []
 
-    private(set) lazy var profileNavigationController: UINavigationController = TabBarItemController.profile.navigationController
-    private(set) lazy var trainingBlockNavigationController: UINavigationController = TabBarItemController.trainingBlock.navigationController
-    private(set) lazy var nutritionBlockNavigationController: UINavigationController = TabBarItemController.supplyBlock.navigationController
-    private(set) lazy var homeNavigationViewController: UINavigationController = TabBarItemController.home.navigationController
+    private(set) lazy var profileNavigationController: UINavigationController = MainTabBarModel.Controller.profile.navigationController
+    private(set) lazy var trainingBlockNavigationController: UINavigationController = MainTabBarModel.Controller.trainingBlock.navigationController
+    private(set) lazy var nutritionBlockNavigationController: UINavigationController = MainTabBarModel.Controller.supplyBlock.navigationController
+    private(set) lazy var homeNavigationViewController: UINavigationController = MainTabBarModel.Controller .home.navigationController
     
 
     // MARK: - Coordinator API

@@ -19,7 +19,7 @@ final class AuthorizationRouter: Router {
 extension AuthorizationRouter: AuthorizationRouterProtocol {
     
     func setMainTabBarToRootViewController() {
-        let mainTabBar = MainTabBarViewController()
+        let mainTabBar = MainTabBarConfigurator.cinfigure()
         window?.rootViewController = mainTabBar
     }
 }

@@ -2,7 +2,7 @@ import UIKit
 
 final class MainNutritionConfigurator {
     
-    func configureMainNutritionModule() -> UINavigationController {
+    static func configureMainNutritionModule() -> UINavigationController {
         let nutritionModel = NutritionModel()
         let nutritionViewModel = NutritionViewModel(model: nutritionModel)
         let nutritionViewController = MainNutritionViewController(viewModel: nutritionViewModel)
@@ -11,8 +11,8 @@ final class MainNutritionConfigurator {
         nutritionViewModel.view = nutritionViewController
         nutritionViewModel.router = nutritionRouter
         let navigationController = UINavigationController(rootViewController: nutritionViewController)
-        navigationController.tabBarItem = DTTabBarItems.nutrition.item
-        nutritionViewController.navigationItem.title = DTTabBarItems.nutrition.title
+        navigationController.tabBarItem = MainTabBarModel.Item.nutrition.item
+        nutritionViewController.navigationItem.title = MainTabBarModel.Item.nutrition.title
         return navigationController
     }
 }

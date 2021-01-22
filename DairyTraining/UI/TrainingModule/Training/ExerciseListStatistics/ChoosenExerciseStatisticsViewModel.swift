@@ -70,11 +70,11 @@ final class ChoosenExerciseStatisticsViewModel  {
     }
     
     // MARK: - Initialization
-    init(exersiceName: String, currentExerciseDate: Date?) {
-        self.exercises = TrainingDataManager.shared.getAllExerciseForStatistics(with: exersiceName) as [ExerciseStatistics]
+    init(exercise: ExerciseManagedObject) {
+        self.exercises = TrainingDataManager.shared.getAllExerciseForStatistics(with: exercise.name) as [ExerciseStatistics]
         exercises.forEach({ print($0.exerciseDate) })
-        self.exerciseTitle = exersiceName
-        self.currentExerciseDate = currentExerciseDate
+        self.exerciseTitle = exercise.name
+        self.currentExerciseDate = exercise.date
     }
     
     // MARK: - Public methods

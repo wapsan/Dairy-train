@@ -26,6 +26,7 @@ final class TrainingPaternViewModel {
     
     //MARK: - Properties
     weak var view: TrainingPaternsView?
+    var router: TrainingPaternsRouterProtocol?
     
     //MARK: - Initialization
     init(model: TrainingPaterModelProtocol) {
@@ -65,7 +66,8 @@ extension TrainingPaternViewModel: TrainingPaternViewModelProtocol {
     }
     
     func closeButtonPressed() {
-        model.closeViewController()
+        router?.closeTrainingPaternsFlow()
+      // model.closeViewController()
     }
     
     var title: String {
@@ -78,7 +80,8 @@ extension TrainingPaternViewModel: TrainingPaternViewModelProtocol {
     
 
     func didSelectRow(at index: Int) {
-        model.pushTrainingPatern(at: index)
+        let choosenPatern = model.paterns[index]
+        router?.showTrainingPaternScreen(for: choosenPatern)
     }
 
     func createTrainingPatern(with name: String) {

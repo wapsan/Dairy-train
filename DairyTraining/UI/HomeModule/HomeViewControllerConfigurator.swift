@@ -10,7 +10,7 @@ struct HomeViewControllerConfigurator {
         homeViewModel.router = homeViewModelRouter
         
         let navigattionController = UINavigationController(rootViewController: homeViewController)
-        navigattionController.tabBarItem = DTTabBarItems.home.item
+        navigattionController.tabBarItem = MainTabBarModel.Item.home.item
         return navigattionController
     }
 }

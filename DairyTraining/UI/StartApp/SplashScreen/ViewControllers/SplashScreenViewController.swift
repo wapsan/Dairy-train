@@ -36,16 +36,7 @@ final class SplashScreenViewController: UIViewController {
     }
     
     private func presentInitialViewController() {
-        Thread.sleep(forTimeInterval: 0.4)
-       // DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
-            if let _ = SettingManager.shared.getUserToken() {
-                showMainFlow()
-               // MainCoordinator.shared.coordinate(to: TabBarCoordinator.Target.mainTabBar)
-            } else {
-                showAuthorizationFlow()
-                //MainCoordinator.shared.coordinate(to: AuthorizationCoordinator.Target.authorizationScreen)
-            }
-        //})
+        SettingManager.shared.isUserAuthorized ? showMainFlow() : showAuthorizationFlow()
     }
    
     //MARK: - Constraints
@@ -71,7 +62,7 @@ final class SplashScreenViewController: UIViewController {
     }
     
     private func showMainFlow() {
-        let mainTabBar = MainTabBarViewController()
+        let mainTabBar = MainTabBarConfigurator.cinfigure()
         (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController = mainTabBar
     }
     

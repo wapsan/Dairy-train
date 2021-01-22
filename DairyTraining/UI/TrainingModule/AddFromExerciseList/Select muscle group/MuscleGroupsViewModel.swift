@@ -3,6 +3,7 @@ import Foundation
 final class MuscleGroupsViewModel {
     
     var muscleGroups: [MuscleGroup.Group]
+    var router: MuscleGroupRouterProtocol?
     
     init(muscleGroups: [MuscleGroup.Group] = MuscleGroup().groups) {
         self.muscleGroups = muscleGroups
@@ -14,8 +15,10 @@ final class MuscleGroupsViewModel {
     
     func selectRow(at index: Int, with trainingEntityTarget: TrainingEntityTarget) {
         let selectedGroup = self.muscleGroups[index]
-        MainCoordinator.shared.coordinate(
-            to: MuscleGroupsCoordinator.Target.new(muscularGroup: selectedGroup,
-                                                   trainingEntityTarget: trainingEntityTarget))
+        router?.showExerciseListViewController(for: selectedGroup, and: trainingEntityTarget)
+    }
+    
+    func closeButtonPressed() {
+        router?.closeExerciseFlow()
     }
 }

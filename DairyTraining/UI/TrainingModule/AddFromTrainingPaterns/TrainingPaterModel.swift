@@ -5,8 +5,8 @@ protocol TrainingPaterModelProtocol {
     
     func createTrainingPatern(with name: String)
     func removeTrainingPater(at index: Int)
-    func pushTrainingPatern(at index: Int)
-    func closeViewController()
+  //  func pushTrainingPatern(at index: Int)
+  //  func closeViewController()
 }
 
 
@@ -33,18 +33,18 @@ final class TrainingPaterModel {
 // MARK: - TrainingPaterModelProtocol
 extension TrainingPaterModel: TrainingPaterModelProtocol {
 
-    func closeViewController() {
-        MainCoordinator.shared.dismiss()
-    }
+//    func closeViewController() {
+//        MainCoordinator.shared.dismiss()
+//    }
     
     var paterns: [TrainingPaternManagedObject] {
         return dataManager.trainingPaterns
     }
 
-    func pushTrainingPatern(at index: Int) {
-        let choosenPatern = dataManager.trainingPaterns[index]
-        MainCoordinator.shared.coordinate(to: TrainingPaternsCoordinator.Target.paternScreen(trainingPatern: choosenPatern))
-    }
+  //  func pushTrainingPatern(at index: Int) {
+   //     let choosenPatern = dataManager.trainingPaterns[index]
+       // MainCoordinator.shared.coordinate(to: TrainingPaternsCoordinator.Target.paternScreen(trainingPatern: choosenPatern))
+  //  }
 
     func createTrainingPatern(with name: String) {
         dataManager.addTrainingPatern(with: name)

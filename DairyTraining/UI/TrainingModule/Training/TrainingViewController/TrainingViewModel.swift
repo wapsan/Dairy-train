@@ -31,6 +31,7 @@ final class TrainingViewModel {
     private var exerciseDoneIndex: Int?
     private var _exerciceList: [ExerciseManagedObject] = []
     private var _trainingDate: String?
+    var router: WorkoutRouterProtocol?
     
     // MARK: - Initialization
     init(model: TrainingModelIteracting) {
@@ -99,11 +100,11 @@ extension TrainingViewModel: TrainingModelOutput {
 extension TrainingViewModel: TrainingViewModeProtocol {
     
     func backButtonPressed() {
-        model.popViewController()
+        router?.popViewController()
     }
     
     func statisticsButtonPressed() {
-        model.showStatisticForCurrentTraining()
+        router?.showCurrentWorkoutStatisticsScreen(for: model.currentWorkout)
     }
     
     var isTrainingEditable: Bool {
@@ -111,7 +112,7 @@ extension TrainingViewModel: TrainingViewModeProtocol {
     }
     
     func footerButtonPressed() {
-        model.coordinateToMuscularGroupsScreen()
+        router?.presentExerciseFlow()
     }
     
     func isExerciseEditable(at index: Int) -> Bool {
@@ -142,9 +143,8 @@ extension TrainingViewModel: TrainingViewModeProtocol {
     }
     
     func showStatisticsForExercise(at index: Int) {
-        let choosenExerciseName = _exerciceList[index].name
-        let choosenExerciseDate = _exerciceList[index].date
-        MainCoordinator.shared.coordinate(to: TrainingModuleCoordinator.Target.statisticsForChosenExercise(name: choosenExerciseName, exerciseDate: choosenExerciseDate))
+        let choosenExercise = _exerciceList[index]
+        router?.showExerciseHistoryStatisticsScreen(for: choosenExercise)
     }
     
     func aproachWillChanged(in exerciceIndex: Int, and aproachIndex: Int) {

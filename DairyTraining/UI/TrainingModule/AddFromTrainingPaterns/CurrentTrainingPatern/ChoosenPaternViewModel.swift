@@ -18,6 +18,7 @@ final class ChoosenPaternViewModel {
     //MARK: - Properties
     private let model: ChoosenPaternModelProtocol
     weak var view: ChoosenPaternView?
+    var router: ChoosenPaternRouterProtocol?
     
     //MARK: - Initialization
     init(model: ChoosenPaternModelProtocol) {
@@ -43,7 +44,7 @@ private extension ChoosenPaternViewModel {
 extension ChoosenPaternViewModel: ChoosenPaternViewModelProtocol {
     
     func backButtonPressed() {
-        model.popViewController()
+        router?.popViewController()
     }
 
     var patenrName: String {
@@ -67,8 +68,7 @@ extension ChoosenPaternViewModel: ChoosenPaternViewModelProtocol {
     }
     
     func addExerciseToCurrnetPatern() {
-        MainCoordinator.shared.coordinate(
-            to:MuscleGroupsCoordinator.Target.muscularGrops(patern: .trainingPatern(trainingPatern: model.patern)))
+        router?.showAddExerciseFlow(for: .trainingPatern(trainingPatern: model.patern))
     }
 }
 

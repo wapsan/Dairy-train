@@ -2,8 +2,6 @@ import Foundation
 
 protocol WorkoutStatisticsViewModelProtocol: TitledScreenProtocol {
     var statistics: Statistics { get }
-    
-    func backButtonPressed()
 }
 
 final class WorkoutStatisticsViewModel {
@@ -19,11 +17,7 @@ final class WorkoutStatisticsViewModel {
 
 // MARK: - WorkoutStatisticsViewModelProtocol
 extension WorkoutStatisticsViewModel: WorkoutStatisticsViewModelProtocol {
-    
-    func backButtonPressed() {
-        MainCoordinator.shared.popViewController()
-    }
-    
+
     var statistics: Statistics {
         return _statistics
     }

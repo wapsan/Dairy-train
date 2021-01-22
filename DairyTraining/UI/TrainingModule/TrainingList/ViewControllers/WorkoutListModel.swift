@@ -6,7 +6,6 @@ protocol WorkoutListModelProtocol {
     
     func loadWorkouts(for index: Int)
     func deleteWorkout(at index: Int)
-    func pushWorkoutScreen(for workout: TrainingManagedObject)
 }
 
 protocol WorkoutListModelOutput: AnyObject {
@@ -38,7 +37,6 @@ final class WorkoutListModel {
         
         var emptyErrorMessage: String {
             switch self {
-            
             case .today:
                 return "You have no training this day"
             case .week:
@@ -98,11 +96,7 @@ extension WorkoutListModel: WorkoutListModelProtocol {
         _workouts.remove(at: index)
         _workouts.isEmpty ? output?.workoutsUpdate() : output?.workoutWasDeleted(at: index)
     }
-    
-    func pushWorkoutScreen(for workout: TrainingManagedObject) {
-        MainCoordinator.shared.coordinate(to: TrainingModuleCoordinator.Target.choosenTraining(training: workout))
-    }
-    
+
     func loadWorkouts(for index: Int) {
         guard let timePeriod = WorkoutsForTimeRange.init(rawValue: index) else { return }
         _workouts = timePeriod.loadWorkouts()
