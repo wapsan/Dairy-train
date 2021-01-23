@@ -59,9 +59,7 @@ extension CreteTrainingModalViewController: UITableViewDataSource {
         let popUpMenuItem = CreatingTrainingModalModel.Option.allCases[indexPath.row]
         (cell as? PopUpOptionCell)?.setCell(title: popUpMenuItem.title, and: popUpMenuItem.image)
         (cell as? PopUpOptionCell)?.action = { [unowned self] in
-            self.dismiss(animated: true, completion: {
-                CreatingTrainingModalModel.Option.allCases[indexPath.row].onAction()
-            })
+            self.viewModel.didSelectRow(at: indexPath)
         }
         return cell
     }

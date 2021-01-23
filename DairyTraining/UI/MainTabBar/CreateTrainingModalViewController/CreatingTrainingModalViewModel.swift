@@ -9,9 +9,8 @@
 import Foundation
 
 protocol CreatingTrainingModalViewModelProtocol {
-    
+    func didSelectRow(at indexPath: IndexPath)
 }
-
 
 final class CreatingTrainingModalViewModel {
     
@@ -25,4 +24,8 @@ final class CreatingTrainingModalViewModel {
  
 extension CreatingTrainingModalViewModel: CreatingTrainingModalViewModelProtocol {
     
+    func didSelectRow(at indexPath: IndexPath) {
+        let selectedOption = CreatingTrainingModalModel.Option.allCases[indexPath.row]
+        router?.showScreen(for: selectedOption)
+    }
 }

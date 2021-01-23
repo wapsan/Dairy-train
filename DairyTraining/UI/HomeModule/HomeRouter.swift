@@ -17,34 +17,6 @@ final class HomeRouter: Router {
     }
     
     // MARK: - Private methods
-    func showCreateWorkoutFromExerciseScreen() {
-        let muscleGroupViewController = MuscleGroupsViewControllerConfigurator().configure(for: .training)
-        let navigationController = UINavigationController(rootViewController: muscleGroupViewController)
-        navigationController.modalPresentationStyle = .fullScreen
-        mainTabBar?.present(navigationController, animated: true, completion: nil)
-    }
-    
-    func showCreateWorkoutFromTrainingPaternScreen() {
-        let trainingPaternViewController = TrainingPaternsViewControllerConfigurator().configure()
-        let navigationController = UINavigationController(rootViewController: trainingPaternViewController)
-        navigationController.modalPresentationStyle = .fullScreen
-        mainTabBar?.present(navigationController, animated: true, completion: nil)
-    }
-    
-    func showCreateWorkoutFromCloudDataBaseScreen() {
-        let trainingLevelsScreen = TrainingProgramsLevelsConfigurator().configure()
-        let navigationController = UINavigationController(rootViewController: trainingLevelsScreen)
-        navigationController.modalPresentationStyle = .fullScreen
-        mainTabBar?.present(navigationController, animated: true, completion: nil)
-    }
-    
-    func showAddMealScreen() {
-        let searchFoodViewController = SearchFoodConfigurator().configure()
-        let navigationController = UINavigationController(rootViewController: searchFoodViewController)
-        navigationController.modalPresentationStyle = .fullScreen
-        mainTabBar?.present(navigationController, animated: true, completion: nil)
-    }
-    
     func showMonthlyStatisticsScreen() {
         //FIX ME: Later
     }
@@ -61,19 +33,20 @@ extension HomeRouter: HomeRouterProtocol {
     func showScreen(for menuItem: HomeModel.MenuItem) {
         switch menuItem {
         case .createTrainingFromExerciseList:
-            showCreateWorkoutFromExerciseScreen()
+            showExerciseFlow()
             
         case .createTrainingFromTrainingPatern:
-            showCreateWorkoutFromTrainingPaternScreen()
+            showPaternFlow()
             
         case .createTrainingFromSpecialTraining:
-            showCreateWorkoutFromCloudDataBaseScreen()
+            showReadyWorkoutsFlow()
             
         case .addMeal:
-            showAddMealScreen()
+            showSearchFoodFlow()
             
         case .mounthlyStatistics:
             showMonthlyStatisticsScreen()
+            
         }
     }
 }

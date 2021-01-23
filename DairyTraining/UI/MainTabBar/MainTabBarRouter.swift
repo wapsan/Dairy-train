@@ -19,10 +19,10 @@ final class MainTabBarRouter: NSObject, Router {
 extension MainTabBarRouter: MainTabBarRouterProtocol {
     
     func showCreateTrainingoptionsPopUpScreen() {
-        let a = CreatingTrainingModalConfigurator.configure(with: self)
-        a.modalPresentationStyle = .custom
-        a.transitioningDelegate = self
-        rootViewController.present(a, animated: true, completion: nil)
+        let optionModalViewController = CreatingTrainingModalConfigurator.configure()
+        optionModalViewController.modalPresentationStyle = .custom
+        optionModalViewController.transitioningDelegate = self
+        rootViewController.present(optionModalViewController, animated: true, completion: nil)
     }
 }
 
@@ -32,20 +32,4 @@ extension MainTabBarRouter: UIViewControllerTransitioningDelegate {
         CreatinTrainingPresentationViewController(presentedViewController: presented, presenting: presenting)
     }
     
-}
-
- 
-extension MainTabBarRouter: CreatingTrainingModalRouterDelegate {
-    
-    func showExerciseFlow() {
-        
-    }
-    
-    func showTrainingPaternFlow() {
-        
-    }
-    
-    func showReadyWorkoutFlow() {
-        
-    }
 }

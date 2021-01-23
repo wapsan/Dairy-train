@@ -1,11 +1,3 @@
-//
-//  CreatingTrainingModalModel.swift
-//  Dairy Training
-//
-//  Created by cogniteq on 22.01.2021.
-//  Copyright © 2021 Вячеслав. All rights reserved.
-//
-
 import UIKit
 
 protocol CreatingTrainingModalModelProtocol {
@@ -33,20 +25,11 @@ final class CreatingTrainingModalModel {
                 return UIImage(named: "avareProjectileWeightBackground")
             }
         }
-        
-        func onAction() {
-            switch self {
-            case .fromExerciseList:
-                MainCoordinator.shared.coordinate(to: MuscleGroupsCoordinator.Target.muscularGrops(patern: .training))
-            case .fromTrainingPatern:
-                MainCoordinator.shared.coordinate(to: TrainingPaternsCoordinator.Target.trainingPaternsList)
-            case .fromSpecialTraining:
-                MainCoordinator.shared.coordinate(to: TrainingProgramsCoordinator.Target.trainingLevels)
-            }
-        }
     }
 }
 
 extension CreatingTrainingModalModel: CreatingTrainingModalModelProtocol {
+  
+    
     
 }

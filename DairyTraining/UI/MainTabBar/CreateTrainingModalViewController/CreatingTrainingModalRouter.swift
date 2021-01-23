@@ -1,11 +1,5 @@
 import UIKit
 
-protocol CreatingTrainingModalRouterDelegate: AnyObject {
-    func showExerciseFlow()
-    func showTrainingPaternFlow()
-    func showReadyWorkoutFlow()
-}
-
 protocol CreatingTrainingModelRouterProtocol {
     func showScreen(for creatingWotkoutOption: CreatingTrainingModalModel.Option)
 }
@@ -13,7 +7,6 @@ protocol CreatingTrainingModelRouterProtocol {
 final class CreatingTrainingModelRouter: Router {
     
     private let rootViewController: UIViewController
-    weak var delegate: CreatingTrainingModalRouterDelegate?
     
     init(_ viewController: UIViewController) {
         self.rootViewController = viewController
@@ -23,13 +16,18 @@ final class CreatingTrainingModelRouter: Router {
 extension CreatingTrainingModelRouter: CreatingTrainingModelRouterProtocol {
     
     func showScreen(for creatingWotkoutOption: CreatingTrainingModalModel.Option) {
-        switch creatingWotkoutOption {
-        case .fromExerciseList:
-            delegate?.showExerciseFlow()
-        case .fromTrainingPatern:
-            delegate?.showTrainingPaternFlow()
-        case .fromSpecialTraining:
-            delegate?.showReadyWorkoutFlow()
-        }
+        rootViewController.dismiss(animated: true, completion: { [weak self] in
+            switch creatingWotkoutOption {
+            case .fromExerciseList:
+                self?.showExerciseFlow()
+                
+            case .fromTrainingPatern:
+                self?.showPaternFlow()
+                
+            case .fromSpecialTraining:
+                self?.showReadyWorkoutsFlow()
+            }
+        })
+       
     }
 }
