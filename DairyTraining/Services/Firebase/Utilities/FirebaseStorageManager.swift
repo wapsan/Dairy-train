@@ -48,7 +48,7 @@ final class FirebaseStorageMnager {
         return workoutsPath + "en"//(Locale.current.languageCode ?? "en")
     }
     
-    func getListOfTraining(for levelOfTraining: LevelOfTrainingModel,
+    func getListOfTraining(for levelOfTraining: TrainingLevelsModel.Level,
                            completion: @escaping (Result<[SpecialWorkout], Error>) -> Void) {
         var info: [SpecialWorkout] = []
         

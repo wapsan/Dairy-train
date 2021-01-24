@@ -12,11 +12,16 @@ protocol Router {
     func showPaternFlow()
     func showSearchFoodFlow()
     func showReadyWorkoutsFlow()
+    
+    func showSystemAlert(title: String,
+                         message: String?,
+                         alertType: UIAlertController.Style,
+                         completion: (() -> Void)?)
 }
 
 
 extension Router {
-
+    
     var topViewController: UIViewController? {
         let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         guard var topController = keyWindow?.rootViewController else {
@@ -62,5 +67,38 @@ extension Router {
         let navigationController = UINavigationController(rootViewController: trainingLevelsScreen)
         navigationController.modalPresentationStyle = .fullScreen
         mainTabBar?.present(navigationController, animated: true, completion: nil)
+    }
+    
+    func showSystemAlert(title: String,
+                         message: String?,
+                         alertType: UIAlertController.Style,
+                         completion: (() -> Void)? = nil) {
+        guard let completion = completion else {
+            showInfoAlert(title: title, message: message, alertType: alertType)
+            return
+        }
+        showAlertWithCompletion(title: title,
+                                message: message,
+                                alertType: alertType,
+                                completion: completion)
+    }
+    
+    private func showInfoAlert(title: String, message: String?, alertType: UIAlertController.Style) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: alertType)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        topViewController?.present(alert, animated: true, completion: nil)
+    }
+    
+    private func showAlertWithCompletion(title: String,
+                                         message: String?,
+                                         alertType: UIAlertController.Style,
+                                         completion: @escaping (() -> Void)) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: alertType)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+            completion()
+        })
+        alert.addAction(okAction)
+        topViewController?.present(alert, animated: true, completion: nil)
     }
 }

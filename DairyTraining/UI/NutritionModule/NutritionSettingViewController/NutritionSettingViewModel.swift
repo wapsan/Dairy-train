@@ -29,6 +29,7 @@ final class NutritionSettingViewModel {
     
     weak var view: NutritionSettingView?
     private var model: NutritionettingModelProtocol
+    var router: NutritionSettingRouterProtocol?
     private var _selectedModeIndex: Int = 0
     
     init(model: NutritionettingModelProtocol) {
@@ -58,7 +59,7 @@ extension NutritionSettingViewModel: NutritionSettingViewModelProtocol {
     
     func saveButtonPressed() {
         model.saveNewNutritionMode()
-        MainCoordinator.shared.popViewController()
+        router?.popViewController()
     }
     
     func viewDidLoad() {

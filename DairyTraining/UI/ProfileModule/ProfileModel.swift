@@ -1,18 +1,14 @@
 import Foundation
 import Firebase
 
-protocol ProfileModelIteracting: AnyObject {
+protocol ProfileModelProtocol: AnyObject {
     func writeNewValue(to value: String, and type: ProfileInfoCellType)
-    func signOut()
-    var isMainInfoSet: Bool { get }
 }
 
 protocol ProfileModelOutput: AnyObject {
     func valueWasUpdatedForCell(at index: Int)
     func heightModeWasChanged(for cellAtIndex: Int)
     func weightModeWasChanged(for cellAtIndex: Int)
-    func succesSignedOut()
-    func errorSignedOut(error: Error)
     func trainingCountWasChanfed(to count: Int)
     func mainInfoWasUpdated()
 }
@@ -75,27 +71,7 @@ final class ProfileModel {
 }
 
 //MARK: - ProfileModelIteracting
-extension ProfileModel: ProfileModelIteracting {
-    
-    func signOut() {
-        do {
-            try Auth.auth().signOut()
-            SettingManager.shared.deleteUserToken()
-            UserDataManager.shared.removeAllUserData { [weak self] in
-                guard let self = self else { return }
-                self.output?.succesSignedOut()
-            }
-        } catch let signOutError {
-            self.output?.errorSignedOut(error: signOutError)
-        }
-    }
-    
-    var isMainInfoSet: Bool {
-        guard let userMainInfo = UserDataManager.shared.readUserMainInfo() else {
-            return false
-        }
-        return userMainInfo.isSet
-    }
+extension ProfileModel: ProfileModelProtocol {
     
     func writeNewValue(to value: String, and type: ProfileInfoCellType) {
         switch type {

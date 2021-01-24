@@ -16,6 +16,7 @@ final class TrainingProgramsViewModel {
     // MARK: - Module Properties
     weak var view: TrainingProgramsViewProtocol?
     private let model: TrainingProgramsModelProtocol
+    var router: TrainingProgramsRouterProtocol?
     
     // MARK: - Properties
     private var _trainings: [SpecialWorkout] = []
@@ -30,7 +31,8 @@ final class TrainingProgramsViewModel {
 extension TrainingProgramsViewModel: TrainingProgramsViewModelProtocol {
     
     func didSelectRow(at index: Int) {
-        model.pushSpecialWorkoutViewController(for: _trainings[index])
+        let selectedWorkout = _trainings[index]
+        router?.showWorkoutScreen(for: selectedWorkout)
     }
 
     func getTraining(for index: Int) -> SpecialWorkout {
@@ -38,7 +40,8 @@ extension TrainingProgramsViewModel: TrainingProgramsViewModelProtocol {
     }
     
     func backButtonPressed() {
-        model.popViewController()
+        router?.popViewController()
+       // model.popViewController()
     }
     
     var levelDescription: String {

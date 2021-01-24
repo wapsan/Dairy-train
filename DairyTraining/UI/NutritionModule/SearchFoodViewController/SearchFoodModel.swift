@@ -10,6 +10,8 @@ final class SearchFoodModel {
     
     // MARK: - Module Properties
     weak var output: SearchFoodViewModellInput?
+    
+    
     private let foodSearchService = USDAManager()
     private var requestPageNumber = 1
 }

@@ -1,11 +1,9 @@
 import Foundation
 
 protocol TrainingProgramsModelProtocol {
-    var levelOfTraining: LevelOfTrainingModel { get }
+    var levelOfTraining: TrainingLevelsModel.Level { get }
     
     func loadData()
-    func popViewController()
-    func pushSpecialWorkoutViewController(for specialWorkout: SpecialWorkout)
 }
 
 protocol TrainingProgramsModelOutput: AnyObject {
@@ -18,12 +16,12 @@ final class TrainingProgramsModel {
     weak var output: TrainingProgramsModelOutput?
     
     // MARK: - Private properties
-    private var _levelOfTraining: LevelOfTrainingModel
+    private var _levelOfTraining: TrainingLevelsModel.Level
     
     private var dataBaseService = FirebaseStorageMnager()
     
     // MARK: - Initialization
-    init(trainingLevel: LevelOfTrainingModel) {
+    init(trainingLevel: TrainingLevelsModel.Level) {
         self._levelOfTraining = trainingLevel
     }
 }
@@ -31,15 +29,7 @@ final class TrainingProgramsModel {
 // MARK: - TrainingProgramsModelProtocol
 extension TrainingProgramsModel: TrainingProgramsModelProtocol {
     
-    func pushSpecialWorkoutViewController(for specialWorkout: SpecialWorkout) {
-        MainCoordinator.shared.coordinate(to: TrainingProgramsCoordinator.Target.workout(workout: specialWorkout))
-    }
-    
-    func popViewController() {
-        MainCoordinator.shared.popViewController()
-    }
-    
-    var levelOfTraining: LevelOfTrainingModel {
+    var levelOfTraining: TrainingLevelsModel.Level {
         return _levelOfTraining
     }
     

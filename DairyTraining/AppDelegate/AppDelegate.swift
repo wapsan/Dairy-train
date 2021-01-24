@@ -35,7 +35,6 @@ private extension AppDelegate {
     func setRootViewController() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.makeKeyAndVisible()
-        MainCoordinator.shared.window = self.window
         let splashScreenViewController = SplashScreenViewController()
         window?.rootViewController = splashScreenViewController
     }

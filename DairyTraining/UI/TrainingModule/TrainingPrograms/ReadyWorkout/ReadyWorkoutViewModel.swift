@@ -19,6 +19,7 @@ final class ReadyWorkoutViewModel {
     // MARK: - Module properties
     weak var view: ReadyWorkoutViewProtocol?
     var model: ReadyWorkoutModelProtocol
+    var router: ReadyWotkoutRouterProtocol?
     
     // MARK: - Initialization
     init(model: ReadyWorkoutModelProtocol) {
@@ -30,11 +31,11 @@ final class ReadyWorkoutViewModel {
 extension ReadyWorkoutViewModel: ReadyWorkoutViewModelProtocol {
     
     func alertCompletion() {
-        model.dismisNavigationController()
+        router?.hideReadyTrainingFlow()
     }
     
     func backButtonPressed() {
-        model.popViewController()
+        router?.popViewController()
     }
     
     func createTrainingButtonPressed() {

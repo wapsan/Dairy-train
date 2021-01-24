@@ -47,7 +47,7 @@ extension TrainingViewModel: TrainingModelOutput {
     }
     
     func trainingIsEmpty() {
-        MainCoordinator.shared.popViewController()
+        router?.popViewController()
     }
     
     func trainingWasChange() {

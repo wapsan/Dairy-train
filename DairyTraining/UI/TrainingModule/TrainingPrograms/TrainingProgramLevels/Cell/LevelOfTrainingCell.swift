@@ -18,7 +18,7 @@ final class LevelOfTrainingCell: UITableViewCell {
     }
     
     // MARK: - Setter
-    func setCell(for trainingLevel: LevelOfTrainingModel) {
+    func setCell(for trainingLevel: TrainingLevelsModel.Level) {
         titleLabel.text = trainingLevel.title
     }
 }

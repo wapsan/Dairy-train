@@ -18,6 +18,7 @@ final class SearchFoodViewModel {
     
     // MARK: - Module properties
     weak var view: SearchFoodView?
+    var router: SearchFoodRouterProtocol?
     
     // MARK: - Private Properties
     private var model: SearchFoodModelProtocol
@@ -38,7 +39,7 @@ extension SearchFoodViewModel: SearchFoodViewModelProtocol {
     }
     
     func cancelButtonPressed() {
-        //MainCoordinator.shared.dismiss()
+        router?.hideSearchFoodFlow()
     }
     
     func activatePaginationRequest() {

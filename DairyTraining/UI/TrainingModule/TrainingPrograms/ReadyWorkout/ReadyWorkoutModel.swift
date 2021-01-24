@@ -5,10 +5,8 @@ protocol ReadyWorkoutModelProtocol {
     var workout: SpecialWorkout { get }
     
     func loadExercise()
-    func popViewController()
     func createTraining()
     func createPatern()
-    func dismisNavigationController()
 }
 
 protocol ReadyWorkoutModelOutput: AnyObject {
@@ -35,14 +33,6 @@ final class ReadyWorkoutModel {
 
 // MARK: - ReadyWorkoutModelProtocol
 extension ReadyWorkoutModel: ReadyWorkoutModelProtocol {
-    
-    func dismisNavigationController() {
-        MainCoordinator.shared.dismiss()
-    }
-    
-    func popViewController() {
-        MainCoordinator.shared.popViewController()
-    }
     
     func createTraining() {
         if TrainingDataManager.shared.addExercisesToTrain(_exercises) {

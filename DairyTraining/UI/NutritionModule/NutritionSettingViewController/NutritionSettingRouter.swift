@@ -1,7 +1,7 @@
 import UIKit
 
 protocol NutritionSettingRouterProtocol {
-    
+    func popViewController()
 }
 
 final class NutritionSettingRouter: Router {
@@ -15,4 +15,7 @@ final class NutritionSettingRouter: Router {
 
 extension NutritionSettingRouter: NutritionSettingRouterProtocol {
     
+    func popViewController() {
+        rootViewController.navigationController?.popViewController(animated: true)
+    }
 }

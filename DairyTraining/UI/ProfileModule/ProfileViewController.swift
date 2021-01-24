@@ -1,5 +1,19 @@
 import UIKit
 
+protocol ProfileViewModelPresenter: AnyObject {
+    func updatValueInCell(at index: Int)
+    func showValueAlert(for selectedIndex: Int, and value: String?)
+    func hideValueAlert()
+    func showSelectionlistAlert(for selectedIndex: Int, and value: String?)
+    func hideSelectionListAlert()
+    func updateHeightMode(for cellAtIndex: Int)
+    func updateWeightMode(for cellAtIndex: Int)
+    
+    
+    func trainingCountWasChanged(to count: Int)
+    func reloadData()
+}
+
 final class ProfileViewController: DTBackgroundedViewController {
  
     //MARK: - Private properties
@@ -15,8 +29,7 @@ final class ProfileViewController: DTBackgroundedViewController {
     }
     
     //MARK: - properties
-    var viewModel: ProfileViewModel?
-    var router: ProfileRouter?
+    private let viewModel: ProfileViewModelProtocol
     
     //MARK: - GUI Properties
     private var collactionLayout: UICollectionViewFlowLayout = {
@@ -52,6 +65,16 @@ final class ProfileViewController: DTBackgroundedViewController {
         self.selectionListAlert.delegate = self.viewModel
         self.view.backgroundColor = DTColors.backgroundColor
     }
+    
+    //MARK: - Initialization
+    init(viewModel: ProfileViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 //MARK: - Private extension
@@ -75,7 +98,7 @@ private extension ProfileViewController {
 extension ProfileViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.viewModel?.selectRow(at: indexPath.row)
+        self.viewModel.selectRow(at: indexPath.row)
     }
 }
 
@@ -145,38 +168,14 @@ extension ProfileViewController: ProfileViewModelPresenter {
         okTitle: LocalizedString.ok)
     }
     
-    func showSignOutAlert() {
-        self.showDefaultAlert(
-            title: LocalizedString.signOutAlert,
-            message: LocalizedString.signOutAlerMessage,
-            preffedStyle: .actionSheet,
-            okTitle: LocalizedString.ok,
-            cancelTitle: LocalizedString.cancel,
-            completion: { [weak self] in
-                guard let self = self else { return }
-                self.viewModel?.signOut()
-        })
-    }
-    
+
     func showErrorSignOutAlert(with error: Error) {
          self.showDefaultAlert(title: LocalizedString.alertError,
                                      message: error.localizedDescription,
                                      preffedStyle: .alert,
                                      okTitle: LocalizedString.ok)
     }
-    
-    func showMenu() {
-        self.router?.showMenuController()
-    }
-    
-    func presentLoginViewController() {
-        self.router?.presentLoginViewController()
-    }
 
-    func pushViewControllerFromMenu(_ viewController: UIViewController) {
-        self.router?.pushViewControllerFromMenu(viewController)
-    }
-    
     func updateHeightMode(for cellAtIndex: Int) {
         let indexPath = IndexPath(row: cellAtIndex, section: 0)
         if let cell = self.collectionView.cellForItem(at: indexPath) as? DTMainInfoCell {

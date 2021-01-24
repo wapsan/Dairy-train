@@ -1,52 +1,22 @@
 import UIKit
 
-protocol ProfileViewModelInput: AnyObject {
+protocol ProfileViewModelProtocol: DTSelectionListAlertDelegate, DTValueAletDelegate {
     func selectRow(at index: Int)
-    func signOut()
-    func showMenu()
-    var isMainInfoSet: Bool { get }
-}
-
-protocol ProfileViewModelPresenter: AnyObject {
-    func updatValueInCell(at index: Int)
-    func showValueAlert(for selectedIndex: Int, and value: String?)
-    func hideValueAlert()
-    func showSelectionlistAlert(for selectedIndex: Int, and value: String?)
-    func hideSelectionListAlert()
-    func updateHeightMode(for cellAtIndex: Int)
-    func updateWeightMode(for cellAtIndex: Int)
-    
-    func showRecomendationAlert()
-    func showMenu()
-    func showSignOutAlert()
-    func presentLoginViewController()
-    func showErrorSignOutAlert(with error: Error)
-    func pushViewControllerFromMenu(_ viewController: UIViewController)
-    func trainingCountWasChanged(to count: Int)
-    func reloadData()
 }
 
 final class ProfileViewModel {
     weak var view: ProfileViewModelPresenter?
-    var model: ProfileModelIteracting?
+    var model: ProfileModelProtocol
+    var router: ProfileRouterProtocol?
+    
+    init(model: ProfileModelProtocol) {
+        self.model = model
+    }
 }
 
 //MARK: - ProfileViewModelInput
-extension ProfileViewModel: ProfileViewModelInput {
-    
-    func signOut() {
-        self.model?.signOut()
-    }
-    
-    func showMenu() {
-        self.view?.showMenu()
-    }
-    
-    var isMainInfoSet: Bool {
-        guard let model = self.model else { return false }
-        return model.isMainInfoSet
-    }
-    
+extension ProfileViewModel: ProfileViewModelProtocol {
+
     func selectRow(at index: Int) {
         let cellType = ProfileInfoCellType.init(rawValue: index)
         switch cellType {
@@ -58,15 +28,22 @@ extension ProfileViewModel: ProfileViewModelInput {
             break
         }
     }
-}
-
-//MARK: - DTValueAletDelegate
-extension ProfileViewModel: DTValueAletDelegate {
+    
+    func selectionListAlertOkPressed(selectionListAlert: DTSelectionListAlert, with newValue: String?, for selectedIndex: Int) {
+        guard let newValue = newValue,
+            let cellType = ProfileInfoCellType.init(rawValue: selectedIndex) else { return }
+        self.model.writeNewValue(to: newValue, and: cellType)
+        self.view?.hideSelectionListAlert()
+    }
+        
+    func selectionListAlertCancelPressed(selectionListAlert: DTSelectionListAlert) {
+        self.view?.hideSelectionListAlert()
+    }
     
     func valueAlertOkPressed(valueAlert: DTValueAlert, with newValue: String?, and selectedIndex: Int) {
         guard let newValue = newValue else { return }
         guard let cellType = ProfileInfoCellType.init(rawValue: selectedIndex) else { return }
-        self.model?.writeNewValue(to: newValue, and: cellType)
+        self.model.writeNewValue(to: newValue, and: cellType)
         self.view?.hideValueAlert()
     }
     
@@ -75,38 +52,16 @@ extension ProfileViewModel: DTValueAletDelegate {
     }
 }
 
-//MARK: - DTSelectionListAlertDelegate
-extension ProfileViewModel: DTSelectionListAlertDelegate {
-    
-    func selectionListAlertOkPressed(selectionListAlert: DTSelectionListAlert, with newValue: String?, for selectedIndex: Int) {
-        guard let newValue = newValue,
-            let cellType = ProfileInfoCellType.init(rawValue: selectedIndex) else { return }
-        self.model?.writeNewValue(to: newValue, and: cellType)
-        self.view?.hideSelectionListAlert()
-    }
-        
-    func selectionListAlertCancelPressed(selectionListAlert: DTSelectionListAlert) {
-        self.view?.hideSelectionListAlert()
-    }
-}
 
 //MARK: - TestPMOutput
 extension ProfileViewModel: ProfileModelOutput {
-    
+
     func mainInfoWasUpdated() {
         view?.reloadData()
     }
     
     func trainingCountWasChanfed(to count: Int) {
         view?.trainingCountWasChanged(to: count)
-    }
-
-    func succesSignedOut() {
-        self.view?.presentLoginViewController()
-    }
-    
-    func errorSignedOut(error: Error) {
-        self.view?.showErrorSignOutAlert(with: error)
     }
     
     func heightModeWasChanged(for cellAtIndex: Int) {

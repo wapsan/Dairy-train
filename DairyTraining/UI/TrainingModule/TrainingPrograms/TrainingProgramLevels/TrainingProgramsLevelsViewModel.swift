@@ -1,15 +1,16 @@
 import Foundation
 
 protocol TrainingProgramsLevelsViewModelProtocol {
-    var levelsOfTrainings: [LevelOfTrainingModel] { get }
+    var levelsOfTrainings: [TrainingLevelsModel.Level] { get }
     
-    func levelOfTraining(for index: Int) -> LevelOfTrainingModel
+    func levelOfTraining(for index: Int) -> TrainingLevelsModel.Level
     func didSelectRow(at index: Int)
     func backButtonPressed()
 }
 
 final class TrainingProgramsLevelsViewModel {
 
+    var router: TrainingLevelsRouterProtocol?
     weak var view: TrainingProgramsLevelsViewProtocol?
     private var model: TrainingProgramsLevelsModelProtocl
     private var _data: [SpecialWorkout] = []
@@ -25,19 +26,20 @@ final class TrainingProgramsLevelsViewModel {
 extension TrainingProgramsLevelsViewModel: TrainingProgramsLevelsViewModelProtocol {
     
     func didSelectRow(at index: Int) {
-        model.pushTrainingPrograms(for: LevelOfTrainingModel.allCases[index])
-    }
-    
-    func levelOfTraining(for index: Int) -> LevelOfTrainingModel {
-        return LevelOfTrainingModel.allCases[index]
-    }
-    
-    var levelsOfTrainings: [LevelOfTrainingModel] {
-        return LevelOfTrainingModel.allCases
+        let selectedLevel = levelsOfTrainings[index]
+        router?.showWorkoutsScreen(for: selectedLevel)
     }
     
     func backButtonPressed() {
-        model.dismissViewController()
+        router?.hideReadyWorkoutsFlow()
+    }
+    
+    func levelOfTraining(for index: Int) -> TrainingLevelsModel.Level {
+        return TrainingLevelsModel.Level.allCases[index]
+    }
+    
+    var levelsOfTrainings: [TrainingLevelsModel.Level] {
+        return TrainingLevelsModel.Level.allCases
     }
 }
 
