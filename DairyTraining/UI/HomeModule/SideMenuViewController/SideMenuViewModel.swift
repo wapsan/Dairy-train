@@ -14,12 +14,21 @@ final class SideMenuViewModel {
     //MARK: - Initialization
     init(model: SideMenuModel) {
         self.model = model
-        model.succesLogOut = { [weak self] in
-            self?.router?.showAuhorizationScreen()
-        }
-        model.errorLogOut = {
-            print($0)
-        }
+    }
+    
+    //MARK: - Private methods
+    private func showSignOutAlert() {
+        router?.showSignOutAlert(with: { [weak self] in
+            self?.model.signOut()
+        })
+    }
+    
+    private func showSettingScreen() {
+        router?.showSettingScreen()
+    }
+    
+    private func showTermsAndConditionScreen() {
+        router?.showTermsAndConditionsScreen()
     }
 }
 
@@ -32,14 +41,26 @@ extension SideMenuViewModel: SideMenuViewModelProtocol {
     
     func menuItemSelected(at index: Int) {
         let menuItem = sideMenuItems[index]
-        router?.showScreen(for: menuItem)
+        switch menuItem {
+        case .premium:
+            break
+        case .setting:
+            showSettingScreen()
+        case .termAndConditions:
+            showTermsAndConditionScreen()
+        case .logOut:
+            showSignOutAlert()
+        }
     }
 }
- 
-// MARK: - SideMenuRouterOutput
-extension SideMenuViewModel: SideMenuRouterOutput {
+
+extension SideMenuViewModel: SideMenuModelOutput {
     
-    func signOut() {
-        model.signOut()
+    func successLogOut() {
+        router?.showAuhorizationScreen()
+    }
+    
+    func errorLogout(with errorMessage: String) {
+        router?.showInfoAlert(with: errorMessage)
     }
 }

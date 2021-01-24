@@ -23,7 +23,6 @@ extension MainNutritionRouter: MainNutritionRouterProtocol {
     }
 
     func showSearchFoodScreen() {
-        let searchFoodScreen = SearchFoodConfigurator().configure()
-        rootViewController.navigationController?.pushViewController(searchFoodScreen, animated: true)
+        showSearchFoodFlow()
     }
 }

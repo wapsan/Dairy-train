@@ -5,6 +5,8 @@ protocol WorkoutRouterProtocol  {
     func showExerciseHistoryStatisticsScreen(for exercise: ExerciseManagedObject)
     func popViewController()
     func presentExerciseFlow()
+    
+    func showAlert(title: String?, message: String?, completion: @escaping () -> Void)
 }
 
 final class WorkoutRouter: Router {
@@ -20,6 +22,10 @@ final class WorkoutRouter: Router {
 
 // MARK: - WorkoutRouterProtocol
 extension WorkoutRouter: WorkoutRouterProtocol {
+    
+    func showAlert(title: String?, message: String?, completion: @escaping () -> Void) {
+        showAlertWithCompletion(title: title, message: message, alertType: .alert, completion: completion)
+    }
     
     func presentExerciseFlow() {
         let muscleGroupViewController = MuscleGroupsViewControllerConfigurator().configure(for: .training)

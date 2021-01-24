@@ -1,11 +1,10 @@
 import Foundation
 
-protocol TrainingModelIteracting: AnyObject {
+protocol WorkoutModelProtocol: AnyObject {
     var isTrainingEditable: Bool { get }
     var currentWorkout: TrainingManagedObject { get }
     
     func loadTraininig()
-    func getNameForExercice(at index: Int)
     func deleteExercice(at index: Int)
     func addAproach(with weight: Float, and reps: Int, to exerciseAtIndex: Int)
     func removeLatsAproach(at exerciseIndex: Int)
@@ -17,11 +16,10 @@ protocol TrainingModelIteracting: AnyObject {
     
     
 
-protocol TrainingModelOutput: AnyObject {
+protocol WorkoutModelOutput: AnyObject {
     
     func setExerciceList(for training: [ExerciseManagedObject])
     func setTrainingDate(for training: TrainingManagedObject)
-    func setDeletetingTrainingName(to name: String, at index: Int)
     func exerciceWasDeleted(at index: Int)
     func aproachWasDeleted(from exerciseList: [ExerciseManagedObject], atExrcise index: Int)
     func aproachWasAded(to exerciseList: [ExerciseManagedObject], at index: Int)
@@ -36,10 +34,10 @@ protocol TrainingModelOutput: AnyObject {
     func exerciseWasMarkedDone(at index: Int)
 }
 
-final class TrainingModel {
+final class WorkoutModel {
     
     private var training: TrainingManagedObject
-    weak var output: TrainingModelOutput?
+    weak var output: WorkoutModelOutput?
     var exerciceList: [ExerciseManagedObject] = []
     
     init(with train: TrainingManagedObject) {
@@ -64,7 +62,7 @@ final class TrainingModel {
 }
 
 //MARK: - TrainingModelIteracting
-extension TrainingModel: TrainingModelIteracting {
+extension WorkoutModel: WorkoutModelProtocol {
     
     var currentWorkout: TrainingManagedObject {
         return training
@@ -115,11 +113,6 @@ extension TrainingModel: TrainingModelIteracting {
     func getAproachInfo(in exerciseIndex: Int, and aproachIndex: Int) {
         let aproach = self.exerciceList[exerciseIndex].aproachesArray[aproachIndex]
         self.output?.aproachWillChange(in: exerciseIndex, with: aproach.weight, and: Int(aproach.reps), at: aproachIndex)
-    }
-    
-    func getNameForExercice(at index: Int) {
-        let exercice = self.training.exercicesArray[index]
-        self.output?.setDeletetingTrainingName(to: exercice.name, at: index)
     }
     
     func loadTraininig() {

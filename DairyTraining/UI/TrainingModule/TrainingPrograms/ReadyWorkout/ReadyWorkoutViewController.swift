@@ -4,7 +4,6 @@ protocol ReadyWorkoutViewProtocol: AnyObject {
     func reloadData()
     func showLoader()
     func hideLoader()
-    func showAlert(with message: String)
 }
 
 final class ReadyWorkoutViewController: UIViewController {
@@ -71,15 +70,6 @@ final class ReadyWorkoutViewController: UIViewController {
 // MARK: - ReadyWorkoutViewpProtocol
 extension ReadyWorkoutViewController: ReadyWorkoutViewProtocol {
     
-    func showAlert(with message: String) {
-        showDefaultAlert(title: nil,
-                         message: message,
-                         preffedStyle: .alert,
-                         okTitle: LocalizedString.ok,
-                         cancelTitle: nil,
-                         completion: { [unowned self] in self.viewModel.alertCompletion() })
-    }
-
     func reloadData() {
         tableView.reloadData()
     }

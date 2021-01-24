@@ -9,9 +9,9 @@ final class SideMenuConfigurator {
         let sideMenu = SideMenuViewController(viewModel: sideMenuViewModel)
         let menu = SideMenuNavigationController(rootViewController: sideMenu)
         let sideMenuRouter = SideMenuRouter(menu)
-        sideMenuRouter.output = sideMenuViewModel
         sideMenuRouter.delegate = delegate
         sideMenuViewModel.router = sideMenuRouter
+        sideMenuModel.output = sideMenuViewModel
         menu.leftSide = false
         menu.menuWidth = UIScreen.main.bounds.width * 0.7
         menu.statusBarEndAlpha = 0.0

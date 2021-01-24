@@ -13,10 +13,15 @@ protocol Router {
     func showSearchFoodFlow()
     func showReadyWorkoutsFlow()
     
-    func showSystemAlert(title: String,
-                         message: String?,
-                         alertType: UIAlertController.Style,
-                         completion: (() -> Void)?)
+    func showInfoAlert(title: String?,
+                               message: String?,
+                               alertType: UIAlertController.Style,
+                               completion: (() -> Void)?)
+    
+    func showAlertWithCompletion(title: String?,
+                                         message: String?,
+                                         alertType: UIAlertController.Style,
+                                         completion: @escaping (() -> Void))
 }
 
 
@@ -69,28 +74,19 @@ extension Router {
         mainTabBar?.present(navigationController, animated: true, completion: nil)
     }
     
-    func showSystemAlert(title: String,
-                         message: String?,
-                         alertType: UIAlertController.Style,
-                         completion: (() -> Void)? = nil) {
-        guard let completion = completion else {
-            showInfoAlert(title: title, message: message, alertType: alertType)
-            return
-        }
-        showAlertWithCompletion(title: title,
-                                message: message,
-                                alertType: alertType,
-                                completion: completion)
-    }
-    
-    private func showInfoAlert(title: String, message: String?, alertType: UIAlertController.Style) {
+    func showInfoAlert(title: String?,
+                               message: String?,
+                               alertType: UIAlertController.Style,
+                               completion: (() -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: alertType)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+            completion?()
+        })
         alert.addAction(okAction)
         topViewController?.present(alert, animated: true, completion: nil)
     }
     
-    private func showAlertWithCompletion(title: String,
+    func showAlertWithCompletion(title: String?,
                                          message: String?,
                                          alertType: UIAlertController.Style,
                                          completion: @escaping (() -> Void)) {
@@ -98,7 +94,9 @@ extension Router {
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
             completion()
         })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(okAction)
+        alert.addAction(cancelAction)
         topViewController?.present(alert, animated: true, completion: nil)
     }
 }

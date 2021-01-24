@@ -1,6 +1,6 @@
 import Foundation
 
-protocol TrainingViewModeProtocol {
+protocol WorkoutViewModeProtocol {
     var trainingDate: String? { get }
     var exerciseCount: Int { get }
     var exerciseList: [ExerciseManagedObject] { get }
@@ -9,7 +9,6 @@ protocol TrainingViewModeProtocol {
     func loadTrain()
     func tryDeleteExercice(at index: Int)
     func showStatisticsForExercise(at index: Int)
-    func deleteExercice(at index: Int)
     func removeLatsAproach(at exericeIndex: Int)
     func aproachWillChanged(in exerciceIndex: Int, and aproachIndex: Int)
     func exerciseDone(at index: Int)
@@ -21,11 +20,11 @@ protocol TrainingViewModeProtocol {
     func backButtonPressed() 
 }
 
-final class TrainingViewModel {
+final class WorkoutViewModel {
     
     // MARK: - Module Properties
-    private var model: TrainingModelIteracting
-    weak var view: TrainingView?
+    private var model: WorkoutModelProtocol
+    weak var view: WorkoutViewProtocol?
     
     // MARK: - Properties
     private var exerciseDoneIndex: Int?
@@ -34,13 +33,13 @@ final class TrainingViewModel {
     var router: WorkoutRouterProtocol?
     
     // MARK: - Initialization
-    init(model: TrainingModelIteracting) {
+    init(model: WorkoutModelProtocol) {
         self.model = model
     }
 }
 
 //MARK: - TrainingModelOutput
-extension TrainingViewModel: TrainingModelOutput {
+extension WorkoutViewModel: WorkoutModelOutput {
     
     func exerciseWasMarkedDone(at index: Int) {
         view?.reloadCell(at: index)
@@ -83,10 +82,6 @@ extension TrainingViewModel: TrainingModelOutput {
         self._exerciceList = training
     }
     
-    func setDeletetingTrainingName(to name: String, at index: Int) {
-        self.view?.showDeleteTrainingAlert(for: index, with: name)
-    }
-    
     func exerciceWasDeleted(at index: Int) {
         view?.deleteCell(at: index)
     }
@@ -97,7 +92,7 @@ extension TrainingViewModel: TrainingModelOutput {
 }
 
 //MARK: - TrainingViewModeIteracting
-extension TrainingViewModel: TrainingViewModeProtocol {
+extension WorkoutViewModel: WorkoutViewModeProtocol {
     
     func backButtonPressed() {
         router?.popViewController()
@@ -155,12 +150,11 @@ extension TrainingViewModel: TrainingViewModeProtocol {
         self.model.removeLatsAproach(at: exericeIndex)
     }
 
-    func deleteExercice(at index: Int) {
-        self.model.deleteExercice(at: index)
-    }
-
     func tryDeleteExercice(at index: Int) {
-        self.model.getNameForExercice(at: index)
+        let exerciseNameForDeleting = exerciseList[index].name
+        router?.showAlert(title: "Delete \(exerciseNameForDeleting)?",
+                          message: "Are you sure?",
+                          completion: {[weak self] in self?.model.deleteExercice(at: index)})
     }
     
     func loadTrain() {
@@ -169,7 +163,7 @@ extension TrainingViewModel: TrainingViewModeProtocol {
 }
  
 //MARK: - NewAproachAlertDelegate
-extension TrainingViewModel: NewAproachAlertDelegate {
+extension WorkoutViewModel: NewAproachAlertDelegate {
     
     func changeAproachAlertOkPressed(changeAproachAlert: DTNewAproachAlert,
                                      at aproachIndex: Int,

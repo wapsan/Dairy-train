@@ -1,7 +1,6 @@
 import UIKit
 
-protocol TrainingView: AnyObject {
-    func showDeleteTrainingAlert(for trainigAtIndex: Int, with exerciseName: String)
+protocol WorkoutViewProtocol: AnyObject {
     func deleteCell(at index: Int)
     func hideAproachAlert()
     func deleteLastAproach(inExerciseAt index: Int)
@@ -13,7 +12,7 @@ protocol TrainingView: AnyObject {
     func showAlertForDoneExercise()
 }
 
-final class TrainingViewController: UIViewController {
+final class WorkoutViewController: UIViewController {
 
     //MARK: - @IBOutlets
     @IBOutlet private var tableView: UITableView!
@@ -22,7 +21,7 @@ final class TrainingViewController: UIViewController {
     private var stratchabelHeader: StretchableHeader?
     
     //MARK: - Module property
-    private var viewModel: TrainingViewModeProtocol
+    private var viewModel: WorkoutViewModeProtocol
     private lazy var aproachAlert = DTNewAproachAlert()
     
     private var cellHeight: CGFloat {
@@ -41,7 +40,7 @@ final class TrainingViewController: UIViewController {
     }
     
     // MARK: - Initialization
-    init(viewModel: TrainingViewModeProtocol) {
+    init(viewModel: WorkoutViewModeProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -52,7 +51,7 @@ final class TrainingViewController: UIViewController {
 }
 
 //MARK: - Private extension
-private extension TrainingViewController {
+private extension WorkoutViewController {
     
     func showDeletenigAproachAlert(forExerciceAt index: Int) {
         showDefaultAlert(
@@ -94,7 +93,7 @@ private extension TrainingViewController {
 
 
 //MARK: - UITableViewDataSource
-extension TrainingViewController: UITableViewDataSource {
+extension WorkoutViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight
@@ -127,7 +126,7 @@ extension TrainingViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
-extension TrainingViewController: UITableViewDelegate {
+extension WorkoutViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = TrainingTableFooterView.view()
@@ -174,7 +173,7 @@ extension TrainingViewController: UITableViewDelegate {
 }
 
 //MARK: - TestTrainingViewControllerIteracting
-extension TrainingViewController: TrainingView {
+extension WorkoutViewController: WorkoutViewProtocol {
 
     func deleteCell(at index: Int) {
         tableView.beginUpdates()
@@ -226,17 +225,5 @@ extension TrainingViewController: TrainingView {
     
     func hideAproachAlert() {
         self.aproachAlert.hideAlert()
-    }
-    
-    func showDeleteTrainingAlert(for trainigAtIndex: Int, with exerciseName: String) {
-        let localizedExerciceName = NSLocalizedString(exerciseName, comment: "")
-        let alertmassege = String(format: NSLocalizedString("Delete exercise from trainig?",
-                                                            comment: ""), localizedExerciceName)
-        self.showDefaultAlert(message: alertmassege,
-                              preffedStyle: .alert,
-                              okTitle: LocalizedString.ok,
-                              cancelTitle: LocalizedString.cancel) { [weak self] in
-                                self?.viewModel.deleteExercice(at: trainigAtIndex)
-        }
     }
 }

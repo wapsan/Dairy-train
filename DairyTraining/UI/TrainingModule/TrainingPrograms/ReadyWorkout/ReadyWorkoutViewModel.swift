@@ -11,7 +11,6 @@ protocol ReadyWorkoutViewModelProtocol {
     func backButtonPressed()
     func createTrainingButtonPressed()
     func createPaternButtonPressed()
-    func alertCompletion()
 }
 
 final class ReadyWorkoutViewModel {
@@ -29,10 +28,6 @@ final class ReadyWorkoutViewModel {
 
 // MARK: - ReadyWorkoutViewModelProtocol
 extension ReadyWorkoutViewModel: ReadyWorkoutViewModelProtocol {
-    
-    func alertCompletion() {
-        router?.hideReadyTrainingFlow()
-    }
     
     func backButtonPressed() {
         router?.popViewController()
@@ -76,11 +71,11 @@ extension ReadyWorkoutViewModel: ReadyWorkoutViewModelProtocol {
 extension ReadyWorkoutViewModel: ReadyWorkoutModelOutput {
     
     func paternCreated() {
-        view?.showAlert(with: "Workout patern created!")
+        router?.showInfoAlert(with: "Workout patern created!")
     }
     
     func trainingCreated() {
-        view?.showAlert(with: "Workout created!")
+        router?.showInfoAlert(with: "Workout created!")
     }
     
     func exercisesLoaded() {

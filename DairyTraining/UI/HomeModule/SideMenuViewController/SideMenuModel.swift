@@ -1,5 +1,10 @@
 import Firebase
 
+protocol SideMenuModelOutput: AnyObject {
+    func successLogOut()
+    func errorLogout(with errorMessage: String)
+}
+
 final class SideMenuModel {
     
     // MARK: - Types
@@ -35,10 +40,8 @@ final class SideMenuModel {
             }
         }
     }
-    
-    //MARK: - Properties
-    var succesLogOut: (() -> Void)?
-    var errorLogOut: ((_:Error) -> Void)?
+
+    weak var output: SideMenuModelOutput?
     
     //MARK: - Public methods
     func signOut() {
@@ -47,11 +50,11 @@ final class SideMenuModel {
             SettingManager.shared.deleteUserToken()
             NutritionDataManager.shared.removeNutritionData()
             UserDataManager.shared.removeAllUserData { [weak self] in
-                self?.succesLogOut?()
+                self?.output?.successLogOut()
             }
             
         } catch let signOutError {
-            self.errorLogOut?(signOutError)
+            self.output?.errorLogout(with: signOutError.localizedDescription)
         }
     }
 }
