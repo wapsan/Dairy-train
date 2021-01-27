@@ -17,7 +17,6 @@ protocol ProfileViewModelPresenter: AnyObject {
 final class ProfileViewController: DTBackgroundedViewController {
  
     //MARK: - Private properties
-    private lazy var safeArea = self.view.safeAreaLayoutGuide
     private lazy var valueAlert = DTValueAlert()
     private lazy var selectionListAlert = DTSelectionListAlert()
     
@@ -84,11 +83,11 @@ private extension ProfileViewController {
         self.view.addSubview(self.collectionView)
         self.collectionView.backgroundColor = .clear
         NSLayoutConstraint.activate([
-            self.collectionView.topAnchor.constraint(equalTo: self.safeArea.topAnchor,
+            self.collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor,
                                                      constant: DTEdgeInsets.small.top),
-            self.collectionView.leftAnchor.constraint(equalTo: self.safeArea.leftAnchor),
-            self.collectionView.rightAnchor.constraint(equalTo: self.safeArea.rightAnchor),
-            self.collectionView.bottomAnchor.constraint(equalTo: self.safeArea.bottomAnchor,
+            self.collectionView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+            self.collectionView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
+            self.collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor,
                                                         constant: DTEdgeInsets.small.bottom)
         ])
     }

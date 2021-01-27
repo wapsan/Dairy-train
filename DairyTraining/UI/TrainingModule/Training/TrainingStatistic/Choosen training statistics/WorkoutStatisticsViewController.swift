@@ -2,9 +2,6 @@ import UIKit
 
 final class WorkoutStatisticsViewController: BaseViewController {
     
-    //MARK: - Properties
-    private lazy var safeArea = self.view.safeAreaLayoutGuide
-    
     // MARK: - Module properties
     private var viewModel: WorkoutStatisticsViewModelProtocol
     

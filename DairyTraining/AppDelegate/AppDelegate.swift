@@ -35,7 +35,11 @@ private extension AppDelegate {
     func setRootViewController() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.makeKeyAndVisible()
+        
+        
         let splashScreenViewController = SplashScreenViewController()
-        window?.rootViewController = splashScreenViewController
+        let onboardingFlow = OnboardingConfigurator.configureOnboardingFlow()
+        
+        window?.rootViewController = onboardingFlow
     }
 }

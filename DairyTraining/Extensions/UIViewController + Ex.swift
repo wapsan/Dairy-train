@@ -2,6 +2,10 @@ import UIKit
 
 extension UIViewController {
     
+    var safeArea: UILayoutGuide {
+        return view.safeAreaLayoutGuide
+    }
+    
     func hideTabBar() {
         
         guard let tabBarController = tabBarController as? MainTabBarViewController else {

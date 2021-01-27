@@ -73,6 +73,10 @@
 		13786E1D2478271C0084E48C /* NotificationName+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13786E1C2478271C0084E48C /* NotificationName+Ex.swift */; };
 		1379800924733AEB00BAD87C /* SettingsSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379800824733AEB00BAD87C /* SettingsSectionViewController.swift */; };
 		137D55B624897B6300EFBAB6 /* SettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137D55B524897B6300EFBAB6 /* SettingManager.swift */; };
+		137E5BA025C1F59F00AFC190 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137E5B9F25C1F59F00AFC190 /* OnboardingViewController.swift */; };
+		137E5BA325C1F5B000AFC190 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137E5BA225C1F5B000AFC190 /* OnboardingViewModel.swift */; };
+		137E5BA625C1F5ED00AFC190 /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137E5BA525C1F5ED00AFC190 /* OnboardingRouter.swift */; };
+		137E5BA925C1F61B00AFC190 /* OnboardingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137E5BA825C1F61B00AFC190 /* OnboardingConfigurator.swift */; };
 		1384BB4324DEEBE60084705B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1384BB4224DEEBE60084705B /* ProfileViewController.swift */; };
 		1384BB4524DEEE7A0084705B /* DTMainInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1384BB4424DEEE7A0084705B /* DTMainInfoCell.swift */; };
 		1384BB4724DEF73E0084705B /* DTMainInfoCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1384BB4624DEF73E0084705B /* DTMainInfoCellType.swift */; };
@@ -344,6 +348,10 @@
 		13786E1C2478271C0084E48C /* NotificationName+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Ex.swift"; sourceTree = "<group>"; };
 		1379800824733AEB00BAD87C /* SettingsSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionViewController.swift; sourceTree = "<group>"; };
 		137D55B524897B6300EFBAB6 /* SettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingManager.swift; sourceTree = "<group>"; };
+		137E5B9F25C1F59F00AFC190 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		137E5BA225C1F5B000AFC190 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		137E5BA525C1F5ED00AFC190 /* OnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
+		137E5BA825C1F61B00AFC190 /* OnboardingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingConfigurator.swift; sourceTree = "<group>"; };
 		1384BB4224DEEBE60084705B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1384BB4424DEEE7A0084705B /* DTMainInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMainInfoCell.swift; sourceTree = "<group>"; };
 		1384BB4624DEF73E0084705B /* DTMainInfoCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTMainInfoCellType.swift; sourceTree = "<group>"; };
@@ -1017,6 +1025,7 @@
 		136F401024990D4000C6944B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				137E5B9E25C1F55D00AFC190 /* Onboarding */,
 				7A94DF98259B2F9400391DA2 /* MainTabBar */,
 				13BA17A32461A49600DF5D7D /* StartApp */,
 				7AAFE8A72599CDC7004FF48B /* HomeModule */,
@@ -1043,6 +1052,17 @@
 				137321A7253A098D00F8FA23 /* PaternNamingAlert.xib */,
 			);
 			path = PaternNamingAlert;
+			sourceTree = "<group>";
+		};
+		137E5B9E25C1F55D00AFC190 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				137E5B9F25C1F59F00AFC190 /* OnboardingViewController.swift */,
+				137E5BA225C1F5B000AFC190 /* OnboardingViewModel.swift */,
+				137E5BA525C1F5ED00AFC190 /* OnboardingRouter.swift */,
+				137E5BA825C1F61B00AFC190 /* OnboardingConfigurator.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		1386AA1E246C15260016A757 /* Default Models */ = {
@@ -1952,6 +1972,7 @@
 				13C0EEDD24A529DD00F55C54 /* UserTrainingInfo.xcdatamodeld in Sources */,
 				7A384D5C25BAF1C500A83F74 /* WorkoutListRouter.swift in Sources */,
 				1384BB4524DEEE7A0084705B /* DTMainInfoCell.swift in Sources */,
+				137E5BA325C1F5B000AFC190 /* OnboardingViewModel.swift in Sources */,
 				139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */,
 				7A2FBC5825B02B5400FFE850 /* ErrorCell.swift in Sources */,
 				136F3FFE2498D0DE00C6944B /* UserMainInfo.xcdatamodeld in Sources */,
@@ -2007,6 +2028,7 @@
 				7A69DBFA25878063003EECD8 /* SearchFoodViewController.swift in Sources */,
 				7A24882F25A49BE600DB6D12 /* ReadyWorkoutModel.swift in Sources */,
 				1379800924733AEB00BAD87C /* SettingsSectionViewController.swift in Sources */,
+				137E5BA625C1F5ED00AFC190 /* OnboardingRouter.swift in Sources */,
 				7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */,
 				7AC1D08E25A32F78006049F6 /* CreatinTrainingPresentationViewController.swift in Sources */,
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
@@ -2057,7 +2079,9 @@
 				7A731B1B25B08B3600071E46 /* WorkoutStatisticsViewController.swift in Sources */,
 				7A384D4B25BAD18100A83F74 /* TrainingPaternsRouter.swift in Sources */,
 				1373219F253A08A300F8FA23 /* UIAplication+Ex.swift in Sources */,
+				137E5BA025C1F59F00AFC190 /* OnboardingViewController.swift in Sources */,
 				13FD8F1624B1DC54007FA451 /* TrainingCodableModel.swift in Sources */,
+				137E5BA925C1F61B00AFC190 /* OnboardingConfigurator.swift in Sources */,
 				1388FFE924E050D800E9FD2C /* DTTrainedSubGroupCell.swift in Sources */,
 				7A8BED252590AF7400CDB925 /* FoodResponseModel.swift in Sources */,
 				7A057CEC2589ECD600D6937B /* ProgressDrawer.swift in Sources */,
