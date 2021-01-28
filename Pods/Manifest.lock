@@ -227,6 +227,7 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
+  - CHIPageControl/Jaloro (0.2)
   - EFCountingLabel (5.1.2)
   - Firebase/Auth (7.3.0):
     - Firebase/CoreOnly
@@ -344,6 +345,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Charts
+  - CHIPageControl/Jaloro
   - EFCountingLabel
   - Firebase/Auth
   - Firebase/Database
@@ -362,6 +364,7 @@ SPEC REPOS:
     - AppAuth
     - BoringSSL-GRPC
     - Charts
+    - CHIPageControl
     - EFCountingLabel
     - Firebase
     - FirebaseAuth
@@ -391,6 +394,7 @@ SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  CHIPageControl: a787bf7205c9b7e7fbfc412be36c5e8636b68f86
   EFCountingLabel: fb9119eff4bb20bf42538665cab8e8419083e486
   Firebase: 26223c695fe322633274198cb19dca8cb7e54416
   FirebaseAuth: c224a0cf1afa0949bd5c7bfcf154b4f5ce8ddef2
@@ -414,6 +418,6 @@ SPEC CHECKSUMS:
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   ZKProgressHUD: f1833e23655834d4459c711e94e924e49bc77442
 
-PODFILE CHECKSUM: bf5630b29f9d0ae884ed86fafd98e0b473680e7e
+PODFILE CHECKSUM: b1fee7562616fac9acc88c7f6d637a291d56f1d9
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.9.3

@@ -2,6 +2,7 @@ import UIKit
 
 protocol OnboardingViewModelProtocol: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     var firstViewController: UIViewController { get }
+    var viewControllersCount: Int { get }
     
     func skipButtonPressed()
 }
@@ -16,6 +17,7 @@ final class OnboardingViewModel: NSObject {
     let view3 = UIViewController()
     let emptyViewController = EmptyViewController()
     
+    weak var view: OnboardingViewProtocol?
     var router: OnboardingRouter?
     
     override init() {
@@ -32,6 +34,10 @@ final class OnboardingViewModel: NSObject {
 //MARK: - OnboardingViewModelProtocol
 extension OnboardingViewModel: OnboardingViewModelProtocol {
     
+    var viewControllersCount: Int {
+        return _pages.count - 1
+    }
+    
     func skipButtonPressed() {
         router?.showAuthorizationScreen()
     }
@@ -46,7 +52,10 @@ extension OnboardingViewModel {
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         guard let nextViewController = pendingViewControllers.first,
-              nextViewController is EmptyViewController else { return }
+            let index = _pages.firstIndex(of: nextViewController) else { return }
+        view?.updatePageControll(with: index)
+        
+        guard   nextViewController is EmptyViewController else { return }
         router?.showAuthorizationScreen()
     }
     
@@ -54,7 +63,6 @@ extension OnboardingViewModel {
         guard let viewControllerIndex = _pages.firstIndex(of: viewController) else { return nil }
         
         let nextIndex = viewControllerIndex + 1
-
         guard _pages.count != nextIndex, _pages.count > nextIndex else { return nil }
         
         return _pages[nextIndex]

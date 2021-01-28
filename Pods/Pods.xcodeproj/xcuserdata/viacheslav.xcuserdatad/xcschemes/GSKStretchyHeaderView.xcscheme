@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "212F79CE462FC723AF42979B57FBB8A6"
-               BuildableName = "Differentiator.framework"
-               BlueprintName = "Differentiator"
+               BlueprintIdentifier = "ACA5648EB99031CC1D0E80C06B95F4F7"
+               BuildableName = "GSKStretchyHeaderView.framework"
+               BlueprintName = "GSKStretchyHeaderView"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

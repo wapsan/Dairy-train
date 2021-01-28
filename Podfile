@@ -19,6 +19,7 @@ pod 'Firebase/Storage'
 
 pod "GSKStretchyHeaderView"
 pod "Kingfisher"
+pod 'CHIPageControl/Jaloro'
 
   # Pods for DairyTrain2.0
 end

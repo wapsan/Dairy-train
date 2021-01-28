@@ -1,4 +1,9 @@
 import UIKit
+import CHIPageControl
+
+protocol OnboardingViewProtocol: AnyObject {
+    func updatePageControll(with index: Int)
+}
 
 final class OnboardingViewController: UIPageViewController {
 
@@ -18,6 +23,18 @@ final class OnboardingViewController: UIPageViewController {
         button.addTarget(self, action: #selector(skipButtonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+    
+    private lazy var pageControll: CHIPageControlJaloro = {
+        let pageControll = CHIPageControlJaloro()
+        pageControll.numberOfPages = viewModel.viewControllersCount
+        pageControll.currentPageTintColor = .black
+        pageControll.tintColor = .gray
+        pageControll.padding = 6
+        pageControll.radius = 3
+        pageControll.elementWidth = 50
+        pageControll.translatesAutoresizingMaskIntoConstraints = false
+        return pageControll
     }()
     
     //MARK: - Module properties
@@ -50,6 +67,7 @@ final class OnboardingViewController: UIPageViewController {
         delegate = viewModel
         dataSource = viewModel
         setupSkipButton()
+        setupPageControll()
     }
     
     private func setupSkipButton() {
@@ -63,8 +81,27 @@ final class OnboardingViewController: UIPageViewController {
         skipButton.layer.cornerRadius = Constants.skipButtonHeight / 4
     }
     
+    private func setupPageControll() {
+        view.addSubview(pageControll)
+        NSLayoutConstraint.activate([
+            pageControll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pageControll.trailingAnchor.constraint(equalTo: skipButton.leadingAnchor),
+            pageControll.heightAnchor.constraint(equalToConstant: 20),
+            pageControll.centerYAnchor.constraint(equalTo: skipButton.centerYAnchor)
+        ])
+        
+    }
+    
     //MARK: - Actions
     @objc private func skipButtonAction() {
         viewModel.skipButtonPressed()
+    }
+}
+
+//MARK: - OnboardingViewProtocol
+extension OnboardingViewController: OnboardingViewProtocol {
+    
+    func updatePageControll(with index: Int) {
+        pageControll.set(progress: index, animated: true)
     }
 }

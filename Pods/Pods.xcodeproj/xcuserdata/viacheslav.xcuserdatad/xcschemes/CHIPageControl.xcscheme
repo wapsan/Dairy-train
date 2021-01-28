@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F4F25FCAC51B51FD5F986EB939BF1F87"
-               BuildableName = "GoogleDataTransportCCTSupport.framework"
-               BlueprintName = "GoogleDataTransportCCTSupport"
+               BlueprintIdentifier = "58A7AC722D45BA5EF49F00D98C86978B"
+               BuildableName = "CHIPageControl.framework"
+               BlueprintName = "CHIPageControl"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
