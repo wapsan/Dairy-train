@@ -36,10 +36,14 @@ private extension AppDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.makeKeyAndVisible()
         
-        
         let splashScreenViewController = SplashScreenViewController()
         let onboardingFlow = OnboardingConfigurator.configureOnboardingFlow()
         
-        window?.rootViewController = onboardingFlow
+        if SettingManager.shared.isFirstSession {
+            SettingManager.shared.setFirstSessionStarted()
+            window?.rootViewController = onboardingFlow
+        } else {
+            window?.rootViewController = splashScreenViewController
+        }
     }
 }

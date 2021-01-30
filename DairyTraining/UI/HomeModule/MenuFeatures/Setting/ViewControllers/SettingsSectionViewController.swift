@@ -15,13 +15,14 @@ class SettingsSectionViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideTabBar()
+        navigationController?.navigationBar.isHidden = false
 //        extendedLayoutIncludesOpaqueBars = true
 //        MainCoordinator.shared.setTabBarHidden(true, duration: 0.25)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // navigationController?.navigationBar.isHidden = false
+       //
     }
     
     //MARK: - Initialization

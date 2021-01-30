@@ -120,7 +120,6 @@
 		13C0F4FF24B4E24A0005A011 /* SettingSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0F4FE24B4E24A0005A011 /* SettingSectionModel.swift */; };
 		13C78146256ABC6100A55482 /* ExerciseDataBaseENG.csv in Resources */ = {isa = PBXBuildFile; fileRef = 13C78145256ABC6100A55482 /* ExerciseDataBaseENG.csv */; };
 		13C7814A256ABCBC00A55482 /* ExercisesDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13C78148256ABCBC00A55482 /* ExercisesDataModel.xcdatamodeld */; };
-		13C7814D256AC3A700A55482 /* CoreDataExerciseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C7814C256AC3A700A55482 /* CoreDataExerciseDataManager.swift */; };
 		13CCD922254EB1DF00E8FFEB /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCD920254EB1DF00E8FFEB /* SideMenuViewController.swift */; };
 		13CCD923254EB1DF00E8FFEB /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CCD921254EB1DF00E8FFEB /* SideMenuViewController.xib */; };
 		13CCD92A254EB35000E8FFEB /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCD928254EB35000E8FFEB /* SideMenuCell.swift */; };
@@ -397,7 +396,6 @@
 		13C0F4FE24B4E24A0005A011 /* SettingSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionModel.swift; sourceTree = "<group>"; };
 		13C78145256ABC6100A55482 /* ExerciseDataBaseENG.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ExerciseDataBaseENG.csv; sourceTree = "<group>"; };
 		13C78149256ABCBC00A55482 /* ExercisesDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExercisesDataModel.xcdatamodel; sourceTree = "<group>"; };
-		13C7814C256AC3A700A55482 /* CoreDataExerciseDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExerciseDataManager.swift; sourceTree = "<group>"; };
 		13CCD920254EB1DF00E8FFEB /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		13CCD921254EB1DF00E8FFEB /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
 		13CCD928254EB35000E8FFEB /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
@@ -993,7 +991,6 @@
 			isa = PBXGroup;
 			children = (
 				136F40082498D44B00C6944B /* UserDataManager.swift */,
-				13C7814C256AC3A700A55482 /* CoreDataExerciseDataManager.swift */,
 				13004EC025702F7E00AFC1B3 /* TrainingDataManager.swift */,
 				7A69DBEF25877A67003EECD8 /* NutritionDataManager.swift */,
 			);
@@ -2144,7 +2141,6 @@
 				7A2A752F25889B5C0091FD22 /* MealModel.swift in Sources */,
 				7A36C371259CB24300DFFA6E /* StretchableHeader.swift in Sources */,
 				133705BE24D17B3100E023CC /* MuscleGroupsViewModel.swift in Sources */,
-				13C7814D256AC3A700A55482 /* CoreDataExerciseDataManager.swift in Sources */,
 				135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */,
 				13344E5324B3619500BE3D65 /* DTBackgroundedViewController.swift in Sources */,
 				13C0EEE824A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift in Sources */,

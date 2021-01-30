@@ -29,7 +29,7 @@ final class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if navigationController?.navigationBar.isHidden ?? false { navigationController?.navigationBar.isHidden = true }
+        navigationController?.navigationBar.isHidden = true 
         if tabBarController?.tabBar.isHidden ?? false { showTabBar() }
     }
     

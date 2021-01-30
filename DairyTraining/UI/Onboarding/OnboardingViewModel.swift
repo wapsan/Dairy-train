@@ -4,6 +4,7 @@ protocol OnboardingViewModelProtocol: UIPageViewControllerDelegate, UIPageViewCo
     var firstViewController: UIViewController { get }
     var viewControllersCount: Int { get }
     
+    func viewDidLoad()
     func skipButtonPressed()
 }
 
@@ -16,6 +17,12 @@ final class OnboardingViewModel: NSObject {
     let view2 = UIViewController()
     let view3 = UIViewController()
     let emptyViewController = EmptyViewController()
+    
+    private var currentPageIndex = 0 {
+        didSet {
+            view?.updatePageControll(with: currentPageIndex)
+        }
+    }
     
     weak var view: OnboardingViewProtocol?
     var router: OnboardingRouter?
@@ -33,6 +40,9 @@ final class OnboardingViewModel: NSObject {
 
 //MARK: - OnboardingViewModelProtocol
 extension OnboardingViewModel: OnboardingViewModelProtocol {
+    func viewDidLoad() {
+       // view?.updatePageControll(with: currentPageIndex)
+    }
     
     var viewControllersCount: Int {
         return _pages.count - 1
@@ -52,16 +62,13 @@ extension OnboardingViewModel {
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         guard let nextViewController = pendingViewControllers.first,
-            let index = _pages.firstIndex(of: nextViewController) else { return }
-        view?.updatePageControll(with: index)
-        
-        guard   nextViewController is EmptyViewController else { return }
+              nextViewController is EmptyViewController else { return }
         router?.showAuthorizationScreen()
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = _pages.firstIndex(of: viewController) else { return nil }
-        
+        currentPageIndex = viewControllerIndex
         let nextIndex = viewControllerIndex + 1
         guard _pages.count != nextIndex, _pages.count > nextIndex else { return nil }
         
@@ -70,7 +77,7 @@ extension OnboardingViewModel {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = _pages.firstIndex(of: viewController) else { return nil }
-        
+        currentPageIndex = viewControllerIndex
         let previousIndex = viewControllerIndex - 1
         
         guard previousIndex >= 0, _pages.count > previousIndex else { return nil }

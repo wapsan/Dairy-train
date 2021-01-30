@@ -14,6 +14,7 @@ final class SettingManager {
         static let colorThemeKey = "Color"
         static let weighMetricKey = "Weight metric"
         static let heightMetricKey = "Height metric"
+        static let firstSessionKey = "first_session_ key"
     }
     
     //MARK: - Initialization
@@ -26,6 +27,10 @@ final class SettingManager {
         } else {
             return false
         }
+    }
+    
+    var isFirstSession: Bool {
+        return userDefaults.value(forKey: UserSettingKeys.firstSessionKey) as? Bool ?? true
     }
     
     //MARK: - Private methods
@@ -67,6 +72,10 @@ final class SettingManager {
         self.setDefaultWeightMode()
         self.setDefaultHeightMode()
         self.setDefaultColorTheme()
+    }
+    
+    func setFirstSessionStarted() {
+        userDefaults.setValue(false, forKey: UserSettingKeys.firstSessionKey)
     }
     
     func setWeightMode(to mode: MeteringSetting.WeightMode) {
