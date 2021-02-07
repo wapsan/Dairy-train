@@ -9,6 +9,8 @@ final class DateHelper {
         case synhronizationDateFromat = "MM-dd-yyyy HH:mm"
         case dateForStatisticsFromat = "dd.MM"
         case dateForDailyCaloriessIntakeFormat = "EEEE, MMM d, yyyy"
+        case startStopTrainingTimeFormat = "HH:mm"
+        case workoutDurationTimeFormat = "m"
     }
     
     //MARK: - Static properties

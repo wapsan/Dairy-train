@@ -20,7 +20,9 @@
     </entity>
     <entity name="Training" representedClassName=".TrainingManagedObject" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="formatedDate" optional="YES" attributeType="String"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Exercise" inverseName="training" inverseEntity="Exercise"/>
     </entity>
     <entity name="TrainingPatern" representedClassName=".TrainingPaternManagedObject" syncable="YES">
@@ -30,8 +32,8 @@
     </entity>
     <elements>
         <element name="Aproach" positionX="148.76171875" positionY="134.1484375" width="128" height="118"/>
-        <element name="Exercise" positionX="-105.65625" positionY="53.09765625" width="128" height="164"/>
-        <element name="Training" positionX="-347.9921875" positionY="-191.46484375" width="128" height="88"/>
+        <element name="Exercise" positionX="-152.365478515625" positionY="186.2602844238281" width="128" height="178"/>
+        <element name="Training" positionX="-479.697265625" positionY="177.6537017822266" width="128" height="118"/>
         <element name="TrainingPatern" positionX="-153" positionY="-45" width="128" height="88"/>
     </elements>
 </model>

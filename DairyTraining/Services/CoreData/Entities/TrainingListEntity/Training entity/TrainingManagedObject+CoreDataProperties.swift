@@ -7,6 +7,8 @@ extension TrainingManagedObject {
         return NSFetchRequest<TrainingManagedObject>(entityName: "Training")
     }
 
+    @NSManaged public var startTime: Date?
+    @NSManaged public var endTime: Date?
     @NSManaged public var date: Date
     @NSManaged public var exercises: NSSet?
     @NSManaged public var formatedDate: String?
@@ -31,6 +33,33 @@ extension TrainingManagedObject {
 
 //MARK: - Custom properties
 extension TrainingManagedObject {
+    
+    var duration: Int {
+        guard let startTime = self.startTime, let endTime = self.endTime else { return 0 }
+        let duration = endTime.timeIntervalSince(startTime)
+        let durationDate = Date(timeIntervalSince1970: duration)
+        return Calendar.current.component(.minute, from: durationDate)
+    }
+    
+    var totalRepsCount: Double {
+        var summ: Double = 0
+        exercicesArray.forEach({ exercise in summ += exercise.totalRepsCount })
+        return summ
+    }
+    
+    var setsCount: Double {
+        var summ: Double = 0
+        exercicesArray.forEach({ exercise in summ += exercise.setsCount })
+        return summ
+    }
+    
+    var sumWeightOfTraining: Double {
+        var summ: Double = 0
+        exercicesArray.forEach({ exercise in
+            summ += exercise.sumWeightOfExercise
+        })
+        return summ
+    }
     
     var isEditable: Bool {
         let todayDate = DateHelper.shared.getFormatedDateFrom(Date(), with: .chekingCurrentDayDateFormat)

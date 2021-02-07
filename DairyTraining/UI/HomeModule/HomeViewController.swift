@@ -31,6 +31,7 @@ final class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true 
         if tabBarController?.tabBar.isHidden ?? false { showTabBar() }
+        tabBarController?.view.window?.backgroundColor = .white//collectionView.backgroundColor
     }
     
     // MARK: - Initialization

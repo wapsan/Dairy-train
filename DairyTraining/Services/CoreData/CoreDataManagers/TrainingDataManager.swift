@@ -167,6 +167,16 @@ final class TrainingDataManager {
         trainInfoContext.delete(workoutForRemoving)
         updateContext()
     }
+    
+    func setStartWorkout(for workout: TrainingManagedObject) {
+        workout.startTime = Date()
+        updateContext()
+    }
+    
+    func setStopWorkout(for workout: TrainingManagedObject) {
+        workout.endTime = Date()
+        updateContext()
+    }
    
     //MARK: - Exercises public methods
     func getExercices(for choosenTraining: TrainingManagedObject) -> [ExerciseManagedObject] {

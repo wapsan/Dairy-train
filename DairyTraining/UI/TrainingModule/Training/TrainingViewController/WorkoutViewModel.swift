@@ -5,6 +5,8 @@ protocol WorkoutViewModeProtocol {
     var exerciseCount: Int { get }
     var exerciseList: [ExerciseManagedObject] { get }
     var isTrainingEditable: Bool { get }
+    var startTime: Date? { get }
+    var endTime: Date? { get }
     
     func loadTrain()
     func tryDeleteExercice(at index: Int)
@@ -16,6 +18,9 @@ protocol WorkoutViewModeProtocol {
     func isExerciseEditable(at index: Int) -> Bool
     func footerButtonPressed()
     func statisticsButtonPressed()
+    
+    func startWotkout()
+    func stopWorkout()
     
     func backButtonPressed() 
 }
@@ -93,6 +98,22 @@ extension WorkoutViewModel: WorkoutModelOutput {
 
 //MARK: - TrainingViewModeIteracting
 extension WorkoutViewModel: WorkoutViewModeProtocol {
+    
+    func startWotkout() {
+        model.startWorkout()
+    }
+    
+    func stopWorkout() {
+        model.stopWorkout()
+    }
+    
+    var startTime: Date? {
+        model.currentWorkout.startTime
+    }
+    
+    var endTime: Date? {
+        model.currentWorkout.endTime
+    }
     
     func backButtonPressed() {
         router?.popViewController()

@@ -24,6 +24,7 @@ final class NutritionMainCell: UITableViewCell {
     
     // MARK: - Properties
     var addMealButtonAction: (() -> Void)?
+    var settingButtonAction: (() -> Void)?
     
     // MARK: - Initialization
     override func awakeFromNib() {
@@ -109,6 +110,11 @@ final class NutritionMainCell: UITableViewCell {
     }
     
     // MARK: - Actions
+    
+    @IBAction func settingButtonPressed(_ sender: Any) {
+        settingButtonAction?()
+    }
+    
     @IBAction func addMealButtonPressed(_ sender: Any) {
         addMealButtonAction?()
     }

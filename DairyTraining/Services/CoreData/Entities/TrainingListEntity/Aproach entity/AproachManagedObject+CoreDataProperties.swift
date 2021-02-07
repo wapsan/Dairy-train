@@ -17,6 +17,12 @@ extension AproachManagedObject {
 //MARK: - Custom properties
 extension AproachManagedObject {
     
+    var summWeightOfAproach: Double {
+        guard let aproachWeightMode = self.weightEnumMode else { return 0 }
+        let weight = MeteringSetting.shared.getWeight(for: self.weight, and: aproachWeightMode)
+        return Double(reps) * weight
+    }
+    
     var weightMultiplier: Float {
         return MeteringSetting.shared.weightMultiplier
     }

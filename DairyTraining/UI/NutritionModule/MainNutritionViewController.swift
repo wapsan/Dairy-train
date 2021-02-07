@@ -20,6 +20,7 @@ final class MainNutritionViewController: DTBackgroundedViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showTabBar()
+        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -108,6 +109,9 @@ extension MainNutritionViewController: UITableViewDataSource {
             (cell as? NutritionMainCell)?.setMealPlane(to: viewModel.mealPlane)
             (cell as? NutritionMainCell)?.addMealButtonAction = { [unowned self] in
                 self.viewModel.addMealButtonPressed()
+            }
+            (cell as? NutritionMainCell)?.settingButtonAction = { [unowned self] in
+                self.viewModel.settinButtonPressed()
             }
             return cell
         } else {

@@ -18,7 +18,9 @@ final class HomeRouter: Router {
     
     // MARK: - Private methods
     func showMonthlyStatisticsScreen() {
-        //FIX ME: Later
+        let monthlyStatisticViewController = MonthlyStatisticsConfigurator.configureScreen()
+        roorViewController.navigationController?.pushViewController(monthlyStatisticViewController,
+                                                                    animated: true)
     }
 }
 

@@ -33,6 +33,7 @@ final class NutritionSettingViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideTabBar()
+        navigationController?.navigationBar.isHidden = false
     }
     
     override func viewDidLoad() {
@@ -134,7 +135,7 @@ extension NutritionSettingViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 50
     }
 }
 

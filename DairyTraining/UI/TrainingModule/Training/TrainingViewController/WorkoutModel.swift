@@ -11,6 +11,9 @@ protocol WorkoutModelProtocol: AnyObject {
     func getAproachInfo(in exerciseIndex: Int, and aproachIndex: Int)
     func changeAproach(in exerciseIndex: Int, at aproachIndex: Int, weight: Float, reps: Int)
     func exerciseDone(at index: Int)
+    
+    func startWorkout()
+    func stopWorkout()
 }
     
     
@@ -36,6 +39,7 @@ protocol WorkoutModelOutput: AnyObject {
 
 final class WorkoutModel {
     
+    private let workoutManager = TrainingDataManager.shared
     private var training: TrainingManagedObject
     weak var output: WorkoutModelOutput?
     var exerciceList: [ExerciseManagedObject] = []
@@ -63,6 +67,14 @@ final class WorkoutModel {
 
 //MARK: - TrainingModelIteracting
 extension WorkoutModel: WorkoutModelProtocol {
+    
+    func startWorkout() {
+        workoutManager.setStartWorkout(for: training)
+    }
+    
+    func stopWorkout() {
+        workoutManager.setStopWorkout(for: training)
+    }
     
     var currentWorkout: TrainingManagedObject {
         return training

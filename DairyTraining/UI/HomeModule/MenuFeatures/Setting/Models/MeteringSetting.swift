@@ -77,6 +77,15 @@ class MeteringSetting {
         }
     }
     
+    func getWeight(for weight: Float, and aproachWeightMode: WeightMode) -> Double {
+        var weightMultiplier: Float = 1
+        if aproachWeightMode != weightMode {
+            weightMultiplier = self.weightMultiplier
+        }
+        let correctWeight = Double(weight) * Double(weightMultiplier)
+        return correctWeight
+    }
+    
     //MARK: - Setters
     func setWeightMode(to mode: WeightMode) {
         self.weightMode = mode

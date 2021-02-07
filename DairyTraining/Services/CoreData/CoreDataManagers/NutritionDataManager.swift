@@ -256,6 +256,7 @@ final class NutritionDataManager {
     }
     
     func updateCustomPercentageFor(proteinsPercentage: Float, carbohydratesPercentage: Float, fatsPercentage: Float) {
+        guard let customNutritionMode = self.fetchCustomNutritionMode() else { return }
         let proteins = (Float(proteinsPercentage / 100) * customNutritionMode.calories) / 4
         let carbohydrates = (Float(carbohydratesPercentage / 100) * customNutritionMode.calories) / 4
         let fats = (Float(fatsPercentage / 100) * customNutritionMode.calories) / 9

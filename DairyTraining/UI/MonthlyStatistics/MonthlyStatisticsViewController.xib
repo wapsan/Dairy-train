@@ -4,15 +4,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorkoutViewController" customModule="Dairy_Training" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MonthlyStatisticsViewController" customModule="Dairy_Training" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="U3Q-aB-Nbg" id="pDc-yK-S2n"/>
+                <outlet property="collectionView" destination="Alm-CO-mMt" id="KJB-Md-dMp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,30 +20,33 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="U3Q-aB-Nbg">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Alm-CO-mMt">
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                    <color key="backgroundColor" name="backgroundColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Oo-Tg-1Ok">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="f5E-m9-Jxl"/>
-                        <outlet property="delegate" destination="-1" id="GuC-FG-E1X"/>
+                        <outlet property="dataSource" destination="-1" id="A2r-Xw-fn8"/>
+                        <outlet property="delegate" destination="-1" id="B53-Zv-4t3"/>
                     </connections>
-                </tableView>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="U3Q-aB-Nbg" secondAttribute="trailing" id="2f1-9g-0JF"/>
-                <constraint firstItem="U3Q-aB-Nbg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Dp2-BN-veF"/>
-                <constraint firstAttribute="bottom" secondItem="U3Q-aB-Nbg" secondAttribute="bottom" id="acB-5G-FiB"/>
-                <constraint firstItem="U3Q-aB-Nbg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="uo2-Um-nla"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Alm-CO-mMt" secondAttribute="trailing" id="3JY-ml-wmZ"/>
+                <constraint firstItem="Alm-CO-mMt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="BVN-sq-i68"/>
+                <constraint firstItem="Alm-CO-mMt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JWU-hG-yCW"/>
+                <constraint firstAttribute="bottom" secondItem="Alm-CO-mMt" secondAttribute="bottom" id="P6o-Rj-eSs"/>
             </constraints>
-            <point key="canvasLocation" x="-9" y="108"/>
+            <point key="canvasLocation" x="132" y="83"/>
         </view>
     </objects>
     <resources>
-        <namedColor name="backgroundColor">
-            <color red="0.1289999932050705" green="0.14900000393390656" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

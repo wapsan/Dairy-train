@@ -40,6 +40,7 @@
 		133AA5A6246163E5009EBF8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133AA5A5246163E5009EBF8E /* AppDelegate.swift */; };
 		133AA5AF246163E7009EBF8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5AE246163E7009EBF8E /* Assets.xcassets */; };
 		133AA5B2246163E7009EBF8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133AA5B0246163E7009EBF8E /* LaunchScreen.storyboard */; };
+		13400BDA25C9DC250006CFAB /* MonthlyStatisticsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13400BD925C9DC250006CFAB /* MonthlyStatisticsItem.swift */; };
 		13416FA22485345100EC6590 /* Authorizationbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13416FA12485345100EC6590 /* Authorizationbutton.swift */; };
 		1341727F254B38C2004C6262 /* CurrentPaternSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1341727D254B38C2004C6262 /* CurrentPaternSideMenu.swift */; };
 		13417280254B38C2004C6262 /* CurrentPaternSideMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1341727E254B38C2004C6262 /* CurrentPaternSideMenu.xib */; };
@@ -111,6 +112,8 @@
 		13B3C2EF25531C08000D4FA2 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B3C2EE25531C08000D4FA2 /* SideMenuModel.swift */; };
 		13B9FE892540AB3300E5542E /* TrainingPaternsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B9FE882540AB3300E5542E /* TrainingPaternsHeaderView.swift */; };
 		13B9FE8C2540AB7A00E5542E /* TrainingPaternsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B9FE8B2540AB7A00E5542E /* TrainingPaternsHeaderView.xib */; };
+		13BC48D025D02D7F004F611E /* StartStopWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BC48CF25D02D7F004F611E /* StartStopWorkoutView.swift */; };
+		13BC48D325D02DA0004F611E /* StartStopWorkoutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13BC48D225D02DA0004F611E /* StartStopWorkoutView.xib */; };
 		13BF82BD247C2E54005C5494 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF82BC247C2E54005C5494 /* BaseViewController.swift */; };
 		13C0EEDD24A529DD00F55C54 /* UserTrainingInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13C0EEDB24A529DC00F55C54 /* UserTrainingInfo.xcdatamodeld */; };
 		13C0EEE724A5E3EB00F55C54 /* ExerciceManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0EEE524A5E3EB00F55C54 /* ExerciceManagedObject+CoreDataClass.swift */; };
@@ -120,6 +123,14 @@
 		13C0F4FF24B4E24A0005A011 /* SettingSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C0F4FE24B4E24A0005A011 /* SettingSectionModel.swift */; };
 		13C78146256ABC6100A55482 /* ExerciseDataBaseENG.csv in Resources */ = {isa = PBXBuildFile; fileRef = 13C78145256ABC6100A55482 /* ExerciseDataBaseENG.csv */; };
 		13C7814A256ABCBC00A55482 /* ExercisesDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13C78148256ABCBC00A55482 /* ExercisesDataModel.xcdatamodeld */; };
+		13CB550225C70A72004D3E7F /* MonthlyStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CB550025C70A72004D3E7F /* MonthlyStatisticsViewController.swift */; };
+		13CB550325C70A72004D3E7F /* MonthlyStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CB550125C70A72004D3E7F /* MonthlyStatisticsViewController.xib */; };
+		13CB550625C70A86004D3E7F /* MonthlyStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CB550525C70A86004D3E7F /* MonthlyStatisticsViewModel.swift */; };
+		13CB550925C70A93004D3E7F /* MonthlyStatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CB550825C70A93004D3E7F /* MonthlyStatisticsModel.swift */; };
+		13CB550C25C70AA1004D3E7F /* MonthlyStatisticsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CB550B25C70AA1004D3E7F /* MonthlyStatisticsRouter.swift */; };
+		13CB550F25C70ABB004D3E7F /* MonthlyStatisticsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CB550E25C70ABB004D3E7F /* MonthlyStatisticsConfigurator.swift */; };
+		13CB551425C71610004D3E7F /* MonthlyStatisticsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CB551225C71610004D3E7F /* MonthlyStatisticsItemCell.swift */; };
+		13CB551525C71610004D3E7F /* MonthlyStatisticsItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CB551325C71610004D3E7F /* MonthlyStatisticsItemCell.xib */; };
 		13CCD922254EB1DF00E8FFEB /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCD920254EB1DF00E8FFEB /* SideMenuViewController.swift */; };
 		13CCD923254EB1DF00E8FFEB /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CCD921254EB1DF00E8FFEB /* SideMenuViewController.xib */; };
 		13CCD92A254EB35000E8FFEB /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCD928254EB35000E8FFEB /* SideMenuCell.swift */; };
@@ -314,6 +325,7 @@
 		133AA5AE246163E7009EBF8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		133AA5B1246163E7009EBF8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		133AA5B3246163E7009EBF8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13400BD925C9DC250006CFAB /* MonthlyStatisticsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStatisticsItem.swift; sourceTree = "<group>"; };
 		13416FA12485345100EC6590 /* Authorizationbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorizationbutton.swift; sourceTree = "<group>"; };
 		1341727D254B38C2004C6262 /* CurrentPaternSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPaternSideMenu.swift; sourceTree = "<group>"; };
 		1341727E254B38C2004C6262 /* CurrentPaternSideMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentPaternSideMenu.xib; sourceTree = "<group>"; };
@@ -387,6 +399,8 @@
 		13B3C2EE25531C08000D4FA2 /* SideMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
 		13B9FE882540AB3300E5542E /* TrainingPaternsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPaternsHeaderView.swift; sourceTree = "<group>"; };
 		13B9FE8B2540AB7A00E5542E /* TrainingPaternsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingPaternsHeaderView.xib; sourceTree = "<group>"; };
+		13BC48CF25D02D7F004F611E /* StartStopWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopWorkoutView.swift; sourceTree = "<group>"; };
+		13BC48D225D02DA0004F611E /* StartStopWorkoutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartStopWorkoutView.xib; sourceTree = "<group>"; };
 		13BF82BC247C2E54005C5494 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		13C0EEDC24A529DC00F55C54 /* UserTrainInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserTrainInfo.xcdatamodel; sourceTree = "<group>"; };
 		13C0EEE524A5E3EB00F55C54 /* ExerciceManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciceManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -396,6 +410,14 @@
 		13C0F4FE24B4E24A0005A011 /* SettingSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionModel.swift; sourceTree = "<group>"; };
 		13C78145256ABC6100A55482 /* ExerciseDataBaseENG.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ExerciseDataBaseENG.csv; sourceTree = "<group>"; };
 		13C78149256ABCBC00A55482 /* ExercisesDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExercisesDataModel.xcdatamodel; sourceTree = "<group>"; };
+		13CB550025C70A72004D3E7F /* MonthlyStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStatisticsViewController.swift; sourceTree = "<group>"; };
+		13CB550125C70A72004D3E7F /* MonthlyStatisticsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlyStatisticsViewController.xib; sourceTree = "<group>"; };
+		13CB550525C70A86004D3E7F /* MonthlyStatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStatisticsViewModel.swift; sourceTree = "<group>"; };
+		13CB550825C70A93004D3E7F /* MonthlyStatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStatisticsModel.swift; sourceTree = "<group>"; };
+		13CB550B25C70AA1004D3E7F /* MonthlyStatisticsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStatisticsRouter.swift; sourceTree = "<group>"; };
+		13CB550E25C70ABB004D3E7F /* MonthlyStatisticsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStatisticsConfigurator.swift; sourceTree = "<group>"; };
+		13CB551225C71610004D3E7F /* MonthlyStatisticsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStatisticsItemCell.swift; sourceTree = "<group>"; };
+		13CB551325C71610004D3E7F /* MonthlyStatisticsItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlyStatisticsItemCell.xib; sourceTree = "<group>"; };
 		13CCD920254EB1DF00E8FFEB /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		13CCD921254EB1DF00E8FFEB /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
 		13CCD928254EB35000E8FFEB /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
@@ -589,6 +611,7 @@
 		130634462494DEA9008C1ECF /* Training */ = {
 			isa = PBXGroup;
 			children = (
+				13BC48CE25D02D57004F611E /* Views */,
 				136570CF2491253E00BF926B /* TrainingStatistic */,
 				1398F6D8255C5183009BE856 /* ExerciseListStatistics */,
 				130634482494DEEB008C1ECF /* TrainingViewController */,
@@ -804,6 +827,14 @@
 				136F400F24990D2100C6944B /* Configurations */,
 			);
 			path = DairyTraining;
+			sourceTree = "<group>";
+		};
+		13400BD225C9DA140006CFAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				13400BD925C9DC250006CFAB /* MonthlyStatisticsItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1341727C254B388D004C6262 /* SideMenu */ = {
@@ -1029,6 +1060,7 @@
 				13BA179F2461A45200DF5D7D /* ProfileModule */,
 				13BA17A22461A47700DF5D7D /* TrainingModule */,
 				1361BE3C2520D7C600578DB4 /* NutritionModule */,
+				13CB54DE25C7002F004D3E7F /* MonthlyStatistics */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1263,6 +1295,15 @@
 			path = StartApp;
 			sourceTree = "<group>";
 		};
+		13BC48CE25D02D57004F611E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				13BC48CF25D02D7F004F611E /* StartStopWorkoutView.swift */,
+				13BC48D225D02DA0004F611E /* StartStopWorkoutView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		13C0EEDE24A52E5700F55C54 /* Training entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1315,6 +1356,30 @@
 				13C78145256ABC6100A55482 /* ExerciseDataBaseENG.csv */,
 			);
 			path = ExerciseDataBase;
+			sourceTree = "<group>";
+		};
+		13CB54DE25C7002F004D3E7F /* MonthlyStatistics */ = {
+			isa = PBXGroup;
+			children = (
+				13400BD225C9DA140006CFAB /* Model */,
+				13CB551125C715DF004D3E7F /* Cell */,
+				13CB550025C70A72004D3E7F /* MonthlyStatisticsViewController.swift */,
+				13CB550525C70A86004D3E7F /* MonthlyStatisticsViewModel.swift */,
+				13CB550825C70A93004D3E7F /* MonthlyStatisticsModel.swift */,
+				13CB550B25C70AA1004D3E7F /* MonthlyStatisticsRouter.swift */,
+				13CB550E25C70ABB004D3E7F /* MonthlyStatisticsConfigurator.swift */,
+				13CB550125C70A72004D3E7F /* MonthlyStatisticsViewController.xib */,
+			);
+			path = MonthlyStatistics;
+			sourceTree = "<group>";
+		};
+		13CB551125C715DF004D3E7F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				13CB551225C71610004D3E7F /* MonthlyStatisticsItemCell.swift */,
+				13CB551325C71610004D3E7F /* MonthlyStatisticsItemCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		13CCD91F254EB1C200E8FFEB /* SideMenuViewController */ = {
@@ -1847,6 +1912,7 @@
 				7A6673CD2594C39D0086E238 /* TrainingTableFooterView.xib in Resources */,
 				7A2D5CD6258A3D3A0045749C /* NutritionModeCell.xib in Resources */,
 				7A0BC96325ADD4EF0037B51F /* WorkoutCell.xib in Resources */,
+				13CB551525C71610004D3E7F /* MonthlyStatisticsItemCell.xib in Resources */,
 				7AC1908E25935D7700D855E6 /* InfoAlert.xib in Resources */,
 				1398F6DF255C54D5009BE856 /* ChoosenExerciseStatisticsViewController.xib in Resources */,
 				136989C32520DF650039B306 /* TrainingPaternsViewController.xib in Resources */,
@@ -1854,6 +1920,7 @@
 				7A731B1C25B08B3600071E46 /* WorkoutStatisticsViewController.xib in Resources */,
 				7AAFE8EF259A1F45004FF48B /* HomeViewCollectionCell.xib in Resources */,
 				7A69DBD5258757A7003EECD8 /* NutritionSearchingCell.xib in Resources */,
+				13CB550325C70A72004D3E7F /* MonthlyStatisticsViewController.xib in Resources */,
 				7A2FBC5925B02B5400FFE850 /* ErrorCell.xib in Resources */,
 				7A4452DD258A1C0300A808D1 /* NutritionSettingViewController.xib in Resources */,
 				7AAFE8B12599CE24004FF48B /* HomeViewController.xib in Resources */,
@@ -1882,6 +1949,7 @@
 				13D8CEBF25239CCF0091AA6B /* TrainingPaternCell.xib in Resources */,
 				13CCD923254EB1DF00E8FFEB /* SideMenuViewController.xib in Resources */,
 				134AA98F25361E7E00C8BDD1 /* TrainingPaternHeaderView.xib in Resources */,
+				13BC48D325D02DA0004F611E /* StartStopWorkoutView.xib in Resources */,
 				7A69DBFB25878063003EECD8 /* SearchFoodViewController.xib in Resources */,
 				132A6A3F257254A200EB3AE0 /* SelectExerciseViewController.xib in Resources */,
 			);
@@ -1968,6 +2036,7 @@
 				13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */,
 				13C0EEDD24A529DD00F55C54 /* UserTrainingInfo.xcdatamodeld in Sources */,
 				7A384D5C25BAF1C500A83F74 /* WorkoutListRouter.swift in Sources */,
+				13CB550C25C70AA1004D3E7F /* MonthlyStatisticsRouter.swift in Sources */,
 				1384BB4524DEEE7A0084705B /* DTMainInfoCell.swift in Sources */,
 				137E5BA325C1F5B000AFC190 /* OnboardingViewModel.swift in Sources */,
 				139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */,
@@ -1980,6 +2049,7 @@
 				7AF113C025B9B6D300C0AD75 /* MainNutritionViewController.swift in Sources */,
 				13C7814A256ABCBC00A55482 /* ExercisesDataModel.xcdatamodeld in Sources */,
 				1310EC6525BDCB7500D5E873 /* TrainingLevelsRouter.swift in Sources */,
+				13CB550625C70A86004D3E7F /* MonthlyStatisticsViewModel.swift in Sources */,
 				7A384D4E25BAD26200A83F74 /* ChoosenPaternRouter.swift in Sources */,
 				1310EC6A25BDCDF200D5E873 /* TrainingProgramsRouter.swift in Sources */,
 				13EDD9B9247AB03D008EE212 /* ExerciseModel.swift in Sources */,
@@ -1992,6 +2062,7 @@
 				7A36C388259CC0E000DFFA6E /* TrainingProgramsViewModel.swift in Sources */,
 				7AC19874258E37350023ADE2 /* MealDetailAlert.swift in Sources */,
 				7A7D288425753DF800FDD212 /* MapableProtocol.swift in Sources */,
+				13CB550225C70A72004D3E7F /* MonthlyStatisticsViewController.swift in Sources */,
 				7A24882725A49BBB00DB6D12 /* ReadyWorkoutViewController.swift in Sources */,
 				7AC1908A25935D5800D855E6 /* InfoAlert.swift in Sources */,
 				7A0BC96225ADD4EF0037B51F /* WorkoutCell.swift in Sources */,
@@ -2025,6 +2096,7 @@
 				7A69DBFA25878063003EECD8 /* SearchFoodViewController.swift in Sources */,
 				7A24882F25A49BE600DB6D12 /* ReadyWorkoutModel.swift in Sources */,
 				1379800924733AEB00BAD87C /* SettingsSectionViewController.swift in Sources */,
+				13CB550F25C70ABB004D3E7F /* MonthlyStatisticsConfigurator.swift in Sources */,
 				137E5BA625C1F5ED00AFC190 /* OnboardingRouter.swift in Sources */,
 				7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */,
 				7AC1D08E25A32F78006049F6 /* CreatinTrainingPresentationViewController.swift in Sources */,
@@ -2036,6 +2108,7 @@
 				7A384D5125BAD3D700A83F74 /* ChoosenPaternConfigurator.swift in Sources */,
 				1393EDFC24A634B600EBD938 /* TrainingManagedObject+CoreDataClass.swift in Sources */,
 				7AF113AA25B9A74F00C0AD75 /* TrainingPaternsViewControllerConfigurator.swift in Sources */,
+				13400BDA25C9DC250006CFAB /* MonthlyStatisticsItem.swift in Sources */,
 				7AC81F99259B552100AC10FB /* AuthorizationConfigurator.swift in Sources */,
 				13D8CEB825239A7B0091AA6B /* TrainingPaternViewModel.swift in Sources */,
 				7AAFE8BE2599E877004FF48B /* NavigationViewCell.swift in Sources */,
@@ -2055,6 +2128,7 @@
 				7A384D5425BADB2500A83F74 /* SideMenuConfigurator.swift in Sources */,
 				13CCD92A254EB35000E8FFEB /* SideMenuCell.swift in Sources */,
 				7A69DBFE25878233003EECD8 /* SearchFoodViewModel.swift in Sources */,
+				13CB551425C71610004D3E7F /* MonthlyStatisticsItemCell.swift in Sources */,
 				13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */,
 				136F40092498D44B00C6944B /* UserDataManager.swift in Sources */,
 				7A36C38E259CC3D100DFFA6E /* TrainingProgramsConfigurator.swift in Sources */,
@@ -2142,6 +2216,7 @@
 				7A36C371259CB24300DFFA6E /* StretchableHeader.swift in Sources */,
 				133705BE24D17B3100E023CC /* MuscleGroupsViewModel.swift in Sources */,
 				135F228A2494296F00EEE140 /* StatisticsModel.swift in Sources */,
+				13BC48D025D02D7F004F611E /* StartStopWorkoutView.swift in Sources */,
 				13344E5324B3619500BE3D65 /* DTBackgroundedViewController.swift in Sources */,
 				13C0EEE824A5E3EB00F55C54 /* ExerciseManagedObject+CoreDataProperties.swift in Sources */,
 				138BDB78248665330033F378 /* DTTextField.swift in Sources */,
@@ -2173,6 +2248,7 @@
 				13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */,
 				13EC525F24810E4A00A05BCA /* DTEditingExerciceCell.swift in Sources */,
 				13C0F4FF24B4E24A0005A011 /* SettingSectionModel.swift in Sources */,
+				13CB550925C70A93004D3E7F /* MonthlyStatisticsModel.swift in Sources */,
 				1306E01524CF293B003AEBA7 /* UIViewController + Ex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

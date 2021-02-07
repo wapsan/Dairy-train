@@ -19,19 +19,21 @@ final class WorkoutViewController: UIViewController {
     
     // MARK: - GUI Properties
     private var stratchabelHeader: StretchableHeader?
+    private lazy var startStopWorkoutView = StartStopWorkoutView.loadFromXib()
     
     //MARK: - Module property
     private var viewModel: WorkoutViewModeProtocol
     private lazy var aproachAlert = DTNewAproachAlert()
     
     private var cellHeight: CGFloat {
-        return self.view.safeAreaLayoutGuide.layoutFrame.height / 3.5
+        return self.view.safeAreaLayoutGuide.layoutFrame.height / 4
     }
 
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideTabBar()
+        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -72,11 +74,12 @@ private extension WorkoutViewController {
         loadTraining()
         aproachAlert.delegate = viewModel as? NewAproachAlertDelegate
         tableView.register(DTEditingExerciceCell.self, forCellReuseIdentifier: DTEditingExerciceCell.cellID)
+        tableView.register(cell: WorkoutCell.self)
         setupHeaders()
     }
     
     private func setupHeaders() {
-        let headerSize = CGSize(width: tableView.frame.size.width, height: 150)
+        let headerSize = CGSize(width: tableView.frame.size.width, height: 250)
         stratchabelHeader = StretchableHeader(frame: CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height))
         stratchabelHeader?.title = viewModel.trainingDate
         stratchabelHeader?.customDescription = nil
@@ -88,6 +91,22 @@ private extension WorkoutViewController {
         stratchabelHeader?.minimumContentHeight = 44
         guard let header = stratchabelHeader else { return }
         tableView.addSubview(header)
+        
+        guard let startStopWorkoutView = self.startStopWorkoutView else { return }
+        startStopWorkoutView.configure(for: viewModel.startTime, and: viewModel.endTime)
+        startStopWorkoutView.startButtonAction = { [unowned self] in
+            self.viewModel.startWotkout()
+        }
+        startStopWorkoutView.stopButtonAction = { [unowned self] in
+            self.viewModel.stopWorkout()
+        }
+        startStopWorkoutView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.addSubview(startStopWorkoutView)
+        NSLayoutConstraint.activate([
+            startStopWorkoutView.topAnchor.constraint(equalTo: header.bottomAnchor),
+            startStopWorkoutView.heightAnchor.constraint(equalToConstant: 40),
+            startStopWorkoutView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
+        ])
     }
 }
 

@@ -36,6 +36,24 @@ extension ExerciseManagedObject {
 //MARK: - Custom properties
 extension ExerciseManagedObject {
     
+    var totalRepsCount: Double {
+        var summ: Double = 0
+        aproachesArray.forEach({ aproach in
+            summ += Double(aproach.reps)
+        })
+        return summ
+    }
+    
+    var setsCount: Double {
+        return Double(aproaches.count)
+    }
+    
+    var sumWeightOfExercise: Double {
+        var summ: Double = 0
+        aproachesArray.forEach({ approach in summ += approach.summWeightOfAproach })
+        return summ
+    }
+    
     var aproachesArray: [AproachManagedObject] {
         get {
             let aproachesSet = self.aproaches as? Set<AproachManagedObject> ?? []

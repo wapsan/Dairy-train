@@ -3,7 +3,6 @@ import Foundation
 protocol NutritionettingModelProtocol {
     
     var selectedMode: NutritionMode { get }
-    
     var nutritionMode: NutritionMode { get }
     
     func getSelectednutritionMode()
@@ -30,6 +29,10 @@ final class NutritionSettingModel {
                 updateNutritionRecomendation()
             }
         }
+    }
+    
+    init() {
+        NotificationCenter.default.post(name: .nutritionmodeWasChanged, object: self)
     }
     
     private func updateCustomNutritionRecomendation() {

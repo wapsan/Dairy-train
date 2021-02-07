@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -195,6 +195,17 @@
                                     <action selector="addMealButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UdR-xH-vZQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKC-jh-VIZ">
+                                <rect key="frame" x="8" y="14" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="ddJ-JK-YaY"/>
+                                    <constraint firstAttribute="height" constant="25" id="j7B-JJ-rVn"/>
+                                </constraints>
+                                <state key="normal" image="icon_setting"/>
+                                <connections>
+                                    <action selector="settingButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="epM-Gl-Wts"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
@@ -207,11 +218,14 @@
                             <constraint firstItem="pMw-z8-8Ne" firstAttribute="top" secondItem="uGq-1Z-5xM" secondAttribute="top" constant="16" id="XCP-dh-b1u"/>
                             <constraint firstItem="o7T-yH-2T4" firstAttribute="top" secondItem="rQG-gU-eKk" secondAttribute="bottom" constant="32" id="XIL-2d-mGO"/>
                             <constraint firstItem="ntb-TQ-lal" firstAttribute="top" secondItem="o7T-yH-2T4" secondAttribute="bottom" constant="32" id="aDz-uB-g8l"/>
+                            <constraint firstItem="pMw-z8-8Ne" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iKC-jh-VIZ" secondAttribute="trailing" constant="8" id="bao-Uh-vGh"/>
+                            <constraint firstItem="iKC-jh-VIZ" firstAttribute="centerY" secondItem="pMw-z8-8Ne" secondAttribute="centerY" id="be9-25-JCY"/>
                             <constraint firstAttribute="trailing" secondItem="3Zp-o9-K7m" secondAttribute="trailing" constant="16" id="dGf-k5-HLg"/>
                             <constraint firstAttribute="bottom" secondItem="ntb-TQ-lal" secondAttribute="bottom" constant="16" id="dJA-4l-1Xe"/>
                             <constraint firstItem="3Zp-o9-K7m" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ntb-TQ-lal" secondAttribute="trailing" constant="8" id="eoj-lz-91e"/>
                             <constraint firstAttribute="trailing" secondItem="o7T-yH-2T4" secondAttribute="trailing" constant="16" id="fC4-1q-n7f"/>
                             <constraint firstItem="pMw-z8-8Ne" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uGq-1Z-5xM" secondAttribute="leading" constant="8" id="fLH-Tw-MkE"/>
+                            <constraint firstItem="iKC-jh-VIZ" firstAttribute="leading" secondItem="uGq-1Z-5xM" secondAttribute="leading" constant="8" id="fUb-Fw-zDe"/>
                             <constraint firstItem="rQG-gU-eKk" firstAttribute="top" secondItem="xBS-TR-1yw" secondAttribute="bottom" constant="32" id="gv1-gt-2bu"/>
                             <constraint firstItem="pMw-z8-8Ne" firstAttribute="centerX" secondItem="uGq-1Z-5xM" secondAttribute="centerX" id="kxG-MZ-cEG"/>
                             <constraint firstItem="dUM-3M-rMb" firstAttribute="centerY" secondItem="pMw-z8-8Ne" secondAttribute="centerY" id="mk8-Up-LEX"/>
@@ -256,6 +270,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="icon_setting" width="64" height="64"/>
         <image name="icon_statistics" width="64" height="64"/>
         <namedColor name="backgroundColor">
             <color red="0.1289999932050705" green="0.14900000393390656" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
