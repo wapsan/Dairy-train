@@ -13,7 +13,7 @@ fileprivate struct Key {
     static let pageNumber = "pageNumber"
 }
 
-final class USDAManager {
+final class CaloriesAPI {
     
     // MARK: - Error types
     enum NetWorkError: String, Error {
@@ -30,43 +30,48 @@ final class USDAManager {
     // MARK: - Private properties
     private let baseURL = "https://api.nal.usda.gov/fdc/v1/foods/search"
     private lazy var parameters = [Key.apiKey: Value.apiKey, Key.resultPerPage: Value.resultPerPage]
+    
     private var isConnectedToInternet: Bool {
         return NetworkReachabilityManager()?.isReachable ?? false
     }
+    
+    private lazy var session: Alamofire.Session = .default
     
     // MARK: - Public methods
     func searchFoodWithName(_ foodName: String,
                             pageNumber: Int = 1,
                             completion: @escaping (Result<FoodResponseModel, NetWorkError>) -> Void) {
+        
         parameters[Key.searchignText] = convertSearchingText(text: foodName)
         parameters[Key.pageNumber] = String(pageNumber)
         
-        AF.request(baseURL, parameters: parameters).responseJSON { [weak self] (response) in
-            guard let self = self else { return }
-            
-            do {
-                let responseModel = try self.excludeErrors(for: response)
-                completion(.success(responseModel))
-            } catch {
-                guard let error = error as? NetWorkError else { completion(.failure(.unknownError)); return }
-                completion(.failure(error))
-            }
-        }
+        request(baseURL: baseURL, parameters: parameters, completion: completion)
     }
     
-    // MARK: - Private helpers methods
-    private func excludeErrors(for response: AFDataResponse<Any>) throws -> FoodResponseModel {
-        guard self.isConnectedToInternet else { throw NetWorkError.noInternetConnection }
-        
-        guard let data = response.data else { throw NetWorkError.noResponse }
-        
-        guard let responseModel = try? JSONDecoder().decode(FoodResponseModel.self, from: data) else {
-            throw NetWorkError.parseError
+    // MARK: - Privat
+    private func request<Model: Decodable>(baseURL: String,
+                                           parameters: Parameters,
+                                           completion: @escaping (Result<Model, NetWorkError>) -> Void) {
+        session.request(baseURL, parameters: parameters).responseJSON { [weak self] (response) in
+            guard let self = self else { return }
+            
+            guard self.isConnectedToInternet else {
+                completion(.failure(.noInternetConnection))
+                return
+            }
+            
+            guard let data = response.data else {
+                completion(.failure(.noResponse))
+                return
+            }
+            
+            guard let model = try? JSONDecoder().decode(Model.self, from: data) else {
+                completion(.failure(.noResponse))
+                return
+            }
+            
+            completion(.success(model))
         }
-        
-        guard !responseModel.foods.isEmpty else { throw NetWorkError.noResponse }
-        
-        return responseModel
     }
     
     private func convertSearchingText(text: String) -> String {
