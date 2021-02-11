@@ -175,7 +175,7 @@ extension WorkoutViewModel: WorkoutViewModeProtocol {
         let exerciseNameForDeleting = exerciseList[index].name
         router?.showAlert(title: "Delete \(exerciseNameForDeleting)?",
                           message: "Are you sure?",
-                          completion: {[weak self] in self?.model.deleteExercice(at: index)})
+                          completion: { [weak self] in self?.model.deleteExercice(at: index)})
     }
     
     func loadTrain() {

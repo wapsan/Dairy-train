@@ -241,7 +241,7 @@
 		7A7D288125753BEA00FDD212 /* TrainingPaternCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D288025753BEA00FDD212 /* TrainingPaternCodableModel.swift */; };
 		7A7D288425753DF800FDD212 /* MapableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D288325753DF800FDD212 /* MapableProtocol.swift */; };
 		7A8409482594D67A00A65D5F /* Pods_Dairy_Training.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BB67FC86381D6904D71F4C /* Pods_Dairy_Training.framework */; };
-		7A8BED202590A8E600CDB925 /* USDAManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8BED1F2590A8E600CDB925 /* USDAManager.swift */; };
+		7A8BED202590A8E600CDB925 /* CaloriesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8BED1F2590A8E600CDB925 /* CaloriesAPI.swift */; };
 		7A8BED252590AF7400CDB925 /* FoodResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8BED242590AF7400CDB925 /* FoodResponseModel.swift */; };
 		7A8BED2F2590D96B00CDB925 /* TodayMealsTableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8BED2E2590D96B00CDB925 /* TodayMealsTableSectionHeader.swift */; };
 		7A8BED322590D9D100CDB925 /* TodayMealsTableSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A8BED312590D9D100CDB925 /* TodayMealsTableSectionHeader.xib */; };
@@ -528,7 +528,7 @@
 		7A731B2325B08FB500071E46 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		7A7D288025753BEA00FDD212 /* TrainingPaternCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPaternCodableModel.swift; sourceTree = "<group>"; };
 		7A7D288325753DF800FDD212 /* MapableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapableProtocol.swift; sourceTree = "<group>"; };
-		7A8BED1F2590A8E600CDB925 /* USDAManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDAManager.swift; sourceTree = "<group>"; };
+		7A8BED1F2590A8E600CDB925 /* CaloriesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesAPI.swift; sourceTree = "<group>"; };
 		7A8BED242590AF7400CDB925 /* FoodResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodResponseModel.swift; sourceTree = "<group>"; };
 		7A8BED2E2590D96B00CDB925 /* TodayMealsTableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMealsTableSectionHeader.swift; sourceTree = "<group>"; };
 		7A8BED312590D9D100CDB925 /* TodayMealsTableSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayMealsTableSectionHeader.xib; sourceTree = "<group>"; };
@@ -1647,7 +1647,7 @@
 			isa = PBXGroup;
 			children = (
 				7AC190862593558600D855E6 /* Translator */,
-				7A8BED1E2590A8C800CDB925 /* USDAManager */,
+				7A8BED1E2590A8C800CDB925 /* CaloriesAPI */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1690,13 +1690,13 @@
 			path = SearchFoodViewController;
 			sourceTree = "<group>";
 		};
-		7A8BED1E2590A8C800CDB925 /* USDAManager */ = {
+		7A8BED1E2590A8C800CDB925 /* CaloriesAPI */ = {
 			isa = PBXGroup;
 			children = (
 				7A8BED232590AF5C00CDB925 /* Model */,
-				7A8BED1F2590A8E600CDB925 /* USDAManager.swift */,
+				7A8BED1F2590A8E600CDB925 /* CaloriesAPI.swift */,
 			);
-			path = USDAManager;
+			path = CaloriesAPI;
 			sourceTree = "<group>";
 		};
 		7A8BED232590AF5C00CDB925 /* Model */ = {
@@ -2043,7 +2043,7 @@
 				7A2FBC5825B02B5400FFE850 /* ErrorCell.swift in Sources */,
 				136F3FFE2498D0DE00C6944B /* UserMainInfo.xcdatamodeld in Sources */,
 				7A9E176A25B5F0F900978DD8 /* HomeRouter.swift in Sources */,
-				7A8BED202590A8E600CDB925 /* USDAManager.swift in Sources */,
+				7A8BED202590A8E600CDB925 /* CaloriesAPI.swift in Sources */,
 				7A384D6725BAF7FA00A83F74 /* ExerciseStatisticsConfigurator.swift in Sources */,
 				1341727F254B38C2004C6262 /* CurrentPaternSideMenu.swift in Sources */,
 				7AF113C025B9B6D300C0AD75 /* MainNutritionViewController.swift in Sources */,

@@ -24,9 +24,8 @@ final class MonthlyStatisticsRouter: Router {
 }
 
 extension MonthlyStatisticsRouter: MonthlyStatisticsRouterProtocol {
+    
     func popViewController() {
         rootViewController.navigationController?.popViewController(animated: true)
     }
-    
-    
 }

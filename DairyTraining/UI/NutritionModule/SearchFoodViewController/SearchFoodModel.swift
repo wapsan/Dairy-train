@@ -12,7 +12,7 @@ final class SearchFoodModel {
     weak var output: SearchFoodViewModellInput?
     
     
-    private let foodSearchService = USDAManager()
+    private let foodSearchService = CaloriesAPI()
     private var requestPageNumber = 1
 }
 
@@ -30,6 +30,10 @@ extension SearchFoodModel: SearchFoodModelProtocol {
         foodSearchService.searchFoodWithName(text, pageNumber: requestPageNumber) { [weak self] (response) in
             switch response {
             case .success(let responseModel):
+                guard !responseModel.foods.isEmpty else  {
+                    self?.output?.updateError(with: "Sorry we can not find whats are you looking for.")
+                    return
+                }
                 self?.output?.foodListWasUpdatedAfterPagination(to: responseModel.foods)
             case .failure(let error):
                 self?.output?.updateError(with: error.message)
