@@ -108,8 +108,8 @@
 		13AF91DA248A2B2A006211B7 /* DTAdaptiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AF91D9248A2B2A006211B7 /* DTAdaptiveLabel.swift */; };
 		13B1E7D024BDADE800EE84E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13B1E7D224BDADE800EE84E2 /* Localizable.strings */; };
 		13B1E7D524BDD22A00EE84E2 /* DTAlertSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E7D424BDD22A00EE84E2 /* DTAlertSelectionButton.swift */; };
-		13B3C2EB255318D3000D4FA2 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B3C2EA255318D3000D4FA2 /* SideMenuViewModel.swift */; };
-		13B3C2EF25531C08000D4FA2 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B3C2EE25531C08000D4FA2 /* SideMenuModel.swift */; };
+		13B3C2EB255318D3000D4FA2 /* SideMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B3C2EA255318D3000D4FA2 /* SideMenuPresenter.swift */; };
+		13B3C2EF25531C08000D4FA2 /* SideMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B3C2EE25531C08000D4FA2 /* SideMenuInteractor.swift */; };
 		13B9FE892540AB3300E5542E /* TrainingPaternsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B9FE882540AB3300E5542E /* TrainingPaternsHeaderView.swift */; };
 		13B9FE8C2540AB7A00E5542E /* TrainingPaternsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B9FE8B2540AB7A00E5542E /* TrainingPaternsHeaderView.xib */; };
 		13BC48D025D02D7F004F611E /* StartStopWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BC48CF25D02D7F004F611E /* StartStopWorkoutView.swift */; };
@@ -273,6 +273,7 @@
 		7AC81FD9259C832900AC10FB /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81FD8259C832800AC10FB /* FirebaseStorageManager.swift */; };
 		7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */; };
 		7AD9DA3A258CDCA2006BF647 /* NutrientPercentagePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */; };
+		7ADF7D4025F6912D0042CBB9 /* SideMenuEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADF7D3F25F6912D0042CBB9 /* SideMenuEntity.swift */; };
 		7AECC65725A33FBE00AE1768 /* ReadyTrainingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AECC65525A33FBE00AE1768 /* ReadyTrainingCell.swift */; };
 		7AECC65825A33FBE00AE1768 /* ReadyTrainingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AECC65625A33FBE00AE1768 /* ReadyTrainingCell.xib */; };
 		7AF113A725B9A62E00C0AD75 /* MuscleGroupsViewControllerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF113A625B9A62E00C0AD75 /* MuscleGroupsViewControllerConfigurator.swift */; };
@@ -394,8 +395,8 @@
 		13B1E7D124BDADE800EE84E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		13B1E7D324BDADEC00EE84E2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		13B1E7D424BDD22A00EE84E2 /* DTAlertSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAlertSelectionButton.swift; sourceTree = "<group>"; };
-		13B3C2EA255318D3000D4FA2 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
-		13B3C2EE25531C08000D4FA2 /* SideMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
+		13B3C2EA255318D3000D4FA2 /* SideMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresenter.swift; sourceTree = "<group>"; };
+		13B3C2EE25531C08000D4FA2 /* SideMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInteractor.swift; sourceTree = "<group>"; };
 		13B9FE882540AB3300E5542E /* TrainingPaternsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPaternsHeaderView.swift; sourceTree = "<group>"; };
 		13B9FE8B2540AB7A00E5542E /* TrainingPaternsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingPaternsHeaderView.xib; sourceTree = "<group>"; };
 		13BC48CF25D02D7F004F611E /* StartStopWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopWorkoutView.swift; sourceTree = "<group>"; };
@@ -559,6 +560,7 @@
 		7AC81FD8259C832800AC10FB /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		7AD9DA35258CDC76006BF647 /* NutrientPercentagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientPercentagePickerView.swift; sourceTree = "<group>"; };
 		7AD9DA39258CDCA2006BF647 /* NutrientPercentagePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutrientPercentagePickerView.xib; sourceTree = "<group>"; };
+		7ADF7D3F25F6912D0042CBB9 /* SideMenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuEntity.swift; sourceTree = "<group>"; };
 		7AECC65525A33FBE00AE1768 /* ReadyTrainingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyTrainingCell.swift; sourceTree = "<group>"; };
 		7AECC65625A33FBE00AE1768 /* ReadyTrainingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadyTrainingCell.xib; sourceTree = "<group>"; };
 		7AF113A625B9A62E00C0AD75 /* MuscleGroupsViewControllerConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupsViewControllerConfigurator.swift; sourceTree = "<group>"; };
@@ -1385,8 +1387,9 @@
 			children = (
 				13CCD927254EB33300E8FFEB /* Cell */,
 				13CCD920254EB1DF00E8FFEB /* SideMenuViewController.swift */,
-				13B3C2EA255318D3000D4FA2 /* SideMenuViewModel.swift */,
-				13B3C2EE25531C08000D4FA2 /* SideMenuModel.swift */,
+				13B3C2EA255318D3000D4FA2 /* SideMenuPresenter.swift */,
+				13B3C2EE25531C08000D4FA2 /* SideMenuInteractor.swift */,
+				7ADF7D3F25F6912D0042CBB9 /* SideMenuEntity.swift */,
 				7A384D5625BADC9000A83F74 /* SideMenuRouter.swift */,
 				7A384D5325BADB2500A83F74 /* SideMenuConfigurator.swift */,
 				13CCD921254EB1DF00E8FFEB /* SideMenuViewController.xib */,
@@ -2019,12 +2022,13 @@
 			files = (
 				136989CB2520E3450039B306 /* TrainingPaternManagedObject+CoreDataClass.swift in Sources */,
 				7A2A75592588B81D0091FD22 /* NutritionMainCell.swift in Sources */,
+				7ADF7D4025F6912D0042CBB9 /* SideMenuEntity.swift in Sources */,
 				132FC7B924B79DCD00A70F7E /* DTEdgeInsets.swift in Sources */,
 				7AC19091259361C400D855E6 /* TranslatorManager.swift in Sources */,
 				7A6673AB25949D500086E238 /* NutritionDataCodableModel.swift in Sources */,
 				134DF5B524B4E50D007A7B8A /* ColorSetting.swift in Sources */,
 				7A384D8525BB11AC00A83F74 /* CreatingTrainingModalRouter.swift in Sources */,
-				13B3C2EB255318D3000D4FA2 /* SideMenuViewModel.swift in Sources */,
+				13B3C2EB255318D3000D4FA2 /* SideMenuPresenter.swift in Sources */,
 				1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */,
 				7A384D5725BADC9000A83F74 /* SideMenuRouter.swift in Sources */,
 				1396F5FE2483BE480012A76A /* DTSystemButton.swift in Sources */,
@@ -2066,7 +2070,7 @@
 				139D531B24753D060028AE6A /* SettingModel.swift in Sources */,
 				7A4452EA258A210100A808D1 /* NutritionSettingModel.swift in Sources */,
 				7A2D5CD5258A3D3A0045749C /* NutritionModeCell.swift in Sources */,
-				13B3C2EF25531C08000D4FA2 /* SideMenuModel.swift in Sources */,
+				13B3C2EF25531C08000D4FA2 /* SideMenuInteractor.swift in Sources */,
 				7A4A8BA325F3E1BA0054328A /* CustomNutritionModeMO+CoreDataClass.swift in Sources */,
 				7A69DBF025877A67003EECD8 /* NutritionDataManager.swift in Sources */,
 				135BF56424DDAAB000E1E120 /* DTValueAlert.swift in Sources */,

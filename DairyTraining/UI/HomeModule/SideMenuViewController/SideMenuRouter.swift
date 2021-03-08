@@ -51,5 +51,4 @@ extension SideMenuRouter: SideMenuRouterProtocol {
         let authorizationScreen = AuthorizationConfigurator.configureAuthorizationViewController()
         window?.setRootViewController(authorizationScreen)
     }
-  
 }

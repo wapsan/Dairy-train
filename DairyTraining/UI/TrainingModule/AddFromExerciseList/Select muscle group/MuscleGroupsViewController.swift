@@ -40,11 +40,7 @@ final class MuscleGroupsViewController: DTBackgroundedViewController {
     //MARK: - Initialization
     init(trainingEntityTarget: TrainingEntityTarget) {
         self.trainingEntityTarget = trainingEntityTarget
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init()
     }
     
     //MARK: - Private methods

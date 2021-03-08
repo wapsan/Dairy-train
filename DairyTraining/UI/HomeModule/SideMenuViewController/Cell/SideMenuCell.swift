@@ -1,8 +1,7 @@
 import UIKit
 
-class SideMenuCell: UITableViewCell {
+final class SideMenuCell: UITableViewCell {
 
-    
     //MARK: - @IBOutlets
     @IBOutlet var menuItemTitleLabel: UILabel!
     @IBOutlet var menuItemImageView: UIImageView!
@@ -10,11 +9,10 @@ class SideMenuCell: UITableViewCell {
     //MARK: - Initialization
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .none
     }
 
     //MARK: - Setup
-    func setCell(for menuItem: SideMenuModel.MenuItem) {
+    func setCell(for menuItem: SideMenuInteractor.MenuItem) {
         menuItemImageView.image = menuItem.image
         menuItemTitleLabel.text = menuItem.title
     }

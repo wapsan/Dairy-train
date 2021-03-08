@@ -1,6 +1,6 @@
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController: RequredViewController {
     
     //MARK: - Properties
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -31,5 +31,19 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = textAttributes
         self.navigationItem.backBarButtonItem = backBarButtonItem
         self.navigationController?.navigationBar.barStyle = .black
+    }
+    
+  
+}
+
+class RequredViewController: UIViewController {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

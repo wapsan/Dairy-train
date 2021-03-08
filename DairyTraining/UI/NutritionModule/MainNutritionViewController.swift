@@ -32,13 +32,9 @@ final class MainNutritionViewController: DTBackgroundedViewController {
     // MARK: - Initialization
     init(viewModel: NutritionViewModelProtocol) {
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     // MARK: - Private methods
     private func setup() {
         navigationController?.navigationBar.isHidden = true

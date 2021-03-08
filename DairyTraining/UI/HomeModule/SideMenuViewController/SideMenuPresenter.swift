@@ -1,25 +1,27 @@
 import Foundation
 
-protocol SideMenuViewModelProtocol {
-    var sideMenuItems: [SideMenuModel.MenuItem] { get }
+protocol SideMenuPresenterProtocol {
+    var sideMenuItems: [SideMenuInteractor.MenuItem] { get }
     func menuItemSelected(at index: Int)
 }
 
-final class SideMenuViewModel {
+final class SideMenuPresenter {
     
-    //MARK: - Properties
-    private var model: SideMenuModel
+    //MARK: - Internal properties
     var router: SideMenuRouterProtocol?
     
+    //MARK: - Properties
+    private var interactor: SideMenuInteractor
+    
     //MARK: - Initialization
-    init(model: SideMenuModel) {
-        self.model = model
+    init(interactor: SideMenuInteractor) {
+        self.interactor = interactor
     }
     
     //MARK: - Private methods
     private func showSignOutAlert() {
         router?.showSignOutAlert(with: { [weak self] in
-            self?.model.signOut()
+            self?.interactor.signOut()
         })
     }
     
@@ -33,28 +35,32 @@ final class SideMenuViewModel {
 }
 
 //MARK: - SideMenuProtocol
-extension SideMenuViewModel: SideMenuViewModelProtocol {
+extension SideMenuPresenter: SideMenuPresenterProtocol {
     
-    var sideMenuItems: [SideMenuModel.MenuItem] {
-        SideMenuModel.MenuItem.allCases
+    var sideMenuItems: [SideMenuInteractor.MenuItem] {
+        SideMenuInteractor.MenuItem.allCases
     }
     
     func menuItemSelected(at index: Int) {
         let menuItem = sideMenuItems[index]
+        
         switch menuItem {
         case .premium:
             break
         case .setting:
             showSettingScreen()
+            
         case .termAndConditions:
             showTermsAndConditionScreen()
+            
         case .logOut:
             showSignOutAlert()
         }
     }
 }
 
-extension SideMenuViewModel: SideMenuModelOutput {
+//MARK: - SideMenuInteractorOutput
+extension SideMenuPresenter: SideMenuInteractorOutput {
     
     func successLogOut() {
         router?.showAuhorizationScreen()

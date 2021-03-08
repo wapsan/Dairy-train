@@ -1,11 +1,6 @@
-import Firebase
+import UIKit
 
-protocol SideMenuModelOutput: AnyObject {
-    func successLogOut()
-    func errorLogout(with errorMessage: String)
-}
-
-final class SideMenuModel {
+extension SideMenuInteractor {
     
     // MARK: - Types
     enum MenuItem: CaseIterable {
@@ -38,23 +33,6 @@ final class SideMenuModel {
             case .termAndConditions:
                 return "Terms & conditions"
             }
-        }
-    }
-
-    weak var output: SideMenuModelOutput?
-    
-    //MARK: - Public methods
-    func signOut() {
-        do {
-            try Auth.auth().signOut()
-            SettingManager.shared.deleteUserToken()
-            NutritionDataManager.shared.removeNutritionData()
-            UserDataManager.shared.removeAllUserData { [weak self] in
-                self?.output?.successLogOut()
-            }
-            
-        } catch let signOutError {
-            self.output?.errorLogout(with: signOutError.localizedDescription)
         }
     }
 }

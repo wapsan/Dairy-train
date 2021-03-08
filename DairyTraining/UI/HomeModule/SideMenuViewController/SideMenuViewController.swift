@@ -1,12 +1,17 @@
 import UIKit
 
-final class SideMenuViewController: UIViewController {
+final class SideMenuViewController: RequredViewController {
 
+    //MARK: - Constants
+    private struct Constants {
+        static let cellHeight: CGFloat = 70
+    }
+    
     //MARK: - @IBOutlets
     @IBOutlet private var tableView: UITableView!
     
     //MARK: - Properties
-    private var viewModel: SideMenuViewModelProtocol
+    private var presenter: SideMenuPresenterProtocol
     
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -20,19 +25,12 @@ final class SideMenuViewController: UIViewController {
     }
     
     //MARK: - Initialization
-    init(viewModel: SideMenuViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+    init(presenter: SideMenuPresenter) {
+        self.presenter = presenter
+        super.init()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-//MARK: - Private
-private extension SideMenuViewController {
-    
+    //MARK: - Setup
     func setup() {
         let cellNib = UINib(nibName: SideMenuCell.xibName, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: SideMenuCell.cellID)
@@ -43,11 +41,11 @@ private extension SideMenuViewController {
 extension SideMenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.sideMenuItems.count
+        return presenter.sideMenuItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let menuItem = viewModel.sideMenuItems[indexPath.row]
+        let menuItem = presenter.sideMenuItems[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: SideMenuCell.cellID, for: indexPath)
         (cell as? SideMenuCell)?.setCell(for: menuItem)
         return cell
@@ -58,10 +56,10 @@ extension SideMenuViewController: UITableViewDataSource {
 extension SideMenuViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.menuItemSelected(at: indexPath.row)
+        presenter.menuItemSelected(at: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return Constants.cellHeight
     }
 }
