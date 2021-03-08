@@ -18,7 +18,7 @@ final class HomeViewController: UIViewController {
     private var stratchabelHeader: StretchableHeader?
     
     // MARK: - Properties
-    private let viewModel: HomeViewModelProtocol
+    private let presenter: HomePresenterProtocol
     private var dataSource: UICollectionViewDiffableDataSource<HomeViewCollectionSection, Int>?
     
     // MARK: - Lyfecycle
@@ -35,8 +35,8 @@ final class HomeViewController: UIViewController {
     }
     
     // MARK: - Initialization
-    init(viewModel: HomeViewModelProtocol) {
-        self.viewModel = viewModel
+    init(presenter: HomePresenterProtocol) {
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,8 +49,6 @@ final class HomeViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         collectionView.register(UINib(nibName: HomeViewCollectionCell.xibName, bundle: nil),
                                 forCellWithReuseIdentifier: HomeViewCollectionCell.cellID)
-        collectionView.register(UINib(nibName: NavigationViewCell.xibName, bundle: nil),
-                                forCellWithReuseIdentifier: NavigationViewCell.cellID)
         setupHeaders()
         collectionView.collectionViewLayout = createLayout2()
         configureDataSource()
@@ -60,9 +58,9 @@ final class HomeViewController: UIViewController {
     private func setupHeaders() {
         let headerSize = CGSize(width: collectionView.frame.size.width, height: 200)
         stratchabelHeader = StretchableHeader(frame: CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height))
-        stratchabelHeader?.title = viewModel.title
-        stratchabelHeader?.customDescription = viewModel.description
-        stratchabelHeader?.topRightButtonAction = { [unowned self] in self.viewModel.menuButtonPressed() }
+        stratchabelHeader?.title = presenter.title
+        stratchabelHeader?.customDescription = presenter.description
+        stratchabelHeader?.topRightButtonAction = { [unowned self] in self.presenter.menuButtonPressed() }
         stratchabelHeader?.setTopRightButton(image: UIImage(named: "icon_home_menu"))
         stratchabelHeader?.backgroundColor = .black
         stratchabelHeader?.backButtonImageType = .none
@@ -121,13 +119,13 @@ final class HomeViewController: UIViewController {
         dataSource = UICollectionViewDiffableDataSource<HomeViewCollectionSection, Int>(collectionView: collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, identifier: Int) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeViewCollectionCell.cellID, for: indexPath)
-            (cell as? HomeViewCollectionCell)?.setCell(for: self.viewModel.menuItem(at: indexPath.row))
+            (cell as? HomeViewCollectionCell)?.setCell(for: self.presenter.menuItem(at: indexPath))
             return cell
         }
         
         var snapshot = NSDiffableDataSourceSnapshot<HomeViewCollectionSection, Int>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(Array(0..<viewModel.menuItemCount))
+        snapshot.appendItems(Array(0..<presenter.menuItemCount))
         dataSource?.apply(snapshot, animatingDifferences: false)
     }
 }
@@ -139,6 +137,6 @@ extension HomeViewController: HomeView { }
 extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelectItemAtIndex(indexPath.row)
+        presenter.didSelectItemAtIndex(indexPath)
     }
 }

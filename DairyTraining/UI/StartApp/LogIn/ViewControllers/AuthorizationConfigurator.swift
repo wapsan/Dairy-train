@@ -4,7 +4,7 @@ struct AuthorizationConfigurator {
     
     static func configureAuthorizationViewController() -> AuthorizationViewController {
         let interactor = AuthorizationInteractor()
-        let presenter = AuthorizationPresenter(model: interactor)
+        let presenter = AuthorizationPresenter(interactor: interactor)
         let viewController = AuthorizationViewController(presenter: presenter)
         let router = AuthorizationRouter(viewController)
         interactor.output = presenter

@@ -22,7 +22,7 @@ extension CreatingTrainingModelRouter: CreatingTrainingModelRouterProtocol {
                 self?.showExerciseFlow()
                 
             case .fromTrainingPatern:
-                self?.showPaternFlow()
+                self?.showWorkoutsPaternFlow()
                 
             case .fromSpecialTraining:
                 self?.showReadyWorkoutsFlow()

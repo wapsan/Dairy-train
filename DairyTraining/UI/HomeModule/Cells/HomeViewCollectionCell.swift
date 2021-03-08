@@ -7,9 +7,6 @@ final class HomeViewCollectionCell: UICollectionViewCell {
     @IBOutlet private var descriptionLabel: UILabel!
     @IBOutlet private var titleLabel: UIImageView!
     
-    // MARK: - Properties
-    var imageOnAction: (() -> Void)?
-    
     // MARK: - Initialization
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,7 +14,7 @@ final class HomeViewCollectionCell: UICollectionViewCell {
     }
     
     // MARK: - Setter
-    func setCell(for menuItem: HomeModel.MenuItem) {
+    func setCell(for menuItem: HomeInteractor.MenuItem) {
         descriptionLabel.text = menuItem.titel
     }
 }

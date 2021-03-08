@@ -13,11 +13,11 @@ final class AuthorizationPresenter {
     var router: AuthorizationRouterProtocol?
     
     //MARK: - Private properties
-    private let model: AuthorizationInteractorProtocol
+    private let interactor: AuthorizationInteractorProtocol
     
     // MARK: - Initialization
-    init(model: AuthorizationInteractorProtocol) {
-        self.model = model
+    init(interactor: AuthorizationInteractorProtocol) {
+        self.interactor = interactor
     }
 }
 
@@ -25,15 +25,15 @@ final class AuthorizationPresenter {
 extension AuthorizationPresenter: AuthorizationPresenterProtocol {
     
     func signInWithFacebook() {
-        model.signInWithFacebook()
+        interactor.signInWithFacebook()
     }
     
     func signInWithApple() {
-        model.signInWithApple()
+        interactor.signInWithApple()
     }
 
     func signInWithGoogle() {
-        self.model.signInWithGoogle()
+        self.interactor.signInWithGoogle()
     }
 }
 

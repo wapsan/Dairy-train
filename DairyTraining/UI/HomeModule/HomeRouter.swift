@@ -1,8 +1,13 @@
 import UIKit
 
 protocol HomeRouterProtocol {
-    func showScreen(for menuItem: HomeModel.MenuItem)
     func showSideMenu()
+    
+    func showExerciseFlow()
+    func showWorkoutsPaternFlow()
+    func showReadyWorkoutsFlow()
+    func showSearchFoodFlow()
+    func showMonthlyStatisticsScreen()
 }
 
 final class HomeRouter: Router {
@@ -25,30 +30,10 @@ final class HomeRouter: Router {
 
 // MARK: - HomeRouterProtocol
 extension HomeRouter: HomeRouterProtocol {
-    
+   
     func showSideMenu() {
         let sideMenu = SideMenuConfigurator().configure(with: self)
         mainTabBar?.present(sideMenu, animated: true, completion: nil)
-    }
-    
-    func showScreen(for menuItem: HomeModel.MenuItem) {
-        switch menuItem {
-        case .createTrainingFromExerciseList:
-            showExerciseFlow()
-            
-        case .createTrainingFromTrainingPatern:
-            showPaternFlow()
-            
-        case .createTrainingFromSpecialTraining:
-            showReadyWorkoutsFlow()
-            
-        case .addMeal:
-            showSearchFoodFlow()
-            
-        case .mounthlyStatistics:
-            showMonthlyStatisticsScreen()
-            
-        }
     }
 }
 

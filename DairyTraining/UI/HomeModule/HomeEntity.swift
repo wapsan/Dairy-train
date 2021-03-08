@@ -1,13 +1,6 @@
 import UIKit
-import Firebase
 
-protocol HomeModelProtocol {
-    var menuItems: [HomeModel.MenuItem] { get }
-    
-    func getMenuItemForIndex(index: Int) -> HomeModel.MenuItem
-}
-
-final class HomeModel {
+extension HomeInteractor {
     
     // MARK: - Types
     enum MenuItem: CaseIterable {
@@ -46,17 +39,5 @@ final class HomeModel {
                 return nil
             }
         }
-    }
-}
-
-// MARK: - HomeModelProtocol
-extension HomeModel: HomeModelProtocol {
-    
-    var menuItems: [MenuItem] {
-        return MenuItem.allCases
-    }
-    
-    func getMenuItemForIndex(index: Int) -> MenuItem {
-        return menuItems[index]
     }
 }

@@ -9,7 +9,7 @@ protocol Router {
     var window: UIWindow? { get }
     
     func showExerciseFlow()
-    func showPaternFlow()
+    func showWorkoutsPaternFlow()
     func showSearchFoodFlow()
     func showReadyWorkoutsFlow()
     
@@ -53,7 +53,7 @@ extension Router {
         mainTabBar?.present(navigationController, animated: true, completion: nil)
     }
     
-    func showPaternFlow() {
+    func showWorkoutsPaternFlow() {
         let trainingPaternViewController = TrainingPaternsViewControllerConfigurator().configure()
         let navigationController = UINavigationController(rootViewController: trainingPaternViewController)
         navigationController.modalPresentationStyle = .fullScreen

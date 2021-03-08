@@ -3,13 +3,13 @@ import UIKit
 final class HomeViewControllerConfigurator {
     
     static func configureHomeNavigationControllet() -> UINavigationController {
-        let homeModel = HomeModel()
-        let homeViewModel = HomeViewModel(model: homeModel)
-        let homeViewController = HomeViewController(viewModel: homeViewModel)
-        let homeViewModelRouter = HomeRouter(homeViewController)
-        homeViewModel.router = homeViewModelRouter
+        let interactor = HomeInteractor()
+        let presenter = HomePresenter(interactor: interactor)
+        let viewController = HomeViewController(presenter: presenter)
+        let router = HomeRouter(viewController)
+        presenter.router = router
         
-        let navigattionController = UINavigationController(rootViewController: homeViewController)
+        let navigattionController = UINavigationController(rootViewController: viewController)
         navigattionController.tabBarItem = MainTabBarModel.Item.home.item
         return navigattionController
     }
