@@ -1,27 +1,28 @@
 import UIKit
 
-protocol LoginViewModelProtocol {
+protocol AuthorizationPresenterProtocol {
     func signInWithGoogle()
     func signInWithFacebook()
     func signInWithApple()
 }
 
-final class AuthorizationViewModel {
+final class AuthorizationPresenter {
     
-    //MARK: - Properties
+    //MARK: - Internal properties
     weak var view: AuthorizationViewProtocol?
     var router: AuthorizationRouterProtocol?
     
-    private let model: AuthorizationModelProtocol
+    //MARK: - Private properties
+    private let model: AuthorizationInteractorProtocol
     
     // MARK: - Initialization
-    init(model: AuthorizationModelProtocol) {
+    init(model: AuthorizationInteractorProtocol) {
         self.model = model
     }
 }
 
 //MARK: - LoginViewModelInput
-extension AuthorizationViewModel: LoginViewModelProtocol {
+extension AuthorizationPresenter: AuthorizationPresenterProtocol {
     
     func signInWithFacebook() {
         model.signInWithFacebook()
@@ -37,7 +38,7 @@ extension AuthorizationViewModel: LoginViewModelProtocol {
 }
 
 //MARK: - LoginModelDelegate
-extension AuthorizationViewModel: LoginModelOutput {
+extension AuthorizationPresenter: AuthorizationInteractorOutput {
 
     func googleStartSignIn() {
         self.view?.googleSignInStart()

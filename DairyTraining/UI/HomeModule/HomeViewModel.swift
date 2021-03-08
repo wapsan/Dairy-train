@@ -1,8 +1,8 @@
 import Foundation
 
 protocol HomeViewModelProtocol: TitledScreenProtocol {
-    var menuItemCount: Int { get }
     
+    var menuItemCount: Int { get }
     
     func didSelectItemAtIndex(_ index: Int)
     func menuItem(at index: Int) -> HomeModel.MenuItem

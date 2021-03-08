@@ -10,7 +10,6 @@ final class HomeRouter: Router {
     // MARK: - Properties
     private let roorViewController: UIViewController
     
-    
     // MARK: - Initialization
     init(_ viewController: UIViewController) {
         self.roorViewController = viewController

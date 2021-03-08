@@ -1,27 +1,27 @@
 import GoogleSignIn
 import Firebase
 
-protocol LoginModelOutput: AnyObject {
+protocol AuthorizationInteractorOutput: AnyObject {
     func succesSignIn()
     func googleStartSignIn()
 }
 
-protocol AuthorizationModelProtocol {
+protocol AuthorizationInteractorProtocol {
     func signInWithGoogle()
     func signInWithApple()
     func signInWithFacebook()
 }
 
-final class AuthorizationModel {
+final class AuthorizationInteractor {
+    
+    //MARK: - Internal Properies
+    weak var output: AuthorizationInteractorOutput?
     
     //MARK: - Private properties
     private let googleSignIn: GIDSignIn = GIDSignIn.sharedInstance()
     private let firebaseManager: FirebaseDataManager = FirebaseDataManager.shared
     private let coreDataManager: UserDataManager = UserDataManager.shared
     private let firebaseAuth: Auth = Auth.auth()
-    
-    //MARK: - Properties
-    weak var output: LoginModelOutput?
     
     //MARK: - Initialization
     init() {
@@ -82,7 +82,7 @@ final class AuthorizationModel {
 }
 
 //MARK: - LoginModelIteracting
-extension AuthorizationModel: AuthorizationModelProtocol {
+extension AuthorizationInteractor: AuthorizationInteractorProtocol {
     
     func signInWithApple() {
         //add realization
@@ -93,6 +93,6 @@ extension AuthorizationModel: AuthorizationModelProtocol {
     }
     
     func signInWithGoogle() {
-        self.googleSignIn.signIn()
+        googleSignIn.signIn()
     }
 }

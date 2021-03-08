@@ -40,6 +40,7 @@ final class OnboardingViewModel: NSObject {
 
 //MARK: - OnboardingViewModelProtocol
 extension OnboardingViewModel: OnboardingViewModelProtocol {
+    
     func viewDidLoad() {
        // view?.updatePageControll(with: currentPageIndex)
     }

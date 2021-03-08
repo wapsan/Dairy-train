@@ -29,9 +29,9 @@ final class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true 
+        navigationController?.navigationBar.isHidden = true
         if tabBarController?.tabBar.isHidden ?? false { showTabBar() }
-        tabBarController?.view.window?.backgroundColor = .white//collectionView.backgroundColor
+        tabBarController?.view.window?.backgroundColor = .white
     }
     
     // MARK: - Initialization
@@ -62,7 +62,7 @@ final class HomeViewController: UIViewController {
         stratchabelHeader = StretchableHeader(frame: CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height))
         stratchabelHeader?.title = viewModel.title
         stratchabelHeader?.customDescription = viewModel.description
-        stratchabelHeader?.topRightButtonAction =  { [unowned self] in self.viewModel.menuButtonPressed() }
+        stratchabelHeader?.topRightButtonAction = { [unowned self] in self.viewModel.menuButtonPressed() }
         stratchabelHeader?.setTopRightButton(image: UIImage(named: "icon_home_menu"))
         stratchabelHeader?.backgroundColor = .black
         stratchabelHeader?.backButtonImageType = .none
@@ -133,9 +133,7 @@ final class HomeViewController: UIViewController {
 }
 
 // MARK: - HomeView
-extension HomeViewController: HomeView {
-    
-}
+extension HomeViewController: HomeView { }
 
 // MARK: - UICollectionViewDelegate
 extension HomeViewController: UICollectionViewDelegate {

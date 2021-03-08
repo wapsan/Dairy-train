@@ -11,8 +11,8 @@
 		1301DA0025814B400064326E /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1301D9FE25814B400064326E /* WorkoutViewController.swift */; };
 		1301DA0125814B400064326E /* WorkoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1301D9FF25814B400064326E /* WorkoutViewController.xib */; };
 		1306E01524CF293B003AEBA7 /* UIViewController + Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306E01424CF293B003AEBA7 /* UIViewController + Ex.swift */; };
-		1306E01724CF3DAB003AEBA7 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306E01624CF3DAB003AEBA7 /* AuthorizationViewModel.swift */; };
-		1306E01924CF3DC1003AEBA7 /* AuthorizationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306E01824CF3DC1003AEBA7 /* AuthorizationModel.swift */; };
+		1306E01724CF3DAB003AEBA7 /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306E01624CF3DAB003AEBA7 /* AuthorizationPresenter.swift */; };
+		1306E01924CF3DC1003AEBA7 /* AuthorizationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306E01824CF3DC1003AEBA7 /* AuthorizationInteractor.swift */; };
 		1310EC6125BDC34000D5E873 /* SearchFoodRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1310EC6025BDC34000D5E873 /* SearchFoodRouter.swift */; };
 		1310EC6525BDCB7500D5E873 /* TrainingLevelsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1310EC6425BDCB7500D5E873 /* TrainingLevelsRouter.swift */; };
 		1310EC6A25BDCDF200D5E873 /* TrainingProgramsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1310EC6925BDCDF200D5E873 /* TrainingProgramsRouter.swift */; };
@@ -221,6 +221,8 @@
 		7A4452DD258A1C0300A808D1 /* NutritionSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A4452DB258A1C0200A808D1 /* NutritionSettingViewController.xib */; };
 		7A4452E7258A205900A808D1 /* NutritionSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4452E6258A205900A808D1 /* NutritionSettingViewModel.swift */; };
 		7A4452EA258A210100A808D1 /* NutritionSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4452E9258A210100A808D1 /* NutritionSettingModel.swift */; };
+		7A4A8BA325F3E1BA0054328A /* CustomNutritionModeMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A8BA125F3E1BA0054328A /* CustomNutritionModeMO+CoreDataClass.swift */; };
+		7A4A8BA425F3E1BA0054328A /* CustomNutritionModeMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A8BA225F3E1BA0054328A /* CustomNutritionModeMO+CoreDataProperties.swift */; };
 		7A6673AB25949D500086E238 /* NutritionDataCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6673AA25949D500086E238 /* NutritionDataCodableModel.swift */; };
 		7A6673C92594C36B0086E238 /* TrainingTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6673C82594C36B0086E238 /* TrainingTableFooterView.swift */; };
 		7A6673CD2594C39D0086E238 /* TrainingTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A6673CC2594C39D0086E238 /* TrainingTableFooterView.xib */; };
@@ -248,8 +250,6 @@
 		7A9E176225B5E59300978DD8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E176125B5E59300978DD8 /* Router.swift */; };
 		7A9E176525B5E6FB00978DD8 /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E176425B5E6FB00978DD8 /* AuthorizationRouter.swift */; };
 		7A9E176A25B5F0F900978DD8 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E176925B5F0F900978DD8 /* HomeRouter.swift */; };
-		7AA7911C258C93940090CFED /* CustomNutritionModeMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7911A258C93930090CFED /* CustomNutritionModeMO+CoreDataProperties.swift */; };
-		7AA7911D258C93940090CFED /* CustomNutritionModeMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7911B258C93930090CFED /* CustomNutritionModeMO+CoreDataClass.swift */; };
 		7AAFE8B02599CE24004FF48B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE8AE2599CE24004FF48B /* HomeViewController.swift */; };
 		7AAFE8B12599CE24004FF48B /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE8AF2599CE24004FF48B /* HomeViewController.xib */; };
 		7AAFE8B42599D216004FF48B /* HomeViewControllerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE8B32599D216004FF48B /* HomeViewControllerConfigurator.swift */; };
@@ -294,8 +294,8 @@
 		1301D9FE25814B400064326E /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
 		1301D9FF25814B400064326E /* WorkoutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutViewController.xib; sourceTree = "<group>"; };
 		1306E01424CF293B003AEBA7 /* UIViewController + Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ex.swift"; sourceTree = "<group>"; };
-		1306E01624CF3DAB003AEBA7 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
-		1306E01824CF3DC1003AEBA7 /* AuthorizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModel.swift; sourceTree = "<group>"; };
+		1306E01624CF3DAB003AEBA7 /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
+		1306E01824CF3DC1003AEBA7 /* AuthorizationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInteractor.swift; sourceTree = "<group>"; };
 		1310EC6025BDC34000D5E873 /* SearchFoodRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodRouter.swift; sourceTree = "<group>"; };
 		1310EC6425BDCB7500D5E873 /* TrainingLevelsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingLevelsRouter.swift; sourceTree = "<group>"; };
 		1310EC6925BDCDF200D5E873 /* TrainingProgramsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsRouter.swift; sourceTree = "<group>"; };
@@ -509,6 +509,8 @@
 		7A4452DB258A1C0200A808D1 /* NutritionSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionSettingViewController.xib; sourceTree = "<group>"; };
 		7A4452E6258A205900A808D1 /* NutritionSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionSettingViewModel.swift; sourceTree = "<group>"; };
 		7A4452E9258A210100A808D1 /* NutritionSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionSettingModel.swift; sourceTree = "<group>"; };
+		7A4A8BA125F3E1BA0054328A /* CustomNutritionModeMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomNutritionModeMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7A4A8BA225F3E1BA0054328A /* CustomNutritionModeMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomNutritionModeMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7A6673AA25949D500086E238 /* NutritionDataCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionDataCodableModel.swift; sourceTree = "<group>"; };
 		7A6673C82594C36B0086E238 /* TrainingTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableFooterView.swift; sourceTree = "<group>"; };
 		7A6673CC2594C39D0086E238 /* TrainingTableFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingTableFooterView.xib; sourceTree = "<group>"; };
@@ -535,8 +537,6 @@
 		7A9E176125B5E59300978DD8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		7A9E176425B5E6FB00978DD8 /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		7A9E176925B5F0F900978DD8 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
-		7AA7911A258C93930090CFED /* CustomNutritionModeMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CustomNutritionModeMO+CoreDataProperties.swift"; path = "/Users/viacheslav/Desktop/Dairy-train/DairyTraining/Services/CoreData/Entities/NutritionEntity/CustomNutritionModeMO+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		7AA7911B258C93930090CFED /* CustomNutritionModeMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CustomNutritionModeMO+CoreDataClass.swift"; path = "/Users/viacheslav/Desktop/Dairy-train/DairyTraining/Services/CoreData/Entities/NutritionEntity/CustomNutritionModeMO+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		7AAFE8AE2599CE24004FF48B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7AAFE8AF2599CE24004FF48B /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		7AAFE8B32599D216004FF48B /* HomeViewControllerConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerConfigurator.swift; sourceTree = "<group>"; };
@@ -1444,8 +1444,8 @@
 			isa = PBXGroup;
 			children = (
 				7AF7BD4C256698B9003F4038 /* AuthorizationViewController.swift */,
-				1306E01624CF3DAB003AEBA7 /* AuthorizationViewModel.swift */,
-				1306E01824CF3DC1003AEBA7 /* AuthorizationModel.swift */,
+				1306E01624CF3DAB003AEBA7 /* AuthorizationPresenter.swift */,
+				1306E01824CF3DC1003AEBA7 /* AuthorizationInteractor.swift */,
 				7A9E176425B5E6FB00978DD8 /* AuthorizationRouter.swift */,
 				7AC81F98259B552100AC10FB /* AuthorizationConfigurator.swift */,
 				7AF7BD4D256698B9003F4038 /* AuthorizationViewController.xib */,
@@ -1664,8 +1664,8 @@
 		7A69DBE8258779F6003EECD8 /* NutritionEntity */ = {
 			isa = PBXGroup;
 			children = (
-				7AA7911B258C93930090CFED /* CustomNutritionModeMO+CoreDataClass.swift */,
-				7AA7911A258C93930090CFED /* CustomNutritionModeMO+CoreDataProperties.swift */,
+				7A4A8BA125F3E1BA0054328A /* CustomNutritionModeMO+CoreDataClass.swift */,
+				7A4A8BA225F3E1BA0054328A /* CustomNutritionModeMO+CoreDataProperties.swift */,
 				7A2A75272588990C0091FD22 /* NutritionDataMO+CoreDataClass copy.swift */,
 				7A2A75262588990C0091FD22 /* NutritionDataMO+CoreDataProperties copy.swift */,
 				7A2A75252588990C0091FD22 /* MealMO+CoreDataClass copy.swift */,
@@ -2071,13 +2071,13 @@
 				7A4452EA258A210100A808D1 /* NutritionSettingModel.swift in Sources */,
 				7A2D5CD5258A3D3A0045749C /* NutritionModeCell.swift in Sources */,
 				13B3C2EF25531C08000D4FA2 /* SideMenuModel.swift in Sources */,
+				7A4A8BA325F3E1BA0054328A /* CustomNutritionModeMO+CoreDataClass.swift in Sources */,
 				7A69DBF025877A67003EECD8 /* NutritionDataManager.swift in Sources */,
 				135BF56424DDAAB000E1E120 /* DTValueAlert.swift in Sources */,
 				7AF113BA25B9B06600C0AD75 /* NutritionSettingConfigurator.swift in Sources */,
 				1310EC6125BDC34000D5E873 /* SearchFoodRouter.swift in Sources */,
-				1306E01724CF3DAB003AEBA7 /* AuthorizationViewModel.swift in Sources */,
+				1306E01724CF3DAB003AEBA7 /* AuthorizationPresenter.swift in Sources */,
 				7A731B2425B08FB500071E46 /* UICollectionViewCell.swift in Sources */,
-				7AA7911D258C93940090CFED /* CustomNutritionModeMO+CoreDataClass.swift in Sources */,
 				7A384D4525BACCA100A83F74 /* SelectExerciseConfigurator.swift in Sources */,
 				13D5D57724E19AFD003C82F1 /* WorkoutModel.swift in Sources */,
 				1393EDFD24A634B600EBD938 /* TrainingManagedObject+CoreDataProperties.swift in Sources */,
@@ -2163,7 +2163,6 @@
 				7A2A75612588CE400091FD22 /* CaloriesRecomendationCalculator.swift in Sources */,
 				7A7D288125753BEA00FDD212 /* TrainingPaternCodableModel.swift in Sources */,
 				136F400C2498D4E500C6944B /* MainInfoManagedObject+CoreDataClass.swift in Sources */,
-				7AA7911C258C93940090CFED /* CustomNutritionModeMO+CoreDataProperties.swift in Sources */,
 				7A0BC96E25ADDD880037B51F /* WorkoutListTableHeader.swift in Sources */,
 				1384BB4F24DF157F0084705B /* DTSelectionListAlert.swift in Sources */,
 				7A69DBCC25875030003EECD8 /* MainNutritionViewModel.swift in Sources */,
@@ -2176,7 +2175,7 @@
 				13E6D1412487F4E200645E88 /* DTInfoAlertButton.swift in Sources */,
 				132A6A422572567D00EB3AE0 /* SelectExerciseViewModel.swift in Sources */,
 				1388FFE524E00C7900E9FD2C /* WorkoutStatisticsViewModel.swift in Sources */,
-				1306E01924CF3DC1003AEBA7 /* AuthorizationModel.swift in Sources */,
+				1306E01924CF3DC1003AEBA7 /* AuthorizationInteractor.swift in Sources */,
 				7AF7BD4E256698B9003F4038 /* AuthorizationViewController.swift in Sources */,
 				13EB774024E2B097000E6D87 /* DTNewAproachAlert.swift in Sources */,
 				7AAFE8B02599CE24004FF48B /* HomeViewController.swift in Sources */,
@@ -2222,6 +2221,7 @@
 				138BDB78248665330033F378 /* DTTextField.swift in Sources */,
 				1398F6DE255C54D5009BE856 /* ChoosenExerciseStatisticsViewController.swift in Sources */,
 				7A0BC95E25ADD25B0037B51F /* WorkoutListModel.swift in Sources */,
+				7A4A8BA425F3E1BA0054328A /* CustomNutritionModeMO+CoreDataProperties.swift in Sources */,
 				7A384D6025BAF29700A83F74 /* WorkoutConfigurator.swift in Sources */,
 				7A384D7525BB08D400A83F74 /* MainTabBarRouter.swift in Sources */,
 				1320D31D253B1AB900A4C99F /* String+Ex.swift in Sources */,

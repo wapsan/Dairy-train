@@ -37,7 +37,7 @@ final class AuthorizationViewController: UIViewController, Loadable {
     }()
     
     // MARK: - Properties
-    private let viewModel: LoginViewModelProtocol
+    private let presenter: AuthorizationPresenterProtocol
     
     // MARK: - Lyfecycle
     override func viewDidLoad() {
@@ -46,8 +46,8 @@ final class AuthorizationViewController: UIViewController, Loadable {
     }
     
     // MARK: - Initialization
-    init(viewModel: LoginViewModelProtocol) {
-        self.viewModel = viewModel
+    init(presenter: AuthorizationPresenterProtocol) {
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -58,10 +58,10 @@ final class AuthorizationViewController: UIViewController, Loadable {
     // MARK: - Setup
     private func setup() {
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        fillAuthorizationButtonStackView()
+        setupAuthorizationButtonsStackView()
     }
     
-    private func fillAuthorizationButtonStackView() {
+    private func setupAuthorizationButtonsStackView() {
         authorizationButtonsStackView.addArrangedSubview(googleSignInButton)
         authorizationButtonsStackView.addArrangedSubview(facebookLoginButton)
         authorizationButtonsStackView.addArrangedSubview(appleLoginButton)
@@ -69,15 +69,15 @@ final class AuthorizationViewController: UIViewController, Loadable {
     
     // MARK: - Action
     @objc private func googleSignInButtonAction() {
-        viewModel.signInWithGoogle()
+        presenter.signInWithGoogle()
     }
     
     @objc private func facebookLoginButtonAction() {
-        viewModel.signInWithFacebook()
+        presenter.signInWithFacebook()
     }
     
     @objc private func appleLoginButtonAction() {
-        viewModel.signInWithApple()
+        presenter.signInWithApple()
     }
 }
 

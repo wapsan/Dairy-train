@@ -1,6 +1,6 @@
 import UIKit
 
-struct HomeViewControllerConfigurator {
+final class HomeViewControllerConfigurator {
     
     static func configureHomeNavigationControllet() -> UINavigationController {
         let homeModel = HomeModel()

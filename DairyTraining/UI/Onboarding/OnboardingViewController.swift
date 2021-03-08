@@ -90,7 +90,6 @@ final class OnboardingViewController: UIPageViewController {
             pageControll.heightAnchor.constraint(equalToConstant: 20),
             pageControll.centerYAnchor.constraint(equalTo: skipButton.centerYAnchor)
         ])
-        
     }
     
     //MARK: - Actions
