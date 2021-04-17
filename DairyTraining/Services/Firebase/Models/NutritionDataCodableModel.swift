@@ -1,11 +1,6 @@
 
 import Foundation
 
-//struct NutritionDataCodableModel: Mapable {
-//    let historyNutrition: [DayNutritionCodableModel]
-//    let customnutritionMode: CustomNutritionCodableModel
-//}
-
 struct DayNutritionCodableModel: Mapable {
     let date: Date?
     let formattedDate: String?
@@ -45,6 +40,7 @@ struct MealCodableModel: Mapable {
 
 struct CustomNutritionCodableModel: Mapable {
     
+    //MARK: - Keys
     private struct Key {
         static let calories = "calories"
         static let proteins = "proteins"
@@ -52,11 +48,13 @@ struct CustomNutritionCodableModel: Mapable {
         static let carbohydrates = "carbohydrates"
     }
     
+    //MARK: - Properies
     let calories: Float
     let carbohydrates: Float
     let fats: Float
     let proteins: Float
     
+    //MARK: - Publick methods
     func toDictionary() -> [String: Any] {
         var dict: [String: Any] = [:]
         dict[Key.proteins] = proteins
@@ -66,6 +64,7 @@ struct CustomNutritionCodableModel: Mapable {
         return dict
     }
     
+    //MARK: - Initialization
     init(from dict: [String: Any]) {
         self.proteins = dict[Key.proteins] as? Float ?? 0
         self.carbohydrates = dict[Key.carbohydrates] as? Float ?? 0
@@ -79,7 +78,4 @@ struct CustomNutritionCodableModel: Mapable {
         self.calories = modelMO.calories
         self.carbohydrates = modelMO.carbohydrates
     }
-    
-    
 }
-

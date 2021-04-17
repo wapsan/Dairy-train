@@ -1,7 +1,9 @@
 import Foundation
 
 protocol ChoosenPaternModelProtocol {
-    var patern: TrainingPaternManagedObject { get }
+    var patern: WorkoutTemplateMO { get }
+    
+    var exercises: [ExerciseMO] { get }
     
     func createTrainingWithCurrentpatern(exercise: [Exercise])
     func renameTrainingPaternAlert(for name: String)
@@ -9,14 +11,23 @@ protocol ChoosenPaternModelProtocol {
 
 final class ChoosenPaternModel {
     
-    private var dataManager = TrainingDataManager.shared
+    //MARK: - Internal protperties
     weak var output: ChoosenPaternViewModelInput?
-    private(set) var _trainingPatern: TrainingPaternManagedObject
+    
+    //MARK: - Private properties
+    private(set) var _trainingPatern: WorkoutTemplateMO
     private(set) var paternName: String
-
-    init(patern: TrainingPaternManagedObject) {
+    private let persistenceService: PersistenceService
+    
+    private var _exercise: [ExerciseMO] = []
+    
+    //MARK: - Initialization
+    init(patern: WorkoutTemplateMO, service: PersistenceService = PersistenceService()) {
+        self.persistenceService = service
         self._trainingPatern = patern
         self.paternName = patern.name
+        
+        _exercise = service.workoutTemplates.fetchExercise(for: patern)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(exerciseWasAdedToPatern),
                                                name: .exerciseWasAdedToPatern,
@@ -24,6 +35,7 @@ final class ChoosenPaternModel {
     }
     
     @objc private func exerciseWasAdedToPatern() {
+        _exercise = persistenceService.workoutTemplates.fetchExercise(for: patern)
         output?.exerciseWasAdedTopatern()
     }
 }
@@ -31,20 +43,27 @@ final class ChoosenPaternModel {
 // MARK: - ChoosenPaternModelProtocol
 extension ChoosenPaternModel: ChoosenPaternModelProtocol {
     
-    var patern: TrainingPaternManagedObject {
+    var exercises: [ExerciseMO] {
+        return _exercise
+    }
+    
+    var patern: WorkoutTemplateMO {
         _trainingPatern
     }
     
     func createTrainingWithCurrentpatern(exercise: [Exercise]) {
-        if dataManager.addExercisesToTrain(exercise) {
-            NotificationCenter.default.post(name: .trainingListWasChanged, object: nil)
-        } else {
+        if persistenceService.workout.isTodayWorkoutExist {
+            persistenceService.workout.addExerciseToTodaysWorkout(exercise: exercise)
             NotificationCenter.default.post(name: .trainingWasChanged, object: nil)
+        } else {
+            persistenceService.workout.createWorkout(with: exercise)
+            NotificationCenter.default.post(name: .trainingListWasChanged, object: nil)
         }
     }
     
     func renameTrainingPaternAlert(for name: String) {
-        dataManager.renameTrainingPatern(with: _trainingPatern.date, with: name)
+        _trainingPatern = persistenceService.workoutTemplates.renameWorkoutTemplae(workoutTemplate: _trainingPatern,
+                                                                                   for: name)
         output?.paternNameChanged(to: name)
         NotificationCenter.default.post(name: .paternNameWasChanged, object: nil)
     }

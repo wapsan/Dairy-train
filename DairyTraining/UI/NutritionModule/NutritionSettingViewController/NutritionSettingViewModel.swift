@@ -2,7 +2,7 @@ import Foundation
 
 protocol NutritionSettingViewModelProtocol {
     
-    var settingModel: [NutritionMode] { get }
+    var settingModel: [UserInfo.NutritionMode] { get }
     var selectedIndex: Int { get }
     
     func viewDidLoad()
@@ -16,8 +16,8 @@ protocol NutritionSettingViewModelProtocol {
 
 protocol NutritionSettingViewModelInput: AnyObject {
     
-    func loadCurrentNutritionMode(to nutritionMode: NutritionMode)
-    func changeNutritionSelection(to nutritionMode: NutritionMode)
+    func loadCurrentNutritionMode(to nutritionMode: UserInfo.NutritionMode)
+    func changeNutritionSelection(to nutritionMode: UserInfo.NutritionMode)
     
     func updateNutritionRecomandation(to nutritionRecomendation: NutritionRecomendation)
     func customCaloriesWasSet(to calories: Int)
@@ -28,11 +28,11 @@ protocol NutritionSettingViewModelInput: AnyObject {
 final class NutritionSettingViewModel {
     
     weak var view: NutritionSettingView?
-    private var model: NutritionettingModelProtocol
+    private var model: NutritionSettingModelProtocol
     var router: NutritionSettingRouterProtocol?
     private var _selectedModeIndex: Int = 0
     
-    init(model: NutritionettingModelProtocol) {
+    init(model: NutritionSettingModelProtocol) {
         self.model = model
     }
 }
@@ -66,7 +66,7 @@ extension NutritionSettingViewModel: NutritionSettingViewModelProtocol {
         model.getSelectednutritionMode()
     }
     
-    var settingModel: [NutritionMode] {
+    var settingModel: [UserInfo.NutritionMode] {
         return [.loseWeight, .balanceWeight, .weightGain, .custom]
     }
     
@@ -96,14 +96,14 @@ extension NutritionSettingViewModel: NutritionSettingViewModelInput {
         view?.updateNutritionInfo(for: calories, proteins: proteins, fats: fats, carbohydrates: carbohydrates)
     }
   
-    func changeNutritionSelection(to nutritionMode: NutritionMode) {
+    func changeNutritionSelection(to nutritionMode: UserInfo.NutritionMode) {
         guard let indexOfSelectedMode = settingModel.firstIndex(of: nutritionMode) else { return }
         _selectedModeIndex = indexOfSelectedMode
         nutritionMode == .custom ? view?.activateCustomEditingMode() : view?.deactivateCustomEditingmode()
         view?.selectMode(at: indexOfSelectedMode)
     }
     
-    func loadCurrentNutritionMode(to nutritionMode: NutritionMode) {
+    func loadCurrentNutritionMode(to nutritionMode: UserInfo.NutritionMode) {
         guard let indexOfSelectedMode = settingModel.firstIndex(of: nutritionMode) else { return }
         nutritionMode == .custom ? view?.activateCustomEditingMode() : view?.deactivateCustomEditingmode()
         _selectedModeIndex = indexOfSelectedMode

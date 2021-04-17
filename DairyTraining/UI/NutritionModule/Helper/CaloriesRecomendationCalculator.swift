@@ -1,11 +1,3 @@
-//
-//  CaloriesRecomendationCalculator.swift
-//  Dairy Training
-//
-//  Created by cogniteq on 15.12.2020.
-//  Copyright © 2020 Вячеслав. All rights reserved.
-//
-
 import Foundation
 
 struct NutritionRecomendation {
@@ -30,19 +22,9 @@ struct NutritionRecomendation {
             return
         }
         
-        self.carbohydratesPercentage = (carbohydtrates * 4 / calories) * 100 //(carbohydtrates / summ) * 100
-        self.fatsPercentage = (fats * 9 / calories) * 100  //(fats / summ) * 100
-        self.proteinsPercentage = (proteins * 4 / calories) * 100 //(proteins / summ) * 100
-//        guard summ > 0 else {
-//            self.carbohydratesPercentage = 0
-//            self.fatsPercentage = 0
-//            self.proteinsPercentage = 0
-//            return
-//        }
-//
-//        self.carbohydratesPercentage = (carbohydtrates / summ) * 100
-//        self.fatsPercentage = (fats / summ) * 100
-//        self.proteinsPercentage = (proteins / summ) * 100
+        self.carbohydratesPercentage = (carbohydtrates * 4 / calories) * 100
+        self.fatsPercentage = (fats * 9 / calories) * 100
+        self.proteinsPercentage = (proteins * 4 / calories) * 100
     }
     
     init(calories: Float, proteinsPercentage: Float, carbohydratesPercentage: Float, fatsPercentage: Float) {
@@ -61,33 +43,10 @@ struct NutritionRecomendation {
                   calories: customNutritionRecomendation.calories,
                   fats: customNutritionRecomendation.fats,
                   carbohydtrates: customNutritionRecomendation.carbohydrates)
-//        self.calories = customNutritionRecomendation.calories
-//        self.fats = customNutritionRecomendation.fats
-//        self.proteins = customNutritionRecomendation.proteins
-//        self.carbohydtrates = customNutritionRecomendation.carbohydrates
-//        let summ = carbohydtrates + proteins + fats
-//        guard summ > 0 else {
-//            self.carbohydratesPercentage = 0
-//            self.fatsPercentage = 0
-//            self.proteinsPercentage = 0
-//            return
-//        }
-//        self.carbohydratesPercentage = customNutritionRecomendation.carbohydrates * 4 / calories //(carbohydtrates / summ) * 100
-//        self.fatsPercentage = customNutritionRecomendation.fats * 9 / calories  //(fats / summ) * 100
-//        self.proteinsPercentage = customNutritionRecomendation.proteins * 4 / calories //(proteins / summ) * 100
     }
 }
 
-enum NutritionMode: String {
-    case loseWeight = "Lose weight"
-    case balanceWeight = "Balance Weight"
-    case weightGain = "Weight Gain"
-    case custom = "Custom"
-    
-    var presentationTitle: String {
-        return "Meal plane: " + rawValue
-    }
-}
+
 
 struct CaloriesRecomendationCalculator {
     
@@ -125,12 +84,12 @@ struct CaloriesRecomendationCalculator {
     private var age: Int
     private var activityCoeficient: Float = 0
     
-    private var weightMode: MeteringSetting.WeightMode?
-    private var heightMode: MeteringSetting.HeightMode?
+    private var weightMode: UserInfo.WeightMode?
+    private var heightMode: UserInfo.HeightMode?
     
-    private var gender: UserMainInfoCodableModel.Gender?
+    private var gender: UserInfo.Gender?
     
-    private var activityLevel: UserMainInfoCodableModel.ActivityLevel? {
+    private var activityLevel: UserInfo.ActivityLevel? {
         willSet {
             switch newValue {
             case .low:
@@ -146,35 +105,24 @@ struct CaloriesRecomendationCalculator {
     }
     
     private var heightMultiplier: Float {
-        switch MeteringSetting.shared.heightMode {
-        case .cm:
-            return 1
-        case .ft:
-            return 1 / 0.032
-        }
+        return UserDefaults.standard.heightMode.multiplier
     }
     
     private var weightMultiplier: Float {
-        switch MeteringSetting.shared.weightMode {
-        case .kg:
-            return 1
-        case .lbs:
-            return 1 / 2.2
-        }
+        return UserDefaults.standard.weightMode.multiplier
     }
     
-    
-    init?(userInfo: MainInfoManagedObject?) {
-        self.weight = userInfo?.weight ?? 0
-        self.height = userInfo?.height ?? 0
+    init?(userInfo: UserInfoMO?) {
+        self.weight = userInfo?.weightValue ?? 0
+        self.height = userInfo?.heightValue ?? 0
         self.age = Int(userInfo?.age ?? 0)
         if let gender = userInfo?.gender {
-            self.gender = UserMainInfoCodableModel.Gender.init(rawValue: gender)
+            self.gender = UserInfo.Gender.init(rawValue: gender)
         } else {
             return nil
         }
-        if let activityLevel = userInfo?.activitylevel {
-            self.activityLevel = UserMainInfoCodableModel.ActivityLevel.init(rawValue: activityLevel)
+        if let activityLevel = userInfo?.activityLevel {
+            self.activityLevel = UserInfo.ActivityLevel.init(rawValue: activityLevel)
             if let activityleve = self.activityLevel {
                 switch activityleve {
                 case .low:
@@ -193,7 +141,7 @@ struct CaloriesRecomendationCalculator {
     
     }
     
-    mutating func getRecomendation(for type: NutritionMode) -> NutritionRecomendation {
+    mutating func getRecomendation(for type: UserInfo.NutritionMode) -> NutritionRecomendation {
         switch type {
         case .loseWeight:
             return getLoseWeightRecomendatins()
@@ -203,7 +151,6 @@ struct CaloriesRecomendationCalculator {
             return getWeighGainRecomendations()
         case .custom:
             return getWeighGainRecomendations()
-          //  return nutritionRecomendation
         }
     }
     

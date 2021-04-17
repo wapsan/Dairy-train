@@ -20,11 +20,12 @@ final class AuthorizationInteractor {
     //MARK: - Private properties
     private let googleSignIn: GIDSignIn = GIDSignIn.sharedInstance()
     private let firebaseManager: FirebaseDataManager = FirebaseDataManager.shared
-    private let coreDataManager: UserDataManager = UserDataManager.shared
     private let firebaseAuth: Auth = Auth.auth()
+    private let persistenceService: PersistenceService
     
     //MARK: - Initialization
-    init() {
+    init(persistenceService: PersistenceService = PersistenceService()) {
+        self.persistenceService = persistenceService
         addObserveForGoogleSignedIn()
         addObserverForStartGoogleSignIn()
     }
@@ -49,21 +50,28 @@ final class AuthorizationInteractor {
                 self.updateData(from: dataModel)
                 self.output?.succesSignIn()
             case .failure(_):
+                self.output?.succesSignIn()
                 break
             }
         }
     }
     
     private func updateData(from firebaseServerModel: FrebaseServerModel) {
+        
         if let userMainInfo = firebaseServerModel.userMainInfo {
-            self.coreDataManager.updateUserMainInfo(to: userMainInfo)
+            persistenceService.user.updateUserInfo(.user(user: userMainInfo))
             NotificationCenter.default.post(name: .mainInfoWasUpdated, object: nil)
+            
         }
-        self.coreDataManager.updateDateOfLastUpdateTo(firebaseServerModel.dateOfUpdate)
-        TrainingDataManager.shared.updateUserTrainInfoFrom(firebaseServerModel.trainingList)
-        TrainingDataManager.shared.updateTrainingPaternList(to: firebaseServerModel.trainingPaternList)
-        NutritionDataManager.shared.updateHistoryNutritionData(from: firebaseServerModel.dayNutritionCodableModel)
-        NutritionDataManager.shared.updateCustomNutritionMode(from: firebaseServerModel.customnutritionMode)
+        persistenceService.user.updateUserInfo(.updateDate(date: firebaseServerModel.dateOfUpdate))
+        
+        let workouts = firebaseServerModel.trainingList
+        let workoutsTemplates = firebaseServerModel.trainingPaternList
+        persistenceService.workout.syncWorkoutsFromFirebase(workouts: workouts)
+        persistenceService.workoutTemplates.updateWorkoutTemplatesList(from: workoutsTemplates)
+        
+        persistenceService.nutrition.syncCustomNutritonMode(from: firebaseServerModel.customnutritionMode)
+        persistenceService.nutrition.syncAllNutritionData(from: firebaseServerModel.dayNutritionCodableModel)
     }
     
     private func addObserveForGoogleSignedIn() {

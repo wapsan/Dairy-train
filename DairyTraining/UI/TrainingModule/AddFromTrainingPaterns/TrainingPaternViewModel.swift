@@ -5,7 +5,7 @@ protocol TrainingPaternViewModelProtocol: PaternNamingAlertDelegate, TitledScree
     var isPaternsExisting: Bool { get }
     var emptyPaternErrorMessage: String { get }
     
-    func getPatern(for index: Int) -> TrainingPaternManagedObject
+    func getPatern(for index: Int) -> WorkoutTemplateMO
     func closeButtonPressed()
     func createTrainingPatern(with name: String)
     func swipeRow(at index: Int)
@@ -53,7 +53,7 @@ extension TrainingPaternViewModel: TrainingPaternViewModelProtocol {
         return "You have no created training patern yet."
     }
     
-    func getPatern(for index: Int) -> TrainingPaternManagedObject {
+    func getPatern(for index: Int) -> WorkoutTemplateMO {
         return model.paterns[index]
     }
     
@@ -67,7 +67,6 @@ extension TrainingPaternViewModel: TrainingPaternViewModelProtocol {
     
     func closeButtonPressed() {
         router?.closeTrainingPaternsFlow()
-      // model.closeViewController()
     }
     
     var title: String {

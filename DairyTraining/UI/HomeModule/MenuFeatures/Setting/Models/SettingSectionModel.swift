@@ -5,7 +5,7 @@ class SettingSectionModel {
     //MARK: - Enums
     enum SettingSectionType {
         case metrics
-        case style
+       // case style
         case synchronization
     }
     
@@ -22,9 +22,9 @@ class SettingSectionModel {
             self.tittle = LocalizedString.metric
             self.settings = [SettingModel(for: .weightMetric),
                              SettingModel(for: .heightMetric)]
-        case .style:
-            self.tittle = LocalizedString.style
-            self.settings = [SettingModel(for: .colorTheme)]
+//        case .style:
+//            self.tittle = LocalizedString.style
+//           // self.settings = [SettingModel(for: .colorTheme)]
         case .synchronization:
             self.tittle = LocalizedString.cloydSynhronization
             self.settings = [SettingModel(for: .synchronization)]

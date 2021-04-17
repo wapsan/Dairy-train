@@ -25,31 +25,12 @@ enum ProfileInfoCellType: Int, CaseIterable {
         }
     }
     
-    var value: String {
-        guard let userMainInfo = UserDataManager.shared.readUserMainInfo() else { return "-" }
-        let trainingCount = TrainingDataManager.shared.getTraingList().count
-        switch self {
-        case .totalTrain:
-            return String(trainingCount)
-        case .activityLevel:
-            return NSLocalizedString(userMainInfo.displayActivityLevel, comment: "")
-        case .gender:
-            return NSLocalizedString(userMainInfo.displayGender, comment: "")
-        case .age:
-            return userMainInfo.displayAge
-        case .hight:
-            return userMainInfo.displayHeight
-        case .weight:
-            return userMainInfo.displayWeight
-        }
-    }
-    
     var description: String? {
         switch self {
         case .hight:
-            return MeteringSetting.shared.heightDescription
+            return UserDefaults.standard.heightMode.description
         case .weight:
-            return MeteringSetting.shared.weightDescription
+            return UserDefaults.standard.weightMode.description
         default:
             return nil
         }

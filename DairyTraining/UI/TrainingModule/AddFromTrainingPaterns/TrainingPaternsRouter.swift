@@ -2,7 +2,7 @@ import UIKit
 
 protocol TrainingPaternsRouterProtocol {
     func closeTrainingPaternsFlow()
-    func showTrainingPaternScreen(for trainingPatern: TrainingPaternManagedObject)
+    func showTrainingPaternScreen(for trainingPatern: WorkoutTemplateMO)
 }
 
 final class TrainingPaternsRouter: Router {
@@ -23,7 +23,7 @@ extension TrainingPaternsRouter: TrainingPaternsRouterProtocol {
         rootViewController.navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    func showTrainingPaternScreen(for trainingPatern: TrainingPaternManagedObject) {
+    func showTrainingPaternScreen(for trainingPatern: WorkoutTemplateMO) {
         let chooseTrainingPaternViewController = ChoosenPaternConfigurator().configure(for: trainingPatern)
         rootViewController.navigationController?.pushViewController(chooseTrainingPaternViewController, animated: true)
     }

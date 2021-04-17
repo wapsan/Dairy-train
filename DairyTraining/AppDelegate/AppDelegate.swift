@@ -25,11 +25,7 @@ private extension AppDelegate {
     
     func applyAppSetting() {
         FirebaseApp.configure()
-        SettingManager.shared.activateDefaultSetting()
         GoogleAuthorizationManager.shared.initAuth()
-        guard !UserDataManager.shared.isSettingSaved() else { return }
-        UserDataManager.shared.updateUserWeightMode(to: MeteringSetting.shared.weightMode)
-        UserDataManager.shared.updateUserHeightMode(to: MeteringSetting.shared.heightMode)
     }
     
     func setRootViewController() {
@@ -39,11 +35,12 @@ private extension AppDelegate {
         let splashScreenViewController = SplashScreenViewController()
         let onboardingFlow = OnboardingConfigurator.configureOnboardingFlow()
         
-        if SettingManager.shared.isFirstSession {
-            SettingManager.shared.setFirstSessionStarted()
-            window?.rootViewController = onboardingFlow
-        } else {
+        guard UserDefaults.standard.isFirstSession else {
             window?.rootViewController = splashScreenViewController
+            return
         }
+        
+        UserDefaults.standard.setFirstSession()
+        window?.rootViewController = onboardingFlow
     }
 }

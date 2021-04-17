@@ -1,7 +1,7 @@
 import UIKit
 
 protocol FoodPresentable {
-    var foodName: String { get }
+    var foodName: String? { get }
     var kkal: String { get }
     var displayProteins: String { get }
     var displayCarbohydrate: String { get }
@@ -11,6 +11,10 @@ protocol FoodPresentable {
 
 extension Food: FoodPresentable {
     
+    var foodName: String? {
+        lowercaseDescription?.capitalized
+    }
+
     var foodWeight: String? {
         return nil
     }
@@ -33,11 +37,6 @@ extension Food: FoodPresentable {
     var calories: Double {
         guard let calories = foodNutrients.first(where: {$0.nutrientId == 1008}) else { return 0 }
         return calories.value ?? 0
-    }
-    
-    
-    var foodName: String {
-        return lowercaseDescription?.capitalized ?? ""
     }
     
     var kkal: String {
@@ -84,6 +83,17 @@ final class NutritionSearchingCell: UITableViewCell {
     
     // MARK: - Setter
     func setupCell(for food: FoodPresentable) {
+        weightLabel.isHidden = food.foodWeight == nil
+        weightLabel.text = food.foodWeight
+        foodNameLabel.text = food.foodName
+        kkalLabel.text = food.kkal
+        proteinLabel.text = food.displayProteins
+        carbohydratesLabel.text = food.displayCarbohydrate
+        fatLabel.text = food.displayFat
+    }
+    
+    func setupCell(for food: MealMO?) {
+        guard let food = food else { return }
         weightLabel.isHidden = food.foodWeight == nil
         weightLabel.text = food.foodWeight
         foodNameLabel.text = food.foodName

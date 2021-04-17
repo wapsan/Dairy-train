@@ -4,12 +4,12 @@ class SettingsSectionViewController: UITableViewController {
     
     //MARK: - Private properties
     private lazy var settingModel = [SettingSectionModel(type: .metrics),
-                                     SettingSectionModel(type: .style),
+                                     //SettingSectionModel(type: .style),
                                      SettingSectionModel(type: .synchronization)]
     
     private lazy var navigationTittle = LocalizedString.setting
-    private lazy var lastSynhronizeDate = UserDataManager.shared.readUserMainInfo()?.dateOfLastUpdate
-        ?? LocalizedString.dataDontUpdate
+   // private lazy var lastSynhronizeDate = UserInfoService.shared.readUserMainInfo()?.dateOfLastUpdate
+  //      ?? LocalizedString.dataDontUpdate
     
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -26,7 +26,7 @@ class SettingsSectionViewController: UITableViewController {
     }
     
     //MARK: - Initialization
-    init(with name: String) {
+    init(with name: String, userService: UserServiceProtocol = UserInfoService()) {
         super.init(style: .grouped)
         self.initializationTableView()
         self.addObserverForSettingChanged()
@@ -65,8 +65,8 @@ class SettingsSectionViewController: UITableViewController {
     }
     
     private func synhronizeData() {
-        UserDataManager.shared.updateDateOfLastUpdateTo(DateHelper.shared.currentDateForSynhronize)
-        self.lastSynhronizeDate = DateHelper.shared.currentDateForSynhronize
+      //  UserInfoService.shared.updateDateOfLastUpdateTo(DateHelper.shared.currentDateForSynhronize)
+     //   self.lastSynhronizeDate = DateHelper.shared.currentDateForSynhronize
         DispatchQueue.global(qos: .background).async {
             FirebaseDataManager.shared.synhronizeDataToServer(completion: {
               //  DispatchQueue.main.async {
@@ -130,7 +130,7 @@ extension SettingsSectionViewController {
         
         if self.settingModel[indexPath.section].type == .synchronization {
             let cell = tableView.dequeueReusableCell(withIdentifier: DTSynhronizeCell.cellID, for: indexPath)
-            (cell as? DTSynhronizeCell)?.setUpdateDateTo(self.lastSynhronizeDate)
+          //  (cell as? DTSynhronizeCell)?.setUpdateDateTo(self.lastSynhronizeDate)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: DTSettingCell.cellID,

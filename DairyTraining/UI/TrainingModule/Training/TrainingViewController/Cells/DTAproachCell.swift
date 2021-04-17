@@ -3,7 +3,7 @@ import UIKit
 class DTAproachCell: UICollectionViewCell {
     
     //MARK: - Private properties
-    private var aproach: AproachManagedObject?
+    private var aproach: ApproachMO?
     var tapAction: ((_ weight: String, _ reps: String) -> Void)?
     
     //MARK: - GUI Properties
@@ -43,15 +43,15 @@ class DTAproachCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setGuiElements()
-        self.addGestureRecognizer(self.tapGesture)
+      //  self.addGestureRecognizer(self.tapGesture)
     }
     
     //MARK: - Setter
-    func setUpFor(_ aproach: AproachManagedObject) {
+    func setUpFor(_ aproach: ApproachMO) {
         self.aproach = aproach
-        self.weightLabel.text = aproach.weightDisplayvalue
-        self.repsLabel.text = aproach.repsDisplayValue
-        self.aproachNumberLabel.text = "№ \(aproach.number)"
+        self.weightLabel.text = aproach.weight.value.string + " " + UserDefaults.standard.weightMode.description
+        self.repsLabel.text = String(aproach.reps)
+        self.aproachNumberLabel.text = "Set \(aproach.index + 1)"
     }
 }
 

@@ -26,4 +26,15 @@ extension CustomNutritionModeMO {
 
 extension CustomNutritionModeMO : Identifiable {
 
+    var proteinPrescentage: Float {
+        return (proteins * 4) / calories
+    }
+    
+    var carbohydratesPercentage: Float {
+        return (fats * 9) / calories
+    }
+    
+    var fatsPercentage: Float {
+        return (carbohydrates * 4) / calories
+    }
 }

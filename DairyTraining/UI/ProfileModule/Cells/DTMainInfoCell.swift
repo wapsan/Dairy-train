@@ -99,36 +99,36 @@ class DTMainInfoCell: UICollectionViewCell {
     
     private func initView() {
         self.addSubview(self.containerView)
-        self.containerView.addSubview(self.backgroundImage)
-        self.backgroundImage.addSubview(self.coloredView)
-        self.coloredView.addSubview(self.containerStackView)
-        self.coloredView.layer.insertSublayer(self.gradient, at: 0)
+        self.containerView.addSubview(backgroundImage)
+        self.backgroundImage.addSubview(coloredView)
+        self.coloredView.addSubview(containerStackView)
+        self.coloredView.layer.insertSublayer(gradient, at: 0)
         self.setConstraints()
     }
     
     //MARK: - Public methods
-    func renderCell(for index: Int) {
+    func renderCell(for index: Int, and value: String) {
         guard let cellType = ProfileInfoCellType.init(rawValue: index) else { return }
-        self.valueLabel.text = cellType.value
-        self.descriptionLabel.text = cellType.description
-        self.titleLabel.text = cellType.title
-        self.backgroundImage.image = cellType.backgroubImage
+        valueLabel.text = value
+        descriptionLabel.text = cellType.description
+        titleLabel.text = cellType.title
+        backgroundImage.image = cellType.backgroubImage
     }
     
-    func updateWeightMode() {
+    func updateWeightMode(with value: String?) {
         for cellType in ProfileInfoCellType.allCases {
             if cellType == .weight {
                 self.descriptionLabel.text = cellType.description
-                               self.valueLabel.text = cellType.value
+                               self.valueLabel.text = value
             }
         }
     }
     
-    func upDateHeightMode() {
+    func upDateHeightMode(with value: String?) {
         for cellType in ProfileInfoCellType.allCases {
             if cellType == .hight {
                 self.descriptionLabel.text = cellType.description
-                self.valueLabel.text = cellType.value
+                self.valueLabel.text = value
             }
         }
     }

@@ -6,8 +6,8 @@ protocol ProfileViewModelPresenter: AnyObject {
     func hideValueAlert()
     func showSelectionlistAlert(for selectedIndex: Int, and value: String?)
     func hideSelectionListAlert()
-    func updateHeightMode(for cellAtIndex: Int)
-    func updateWeightMode(for cellAtIndex: Int)
+    func updateHeightMode(for cellAtIndex: Int, value: String?)
+    func updateWeightMode(for cellAtIndex: Int, value: String?)
     
     
     func trainingCountWasChanged(to count: Int)
@@ -93,7 +93,7 @@ private extension ProfileViewController {
 extension ProfileViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.viewModel.selectRow(at: indexPath.row)
+        viewModel.selectRow(at: indexPath)
     }
 }
 
@@ -107,7 +107,8 @@ extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DTMainInfoCell.cellID,
                                                       for: indexPath)
-        (cell as? DTMainInfoCell)?.renderCell(for: indexPath.row)
+        let value = viewModel.getValueFor(indexPath: indexPath)
+        (cell as? DTMainInfoCell)?.renderCell(for: indexPath.row, and: value)
         return cell
     }
 }
@@ -171,26 +172,23 @@ extension ProfileViewController: ProfileViewModelPresenter {
                                      okTitle: LocalizedString.ok)
     }
 
-    func updateHeightMode(for cellAtIndex: Int) {
+    func updateHeightMode(for cellAtIndex: Int, value: String?) {
         let indexPath = IndexPath(row: cellAtIndex, section: 0)
         if let cell = self.collectionView.cellForItem(at: indexPath) as? DTMainInfoCell {
-            cell.upDateHeightMode()
+            cell.upDateHeightMode(with: value)
         }
     }
     
-    func updateWeightMode(for cellAtIndex: Int) {
+    func updateWeightMode(for cellAtIndex: Int, value: String?) {
         let indexPath = IndexPath(row: cellAtIndex, section: 0)
         if let cell = self.collectionView.cellForItem(at: indexPath) as? DTMainInfoCell {
-            cell.updateWeightMode()
+            cell.updateWeightMode(with: value)
         }
     }
     
     func updatValueInCell(at index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
-        if let cell = self.collectionView.cellForItem(at: indexPath) as? DTMainInfoCell {
-            cell.renderCell(for: index)
-            self.collectionView.reloadItems(at: [indexPath])
-        }
+        self.collectionView.reloadItems(at: [indexPath])
     }
 }
 

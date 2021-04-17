@@ -21,12 +21,14 @@ final class ReadyWorkoutModel {
     weak var output: ReadyWorkoutModelOutput?
     
     // MARK: - Properties
-    private var firebaseStorageService = FirebaseStorageMnager()
+    private lazy var firebaseStorageService = FirebaseStorageMnager()
     private let _workout: SpecialWorkout
     private var _exercises: [Exercise] = []
+    private let persistenceService: PersistenceService
     
     // MARK: - Initialization
-    init(workout: SpecialWorkout) {
+    init(workout: SpecialWorkout, service: PersistenceService = PersistenceService()) {
+        self.persistenceService = service
         self._workout = workout
     }
 }
@@ -35,16 +37,19 @@ final class ReadyWorkoutModel {
 extension ReadyWorkoutModel: ReadyWorkoutModelProtocol {
     
     func createTraining() {
-        if TrainingDataManager.shared.addExercisesToTrain(_exercises) {
-            NotificationCenter.default.post(name: .trainingListWasChanged, object: nil)
-            output?.trainingCreated()
-        } else {
+        if persistenceService.workout.isTodayWorkoutExist {
+            persistenceService.workout.addExerciseToTodaysWorkout(exercise: _exercises)
             NotificationCenter.default.post(name: .trainingWasChanged, object: nil)
+            
+        } else {
+            persistenceService.workout.createWorkout(with: _exercises)
+            NotificationCenter.default.post(name: .trainingListWasChanged, object: nil)
+            
         }
     }
     
     func createPatern() {
-        TrainingDataManager.shared.createTrainingPatern(wtih: _workout.title, and: _exercises)
+       // workoutTemplateService.addWorkoutTemplate(title: _workout.title, exercise: _exercises)
         output?.paternCreated()
     }
     

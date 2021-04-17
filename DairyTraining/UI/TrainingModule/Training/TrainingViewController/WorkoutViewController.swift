@@ -1,30 +1,28 @@
 import UIKit
 
 protocol WorkoutViewProtocol: AnyObject {
-    func deleteCell(at index: Int)
-    func hideAproachAlert()
-    func deleteLastAproach(inExerciseAt index: Int)
-    func addAproach(inExerciseAt index: Int)
-    func showChangeAproachAlert(in exerciseIndex: Int, with weight: Float, reps: Int, at aproachIndex: Int)
-    func aproachWasChanged(in exersiceIndex: Int, and aptoachIndex: Int)
     func reloadTable()
-    func reloadCell(at index: Int)
-    func showAlertForDoneExercise()
+    
+    func reloadRow(at indexPath: IndexPath)
+    func deleteRow(at indexPath: IndexPath)
+    func insertRow(at indexPath: IndexPath)
+    
+    func updateStartWorkout()
+    func updateEndWorkout()
 }
 
 final class WorkoutViewController: UIViewController {
-
+    
     //MARK: - @IBOutlets
     @IBOutlet private var tableView: UITableView!
     
     // MARK: - GUI Properties
     private var stratchabelHeader: StretchableHeader?
     private lazy var startStopWorkoutView = StartStopWorkoutView.loadFromXib()
-    
-    //MARK: - Module property
-    private var viewModel: WorkoutViewModeProtocol
     private lazy var aproachAlert = DTNewAproachAlert()
     
+    //MARK: - Module property
+    private var presenter: WorkoutPresenterProtocol
     private var cellHeight: CGFloat {
         return self.view.safeAreaLayoutGuide.layoutFrame.height / 4
     }
@@ -42,8 +40,8 @@ final class WorkoutViewController: UIViewController {
     }
     
     // MARK: - Initialization
-    init(viewModel: WorkoutViewModeProtocol) {
-        self.viewModel = viewModel
+    init(viewModel: WorkoutPresenterProtocol) {
+        self.presenter = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -62,18 +60,12 @@ private extension WorkoutViewController {
             okTitle: LocalizedString.ok,
             cancelTitle: LocalizedString.cancel,
             completion: { [weak self] in
-                self?.viewModel.removeLatsAproach(at: index)
+                //self?.viewModel.removeLatsAproach(at: index)
             })
     }
     
-    func loadTraining() {
-        viewModel.loadTrain()
-    }
-    
     func setup() {
-        loadTraining()
-        aproachAlert.delegate = viewModel as? NewAproachAlertDelegate
-        tableView.register(DTEditingExerciceCell.self, forCellReuseIdentifier: DTEditingExerciceCell.cellID)
+        tableView.register(EditableExerciceCell.self, forCellReuseIdentifier: EditableExerciceCell.cellID)
         tableView.register(cell: WorkoutCell.self)
         setupHeaders()
     }
@@ -81,24 +73,24 @@ private extension WorkoutViewController {
     private func setupHeaders() {
         let headerSize = CGSize(width: tableView.frame.size.width, height: 250)
         stratchabelHeader = StretchableHeader(frame: CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height))
-        stratchabelHeader?.title = viewModel.trainingDate
+        stratchabelHeader?.title = presenter.trainingDate
         stratchabelHeader?.customDescription = nil
         stratchabelHeader?.backButtonImageType = .goBack
-        stratchabelHeader?.onBackButtonAction = { [unowned self] in self.viewModel.backButtonPressed() }
+        stratchabelHeader?.onBackButtonAction = { [unowned self] in self.presenter.backButtonPressed() }
         stratchabelHeader?.setTopRightButton(image: UIImage(named: "icon_home_menu"))
-        stratchabelHeader?.topRightButtonAction = { [unowned self] in self.viewModel.statisticsButtonPressed() }
+        stratchabelHeader?.topRightButtonAction = { [unowned self] in self.presenter.statisticsButtonPressed() }
         stratchabelHeader?.backgroundColor = .black
         stratchabelHeader?.minimumContentHeight = 44
         guard let header = stratchabelHeader else { return }
         tableView.addSubview(header)
         
         guard let startStopWorkoutView = self.startStopWorkoutView else { return }
-        startStopWorkoutView.configure(for: viewModel.startTime, and: viewModel.endTime)
+        startStopWorkoutView.configure(for: presenter.startTime, and: presenter.endTime)
         startStopWorkoutView.startButtonAction = { [unowned self] in
-            self.viewModel.startWotkout()
+            self.presenter.startWotkout()
         }
         startStopWorkoutView.stopButtonAction = { [unowned self] in
-            self.viewModel.stopWorkout()
+            self.presenter.stopWorkout()
         }
         startStopWorkoutView.translatesAutoresizingMaskIntoConstraints = false
         tableView.addSubview(startStopWorkoutView)
@@ -119,27 +111,14 @@ extension WorkoutViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.exerciseCount
+        return presenter.exerciseCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DTEditingExerciceCell.cellID,
-                                                 for: indexPath)
-         let exercise = self.viewModel.exerciseList[indexPath.row]
-        (cell as? DTEditingExerciceCell)?.setUpFor(exercise)
-        (cell as? DTEditingExerciceCell)?.addAproachButtonAction = { [weak self] in
-            guard let self = self else { return }
-            self.aproachAlert.present(on: self, with: exercise.aproachesArray.count, and: indexPath.row)
-        }
-        (cell as? DTEditingExerciceCell)?.removeAproachButtonAction = { [weak self] in
-            self?.showDeletenigAproachAlert(forExerciceAt: indexPath.row)
-        }
-        (cell as? DTEditingExerciceCell)?.changeAproachAction = { [weak self] (aproachIndex, weight, reps) in
-             self?.viewModel.aproachWillChanged(in: indexPath.row, and: aproachIndex)
-        }
-        (cell as? DTEditingExerciceCell)?.doneButtonPressedAction = { [weak self] in
-            self?.viewModel.exerciseDone(at: indexPath.row)
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: EditableExerciceCell.cellID, for: indexPath)
+        let exercise = presenter.item(at: indexPath)
+        cell.as(type: EditableExerciceCell.self)?.setUpFor(exercise, indexPath: indexPath)
+        cell.as(type: EditableExerciceCell.self)?.delegate = self
         return cell
     }
 }
@@ -149,8 +128,8 @@ extension WorkoutViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = TrainingTableFooterView.view()
-        footer?.isActive = viewModel.isTrainingEditable
-        footer?.onAction = { [unowned self] in self.viewModel.footerButtonPressed() }
+        footer?.isActive = presenter.isTrainingEditable
+        footer?.onAction = { [unowned self] in self.presenter.footerButtonPressed() }
         return footer
     }
     
@@ -160,23 +139,19 @@ extension WorkoutViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "Files") { (_, _, completionHandler) in
-            tableView.performBatchUpdates({ [weak self] in
-                self?.viewModel.showStatisticsForExercise(at: indexPath.row)
-                }, completion: nil)
+            self.presenter.exeriseStatisticsButtonPressed(at: indexPath)
             completionHandler(true)
         }
-        
         deleteAction.image = UIImage(systemName: "checkmark_training")
         deleteAction.backgroundColor = DTColors.backgroundColor
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-        return configuration
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        guard viewModel.isExerciseEditable(at: indexPath.row) && viewModel.isTrainingEditable else { return nil }
+      //  guard viewModel.isExerciseEditable(at: indexPath.row) && viewModel.isTrainingEditable else { return nil }
         let deleteAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
             tableView.performBatchUpdates({ [weak self] in
-                self?.viewModel.tryDeleteExercice(at: indexPath.row)
+                self?.presenter.tryDeleteExercice(at: indexPath)
             }, completion: nil)
             completionHandler(true)
         }
@@ -185,64 +160,75 @@ extension WorkoutViewController: UITableViewDelegate {
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         return configuration
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Selected index: \(indexPath.row)")
+    }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return presenter.isExerciseEditable(at: indexPath.row)
     }
 }
 
 //MARK: - TestTrainingViewControllerIteracting
 extension WorkoutViewController: WorkoutViewProtocol {
-
-    func deleteCell(at index: Int) {
-        tableView.beginUpdates()
-        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
-        tableView.endUpdates()
+    
+    func updateStartWorkout() {
+        startStopWorkoutView?.setSartTime()
     }
     
-    func showAlertForDoneExercise() {
-        showDefaultAlert(title: "Finish this exercise?",
+    func updateEndWorkout() {
+        startStopWorkoutView?.setEndTime()
+    }
+
+    func reloadRow(at indexPath: IndexPath) {
+        tableView.performBatchUpdates({ tableView.reloadRows(at: [indexPath], with: .none) }, completion: nil)
+    }
+    
+    func insertRow(at indexPath: IndexPath) {
+        tableView.performBatchUpdates({ tableView.insertRows(at: [indexPath], with: .none) }, completion: nil)
+    }
+    
+    func deleteRow(at indexPath: IndexPath) {
+        tableView.performBatchUpdates({ tableView.deleteRows(at: [indexPath], with: .right) }, completion: nil)
+    }
+
+    func reloadTable() {
+        tableView.reloadData()
+    }
+}
+
+//MARK: - EditableExerciseCellDelegate
+extension WorkoutViewController: EditableExerciseCellDelegate {
+    
+    func deletButtonPressed(cell: EditableExerciceCell) {
+        showDefaultAlert(title: "Dlete last set?",
                          message: "Are you sure?",
                          preffedStyle: .alert,
                          okTitle: LocalizedString.ok,
                          cancelTitle: LocalizedString.cancel,
                          completion: { [weak self] in
-                            self?.viewModel.doneExercise()
+                            cell.presenter?.deleteLastApproach()
                          })
     }
     
-    func reloadCell(at index: Int) {
-        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
-    }
- 
-    func reloadTable() {
-        tableView.reloadData()
+    func reloadExercise(cell: EditableExerciceCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        tableView.performBatchUpdates({ tableView.reloadRows(at: [indexPath], with: .none) }, completion: nil)
     }
     
-    func showChangeAproachAlert(in exerciseIndex: Int, with weight: Float, reps: Int, at aproachIndex: Int) {
-        aproachAlert.present(on: self,
-                             for: aproachIndex,
-                             and: exerciseIndex,
-                             weight: weight,
-                             reps: reps)
+    func addButtonPressed(cell: EditableExerciceCell, approachesCount: Int) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        aproachAlert.delegate = cell.presenter
+        aproachAlert.present(on: self, with: approachesCount, and: indexPath.row)
+    }
+    
+    func didSelectItemIn(cell: EditableExerciceCell, approach: Approach, at indexPath: IndexPath) {
+        guard let indexxPath = tableView.indexPath(for: cell) else { return }
+        aproachAlert.delegate = cell.presenter
+        aproachAlert.present(on: self, for: indexPath.row, and: indexxPath.row, weight: approach.weight, reps: approach.reps)
     }
 
-    func aproachWasChanged(in exersiceIndex: Int, and aptoachIndex: Int) {
-        let cell = self.tableView.cellForRow(at:  IndexPath(row: exersiceIndex, section: 0)) as? DTEditingExerciceCell
-        cell?.changeAproach(at: aptoachIndex)
-    }
-    
-    func addAproach(inExerciseAt index: Int) {
-        let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? DTEditingExerciceCell
-        cell?.addAproach()
-    }
-    
-    func deleteLastAproach(inExerciseAt index: Int) {
-        let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? DTEditingExerciceCell
-        cell?.removeLastAproach()
-    }
-    
-    func hideAproachAlert() {
-        self.aproachAlert.hideAlert()
+    func hideAlert(cell: EditableExerciceCell) {
+        aproachAlert.hideAlert()
     }
 }

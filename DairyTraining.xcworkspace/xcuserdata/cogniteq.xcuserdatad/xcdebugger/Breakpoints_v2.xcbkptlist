@@ -128,5 +128,133 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C08E7FD9-8259-4D4E-8E97-D929A96E897E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DairyTraining/Services/CoreData/CoreDataServicess/WorkoutsService/NewWorkoutService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "delete(at:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E54A12D1-0392-44D1-B498-C39460E6919D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DairyTraining/UI/TrainingModule/Training/TrainingViewController/Cells/DTEditingExerciceCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
+            landmarkName = "newAproachAlertOkPressed(newAproachAlert:with:and:and:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9535C582-A9E8-4B6B-A4AE-A1718AE4AF5D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DairyTraining/Services/CoreData/CoreDataServicess/WorkoutsService/NewWorkoutService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "fetchWorkouts(timePeriod:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "39F0A290-494C-455F-B011-6B83039E5B3C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DairyTraining/UI/TrainingModule/Training/TrainingViewController/WorkoutModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "trainingWasChanged()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BBF8063D-2945-41D9-A609-4BD9547C8474"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DairyTraining/UI/TrainingModule/Training/TrainingViewController/WorkoutModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "trainingWasChanged()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BBF8063D-2945-41D9-A609-4BD9547C8474 - 1148a82deda9853d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dairy_Training.WorkoutModel.(trainingWasChanged in _222F74442CAFEFBC92EEDCBEB23BA7C2)() -&gt; ()"
+                  moduleName = "Dairy Training"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cogniteq/Documents/Train/DairyTraining/UI/TrainingModule/Training/TrainingViewController/WorkoutModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  uuid = "BBF8063D-2945-41D9-A609-4BD9547C8474 - ac9b9de4f4eaa289"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Dairy_Training.ExerciseMO) -&gt; () in Dairy_Training.WorkoutModel.(trainingWasChanged in _222F74442CAFEFBC92EEDCBEB23BA7C2)() -&gt; ()"
+                  moduleName = "Dairy Training"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cogniteq/Documents/Train/DairyTraining/UI/TrainingModule/Training/TrainingViewController/WorkoutModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "136">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEFDAF24-C872-4676-8AD7-64716AA98110"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DairyTraining/UI/TrainingModule/AddFromTrainingPaterns/CurrentTrainingPatern/ChoosenPaternModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "init(patern:service:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

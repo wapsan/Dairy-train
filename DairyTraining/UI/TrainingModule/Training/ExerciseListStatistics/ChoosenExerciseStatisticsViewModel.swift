@@ -9,7 +9,7 @@ protocol ExerciseStatistics {
     var avarageReps: Double { get }
 }
 
-extension ExerciseManagedObject: ExerciseStatistics {
+extension ExerciseMO: ExerciseStatistics {
     
     var avarageReps: Double {
         var avarageReps: Double = 0
@@ -22,20 +22,20 @@ extension ExerciseManagedObject: ExerciseStatistics {
     var avarageProjectileWeight: Double {
         var sum: Double = 0
         aproachesArray.forEach({
-            sum += Double($0.weight)
+            sum += Double($0.weightValue)
         })
         return aproachesArray.count == 0 ? 0 : sum / Double(aproachesArray.count)
     }
     
     var maxProjectileWeight: Double {
         var maxWeight: Double
-        maxWeight = Double(aproachesArray.map({ $0.weight }).max() ?? 0)
+        maxWeight = (aproachesArray.map({ $0.weightValue.double }).max() ?? 0)
         return maxWeight
     }
     
     var totalLiftingWeight: Double {
         var sum: Double = 0
-        aproachesArray.forEach({ sum += Double($0.weight) * Double($0.reps)})
+        aproachesArray.forEach({ sum += $0.weightValue.double * $0.reps.double})
         return sum
     }
     
@@ -49,8 +49,10 @@ final class ChoosenExerciseStatisticsViewModel  {
     // MARK: - Properties
     private(set) var exerciseTitle: String
     private(set) var numberOfChartCell = 4
-    private var exercises: [ExerciseStatistics]
+    private var exercises: [ExerciseStatistics] = []
     private(set) var currentExerciseDate: Date?
+    private let exercise: ExerciseMO
+    private let persistenceService: PersistenceService
     
     private var maxWeightData: [ExerciseStatisticsData] {
         return exercises.sorted(by: { $0.exerciseDate < $1.exerciseDate })
@@ -70,14 +72,18 @@ final class ChoosenExerciseStatisticsViewModel  {
     }
     
     // MARK: - Initialization
-    init(exercise: ExerciseManagedObject) {
-        self.exercises = TrainingDataManager.shared.getAllExerciseForStatistics(with: exercise.name) as [ExerciseStatistics]
-        exercises.forEach({ print($0.exerciseDate) })
+    init(exercise: ExerciseMO, persistenceService: PersistenceService = PersistenceService()) {
+        self.persistenceService = persistenceService
+        self.exercise = exercise
         self.exerciseTitle = exercise.name
         self.currentExerciseDate = exercise.date
     }
     
     // MARK: - Public methods
+    func viewDidLoad() {
+        exercises = persistenceService.exercise.getAllExerciseForStatistics(with: exercise.name)
+    }
+    
     func generateExerciseDataType(for index: Int) -> ExerciseSatisticType? {
         switch index {
         case 0:

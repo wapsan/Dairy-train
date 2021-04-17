@@ -3,24 +3,33 @@ import Foundation
 protocol SearchFoodModelProtocol {
     func requestFood(for text: String)
     func paginationRequest(for text: String)
-    func addMealToDaily(meal: MealModel)
+    func addMealToDaily(meal: MealResponseModel)
 }
 
 final class SearchFoodModel {
     
     // MARK: - Module Properties
     weak var output: SearchFoodViewModellInput?
-    
-    
-    private let foodSearchService = CaloriesAPI()
+
+    //MARK: - Private
     private var requestPageNumber = 1
+    private let foodSearchService: SearchFoodAPI
+    private let persistenceService: PersistenceServiceProtocol
+    
+    //MARK: - Initialization
+    init(persistenceService: PersistenceServiceProtocol = PersistenceService(),
+         foodSearchService: SearchFoodAPI = SearchFoodAPI()) {
+        self.foodSearchService = foodSearchService
+        self.persistenceService = persistenceService
+    }
+    
 }
 
 // MARK: - NutritionModelProtocol
 extension SearchFoodModel: SearchFoodModelProtocol {
     
-    func addMealToDaily(meal: MealModel) {
-        NutritionDataManager.shared.addMeal(meal)
+    func addMealToDaily(meal: MealResponseModel) {
+        persistenceService.nutrition.addMeal(meal: meal)
         NotificationCenter.default.post(name: .mealWasAddedToDaily, object: nil)
         output?.mealWasAdedToDaily(with: "\(meal.mealName) with weight of \(meal.weight) gramms.")
     }
@@ -46,8 +55,10 @@ extension SearchFoodModel: SearchFoodModelProtocol {
             switch response {
             case .success(let responseModel):
                 self?.output?.foodListWasUpdated(to: responseModel.foods)
+                
             case .failure(let error):
                 self?.output?.updateError(with: error.message)
+                
             }
         }
     }

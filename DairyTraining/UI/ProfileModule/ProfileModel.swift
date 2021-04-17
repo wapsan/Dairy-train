@@ -3,21 +3,29 @@ import Firebase
 
 protocol ProfileModelProtocol: AnyObject {
     func writeNewValue(to value: String, and type: ProfileInfoCellType)
+    
+    var userInfo: UserInfoMO? { get }
 }
 
 protocol ProfileModelOutput: AnyObject {
     func valueWasUpdatedForCell(at index: Int)
-    func heightModeWasChanged(for cellAtIndex: Int)
-    func weightModeWasChanged(for cellAtIndex: Int)
+    func heightModeWasChanged(for cellAtIndex: Int, value: String?)
+    func weightModeWasChanged(for cellAtIndex: Int, value: String?)
     func trainingCountWasChanfed(to count: Int)
     func mainInfoWasUpdated()
 }
 
 final class ProfileModel {
-   
+    
+    //MARK: - Internal properties
     weak var output: ProfileModelOutput?
     
-    init() {
+    //MARK: - Private properties
+    private var peristenceService: PersistenceService
+    
+    //MARK: - Initialization
+    init(peristenceService: PersistenceService = PersistenceService()) {
+        self.peristenceService =  peristenceService
         addObserverForHeightModeChanged()
         addObserverForWeightSettingChanged()
         addObserverForTrainingCountChanged()
@@ -58,45 +66,47 @@ final class ProfileModel {
     }
     
     @objc private func weightMetricWasChanged() {
-        self.output?.weightModeWasChanged(for: ProfileInfoCellType.weight.rawValue) 
+        self.output?.weightModeWasChanged(for: ProfileInfoCellType.weight.rawValue, value: userInfo?.height.value.string)
     }
     
     @objc private func heightMetricChanged() {
-        self.output?.heightModeWasChanged(for: ProfileInfoCellType.hight.rawValue)
+        self.output?.heightModeWasChanged(for: ProfileInfoCellType.hight.rawValue, value: userInfo?.height.value.string)
     }
     
     @objc private func trainingCountWasChanged() {
-        output?.trainingCountWasChanfed(to: TrainingDataManager.shared.getTraingList().count)
+        let workoutsCount = peristenceService.workout.fetchWorkouts(for: .allTime).count
+        output?.trainingCountWasChanfed(to: workoutsCount)
     }
 }
 
 //MARK: - ProfileModelIteracting
 extension ProfileModel: ProfileModelProtocol {
     
+    var userInfo: UserInfoMO? {
+        peristenceService.user.userInfo
+    }
+
     func writeNewValue(to value: String, and type: ProfileInfoCellType) {
         switch type {
         case .totalTrain:
             break
         case .activityLevel:
-            if let activityLevel = UserMainInfoCodableModel.ActivityLevel.init(rawValue: value) {
-                UserDataManager.shared.updateActivityLevel(to: activityLevel)
-            }
+            let activityLevel = UserInfo.ActivityLevel(rawValue: value)
+            peristenceService.user.updateUserInfo(.activityLevel(activityLevel: activityLevel))
+           
         case .gender:
-            if let gender = UserMainInfoCodableModel.Gender.init(rawValue: value) {
-                UserDataManager.shared.updateGender(to: gender)
-            }
+            let gender = UserInfo.Gender(rawValue: value)
+            peristenceService.user.updateUserInfo(.gender(gender: gender))
+            
         case .age:
-            if let age = Int(value) {
-               UserDataManager.shared.updateAge(to: age)
-            }
+            peristenceService.user.updateUserInfo(.age(age: value))
+            
         case .hight:
-            if let height = Float(value) {
-                UserDataManager.shared.updateHeight(to: height)
-            }
+            peristenceService.user.updateUserInfo(.height(height: value))
+            
         case .weight:
-            if let weight = Float(value) {
-                UserDataManager.shared.updateWeight(to: weight)
-            }
+            peristenceService.user.updateUserInfo(.weight(weight: value))
+            
         }
         self.output?.valueWasUpdatedForCell(at: type.rawValue)
     }

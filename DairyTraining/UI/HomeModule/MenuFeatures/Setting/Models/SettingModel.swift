@@ -4,7 +4,7 @@ class SettingModel {
     
     //MARK: - Enums
     enum SettingType {
-        case colorTheme
+     //   case colorTheme
         case weightMetric
         case heightMetric
         case synchronization
@@ -20,24 +20,19 @@ class SettingModel {
         didSet {
             guard let currentValue = self.currentValue else { return }
             switch self.settingType {
-            case .colorTheme:
-                if currentValue == ColorSetting.ColorTheme.dark.rawValue {
-                    ColorSetting.shared.setColotTheme(to: .dark)
-                } else {
-                    ColorSetting.shared.setColotTheme(to: .light)
-                }
+          
             case .weightMetric:
-                if currentValue == MeteringSetting.WeightMode.kg.rawValue {
-                    MeteringSetting.shared.setWeightMode(to: .kg)
+                if currentValue == UserInfo.WeightMode.kg.rawValue {
+                    UserDefaults.standard.setWeightMode(weightMode: .kg)
                 } else {
-                    MeteringSetting.shared.setWeightMode(to: .lbs)
+                    UserDefaults.standard.setWeightMode(weightMode: .lbs)
                 }
                 NotificationCenter.default.post(name: .weightMetricChanged, object: nil)
             case .heightMetric:
-                if currentValue == MeteringSetting.HeightMode.cm.rawValue {
-                    MeteringSetting.shared.setHeightMode(to: .cm)
+                if currentValue == UserInfo.HeightMode.cm.rawValue {
+                    UserDefaults.standard.setHegithMode(heightMode: .cm)
                 } else {
-                    MeteringSetting.shared.setHeightMode(to: .ft)
+                    UserDefaults.standard.setHegithMode(heightMode: .ft)
                 }
                 NotificationCenter.default.post(name: .heightMetricChanged, object: nil)
             case .synchronization:
@@ -50,27 +45,27 @@ class SettingModel {
     init(for settingType: SettingType) {
         self.settingType = settingType
         switch settingType {
-        case .colorTheme:
-            self.title = LocalizedString.colorTheme
-            self.sectionTitle = LocalizedString.theme
-            for theme in ColorSetting.ColorTheme.allCases {
-                self.possibleSetting.append(theme.rawValue)
-            }
-            self.currentValue = ColorSetting.shared.colorTheme.rawValue
+//        case .colorTheme:
+//            self.title = LocalizedString.colorTheme
+//            self.sectionTitle = LocalizedString.theme
+//            for theme in ColorSetting.ColorTheme.allCases {
+//                self.possibleSetting.append(theme.rawValue)
+//            }
+//            self.currentValue = ColorSetting.shared.colorTheme.rawValue
         case .weightMetric:
             self.title = LocalizedString.weightMode
             self.sectionTitle = LocalizedString.mode
-            for mode in MeteringSetting.WeightMode.allCases {
+            for mode in UserInfo.WeightMode.allCases {
                 self.possibleSetting.append(mode.rawValue)
             }
-            self.currentValue = MeteringSetting.shared.weightMode.rawValue
+            self.currentValue = UserDefaults.standard.weightMode.rawValue
         case .heightMetric:
             self.title = LocalizedString.heightMode
             self.sectionTitle = LocalizedString.mode
-            for mode  in MeteringSetting.HeightMode.allCases {
+            for mode  in UserInfo.HeightMode.allCases {
                 self.possibleSetting.append(mode.rawValue)
             }
-            self.currentValue = MeteringSetting.shared.heightMode.rawValue
+            self.currentValue = UserDefaults.standard.heightMode.rawValue
         case .synchronization:
             self.title = LocalizedString.synhronization
         }

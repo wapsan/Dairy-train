@@ -3,11 +3,17 @@ import Foundation
 protocol NutritionModelProtocol {
     var recomendation: NutritionRecomendation? { get }
     var nutritionData: NutritionDataMO { get }
-    var nutritionMode: NutritionMode { get }
+    var nutritionMode: UserInfo.NutritionMode { get }
+    
+    var meals: [NutritionService.MealTime: [MealMO]] { get }
     
     func loadData()
     
-    func deleteMeal(at mealTimeIndex: Int, mealIndex: Int)
+    func deleteMeal(at indexPath: IndexPath)
+    func rowInSection(_ section: Int) -> Int
+    func meal(at indexPath: IndexPath) -> MealMO?
+    func titleForSection(_ section: Int) -> String
+    func shouldShowSection(at index: Int) -> Bool
 }
 
 final class NutritionModel {
@@ -23,11 +29,14 @@ final class NutritionModel {
     }
     private var _nutritionData: NutritionDataMO?
     private var calculator: CaloriesRecomendationCalculator?
-    private var userInfo: MainInfoManagedObject?
-    private var nutritionManager = NutritionDataManager.shared
+    private var userInfo: UserInfoMO?
+    private let persistenceService: PersistenceServiceProtocol
+    
+    private var _meals: [NutritionService.MealTime: [MealMO]] = [:]
     
     // MARK: - Initialization
-    init() {
+    init(persistenceService: PersistenceServiceProtocol = PersistenceService()) {
+        self.persistenceService = persistenceService
         addObserverForChangingNutritionMode()
         addObserverForMealAdded()
     }
@@ -48,19 +57,22 @@ final class NutritionModel {
     }
     
     private func updateRecomendation() {
-        if UserDataManager.shared.getNutritionMode() == .custom {
-            _recomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
+        if persistenceService.user.userInfo.userNutritionMode == .custom {
+            _recomendation = NutritionRecomendation(customNutritionRecomendation: persistenceService.nutrition.customNutritionMode)
         } else {
-            _recomendation = calculator?.getRecomendation(for: UserDataManager.shared.getNutritionMode())
+            _recomendation = calculator?.getRecomendation(for: persistenceService.user.userInfo.userNutritionMode)
         }
     }
     
     @objc private func nutritionModeChanged() {
         updateRecomendation()
-        output?.updateMealPlaneMode(to: UserDataManager.shared.getNutritionMode())
+        output?.updateMealPlaneMode(to: persistenceService.user.userInfo.userNutritionMode)
     }
     
     @objc private func mealWasAdded() {
+        _meals[.breakfast] = persistenceService.nutrition.getMeals(for: .breakfast)
+        _meals[.lunch] = persistenceService.nutrition.getMeals(for: .lunch)
+        _meals[.dinner] = persistenceService.nutrition.getMeals(for: .dinner)
         output?.updateMeals()
     }
 }
@@ -68,35 +80,63 @@ final class NutritionModel {
 // MARK: - NutritionModelProtocol
 extension NutritionModel: NutritionModelProtocol {
     
-    func deleteMeal(at mealTimeIndex: Int, mealIndex: Int) {
-        let mealTime = TodayMealNutritionModel.allCases[mealTimeIndex]
-        switch mealTime {
-        case .mainCell:
-            break
-        case .breakfast:
-            nutritionManager.removeMealFromBreakfast(at: mealIndex)
-        case .lunch:
-            nutritionManager.removeMealFrombLunch(at: mealIndex)
-        case .dinner:
-            nutritionManager.removeMealFromDinner(at: mealIndex)
-        }
-        output?.mealWasDeleteAt(mealTimeIndex: mealTimeIndex, and: mealIndex)
+    func shouldShowSection(at index: Int) -> Bool {
+        guard let mealTime = NutritionService.MealTime(rawValue: index) else { return false }
+        guard let section = _meals[mealTime] else { return false }
+        return !section.isEmpty
+    }
+    
+    func titleForSection(_ section: Int) -> String {
+        guard let mealTime = NutritionService.MealTime(rawValue: section) else { return "" }
+        return mealTime.title
+    }
+    
+    
+    func meal(at indexPath: IndexPath) -> MealMO? {
+        guard let mealTime = NutritionService.MealTime(rawValue: indexPath.section) else { return nil }
+        let section = _meals[mealTime]
+        return section?[indexPath.row]
+    }
+    
+    func rowInSection(_ section: Int) -> Int {
+        guard let mealTime = NutritionService.MealTime(rawValue: section) else { return 0 }
+        return _meals[mealTime]?.count ?? 0
+    }
+    
+    
+    var meals: [NutritionService.MealTime : [MealMO]] {
+        return _meals
+    }
+    
+    func deleteMeal(at indexPath: IndexPath) {
+        guard let mealTime = NutritionService.MealTime(rawValue: indexPath.section) else { return }
+        guard let section = _meals[mealTime] else { return }
+        
+        let mealForDeleting = section[indexPath.row]
+        _meals[mealTime]?.remove(at: indexPath.row)
+        persistenceService.nutrition.removeMeal(meal: mealForDeleting)
+        output?.mealWasDeleteAt(mealTimeIndex: indexPath.section, and: indexPath.row)
     }
     
     func loadData() {
-        _nutritionData = NutritionDataManager.shared.todayNutritionData
-        guard let user = UserDataManager.shared.readUserMainInfo() else { return }
-        calculator = CaloriesRecomendationCalculator(userInfo: user)
+        _meals[.breakfast] = persistenceService.nutrition.getMeals(for: .breakfast)
+        _meals[.lunch] = persistenceService.nutrition.getMeals(for: .lunch)
+        _meals[.dinner] = persistenceService.nutrition.getMeals(for: .dinner)
+        
+        
+        _nutritionData = persistenceService.nutrition.todayNutritionData
+        calculator = CaloriesRecomendationCalculator(userInfo: persistenceService.user.userInfo)
+        
         updateRecomendation()
         output?.updateMealPlane()
     }
     
     var nutritionData: NutritionDataMO {
-        NutritionDataManager.shared.todayNutritionData
+        persistenceService.nutrition.todayNutritionData
     }
     
-    var nutritionMode: NutritionMode {
-        UserDataManager.shared.getNutritionMode()
+    var nutritionMode: UserInfo.NutritionMode {
+        persistenceService.user.userInfo.userNutritionMode
     }
     
     var recomendation: NutritionRecomendation? {

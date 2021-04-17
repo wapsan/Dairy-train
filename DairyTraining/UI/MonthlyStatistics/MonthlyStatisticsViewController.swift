@@ -70,8 +70,8 @@ extension MonthlyStatisticsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MonthlyStatisticsItemCell.cellID,
                                                       for: indexPath)
-        let statisticsItem = viewModel.getItem(for: indexPath)
-        (cell as? MonthlyStatisticsItemCell)?.setCell(for: statisticsItem, indexPath: indexPath)
+        let statisticEntity = viewModel.item(at: indexPath)
+        (cell as? MonthlyStatisticsItemCell)?.configure(for: statisticEntity, indexPath: indexPath)
         return cell
     }
 }
@@ -81,7 +81,7 @@ extension MonthlyStatisticsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let withd = collectionView.bounds.width / 2
-        let height = withd * 1.3
+        let height = withd * 1
         return .init(width: withd, height: height)
     }
     

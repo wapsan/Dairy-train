@@ -28,3 +28,32 @@ extension MealMO {
     @NSManaged public var nutritionData: NutritionDataMO?
 
 }
+
+extension MealMO: FoodPresentable {
+    
+    static let dateFormat = "dd.MM.yyyy"
+    
+    var foodWeight: String? {
+        return String(format: "%.02fg", weight)
+    }
+    
+    var foodName: String? {
+        return name?.capitalized
+    }
+    
+    var kkal: String {
+        return String(format: "Kkal: %.02f", calories).capitalized
+    }
+    
+    var displayProteins: String {
+        return String(format: "Proteins: %.02f", proteins).capitalized
+    }
+    
+    var displayCarbohydrate: String {
+        return String(format: "Carbohydrates: %.02f", carbohydrates).capitalized
+    }
+    
+    var displayFat: String {
+        return String(format: "Fats: %.02f", fats).capitalized
+    }
+}

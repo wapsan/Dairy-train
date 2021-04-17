@@ -87,15 +87,11 @@ extension MainNutritionViewController: MainNutritionView {
 extension MainNutritionViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.todayMealNutitionModel.count
+        return viewModel.sectioncount
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return viewModel.todayMealNutitionModel[section].meals.count
-        }
+        return section == 0 ? 1 : viewModel.rowInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -112,8 +108,8 @@ extension MainNutritionViewController: UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: NutritionSearchingCell.cellID, for: indexPath)
-            let meal = viewModel.todayMealNutitionModel[indexPath.section].meals[indexPath.row]
-            (cell as? NutritionSearchingCell)?.setupCell(for: meal)
+            let meal = viewModel.meal(at: indexPath)
+            cell.as(type: NutritionSearchingCell.self)?.setupCell(for: meal)
             return cell
         }
     }
@@ -125,9 +121,7 @@ extension MainNutritionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard indexPath.section != 0 else { return nil }
         let deleteAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
-            tableView.performBatchUpdates({ [weak self] in
-                self?.viewModel.cellWasSwiped(at: indexPath.section, and: indexPath.row)
-            }, completion: nil)
+            tableView.performBatchUpdates({ [unowned self] in self.viewModel.didSwipeCell(at: indexPath) }, completion: nil)
             completionHandler(true)
         }
         deleteAction.image = UIImage(systemName: "trash")
@@ -138,15 +132,15 @@ extension MainNutritionViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard section != 0 else { return 0 }
-        guard !viewModel.todayMealNutitionModel[section].meals.isEmpty else { return 0 }
+        guard viewModel.shouldShowHeader(in: section) else { return 0 }
         return 70
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard section != 0 else { return nil }
-        guard !viewModel.todayMealNutitionModel[section].meals.isEmpty else { return nil }
+        guard viewModel.shouldShowHeader(in: section) else { return nil }
         let header = TodayMealsTableSectionHeader.view()
-        header?.title.text = viewModel.todayMealNutitionModel[section].rawValue
+        header?.title.text = viewModel.titleForSection(section)
         return header
     }
 }

@@ -8,7 +8,7 @@ struct TrainingCodableModel: Mapable {
     var date: Date
     
     //MARK: - Initialization
-    init(with trainingManagedObject: TrainingManagedObject) {
+    init(with trainingManagedObject: WorkoutMO) {
         self.formatedDate = trainingManagedObject.formatedDate
         self.date = trainingManagedObject.date
         var initExercisesArray: [ExerciseCodableModel] = []

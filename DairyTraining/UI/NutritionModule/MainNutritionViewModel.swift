@@ -55,19 +55,27 @@ struct NutritionDataPresentable {
 
 protocol NutritionViewModelProtocol {
     var nutritionRecomendation: NutritionRecomendation? { get }
-    var todayMealNutitionModel: [TodayMealNutritionModel] { get }
+   
     var userNutritionData: NutritionDataPresentable { get }
     var mealPlane: String { get }
     
     func viewDidLoad()
     func addMealButtonPressed()
     func settinButtonPressed()
-    func cellWasSwiped(at mealTimeIndex: Int, and mealIndex: Int)
+    
+    //MARK: - New
+    var sectioncount: Int { get }
+    
+    func rowInSection(section: Int) -> Int
+    func didSwipeCell(at indexPath: IndexPath)
+    func meal(at indexPath: IndexPath) -> MealMO?
+    func titleForSection(_ section: Int) -> String
+    func shouldShowHeader(in section: Int) -> Bool
 }
 
 protocol NutritionViewModelInput: AnyObject {
     func recomendationWasChanged(to recomendation: NutritionRecomendation?)
-    func updateMealPlaneMode(to nutritionMode: NutritionMode)
+    func updateMealPlaneMode(to nutritionMode: UserInfo.NutritionMode)
     func updateMeals()
     func mealWasDeleteAt(mealTimeIndex: Int, and mealIndex: Int)
     func updateMealPlane()
@@ -92,8 +100,29 @@ final class NutritionViewModel {
 // MARK: - NutritionViewModelProtocol
 extension NutritionViewModel: NutritionViewModelProtocol {
     
-    func cellWasSwiped(at mealTimeIndex: Int, and mealIndex: Int) {
-        model.deleteMeal(at: mealTimeIndex, mealIndex: mealIndex)
+    func shouldShowHeader(in section: Int) -> Bool {
+        model.shouldShowSection(at: section)
+    }
+    
+    func titleForSection(_ section: Int) -> String {
+        model.titleForSection(section)
+    }
+    
+    
+    func meal(at indexPath: IndexPath) -> MealMO? {
+        return model.meal(at: indexPath)
+    }
+    
+    func didSwipeCell(at indexPath: IndexPath) {
+        model.deleteMeal(at: indexPath)
+    }
+    
+    var sectioncount: Int {
+        return model.meals.count
+    }
+    
+    func rowInSection(section: Int) -> Int {
+        model.rowInSection(section)
     }
     
     func settinButtonPressed() {
@@ -116,10 +145,6 @@ extension NutritionViewModel: NutritionViewModelProtocol {
         return NutritionDataPresentable(nutritionDataMO: model.nutritionData)
     }
 
-    var todayMealNutitionModel: [TodayMealNutritionModel] {
-        return TodayMealNutritionModel.allCases
-    }
-
     var nutritionRecomendation: NutritionRecomendation? {
         return model.recomendation
     }
@@ -137,7 +162,7 @@ extension NutritionViewModel: NutritionViewModelInput {
         view?.updateMainCell()
     }
     
-    func updateMealPlaneMode(to nutritionMode: NutritionMode) {
+    func updateMealPlaneMode(to nutritionMode: UserInfo.NutritionMode) {
         view?.updateMealPlaneLabelText(to: nutritionMode.presentationTitle)
     }
     

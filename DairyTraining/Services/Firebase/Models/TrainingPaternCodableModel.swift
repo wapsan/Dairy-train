@@ -8,7 +8,7 @@ struct TrainingPaternCodableModel: Mapable {
     var exerciseArray: [ExerciseCodableModel]
     
     // MARK: - Initialization
-    init(for trainingPaternManagedObject: TrainingPaternManagedObject) {
+    init(for trainingPaternManagedObject: WorkoutTemplateMO) {
         self.date = trainingPaternManagedObject.date
         self.name = trainingPaternManagedObject.name
         self.exerciseArray = trainingPaternManagedObject.exerciseArray.map({ ExerciseCodableModel(with: $0) })

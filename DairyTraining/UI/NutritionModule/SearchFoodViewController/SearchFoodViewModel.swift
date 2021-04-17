@@ -34,7 +34,7 @@ final class SearchFoodViewModel {
 // MARK: - NutritionViewModelProtocol
 extension SearchFoodViewModel: SearchFoodViewModelProtocol {
     
-    func foodDetailAlert(mealDetailAlert: MealDetailAlert, mealWasAdded meal: MealModel) {
+    func foodDetailAlert(mealDetailAlert: MealDetailAlert, mealWasAdded meal: MealResponseModel) {
         model.addMealToDaily(meal: meal)
     }
     

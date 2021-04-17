@@ -9,19 +9,19 @@ struct ExerciseCodableModel: Mapable {
     var isDone: Bool?
     var subgroupName: String
     var groupName: String
-    var aproachlist: [AproachCodableModel]
+    var aproachlist: [Approach]
     
     //MARK: - Initialization
-    init(with exerciceManagedobject: ExerciseManagedObject) {
+    init(with exerciceManagedobject: ExerciseMO) {
         self.date = exerciceManagedobject.date ?? Date()
         self.isDone = exerciceManagedobject.isDone
         self.name = exerciceManagedobject.name
         self.id = Int(exerciceManagedobject.id)
         self.subgroupName = exerciceManagedobject.subgroupName
         self.groupName = exerciceManagedobject.groupName
-        var inintAproachesArray: [AproachCodableModel] = []
+        var inintAproachesArray: [Approach] = []
         for aproach in exerciceManagedobject.aproachesArray {
-            inintAproachesArray.append(AproachCodableModel(with: aproach))
+            inintAproachesArray.append(Approach(with: aproach))
         }
         self.aproachlist = inintAproachesArray
     }

@@ -26,8 +26,13 @@ final class FirebaseDataManager {
         return DateHelper.shared.getFormatedDateFrom(Date(), with: .synhronizationDateFromat)
     }
     
+    private let persistenceService: PersistenceServiceProtocol
+    
+    
     //MARK: - Initialization
-    private init () { }
+    private init () {
+        self.persistenceService = PersistenceService()
+    }
     
     //MARK: - Publick methods
     private  func upDateDateOfLastUpdate() {
@@ -57,11 +62,11 @@ final class FirebaseDataManager {
         dispatchGroup.notify(queue: .main, execute: completion)
     }
     
-    func fetchDataFromFirebase(completion: @escaping (_ data: Result<FrebaseServerModel, Error>) -> Void) {
+    func fetchDataFromFirebase(completion: @escaping (_ data: Result<FrebaseServerModel, SearchFoodAPI.NetWorkError>) -> Void) {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         var traingArray: [TrainingCodableModel] = []
         var trainingPaterns: [TrainingPaternCodableModel] = []
-        var mainInfo: UserMainInfoCodableModel?
+        var mainInfo: UserInfo?
         var dateOfUpdate: String?
         var customnutritionData: CustomNutritionCodableModel?
         var daynutritonData: [DayNutritionCodableModel] = []
@@ -71,10 +76,11 @@ final class FirebaseDataManager {
             .observeSingleEvent(of: .value) { [weak self] (snapshot) in
                 guard let self = self else { return }
                 guard let dictionaryValue = snapshot.value as? NSDictionary else {
+                    completion(.failure(.noResponse))
                     return
                 }
                 if let mainInfoDictionary = dictionaryValue[self.userMainInfoKey] as? [String: Any] {
-                    mainInfo = UserMainInfoCodableModel(from: mainInfoDictionary)
+                    mainInfo = UserInfo(from: mainInfoDictionary)
                 }
                 dateOfUpdate = dictionaryValue[self.updateDateKeyPatth] as? String
                 if let trainingInfoDictionary = dictionaryValue[self.userTrainInfoKey] as? [String: String] {
@@ -122,8 +128,8 @@ final class FirebaseDataManager {
     
     //MARK: - Private methods
     private func synhronizeMainUserInfoToServer() {
-        guard let userUid = Auth.auth().currentUser?.uid,
-            let userMainInfo = UserMainInfoCodableModel(from: UserDataManager.shared.readUserMainInfo()) else { return }
+        guard let userUid = Auth.auth().currentUser?.uid else { return }
+        let userMainInfo = UserInfo(userInfoMO: persistenceService.user.userInfo)
         let userMainInfoJSON = userMainInfo.mapToDictionary()
         self.firebaseRef
             .child(self.userKeyPath)
@@ -136,7 +142,7 @@ final class FirebaseDataManager {
     
     private func synhronizeTrainingUserInfoToServer() {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
-        let trainingListFromLocalBase = TrainingDataManager.shared.getTraingList()
+        let trainingListFromLocalBase = persistenceService.workout.fetchWorkouts(for: .allTime)
         var trainingInfoDictionary: [String: Any] = [:]
         trainingListFromLocalBase.enumerated().forEach( {(index, train) in
             let trainingData = TrainingCodableModel(with: train)
@@ -154,7 +160,7 @@ final class FirebaseDataManager {
     
     private func sunhronizeTrainingPaternsToServer() {
         guard let userUID = Auth.auth().currentUser?.uid else { return }
-        let localTrainingPaterns = TrainingDataManager.shared.trainingPaterns
+        let localTrainingPaterns = persistenceService.workoutTemplates.getWorkoutsTemplates()
         var parameters: [String: String] = [:]
         localTrainingPaterns.enumerated().forEach({
             let patern = TrainingPaternCodableModel(for: $1)
@@ -172,7 +178,7 @@ final class FirebaseDataManager {
     
     private func synhronizeNutritionDataToServer() {
         guard let userUID = Auth.auth().currentUser?.uid else { return }
-        let localNutritionData = NutritionDataManager.shared.allNutritionData
+        let localNutritionData = persistenceService.nutrition.fetchAllNutritionData()
         var parameteres: [String: String] = [:]
         localNutritionData.enumerated().forEach({
             let historyData = DayNutritionCodableModel(from: $1)
@@ -191,7 +197,7 @@ final class FirebaseDataManager {
     
     private func synchronizeCustomnutritionToServer() {
         guard let userUID = Auth.auth().currentUser?.uid else { return }
-        let localNutritionData = NutritionDataManager.shared.customNutritionMode
+        let localNutritionData = persistenceService.nutrition.customNutritionMode
         let a = CustomNutritionCodableModel(from: localNutritionData)
         let parameteres: [String: Any] = a.toDictionary()
         firebaseRef

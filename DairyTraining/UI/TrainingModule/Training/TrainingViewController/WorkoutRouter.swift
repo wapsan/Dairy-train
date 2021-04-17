@@ -1,8 +1,8 @@
 import UIKit
 
 protocol WorkoutRouterProtocol  {
-    func showCurrentWorkoutStatisticsScreen(for workout: TrainingManagedObject)
-    func showExerciseHistoryStatisticsScreen(for exercise: ExerciseManagedObject)
+    func showCurrentWorkoutStatisticsScreen(for workout: WorkoutMO)
+    func showExerciseHistoryStatisticsScreen(for exercise: ExerciseMO)
     func popViewController()
     func presentExerciseFlow()
     
@@ -12,7 +12,7 @@ protocol WorkoutRouterProtocol  {
 final class WorkoutRouter: Router {
     
     // MARK: - Private properties
-    private let rootViewController: UIViewController
+    private weak var rootViewController: UIViewController?
     
     // MARK: - Init
     init(_ viewController: UIViewController) {
@@ -35,16 +35,16 @@ extension WorkoutRouter: WorkoutRouterProtocol {
     }
     
     func popViewController() {
-        rootViewController.navigationController?.popViewController(animated: true)
+        rootViewController?.navigationController?.popViewController(animated: true)
     }
 
-    func showCurrentWorkoutStatisticsScreen(for workout: TrainingManagedObject) {
+    func showCurrentWorkoutStatisticsScreen(for workout: WorkoutMO) {
         let workoutStatisticsViewController = WorkoutStatisticsConfigurator.configure(for: workout)
-        rootViewController.navigationController?.pushViewController(workoutStatisticsViewController, animated: true)
+        rootViewController?.navigationController?.pushViewController(workoutStatisticsViewController, animated: true)
     }
     
-    func showExerciseHistoryStatisticsScreen(for exercise: ExerciseManagedObject) {
+    func showExerciseHistoryStatisticsScreen(for exercise: ExerciseMO) {
         let exerciseStatisticsViewController = ExerciseStatisticsConfigurator.configure(for: exercise)
-        rootViewController.present(exerciseStatisticsViewController, animated: true, completion: nil)
+        rootViewController?.present(exerciseStatisticsViewController, animated: true, completion: nil)
     }
 }

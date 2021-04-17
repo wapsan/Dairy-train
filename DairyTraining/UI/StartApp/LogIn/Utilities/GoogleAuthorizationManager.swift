@@ -39,7 +39,7 @@ final class GoogleAuthorizationManager: NSObject, GIDSignInDelegate {
         Auth.auth().signIn(with: credential) { [weak self] (result, error) in
             guard let self = self else { return }
             if let token = result?.user.refreshToken {
-                SettingManager.shared.setUserToken(to: token)
+                UserDefaults.standard.setToken(token: token)
                 self.postNotificationForGoogleSingedIn()
             } else {
                 print("GooglSignInErrro")

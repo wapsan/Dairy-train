@@ -39,6 +39,11 @@ final class DateHelper {
         return dateFormater.string(from: date)
     }
     
+    func getFormatedDate(date: Date, dateFromat: String) -> String {
+        dateFormater.dateFormat = dateFromat
+        return dateFormater.string(from: date)
+    }
+    
     func hours(for date: Date) -> Int {
         let calendar = Calendar.current
         let hours = calendar.component(.hour, from: date)

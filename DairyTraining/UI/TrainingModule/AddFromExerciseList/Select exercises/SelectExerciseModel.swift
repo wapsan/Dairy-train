@@ -23,9 +23,11 @@ final class SelectExerciseModel {
     private var _muscularSubgroupList: [MuscleSubgroup.Subgroup] = []
     private var _muscularGroupName: String
     private var trainingEntityTarget: TrainingEntityTarget
+    private let exerciseService: PersistenceService
     
     //MARK: - Initialization
-    init(muscularGroup: MuscleGroup.Group, trainingEntityTarget: TrainingEntityTarget) {
+    init(muscularGroup: MuscleGroup.Group, trainingEntityTarget: TrainingEntityTarget, service: PersistenceService = PersistenceService()) {
+        self.exerciseService = service
         self._muscularSubgroupList = MuscleSubgroup.init(for: muscularGroup).listOfSubgroups
         self.trainingEntityTarget = trainingEntityTarget
         self._muscularGroupName = muscularGroup.name
@@ -33,16 +35,20 @@ final class SelectExerciseModel {
     
     //MARK: - Public methods
     private func addExerciseToTraining() {
-        if  TrainingDataManager.shared.addExercisesToTrain(exerciseListToAdd) {
-            NotificationCenter.default.post(name: .trainingListWasChanged, object: nil)
-        } else {
+        if exerciseService.workout.isTodayWorkoutExist {
+            exerciseService.workout.addExerciseToTodaysWorkout(exercise: exerciseListToAdd)
             NotificationCenter.default.post(name: .trainingWasChanged, object: nil)
+            
+        } else {
+            exerciseService.workout.createWorkout(with: exerciseListToAdd)
+            NotificationCenter.default.post(name: .trainingListWasChanged, object: nil)
+            
         }
     }
     
-    private func addExerciseList(to trainingPatern: TrainingPaternManagedObject) {
-        TrainingDataManager.shared.addExercicese(exerciseListToAdd,
-                                                 to: trainingPatern)
+    private func addExerciseList(to trainingPatern: WorkoutTemplateMO) {
+        exerciseService.workoutTemplates.addExercises(exercises: exerciseListToAdd, to: trainingPatern)
+        NotificationCenter.default.post(name: .exerciseWasAdedToPatern, object: nil)
     }
 }
 

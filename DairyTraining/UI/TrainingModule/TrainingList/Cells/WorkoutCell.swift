@@ -40,7 +40,7 @@ final class WorkoutCell: UITableViewCell {
     
  
     
-    func setCell(for workout: TrainingManagedObject) {
+    func setCell(for workout: WorkoutMO) {
         guard let formatedDate = workout.formatedDate else { return }
         self.dateLabel.text = formatedDate
         workout.muscleSubgroupInCurentTraint.forEach({

@@ -12,8 +12,14 @@ protocol SideMenuInteractorOutput: AnyObject {
 
 final class SideMenuInteractor {
     
+    private let persistenceService: PersistenceServiceProtocol
+    
     //MARK: - Internal properties
     weak var output: SideMenuInteractorOutput?
+    
+    init(persistenceService: PersistenceServiceProtocol = PersistenceService()) {
+        self.persistenceService = persistenceService
+    }
 }
 
 //MARK: - SideMenuInteractorProtocol
@@ -22,11 +28,11 @@ extension SideMenuInteractor: SideMenuInteractorProtocol {
     func signOut() {
         do {
             try Auth.auth().signOut()
-            SettingManager.shared.deleteUserToken()
-            NutritionDataManager.shared.removeNutritionData()
-            UserDataManager.shared.removeAllUserData { [weak self] in
-                self?.output?.successLogOut()
-            }
+            UserDefaults.standard.deleteToken()
+            persistenceService.user.cleanUserData()
+            persistenceService.workout.cleanAllWorkoutsData()
+            persistenceService.nutrition.removeAllNutritonData()
+            output?.successLogOut()
             
         } catch let signOutError {
             self.output?.errorLogout(with: signOutError.localizedDescription)

@@ -20,5 +20,9 @@ extension UITableViewCell  {
     static var xibName: String {
         return String(describing: self)
     }
+    
+    func `as`<T: UITableViewCell>(type: T.Type) -> T? {
+        return self as? T
+    }
 }
 

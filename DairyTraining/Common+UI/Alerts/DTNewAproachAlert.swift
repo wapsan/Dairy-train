@@ -125,7 +125,7 @@ class DTNewAproachAlert: UIView {
     
     private lazy var weightLabel: UILabel = {
         let label = UILabel()
-        label.text = MeteringSetting.shared.weightDescription
+        label.text = UserDefaults.standard.weightMode.description
         label.backgroundColor = .clear
         label.textColor = .white
         label.font = .systemFont(ofSize: 17)

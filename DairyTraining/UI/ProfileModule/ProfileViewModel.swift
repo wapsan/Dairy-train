@@ -1,7 +1,8 @@
 import UIKit
 
 protocol ProfileViewModelProtocol: DTSelectionListAlertDelegate, DTValueAletDelegate {
-    func selectRow(at index: Int)
+    func selectRow(at index: IndexPath)
+    func getValueFor(indexPath: IndexPath) -> String
 }
 
 final class ProfileViewModel {
@@ -16,14 +17,34 @@ final class ProfileViewModel {
 
 //MARK: - ProfileViewModelInput
 extension ProfileViewModel: ProfileViewModelProtocol {
-
-    func selectRow(at index: Int) {
-        let cellType = ProfileInfoCellType.init(rawValue: index)
+    
+    func getValueFor(indexPath: IndexPath) -> String {
+        guard let cellType =  ProfileInfoCellType.init(rawValue: indexPath.row),
+              let userInfo = model.userInfo else { return "" }
+        
+        switch cellType {
+        case .totalTrain:
+            return ""
+        case .activityLevel:
+            return userInfo.activityLevel ?? ""
+        case .gender:
+            return userInfo.gender ?? ""
+        case .age:
+            return userInfo.age.string
+        case .hight:
+            return userInfo.height.value.string
+        case .weight:
+            return userInfo.weight.value.string
+        }
+    }
+    
+    func selectRow(at index: IndexPath) {
+        let cellType = ProfileInfoCellType.init(rawValue: index.row)
         switch cellType {
         case .age, .hight, .weight:
-            self.view?.showValueAlert(for: index, and: cellType?.value)
+            self.view?.showValueAlert(for: index.row, and: getValueFor(indexPath: index))
         case .gender, .activityLevel:
-            self.view?.showSelectionlistAlert(for: index, and: cellType?.value)
+            self.view?.showSelectionlistAlert(for: index.row, and: getValueFor(indexPath: index))
         default:
             break
         }
@@ -64,12 +85,12 @@ extension ProfileViewModel: ProfileModelOutput {
         view?.trainingCountWasChanged(to: count)
     }
     
-    func heightModeWasChanged(for cellAtIndex: Int) {
-        self.view?.updateHeightMode(for: cellAtIndex)
+    func heightModeWasChanged(for cellAtIndex: Int, value: String?) {
+        self.view?.updateHeightMode(for: cellAtIndex, value: value)
     }
     
-     func weightModeWasChanged(for cellAtIndex: Int) {
-        self.view?.updateWeightMode(for: cellAtIndex)
+    func weightModeWasChanged(for cellAtIndex: Int, value: String?) {
+        self.view?.updateWeightMode(for: cellAtIndex, value: value)
     }
     
     func valueWasUpdatedForCell(at index: Int) {

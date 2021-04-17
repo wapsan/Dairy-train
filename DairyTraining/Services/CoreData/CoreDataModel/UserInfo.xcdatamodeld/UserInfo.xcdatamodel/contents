@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="UserInfoMO" representedClassName="UserInfoMO" syncable="YES">
+        <attribute name="activityLevel" optional="YES" attributeType="String"/>
+        <attribute name="age" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dateOfLastUpdate" optional="YES" attributeType="String"/>
+        <attribute name="gender" optional="YES" attributeType="String"/>
+        <attribute name="heightMode" attributeType="String" defaultValueString="Ft."/>
+        <attribute name="heightValue" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="nutritionMode" attributeType="String" defaultValueString="balanceWeight"/>
+        <attribute name="weightMode" attributeType="String" defaultValueString="Lbs."/>
+        <attribute name="weightValue" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="UserInfoMO" positionX="-63" positionY="-18" width="128" height="164"/>
+    </elements>
+</model>

@@ -3,9 +3,9 @@ import Foundation
 struct Statistics {
     
     //MARK: - Properties
-    private lazy var weightDescription = MeteringSetting.shared.weightDescription
-    private var weightMetric: MeteringSetting.WeightMode {
-        return MeteringSetting.shared.weightMode
+    private lazy var weightDescription = UserDefaults.standard.weightMode.description//MeteringSetting.shared.weightDescription
+    private var weightMetric: UserInfo.WeightMode {
+        return UserDefaults.standard.weightMode
     }
     
     var trainingDate: String?
@@ -25,17 +25,17 @@ struct Statistics {
     
     var averageProjectileWeight: String {
         if self._averageProjectileWeight.truncatingRemainder(dividingBy: 1) == 0 {
-            return String(format: "%.0f", self._averageProjectileWeight) + MeteringSetting.shared.weightDescription//self.weightDescription
+            return String(format: "%.0f", self._averageProjectileWeight) + UserDefaults.standard.weightMode.description//MeteringSetting.shared.weightDescription//self.weightDescription
         } else {
-            return String(format: "%.1f", self._averageProjectileWeight) + MeteringSetting.shared.weightDescription//self.weightDescription
+            return String(format: "%.1f", self._averageProjectileWeight) + UserDefaults.standard.weightMode.description//self.weightDescription
         }
     }
     
     var totalWorkoutWeight: String {
         if self._totalWorkoutWeight.truncatingRemainder(dividingBy: 1) == 0 {
-            return String(format: "%.0f", self._totalWorkoutWeight) + MeteringSetting.shared.weightDescription//self.weightDescription
+            return String(format: "%.0f", self._totalWorkoutWeight) + UserDefaults.standard.weightMode.description//self.weightDescription
         } else {
-            return String(format: "%.1f", self._totalWorkoutWeight) + MeteringSetting.shared.weightDescription//self.weightDescription
+            return String(format: "%.1f", self._totalWorkoutWeight) + UserDefaults.standard.weightMode.description//self.weightDescription
         }
     }
     
@@ -47,12 +47,12 @@ struct Statistics {
     private var _averageProjectileWeight: Float
     
     //MARK: - Initialization
-    init(for train: TrainingManagedObject) {
+    init(for train: WorkoutMO) {
         self.trainingDate = train.formatedDate
         self._totalNumberOfAproach = {
             var aproaches = 0
             train.exercicesArray.forEach { (exercise) in
-                exercise.aproaches.forEach { (aproach) in
+                exercise.aproachesArray.forEach { (aproach) in
                     aproaches += 1
                 }
             }
@@ -73,11 +73,11 @@ struct Statistics {
             var totalWeight: Float = 0.0
             train.exercicesArray.forEach { (exercise) in
                 exercise.aproachesArray.forEach { (aproach) in
-                    guard let aproachWeightMode = aproach.weightEnumMode else { return }
-                    if aproachWeightMode == MeteringSetting.shared.weightMode {
-                        totalWeight += (aproach.weight * Float(aproach.reps))
+                    let aproachWeightMode = aproach.weightMode
+                    if aproachWeightMode == UserDefaults.standard.weightMode.rawValue {
+                        totalWeight += (aproach.weightValue * Float(aproach.reps))
                     } else {
-                        totalWeight += (aproach.weight * MeteringSetting.shared.weightMultiplier * Float(aproach.reps))
+                        totalWeight += (aproach.weightValue * UserDefaults.standard.weightMode.multiplier * Float(aproach.reps))
                     }
                 }
             }
@@ -89,12 +89,12 @@ struct Statistics {
             var aproachesCountInTtrain: Float = 0.0
             train.exercicesArray.forEach { (exercise) in
                 exercise.aproachesArray.forEach { (aproach) in
-                    guard let aproachWeightMode = aproach.weightEnumMode else { return }
-                    if aproachWeightMode == MeteringSetting.shared.weightMode {
-                        averageProjectileWeight += aproach.weight
+                    let aproachWeightMode = aproach.weightMode
+                    if aproachWeightMode == UserDefaults.standard.weightMode.rawValue {
+                        averageProjectileWeight += aproach.weightValue
                         aproachesCountInTtrain += 1
                     } else {
-                        averageProjectileWeight += (aproach.weight * MeteringSetting.shared.weightMultiplier)
+                        averageProjectileWeight += (aproach.weightValue * UserDefaults.standard.weightMode.multiplier)
                         aproachesCountInTtrain += 1
                     }
                     

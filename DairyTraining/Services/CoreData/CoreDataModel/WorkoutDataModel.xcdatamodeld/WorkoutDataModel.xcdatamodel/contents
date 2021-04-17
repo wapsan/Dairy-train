@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Approach" representedClassName="ApproachMO" syncable="YES">
+        <attribute name="index" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reps" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weightMode" attributeType="String" defaultValueString="Lbs."/>
+        <attribute name="weightValue" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="approaches" inverseEntity="Exercise"/>
+    </entity>
+    <entity name="Exercise" representedClassName="ExerciseMO" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="groupName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="subgroupName" optional="YES" attributeType="String"/>
+        <relationship name="approaches" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Approach" inverseName="exercise" inverseEntity="Approach"/>
+        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="exercises" inverseEntity="Workout"/>
+        <relationship name="workoutTemplate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutTemplate" inverseName="exercises" inverseEntity="WorkoutTemplate"/>
+    </entity>
+    <entity name="Workout" representedClassName="WorkoutMO" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endTimeDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="formatedDate" optional="YES" attributeType="String"/>
+        <attribute name="startTimeDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Exercise" inverseName="workout" inverseEntity="Exercise"/>
+    </entity>
+    <entity name="WorkoutTemplate" representedClassName="WorkoutTemplateMO" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Exercise" inverseName="workoutTemplate" inverseEntity="Exercise"/>
+    </entity>
+    <elements>
+        <element name="Approach" positionX="-36" positionY="9" width="128" height="104"/>
+        <element name="Exercise" positionX="-54" positionY="-9" width="128" height="164"/>
+        <element name="Workout" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="WorkoutTemplate" positionX="-18" positionY="27" width="128" height="74"/>
+    </elements>
+</model>

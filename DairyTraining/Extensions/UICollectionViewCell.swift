@@ -19,4 +19,8 @@ extension UICollectionViewCell {
     static var xibName: String {
         return String(describing: self)
     }
+    
+    func `as`<T: UICollectionViewCell>(type: T.Type) -> T? {
+        return self as? T
+    }
 }

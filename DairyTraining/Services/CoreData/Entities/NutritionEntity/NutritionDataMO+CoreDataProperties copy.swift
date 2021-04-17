@@ -46,4 +46,6 @@ extension NutritionDataMO {
         return mealsSet.sorted(by: { $0.date < $1.date })
     }
     
+    static let dateFormat = "dd.MM.yyyy"
+    
 }

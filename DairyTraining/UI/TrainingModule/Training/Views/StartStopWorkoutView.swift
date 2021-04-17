@@ -55,6 +55,18 @@ final class StartStopWorkoutView: UIView {
         }
     }
     
+    func setSartTime() {
+        startWorkoutButton.isEnabled = false
+        let start = DateHelper.shared.getFormatedDateFrom(Date(), with: .startStopTrainingTimeFormat)
+        startWorkoutButton.setTitle(start, for: .normal)
+    }
+    
+    func setEndTime() {
+        stopWorkoutButton.isEnabled = false
+        let start = DateHelper.shared.getFormatedDateFrom(.now, with: .startStopTrainingTimeFormat)
+        stopWorkoutButton.setTitle(start, for: .normal)
+    }
+    
     //MARK: - Actions
     @IBAction func startWorkoutPressed(_ sender: Any) {
         startButtonAction?()

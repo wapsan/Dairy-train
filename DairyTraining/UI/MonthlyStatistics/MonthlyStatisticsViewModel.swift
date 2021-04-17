@@ -11,7 +11,8 @@ import Foundation
 protocol MonthlyStatisticsViewModelProtocol: TitledScreenProtocol {
     var itemCount: Int { get }
     
-    func getItem(for indexPath: IndexPath) -> MonthlyStatisticsModel.StatisticsItem
+    func item(at indexPath: IndexPath) -> MonthlyStatisticsModel.Entity
+    
     func backButtonPressed()
 }
 
@@ -31,12 +32,13 @@ final class MonthlyStatisticsViewModel {
 
 extension MonthlyStatisticsViewModel: MonthlyStatisticsViewModelProtocol {
     
-    func getItem(for indexPath: IndexPath) -> MonthlyStatisticsModel.StatisticsItem {
-        return MonthlyStatisticsModel.StatisticsItem.allCases[indexPath.row]
+    func item(at indexPath: IndexPath) -> MonthlyStatisticsModel.Entity {
+        model.getStatisticsEntity(for: indexPath.row)
     }
+  
     
     var itemCount: Int {
-        return MonthlyStatisticsModel.StatisticsItem.allCases.count
+        return model.statisticsTypes.count
     }
     
     func backButtonPressed() {

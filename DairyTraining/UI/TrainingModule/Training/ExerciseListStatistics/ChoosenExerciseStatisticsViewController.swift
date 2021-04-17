@@ -12,6 +12,7 @@ final class ChoosenExerciseStatisticsViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.viewDidLoad()
         setup()
     }
     

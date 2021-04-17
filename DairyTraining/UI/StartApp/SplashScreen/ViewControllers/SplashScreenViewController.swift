@@ -36,7 +36,8 @@ final class SplashScreenViewController: UIViewController {
     }
     
     private func presentInitialViewController() {
-        SettingManager.shared.isUserAuthorized ? showMainFlow() : showAuthorizationFlow()
+        UserDefaults.standard.token != nil ? showMainFlow() : showAuthorizationFlow()
+       // SettingManager.shared.isUserAuthorized ? showMainFlow() : showAuthorizationFlow()
     }
    
     //MARK: - Constraints

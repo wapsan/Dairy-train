@@ -29,7 +29,7 @@ final class ChoosenPaternViewModel {
 //MARK: - Private
 private extension ChoosenPaternViewModel {
     
-    func convertTrainingModel(from exerciseArray: [ExerciseManagedObject]) -> [Exercise] {
+    func convertTrainingModel(from exerciseArray: [ExerciseMO]) -> [Exercise] {
         var exerciseList: [Exercise] = []
         exerciseArray.forEach({
             guard let subgroup = MuscleSubgroup.Subgroup.init(rawValue: $0.subgroupName) else { return }
@@ -52,7 +52,7 @@ extension ChoosenPaternViewModel: ChoosenPaternViewModelProtocol {
     }
 
     var exercises: [Exercise] {
-        return convertTrainingModel(from: model.patern.exerciseArray)
+        return convertTrainingModel(from: model.exercises)
     }
     
     func patrnNamingAlertOkPressedToRenamePatern(name: String) {

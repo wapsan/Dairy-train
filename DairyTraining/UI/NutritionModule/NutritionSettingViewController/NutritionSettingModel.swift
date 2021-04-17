@@ -1,12 +1,12 @@
 import Foundation
  
-protocol NutritionettingModelProtocol {
+protocol NutritionSettingModelProtocol {
     
-    var selectedMode: NutritionMode { get }
-    var nutritionMode: NutritionMode { get }
+    var selectedMode: UserInfo.NutritionMode { get }
+    var nutritionMode: UserInfo.NutritionMode { get }
     
     func getSelectednutritionMode()
-    func changeSelectedNutritionMode(to mode: NutritionMode)
+    func changeSelectedNutritionMode(to mode: UserInfo.NutritionMode)
     func saveNewNutritionMode()
     
     func saveCustomCalories(calories: Int)
@@ -17,11 +17,14 @@ protocol NutritionettingModelProtocol {
 
 final class NutritionSettingModel {
     
+    //MARK: - Internals properties
     weak var output: NutritionSettingViewModelInput?
     
     // MARK: - Private methods
-    private var caloriesCalculator = CaloriesRecomendationCalculator(userInfo: UserDataManager.shared.readUserMainInfo())
-    private var _selectedMode = UserDataManager.shared.getNutritionMode() {
+    private var persistenceService: PersistenceServiceProtocol
+    
+    private lazy var caloriesCalculator = CaloriesRecomendationCalculator(userInfo: persistenceService.user.userInfo)
+    private lazy var _selectedMode = persistenceService.user.userInfo.userNutritionMode {
         didSet {
             if _selectedMode == .custom {
                 updateCustomNutritionRecomendation()
@@ -31,12 +34,15 @@ final class NutritionSettingModel {
         }
     }
     
-    init() {
+    //MARK: - Initialization
+    init(persistenceService: PersistenceServiceProtocol = PersistenceService()) {
+        self.persistenceService = persistenceService
         NotificationCenter.default.post(name: .nutritionmodeWasChanged, object: self)
     }
     
+    //MARK: - Private
     private func updateCustomNutritionRecomendation() {
-        let nutritionRecomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
+        let nutritionRecomendation = NutritionRecomendation(customNutritionRecomendation: persistenceService.nutrition.customNutritionMode)
         output?.updateNutritionRecomandation(to: nutritionRecomendation)
     }
     
@@ -46,47 +52,47 @@ final class NutritionSettingModel {
     }
 }
 
-extension NutritionSettingModel: NutritionettingModelProtocol {
+//MARK: - NutritionettingModelProtocol
+extension NutritionSettingModel: NutritionSettingModelProtocol {
     
-    var nutritionMode: NutritionMode {
-        UserDataManager.shared.getNutritionMode()
+    var nutritionMode: UserInfo.NutritionMode {
+        persistenceService.user.userInfo.userNutritionMode
     }
     
     func getNutritionInfoForCustomMode() {
-        let nutritionRecomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
+        let nutritionRecomendation = NutritionRecomendation(customNutritionRecomendation: persistenceService.nutrition.customNutritionMode)
         output?.updateCutomNutritionInfo(for: nutritionRecomendation)
     }
     
     func saveCustomnutritionPercentageFor(proteins: Int, carbohydrates: Int, fats: Int) {
-        NutritionDataManager.shared.updateCustomPercentageFor(proteinsPercentage: Float(proteins),
-                                                              carbohydratesPercentage: Float(carbohydrates),
-                                                              fatsPercentage: Float(fats))
-        let nutritionRecomendation = NutritionRecomendation(customNutritionRecomendation: NutritionDataManager.shared.customNutritionMode)
+        persistenceService.nutrition.updateCustomNutritionModePercentage(protein: proteins.float,
+                                                                         carbohydrates: carbohydrates.float,
+                                                                         fats: fats.float)
+        let nutritionRecomendation = NutritionRecomendation(customNutritionRecomendation: persistenceService.nutrition.customNutritionMode)
         output?.updateNutritionRecomandation(to: nutritionRecomendation)
     }
     
     func saveCustomCalories(calories: Int) {
-        NutritionDataManager.shared.updateCustomCalories(to: calories)
+        persistenceService.nutrition.updateCustomNutritionMode(calories: calories)
         output?.customCaloriesWasSet(to: calories)
     }
     
     func saveNewNutritionMode() {
-        UserDataManager.shared.updateNutritionMode(to: _selectedMode)
+        persistenceService.user.updateUserInfo(.nutritionMode(nutritionMode: _selectedMode))
         NotificationCenter.default.post(name: .nutritionmodeWasChanged, object: nil)
     }
     
-    var selectedMode: NutritionMode {
+    var selectedMode: UserInfo.NutritionMode {
         _selectedMode
     }
     
-    func changeSelectedNutritionMode(to mode: NutritionMode) {
+    func changeSelectedNutritionMode(to mode: UserInfo.NutritionMode) {
         _selectedMode = mode
         output?.changeNutritionSelection(to: _selectedMode)
     }
 
     func getSelectednutritionMode() {
-        let selectedMode = UserDataManager.shared.getNutritionMode()
-        _selectedMode = selectedMode
+        _selectedMode = persistenceService.user.userInfo.userNutritionMode
         output?.loadCurrentNutritionMode(to: self._selectedMode)
     }
 }

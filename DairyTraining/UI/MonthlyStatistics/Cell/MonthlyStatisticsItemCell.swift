@@ -19,14 +19,17 @@ final class MonthlyStatisticsItemCell: UICollectionViewCell {
     }
 
     //MARK: - Setter
-    func setCell(for item: MonthlyStatisticsModel.StatisticsItem, indexPath: IndexPath) {
-        titleLabel.text = item.title
-        descriptionLabel.text = item.valueDescription
-        valueLabel.text = String(item.value)
-        infoButton.isHidden = item != .avarageProjectileWeight
+    func configure(for entity: MonthlyStatisticsModel.Entity, indexPath: IndexPath) {
+        titleLabel.text = entity.title
+        descriptionLabel.text = entity.description
+        valueLabel.text = entity.value.string
+        infoButton.isHidden = true
+        
+        
         guard indexPath.row != 0 else { setupOddCellConstraints(); return }
         indexPath.row % 2 == 0 ? setupOddCellConstraints() : setupEvenCellConstraints()
     }
+    
     
     //MARK: - Private methods
     private func setup() {

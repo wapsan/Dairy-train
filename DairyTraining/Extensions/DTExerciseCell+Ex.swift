@@ -1,6 +1,6 @@
 import UIKit
 
-extension DTEditingExerciceCell {
+extension EditableExerciceCell {
     /**
      This property return parent viewcontroller on wich this element is located
     */

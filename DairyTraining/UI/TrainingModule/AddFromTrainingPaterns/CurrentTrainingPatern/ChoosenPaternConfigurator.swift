@@ -2,7 +2,7 @@ import Foundation
 
 final class ChoosenPaternConfigurator {
     
-    func configure(for trainingPaterm: TrainingPaternManagedObject) -> ChoosenPaternViewController {
+    func configure(for trainingPaterm: WorkoutTemplateMO) -> ChoosenPaternViewController {
         let choosenPaternModel = ChoosenPaternModel(patern: trainingPaterm)
         let choosenPaternViewModel = ChoosenPaternViewModel(model: choosenPaternModel)
         let choosenPaternViewController = ChoosenPaternViewController(viewModel: choosenPaternViewModel)

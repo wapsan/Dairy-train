@@ -1,7 +1,7 @@
 import UIKit
 
 protocol MealDetailAlertDelegate: AnyObject {
-    func foodDetailAlert(mealDetailAlert: MealDetailAlert, mealWasAdded meal: MealModel)
+    func foodDetailAlert(mealDetailAlert: MealDetailAlert, mealWasAdded meal: MealResponseModel)
 }
 
 final class MealDetailAlert: UIView {
@@ -101,7 +101,7 @@ final class MealDetailAlert: UIView {
     // MARK: - Actions
     @IBAction func addButtonPressed(_ sender: Any) {
         guard let food = self.food else { return }
-        let meal = MealModel(mealName: food.foodName,
+        let meal = MealResponseModel(mealName: food.foodName ?? "",
                              weight: Float(foodWeight),
                              calories: Float(calories),
                              proteins: Float(proteins),
