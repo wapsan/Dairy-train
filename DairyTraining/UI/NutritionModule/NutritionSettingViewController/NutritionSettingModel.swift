@@ -47,7 +47,7 @@ final class NutritionSettingModel {
     }
     
     private func updateNutritionRecomendation() {
-        guard var caloriesCalculator = self.caloriesCalculator else { return }
+     //   guard var caloriesCalculator = self.caloriesCalculator else { return }
         output?.updateNutritionRecomandation(to: caloriesCalculator.getRecomendation(for: _selectedMode))
     }
 }

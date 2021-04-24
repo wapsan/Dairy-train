@@ -1,20 +1,22 @@
 import Foundation
 
 struct NutritionRecomendation {
-    let proteins: Float
-    let calories: Float
-    let fats: Float
-    let carbohydtrates: Float
+    private(set) var proteins: Float
+    private(set) var calories: Float
+    private(set) var fats: Float
+    private(set) var carbohydtrates: Float
+    private(set) var mealPlaneName: String
     
     private(set) var proteinsPercentage: Float
     private(set) var fatsPercentage: Float
     private(set) var carbohydratesPercentage: Float
     
-    init(proteins: Float, calories: Float, fats: Float, carbohydtrates: Float) {
+    init(proteins: Float, calories: Float, fats: Float, carbohydtrates: Float, mealPlaneName: String) {
         self.calories = calories
         self.proteins = proteins
         self.fats = fats
         self.carbohydtrates = carbohydtrates
+        self.mealPlaneName = mealPlaneName
         guard carbohydtrates > 0, proteins > 0, fats > 0 else {
             self.carbohydratesPercentage = 0
             self.fatsPercentage = 0
@@ -27,7 +29,7 @@ struct NutritionRecomendation {
         self.proteinsPercentage = (proteins * 4 / calories) * 100
     }
     
-    init(calories: Float, proteinsPercentage: Float, carbohydratesPercentage: Float, fatsPercentage: Float) {
+    init(calories: Float, proteinsPercentage: Float, carbohydratesPercentage: Float, fatsPercentage: Float, mealPlaneName: String) {
         self.calories = calories
         self.fatsPercentage = fatsPercentage
         self.proteinsPercentage = proteinsPercentage
@@ -36,13 +38,31 @@ struct NutritionRecomendation {
         self.proteins = (calories / 100) * proteinsPercentage
         self.carbohydtrates = (calories / 100) * carbohydratesPercentage
         self.fats = (calories / 100) * fatsPercentage
+        self.mealPlaneName = mealPlaneName
     }
     
     init(customNutritionRecomendation: CustomNutritionModeMO) {
         self.init(proteins: customNutritionRecomendation.proteins,
                   calories: customNutritionRecomendation.calories,
                   fats: customNutritionRecomendation.fats,
-                  carbohydtrates: customNutritionRecomendation.carbohydrates)
+                  carbohydtrates: customNutritionRecomendation.carbohydrates, mealPlaneName: "Custom")
+    }
+ 
+    init(userInfo: UserInfoMO, nutrtitonMode: UserInfo.NutritionMode, customNutritionMode: CustomNutritionModeMO) {
+        var calculator = CaloriesRecomendationCalculator(userInfo: userInfo)
+        switch nutrtitonMode {
+        case .loseWeight, .weightGain, .balanceWeight:
+            let nutrtitionRecomendation = calculator.getRecomendation(for: nutrtitonMode)
+            self.init(proteins: nutrtitionRecomendation.proteins,
+                      calories: nutrtitionRecomendation.calories,
+                      fats: nutrtitionRecomendation.fats,
+                      carbohydtrates: nutrtitionRecomendation.carbohydtrates,
+                      mealPlaneName: nutrtitionRecomendation.mealPlaneName)
+            
+        case .custom:
+            self.init(customNutritionRecomendation: customNutritionMode)
+            
+        }
     }
 }
 
@@ -112,16 +132,16 @@ struct CaloriesRecomendationCalculator {
         return UserDefaults.standard.weightMode.multiplier
     }
     
-    init?(userInfo: UserInfoMO?) {
-        self.weight = userInfo?.weightValue ?? 0
-        self.height = userInfo?.heightValue ?? 0
-        self.age = Int(userInfo?.age ?? 0)
-        if let gender = userInfo?.gender {
+    init(userInfo: UserInfoMO) {
+        self.weight = userInfo.weightValue
+        self.height = userInfo.heightValue
+        self.age = userInfo.age.int
+        if let gender = userInfo.gender {
             self.gender = UserInfo.Gender.init(rawValue: gender)
         } else {
-            return nil
+            self.gender = nil
         }
-        if let activityLevel = userInfo?.activityLevel {
+        if let activityLevel = userInfo.activityLevel {
             self.activityLevel = UserInfo.ActivityLevel.init(rawValue: activityLevel)
             if let activityleve = self.activityLevel {
                 switch activityleve {
@@ -136,9 +156,8 @@ struct CaloriesRecomendationCalculator {
                 }
             }
         } else {
-            return nil
+            self.activityLevel = nil
         }
-    
     }
     
     mutating func getRecomendation(for type: UserInfo.NutritionMode) -> NutritionRecomendation {
@@ -186,7 +205,7 @@ struct CaloriesRecomendationCalculator {
         let balanceSupply = NutritionRecomendation(proteins: balanceProteins,
                                                    calories: balanceCalories,
                                                    fats: balanceFats,
-                                                   carbohydtrates: balanceCarbohydrates)
+                                                   carbohydtrates: balanceCarbohydrates, mealPlaneName: "Balance weight")
         return balanceSupply
     }
     
@@ -199,7 +218,7 @@ struct CaloriesRecomendationCalculator {
         let loseWeightSupply = NutritionRecomendation(proteins: loseWeightProteins,
                                                       calories: loseWeightCalories,
                                                       fats: loseWeightFats,
-                                                      carbohydtrates: loseWeightCarbohydrates)
+                                                      carbohydtrates: loseWeightCarbohydrates, mealPlaneName: "Lose weight")
         return loseWeightSupply
         
     }
@@ -214,7 +233,7 @@ struct CaloriesRecomendationCalculator {
         let gainWeightSupply = NutritionRecomendation(proteins: gainWeightProteins,
                                                       calories: gainWeightCalories,
                                                       fats: gainWeightFats,
-                                                      carbohydtrates: gainWeightCarbohydrates)
+                                                      carbohydtrates: gainWeightCarbohydrates, mealPlaneName: "Weight gain")
         return gainWeightSupply
     }
     

@@ -214,6 +214,7 @@
 		7A4E06642601058A00D16744 /* UserInfoMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4E06622601058A00D16744 /* UserInfoMO+CoreDataClass.swift */; };
 		7A4E06652601058A00D16744 /* UserInfoMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4E06632601058A00D16744 /* UserInfoMO+CoreDataProperties.swift */; };
 		7A4E7B1C2614D10100C1CB69 /* WorkoutTemplateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4E7B1B2614D10100C1CB69 /* WorkoutTemplateService.swift */; };
+		7A62BB782634736300524904 /* MainNutritionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62BB772634736300524904 /* MainNutritionEntity.swift */; };
 		7A6673AB25949D500086E238 /* NutritionDataCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6673AA25949D500086E238 /* NutritionDataCodableModel.swift */; };
 		7A6673C92594C36B0086E238 /* TrainingTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6673C82594C36B0086E238 /* TrainingTableFooterView.swift */; };
 		7A6673CD2594C39D0086E238 /* TrainingTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A6673CC2594C39D0086E238 /* TrainingTableFooterView.xib */; };
@@ -525,6 +526,7 @@
 		7A4E06622601058A00D16744 /* UserInfoMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfoMO+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7A4E06632601058A00D16744 /* UserInfoMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfoMO+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7A4E7B1B2614D10100C1CB69 /* WorkoutTemplateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplateService.swift; sourceTree = "<group>"; };
+		7A62BB772634736300524904 /* MainNutritionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNutritionEntity.swift; sourceTree = "<group>"; };
 		7A6673AA25949D500086E238 /* NutritionDataCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionDataCodableModel.swift; sourceTree = "<group>"; };
 		7A6673C82594C36B0086E238 /* TrainingTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableFooterView.swift; sourceTree = "<group>"; };
 		7A6673CC2594C39D0086E238 /* TrainingTableFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingTableFooterView.xib; sourceTree = "<group>"; };
@@ -961,6 +963,7 @@
 				7A69DBCB25875030003EECD8 /* MainNutritionViewModel.swift */,
 				7A69DBCE25875040003EECD8 /* MainNutritionModel.swift */,
 				7AF113B325B9ADB900C0AD75 /* MainNutritionRouter.swift */,
+				7A62BB772634736300524904 /* MainNutritionEntity.swift */,
 				7AF113AF25B9AC7800C0AD75 /* MainNutritionConfigurator.swift */,
 				7AF113BF25B9B6D300C0AD75 /* MainNutritionViewController.xib */,
 			);
@@ -2244,6 +2247,7 @@
 				131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */,
 				7A36C38B259CC11800DFFA6E /* TrainingProgramsModel.swift in Sources */,
 				7A384D5125BAD3D700A83F74 /* ChoosenPaternConfigurator.swift in Sources */,
+				7A62BB782634736300524904 /* MainNutritionEntity.swift in Sources */,
 				7AF113AA25B9A74F00C0AD75 /* TrainingPaternsViewControllerConfigurator.swift in Sources */,
 				13400BDA25C9DC250006CFAB /* MonthlyStatisticsItem.swift in Sources */,
 				7ACE8031260268DA0087F570 /* ExerciseMO+CoreDataClass.swift in Sources */,

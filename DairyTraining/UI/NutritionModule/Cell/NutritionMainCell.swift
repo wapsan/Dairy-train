@@ -38,7 +38,7 @@ final class NutritionMainCell: UITableViewCell {
             //FIXME: UPDATE IF USER INFO IS absent
             return }
         dateLabel.text = nutritionData.displayDate
-        
+        mealPlaneLabel.text = "Meal plan: " + recomendation.mealPlaneName
         proteinsGrammsLabel.text = "\(nutritionData.displayProteins) / \(Int(recomendation.proteins))"
         carbohydratesCrammsLabel.text = "\(nutritionData.displayCarbohydrates) / \(Int(recomendation.carbohydtrates))"
         fatsGrammsLabel.text = "\(nutritionData.displayFats) / \(Int(recomendation.fats))"
@@ -84,10 +84,6 @@ final class NutritionMainCell: UITableViewCell {
         }
     }
     
-    func setMealPlane(to plane: String) {
-        mealPlaneLabel.text = plane
-    }
-
     // MARK: - Private methods
     private func setup() {
         selectionStyle = .none

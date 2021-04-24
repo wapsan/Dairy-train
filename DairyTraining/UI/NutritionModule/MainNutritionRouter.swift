@@ -7,19 +7,18 @@ protocol MainNutritionRouterProtocol {
 
 final class MainNutritionRouter: Router {
     
-    private let rootViewController: UIViewController
+    private weak var rootViewController: UIViewController?
 
     init(_ viewController: UIViewController) {
         self.rootViewController = viewController
     }
-
 }
 
 extension MainNutritionRouter: MainNutritionRouterProtocol {
     
     func showNutritionSettingScreen() {
         let nutritionSettingViewController = NutritionSettingConfigurator().configure()
-        rootViewController.navigationController?.pushViewController(nutritionSettingViewController, animated: true)
+        rootViewController?.navigationController?.pushViewController(nutritionSettingViewController, animated: true)
     }
 
     func showSearchFoodScreen() {

@@ -54,10 +54,9 @@ struct NutritionDataPresentable {
 }
 
 protocol NutritionViewModelProtocol {
+    
     var nutritionRecomendation: NutritionRecomendation? { get }
-   
     var userNutritionData: NutritionDataPresentable { get }
-    var mealPlane: String { get }
     
     func viewDidLoad()
     func addMealButtonPressed()
@@ -65,20 +64,19 @@ protocol NutritionViewModelProtocol {
     
     //MARK: - New
     var sectioncount: Int { get }
-    
     func rowInSection(section: Int) -> Int
     func didSwipeCell(at indexPath: IndexPath)
     func meal(at indexPath: IndexPath) -> MealMO?
     func titleForSection(_ section: Int) -> String
     func shouldShowHeader(in section: Int) -> Bool
+    func viewWillAppear()
 }
 
-protocol NutritionViewModelInput: AnyObject {
-    func recomendationWasChanged(to recomendation: NutritionRecomendation?)
-    func updateMealPlaneMode(to nutritionMode: UserInfo.NutritionMode)
+protocol NutritionModelOutput: AnyObject {
     func updateMeals()
-    func mealWasDeleteAt(mealTimeIndex: Int, and mealIndex: Int)
-    func updateMealPlane()
+    func deleteMeal(at indexPath: IndexPath)
+    func reloadSection(ar index: Int)
+    func reloadInformation()
 }
 
 final class NutritionViewModel {
@@ -89,7 +87,10 @@ final class NutritionViewModel {
     
     // MARK: - Private Properties
     private let model: NutritionModelProtocol
-    private var _nutritionRecomendation: NutritionRecomendation?
+    
+    private var informationCellIndexPath: IndexPath {
+        IndexPath(row: 0, section: 0)
+    }
     
     // MARK: - Initialization
     init(model: NutritionModelProtocol) {
@@ -100,6 +101,10 @@ final class NutritionViewModel {
 // MARK: - NutritionViewModelProtocol
 extension NutritionViewModel: NutritionViewModelProtocol {
     
+    func viewWillAppear() {
+        model.reloadInformation()
+    }
+    
     func shouldShowHeader(in section: Int) -> Bool {
         model.shouldShowSection(at: section)
     }
@@ -107,7 +112,6 @@ extension NutritionViewModel: NutritionViewModelProtocol {
     func titleForSection(_ section: Int) -> String {
         model.titleForSection(section)
     }
-    
     
     func meal(at indexPath: IndexPath) -> MealMO? {
         return model.meal(at: indexPath)
@@ -118,7 +122,7 @@ extension NutritionViewModel: NutritionViewModelProtocol {
     }
     
     var sectioncount: Int {
-        return model.meals.count
+        return model.sections.count
     }
     
     func rowInSection(section: Int) -> Int {
@@ -137,10 +141,6 @@ extension NutritionViewModel: NutritionViewModelProtocol {
         model.loadData()
     }
     
-    var mealPlane: String {
-        return model.nutritionMode.presentationTitle
-    }
-    
     var userNutritionData: NutritionDataPresentable {
         return NutritionDataPresentable(nutritionDataMO: model.nutritionData)
     }
@@ -151,27 +151,22 @@ extension NutritionViewModel: NutritionViewModelProtocol {
 }
 
 // MARK: - NutritionViewModelInput
-extension NutritionViewModel: NutritionViewModelInput {
+extension NutritionViewModel: NutritionModelOutput {
     
-    func updateMealPlane() {
-        view?.updateMainCell()
+    func deleteMeal(at indexPath: IndexPath) {
+        view?.deleteRow(at: indexPath)
+        view?.reloadRow(at: informationCellIndexPath)
     }
     
-    func mealWasDeleteAt(mealTimeIndex: Int, and mealIndex: Int) {
-        view?.deleteCell(section: mealTimeIndex, row: mealIndex)
-        view?.updateMainCell()
+    func reloadInformation() {
+        view?.reloadRow(at: informationCellIndexPath)
     }
     
-    func updateMealPlaneMode(to nutritionMode: UserInfo.NutritionMode) {
-        view?.updateMealPlaneLabelText(to: nutritionMode.presentationTitle)
+    func reloadSection(ar index: Int) {
+        view?.reloadSection(at: index)
     }
-    
+
     func updateMeals() {
         view?.reloadTableView()
-    }
-    
-    func recomendationWasChanged(to recomendation: NutritionRecomendation?) {
-        guard let recomendation = recomendation else { return }
-        view?.updateMainInfoCell(for: recomendation)
     }
 }

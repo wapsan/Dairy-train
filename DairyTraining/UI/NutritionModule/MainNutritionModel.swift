@@ -1,13 +1,14 @@
 import Foundation
 
 protocol NutritionModelProtocol {
-    var recomendation: NutritionRecomendation? { get }
+    var recomendation: NutritionRecomendation { get }
     var nutritionData: NutritionDataMO { get }
     var nutritionMode: UserInfo.NutritionMode { get }
     
-    var meals: [NutritionService.MealTime: [MealMO]] { get }
+    var sections: [NutritionModel.NutritionSection] { get }
     
     func loadData()
+    func reloadInformation()
     
     func deleteMeal(at indexPath: IndexPath)
     func rowInSection(_ section: Int) -> Int
@@ -19,20 +20,21 @@ protocol NutritionModelProtocol {
 final class NutritionModel {
     
     // MARK: - Module Properties
-    weak var output: NutritionViewModelInput?
+    weak var output: NutritionModelOutput?
     
     // MARK: - Properties
-    private var _recomendation: NutritionRecomendation? {
+    private lazy var _recomendation: NutritionRecomendation = NutritionRecomendation(userInfo: persistenceService.user.userInfo,
+                                                                                     nutrtitonMode: persistenceService.user.userInfo.userNutritionMode,
+                                                                                     customNutritionMode: persistenceService.nutrition.customNutritionMode) {
         didSet {
-            output?.recomendationWasChanged(to: _recomendation)
+            output?.reloadInformation()
         }
     }
-    private var _nutritionData: NutritionDataMO?
-    private var calculator: CaloriesRecomendationCalculator?
-    private var userInfo: UserInfoMO?
+
     private let persistenceService: PersistenceServiceProtocol
+    private var shouldReloadInformation = false
     
-    private var _meals: [NutritionService.MealTime: [MealMO]] = [:]
+    private var _sections: [NutritionSection] = []
     
     // MARK: - Initialization
     init(persistenceService: PersistenceServiceProtocol = PersistenceService()) {
@@ -57,78 +59,107 @@ final class NutritionModel {
     }
     
     private func updateRecomendation() {
-        if persistenceService.user.userInfo.userNutritionMode == .custom {
-            _recomendation = NutritionRecomendation(customNutritionRecomendation: persistenceService.nutrition.customNutritionMode)
-        } else {
-            _recomendation = calculator?.getRecomendation(for: persistenceService.user.userInfo.userNutritionMode)
-        }
+        _recomendation = NutritionRecomendation(userInfo: persistenceService.user.userInfo,
+                                                nutrtitonMode: persistenceService.user.userInfo.userNutritionMode,
+                                                customNutritionMode: persistenceService.nutrition.customNutritionMode)
     }
     
     @objc private func nutritionModeChanged() {
         updateRecomendation()
-        output?.updateMealPlaneMode(to: persistenceService.user.userInfo.userNutritionMode)
+        output?.reloadInformation()
     }
     
     @objc private func mealWasAdded() {
-        _meals[.breakfast] = persistenceService.nutrition.getMeals(for: .breakfast)
-        _meals[.lunch] = persistenceService.nutrition.getMeals(for: .lunch)
-        _meals[.dinner] = persistenceService.nutrition.getMeals(for: .dinner)
-        output?.updateMeals()
+        switch DateHelper.shared.hours(for: .now) {
+        case let hour where hour >= 12 && hour <= 17:
+            guard let lunchSectionIndex = _sections.firstIndex(where: { $0.title == "Lunch" }) else { return }
+            let actualLunchMeals = persistenceService.nutrition.getMeals(for: .lunch)
+            actualLunchMeals.forEach({ meal in
+                if !_sections[lunchSectionIndex].meals.contains(meal) {
+                    _sections[lunchSectionIndex].meals.append(meal)
+                    output?.reloadSection(ar: lunchSectionIndex)
+                }
+            })
+        
+        case let hour where  hour < 12:
+            guard let lunchSectionIndex = _sections.firstIndex(where: { $0.title == "Breakfast" }) else { return }
+            let actualLunchMeals = persistenceService.nutrition.getMeals(for: .breakfast)
+            actualLunchMeals.forEach({ meal in
+                if !_sections[lunchSectionIndex].meals.contains(meal) {
+                    _sections[lunchSectionIndex].meals.append(meal)
+                    output?.reloadSection(ar: lunchSectionIndex)
+                }
+            })
+            
+        case let hour where  hour > 17:
+            guard let dinnerSectionIndex = _sections.firstIndex(where: { $0.title == "Dinner" }) else { return }
+            let actualLunchMeals = persistenceService.nutrition.getMeals(for: .dinner)
+            actualLunchMeals.forEach({ meal in
+                if !_sections[dinnerSectionIndex].meals.contains(meal) {
+                    _sections[dinnerSectionIndex].meals.append(meal)
+                    output?.reloadSection(ar: dinnerSectionIndex)
+        
+                }
+            })
+            
+        default:
+            break
+        }
+        shouldReloadInformation = true
     }
 }
 
 // MARK: - NutritionModelProtocol
 extension NutritionModel: NutritionModelProtocol {
     
+    func reloadInformation() {
+         guard shouldReloadInformation else { return }
+         output?.reloadInformation()
+         shouldReloadInformation = false
+    }
+    
+    var sections: [NutritionSection] {
+        return _sections
+    }
+    
     func shouldShowSection(at index: Int) -> Bool {
-        guard let mealTime = NutritionService.MealTime(rawValue: index) else { return false }
-        guard let section = _meals[mealTime] else { return false }
-        return !section.isEmpty
+        guard index != 0 else { return false }
+        let melsInSections = _sections[index].meals
+        return !melsInSections.isEmpty
     }
     
     func titleForSection(_ section: Int) -> String {
-        guard let mealTime = NutritionService.MealTime(rawValue: section) else { return "" }
-        return mealTime.title
+        return _sections[section].title ?? ""
     }
     
     
     func meal(at indexPath: IndexPath) -> MealMO? {
-        guard let mealTime = NutritionService.MealTime(rawValue: indexPath.section) else { return nil }
-        let section = _meals[mealTime]
-        return section?[indexPath.row]
+        return _sections[indexPath.section].meals[indexPath.row]
     }
     
     func rowInSection(_ section: Int) -> Int {
-        guard let mealTime = NutritionService.MealTime(rawValue: section) else { return 0 }
-        return _meals[mealTime]?.count ?? 0
-    }
-    
-    
-    var meals: [NutritionService.MealTime : [MealMO]] {
-        return _meals
+        return _sections[section].numberOfItems
     }
     
     func deleteMeal(at indexPath: IndexPath) {
-        guard let mealTime = NutritionService.MealTime(rawValue: indexPath.section) else { return }
-        guard let section = _meals[mealTime] else { return }
-        
-        let mealForDeleting = section[indexPath.row]
-        _meals[mealTime]?.remove(at: indexPath.row)
+        let mealForDeleting = _sections[indexPath.section].meals[indexPath.row]
         persistenceService.nutrition.removeMeal(meal: mealForDeleting)
-        output?.mealWasDeleteAt(mealTimeIndex: indexPath.section, and: indexPath.row)
+        _sections[indexPath.section].meals.remove(at: indexPath.row)
+        output?.deleteMeal(at: indexPath)
     }
     
     func loadData() {
-        _meals[.breakfast] = persistenceService.nutrition.getMeals(for: .breakfast)
-        _meals[.lunch] = persistenceService.nutrition.getMeals(for: .lunch)
-        _meals[.dinner] = persistenceService.nutrition.getMeals(for: .dinner)
+       
+        _sections.append(.init(meals: [], title: nil, type: .information))
         
-        
-        _nutritionData = persistenceService.nutrition.todayNutritionData
-        calculator = CaloriesRecomendationCalculator(userInfo: persistenceService.user.userInfo)
+        NutritionModel.MealTime.allCases.forEach({
+            _sections.append(.init(meals: persistenceService.nutrition.getMeals(for: $0),
+                                   title: $0.title,
+                                   type: .meals))
+        })
         
         updateRecomendation()
-        output?.updateMealPlane()
+        output?.reloadInformation()
     }
     
     var nutritionData: NutritionDataMO {
@@ -139,7 +170,9 @@ extension NutritionModel: NutritionModelProtocol {
         persistenceService.user.userInfo.userNutritionMode
     }
     
-    var recomendation: NutritionRecomendation? {
+    var recomendation: NutritionRecomendation {
         _recomendation
     }
 }
+
+

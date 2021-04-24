@@ -19,7 +19,7 @@ protocol NutritionServiceProtocol {
     func updateCustomNutritionModePercentage(protein: Float, carbohydrates: Float, fats: Float)
     
     //MARK: - Meals
-    func getMeals(for mealTime: NutritionService.MealTime) -> [MealMO]
+    func getMeals(for mealTime: NutritionModel.MealTime) -> [MealMO]
     func addMeal(meal: MealResponseModel)
     func removeMeal(meal: MealMO)
     
@@ -34,23 +34,7 @@ protocol NutritionServiceProtocol {
 final class NutritionService {
     
     
-    //MARK: - Types
-    enum MealTime: Int {
-        case breakfast = 0
-        case lunch
-        case dinner
-        
-        var title: String {
-            switch self {
-            case .breakfast:
-                return "Breakfast"
-            case .lunch:
-                return "Lunch"
-            case .dinner:
-                return "Dinner"
-            }
-        }
-    }
+    
     
     //MARK: - Properies
     private let storeType: PersistentStoreType
@@ -208,7 +192,7 @@ extension NutritionService: NutritionServiceProtocol {
         saveContext()
     }
     
-    func getMeals(for mealTime: MealTime) -> [MealMO] {
+    func getMeals(for mealTime: NutritionModel.MealTime) -> [MealMO] {
         switch mealTime {
         case .breakfast:
             return getBreakfastMeals()

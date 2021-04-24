@@ -1,11 +1,12 @@
 import UIKit
 
 protocol MainNutritionView: AnyObject {
-    func updateMainInfoCell(for nutritionRecomendation: NutritionRecomendation)
-    func updateMealPlaneLabelText(to text: String)
+ 
     func reloadTableView()
-    func deleteCell(section: Int, row: Int)
-    func updateMainCell()
+
+    func deleteRow(at indexPath: IndexPath)
+    func reloadSection(at index: Int)
+    func reloadRow(at indexPath: IndexPath)
 }
  
 final class MainNutritionViewController: DTBackgroundedViewController {
@@ -20,13 +21,14 @@ final class MainNutritionViewController: DTBackgroundedViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showTabBar()
+        viewModel.viewWillAppear()
         navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.viewDidLoad()
         setup()
+        viewModel.viewDidLoad()
     }
     
     // MARK: - Initialization
@@ -56,30 +58,20 @@ final class MainNutritionViewController: DTBackgroundedViewController {
 // MARK: - MainNutritionView
 extension MainNutritionViewController: MainNutritionView {
     
-    func updateMainCell() {
-        tableView?.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+    func deleteRow(at indexPath: IndexPath) {
+        tableView?.performBatchUpdates({ tableView?.deleteRows(at: [indexPath], with: .left) }, completion: nil)
     }
     
-    func deleteCell(section: Int, row: Int) {
-        tableView?.beginUpdates()
-        tableView?.deleteRows(at: [IndexPath(row: row, section: section)], with: .left)
-        tableView?.endUpdates()
+    func reloadRow(at indexPath: IndexPath) {
+        tableView?.performBatchUpdates({ tableView?.reloadRows(at: [indexPath], with: .fade) }, completion: nil)
+    }
+    
+    func reloadSection(at index: Int) {
+        tableView?.reloadSections([index], with: .none)
     }
     
     func reloadTableView() {
         tableView?.reloadData()
-    }
-    
-    func updateMealPlaneLabelText(to text: String) {
-        let cell = tableView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? NutritionMainCell
-        cell?.setMealPlane(to: text)
-    }
-    
-    
-    func updateMainInfoCell(for nutritionRecomendation: NutritionRecomendation) {
-        let cell = tableView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? NutritionMainCell
-        cell?.setCell(for: nutritionRecomendation, and: viewModel.userNutritionData)
-        tableView?.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
     }
 }
 
@@ -91,14 +83,14 @@ extension MainNutritionViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : viewModel.rowInSection(section: section)
+        return viewModel.rowInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: NutritionMainCell.cellID, for: indexPath)
-            (cell as? NutritionMainCell)?.setCell(for: viewModel.nutritionRecomendation, and: viewModel.userNutritionData)
-            (cell as? NutritionMainCell)?.setMealPlane(to: viewModel.mealPlane)
+            (cell as? NutritionMainCell)?.setCell(for: viewModel.nutritionRecomendation,
+                                                  and: viewModel.userNutritionData)
             (cell as? NutritionMainCell)?.addMealButtonAction = { [unowned self] in
                 self.viewModel.addMealButtonPressed()
             }
@@ -131,13 +123,11 @@ extension MainNutritionViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard section != 0 else { return 0 }
         guard viewModel.shouldShowHeader(in: section) else { return 0 }
         return 70
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard section != 0 else { return nil }
         guard viewModel.shouldShowHeader(in: section) else { return nil }
         let header = TodayMealsTableSectionHeader.view()
         header?.title.text = viewModel.titleForSection(section)
