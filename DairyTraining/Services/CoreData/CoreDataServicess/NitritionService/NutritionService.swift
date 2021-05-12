@@ -32,10 +32,7 @@ protocol NutritionServiceProtocol {
 }
 
 final class NutritionService {
-    
-    
-    
-    
+
     //MARK: - Properies
     private let storeType: PersistentStoreType
     

@@ -38,17 +38,16 @@ final class OnboardingViewController: UIPageViewController {
     }()
     
     //MARK: - Module properties
-    private let viewModel: OnboardingViewModelProtocol
+    private let viewModel: OnboardingPresenterProtocol
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        viewModel.viewDidLoad()
     }
     
     //MARK: - Initialization
-    init(viewModel: OnboardingViewModelProtocol) {
+    init(viewModel: OnboardingPresenterProtocol) {
         self.viewModel = viewModel
         super.init(transitionStyle: .scroll,
                    navigationOrientation: .horizontal,

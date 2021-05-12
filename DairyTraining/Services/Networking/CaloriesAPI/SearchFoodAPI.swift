@@ -48,7 +48,7 @@ final class SearchFoodAPI {
         request(baseURL: baseURL, parameters: parameters, completion: completion)
     }
     
-    // MARK: - Privat
+    // MARK: - Private
     private func request<Model: Decodable>(baseURL: String,
                                            parameters: Parameters,
                                            completion: @escaping (Result<Model, NetWorkError>) -> Void) {

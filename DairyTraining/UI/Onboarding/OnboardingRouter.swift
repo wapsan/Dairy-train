@@ -7,7 +7,7 @@ protocol OnboardingRouterProtocol {
 final class OnboardingRouter: Router {
     
     //MARK: - Properties
-    private let rootViewController: UIViewController
+    private weak var rootViewController: UIViewController?
     
     //MARK: - Initialization
     init(_ viewController: UIViewController) {
@@ -20,6 +20,6 @@ extension OnboardingRouter: OnboardingRouterProtocol {
     
     func showAuthorizationScreen() {
         let authorizationScreen = AuthorizationConfigurator.configureAuthorizationViewController()
-        self.rootViewController.navigationController?.pushViewController(authorizationScreen, animated: true)
+       rootViewController?.navigationController?.pushViewController(authorizationScreen, animated: true)
     }
 }

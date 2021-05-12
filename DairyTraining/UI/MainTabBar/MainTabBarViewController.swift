@@ -7,7 +7,7 @@ protocol MainTabBarViewProtocol: AnyObject {
 final class MainTabBarViewController: UITabBarController {
         
     // MARK: - Module properties
-    private let viewModel: MainTabBarViewModelProtocol
+    private let viewModel: MainTabBarPresentProtocol
     
     //MARK: - Private properties
     private lazy var profileViewControllerIndex = 0
@@ -35,7 +35,7 @@ final class MainTabBarViewController: UITabBarController {
     }
     
     // MARK: - Initialization
-    init(viewModel: MainTabBarViewModelProtocol) {
+    init(viewModel: MainTabBarPresentProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -49,7 +49,7 @@ final class MainTabBarViewController: UITabBarController {
         addButton.center.x = tabBar.center.x
         addButton.backgroundColor = DTColors.controllSelectedColor
         addButton.layer.cornerRadius = addButton.bounds.height / 2
-        self.view.addSubview(addButton)
+        view.addSubview(addButton)
         addButton.setImage(UIImage(named: "add"), for: UIControl.State.normal)
         addButton.addTarget(self, action: #selector(addButtonpressed), for: .touchUpInside)
         view.layoutIfNeeded()
