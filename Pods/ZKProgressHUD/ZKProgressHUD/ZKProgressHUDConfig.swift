@@ -10,10 +10,11 @@ import UIKit
 
 /// ZKProgressHUD 全局配置
 final class ZKProgressHUDConfig {
-    static let margin: CGFloat = 20
+    static var margin: CGFloat = 20
     static var maskStyle: MaskStyle = .visible
     static var animationShowStyle: AnimationShowStyle = .fade
     static var maskBackgroundColor: UIColor = .black
+    static var maskBackgroundAlpha: CGFloat = 0.3
     static var foregroundColor: UIColor = .white
     static var effectStyle: HUDEffectStyle = .dark
     static var effectAlpha: CGFloat = 1

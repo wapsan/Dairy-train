@@ -1,10 +1,11 @@
+QQ 交流群：570590309，欢迎进群交流！
+
 ![(logo)](https://raw.githubusercontent.com/WangWenzhuang/ZKProgressHUD/master/Demo/image%402x.png)
 
 # ZKProgressHUD
 
 ![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)
-![build](https://travis-ci.org/WangWenzhuang/ZKProgressHUD.svg?branch=master)
-![CocoaPods](https://img.shields.io/badge/pod-v5.0-brightgreen.svg)
+![CocoaPods](https://img.shields.io/badge/pod-v5.1.2-brightgreen.svg)
 ![platform](https://img.shields.io/badge/platform-iOS-brightgreen.svg)
 
 iOS App 上极易于使用的 HUD。
@@ -13,7 +14,10 @@ iOS App 上极易于使用的 HUD。
 
 ## 近期更新
 
+> * 增加 **setMaskBackgroundAlpha** 方法, 自定义背景的不透明度；
+> * 增加 **setMargin** 方法，用于自定义内容间距；
 > * 适配 Swift 5
+> * 增加 **isShowing** 属性，用于判断是否已经显示
 > * 增加 **onlyOnceFont** 参数，用于临时显示一次的字体，不影响全局默认字体；
 > * 增加 **autoDismissDelay** 参数，用于临时使用自动消失时间，不影响全局默认自动消失时间；
 
@@ -193,6 +197,12 @@ ZKProgressHUD.dismiss(delay: 3)
 ![style5](https://raw.githubusercontent.com/WangWenzhuang/ZKProgressHUD/master/image/style5.jpeg)
 ![style6](https://raw.githubusercontent.com/WangWenzhuang/ZKProgressHUD/master/image/style6.jpeg)
 
+### 设置内容间距，默认值：20
+
+```swift
+setMargin (_ margin: CGFloat)
+```
+
 ### 设置遮罩样式，默认值：.visible
 
 ```swift
@@ -222,6 +232,12 @@ setAnimationShowStyle (_ animationShowStyle: ZKProgressHUDAnimationShowStyle)
 
 ```swift
 setMaskBackgroundColor(_ color: UIColor)
+```
+
+### 设置遮罩的不透明度，默认值：0.3
+
+```swift
+setMaskBackgroundAlpha(_ alpha: CGFloat)
 ```
 
 ### 设置前景色，默认值：.white（前景色在设置 effectStyle 值时会自动适配，如果要使用自定义前景色，在调用 setEffectStyle 方法后调用 setForegroundColor 方法即可）

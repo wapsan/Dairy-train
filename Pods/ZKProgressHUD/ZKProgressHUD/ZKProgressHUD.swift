@@ -31,7 +31,7 @@ public class ZKProgressHUD: UIView {
     /// UI
     fileprivate lazy var screenView: UIView = {
         $0.mask?.alpha = 0.3
-        $0.alpha = 0.3
+        $0.alpha = Config.maskBackgroundAlpha
         $0.backgroundColor = Config.maskBackgroundColor
         return $0
         
@@ -206,6 +206,7 @@ extension ZKProgressHUD {
                           completion: ZKCompletion? = nil,
                           onlyOnceFont: UIFont? = nil,
                           autoDismissDelay: Double? = nil) {
+        ZKProgressHUD._isShowing = true
         DispatchQueue.main.async {
             self.hudType = hudType
             self.status = status == "" ? nil : status
@@ -466,6 +467,7 @@ extension ZKProgressHUD {
             }
         }, completion: { (finished) in
             self.isShow = false
+            ZKProgressHUD._isShowing = false
             self.removeFromSuperview()
             self.completion?()
         })
@@ -477,6 +479,7 @@ extension ZKProgressHUD {
             self.autoDismiss(delay: delay)
         } else {
             self.isShow = false
+            ZKProgressHUD._isShowing = false
             self.removeFromSuperview()
         }
     }
@@ -496,10 +499,20 @@ extension ZKProgressHUD {
     static var shared: ZKProgressHUD {
         return ZKProgressHUD(frame: UIScreen.main.bounds)
     }
+    static var first: ZKProgressHUD? {
+        return UIWindow.frontWindow?.subviews.first(where: {
+                $0.isKind(of: ZKProgressHUD.self) && $0.restorationIdentifier == Config.restorationIdentifier
+            }) as? ZKProgressHUD
+    }
 }
 
 // MARK: - 类方法
 extension ZKProgressHUD {
+    /// 是否显示中
+    public static var isShowing: Bool {
+        return _isShowing
+    }
+    static var _isShowing: Bool = false
     /// 显示gif加载
     public static func showGif(
         gifUrl: URL?, gifSize: CGFloat?, status: String? = nil, maskStyle: ZKProgressHUDMaskStyle? = nil, onlyOnceFont: UIFont? = nil) {
@@ -564,6 +577,11 @@ extension ZKProgressHUD {
         NotificationCenter.default.post(name: Config.ZKNSNotificationDismiss, object: nil, userInfo: ["delay" : delay ?? 0])
     }
     
+    /// 设置内容间距，默认值：20
+    public static func setMargin (_ margin: CGFloat) {
+        Config.margin = margin
+    }
+    
     /// 设置遮罩样式，默认值：.visible
     public static func setMaskStyle (_ maskStyle: ZKProgressHUDMaskStyle) {
         Config.maskStyle = maskStyle
@@ -578,6 +596,11 @@ extension ZKProgressHUD {
     public static func setMaskBackgroundColor(_ color: UIColor) {
         Config.effectStyle = .none
         Config.maskBackgroundColor = color
+    }
+    
+    /// 设置遮罩的不透明度，默认值：0.3
+    public static func setMaskBackgroundAlpha(_ alpha: CGFloat) {
+        Config.maskBackgroundAlpha = alpha
     }
     
     /// 设置前景色，默认值：.white（前景色在设置 effectStyle 值时会自动适配，如果要使用自定义前景色，在调用 setEffectStyle 方法后调用 setForegroundColor 方法即可）
