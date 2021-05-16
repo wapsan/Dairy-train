@@ -20,6 +20,10 @@ target 'Dairy Training' do
   pod "GSKStretchyHeaderView"
   pod "Kingfisher"
   pod 'CHIPageControl/Jaloro'
+
+target 'Dairy TrainingTests' do
+    inherit! :search_paths
+end
   
 end
 
