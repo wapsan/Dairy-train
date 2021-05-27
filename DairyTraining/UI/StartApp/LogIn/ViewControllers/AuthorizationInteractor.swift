@@ -1,8 +1,8 @@
-import GoogleSignIn
-import Firebase
+import Foundation
 
 protocol AuthorizationInteractorOutput: AnyObject {
     func succesSignIn()
+    func failureSignIn()
     func googleStartSignIn()
 }
 
@@ -18,27 +18,16 @@ final class AuthorizationInteractor {
     weak var output: AuthorizationInteractorOutput?
     
     //MARK: - Private properties
-    private let googleSignIn: GIDSignIn = GIDSignIn.sharedInstance()
     private let firebaseManager: FirebaseDataManager = FirebaseDataManager.shared
-    private let firebaseAuth: Auth = Auth.auth()
     private let persistenceService: PersistenceService
+    private var authorizationService: AuthorizationServiceProotocol
     
     //MARK: - Initialization
-    init(persistenceService: PersistenceService = PersistenceService()) {
+    init(persistenceService: PersistenceService = PersistenceService(),
+         authorizationService: AuthorizationServiceProotocol = AuthorizationService()) {
         self.persistenceService = persistenceService
-        addObserveForGoogleSignedIn()
-        addObserverForStartGoogleSignIn()
-    }
-    
-    //MARK: - Actions
-    @objc private func googleStartSignIn() {
-        self.output?.googleStartSignIn()
-        NotificationCenter.default.removeObserver(self, name: .startGoogleSignIn, object: nil)
-    }
-    
-    @objc private func googelSignedIn() {
-        self.synhronizeDataFreomServer()
-        NotificationCenter.default.removeObserver(self, name: .googleSignIn, object: nil)
+        self.authorizationService = authorizationService
+        self.authorizationService.delegate = self
     }
     
     //MARK: - Private methods
@@ -50,7 +39,7 @@ final class AuthorizationInteractor {
                 self.updateData(from: dataModel)
                 self.output?.succesSignIn()
             case .failure(_):
-                self.output?.succesSignIn()
+                self.output?.failureSignIn()
                 break
             }
         }
@@ -73,34 +62,46 @@ final class AuthorizationInteractor {
         persistenceService.nutrition.syncCustomNutritonMode(from: firebaseServerModel.customnutritionMode)
         persistenceService.nutrition.syncAllNutritionData(from: firebaseServerModel.dayNutritionCodableModel)
     }
-    
-    private func addObserveForGoogleSignedIn() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.googelSignedIn),
-                                               name: .googleSignIn,
-                                               object: nil)
-    }
-    
-    private func addObserverForStartGoogleSignIn() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.googleStartSignIn),
-                                               name: .startGoogleSignIn,
-                                               object: nil)
-    }
 }
 
-//MARK: - LoginModelIteracting
+//MARK: - AuthorizationInteractorProtocol
 extension AuthorizationInteractor: AuthorizationInteractorProtocol {
     
     func signInWithApple() {
-        //add realization
+        authorizationService.signIn(with: .apple)
     }
     
     func signInWithFacebook() {
-        //add realization
+        authorizationService.signIn(with: .facebook)
     }
     
     func signInWithGoogle() {
-        googleSignIn.signIn()
+        authorizationService.signIn(with: .google)
+    }
+}
+
+//MARK: - AuthorizationServiceDelegate
+extension AuthorizationInteractor: AuthorizationServiceDelegate {
+    
+    func startGoogleSigningIn() {
+        output?.googleStartSignIn()
+    }
+    
+    func errorSignIn(error: Error) {
+        output?.failureSignIn()
+    }
+    
+    func successSignIn(token: String) {
+        UserDefaults.standard.setToken(token: token)
+        synhronizeDataFreomServer()
+        output?.succesSignIn()
+    }
+    
+    func signOutWithError(error: SocialMediaError) {
+        return
+    }
+    
+    func signOutWithSucces() {
+        return
     }
 }

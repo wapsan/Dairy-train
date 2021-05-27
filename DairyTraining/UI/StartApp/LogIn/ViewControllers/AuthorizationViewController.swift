@@ -4,6 +4,7 @@ import GoogleSignIn
 protocol AuthorizationViewProtocol: AnyObject {
     func signInSuccesed()
     func googleSignInStart()
+    func signInFailure()
 }
 
 final class AuthorizationViewController: UIViewController, Loadable {
@@ -83,6 +84,10 @@ final class AuthorizationViewController: UIViewController, Loadable {
 
 //MARK: - LoginViewControllerPresenter
 extension AuthorizationViewController: AuthorizationViewProtocol {
+    
+    func signInFailure() {
+        hideLoader()
+    }
     
     func signInSuccesed() {
         hideLoader()

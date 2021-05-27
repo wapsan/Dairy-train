@@ -61,7 +61,7 @@ extension SideMenuPresenter: SideMenuPresenterProtocol {
 
 //MARK: - SideMenuInteractorOutput
 extension SideMenuPresenter: SideMenuInteractorOutput {
-    
+
     func successLogOut() {
         router?.showAuhorizationScreen()
     }

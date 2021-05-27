@@ -54,7 +54,7 @@ extension HomePresenter: HomePresenterProtocol {
     }
     
     var description: String {
-        return "Welcome, improve you training progress with ghfhfgh!"
+        return "Welcome, improve you training progress with gym core!"
     }
     
     func menuButtonPressed() {

@@ -39,9 +39,13 @@ extension AuthorizationPresenter: AuthorizationPresenterProtocol {
 
 //MARK: - LoginModelDelegate
 extension AuthorizationPresenter: AuthorizationInteractorOutput {
-
+    
+    func failureSignIn() {
+        view?.signInFailure()
+    }
+    
     func googleStartSignIn() {
-        self.view?.googleSignInStart()
+        view?.googleSignInStart()
     }
     
     func succesSignIn() {

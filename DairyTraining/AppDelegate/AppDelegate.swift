@@ -1,5 +1,6 @@
 import UIKit
 import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GoogleAuthorizationManager.shared.handle(url: url)
+        return GIDSignIn.sharedInstance().handle(url)//GoogleAuthorizationManager.shared.handle(url: url)
     }
 }
 
@@ -25,7 +26,6 @@ private extension AppDelegate {
     
     func applyAppSetting() {
         FirebaseApp.configure()
-        GoogleAuthorizationManager.shared.initAuth()
     }
     
     func setRootViewController() {

@@ -26,20 +26,31 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "133AA5A1246163E5009EBF8E"
+            BuildableName = "Dairy Training.app"
+            BlueprintName = "Dairy Training"
+            ReferencedContainer = "container:DairyTraining.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A6A7F6325FCB68C00B546F5"
+               BlueprintIdentifier = "7AABD4A1264C17A7000ABEA0"
                BuildableName = "Dairy TrainingTests.xctest"
                BlueprintName = "Dairy TrainingTests"
                ReferencedContainer = "container:DairyTraining.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7A6C692F264C005300CAAC24"
