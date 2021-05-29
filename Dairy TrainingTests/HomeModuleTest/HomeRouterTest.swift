@@ -1,11 +1,3 @@
-//
-//  HomeRouterTest.swift
-//  Dairy TrainingTests
-//
-//  Created by cogniteq on 28.05.21.
-//  Copyright © 2021 Вячеслав. All rights reserved.
-//
-
 import XCTest
 @testable import Dairy_Training
 
@@ -14,7 +6,11 @@ class TabBarControllerMock: UITabBarController {
     private var _presentedViewController: UIViewController?
     
     override var presentedViewController: UIViewController? {
-        _presentedViewController
+        if let presentedNavigationController = _presentedViewController as? UINavigationController {
+            return presentedNavigationController.topViewController
+        } else {
+            return  _presentedViewController
+        }
     }
     
     override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
@@ -65,7 +61,9 @@ class HomeRouterTest: XCTestCase {
     override func setUpWithError() throws {
         mockVC = .init()
         let _ = HomeNavigationController(rootViewController: mockVC)
-        router = HomeRouter(mockVC)
+        let tabBar = TabBarControllerMock()
+        tabBar.viewControllers = [mockVC]
+        router = HomeRouter(viewController: mockVC)
     }
 
     func testShowMonthlyStatistics() {
@@ -78,6 +76,11 @@ class HomeRouterTest: XCTestCase {
         XCTAssertTrue(mockVC.pushedController is SettingsSectionViewController)
     }
     
+    func testExerciseFlowScreen() {
+        router.showExerciseFlow()
+        XCTAssertTrue(mockVC.tabBarController?.presentedViewController  is MuscleGroupsViewController)
+    }
+
     override func tearDownWithError() throws {
         mockVC = nil
         router = nil

@@ -6,7 +6,7 @@ final class HomeViewControllerConfigurator {
         let interactor = HomeInteractor()
         let presenter = HomePresenter(interactor: interactor)
         let viewController = HomeViewController(presenter: presenter)
-        let router = HomeRouter(viewController)
+        let router = HomeRouter(viewController: viewController)
         presenter.router = router
         
         let navigattionController = UINavigationController(rootViewController: viewController)
