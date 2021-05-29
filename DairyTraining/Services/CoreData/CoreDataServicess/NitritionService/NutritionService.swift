@@ -181,7 +181,7 @@ extension NutritionService: NutritionServiceProtocol {
     func updateCustomNutritionModePercentage(protein: Float, carbohydrates: Float, fats: Float) {
         let newProtein = (protein.asPercents() * customNutritionMode.calories) / 4
         let newCarbohydrates = (carbohydrates.asPercents() * customNutritionMode.calories) / 4
-        let newFats = (fats.asPercents() * customNutritionMode.fats) / 9
+        let newFats = (fats.asPercents() * customNutritionMode.calories) / 9
         
         customNutritionMode.proteins = newProtein
         customNutritionMode.carbohydrates = newCarbohydrates
