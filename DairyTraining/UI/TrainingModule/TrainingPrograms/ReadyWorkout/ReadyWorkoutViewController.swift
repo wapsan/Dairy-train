@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 protocol ReadyWorkoutViewProtocol: AnyObject {
     func reloadData()
@@ -13,6 +14,7 @@ final class ReadyWorkoutViewController: UIViewController {
     
     // MARK: - GUI Properties
     private var strechableHeader: StretchableHeader?
+    
     private lazy var refreshSpinner: UIActivityIndicatorView = {
         let indicatoor = UIActivityIndicatorView(style: .medium)
         indicatoor.color = UIColor.black
@@ -59,7 +61,7 @@ final class ReadyWorkoutViewController: UIViewController {
         strechableHeader?.onBackButtonAction = { [unowned self] in self.viewModel.backButtonPressed() }
         strechableHeader?.onRightButtonAction = { [unowned self] in self.viewModel.createPaternButtonPressed() }
         strechableHeader?.onLeftButtonAction = { [unowned self] in self.viewModel.createTrainingButtonPressed() }
-        strechableHeader?.image = viewModel.workoutImage
+        strechableHeader?.setImgage(with: viewModel.workoutImageURL)
         strechableHeader?.title = viewModel.workoutTitle
         strechableHeader?.customDescription = viewModel.workoutDescription
         guard let header = strechableHeader else { return }

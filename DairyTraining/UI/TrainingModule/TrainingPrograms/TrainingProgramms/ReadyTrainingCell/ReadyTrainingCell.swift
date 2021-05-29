@@ -1,11 +1,3 @@
-//
-//  ReadyTrainingCell.swift
-//  Dairy Training
-//
-//  Created by cogniteq on 04.01.2021.
-//  Copyright © 2021 Вячеслав. All rights reserved.
-//
-
 import UIKit
 import Kingfisher
 
@@ -26,7 +18,10 @@ final class ReadyTrainingCell: UITableViewCell {
     }
     
     func setCell(for item: SpecialWorkout) {
-        backgroundImageView.image = item.image
+        if let url = item.imageURL {
+            backgroundImageView.kf.setImage(with: url)
+        }
+       // backgroundImageView.image = item.image
         titleLabel.text = item.title
     }
 }

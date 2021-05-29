@@ -1,5 +1,6 @@
 import Foundation
 import GSKStretchyHeaderView
+import Kingfisher
 
 final class StretchableHeader: GSKStretchyHeaderView {
         
@@ -26,6 +27,11 @@ final class StretchableHeader: GSKStretchyHeaderView {
     var onLeftButtonAction: (() -> Void)?
     var onRightButtonAction: (() -> Void)?
     var topRightButtonAction: (() -> Void)?
+    
+    func setImgage(with url: URL?) {
+        guard let url = url else { return }
+        imageView.kf.setImage(with: url)
+    }
     
     var backButtonImageType: BackButtonType = .close {
         didSet {

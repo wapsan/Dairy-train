@@ -13,8 +13,9 @@ struct SpecialWorkout {
     let description: String
     let level: String
     let workoutID: String
-    let image: UIImage?
+    var image: UIImage? = nil
     var exercise: [Exercise] = []
+    let imageURL: URL?
     
     mutating func setExercises(exercises: [Exercise]) {
         self.exercise = exercises
@@ -69,21 +70,15 @@ final class FirebaseStorageMnager {
                     
                     let imageStorageRef = self.storage.reference(withPath: imageURL)
                     
-                    imageStorageRef.getData(maxSize: self.maxDataSize, completion: { data, error in
-                        if let error = error { completion(.failure(error)) }
-                        guard let data = data else { return }
-                        
-                        let image = UIImage(data: data)
-                        
+                    imageStorageRef.downloadURL { (url, error) in
                         info.append(SpecialWorkout(title: workoutTitle,
                                                    description: description,
                                                    level: levelOfTraining.documentID,
                                                    workoutID: documentID,
-                                                   image: image))
+                                                   image: nil, imageURL: url))
                         completion(.success(info))
-                        
-                        
-                    })
+                    }
+                    
                 })
             }
     }

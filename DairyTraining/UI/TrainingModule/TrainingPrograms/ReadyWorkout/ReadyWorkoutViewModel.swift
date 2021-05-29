@@ -6,6 +6,8 @@ protocol ReadyWorkoutViewModelProtocol {
     var workoutDescription: String { get }
     var workoutImage: UIImage? { get }
     
+    var workoutImageURL: URL? { get }
+    
     func viewDidLoad()
     func getExercise(for index: Int) -> Exercise
     func backButtonPressed()
@@ -28,6 +30,10 @@ final class ReadyWorkoutViewModel {
 
 // MARK: - ReadyWorkoutViewModelProtocol
 extension ReadyWorkoutViewModel: ReadyWorkoutViewModelProtocol {
+    
+    var workoutImageURL: URL? {
+        model.workout.imageURL
+    }
     
     func backButtonPressed() {
         router?.popViewController()
