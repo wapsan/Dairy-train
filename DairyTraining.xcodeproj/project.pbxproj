@@ -158,6 +158,7 @@
 		7A24883925A4A2CC00DB6D12 /* DefaultExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A24883725A4A2CC00DB6D12 /* DefaultExerciseCell.xib */; };
 		7A27A3B42604B9F9002A1F1B /* PersistentStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27A3B32604B9F9002A1F1B /* PersistentStoreType.swift */; };
 		7A27A3B82604BB37002A1F1B /* Date+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27A3B72604BB37002A1F1B /* Date+Ex.swift */; };
+		7A298E9F2660BDA400067C58 /* HomeRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A298E9E2660BDA400067C58 /* HomeRouterTest.swift */; };
 		7A2A75282588990C0091FD22 /* MealMO+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A75242588990C0091FD22 /* MealMO+CoreDataProperties copy.swift */; };
 		7A2A75292588990C0091FD22 /* MealMO+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A75252588990C0091FD22 /* MealMO+CoreDataClass copy.swift */; };
 		7A2A752A2588990C0091FD22 /* NutritionDataMO+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A75262588990C0091FD22 /* NutritionDataMO+CoreDataProperties copy.swift */; };
@@ -473,6 +474,7 @@
 		7A24883725A4A2CC00DB6D12 /* DefaultExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultExerciseCell.xib; sourceTree = "<group>"; };
 		7A27A3B32604B9F9002A1F1B /* PersistentStoreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStoreType.swift; sourceTree = "<group>"; };
 		7A27A3B72604BB37002A1F1B /* Date+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ex.swift"; sourceTree = "<group>"; };
+		7A298E9E2660BDA400067C58 /* HomeRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouterTest.swift; sourceTree = "<group>"; };
 		7A2A75242588990C0091FD22 /* MealMO+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MealMO+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
 		7A2A75252588990C0091FD22 /* MealMO+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MealMO+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		7A2A75262588990C0091FD22 /* NutritionDataMO+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NutritionDataMO+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
@@ -1565,6 +1567,7 @@
 			isa = PBXGroup;
 			children = (
 				7A13D67326578C12007B823B /* HomePresenterTest.swift */,
+				7A298E9E2660BDA400067C58 /* HomeRouterTest.swift */,
 				7A6023952657A24900F21A2E /* HomeInteractorTest.swift */,
 			);
 			path = HomeModuleTest;
@@ -2444,6 +2447,7 @@
 				7A4D8F422657ACB700A34065 /* AuthorizationPresenterTest.swift in Sources */,
 				7A13D67426578C12007B823B /* HomePresenterTest.swift in Sources */,
 				7AB573BD26515B9100FCFCC7 /* UserServiceTest.swift in Sources */,
+				7A298E9F2660BDA400067C58 /* HomeRouterTest.swift in Sources */,
 				7A4D8F3B2657A79000A34065 /* MainTabBarPresenterTest.swift in Sources */,
 				7AABD4B0264C18C6000ABEA0 /* Dairy_TrainingTests.swift in Sources */,
 				7A6023962657A24900F21A2E /* HomeInteractorTest.swift in Sources */,
