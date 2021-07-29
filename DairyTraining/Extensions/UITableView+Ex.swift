@@ -9,6 +9,15 @@ extension UITableView {
         self.register(nib, forCellReuseIdentifier: cellID)
     }
     
+    func dequreusable<T: UITableViewCell>(cell: T.Type) -> T {
+        if let cell = self.dequeueReusableCell(withIdentifier: T.cellID) {
+            return cell as! T
+        } else {
+            self.register(cell: cell)
+            return self.dequreusable(cell: cell)
+        }        
+    }
+    
 }
 
 extension UITableViewCell  {

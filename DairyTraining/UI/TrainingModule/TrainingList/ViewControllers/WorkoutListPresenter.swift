@@ -5,6 +5,10 @@ protocol TitledScreenProtocol {
     var description: String { get }
 }
 
+protocol WorkoutListView {
+    func reloadTable()
+}
+
 protocol WorkoutListPresenterProtocol: TitledScreenProtocol {
     var workoutsCount: Int { get }
     func item(at indexPath: IndexPath) -> WorkoutMO

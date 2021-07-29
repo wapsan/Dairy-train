@@ -41,8 +41,8 @@ final class WorkoutListViewController: UIViewController {
     
     // MARK: - Private methods
     private func setup() {
-        tableView?.register(cell: WorkoutCell.self)
-        tableView?.register(cell: ErrorCell.self)
+       // tableView?.register(cell: WorkoutCell.self)
+       // tableView?.register(cell: ErrorCell.self)
         setupHeaders()
     }
     
@@ -94,14 +94,14 @@ extension WorkoutListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if presenter.isTrainingExists {
-            let cell = tableView.dequeueReusableCell(withIdentifier: WorkoutCell.cellID, for: indexPath)
+            let cell = tableView.dequreusable(cell: WorkoutCell.self)//tableView.dequeueReusableCell(withIdentifier: WorkoutCell.cellID, for: indexPath)
             let workout = presenter.item(at: indexPath)
-            (cell as? WorkoutCell)?.setCell(for: workout)
+            cell.setCell(for: workout)
             return cell
             
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: ErrorCell.cellID , for: indexPath)
-            cell.as(type: ErrorCell.self)?.setCell(for: "You have no workouts here")
+            let cell = tableView.dequreusable(cell: ErrorCell.self)//tableView.dequeueReusableCell(withIdentifier: ErrorCell.cellID , for: indexPath)
+            cell.setCell(for: "You have no workouts here")
             return cell
             
         }

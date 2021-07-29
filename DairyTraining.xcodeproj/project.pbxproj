@@ -243,6 +243,8 @@
 		7A69DBFE25878233003EECD8 /* SearchFoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69DBFD25878233003EECD8 /* SearchFoodViewModel.swift */; };
 		7A69DC0125878245003EECD8 /* SearchFoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69DC0025878245003EECD8 /* SearchFoodModel.swift */; };
 		7A6A7F5825FCAF2E00B546F5 /* UserInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A7F5625FCAF2E00B546F5 /* UserInfo.xcdatamodeld */; };
+		7A6E7E3A2685E5FB00E3B30C /* SomeResourse.json in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E7E392685E5FB00E3B30C /* SomeResourse.json */; };
+		7A6E7E402685E7FC00E3B30C /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E7E3F2685E7FC00E3B30C /* New.swift */; };
 		7A71C8F725FE574E0098DB2C /* MeasurementUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A71C8F625FE574E0098DB2C /* MeasurementUnit.swift */; };
 		7A71C8FB25FE58500098DB2C /* UserDefaults+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A71C8FA25FE58500098DB2C /* UserDefaults+Ex.swift */; };
 		7A71C8FF25FE5BDE0098DB2C /* NumbersTypes+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A71C8FE25FE5BDE0098DB2C /* NumbersTypes+Ex.swift */; };
@@ -279,6 +281,7 @@
 		7AC226E12614C88000646A25 /* WorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC226E02614C88000646A25 /* WorkoutService.swift */; };
 		7AC226E52614CAC100646A25 /* ExerciseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC226E42614CAC100646A25 /* ExerciseService.swift */; };
 		7AC226E92614CBF000646A25 /* ApproachService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC226E82614CBF000646A25 /* ApproachService.swift */; };
+		7AC6B6DF2685EEF800BCEC29 /* SomeResourse.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A6E7E392685E5FB00E3B30C /* SomeResourse.json */; };
 		7AC81F8D259B377D00AC10FB /* PopUpOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F8B259B377D00AC10FB /* PopUpOptionCell.swift */; };
 		7AC81F8E259B377D00AC10FB /* PopUpOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC81F8C259B377D00AC10FB /* PopUpOptionCell.xib */; };
 		7AC81F99259B552100AC10FB /* AuthorizationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F98259B552100AC10FB /* AuthorizationConfigurator.swift */; };
@@ -560,6 +563,8 @@
 		7A69DBFD25878233003EECD8 /* SearchFoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewModel.swift; sourceTree = "<group>"; };
 		7A69DC0025878245003EECD8 /* SearchFoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodModel.swift; sourceTree = "<group>"; };
 		7A6A7F5725FCAF2E00B546F5 /* UserInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserInfo.xcdatamodel; sourceTree = "<group>"; };
+		7A6E7E392685E5FB00E3B30C /* SomeResourse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SomeResourse.json; sourceTree = "<group>"; };
+		7A6E7E3F2685E7FC00E3B30C /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
 		7A71C8F625FE574E0098DB2C /* MeasurementUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementUnit.swift; sourceTree = "<group>"; };
 		7A71C8FA25FE58500098DB2C /* UserDefaults+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ex.swift"; sourceTree = "<group>"; };
 		7A71C8FE25FE5BDE0098DB2C /* NumbersTypes+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumbersTypes+Ex.swift"; sourceTree = "<group>"; };
@@ -1109,6 +1114,8 @@
 				134403402499123F00D21284 /* LocalizedString.swift */,
 				133AA5AE246163E7009EBF8E /* Assets.xcassets */,
 				7A69DB7025836C17003EECD8 /* Colors.xcassets */,
+				7A6E7E392685E5FB00E3B30C /* SomeResourse.json */,
+				7A6E7E3F2685E7FC00E3B30C /* New.swift */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -2061,6 +2068,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AC6B6DF2685EEF800BCEC29 /* SomeResourse.json in Resources */,
 				7AF113C125B9B6D300C0AD75 /* MainNutritionViewController.xib in Resources */,
 				7A24882825A49BBB00DB6D12 /* ReadyWorkoutViewController.xib in Resources */,
 				7A36C385259CBFF100DFFA6E /* TrainingProgramsViewController.xib in Resources */,
@@ -2217,6 +2225,7 @@
 				7A360CAC2651734B00173E17 /* ExerciseMO+CoreDataProperties.swift in Sources */,
 				134DF5B524B4E50D007A7B8A /* ColorSetting.swift in Sources */,
 				7A384D8525BB11AC00A83F74 /* AddPopUpRouter.swift in Sources */,
+				7A6E7E3A2685E5FB00E3B30C /* SomeResourse.json in Sources */,
 				13B3C2EB255318D3000D4FA2 /* SideMenuPresenter.swift in Sources */,
 				1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */,
 				7A384D5725BADC9000A83F74 /* SideMenuRouter.swift in Sources */,
@@ -2295,6 +2304,7 @@
 				7AAFE8B42599D216004FF48B /* HomeViewControllerConfigurator.swift in Sources */,
 				132A6A452572569C00EB3AE0 /* SelectExerciseModel.swift in Sources */,
 				131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */,
+				7A6E7E402685E7FC00E3B30C /* New.swift in Sources */,
 				7A36C38B259CC11800DFFA6E /* TrainingProgramsModel.swift in Sources */,
 				7A384D5125BAD3D700A83F74 /* ChoosenPaternConfigurator.swift in Sources */,
 				7A62BB782634736300524904 /* MainNutritionEntity.swift in Sources */,

@@ -11,6 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         applyAppSetting()
         setRootViewController()
+        Parser.getData()
         return true
     }
     
@@ -37,10 +38,10 @@ private extension AppDelegate {
         
         guard UserDefaults.standard.isFirstSession else {
             window?.rootViewController = splashScreenViewController
+            UserDefaults.standard.setFirstSession()
             return
         }
-        
-        UserDefaults.standard.setFirstSession()
+    
         window?.rootViewController = onboardingFlow
     }
 }

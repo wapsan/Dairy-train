@@ -21,7 +21,7 @@ final class ExerciseService {
     init(storeType: PersistentStoreType = .prod) {
         self.storeType = storeType
     }
-    
+
     private func saveContext() {
         do {
             try context.save()
