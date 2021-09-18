@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Жим штанги под положительным углом",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Жим гантелей под положительным углом",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Сведения гантелей под положительным углом",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Жим штанги в Смитт машине под положительным углом",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Жим штанги под положительным углом в Хаммер машине",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Сведение в кроссовера лежа под положительным углом",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Сведения нижнего блока в кроссовере",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Отжимания под положительным углом",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Жим штанги под отрицательным углом",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Жим гантелей под отрицательным углом",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Сведение гантелей под отрицательным углом",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Жим в Смитт машине под отриательным углом",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Жим в Хаммер машине под отрицательным углом",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Сведение в кроссовере",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    }
+]

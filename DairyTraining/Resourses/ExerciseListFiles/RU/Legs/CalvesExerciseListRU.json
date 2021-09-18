@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Подъем на носки в тренажере стоя",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Подъем на носки в машине Смитта",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Подъем на носки в тренажере сидя",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Жим носками в тренажере",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Подъем на носки стоя",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Подем на носки \"Ослик\"",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Подъем на одном носке с гантелью",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    }
+]

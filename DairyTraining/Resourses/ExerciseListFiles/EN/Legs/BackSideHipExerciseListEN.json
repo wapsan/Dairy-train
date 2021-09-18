@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Romanian Deadlift",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Sumo deadlift",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Romanian Deadlift With Dumbbells",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Single Leg Deadlift",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Glute Ham Raise",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Lying Leg Curls",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Lying Single Leg Curls",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Seated Hamstring Curl",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    }
+]

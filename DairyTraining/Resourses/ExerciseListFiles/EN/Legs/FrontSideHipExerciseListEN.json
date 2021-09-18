@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Barbell Squat",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Barbell front squat",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Dumbbell Goblet Squat",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Dumbbell Lunges",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Split Squat with Dumbbells",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Leg Press",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Single-Leg Press",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Machine Squat",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Smith machine back squat",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Leg Extensions",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    }
+]

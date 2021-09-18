@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Румынская тяга",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Становая тяга суммо",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Румынская тяга с гантелями",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Становая тяга на одной ноге",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Подъём корпуса стоя на коленях",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Сгибание ног в тренажере",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Сгибание одной ноги в тренажере",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Снибание ног в тренажере сидя",
+        "muscularSubroup": "backSideHip",
+        "muscularGroup": "legs"
+    }
+]

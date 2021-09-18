@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Decline Barbell Bench Press",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Decline Dumbell Bench Press",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Decline Dumbbell Flye",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Decline Smith Press",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Machine Decline Chest Presss",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Cable Crossover",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    }
+]

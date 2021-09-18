@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Подъем корпуса лежа",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "\"Велосипед\"",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "Подъем ног лежа",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "Удержание ног в подъеме",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "Подъем ног лежа с руками под тазом",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "\"Ножницы\"",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "Планка",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "Подъем ног в висе",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "Подъем коленей в висе",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "Косой подъем коленей в висе",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "Сгибание с кабелем на шаре",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "Сгибание в тренажере",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "\"Паук\"",
+        "muscularSubroup": "abs",
+        "muscularGroup": "core"
+    }
+]

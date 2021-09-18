@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Подтягивания",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Тяга штанги в наклоне",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Тяга штанги в наклоне обратным хватом",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Тяга гантели в наклоне",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Тяга грифа в наклоне",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Тяга гантелей лежа под положительным углом",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Тяга верхнего блока",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Тяга верхнего блока узким хватом",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Тяга верхнего блока за голову",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Тяга нижнего блока сидя узким хватом",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Тяга сидя в Хаммер машине",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Пуловер на блоке стоя",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    }
+]

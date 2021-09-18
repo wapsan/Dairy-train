@@ -1,52 +1,107 @@
-//
-//  New.swift
-//  Dairy Training
-//
-//  Created by cogniteq on 25.06.21.
-//  Copyright © 2021 Вячеслав. All rights reserved.
-//
-
 import Foundation
-struct ExerciseData: Codable {
-    let muscularGroups: [MuscularGroup]
-    
-    enum CodingKeys: String, CodingKey {
-        case muscularGroups = "muscular_groups"
-    }
-}
-
-struct MuscularGroup: Codable {
-    let name: String
-    let muscularSubgroup: [MuscularSubgroup]
-    
-    enum CodingKeys: String, CodingKey {
-        case muscularSubgroup = "muscular_subgroups"
-        case name
-    }
-}
-
-struct MuscularSubgroup: Codable {
-    let name: String
-    let exercise: [NewExercise]
-}
+import UIKit
 
 struct NewExercise: Codable {
     let name: String
+    let muscularSubroup: MuscularSubgroup2
+    let muscularGroup: MuscularGroup
 }
 
-struct Parser {
+enum MuscularGroup: String, CaseIterable, Codable {
+    case shoulders
+    case chest
+    case arms
+    case back
+    case core
+    case legs
     
-    static func getData() {
-        print("Start get Data")
-        guard let url = Bundle.main.url(forResource: "SomeResourse", withExtension: "json") else { return }
-        
-        do {
-            let data = try Data(contentsOf: url)
-            let object = try JSONDecoder().decode(ExerciseData.self, from: data)
-            print("End get Data")
-        } catch let error {
-            print(error)
+    var image: UIImage? {
+        switch self {
+        case .shoulders:
+            return UIImage.shouldersImage
+        case .chest:
+            return UIImage.chestImage
+        case .arms:
+            return UIImage.armsImage
+        case .back:
+            return UIImage.backImage
+        case .core:
+            return UIImage.coreImage
+        case .legs:
+            return UIImage.legsImage
         }
     }
     
+    var name: String {
+        rawValue
+    }
+    
+    var subgroups: [MuscularSubgroup2] {
+        switch self {
+        case .shoulders:
+            return [.frontDelts,
+                    .middleDelts,
+                    .rearDelts]
+            
+        case .chest:
+            return [.upperChest,
+                    .middleChest,
+                    .lowerChest]
+            
+        case .arms:
+            return [.biceps,
+                    .triceps]
+            
+        case .back:
+            return [.latissimusDorsi,
+                    .trapezoid]
+            
+        case .core:
+            return [.abs,
+                    .lowBack]
+            
+        case .legs:
+            return [.frontSideHip,
+                    .backSideHip,
+                    .calves]
+            
+        }
+    }
+}
+
+
+struct ExerciseLoader {
+    
+    static private let jsonExtension = "json"
+    
+    static func loadExercise(for muscularSubgroups: MuscularSubgroup2) -> [NewExercise] {
+        
+        guard let fileURL = Bundle.main.url(forResource: muscularSubgroups.path,
+                                            withExtension: ExerciseLoader.jsonExtension) else {
+            return []
+        }
+        
+        guard let data = try? Data(contentsOf: fileURL) else {
+            return []
+        }
+        
+        guard let exercises = try? JSONDecoder().decode([NewExercise].self, from: data) else {
+            return []
+        }
+
+        return exercises
+    }
+}
+
+
+
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }

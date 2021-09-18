@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Machine Standing Calf Raise",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Smith Machine Calf Raise",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Seated Calf Raise",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Calf Press On The Leg Press Machine",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Standing barbell calf raise",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Donkey calf raise",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Dumbbell Single Leg Calf Raise",
+        "muscularSubroup": "calves",
+        "muscularGroup": "legs"
+    }
+]

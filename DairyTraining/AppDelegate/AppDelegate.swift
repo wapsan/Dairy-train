@@ -10,15 +10,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         applyAppSetting()
+        print(ExerciseLoader.loadExercise(for: .calves))
         setRootViewController()
-        Parser.getData()
         return true
     }
     
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url)//GoogleAuthorizationManager.shared.handle(url: url)
+        return GIDSignIn.sharedInstance().handle(url)
     }
 }
 

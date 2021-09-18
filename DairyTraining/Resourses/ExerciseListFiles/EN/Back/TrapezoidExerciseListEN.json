@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Barbell Shrug",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Barbell Behind-the-Back Shrug"",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Dumbbell Shrug",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Incline Dumbbell Shrug",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Barbell Upright Row",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Smith machine shrug",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Smith machine behind-the-back shrug",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Cable shrug",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Cable straight-bar upright row",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Pull-up",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Barbell Row",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Reverse Grip Barbell Row",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Single Arm Dumbbell Row",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Landmine Row",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Dumbbell seal row",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Lat Pull-down",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Close Grip Front Lat Pull-down",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Behind The Neck Pull-down",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Elevated Cable Rows",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Machine seated row",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Straight-Arm Pulldown",
+        "muscularSubroup": "latissimusDorsi",
+        "muscularGroup": "back"
+    }
+]

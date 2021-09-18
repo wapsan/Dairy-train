@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Подъем штанги на бицепс",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Подъем гантелей на бицепс",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Подем гантелей \"Молот\" стоя",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Подем гантелей \"Молот\" сидя",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Подъем EZ-штанги стоя",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Подем гантелей \"Молот\" сидя под углом",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Подъем гантелей под отрицательным углом",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Концентрированный подъем на бицепс",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Сгибание рук в кроссовере",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Подъем нижнего блока на бицепс стоя",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Подъем EZ-штанги на скамье Скотта",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Подъем на бицепс в тренажере",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Подъем гантелей на бицепс с супинацией",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    }
+ ]

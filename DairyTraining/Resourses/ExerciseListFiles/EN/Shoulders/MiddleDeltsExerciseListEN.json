@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Seated Dumbbell shoulder press",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Seated Behind-the-neck press",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Smith machine behind-the-neck press",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Standing Dumbbell shoulder press",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Dumbbell lateral raise",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Single-arm lateral raise",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Barbell Upright row",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Cable Upright row",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Machine shoulder press",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Machine Lateral Raise",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Incline Dumbbell front raise",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    }
+]

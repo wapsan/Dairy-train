@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Шраги со штангой",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Шраги со штагой за спиной",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Шраги с гантелями",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Шраги с гантелями под наклоном",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Подъем штанги к подбородку узким хватом",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Шраги в Смитт машине",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Шраги в Смитт машине с штангой за спиной",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Шраги с нижним блоком",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    },
+    {
+        "name": "Тяга нижнего блока к подбородку узким хватом",
+        "muscularSubroup": "trapezoid",
+        "muscularGroup": "back"
+    }
+]

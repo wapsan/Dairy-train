@@ -1,0 +1,43 @@
+[
+    {
+        "name": "Incline Barbell Bench Press",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Incline Dumbbell Bench Press",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Incline Dumbbell Flyes",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Smith Machine Incline Press",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Machine Incline Chest Presss",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Incline cable chest fly",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Low-Cable Crossover",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Incline Push-Up",
+        "muscularSubroup": "upperChest",
+        "muscularGroup": "chest"
+    }
+]
+//make list for middle chest

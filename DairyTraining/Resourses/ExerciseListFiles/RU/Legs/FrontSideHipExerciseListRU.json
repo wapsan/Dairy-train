@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Приседания со штангой",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Фронтальные приседания",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Приседания с гантелью на груди",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Выпады с гантелями",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Приседания ножницы с гантелями",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Жим ногами",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Жим одной ного",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Приседание в Гакк машине",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Приседания в Смитт машине",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    },
+    {
+        "name": "Разгибания ног в тренажере",
+        "muscularSubroup": "frontSideHip",
+        "muscularGroup": "legs"
+    }
+]

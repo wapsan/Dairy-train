@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Жим штанги лежа",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Жим гантелей лежа",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Сведения гантелей лежа",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Пулл овер с гантелей",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Жим лежа в Смитт машине",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Жим в Хаммер машине",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Сведение рук в тренажере",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Сведения нижнего блока кроссовера лежа",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Отжимания",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    }
+]

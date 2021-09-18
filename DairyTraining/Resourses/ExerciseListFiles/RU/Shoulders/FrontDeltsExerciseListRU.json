@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Жим штанги сидя",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Армейский жим",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Жим Арнольда",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Махи гантелей вперед",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Тяга нижнего блока перед собой",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Тяга нижнего блока перед собой одной рукой",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Жим тросса сидя",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Жим сидя в Смитт машине",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    }
+]

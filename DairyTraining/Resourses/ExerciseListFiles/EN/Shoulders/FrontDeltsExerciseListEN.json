@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Seated barbell shoulder press",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Military press",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Arnold press",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Dumbbell front raise",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Cable front raise",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Single - arm cable front rise",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Seated cable shoulder press",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Smith machine shoulder press",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Back extension",
+        "muscularSubroup": "lowBack",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "\"Good Morning\"",
+        "muscularSubroup": "lowBack",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "Deadlift",
+        "muscularSubroup": "lowBack",
+        "muscularGroup": "core"
+    },
+    {
+        "name": "Smith Machine Deadlift",
+        "muscularSubroup": "lowBack",
+        "muscularGroup": "core"
+    }
+]

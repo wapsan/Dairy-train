@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Barbell Bench Press",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Dumbbell Bench Press",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Dumbbell Flye",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Dumbbell pull-over",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Smith Machine Press",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Machine chest press",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Machine chest fly",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Lying cable chest fly",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    },
+    {
+        "name": "Pushups",
+        "muscularSubroup": "middleChest",
+        "muscularGroup": "chest"
+    }
+]

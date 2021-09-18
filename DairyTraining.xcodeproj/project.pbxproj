@@ -29,6 +29,22 @@
 		132A6A452572569C00EB3AE0 /* SelectExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132A6A442572569C00EB3AE0 /* SelectExerciseModel.swift */; };
 		132F588F249A87F00089FA09 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F588E249A87F00089FA09 /* SplashScreenViewController.swift */; };
 		132FC7B924B79DCD00A70F7E /* DTEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132FC7B824B79DCD00A70F7E /* DTEdgeInsets.swift */; };
+		1330CD7826E4B8F7002624FF /* NewMuscularSubgroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1330CD7726E4B8F7002624FF /* NewMuscularSubgroups.swift */; };
+		1330CD7C26E4C450002624FF /* PresentableEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1330CD7B26E4C450002624FF /* PresentableEntity.swift */; };
+		1330CD8526E92837002624FF /* RearDeltsExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CD8426E92837002624FF /* RearDeltsExerciseListEN.json */; };
+		1330CD9026E92A8D002624FF /* UpperChestExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CD8F26E92A8D002624FF /* UpperChestExerciseListEN.json */; };
+		1330CD9626EA7243002624FF /* MiddleChestExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CD9526EA7243002624FF /* MiddleChestExerciseListEN.json */; };
+		1330CD9E26EA7511002624FF /* LowerChestExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CD9D26EA7511002624FF /* LowerChestExerciseListEN.json */; };
+		1330CDA626EA77EC002624FF /* BicepsExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CDA526EA77EC002624FF /* BicepsExerciseListEN.json */; };
+		1330CDAA26EA7814002624FF /* TricepsExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CDA926EA7814002624FF /* TricepsExerciseListEN.json */; };
+		1330CDB326ED2C1D002624FF /* LatissimusDorsiExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CDB226ED2C1D002624FF /* LatissimusDorsiExerciseListEN.json */; };
+		1330CDB926ED304B002624FF /* TrapezoidExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CDB826ED304B002624FF /* TrapezoidExerciseListEN.json */; };
+		1330CDC026ED324B002624FF /* AbsExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CDBF26ED324B002624FF /* AbsExerciseListEN.json */; };
+		1330CDC426ED338D002624FF /* LowBackExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CDC326ED338D002624FF /* LowBackExerciseListEN.json */; };
+		1330CDCD26EE51CC002624FF /* FrontSideHipExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CDCC26EE51CC002624FF /* FrontSideHipExerciseListEN.json */; };
+		1330CDD126EE51E4002624FF /* BackSideHipExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CDD026EE51E4002624FF /* BackSideHipExerciseListEN.json */; };
+		1330CDD526EE51FD002624FF /* CalvesExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 1330CDD426EE51FD002624FF /* CalvesExerciseListEN.json */; };
+		1330CDDE26EE5BDF002624FF /* CalvesExerciseListEN.json in Resources */ = {isa = PBXBuildFile; fileRef = 1330CDD426EE51FD002624FF /* CalvesExerciseListEN.json */; };
 		133364A4256126F700EAC6F6 /* ChoosenExerciseStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133364A3256126F700EAC6F6 /* ChoosenExerciseStatisticsViewModel.swift */; };
 		133364AB2561793C00EAC6F6 /* ExerciseStatisticsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133364A92561793C00EAC6F6 /* ExerciseStatisticsCell.swift */; };
 		133364AC2561793C00EAC6F6 /* ExerciseStatisticsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133364AA2561793C00EAC6F6 /* ExerciseStatisticsCell.xib */; };
@@ -101,6 +117,8 @@
 		13B1E7D524BDD22A00EE84E2 /* DTAlertSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E7D424BDD22A00EE84E2 /* DTAlertSelectionButton.swift */; };
 		13B3C2EB255318D3000D4FA2 /* SideMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B3C2EA255318D3000D4FA2 /* SideMenuPresenter.swift */; };
 		13B3C2EF25531C08000D4FA2 /* SideMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B3C2EE25531C08000D4FA2 /* SideMenuInteractor.swift */; };
+		13B8967926DE675900F1F829 /* FrontDeltsExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 13B8967826DE675900F1F829 /* FrontDeltsExerciseListEN.json */; };
+		13B8968026DE6CC300F1F829 /* FrontDeltsExerciseListEN.json in Resources */ = {isa = PBXBuildFile; fileRef = 13B8967826DE675900F1F829 /* FrontDeltsExerciseListEN.json */; };
 		13B9FE892540AB3300E5542E /* TrainingPaternsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B9FE882540AB3300E5542E /* TrainingPaternsHeaderView.swift */; };
 		13B9FE8C2540AB7A00E5542E /* TrainingPaternsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B9FE8B2540AB7A00E5542E /* TrainingPaternsHeaderView.xib */; };
 		13BC48D025D02D7F004F611E /* StartStopWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BC48CF25D02D7F004F611E /* StartStopWorkoutView.swift */; };
@@ -243,7 +261,7 @@
 		7A69DBFE25878233003EECD8 /* SearchFoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69DBFD25878233003EECD8 /* SearchFoodViewModel.swift */; };
 		7A69DC0125878245003EECD8 /* SearchFoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69DC0025878245003EECD8 /* SearchFoodModel.swift */; };
 		7A6A7F5825FCAF2E00B546F5 /* UserInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A7F5625FCAF2E00B546F5 /* UserInfo.xcdatamodeld */; };
-		7A6E7E3A2685E5FB00E3B30C /* SomeResourse.json in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E7E392685E5FB00E3B30C /* SomeResourse.json */; };
+		7A6E7E3A2685E5FB00E3B30C /* MiddleDeltsExerciseListEN.json in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E7E392685E5FB00E3B30C /* MiddleDeltsExerciseListEN.json */; };
 		7A6E7E402685E7FC00E3B30C /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E7E3F2685E7FC00E3B30C /* New.swift */; };
 		7A71C8F725FE574E0098DB2C /* MeasurementUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A71C8F625FE574E0098DB2C /* MeasurementUnit.swift */; };
 		7A71C8FB25FE58500098DB2C /* UserDefaults+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A71C8FA25FE58500098DB2C /* UserDefaults+Ex.swift */; };
@@ -281,7 +299,7 @@
 		7AC226E12614C88000646A25 /* WorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC226E02614C88000646A25 /* WorkoutService.swift */; };
 		7AC226E52614CAC100646A25 /* ExerciseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC226E42614CAC100646A25 /* ExerciseService.swift */; };
 		7AC226E92614CBF000646A25 /* ApproachService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC226E82614CBF000646A25 /* ApproachService.swift */; };
-		7AC6B6DF2685EEF800BCEC29 /* SomeResourse.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A6E7E392685E5FB00E3B30C /* SomeResourse.json */; };
+		7AC6B6DF2685EEF800BCEC29 /* MiddleDeltsExerciseListEN.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A6E7E392685E5FB00E3B30C /* MiddleDeltsExerciseListEN.json */; };
 		7AC81F8D259B377D00AC10FB /* PopUpOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F8B259B377D00AC10FB /* PopUpOptionCell.swift */; };
 		7AC81F8E259B377D00AC10FB /* PopUpOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC81F8C259B377D00AC10FB /* PopUpOptionCell.xib */; };
 		7AC81F99259B552100AC10FB /* AuthorizationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC81F98259B552100AC10FB /* AuthorizationConfigurator.swift */; };
@@ -344,6 +362,36 @@
 		132A6A442572569C00EB3AE0 /* SelectExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExerciseModel.swift; sourceTree = "<group>"; };
 		132F588E249A87F00089FA09 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		132FC7B824B79DCD00A70F7E /* DTEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTEdgeInsets.swift; sourceTree = "<group>"; };
+		1330CD7726E4B8F7002624FF /* NewMuscularSubgroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMuscularSubgroups.swift; sourceTree = "<group>"; };
+		1330CD7B26E4C450002624FF /* PresentableEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableEntity.swift; sourceTree = "<group>"; };
+		1330CD8426E92837002624FF /* RearDeltsExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RearDeltsExerciseListEN.json; sourceTree = "<group>"; };
+		1330CD8F26E92A8D002624FF /* UpperChestExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UpperChestExerciseListEN.json; sourceTree = "<group>"; };
+		1330CD9526EA7243002624FF /* MiddleChestExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MiddleChestExerciseListEN.json; sourceTree = "<group>"; };
+		1330CD9D26EA7511002624FF /* LowerChestExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LowerChestExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDA526EA77EC002624FF /* BicepsExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BicepsExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDA926EA7814002624FF /* TricepsExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TricepsExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDB226ED2C1D002624FF /* LatissimusDorsiExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LatissimusDorsiExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDB826ED304B002624FF /* TrapezoidExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrapezoidExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDBF26ED324B002624FF /* AbsExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AbsExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDC326ED338D002624FF /* LowBackExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LowBackExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDCC26EE51CC002624FF /* FrontSideHipExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FrontSideHipExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDD026EE51E4002624FF /* BackSideHipExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BackSideHipExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDD426EE51FD002624FF /* CalvesExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CalvesExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDEF26F633B5002624FF /* BicepsExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BicepsExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDF026F633B7002624FF /* TricepsExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TricepsExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDF426F633DE002624FF /* LatissimusDorsiExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LatissimusDorsiExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDF526F633DF002624FF /* TrapezoidExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrapezoidExerciseListEN.json; sourceTree = "<group>"; };
+		1330CDF926F633F3002624FF /* LowerChestExerciseListRU.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LowerChestExerciseListRU.json; sourceTree = "<group>"; };
+		1330CDFA26F633F8002624FF /* MiddleChestExerciseListRU.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MiddleChestExerciseListRU.json; sourceTree = "<group>"; };
+		1330CDFB26F633FA002624FF /* UpperChestExerciseListRU.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UpperChestExerciseListRU.json; sourceTree = "<group>"; };
+		1330CDFF26F63415002624FF /* AbsExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AbsExerciseListEN.json; sourceTree = "<group>"; };
+		1330CE0026F63418002624FF /* LowBackExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LowBackExerciseListEN.json; sourceTree = "<group>"; };
+		1330CE0426F63439002624FF /* BackSideHipExerciseListRU.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BackSideHipExerciseListRU.json; sourceTree = "<group>"; };
+		1330CE0526F6343A002624FF /* CalvesExerciseListRU.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CalvesExerciseListRU.json; sourceTree = "<group>"; };
+		1330CE0626F6343C002624FF /* FrontSideHipExerciseListRU.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FrontSideHipExerciseListRU.json; sourceTree = "<group>"; };
+		1330CE0A26F6344C002624FF /* FrontDeltsExerciseListRU.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FrontDeltsExerciseListRU.json; sourceTree = "<group>"; };
+		1330CE0B26F6344E002624FF /* MiddleDeltsExerciseListRU.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MiddleDeltsExerciseListRU.json; sourceTree = "<group>"; };
+		1330CE0C26F63450002624FF /* RearDeltsExerciseListRU.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RearDeltsExerciseListRU.json; sourceTree = "<group>"; };
 		133364A3256126F700EAC6F6 /* ChoosenExerciseStatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosenExerciseStatisticsViewModel.swift; sourceTree = "<group>"; };
 		133364A92561793C00EAC6F6 /* ExerciseStatisticsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStatisticsCell.swift; sourceTree = "<group>"; };
 		133364AA2561793C00EAC6F6 /* ExerciseStatisticsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseStatisticsCell.xib; sourceTree = "<group>"; };
@@ -420,6 +468,7 @@
 		13B1E7D424BDD22A00EE84E2 /* DTAlertSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTAlertSelectionButton.swift; sourceTree = "<group>"; };
 		13B3C2EA255318D3000D4FA2 /* SideMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresenter.swift; sourceTree = "<group>"; };
 		13B3C2EE25531C08000D4FA2 /* SideMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInteractor.swift; sourceTree = "<group>"; };
+		13B8967826DE675900F1F829 /* FrontDeltsExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FrontDeltsExerciseListEN.json; sourceTree = "<group>"; };
 		13B9FE882540AB3300E5542E /* TrainingPaternsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPaternsHeaderView.swift; sourceTree = "<group>"; };
 		13B9FE8B2540AB7A00E5542E /* TrainingPaternsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingPaternsHeaderView.xib; sourceTree = "<group>"; };
 		13BC48CF25D02D7F004F611E /* StartStopWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopWorkoutView.swift; sourceTree = "<group>"; };
@@ -563,7 +612,7 @@
 		7A69DBFD25878233003EECD8 /* SearchFoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewModel.swift; sourceTree = "<group>"; };
 		7A69DC0025878245003EECD8 /* SearchFoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodModel.swift; sourceTree = "<group>"; };
 		7A6A7F5725FCAF2E00B546F5 /* UserInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserInfo.xcdatamodel; sourceTree = "<group>"; };
-		7A6E7E392685E5FB00E3B30C /* SomeResourse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SomeResourse.json; sourceTree = "<group>"; };
+		7A6E7E392685E5FB00E3B30C /* MiddleDeltsExerciseListEN.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MiddleDeltsExerciseListEN.json; sourceTree = "<group>"; };
 		7A6E7E3F2685E7FC00E3B30C /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
 		7A71C8F625FE574E0098DB2C /* MeasurementUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementUnit.swift; sourceTree = "<group>"; };
 		7A71C8FA25FE58500098DB2C /* UserDefaults+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ex.swift"; sourceTree = "<group>"; };
@@ -843,6 +892,155 @@
 			path = EdgeInsets;
 			sourceTree = "<group>";
 		};
+		1330CD8A26E92A01002624FF /* ExerciseListFiles */ = {
+			isa = PBXGroup;
+			children = (
+				1330CD8C26E92A12002624FF /* EN */,
+				1330CD8B26E92A0C002624FF /* RU */,
+			);
+			path = ExerciseListFiles;
+			sourceTree = "<group>";
+		};
+		1330CD8B26E92A0C002624FF /* RU */ = {
+			isa = PBXGroup;
+			children = (
+				1330CE0F26F6345D002624FF /* Shoulders */,
+				1330CE0926F63442002624FF /* Legs */,
+				1330CE0326F6342D002624FF /* Core */,
+				1330CDFE26F63403002624FF /* Chest */,
+				1330CDF826F633E6002624FF /* Back */,
+				1330CDF326F633C1002624FF /* Arms */,
+			);
+			path = RU;
+			sourceTree = "<group>";
+		};
+		1330CD8C26E92A12002624FF /* EN */ = {
+			isa = PBXGroup;
+			children = (
+				1330CDCB26EE517E002624FF /* Legs */,
+				1330CDBE26ED322F002624FF /* Core */,
+				1330CDB126ED2BD6002624FF /* Back */,
+				1330CDA326EA77C8002624FF /* Arms */,
+				1330CD8E26E92A2F002624FF /* Chest */,
+				1330CD8D26E92A18002624FF /* Shoulders */,
+			);
+			path = EN;
+			sourceTree = "<group>";
+		};
+		1330CD8D26E92A18002624FF /* Shoulders */ = {
+			isa = PBXGroup;
+			children = (
+				13B8967826DE675900F1F829 /* FrontDeltsExerciseListEN.json */,
+				1330CD8426E92837002624FF /* RearDeltsExerciseListEN.json */,
+				7A6E7E392685E5FB00E3B30C /* MiddleDeltsExerciseListEN.json */,
+			);
+			path = Shoulders;
+			sourceTree = "<group>";
+		};
+		1330CD8E26E92A2F002624FF /* Chest */ = {
+			isa = PBXGroup;
+			children = (
+				1330CD8F26E92A8D002624FF /* UpperChestExerciseListEN.json */,
+				1330CD9D26EA7511002624FF /* LowerChestExerciseListEN.json */,
+				1330CD9526EA7243002624FF /* MiddleChestExerciseListEN.json */,
+			);
+			path = Chest;
+			sourceTree = "<group>";
+		};
+		1330CDA326EA77C8002624FF /* Arms */ = {
+			isa = PBXGroup;
+			children = (
+				1330CDA526EA77EC002624FF /* BicepsExerciseListEN.json */,
+				1330CDA926EA7814002624FF /* TricepsExerciseListEN.json */,
+			);
+			path = Arms;
+			sourceTree = "<group>";
+		};
+		1330CDB126ED2BD6002624FF /* Back */ = {
+			isa = PBXGroup;
+			children = (
+				1330CDB226ED2C1D002624FF /* LatissimusDorsiExerciseListEN.json */,
+				1330CDB826ED304B002624FF /* TrapezoidExerciseListEN.json */,
+			);
+			path = Back;
+			sourceTree = "<group>";
+		};
+		1330CDBE26ED322F002624FF /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1330CDBF26ED324B002624FF /* AbsExerciseListEN.json */,
+				1330CDC326ED338D002624FF /* LowBackExerciseListEN.json */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1330CDCB26EE517E002624FF /* Legs */ = {
+			isa = PBXGroup;
+			children = (
+				1330CDCC26EE51CC002624FF /* FrontSideHipExerciseListEN.json */,
+				1330CDD026EE51E4002624FF /* BackSideHipExerciseListEN.json */,
+				1330CDD426EE51FD002624FF /* CalvesExerciseListEN.json */,
+			);
+			path = Legs;
+			sourceTree = "<group>";
+		};
+		1330CDF326F633C1002624FF /* Arms */ = {
+			isa = PBXGroup;
+			children = (
+				1330CDEF26F633B5002624FF /* BicepsExerciseListEN.json */,
+				1330CDF026F633B7002624FF /* TricepsExerciseListEN.json */,
+			);
+			path = Arms;
+			sourceTree = "<group>";
+		};
+		1330CDF826F633E6002624FF /* Back */ = {
+			isa = PBXGroup;
+			children = (
+				1330CDF526F633DF002624FF /* TrapezoidExerciseListEN.json */,
+				1330CDF426F633DE002624FF /* LatissimusDorsiExerciseListEN.json */,
+			);
+			path = Back;
+			sourceTree = "<group>";
+		};
+		1330CDFE26F63403002624FF /* Chest */ = {
+			isa = PBXGroup;
+			children = (
+				1330CDFB26F633FA002624FF /* UpperChestExerciseListRU.json */,
+				1330CDFA26F633F8002624FF /* MiddleChestExerciseListRU.json */,
+				1330CDF926F633F3002624FF /* LowerChestExerciseListRU.json */,
+			);
+			path = Chest;
+			sourceTree = "<group>";
+		};
+		1330CE0326F6342D002624FF /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1330CDFF26F63415002624FF /* AbsExerciseListEN.json */,
+				1330CE0026F63418002624FF /* LowBackExerciseListEN.json */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1330CE0926F63442002624FF /* Legs */ = {
+			isa = PBXGroup;
+			children = (
+				1330CE0426F63439002624FF /* BackSideHipExerciseListRU.json */,
+				1330CE0626F6343C002624FF /* FrontSideHipExerciseListRU.json */,
+				1330CE0526F6343A002624FF /* CalvesExerciseListRU.json */,
+			);
+			path = Legs;
+			sourceTree = "<group>";
+		};
+		1330CE0F26F6345D002624FF /* Shoulders */ = {
+			isa = PBXGroup;
+			children = (
+				1330CE0A26F6344C002624FF /* FrontDeltsExerciseListRU.json */,
+				1330CE0B26F6344E002624FF /* MiddleDeltsExerciseListRU.json */,
+				1330CE0C26F63450002624FF /* RearDeltsExerciseListRU.json */,
+			);
+			path = Shoulders;
+			sourceTree = "<group>";
+		};
 		133364A72561280F00EAC6F6 /* ExerciseStatisticsCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1114,8 +1312,10 @@
 				134403402499123F00D21284 /* LocalizedString.swift */,
 				133AA5AE246163E7009EBF8E /* Assets.xcassets */,
 				7A69DB7025836C17003EECD8 /* Colors.xcassets */,
-				7A6E7E392685E5FB00E3B30C /* SomeResourse.json */,
 				7A6E7E3F2685E7FC00E3B30C /* New.swift */,
+				1330CD8A26E92A01002624FF /* ExerciseListFiles */,
+				1330CD7726E4B8F7002624FF /* NewMuscularSubgroups.swift */,
+				1330CD7B26E4C450002624FF /* PresentableEntity.swift */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -2068,7 +2268,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AC6B6DF2685EEF800BCEC29 /* SomeResourse.json in Resources */,
+				1330CDDE26EE5BDF002624FF /* CalvesExerciseListEN.json in Resources */,
+				13B8968026DE6CC300F1F829 /* FrontDeltsExerciseListEN.json in Resources */,
+				7AC6B6DF2685EEF800BCEC29 /* MiddleDeltsExerciseListEN.json in Resources */,
 				7AF113C125B9B6D300C0AD75 /* MainNutritionViewController.xib in Resources */,
 				7A24882825A49BBB00DB6D12 /* ReadyWorkoutViewController.xib in Resources */,
 				7A36C385259CBFF100DFFA6E /* TrainingProgramsViewController.xib in Resources */,
@@ -2225,7 +2427,7 @@
 				7A360CAC2651734B00173E17 /* ExerciseMO+CoreDataProperties.swift in Sources */,
 				134DF5B524B4E50D007A7B8A /* ColorSetting.swift in Sources */,
 				7A384D8525BB11AC00A83F74 /* AddPopUpRouter.swift in Sources */,
-				7A6E7E3A2685E5FB00E3B30C /* SomeResourse.json in Sources */,
+				7A6E7E3A2685E5FB00E3B30C /* MiddleDeltsExerciseListEN.json in Sources */,
 				13B3C2EB255318D3000D4FA2 /* SideMenuPresenter.swift in Sources */,
 				1396F5FA248392760012A76A /* UIImage+Ex.swift in Sources */,
 				7A384D5725BADC9000A83F74 /* SideMenuRouter.swift in Sources */,
@@ -2235,7 +2437,9 @@
 				7AF113B025B9AC7800C0AD75 /* MainNutritionConfigurator.swift in Sources */,
 				13479F39247BD82C002FFB4E /* MuscleGroupsViewController.swift in Sources */,
 				7A384D5C25BAF1C500A83F74 /* WorkoutListRouter.swift in Sources */,
+				1330CDB926ED304B002624FF /* TrapezoidExerciseListEN.json in Sources */,
 				13CB550C25C70AA1004D3E7F /* MonthlyStatisticsRouter.swift in Sources */,
+				1330CD8526E92837002624FF /* RearDeltsExerciseListEN.json in Sources */,
 				1384BB4524DEEE7A0084705B /* DTMainInfoCell.swift in Sources */,
 				137E5BA325C1F5B000AFC190 /* OnboardingPresenter.swift in Sources */,
 				139D531324740BCE0028AE6A /* SettingViewController.swift in Sources */,
@@ -2243,6 +2447,7 @@
 				7A9E176A25B5F0F900978DD8 /* HomeRouter.swift in Sources */,
 				7A8BED202590A8E600CDB925 /* SearchFoodAPI.swift in Sources */,
 				7A384D6725BAF7FA00A83F74 /* ExerciseStatisticsConfigurator.swift in Sources */,
+				1330CD9626EA7243002624FF /* MiddleChestExerciseListEN.json in Sources */,
 				1341727F254B38C2004C6262 /* CurrentPaternSideMenu.swift in Sources */,
 				7AF113C025B9B6D300C0AD75 /* MainNutritionViewController.swift in Sources */,
 				1310EC6525BDCB7500D5E873 /* TrainingLevelsRouter.swift in Sources */,
@@ -2276,6 +2481,7 @@
 				7A4E7B1C2614D10100C1CB69 /* WorkoutTemplateService.swift in Sources */,
 				1306E01724CF3DAB003AEBA7 /* AuthorizationPresenter.swift in Sources */,
 				7A731B2425B08FB500071E46 /* UICollectionViewCell.swift in Sources */,
+				1330CD7826E4B8F7002624FF /* NewMuscularSubgroups.swift in Sources */,
 				7A384D4525BACCA100A83F74 /* SelectExerciseConfigurator.swift in Sources */,
 				7A360CBB2651736700173E17 /* UserInfoMO+CoreDataProperties.swift in Sources */,
 				13D5D57724E19AFD003C82F1 /* WorkoutIneractor.swift in Sources */,
@@ -2301,6 +2507,7 @@
 				7AD9DA36258CDC76006BF647 /* NutrientPercentagePickerView.swift in Sources */,
 				7AC1D08E25A32F78006049F6 /* AddPopUpPresentationController.swift in Sources */,
 				13EDD9BB247AB0FC008EE212 /* Exercise.swift in Sources */,
+				1330CDD526EE51FD002624FF /* CalvesExerciseListEN.json in Sources */,
 				7AAFE8B42599D216004FF48B /* HomeViewControllerConfigurator.swift in Sources */,
 				132A6A452572569C00EB3AE0 /* SelectExerciseModel.swift in Sources */,
 				131733732490E08600292D84 /* DTExerciseCell+Ex.swift in Sources */,
@@ -2333,12 +2540,14 @@
 				13CB551425C71610004D3E7F /* MonthlyStatisticsItemCell.swift in Sources */,
 				13151D4A24715C9D002C15AA /* UIColor+Ex.swift in Sources */,
 				136F40092498D44B00C6944B /* UserInfoService.swift in Sources */,
+				13B8967926DE675900F1F829 /* FrontDeltsExerciseListEN.json in Sources */,
 				7A36C38E259CC3D100DFFA6E /* TrainingProgramsConfigurator.swift in Sources */,
 				7AAFE8F7259A2765004FF48B /* HomeInteractor.swift in Sources */,
 				7A9E176525B5E6FB00978DD8 /* AuthorizationRouter.swift in Sources */,
 				7A36C384259CBFF100DFFA6E /* TrainingProgramsViewController.swift in Sources */,
 				7A69DBCF25875040003EECD8 /* MainNutritionModel.swift in Sources */,
 				7A2FBC5C25B0423000FFE850 /* UIView+Ex.swift in Sources */,
+				1330CDC426ED338D002624FF /* LowBackExerciseListEN.json in Sources */,
 				7AC226E52614CAC100646A25 /* ExerciseService.swift in Sources */,
 				133364A4256126F700EAC6F6 /* ChoosenExerciseStatisticsViewModel.swift in Sources */,
 				7A6673C92594C36B0086E238 /* TrainingTableFooterView.swift in Sources */,
@@ -2346,6 +2555,7 @@
 				7A0BC97525ADDF320037B51F /* WorkoutListViewControllerConfigurator.swift in Sources */,
 				7AC81FD9259C832900AC10FB /* FirebaseStorageManager.swift in Sources */,
 				13416FA22485345100EC6590 /* Authorizationbutton.swift in Sources */,
+				1330CDA626EA77EC002624FF /* BicepsExerciseListEN.json in Sources */,
 				7A24883225A49BFA00DB6D12 /* ReadyWorkoutConfigurator.swift in Sources */,
 				7A731B1B25B08B3600071E46 /* WorkoutStatisticsViewController.swift in Sources */,
 				7A384D4B25BAD18100A83F74 /* TrainingPaternsRouter.swift in Sources */,
@@ -2362,6 +2572,7 @@
 				13786E1D2478271C0084E48C /* NotificationName+Ex.swift in Sources */,
 				7A2A75612588CE400091FD22 /* CaloriesRecomendationCalculator.swift in Sources */,
 				7A7D288125753BEA00FDD212 /* TrainingPaternCodableModel.swift in Sources */,
+				1330CDC026ED324B002624FF /* AbsExerciseListEN.json in Sources */,
 				7A0BC96E25ADDD880037B51F /* WorkoutListTableHeader.swift in Sources */,
 				1384BB4F24DF157F0084705B /* DTSelectionListAlert.swift in Sources */,
 				7A69DBCC25875030003EECD8 /* MainNutritionViewModel.swift in Sources */,
@@ -2382,8 +2593,10 @@
 				1306E01924CF3DC1003AEBA7 /* AuthorizationInteractor.swift in Sources */,
 				7AF7BD4E256698B9003F4038 /* AuthorizationViewController.swift in Sources */,
 				13EB774024E2B097000E6D87 /* DTNewAproachAlert.swift in Sources */,
+				1330CDB326ED2C1D002624FF /* LatissimusDorsiExerciseListEN.json in Sources */,
 				7AC226E92614CBF000646A25 /* ApproachService.swift in Sources */,
 				7AAFE8B02599CE24004FF48B /* HomeViewController.swift in Sources */,
+				1330CD9026E92A8D002624FF /* UpperChestExerciseListEN.json in Sources */,
 				7A384D6325BAF58500A83F74 /* WorkoutRouter.swift in Sources */,
 				7A2A752A2588990C0091FD22 /* NutritionDataMO+CoreDataProperties copy.swift in Sources */,
 				133A7BE224AE13D900409D3F /* Approach.swift in Sources */,
@@ -2393,11 +2606,13 @@
 				7A20D1ED265E8197000EE390 /* AuthorizationService.swift in Sources */,
 				7A0F09A625F68885004ED10A /* HomeEntity.swift in Sources */,
 				7A27A3B42604B9F9002A1F1B /* PersistentStoreType.swift in Sources */,
+				1330CDAA26EA7814002624FF /* TricepsExerciseListEN.json in Sources */,
 				7A0BC95725ADCFDB0037B51F /* WorkoutListViewController.swift in Sources */,
 				7A384D7B25BB0ABF00A83F74 /* ProfileConfigurator.swift in Sources */,
 				7A27A3B82604BB37002A1F1B /* Date+Ex.swift in Sources */,
 				13EB98FB247D49AC00DE9CD9 /* MuscleSubgroups.swift in Sources */,
 				7A36C33F259C8B7200DFFA6E /* TrainingProgramsLevelsViewController.swift in Sources */,
+				1330CD7C26E4C450002624FF /* PresentableEntity.swift in Sources */,
 				13CCD922254EB1DF00E8FFEB /* SideMenuViewController.swift in Sources */,
 				133364AB2561793C00EAC6F6 /* ExerciseStatisticsCell.swift in Sources */,
 				7A384D4225BACC8D00A83F74 /* SelectExerciseRouter.swift in Sources */,
@@ -2406,6 +2621,8 @@
 				7A384D8225BB118200A83F74 /* AddPopUpInteractor.swift in Sources */,
 				136989C22520DF650039B306 /* TrainingPaternsViewController.swift in Sources */,
 				7AED0A6F26498C4900EF6FEB /* AddPopUpEntity.swift in Sources */,
+				1330CDCD26EE51CC002624FF /* FrontSideHipExerciseListEN.json in Sources */,
+				1330CD9E26EA7511002624FF /* LowerChestExerciseListEN.json in Sources */,
 				1384BB4924DEF7E60084705B /* ProfileViewModel.swift in Sources */,
 				134403412499123F00D21284 /* LocalizedString.swift in Sources */,
 				134AA985253615AD00C8BDD1 /* ChoosenPaternViewController.swift in Sources */,
@@ -2452,6 +2669,7 @@
 				13D5D57524E19AE3003C82F1 /* WorkoutPresenter.swift in Sources */,
 				7AF113AD25B9A95B00C0AD75 /* SearchFoodConfigurator.swift in Sources */,
 				13B9FE892540AB3300E5542E /* TrainingPaternsHeaderView.swift in Sources */,
+				1330CDD126EE51E4002624FF /* BackSideHipExerciseListEN.json in Sources */,
 				7A384D4825BACE4200A83F74 /* MuscleGroupRouter.swift in Sources */,
 				139FE9D724783CAA00B22C40 /* DTHeaderView.swift in Sources */,
 				13AD1AFB2475C3FF00D5B39F /* MeteringSetting.swift in Sources */,

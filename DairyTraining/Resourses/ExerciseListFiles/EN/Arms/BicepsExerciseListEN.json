@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Biceps Curl",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Dumbbell Bicep Curl",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Standing Hummer curl",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Hummer curl",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "EZ-Bar Biceps Curl",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Incline Hammer Curls",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Decline Dumbbell Curl",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Concentration Biceps Curl",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Overhead cable curl",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Cable Curl",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "EZ-Bar Preacher Curl",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Machine preacher curl",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Supinated Pull Up",
+        "muscularSubroup": "biceps",
+        "muscularGroup": "arms"
+    }
+ ]

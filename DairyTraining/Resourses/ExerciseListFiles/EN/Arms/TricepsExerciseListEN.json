@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Close-grip Bench Press",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Behind-the-head skullcrusher",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Triceps dip",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Weighted bench dip",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Machine Triceps Dipp",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Incline EZ-bar skullcrusher",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Seated triceps press",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Triceps kick-back",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Single-arm dumbbell triceps extension",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Dumbbell skullcrusher",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Cable Push-Down",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Low cable overhead triceps extension",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Lying cable triceps extension",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    }
+]

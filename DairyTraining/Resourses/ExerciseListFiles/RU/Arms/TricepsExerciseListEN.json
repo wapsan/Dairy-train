@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Жим штанги лежа узким хватом",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Французкий жим из за головы",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Брусья узким хватом",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Обратные отжимания от скамьи",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Брусья в трицепс-машине",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Французкий жим под положительным наклоном",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Разгибание рук из-за головы с гантелью",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Разгибание руки в наколне на бицепс",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Разгибание руки из-зи головы с гантелью",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Французкий жим с гантелями",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Разгибание рук с кабелем",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Разгибание рук из-за головы с кабелем",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    },
+    {
+        "name": "Французкий жим с кабелем",
+        "muscularSubroup": "triceps",
+        "muscularGroup": "arms"
+    }
+]

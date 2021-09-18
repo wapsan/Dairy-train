@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Жим гантелей сидя",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Жим штанги из-за головы сидя",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Жим штанги из-за головы сидя в Смитт машине",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Жим гантелей стоя",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Махи в стороны",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Махи в стороны одной рукой",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Тяга штанги к бодбородку широким хватом",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Тяга блока к бодбородку широким хватом",
+        "muscularSubroup": "middleDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Machine shoulder press",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Махи с троссом на нижнем блоке",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    },
+    {
+        "name": "Махи гантелей вперед под наколоном",
+        "muscularSubroup": "frontDelts",
+        "muscularGroup": "shoulders"
+    }
+]
